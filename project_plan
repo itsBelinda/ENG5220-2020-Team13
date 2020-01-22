@@ -1,0 +1,91 @@
+
+Components:
+
+- Micro-controller
+- GPS + GSM/GPRS module OR Bluetooth
+- Face(?)
+ - LCD?
+ - e-ink?
+- Raspberry pi
+
+Limitations:
+- Display
+
+Project components for use cases:
+1) Children:
+- virtual fences
+- detect proximity relative to object such as bicycle
+ - dynamic virtual fence
+- wristband/keychain/hide somewhere
+ - designer holder
+ - prevent band from being taken off?
+- virtual path
+ - children going to school
+ - checkpoint
+- abnormal speeds?
+ - in case child gets in unknown car?
+
+2) Elderly people -- OUT OF SCOPE --
+ - targeting mainly elderly people with Alzheimers
+ - Virtual fences
+ - Detection of falls
+ - Button for calling assistance?
+ 
+Priorities: 1-5, 
+
+Use cases:
+1) Child plays in the backyard and wanders off
+Actors: child, parent
+ - Parent is notified
+ - Position of the child is updated until child is in safe-zone
+ 
+2) Child going to school
+Actors: child, parent
+ - Parent is notified if child reaches goal in specified amount of time
+ - Parent is notified if child leaves school
+ 
+3) Child is abducted on the way to/from school
+Actors: child, parent
+ - Abnormal movement (too fast speed) is detected
+ - Parent is informed with current position
+ 
+4) Device is attached to an object (bicycle)
+Actors: bicycle, child
+ - Owner is informed if bike virtual fence
+   - OR owner is informed if bike leaves child's proximity
+
+5) Removing wristband
+Actor: child
+ - Parent is detected
+ 
+6) Defining a virtual fence, inside which the kid is allowed to be
+Actor: parent
+ a) GPS coordinates & radius or RPi console
+ b) Send coordinates from PC to PI
+ c) Web-interface
+ d) App
+- 
+
+7) Defining a safe zone
+Actor: parent
+- Same as 6, just labelled different type
+
+8) Defining times when it is ok to leave one zone (leaving for school/leaving school)
+Actor: parent
+- Inputting zone involved
+- Inputting start and/or stop times
+
+9) Defining an allowed time for the way to the second virtual fence
+Actor: parent
+- Inputting zone involved
+- Inputting start and/or stop times
+
+10) Specifying phone numbers for notifications
+Actor: parent
+- Enters number
+
+11) Specifying what the device is used for
+Actor: Parent
+- Setting in the interface whether the device is used on the bicycle or child
+
+Tasks to do next:
