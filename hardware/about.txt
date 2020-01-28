@@ -1,0 +1,1 @@
+contains all the information and project files concerning the hardware development.
