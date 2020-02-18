@@ -112,16 +112,16 @@
 		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/Fence.h">
 			<Option target="BeeSafePI"/>
 		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/GeoFence.cpp">
+		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/PolyFence.cpp">
 			<Option target="BeeSafePI"/>
 		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/GeoFence.h">
+		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/PolyFence.h">
 			<Option target="BeeSafePI"/>
 		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/GeoPath.cpp">
+		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/RoundFence.cpp">
 			<Option target="BeeSafePI"/>
 		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/GeoPath.h">
+		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/RoundFence.h">
 			<Option target="BeeSafePI"/>
 		</Unit>
 		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/main.cpp">

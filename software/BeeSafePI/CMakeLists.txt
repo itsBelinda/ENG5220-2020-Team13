@@ -9,5 +9,5 @@ set(OPENSSL_INCLUDE_DIR /usr/local/opt/openssl/bin/openssl)
 
 find_package(cpprestsdk REQUIRED)
 
-add_executable(BeeSafePI src/main.cpp src/geo/Fence.h src/geo/GeoFence.cpp src/geo/GeoPath.cpp src/contact/Contact.cpp src/contact/Contact.h src/geo/Fence.cpp src/geo/GeoFence.h src/geo/GeoPath.h src/account/Account.cpp src/account/Account.h src/account/builders/AccountBuilder.cpp src/account/builders/AccountBuilder.h)
+add_executable(BeeSafePI src/Main.cpp src/geo/Fence.h src/geo/RoundFence.cpp src/geo/PolyFence.cpp src/contact/Contact.cpp src/contact/Contact.h src/geo/Fence.cpp src/geo/RoundFence.h src/geo/PolyFence.h src/account/Account.cpp src/account/Account.h src/account/AccountBuilder.cpp src/account/AccountBuilder.h)
 target_link_libraries(BeeSafePI PRIVATE cpprestsdk::cpprest)

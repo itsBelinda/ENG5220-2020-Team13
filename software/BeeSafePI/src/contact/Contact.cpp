@@ -1,8 +1,8 @@
 #include "Contact.h"
 
-// Constructor defines a contact for the device.
-Contact::Contact(std::string forename, std::string surname,
-                 std::string number, std::string key)
+// Constructor for account contact.
+Contact::Contact(std::string& forename, std::string& surname,
+                 std::string& number, std::string& key)
 {
     this->forename = forename;
     this->surname = surname;
@@ -10,26 +10,26 @@ Contact::Contact(std::string forename, std::string surname,
     this->key = key;
 }
 
-// Get the first name of a legal guardian contact.
-std::string Contact::getForename()
+// The first name of the contact.
+std::string& Contact::getForename()
 {
     return forename;
 }
 
-// Get the last name of a legal guardian contact.
-std::string Contact::getSurname()
+// The last name of the contact.
+std::string& Contact::getSurname()
 {
     return surname;
 }
 
-// Get the phone number of a legal guardian contact.
-std::string Contact::getNumber()
+// The number of the contact.
+std::string& Contact::getNumber()
 {
     return number;
 }
 
-// Get the live location API key for that contact.
-std::string Contact::getKey()
+// The API key of the contact.
+std::string& Contact::getKey()
 {
     return key;
 }

@@ -3,25 +3,29 @@
 
 #include <string>
 
-// Json keys for the contact class.
-#define CONTACT_KEY_FORENAME "Forename"
-#define CONTACT_KEY_SURNAME "Surname"
-#define CONTACT_KEY_NUMBER "Number"
-#define CONTACT_KEY_KEY "Key"
+// JSON keys for accessing contact attributes.
+#define JSON_KEY_CONTACT_FORENAME "Forename"
+#define JSON_KEY_CONTACT_SURNAME "Surname"
+#define JSON_KEY_CONTACT_NUMBER "Number"
+#define JSON_KEY_CONTACT_KEY "Key"
 
 // Contact class defines a legal guardian for the child.
 class Contact
 {
 
+    // Contact constructor.
 public:
-    Contact(std::string forename, std::string surname, std::string number, std::string key);
+    Contact(std::string& forename, std::string& surname,
+            std::string& number, std::string& key);
 
+    // Getters and setters.
 public:
-    std::string getForename();
-    std::string getSurname();
-    std::string getNumber();
-    std::string getKey();
+    std::string& getForename();
+    std::string& getSurname();
+    std::string& getNumber();
+    std::string& getKey();
 
+    // Attributes.
 private:
     std::string forename;
     std::string surname;

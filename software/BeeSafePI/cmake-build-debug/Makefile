@@ -231,59 +231,59 @@ src/geo/Fence.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.s
 .PHONY : src/geo/Fence.cpp.s
 
-src/geo/GeoFence.o: src/geo/GeoFence.cpp.o
+src/geo/PolyFence.o: src/geo/PolyFence.cpp.o
 
-.PHONY : src/geo/GeoFence.o
-
-# target to build an object file
-src/geo/GeoFence.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoFence.cpp.o
-.PHONY : src/geo/GeoFence.cpp.o
-
-src/geo/GeoFence.i: src/geo/GeoFence.cpp.i
-
-.PHONY : src/geo/GeoFence.i
-
-# target to preprocess a source file
-src/geo/GeoFence.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoFence.cpp.i
-.PHONY : src/geo/GeoFence.cpp.i
-
-src/geo/GeoFence.s: src/geo/GeoFence.cpp.s
-
-.PHONY : src/geo/GeoFence.s
-
-# target to generate assembly for a file
-src/geo/GeoFence.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoFence.cpp.s
-.PHONY : src/geo/GeoFence.cpp.s
-
-src/geo/GeoPath.o: src/geo/GeoPath.cpp.o
-
-.PHONY : src/geo/GeoPath.o
+.PHONY : src/geo/PolyFence.o
 
 # target to build an object file
-src/geo/GeoPath.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoPath.cpp.o
-.PHONY : src/geo/GeoPath.cpp.o
+src/geo/PolyFence.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/PolyFence.cpp.o
+.PHONY : src/geo/PolyFence.cpp.o
 
-src/geo/GeoPath.i: src/geo/GeoPath.cpp.i
+src/geo/PolyFence.i: src/geo/PolyFence.cpp.i
 
-.PHONY : src/geo/GeoPath.i
+.PHONY : src/geo/PolyFence.i
 
 # target to preprocess a source file
-src/geo/GeoPath.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoPath.cpp.i
-.PHONY : src/geo/GeoPath.cpp.i
+src/geo/PolyFence.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/PolyFence.cpp.i
+.PHONY : src/geo/PolyFence.cpp.i
 
-src/geo/GeoPath.s: src/geo/GeoPath.cpp.s
+src/geo/PolyFence.s: src/geo/PolyFence.cpp.s
 
-.PHONY : src/geo/GeoPath.s
+.PHONY : src/geo/PolyFence.s
 
 # target to generate assembly for a file
-src/geo/GeoPath.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoPath.cpp.s
-.PHONY : src/geo/GeoPath.cpp.s
+src/geo/PolyFence.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/PolyFence.cpp.s
+.PHONY : src/geo/PolyFence.cpp.s
+
+src/geo/RoundFence.o: src/geo/RoundFence.cpp.o
+
+.PHONY : src/geo/RoundFence.o
+
+# target to build an object file
+src/geo/RoundFence.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.o
+.PHONY : src/geo/RoundFence.cpp.o
+
+src/geo/RoundFence.i: src/geo/RoundFence.cpp.i
+
+.PHONY : src/geo/RoundFence.i
+
+# target to preprocess a source file
+src/geo/RoundFence.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.i
+.PHONY : src/geo/RoundFence.cpp.i
+
+src/geo/RoundFence.s: src/geo/RoundFence.cpp.s
+
+.PHONY : src/geo/RoundFence.s
+
+# target to generate assembly for a file
+src/geo/RoundFence.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.s
+.PHONY : src/geo/RoundFence.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -333,12 +333,12 @@ help:
 	@echo "... src/geo/Fence.o"
 	@echo "... src/geo/Fence.i"
 	@echo "... src/geo/Fence.s"
-	@echo "... src/geo/GeoFence.o"
-	@echo "... src/geo/GeoFence.i"
-	@echo "... src/geo/GeoFence.s"
-	@echo "... src/geo/GeoPath.o"
-	@echo "... src/geo/GeoPath.i"
-	@echo "... src/geo/GeoPath.s"
+	@echo "... src/geo/PolyFence.o"
+	@echo "... src/geo/PolyFence.i"
+	@echo "... src/geo/PolyFence.s"
+	@echo "... src/geo/RoundFence.o"
+	@echo "... src/geo/RoundFence.i"
+	@echo "... src/geo/RoundFence.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
