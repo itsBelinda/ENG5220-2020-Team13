@@ -4,12 +4,27 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/main.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/main.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/Account.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/builders/AccountBuilder.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/account/builders/AccountBuilder.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/contact/Contact.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/Fence.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/GeoFence.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/geo/GeoFence.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/GeoPath.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/geo/GeoPath.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/main.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "CPPREST_FORCE_HTTP_CLIENT_ASIO"
+  "CPPREST_FORCE_HTTP_LISTENER_ASIO"
+  "CPPREST_NO_SSL_LEAK_SUPPRESS"
+  )
+
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/usr/local/include"
+  "/usr/local/opt/openssl/bin/openssl"
   )
 
 # Targets to which this target links.

@@ -123,32 +123,194 @@ BeeSafePI/fast:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/build
 .PHONY : BeeSafePI/fast
 
-main.o: main.cpp.o
+src/account/Account.o: src/account/Account.cpp.o
 
-.PHONY : main.o
+.PHONY : src/account/Account.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/account/Account.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o
+.PHONY : src/account/Account.cpp.o
 
-main.i: main.cpp.i
+src/account/Account.i: src/account/Account.cpp.i
 
-.PHONY : main.i
+.PHONY : src/account/Account.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/account/Account.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.i
+.PHONY : src/account/Account.cpp.i
 
-main.s: main.cpp.s
+src/account/Account.s: src/account/Account.cpp.s
 
-.PHONY : main.s
+.PHONY : src/account/Account.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/account/Account.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.s
+.PHONY : src/account/Account.cpp.s
+
+src/account/builders/AccountBuilder.o: src/account/builders/AccountBuilder.cpp.o
+
+.PHONY : src/account/builders/AccountBuilder.o
+
+# target to build an object file
+src/account/builders/AccountBuilder.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/builders/AccountBuilder.cpp.o
+.PHONY : src/account/builders/AccountBuilder.cpp.o
+
+src/account/builders/AccountBuilder.i: src/account/builders/AccountBuilder.cpp.i
+
+.PHONY : src/account/builders/AccountBuilder.i
+
+# target to preprocess a source file
+src/account/builders/AccountBuilder.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/builders/AccountBuilder.cpp.i
+.PHONY : src/account/builders/AccountBuilder.cpp.i
+
+src/account/builders/AccountBuilder.s: src/account/builders/AccountBuilder.cpp.s
+
+.PHONY : src/account/builders/AccountBuilder.s
+
+# target to generate assembly for a file
+src/account/builders/AccountBuilder.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/builders/AccountBuilder.cpp.s
+.PHONY : src/account/builders/AccountBuilder.cpp.s
+
+src/contact/Contact.o: src/contact/Contact.cpp.o
+
+.PHONY : src/contact/Contact.o
+
+# target to build an object file
+src/contact/Contact.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o
+.PHONY : src/contact/Contact.cpp.o
+
+src/contact/Contact.i: src/contact/Contact.cpp.i
+
+.PHONY : src/contact/Contact.i
+
+# target to preprocess a source file
+src/contact/Contact.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.i
+.PHONY : src/contact/Contact.cpp.i
+
+src/contact/Contact.s: src/contact/Contact.cpp.s
+
+.PHONY : src/contact/Contact.s
+
+# target to generate assembly for a file
+src/contact/Contact.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.s
+.PHONY : src/contact/Contact.cpp.s
+
+src/geo/Fence.o: src/geo/Fence.cpp.o
+
+.PHONY : src/geo/Fence.o
+
+# target to build an object file
+src/geo/Fence.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o
+.PHONY : src/geo/Fence.cpp.o
+
+src/geo/Fence.i: src/geo/Fence.cpp.i
+
+.PHONY : src/geo/Fence.i
+
+# target to preprocess a source file
+src/geo/Fence.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.i
+.PHONY : src/geo/Fence.cpp.i
+
+src/geo/Fence.s: src/geo/Fence.cpp.s
+
+.PHONY : src/geo/Fence.s
+
+# target to generate assembly for a file
+src/geo/Fence.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.s
+.PHONY : src/geo/Fence.cpp.s
+
+src/geo/GeoFence.o: src/geo/GeoFence.cpp.o
+
+.PHONY : src/geo/GeoFence.o
+
+# target to build an object file
+src/geo/GeoFence.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoFence.cpp.o
+.PHONY : src/geo/GeoFence.cpp.o
+
+src/geo/GeoFence.i: src/geo/GeoFence.cpp.i
+
+.PHONY : src/geo/GeoFence.i
+
+# target to preprocess a source file
+src/geo/GeoFence.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoFence.cpp.i
+.PHONY : src/geo/GeoFence.cpp.i
+
+src/geo/GeoFence.s: src/geo/GeoFence.cpp.s
+
+.PHONY : src/geo/GeoFence.s
+
+# target to generate assembly for a file
+src/geo/GeoFence.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoFence.cpp.s
+.PHONY : src/geo/GeoFence.cpp.s
+
+src/geo/GeoPath.o: src/geo/GeoPath.cpp.o
+
+.PHONY : src/geo/GeoPath.o
+
+# target to build an object file
+src/geo/GeoPath.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoPath.cpp.o
+.PHONY : src/geo/GeoPath.cpp.o
+
+src/geo/GeoPath.i: src/geo/GeoPath.cpp.i
+
+.PHONY : src/geo/GeoPath.i
+
+# target to preprocess a source file
+src/geo/GeoPath.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoPath.cpp.i
+.PHONY : src/geo/GeoPath.cpp.i
+
+src/geo/GeoPath.s: src/geo/GeoPath.cpp.s
+
+.PHONY : src/geo/GeoPath.s
+
+# target to generate assembly for a file
+src/geo/GeoPath.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/GeoPath.cpp.s
+.PHONY : src/geo/GeoPath.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -159,9 +321,27 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... BeeSafePI"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/account/Account.o"
+	@echo "... src/account/Account.i"
+	@echo "... src/account/Account.s"
+	@echo "... src/account/builders/AccountBuilder.o"
+	@echo "... src/account/builders/AccountBuilder.i"
+	@echo "... src/account/builders/AccountBuilder.s"
+	@echo "... src/contact/Contact.o"
+	@echo "... src/contact/Contact.i"
+	@echo "... src/contact/Contact.s"
+	@echo "... src/geo/Fence.o"
+	@echo "... src/geo/Fence.i"
+	@echo "... src/geo/Fence.s"
+	@echo "... src/geo/GeoFence.o"
+	@echo "... src/geo/GeoFence.i"
+	@echo "... src/geo/GeoFence.s"
+	@echo "... src/geo/GeoPath.o"
+	@echo "... src/geo/GeoPath.i"
+	@echo "... src/geo/GeoPath.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

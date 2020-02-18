@@ -1,5 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/BeeSafePI.dir/main.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/main.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/geo/GeoFence.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/geo/GeoPath.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/account/builders/AccountBuilder.cpp.o"
   "BeeSafePI.pdb"
   "BeeSafePI"
 )
