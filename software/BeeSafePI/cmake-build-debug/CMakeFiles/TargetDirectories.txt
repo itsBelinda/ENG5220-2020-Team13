@@ -1,0 +1,3 @@
+/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir
