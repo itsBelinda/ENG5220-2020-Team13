@@ -19,11 +19,10 @@ public:
     Account(std::vector<Contact>* contacts, std::vector<Fence>* fences);
 
 public:
-    std::vector<Contact>* getContacts();
-    std::vector<Fence>* getFences();
+    const std::vector<Contact>* getContacts();
+    const std::vector<Fence>* getFences();
 
 public:
-    bool isValid();
     bool save(std::string path);
 
 private:

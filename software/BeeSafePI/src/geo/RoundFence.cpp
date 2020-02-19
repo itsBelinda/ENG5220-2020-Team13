@@ -29,12 +29,6 @@ double RoundFence::getRadius()
     return radius;
 }
 
-// Whether or not the definition is correct.
-bool RoundFence::isValid()
-{
-    return true;
-}
-
 // Calculates whether or not latitude and longitude inside fence.
 bool RoundFence::isInside(const double latitude, const double longitude)
 {

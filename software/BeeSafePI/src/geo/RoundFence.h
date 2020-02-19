@@ -24,7 +24,6 @@ public:
 
     // Overridden interface.
 public:
-    bool isValid() override;
     bool isInside(double latitude, double longitude) override;
 
     // Attributes.

@@ -17,15 +17,14 @@ class PolyFence : public Fence
 
     // Constructors.
 public:
-    PolyFence(bool safe, std::vector<std::pair<double, double>>& coordinates);
+    PolyFence(bool safe, const std::vector<std::pair<double, double>>& coordinates);
 
-    // Getters and setters.
+    // Functions.
 public:
-    std::vector<std::pair<double, double>>& getCoordinates();
+    const std::vector<std::pair<double, double>>& getCoordinates();
 
-    // Overridden interface.
+    // Interface that's to be implemented.
 public:
-    bool isValid() override;
     bool isInside(double latitude, double longitude) override;
 
     // Attributes.

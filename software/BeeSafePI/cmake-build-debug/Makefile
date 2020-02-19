@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/CDF69BD9-512B-4D90-A328-7B15FC1931D8/d/CLion.app/Contents/bin/cmake/bin/cmake
+CMAKE_COMMAND = /private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/6A788123-ABE2-4B73-A938-F9DDD8790A52/d/CLion.app/Contents/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/CDF69BD9-512B-4D90-A328-7B15FC1931D8/d/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
+RM = /private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/6A788123-ABE2-4B73-A938-F9DDD8790A52/d/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSaf
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/CDF69BD9-512B-4D90-A328-7B15FC1931D8/d/CLion.app/Contents/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/6A788123-ABE2-4B73-A938-F9DDD8790A52/d/CLion.app/Contents/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/CDF69BD9-512B-4D90-A328-7B15FC1931D8/d/CLion.app/Contents/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/6A788123-ABE2-4B73-A938-F9DDD8790A52/d/CLion.app/Contents/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -123,6 +123,33 @@ BeeSafePI/fast:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/build
 .PHONY : BeeSafePI/fast
 
+src/Main.o: src/Main.cpp.o
+
+.PHONY : src/Main.o
+
+# target to build an object file
+src/Main.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/Main.cpp.o
+.PHONY : src/Main.cpp.o
+
+src/Main.i: src/Main.cpp.i
+
+.PHONY : src/Main.i
+
+# target to preprocess a source file
+src/Main.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/Main.cpp.i
+.PHONY : src/Main.cpp.i
+
+src/Main.s: src/Main.cpp.s
+
+.PHONY : src/Main.s
+
+# target to generate assembly for a file
+src/Main.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/Main.cpp.s
+.PHONY : src/Main.cpp.s
+
 src/account/Account.o: src/account/Account.cpp.o
 
 .PHONY : src/account/Account.o
@@ -150,32 +177,32 @@ src/account/Account.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.s
 .PHONY : src/account/Account.cpp.s
 
-src/account/builders/AccountBuilder.o: src/account/builders/AccountBuilder.cpp.o
+src/account/AccountBuilder.o: src/account/AccountBuilder.cpp.o
 
-.PHONY : src/account/builders/AccountBuilder.o
+.PHONY : src/account/AccountBuilder.o
 
 # target to build an object file
-src/account/builders/AccountBuilder.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/builders/AccountBuilder.cpp.o
-.PHONY : src/account/builders/AccountBuilder.cpp.o
+src/account/AccountBuilder.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o
+.PHONY : src/account/AccountBuilder.cpp.o
 
-src/account/builders/AccountBuilder.i: src/account/builders/AccountBuilder.cpp.i
+src/account/AccountBuilder.i: src/account/AccountBuilder.cpp.i
 
-.PHONY : src/account/builders/AccountBuilder.i
+.PHONY : src/account/AccountBuilder.i
 
 # target to preprocess a source file
-src/account/builders/AccountBuilder.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/builders/AccountBuilder.cpp.i
-.PHONY : src/account/builders/AccountBuilder.cpp.i
+src/account/AccountBuilder.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.i
+.PHONY : src/account/AccountBuilder.cpp.i
 
-src/account/builders/AccountBuilder.s: src/account/builders/AccountBuilder.cpp.s
+src/account/AccountBuilder.s: src/account/AccountBuilder.cpp.s
 
-.PHONY : src/account/builders/AccountBuilder.s
+.PHONY : src/account/AccountBuilder.s
 
 # target to generate assembly for a file
-src/account/builders/AccountBuilder.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/builders/AccountBuilder.cpp.s
-.PHONY : src/account/builders/AccountBuilder.cpp.s
+src/account/AccountBuilder.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.s
+.PHONY : src/account/AccountBuilder.cpp.s
 
 src/contact/Contact.o: src/contact/Contact.cpp.o
 
@@ -285,33 +312,6 @@ src/geo/RoundFence.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.s
 .PHONY : src/geo/RoundFence.cpp.s
 
-src/main.o: src/main.cpp.o
-
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
-
-src/main.i: src/main.cpp.i
-
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -321,12 +321,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... BeeSafePI"
+	@echo "... src/Main.o"
+	@echo "... src/Main.i"
+	@echo "... src/Main.s"
 	@echo "... src/account/Account.o"
 	@echo "... src/account/Account.i"
 	@echo "... src/account/Account.s"
-	@echo "... src/account/builders/AccountBuilder.o"
-	@echo "... src/account/builders/AccountBuilder.i"
-	@echo "... src/account/builders/AccountBuilder.s"
+	@echo "... src/account/AccountBuilder.o"
+	@echo "... src/account/AccountBuilder.i"
+	@echo "... src/account/AccountBuilder.s"
 	@echo "... src/contact/Contact.o"
 	@echo "... src/contact/Contact.i"
 	@echo "... src/contact/Contact.s"
@@ -339,9 +342,6 @@ help:
 	@echo "... src/geo/RoundFence.o"
 	@echo "... src/geo/RoundFence.i"
 	@echo "... src/geo/RoundFence.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
 .PHONY : help
 
 

@@ -2,11 +2,12 @@
 
 #include <string>
 
-// Build an account by streaming the a file.
+// Initialise the account builder.
 AccountBuilder::AccountBuilder(utility::stringstream_t &stream, std::error_code &errorCode)
 {
     this->root = web::json::value::parse(stream, errorCode);
 }
+
 
 // Builds an instance of the Account class.
 Account* AccountBuilder::build()
@@ -48,18 +49,71 @@ Account* AccountBuilder::build()
     return new Account(accountContacts, accountFences);
 }
 
-// Build the contact vector from the array.
-bool AccountBuilder::buildContactsVector(web::json::array &jsonContacts, std::vector<Contact*> &contacts)
+// Check that json has account attributes.
+bool AccountBuilder::hasAccountAttributes(web::json::value &element)
 {
-    Contact *contact = nullptr;
-    for (auto &jsonContact : jsonContacts) {
-        if (isContactStructure(jsonContact) || (contact = buildContact(jsonContact)) == nullptr) {
+    return !element.is_null() && element.is_object()
+           && element.has_array_field(U(JSON_KEY_ACCOUNT_CONTACTS))
+           && element.has_array_field(U(JSON_KEY_ACCOUNT_FENCES));
+}
+
+// Check that JSON element has Contact attributes i.e. structure.
+bool AccountBuilder::hasContactAttributes(web::json::value &element)
+{
+    return !element.is_null() && element.is_object()
+           && element.has_string_field(U(JSON_KEY_CONTACT_FORENAME))
+           && element.has_string_field(U(JSON_KEY_CONTACT_SURNAME))
+           && element.has_string_field(U(JSON_KEY_CONTACT_NUMBER))
+           && element.has_string_field(U(JSON_KEY_CONTACT_KEY));
+}
+
+// Check that the element has general fence attributes.
+bool AccountBuilder::hasFenceAttributes(web::json::value &element)
+{
+    return !element.is_null() && element.is_object()
+           && element.has_boolean_field(U(JSON_KEY_FENCE_SAFE))
+           && element.has_array_field(U(JSON_KEY_FENCE_WEEK))
+           && element.has_object_field(U(JSON_KEY_FENCE_FENCE));
+}
+
+// Check that json element has round fence attributes.
+bool AccountBuilder::hasRoundFenceAttributes(web::json::value &element)
+{
+    return !element.is_null() && element.is_object()
+           && element.has_double_field(U(JSON_KEY_ROUND_FENCE_LATITUDE))
+           && element.has_double_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))
+           && element.has_double_field(U(JSON_KEY_ROUND_FENCE_RADIUS));
+}
+
+// Check whether the element has poly fence structure.
+bool AccountBuilder::hasPolyFenceAttributes(web::json::value &element)
+{
+    return !element.is_null() && element.is_object()
+           && element.has_double_field(U(JSON_KEY_POLY_FENCE_LATITUDE))
+           && element.has_double_field(U(JSON_KEY_POLY_FENCE_LONGITUDE));
+}
+
+// Build a contact vector.
+bool AccountBuilder::buildContactsVector(web::json::array &jsonContacts, std::vector<Contact> &contacts)
+{
+    for (auto& element : jsonContacts) {
+        if (!hasContactAttributes(element)) {
             return false;
         }
-        contacts.push_back(contact);
+        contacts.push_back(buildContact(element));
     }
     return true;
 }
+
+// Build a fence vector.
+bool AccountBuilder::buildFenceVector(web::json::array &jsonFences, std::vector<Fence> &fences)
+{
+    for (auto& element : jsonFences) {
+
+    }
+    return true;
+}
+
 
 // Build the vector containing the fences.
 bool AccountBuilder::buildFenceVector(web::json::array &jsonFences, std::vector<Fence*> &fences)
@@ -112,35 +166,5 @@ GeoPath* AccountBuilder::buildGeoPath(web::json::value &jsonGeoPath)
 {
     return nullptr;
 }
-
-// Checks JSON structure for Contact representation.
-bool AccountBuilder::isContactStructure(web::json::value &jsonContact)
-{
-    return !jsonContact.is_null() && jsonContact.is_object()
-           && jsonContact.has_string_field(U(JSON_KEY_CONTACT_FORENAME))
-           && jsonContact.has_string_field(U(JSON_KEY_CONTACT_SURNAME))
-           && jsonContact.has_string_field(U(JSON_KEY_CONTACT_NUMBER))
-           && jsonContact.has_string_field(U(JSON_KEY_CONTACT_KEY));
-}
-
-// Check json element structure to determine if value is GeoFence or not.
-bool AccountBuilder::isGeoFenceStructure(web::json::value &jsonGeoFence)
-{
-    return !jsonGeoFence.is_null() && jsonGeoFence.is_object()
-           && jsonGeoFence.has_boolean_field(U(JSON_KEY_FENCE_SAFE))
-           && jsonGeoFence.has_double_field(U(GEO_FENCE_KEY_LATITUDE))
-           && jsonGeoFence.has_double_field(U(GEO_FENCE_KEY_LONGITUDE))
-           && jsonGeoFence.has_double_field(U(GEO_FENCE_KEY_RADIUS));
-}
-
-// Check json element structure to determine if value is GeoPath or not.
-bool AccountBuilder::isGeoPathStructure(web::json::value &jsonGeoPath)
-{
-    return !jsonGeoPath.is_null() && jsonGeoPath.is_object()
-           && jsonGeoPath.has_boolean_field(U(JSON_KEY_FENCE_SAFE))
-           && jsonGeoPath.has_array_field(U(GEO_PATH_KEY_PATHS));
-}
-
-
 
 

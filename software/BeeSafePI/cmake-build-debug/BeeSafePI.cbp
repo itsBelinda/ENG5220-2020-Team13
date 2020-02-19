@@ -88,16 +88,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/Main.cpp">
+			<Option target="BeeSafePI"/>
+		</Unit>
 		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/Account.cpp">
 			<Option target="BeeSafePI"/>
 		</Unit>
 		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/Account.h">
 			<Option target="BeeSafePI"/>
 		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/builders/AccountBuilder.cpp">
+		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/AccountBuilder.cpp">
 			<Option target="BeeSafePI"/>
 		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/builders/AccountBuilder.h">
+		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/AccountBuilder.h">
 			<Option target="BeeSafePI"/>
 		</Unit>
 		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/contact/Contact.cpp">
@@ -122,9 +125,6 @@
 			<Option target="BeeSafePI"/>
 		</Unit>
 		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/RoundFence.h">
-			<Option target="BeeSafePI"/>
-		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/main.cpp">
 			<Option target="BeeSafePI"/>
 		</Unit>
 		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/CMakeLists.txt">

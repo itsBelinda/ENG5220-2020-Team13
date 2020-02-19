@@ -3,9 +3,6 @@
 // System inclusions.
 #include <sstream>
 
-// The format according to which fence times are broken down.
-#define FENCE_TIME_FORMAT "%H:%M"
-
 // Defines the constructor for the fence.
 Fence::Fence(bool safe)
 {
@@ -13,10 +10,10 @@ Fence::Fence(bool safe)
 }
 
 // Explicitly define the fence.
-Fence::Fence(bool safe, std::map<int, std::vector<std::pair<std::tm, std::tm>>>& days)
+Fence::Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week)
 {
     this->safe = safe;
-    this->days = days;
+    this->week = week;
 }
 
 // If the fence is regarded as being safe.
@@ -25,59 +22,63 @@ bool Fence::isSafe()
     return safe;
 }
 
-// Whether the user is present within the fence at the required time.
-bool Fence::isPresent(std::time_t &time)
+// Check if the device is within the fence at the current time.
+bool Fence::isPresent()
 {
-
-    return true;
+    const std::time_t systemTime = std::time(0);
+    return isPresent(systemTime);
 }
 
-// Get a map of all the days and their times.
-std::map<int, std::vector<std::pair<std::tm, std::tm>>>& Fence::getDays()
-{
-    return days;
-}
-
-// Get all the times associated with a given day.
-std::vector<std::pair<std::tm, std::tm>>& Fence::getTimes(int day)
-{
-    return days[day];
-}
-
-
-/*
-
-// Determine if device within fence during defined times.
-bool Fence::isPresent(std::time_t &time)
+// Check if the time is present in the virtual fence.
+bool Fence::isPresent(const std::time_t& time)
 {
 
-    // Check if fence has times; true if no times for day.
-    std::tm time_out = *std::localtime(&time);
+    // Extract information from system time.
+    std::tm time_tm = *std::localtime(&time);
+    auto iter = week.find(time_tm.tm_wday);
 
-    auto iter = days.find(time_out.tm_wday);
-    if (iter == days.end()) {
+    // Check if time information exists.
+    if (iter == week.end()) {
         return true;
     } else if (iter->second.empty()) {
         return true;
     }
 
+    // Iterate through days list of from and to times.
+    auto& dayTimes = iter->second;
+    for (const std::pair<std::tm, std::tm>& dayTime : dayTimes) {
 
-    // Iterate through all times for the day.
-    //auto fenceTimes = iter->second;
-    std::tm fromTime;
-    std::tm toTime;
-    for (std::pair<std::string, std::string>& fenceTime : fenceTimes) {
+        // If time is before from time, we are not present.
+        if (time_tm.tm_hour < dayTime.first.tm_hour) {
+            return false;
+        } else if (time_tm.tm_hour == dayTime.first.tm_hour) {
+            if (time_tm.tm_min < dayTime.first.tm_min) {
+                return false;
+            }
+        }
 
-        // Convert the time to a string.
-        strptime(fenceTime.first.c_str(), FENCE_TIME_FORMAT, &fromTime);
-        strptime(fenceTime.second.c_str(), FENCE_TIME_FORMAT, &toTime);
-
-
-        // TODO: String conversion is poor! Store instances of struct tm instead.
-
+        // If the time is after the to time, we are not present.
+        if (time_tm.tm_hour > dayTime.second.tm_hour) {
+            return false;
+        } else if (time_tm.tm_hour == dayTime.second.tm_hour) {
+            if (time_tm.tm_min > dayTime.second.tm_min) {
+                return false;
+            }
+        }
     }
 
-
+    // By default the user is within the fence.
     return true;
 }
-*/
+
+// Get a map of all the days and their times.
+const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& Fence::getWeek()
+{
+    return week;
+}
+
+// Get all the times associated with a given day.
+const std::vector<std::pair<std::tm, std::tm>>& Fence::getTimes(const int day)
+{
+    return week[day];
+}

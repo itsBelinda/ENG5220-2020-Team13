@@ -20,10 +20,10 @@ public:
 
     // Getters and setters.
 public:
-    std::string& getForename();
-    std::string& getSurname();
-    std::string& getNumber();
-    std::string& getKey();
+    const std::string& getForename();
+    const std::string& getSurname();
+    const std::string& getNumber();
+    const std::string& getKey();
 
     // Attributes.
 private:
