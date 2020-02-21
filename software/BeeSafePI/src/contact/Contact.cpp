@@ -1,6 +1,6 @@
 #include "Contact.h"
 
-// Constructor for account contact.
+// Constructor for device contact.
 Contact::Contact(const std::string& forename, const std::string& surname,
                  const std::string& number, const std::string& key)
 {

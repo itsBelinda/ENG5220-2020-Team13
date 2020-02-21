@@ -5,9 +5,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/Main.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/Main.cpp.o"
-  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/Account.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o"
-  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/AccountBuilder.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/contact/Contact.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Account.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Device.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/AccountBuilder.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/DeviceBuilder.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/Fence.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/PolyFence.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/geo/PolyFence.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/RoundFence.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.o"

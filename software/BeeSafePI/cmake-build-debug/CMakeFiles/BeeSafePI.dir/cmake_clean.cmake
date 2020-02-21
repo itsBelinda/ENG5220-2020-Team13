@@ -4,8 +4,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/BeeSafePI.dir/src/geo/PolyFence.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o"
-  "CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o"
-  "CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o"
   "BeeSafePI.pdb"
   "BeeSafePI"
 )

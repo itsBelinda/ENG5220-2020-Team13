@@ -177,52 +177,100 @@ CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o.provides: CMakeFiles/BeeSafePI.dir/
 CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o
 
 
-CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
-CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o: ../src/account/Account.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/Account.cpp
+CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
+CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o: ../src/device/Account.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Account.cpp
 
-CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/Account.cpp > CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.i
+CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Account.cpp > CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.i
 
-CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/Account.cpp -o CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.s
+CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Account.cpp -o CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.s
 
-CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o.requires:
+CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o.requires:
 
-.PHONY : CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o.requires
+.PHONY : CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o.requires
 
-CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o.requires
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o.provides.build
-.PHONY : CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o.provides
+CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o.requires
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o.provides.build
+.PHONY : CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o.provides
 
-CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o
+CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o
 
 
-CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
-CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o: ../src/account/AccountBuilder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/AccountBuilder.cpp
+CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
+CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o: ../src/device/builders/AccountBuilder.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/AccountBuilder.cpp
 
-CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/AccountBuilder.cpp > CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.i
+CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/AccountBuilder.cpp > CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.i
 
-CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/account/AccountBuilder.cpp -o CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.s
+CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/AccountBuilder.cpp -o CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.s
 
-CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o.requires:
+CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o.requires:
 
-.PHONY : CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o.requires
+.PHONY : CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o.requires
 
-CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o.requires
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o.provides.build
-.PHONY : CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o.provides
+CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o.requires
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o.provides.build
+.PHONY : CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o.provides
 
-CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o
+CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o
+
+
+CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
+CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o: ../src/device/Device.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Device.cpp
+
+CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Device.cpp > CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.i
+
+CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Device.cpp -o CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.s
+
+CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o.requires:
+
+.PHONY : CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o.requires
+
+CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o.requires
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o.provides.build
+.PHONY : CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o.provides
+
+CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o
+
+
+CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
+CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o: ../src/device/builders/DeviceBuilder.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/DeviceBuilder.cpp
+
+CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/DeviceBuilder.cpp > CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.i
+
+CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/DeviceBuilder.cpp -o CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.s
+
+CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o.requires:
+
+.PHONY : CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o.requires
+
+CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o.requires
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o.provides.build
+.PHONY : CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o.provides
+
+CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o
 
 
 # Object files for target BeeSafePI
@@ -232,8 +280,10 @@ BeeSafePI_OBJECTS = \
 "CMakeFiles/BeeSafePI.dir/src/geo/PolyFence.cpp.o" \
 "CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o" \
 "CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o" \
-"CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o" \
-"CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o"
+"CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o" \
+"CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o" \
+"CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o" \
+"CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o"
 
 # External object files for target BeeSafePI
 BeeSafePI_EXTERNAL_OBJECTS =
@@ -243,14 +293,16 @@ BeeSafePI: CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.o
 BeeSafePI: CMakeFiles/BeeSafePI.dir/src/geo/PolyFence.cpp.o
 BeeSafePI: CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o
 BeeSafePI: CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o
-BeeSafePI: CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o
-BeeSafePI: CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o
+BeeSafePI: CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o
+BeeSafePI: CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o
+BeeSafePI: CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o
+BeeSafePI: CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o
 BeeSafePI: CMakeFiles/BeeSafePI.dir/build.make
 BeeSafePI: /usr/local/lib/libcpprest.2.10.dylib
 BeeSafePI: /usr/lib/libssl.dylib
 BeeSafePI: /usr/lib/libcrypto.dylib
 BeeSafePI: CMakeFiles/BeeSafePI.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable BeeSafePI"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable BeeSafePI"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BeeSafePI.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -263,8 +315,10 @@ CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.c
 CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/geo/PolyFence.cpp.o.requires
 CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o.requires
 CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o.requires
-CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o.requires
-CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o.requires
+CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o.requires
+CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o.requires
+CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o.requires
+CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o.requires
 
 .PHONY : CMakeFiles/BeeSafePI.dir/requires
 

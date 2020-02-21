@@ -150,60 +150,6 @@ src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/Main.cpp.s
 .PHONY : src/Main.cpp.s
 
-src/account/Account.o: src/account/Account.cpp.o
-
-.PHONY : src/account/Account.o
-
-# target to build an object file
-src/account/Account.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.o
-.PHONY : src/account/Account.cpp.o
-
-src/account/Account.i: src/account/Account.cpp.i
-
-.PHONY : src/account/Account.i
-
-# target to preprocess a source file
-src/account/Account.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.i
-.PHONY : src/account/Account.cpp.i
-
-src/account/Account.s: src/account/Account.cpp.s
-
-.PHONY : src/account/Account.s
-
-# target to generate assembly for a file
-src/account/Account.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/Account.cpp.s
-.PHONY : src/account/Account.cpp.s
-
-src/account/AccountBuilder.o: src/account/AccountBuilder.cpp.o
-
-.PHONY : src/account/AccountBuilder.o
-
-# target to build an object file
-src/account/AccountBuilder.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.o
-.PHONY : src/account/AccountBuilder.cpp.o
-
-src/account/AccountBuilder.i: src/account/AccountBuilder.cpp.i
-
-.PHONY : src/account/AccountBuilder.i
-
-# target to preprocess a source file
-src/account/AccountBuilder.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.i
-.PHONY : src/account/AccountBuilder.cpp.i
-
-src/account/AccountBuilder.s: src/account/AccountBuilder.cpp.s
-
-.PHONY : src/account/AccountBuilder.s
-
-# target to generate assembly for a file
-src/account/AccountBuilder.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/account/AccountBuilder.cpp.s
-.PHONY : src/account/AccountBuilder.cpp.s
-
 src/contact/Contact.o: src/contact/Contact.cpp.o
 
 .PHONY : src/contact/Contact.o
@@ -230,6 +176,114 @@ src/contact/Contact.s: src/contact/Contact.cpp.s
 src/contact/Contact.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.s
 .PHONY : src/contact/Contact.cpp.s
+
+src/device/Account.o: src/device/Account.cpp.o
+
+.PHONY : src/device/Account.o
+
+# target to build an object file
+src/device/Account.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o
+.PHONY : src/device/Account.cpp.o
+
+src/device/Account.i: src/device/Account.cpp.i
+
+.PHONY : src/device/Account.i
+
+# target to preprocess a source file
+src/device/Account.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.i
+.PHONY : src/device/Account.cpp.i
+
+src/device/Account.s: src/device/Account.cpp.s
+
+.PHONY : src/device/Account.s
+
+# target to generate assembly for a file
+src/device/Account.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.s
+.PHONY : src/device/Account.cpp.s
+
+src/device/Device.o: src/device/Device.cpp.o
+
+.PHONY : src/device/Device.o
+
+# target to build an object file
+src/device/Device.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o
+.PHONY : src/device/Device.cpp.o
+
+src/device/Device.i: src/device/Device.cpp.i
+
+.PHONY : src/device/Device.i
+
+# target to preprocess a source file
+src/device/Device.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.i
+.PHONY : src/device/Device.cpp.i
+
+src/device/Device.s: src/device/Device.cpp.s
+
+.PHONY : src/device/Device.s
+
+# target to generate assembly for a file
+src/device/Device.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.s
+.PHONY : src/device/Device.cpp.s
+
+src/device/builders/AccountBuilder.o: src/device/builders/AccountBuilder.cpp.o
+
+.PHONY : src/device/builders/AccountBuilder.o
+
+# target to build an object file
+src/device/builders/AccountBuilder.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o
+.PHONY : src/device/builders/AccountBuilder.cpp.o
+
+src/device/builders/AccountBuilder.i: src/device/builders/AccountBuilder.cpp.i
+
+.PHONY : src/device/builders/AccountBuilder.i
+
+# target to preprocess a source file
+src/device/builders/AccountBuilder.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.i
+.PHONY : src/device/builders/AccountBuilder.cpp.i
+
+src/device/builders/AccountBuilder.s: src/device/builders/AccountBuilder.cpp.s
+
+.PHONY : src/device/builders/AccountBuilder.s
+
+# target to generate assembly for a file
+src/device/builders/AccountBuilder.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.s
+.PHONY : src/device/builders/AccountBuilder.cpp.s
+
+src/device/builders/DeviceBuilder.o: src/device/builders/DeviceBuilder.cpp.o
+
+.PHONY : src/device/builders/DeviceBuilder.o
+
+# target to build an object file
+src/device/builders/DeviceBuilder.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o
+.PHONY : src/device/builders/DeviceBuilder.cpp.o
+
+src/device/builders/DeviceBuilder.i: src/device/builders/DeviceBuilder.cpp.i
+
+.PHONY : src/device/builders/DeviceBuilder.i
+
+# target to preprocess a source file
+src/device/builders/DeviceBuilder.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.i
+.PHONY : src/device/builders/DeviceBuilder.cpp.i
+
+src/device/builders/DeviceBuilder.s: src/device/builders/DeviceBuilder.cpp.s
+
+.PHONY : src/device/builders/DeviceBuilder.s
+
+# target to generate assembly for a file
+src/device/builders/DeviceBuilder.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.s
+.PHONY : src/device/builders/DeviceBuilder.cpp.s
 
 src/geo/Fence.o: src/geo/Fence.cpp.o
 
@@ -324,15 +378,21 @@ help:
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"
-	@echo "... src/account/Account.o"
-	@echo "... src/account/Account.i"
-	@echo "... src/account/Account.s"
-	@echo "... src/account/AccountBuilder.o"
-	@echo "... src/account/AccountBuilder.i"
-	@echo "... src/account/AccountBuilder.s"
 	@echo "... src/contact/Contact.o"
 	@echo "... src/contact/Contact.i"
 	@echo "... src/contact/Contact.s"
+	@echo "... src/device/Account.o"
+	@echo "... src/device/Account.i"
+	@echo "... src/device/Account.s"
+	@echo "... src/device/Device.o"
+	@echo "... src/device/Device.i"
+	@echo "... src/device/Device.s"
+	@echo "... src/device/builders/AccountBuilder.o"
+	@echo "... src/device/builders/AccountBuilder.i"
+	@echo "... src/device/builders/AccountBuilder.s"
+	@echo "... src/device/builders/DeviceBuilder.o"
+	@echo "... src/device/builders/DeviceBuilder.i"
+	@echo "... src/device/builders/DeviceBuilder.s"
 	@echo "... src/geo/Fence.o"
 	@echo "... src/geo/Fence.i"
 	@echo "... src/geo/Fence.s"
