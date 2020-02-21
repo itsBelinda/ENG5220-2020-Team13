@@ -1,1 +1,4 @@
 contains all the information and project files concerning the hardware development.
+
+Schematic and PCB design done in OrCAD version 17.2.
+Relies on padstack, footprints and libraries from the University of Glasgow.
