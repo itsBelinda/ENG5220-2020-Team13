@@ -1,0 +1,11 @@
+#ifndef BEESAFEPI_DEVICEBUILDER_H
+#define BEESAFEPI_DEVICEBUILDER_H
+
+
+class DeviceBuilder
+{
+
+};
+
+
+#endif //BEESAFEPI_DEVICEBUILDER_H
