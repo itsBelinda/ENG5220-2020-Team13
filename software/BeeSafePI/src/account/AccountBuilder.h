@@ -13,6 +13,7 @@
 // System inclusions.
 #include <iostream>
 #include <vector>
+#include <string>
 #include <utility>
 #include <map>
 
@@ -29,20 +30,25 @@ public:
 private:
 
     // For checking the json structure.
-    bool hasAccountAttributes(web::json::value& element);
-    bool hasContactAttributes(web::json::value& element);
-    bool hasFenceAttributes(web::json::value& element);
-    bool hasRoundFenceAttributes(web::json::value& element);
-    bool hasPolyFenceAttributes(web::json::value& element);
+    bool hasAccountAttributes(const web::json::value& jsonElement);
+    bool hasContactAttributes(const web::json::value& jsonElement);
+    bool hasFenceAttributes(const web::json::value& jsonElement);
+    bool hasRoundFenceAttributes(const web::json::value& jsonElement);
+    bool hasPolyFenceAttributes(const web::json::value& jsonElement);
 
     // Building general vectors.
-    bool buildContactsVector(web::json::array& jsonContacts, std::vector<Contact> &contacts);
-    bool buildFenceVector(web::json::array& jsonFences, std::vector<Fence> &fences);
+    bool buildContactsVector(const web::json::array& jsonContacts, std::vector<Contact*> &contacts);
+    bool buildFenceVector(const web::json::array& jsonFences, std::vector<Fence*> &fences);
+
+    // Clear a vector.
+    template<typename T> void clearVector(std::vector<T>& vector);
 
     // Building specific instances.
-    Contact buildContact(web::json::value& json);
-    RoundFence buildRoundFence(web::json::value& element);
-    PolyFence buildPolyFence(web::json::value& element);
+    Contact* buildContact(const web::json::value& jsonContact);
+    Fence* buildFence(const web::json::value& jsonFence);
+    std::map<int, std::vector<std::pair<std::tm, std::tm>>> buildFenceWeekMap(const web::json::value& week);
+    RoundFence* buildRoundFence(bool safe, std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const web::json::value& jsonRoundFence);
+    PolyFence* buildPolyFence(bool safe, std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const web::json::value& jsonPolyFence);
 
 private:
     web::json::value root;

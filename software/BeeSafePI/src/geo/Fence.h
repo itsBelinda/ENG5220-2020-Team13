@@ -26,6 +26,10 @@ protected:
     explicit Fence(bool safe);
     Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week);
 
+    // Destructor.
+public:
+    virtual ~Fence() = 0;
+
     // Functions.
 public:
     bool isSafe();

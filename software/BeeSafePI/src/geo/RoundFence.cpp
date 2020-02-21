@@ -2,6 +2,16 @@
 
 #include <cmath>
 
+// Explicit round fence constructor.
+RoundFence::RoundFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week, double latitude,
+                       double longitude, double radius)
+        : Fence(safe, week)
+{
+    this->latitude = latitude;
+    this->longitude = longitude;
+    this->radius = radius;
+}
+
 // Basic RoundFence constructor.
 RoundFence::RoundFence(bool safe, double latitude, double longitude, double radius)
         : Fence(safe)

@@ -17,6 +17,7 @@ class PolyFence : public Fence
 
     // Constructors.
 public:
+    PolyFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const std::vector<std::pair<double, double>>& coordinates);
     PolyFence(bool safe, const std::vector<std::pair<double, double>>& coordinates);
 
     // Functions.
@@ -30,6 +31,7 @@ public:
     // Attributes.
 private:
     std::vector<std::pair<double, double>> coordinates;
+
 
 };
 

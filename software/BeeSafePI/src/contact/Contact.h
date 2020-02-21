@@ -15,8 +15,10 @@ class Contact
 
     // Contact constructor.
 public:
-    Contact(std::string& forename, std::string& surname,
-            std::string& number, std::string& key);
+    Contact(const std::string& forename,
+            const std::string& surname,
+            const std::string& number,
+            const std::string& key);
 
     // Getters and setters.
 public:

@@ -16,6 +16,11 @@ Fence::Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::
     this->week = week;
 }
 
+// Fence destructor.
+Fence::~Fence()
+{
+}
+
 // If the fence is regarded as being safe.
 bool Fence::isSafe()
 {

@@ -3,6 +3,14 @@
 // System inclusions.
 #include <cmath>
 
+// Explicit poly fence constructor
+PolyFence::PolyFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week,
+                     const std::vector<std::pair<double, double>> &coordinates)
+        : Fence(safe, week)
+{
+    this->coordinates = coordinates;
+}
+
 // Basic poly fence constructor.
 PolyFence::PolyFence(bool safe, const std::vector<std::pair<double, double>>& coordinates)
         : Fence(safe)
@@ -19,7 +27,7 @@ const std::vector<std::pair<double, double>>& PolyFence::getCoordinates()
 // Calculates whether or not latitude and longitude inside the poly fence.
 bool PolyFence::isInside(const double latitude, const double longitude)
 {
-    // TODO: Implement code for checking if latitude and longitude in polygon.
+
     return true;
 }
 

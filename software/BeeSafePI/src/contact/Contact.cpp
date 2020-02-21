@@ -1,8 +1,8 @@
 #include "Contact.h"
 
 // Constructor for account contact.
-Contact::Contact(std::string& forename, std::string& surname,
-                 std::string& number, std::string& key)
+Contact::Contact(const std::string& forename, const std::string& surname,
+                 const std::string& number, const std::string& key)
 {
     this->forename = forename;
     this->surname = surname;

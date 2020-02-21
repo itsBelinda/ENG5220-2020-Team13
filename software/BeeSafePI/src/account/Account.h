@@ -16,18 +16,18 @@ class Account
 {
 
 public:
-    Account(std::vector<Contact>* contacts, std::vector<Fence>* fences);
+    Account(std::vector<Contact*>& contacts, std::vector<Fence*>& fences);
 
 public:
-    const std::vector<Contact>* getContacts();
-    const std::vector<Fence>* getFences();
+    const std::vector<Contact*>& getContacts();
+    const std::vector<Fence*>& getFences();
 
 public:
     bool save(std::string path);
 
 private:
-    std::vector<Contact>* contacts;
-    std::vector<Fence>* fences;
+    std::vector<Contact*> contacts;
+    std::vector<Fence*> fences;
 
 };
 
