@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/6F9A40B2-280F-4EFC-98DC-0CE981717712/d/CLion.app/Contents/bin/cmake/bin/cmake
+CMAKE_COMMAND = /private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/5576CBDF-5207-4A92-BF52-507F19AE5351/d/CLion.app/Contents/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/6F9A40B2-280F-4EFC-98DC-0CE981717712/d/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
+RM = /private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/5576CBDF-5207-4A92-BF52-507F19AE5351/d/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSaf
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/6F9A40B2-280F-4EFC-98DC-0CE981717712/d/CLion.app/Contents/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/5576CBDF-5207-4A92-BF52-507F19AE5351/d/CLion.app/Contents/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/6F9A40B2-280F-4EFC-98DC-0CE981717712/d/CLion.app/Contents/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/5576CBDF-5207-4A92-BF52-507F19AE5351/d/CLion.app/Contents/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -204,86 +204,32 @@ src/device/Account.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.s
 .PHONY : src/device/Account.cpp.s
 
-src/device/Device.o: src/device/Device.cpp.o
+src/device/AccountBuilder.o: src/device/AccountBuilder.cpp.o
 
-.PHONY : src/device/Device.o
-
-# target to build an object file
-src/device/Device.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.o
-.PHONY : src/device/Device.cpp.o
-
-src/device/Device.i: src/device/Device.cpp.i
-
-.PHONY : src/device/Device.i
-
-# target to preprocess a source file
-src/device/Device.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.i
-.PHONY : src/device/Device.cpp.i
-
-src/device/Device.s: src/device/Device.cpp.s
-
-.PHONY : src/device/Device.s
-
-# target to generate assembly for a file
-src/device/Device.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/Device.cpp.s
-.PHONY : src/device/Device.cpp.s
-
-src/device/builders/AccountBuilder.o: src/device/builders/AccountBuilder.cpp.o
-
-.PHONY : src/device/builders/AccountBuilder.o
+.PHONY : src/device/AccountBuilder.o
 
 # target to build an object file
-src/device/builders/AccountBuilder.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.o
-.PHONY : src/device/builders/AccountBuilder.cpp.o
+src/device/AccountBuilder.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o
+.PHONY : src/device/AccountBuilder.cpp.o
 
-src/device/builders/AccountBuilder.i: src/device/builders/AccountBuilder.cpp.i
+src/device/AccountBuilder.i: src/device/AccountBuilder.cpp.i
 
-.PHONY : src/device/builders/AccountBuilder.i
-
-# target to preprocess a source file
-src/device/builders/AccountBuilder.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.i
-.PHONY : src/device/builders/AccountBuilder.cpp.i
-
-src/device/builders/AccountBuilder.s: src/device/builders/AccountBuilder.cpp.s
-
-.PHONY : src/device/builders/AccountBuilder.s
-
-# target to generate assembly for a file
-src/device/builders/AccountBuilder.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/AccountBuilder.cpp.s
-.PHONY : src/device/builders/AccountBuilder.cpp.s
-
-src/device/builders/DeviceBuilder.o: src/device/builders/DeviceBuilder.cpp.o
-
-.PHONY : src/device/builders/DeviceBuilder.o
-
-# target to build an object file
-src/device/builders/DeviceBuilder.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.o
-.PHONY : src/device/builders/DeviceBuilder.cpp.o
-
-src/device/builders/DeviceBuilder.i: src/device/builders/DeviceBuilder.cpp.i
-
-.PHONY : src/device/builders/DeviceBuilder.i
+.PHONY : src/device/AccountBuilder.i
 
 # target to preprocess a source file
-src/device/builders/DeviceBuilder.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.i
-.PHONY : src/device/builders/DeviceBuilder.cpp.i
+src/device/AccountBuilder.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.i
+.PHONY : src/device/AccountBuilder.cpp.i
 
-src/device/builders/DeviceBuilder.s: src/device/builders/DeviceBuilder.cpp.s
+src/device/AccountBuilder.s: src/device/AccountBuilder.cpp.s
 
-.PHONY : src/device/builders/DeviceBuilder.s
+.PHONY : src/device/AccountBuilder.s
 
 # target to generate assembly for a file
-src/device/builders/DeviceBuilder.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/builders/DeviceBuilder.cpp.s
-.PHONY : src/device/builders/DeviceBuilder.cpp.s
+src/device/AccountBuilder.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.s
+.PHONY : src/device/AccountBuilder.cpp.s
 
 src/geo/Fence.o: src/geo/Fence.cpp.o
 
@@ -384,15 +330,9 @@ help:
 	@echo "... src/device/Account.o"
 	@echo "... src/device/Account.i"
 	@echo "... src/device/Account.s"
-	@echo "... src/device/Device.o"
-	@echo "... src/device/Device.i"
-	@echo "... src/device/Device.s"
-	@echo "... src/device/builders/AccountBuilder.o"
-	@echo "... src/device/builders/AccountBuilder.i"
-	@echo "... src/device/builders/AccountBuilder.s"
-	@echo "... src/device/builders/DeviceBuilder.o"
-	@echo "... src/device/builders/DeviceBuilder.i"
-	@echo "... src/device/builders/DeviceBuilder.s"
+	@echo "... src/device/AccountBuilder.o"
+	@echo "... src/device/AccountBuilder.i"
+	@echo "... src/device/AccountBuilder.s"
 	@echo "... src/geo/Fence.o"
 	@echo "... src/geo/Fence.i"
 	@echo "... src/geo/Fence.s"

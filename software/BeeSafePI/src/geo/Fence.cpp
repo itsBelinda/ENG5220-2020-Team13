@@ -17,9 +17,7 @@ Fence::Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::
 }
 
 // Fence destructor.
-Fence::~Fence()
-{
-}
+Fence::~Fence() = default;
 
 // If the fence is regarded as being safe.
 bool Fence::isSafe()
@@ -30,7 +28,7 @@ bool Fence::isSafe()
 // Check if the device is within the fence at the current time.
 bool Fence::isPresent()
 {
-    const std::time_t systemTime = std::time(0);
+    const std::time_t systemTime = std::time(nullptr);
     return isPresent(systemTime);
 }
 

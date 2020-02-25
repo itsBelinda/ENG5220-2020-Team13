@@ -1,4 +1,4 @@
-/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/6F9A40B2-280F-4EFC-98DC-0CE981717712/d/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI
+/private/var/folders/z8/hz63br4d5_lg7c9cxlb241600000gn/T/AppTranslocation/5576CBDF-5207-4A92-BF52-507F19AE5351/d/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug

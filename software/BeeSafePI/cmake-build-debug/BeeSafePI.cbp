@@ -103,22 +103,10 @@
 		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Account.h">
 			<Option target="BeeSafePI"/>
 		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Device.cpp">
+		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/AccountBuilder.cpp">
 			<Option target="BeeSafePI"/>
 		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Device.h">
-			<Option target="BeeSafePI"/>
-		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/AccountBuilder.cpp">
-			<Option target="BeeSafePI"/>
-		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/AccountBuilder.h">
-			<Option target="BeeSafePI"/>
-		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/DeviceBuilder.cpp">
-			<Option target="BeeSafePI"/>
-		</Unit>
-		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/builders/DeviceBuilder.h">
+		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/AccountBuilder.h">
 			<Option target="BeeSafePI"/>
 		</Unit>
 		<Unit filename="/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/Fence.cpp">
