@@ -4,6 +4,7 @@
 CMakeFiles/BeeSafePI.dir/src/Main.cpp.o: ../src/Main.cpp
 CMakeFiles/BeeSafePI.dir/src/Main.cpp.o: ../src/contact/Contact.h
 CMakeFiles/BeeSafePI.dir/src/Main.cpp.o: ../src/device/Account.h
+CMakeFiles/BeeSafePI.dir/src/Main.cpp.o: ../src/device/AccountBuilder.h
 CMakeFiles/BeeSafePI.dir/src/Main.cpp.o: ../src/geo/Fence.h
 CMakeFiles/BeeSafePI.dir/src/Main.cpp.o: ../src/geo/PolyFence.h
 CMakeFiles/BeeSafePI.dir/src/Main.cpp.o: ../src/geo/RoundFence.h

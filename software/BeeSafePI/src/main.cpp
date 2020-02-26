@@ -2,6 +2,7 @@
 #include "contact/Contact.h"
 #include "geo/RoundFence.h"
 #include "geo/PolyFence.h"
+#include "device/AccountBuilder.h"
 
 #include <iostream>
 
