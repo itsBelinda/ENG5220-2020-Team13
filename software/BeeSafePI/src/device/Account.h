@@ -15,27 +15,29 @@
 class Account
 {
 
-    // Constructors and destructors..
 public:
+
+    // Constructors.
     Account(std::vector<Contact*>& contacts, std::vector<Fence*>& fences);
+
+    // Destructors.
     ~Account();
 
-    // Getters and setters.
 public:
+
+    // Getters and setters.
     const std::vector<Contact*>& getContacts();
     const std::vector<Fence*>& getFences();
 
     // Object behaviour.
-public:
-    bool save(std::string path);
+    web::json::value serialiseAccount();
+    web::json::value serialiseAccountContacts();
+    web::json::value serialiseAccountFences();
+    bool saveSerialisedAccount(const std::string& path);
 
-    // Hidden object behaviour.
 private:
-    bool saveContacts(web::json::value& rootElement);
-    bool saveFences(web::json::value& rootElement);
 
     // Attributes.
-private:
     std::vector<Contact*> contacts;
     std::vector<Fence*> fences;
 

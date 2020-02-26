@@ -15,23 +15,32 @@
 class PolyFence : public Fence
 {
 
-    // Constructors.
 public:
+
+    // Constructors.
     PolyFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const std::vector<std::pair<double, double>>& coordinates);
     PolyFence(bool safe, const std::vector<std::pair<double, double>>& coordinates);
 
-    // Functions.
 public:
-    const std::vector<std::pair<double, double>>& getCoordinates();
 
-    // Interface that's to be implemented.
-public:
+    // Getters and setters.
+    const std::vector<std::pair<double, double>>& getCoordinates();
+    const std::vector<double>& getConstants();
+    const std::vector<double>& getMultiples();
+
+    // Generic object behaviour.
+    void calculateFenceConstants();
+
+    // Inherited interfaces.
     bool isInside(double latitude, double longitude) override;
+    web::json::value serialiseFence() override;
+
+private:
 
     // Attributes.
-private:
     std::vector<std::pair<double, double>> coordinates;
-
+    std::vector<double> constants;
+    std::vector<double> multiples;
 
 };
 

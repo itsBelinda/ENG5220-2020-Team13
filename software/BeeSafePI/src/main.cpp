@@ -6,7 +6,7 @@
 // TODO: Check something to do with the contact constructors using strings.
 // TODO: Use a const iterator by reference in fence isPresent code.
 // TODO: Check if a null ptr can be returned for a reference.
-
+// TODO: Implement the code for serialising the RoundFence lat, lng, rds.
 
 int main()
 {

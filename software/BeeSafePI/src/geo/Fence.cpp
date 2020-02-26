@@ -3,6 +3,10 @@
 // System inclusions.
 #include <sstream>
 
+// Define the format according to which the date time will be written.
+#define DAY_TIME_STRING_FORMAT "%d:%d"
+#define DAY_TIME_BUFFER_SIZE 6
+
 // Defines the constructor for the fence.
 Fence::Fence(bool safe)
 {
@@ -18,6 +22,18 @@ Fence::Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::
 
 // Fence destructor.
 Fence::~Fence() = default;
+
+// Get a map of all the days and their times.
+const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& Fence::getWeek()
+{
+    return week;
+}
+
+// Get all the times associated with a given day.
+const std::vector<std::pair<std::tm, std::tm>>& Fence::getTimes(const int day)
+{
+    return week[day];
+}
 
 // If the fence is regarded as being safe.
 bool Fence::isSafe()
@@ -74,14 +90,48 @@ bool Fence::isPresent(const std::time_t& time)
     return true;
 }
 
-// Get a map of all the days and their times.
-const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& Fence::getWeek()
+// Serialise the fence instance into a JSON element.
+web::json::value Fence::serialiseFence()
 {
-    return week;
-}
 
-// Get all the times associated with a given day.
-const std::vector<std::pair<std::tm, std::tm>>& Fence::getTimes(const int day)
-{
-    return week[day];
+    // The list of day names and the fence root element, respectively.
+    const std::string days[] = JSON_KEY_FENCE_DAYS;
+    char dayTimeBuffer[DAY_TIME_BUFFER_SIZE];
+
+    // The root fence json element.
+    web::json::value jsonFence = web::json::value::object();
+
+    // Serialise generic fence attributes.
+    jsonFence[U(JSON_KEY_FENCE_SAFE)] = web::json::value::boolean(safe);
+    for (auto& day : week) {
+        for (int i = 0; i < day.second.size(); ++i) {
+
+            // Format the string that's to be written.
+            snprintf(dayTimeBuffer,
+                     DAY_TIME_BUFFER_SIZE,
+                     DAY_TIME_STRING_FORMAT,
+                     day.second[i].first.tm_hour,
+                     day.second[i].first.tm_min
+            );
+
+            //
+            jsonFence[U(JSON_KEY_FENCE_WEEK)][days[day.first]][i][U(JSON_KEY_FENCE_TIME_FROM)]
+                    = web::json::value::string(U(dayTimeBuffer));
+
+            // Format the string that's to be written.
+            snprintf(dayTimeBuffer,
+                     DAY_TIME_BUFFER_SIZE,
+                     DAY_TIME_STRING_FORMAT,
+                     day.second[i].second.tm_hour,
+                     day.second[i].second.tm_min
+            );
+
+            // Serialise the to time.
+            jsonFence[U(JSON_KEY_FENCE_WEEK)][days[day.first]][i][U(JSON_KEY_FENCE_TIME_FROM)]
+                    = web::json::value::string(U(dayTimeBuffer));;
+        }
+    }
+
+    // Pass to sub-class for additional serialisation.
+    return jsonFence;
 }

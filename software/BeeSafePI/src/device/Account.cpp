@@ -1,8 +1,10 @@
-#include <cpprest/json.h>
 #include "Account.h"
 
 #include "../geo/RoundFence.h"
 #include "../geo/PolyFence.h"
+
+#include <iostream>
+#include <cpprest/json.h>
 
 // Constructor used to create an instance of the Account class.
 Account::Account(std::vector<Contact*>& contacts, std::vector<Fence*>& fences)
@@ -38,95 +40,47 @@ const std::vector<Fence*>& Account::getFences()
     return fences;
 }
 
-// Save the device as a JSON file at a given path.
-bool Account::save(std::string path)
+// Serialise the account object.
+web::json::value Account::serialiseAccount()
 {
-    web::json::value root;
-
-    // Save the contact details to the root.
-    if (saveContacts(root) && saveFences(root)) {
-        return false;
-    }
-
-    // Write the root to a string stream.
-
-
-    return true;
+    web::json::value jsonAccount = web::json::value::object();
+    jsonAccount[utility::string_t(U(JSON_KEY_ACCOUNT_CONTACTS))] = serialiseAccountContacts();
+    jsonAccount[utility::string_t(U(JSON_KEY_ACCOUNT_FENCES))] = serialiseAccountFences();
+    return jsonAccount;
 }
 
-// Responsible for creating the JSON array that represents the contacts.
-bool Account::saveContacts(web::json::value &rootElement)
+// Serialise the contacts for this account.
+web::json::value Account::serialiseAccountContacts()
 {
+    web::json::value jsonContacts = web::json::value::array();
     for (int i = 0; i < contacts.size(); ++i) {
-        rootElement[U(JSON_KEY_ACCOUNT_CONTACTS)][i][U(JSON_KEY_CONTACT_FORENAME)] = web::json::value(U(contacts[i]->getForename()));
-        rootElement[U(JSON_KEY_ACCOUNT_CONTACTS)][i][U(JSON_KEY_CONTACT_SURNAME)] = web::json::value(U(contacts[i]->getSurname()));
-        rootElement[U(JSON_KEY_ACCOUNT_CONTACTS)][i][U(JSON_KEY_CONTACT_SURNAME)] = web::json::value(U(contacts[i]->getNumber()));
-        rootElement[U(JSON_KEY_ACCOUNT_CONTACTS)][i][U(JSON_KEY_CONTACT_SURNAME)] = web::json::value(U(contacts[i]->getKey()));
+        jsonContacts[i] = contacts[i]->serialiseContact();
     }
-    return true;
+    return jsonContacts;
 }
 
-// Responsible for creating a JSON array of fences.
-bool Account::saveFences(web::json::value &rootElement)
+// Serialise the fences for this account.
+web::json::value Account::serialiseAccountFences()
+{
+    web::json::value jsonFences = web::json::value::array();
+    for (int i = 0; i < fences.size(); ++i) {
+        jsonFences[i] = fences[i]->serialiseFence();
+    }
+    return jsonFences;
+}
+
+// Serialise the json account instance and output it.
+bool Account::saveSerialisedAccount(const std::string& path)
 {
 
-    // Days of the week.
-    const std::string days[] = JSON_KEY_FENCE_DAYS;
+    // Serialise the account instance.
+    web::json::value jsonAccount = serialiseAccount();
 
-    // Week date related information.
-    const std::map<int, std::vector<std::pair<std::tm, std::tm>>>* week = nullptr;
-    const std::vector<std::pair<std::tm, std::tm>>* times = nullptr;
-    const std::vector<std::pair<double, double>>* coordinates = nullptr;
+    // Output the serialised json account to a file stream.
+    utility::ofstream_t of(path);
+    of << jsonAccount.serialize();
+    of.close();
 
-    // Dynamic conversion pointers.
-    RoundFence* roundFence = nullptr;
-    PolyFence* polyFence = nullptr;
-
-    // Time buffer.
-    char timeBuffer[6];
-
-    // Save the fences to the file iteratively.
-    for (int i = 0; i < fences.size(); ++i) {
-
-        // Save whether or not the fence is safe.
-        rootElement[U(JSON_KEY_ACCOUNT_FENCES)][i][U(JSON_KEY_FENCE_SAFE)] = web::json::value(fences[i]->isSafe());
-
-        // Save the timing related information for the fence.
-        week = &fences[i]->getWeek();
-        for (auto& day : *week) {
-            times = &day.second;
-            for (int j = 0; j < times->size(); ++j) {
-                rootElement[U(JSON_KEY_ACCOUNT_FENCES)][i][U(JSON_KEY_FENCE_WEEK)][days[day.first]][j][U(JSON_KEY_FENCE_TIME_FROM)] =
-                rootElement[U(JSON_KEY_ACCOUNT_FENCES)][i][U(JSON_KEY_FENCE_WEEK)][days[day.first]][j][U(JSON_KEY_FENCE_TIME_TO)] =
-            }
-        }
-
-        // Dynamically cast the fences.
-        if (roundFence = dynamic_cast<RoundFence*>(fences[i])) {
-
-            // We have successfully cast to a round fence ptr.
-            rootElement[U(JSON_KEY_ACCOUNT_FENCES)][i][U(JSON_KEY_FENCE_FENCE)][U(JSON_KEY_ROUND_FENCE_LATITUDE)]
-                    = web::json::value(roundFence->getLatitude());
-            rootElement[U(JSON_KEY_ACCOUNT_FENCES)][i][U(JSON_KEY_FENCE_FENCE)][U(JSON_KEY_ROUND_FENCE_LONGITUDE)]
-                    = web::json::value(roundFence->getLongitude());
-            rootElement[U(JSON_KEY_ACCOUNT_FENCES)][i][U(JSON_KEY_FENCE_FENCE)][U(JSON_KEY_ROUND_FENCE_RADIUS)]
-                    = web::json::value(roundFence->getRadius());
-
-        } else if (polyFence = dynamic_cast<PolyFence*>(fences[i])) {
-
-            // We have successfully cast to a poly fence ptr.
-            coordinates = &polyFence->getCoordinates();
-            for (int k = 0; k < coordinates->size(); ++k) {
-                rootElement[U(JSON_KEY_ACCOUNT_FENCES)][i][U(JSON_KEY_FENCE_FENCE)][k][U(JSON_KEY_POLY_FENCE_LATITUDE)]
-                        = web::json::value((*coordinates)[k].first);
-                rootElement[U(JSON_KEY_ACCOUNT_FENCES)][i][U(JSON_KEY_FENCE_FENCE)][k][U(JSON_KEY_POLY_FENCE_LONGITUDE)]
-                        = web::json::value((*coordinates)[k].second);
-            }
-
-        } else {
-            return false;
-        }
-    }
-
+    // We have successfully written to the file.
     return true;
 }

@@ -2,6 +2,7 @@
 #define BEESAFEPI_CONTACT_H
 
 #include <string>
+#include <cpprest/json.h>
 
 // JSON keys for accessing contact attributes.
 #define JSON_KEY_CONTACT_FORENAME "Forename"
@@ -13,22 +14,29 @@
 class Contact
 {
 
-    // Contact constructor.
 public:
-    Contact(const std::string& forename,
-            const std::string& surname,
-            const std::string& number,
-            const std::string& key);
 
-    // Getters and setters.
+    // Constructors.
+    Contact(const std::string& forename, const std::string& surname,
+            const std::string& number, const std::string& key);
+
+    // Destructors.
+    ~Contact();
+
 public:
+
+    // Getters and setters for the contact.
     const std::string& getForename();
     const std::string& getSurname();
     const std::string& getNumber();
     const std::string& getKey();
 
-    // Attributes.
+    // Serialise the contact into a JSON element.
+    web::json::value serialiseContact();
+
 private:
+
+    // Attributes.
     std::string forename;
     std::string surname;
     std::string number;

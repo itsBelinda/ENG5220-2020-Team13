@@ -8,6 +8,8 @@
 #include <string>
 #include <utility>
 #include <map>
+#include <cpprest/json.h>
+#include <sstream>
 
 // JSON keys used to initialise the fence.
 #define JSON_KEY_FENCE_SAFE "Safe"
@@ -21,29 +23,32 @@
 class Fence
 {
 
+public:
+
     // Constructors.
-protected:
     explicit Fence(bool safe);
     Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week);
 
-    // Destructor.
-public:
+    // Destructors.
     virtual ~Fence() = 0;
 
-    // Functions.
 public:
-    bool isSafe();
-    bool isPresent();
-    bool isPresent(const std::time_t& time);
+
+    // Getters and setters.
     const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& getWeek();
     const std::vector<std::pair<std::tm, std::tm>>& getTimes(int day);
 
-    // Interface that's to be implemented.
-public:
+    bool isSafe();
+    bool isPresent();
+    bool isPresent(const std::time_t& time);
+
+    // Inherited interfaces.
     virtual bool isInside(double latitude, double longitude) = 0;
+    virtual web::json::value serialiseFence();
+
+private:
 
     // Attributes.
-private:
     bool safe;
     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
 

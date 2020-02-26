@@ -12,23 +12,26 @@
 class RoundFence : public Fence
 {
 
-    // Constructors.
 public:
+
+    // Constructors.
     RoundFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, double latitude, double longitude, double radius);
     RoundFence(bool safe, double latitude, double longitude, double radius);
 
-    // Getters and setters.
 public:
+
+    // Getters and setters.
     double getLatitude();
     double getLongitude();
     double getRadius();
 
-    // Overridden interface.
-public:
+    // Inherited interfaces.
     bool isInside(double latitude, double longitude) override;
+    web::json::value serialiseFence() override;
+
+private:
 
     // Attributes.
-private:
     double latitude;
     double longitude;
     double radius;

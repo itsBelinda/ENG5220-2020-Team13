@@ -42,9 +42,26 @@ double RoundFence::getRadius()
 // Calculates whether or not latitude and longitude inside fence.
 bool RoundFence::isInside(const double latitude, const double longitude)
 {
-    double distance = std::sqrt(
-            (latitude - this->longitude) * (latitude - this->latitude) +
-            (longitude - this->longitude) * (longitude - this->longitude)
-    );
+    double distance = std::sqrt((latitude - this->longitude) * (latitude - this->latitude)
+                                + (longitude - this->longitude) * (longitude - this->longitude));
     return distance <= radius;
+}
+
+// Serialise the fence into a JSON element.
+web::json::value RoundFence::serialiseFence()
+{
+
+    // Serialise the super-class fence.
+    web::json::value jsonFence = Fence::serialiseFence();
+
+    // Serialise RoundFence specific attributes.
+    jsonFence[U(JSON_KEY_FENCE_FENCE)][U(JSON_KEY_ROUND_FENCE_LATITUDE)]
+            = web::json::value::number(latitude);
+    jsonFence[U(JSON_KEY_FENCE_FENCE)][U(JSON_KEY_ROUND_FENCE_LONGITUDE)]
+            = web::json::value::number(longitude);;
+    jsonFence[U(JSON_KEY_FENCE_FENCE)][U(JSON_KEY_ROUND_FENCE_RADIUS)]
+            = web::json::value::number(radius);
+
+    // Return the serialised fence.
+    return jsonFence;
 }
