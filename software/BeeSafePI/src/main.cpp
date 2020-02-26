@@ -1,3 +1,8 @@
+#include "device/Account.h"
+#include "contact/Contact.h"
+#include "geo/RoundFence.h"
+#include "geo/PolyFence.h"
+
 #include <iostream>
 
 
@@ -10,6 +15,30 @@
 
 int main()
 {
+
+    std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
+    
+
+    std::vector<std::pair<double, double>> coordinates;
+    coordinates.push_back(std::pair(30, 40));
+    coordinates.push_back(std::pair(50, 60));
+
+    Fence* polyFence = new PolyFence(false, week, coordinates);
+
+    Fence* roundFence = new RoundFence(true, week, 10, 20, 10);
+
+    std::vector<Fence*> fences;
+    fences.push_back(roundFence);
+    fences.push_back(polyFence);
+
+    Contact* contact1 = new Contact("Daniels", "Vasiljevs", "0121DO1", "Coke");
+    Contact* contact2 = new Contact("Ben", "Smith", "124232", "Pepsi");
+
+    std::vector<Contact*> contacts;
+    contacts.push_back(contact1);
+    contacts.push_back(contact2);
+
+    Account account(contacts, fences);
 
     return 0;
 }

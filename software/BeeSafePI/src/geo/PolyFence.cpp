@@ -46,6 +46,11 @@ void PolyFence::calculateFenceConstants()
     constants.clear();
     multiples.clear();
 
+    // If the coordinates are empty, nothing can be done.
+    if (coordinates.empty()) {
+        return;
+    }
+
     // Calculate poly fence constants.
     unsigned long i, j = coordinates.size() - 1;
     for (i = 0; i < coordinates.size(); ++i) {
