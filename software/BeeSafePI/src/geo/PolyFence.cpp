@@ -101,7 +101,7 @@ web::json::value PolyFence::serialiseFence()
     for (int i = 0; i < coordinates.size(); ++i) {
         jsonFence[U(JSON_KEY_FENCE_FENCE)][i][U(JSON_KEY_POLY_FENCE_LATITUDE)]
                 = web::json::value::number(coordinates[i].first);
-        jsonFence[U(JSON_KEY_FENCE_FENCE)][i][U(JSON_KEY_POLY_FENCE_LATITUDE)]
+        jsonFence[U(JSON_KEY_FENCE_FENCE)][i][U(JSON_KEY_POLY_FENCE_LONGITUDE)]
                 = web::json::value::number(coordinates[i].second);
     }
 

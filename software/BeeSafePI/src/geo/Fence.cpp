@@ -127,7 +127,7 @@ web::json::value Fence::serialiseFence()
             );
 
             // Serialise the to time.
-            jsonFence[U(JSON_KEY_FENCE_WEEK)][days[day.first]][i][U(JSON_KEY_FENCE_TIME_FROM)]
+            jsonFence[U(JSON_KEY_FENCE_WEEK)][days[day.first]][i][U(JSON_KEY_FENCE_TIME_TO)]
                     = web::json::value::string(U(dayTimeBuffer));;
         }
     }
