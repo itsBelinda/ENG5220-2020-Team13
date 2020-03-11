@@ -4,7 +4,7 @@
 (                                                                     )
 (    Drawing          : beeSafe_1V0.brd                               )
 (    Software Version : 17.2S055                                      )
-(    Date/Time        : Tue Feb 25 11:51:04 2020                      )
+(    Date/Time        : Tue Mar 10 07:37:27 2020                      )
 (                                                                     )
 (---------------------------------------------------------------------)
 
@@ -27,7 +27,7 @@ CmdLine: netrev.exe -y 1 -i K:\ORCAD\DESIGN\BEESAFE\allegro K:\OrCAD\Design\BeeS
 ------ Preparing to read pst files ------
 
 Starting to read K:/ORCAD/DESIGN/BEESAFE/allegro/pstchip.dat 
-   Finished reading K:/ORCAD/DESIGN/BEESAFE/allegro/pstchip.dat (00:00:00.10)
+   Finished reading K:/ORCAD/DESIGN/BEESAFE/allegro/pstchip.dat (00:00:00.09)
 Starting to read K:/ORCAD/DESIGN/BEESAFE/allegro/pstxprt.dat 
    Finished reading K:/ORCAD/DESIGN/BEESAFE/allegro/pstxprt.dat (00:00:00.01)
 Starting to read K:/ORCAD/DESIGN/BEESAFE/allegro/pstxnet.dat 
@@ -62,7 +62,7 @@ PADPATH =  Q:/allegro/PCB_LIB/padstacks/
 ------ Summary Statistics ------
 
 
-netrev run on Feb 25 11:51:04 2020
+netrev run on Mar 10 7:37:27 2020
    DESIGN NAME : 'BEESAFE'
    PACKAGING ON May 11 2019 05:12:43
 
@@ -87,6 +87,6 @@ netrev run on Feb 25 11:51:04 2020
  No oversight detected
  No warning detected
 
-cpu time      0:04:22
-elapsed time  0:00:02
+cpu time      0:04:09
+elapsed time  0:00:01
 
