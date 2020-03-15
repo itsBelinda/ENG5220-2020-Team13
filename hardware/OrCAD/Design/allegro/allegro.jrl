@@ -1,0 +1,24 @@
+\t (00:00:04) allegro 17.2 S055 Windows SPB 64-bit Edition
+\t (00:00:04)     Journal start - Tue Feb 25 11:51:11 2020
+\t (00:00:04)         Host=RANK509-05 User=2504756K Pid=9800 CPUs=8
+\t (00:00:04) CmdLine= c:\cadence\spb_17.2\tools\bin\allegro.exe -mpssession 2504756K K:\OrCAD\Design\BeeSafe\allegro\beeSafe_1V1.brd
+\t (00:00:04) 
+   (00:00:04) Loading axlcore.cxt 
+\t (00:00:05) Opening existing design...
+\i (00:00:05) QtSignal SPBFoldDockArea FoldAreaTabWidget currentChanged beeSafe_1V1
+\d (00:00:05) Design opened: K:/ORCAD/DESIGN/BEESAFE/allegro/beeSafe_1V1.brd
+\i (00:00:05) trapsize 1633
+\i (00:00:06) trapsize 1688
+\i (00:00:06) trapsize 1633
+\i (00:00:06) trapsize 1633
+\i (00:00:07) generaledit 
+\i (00:00:07) zoom out 1 
+\i (00:00:07) setwindow pcb
+\i (00:00:07) zoom out 867.09 -155.29
+\i (00:00:07) trapsize 3265
+\i (00:00:08) zoom out 1 
+\i (00:00:08) setwindow pcb
+\i (00:00:08) zoom out 867.09 -155.30
+\i (00:00:08) trapsize 5174
+\i (00:00:13) exit 
+\t (00:00:13)     Journal end - Tue Feb 25 11:51:20 2020

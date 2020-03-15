@@ -3,9 +3,11 @@ project(BeeSafePI)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(cpprestsdk_DIR /usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/cmake/)
 
 # Include OpenSLL for cpprestsdk; may be platform dependent.
-set(OPENSSL_INCLUDE_DIR /usr/local/opt/openssl/bin/openssl)
+set(OPENSSL_INCLUDE_DIR /usr/lib/ssl)
+set(CMAKE_PREFIX_PATH /usr/lib/arm-linux-gneuabihg/cmake/)
 
 
 
