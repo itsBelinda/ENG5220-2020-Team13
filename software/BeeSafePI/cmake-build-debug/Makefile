@@ -177,59 +177,59 @@ src/comms/Communication.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Communication.cpp.s
 .PHONY : src/comms/Communication.cpp.s
 
-src/comms/Uart.o: src/comms/Uart.c.o
+src/comms/Uart.o: src/comms/Uart.cpp.o
 
 .PHONY : src/comms/Uart.o
 
 # target to build an object file
-src/comms/Uart.c.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Uart.c.o
-.PHONY : src/comms/Uart.c.o
+src/comms/Uart.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Uart.cpp.o
+.PHONY : src/comms/Uart.cpp.o
 
-src/comms/Uart.i: src/comms/Uart.c.i
+src/comms/Uart.i: src/comms/Uart.cpp.i
 
 .PHONY : src/comms/Uart.i
 
 # target to preprocess a source file
-src/comms/Uart.c.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Uart.c.i
-.PHONY : src/comms/Uart.c.i
+src/comms/Uart.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Uart.cpp.i
+.PHONY : src/comms/Uart.cpp.i
 
-src/comms/Uart.s: src/comms/Uart.c.s
+src/comms/Uart.s: src/comms/Uart.cpp.s
 
 .PHONY : src/comms/Uart.s
 
 # target to generate assembly for a file
-src/comms/Uart.c.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Uart.c.s
-.PHONY : src/comms/Uart.c.s
+src/comms/Uart.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Uart.cpp.s
+.PHONY : src/comms/Uart.cpp.s
 
-src/comms/Ublox.o: src/comms/Ublox.c.o
+src/comms/Ublox.o: src/comms/Ublox.cpp.o
 
 .PHONY : src/comms/Ublox.o
 
 # target to build an object file
-src/comms/Ublox.c.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Ublox.c.o
-.PHONY : src/comms/Ublox.c.o
+src/comms/Ublox.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Ublox.cpp.o
+.PHONY : src/comms/Ublox.cpp.o
 
-src/comms/Ublox.i: src/comms/Ublox.c.i
+src/comms/Ublox.i: src/comms/Ublox.cpp.i
 
 .PHONY : src/comms/Ublox.i
 
 # target to preprocess a source file
-src/comms/Ublox.c.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Ublox.c.i
-.PHONY : src/comms/Ublox.c.i
+src/comms/Ublox.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Ublox.cpp.i
+.PHONY : src/comms/Ublox.cpp.i
 
-src/comms/Ublox.s: src/comms/Ublox.c.s
+src/comms/Ublox.s: src/comms/Ublox.cpp.s
 
 .PHONY : src/comms/Ublox.s
 
 # target to generate assembly for a file
-src/comms/Ublox.c.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Ublox.c.s
-.PHONY : src/comms/Ublox.c.s
+src/comms/Ublox.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Ublox.cpp.s
+.PHONY : src/comms/Ublox.cpp.s
 
 src/contact/Contact.o: src/contact/Contact.cpp.o
 
