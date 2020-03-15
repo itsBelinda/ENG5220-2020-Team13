@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o"
   "BeeSafePI.pdb"
   "BeeSafePI"
 )

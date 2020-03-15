@@ -1,5 +1,4 @@
 /Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI
--- Found OpenSSL: /usr/lib/libcrypto.dylib  
 -- Configuring done
 CMake Error in CMakeLists.txt:
   Imported target "cpprestsdk::cpprest" includes non-existent path

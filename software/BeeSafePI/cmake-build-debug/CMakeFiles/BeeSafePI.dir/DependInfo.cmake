@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/Fence.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/PolyFence.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/geo/PolyFence.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/geo/RoundFence.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/Monitor.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

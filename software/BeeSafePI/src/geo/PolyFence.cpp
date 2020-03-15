@@ -46,7 +46,7 @@ const std::vector<double>& PolyFence::getMultiples()
     return multiples;
 }
 
-// Calculate any poly constants.
+// Calculate any poly constants; saves us having to compute these values each time.
 void PolyFence::calculateFenceConstants()
 {
 
