@@ -1,8 +1,13 @@
 #ifndef BEESAFEPI_ACTIVEMONITORSTATE_H
 #define BEESAFEPI_ACTIVEMONITORSTATE_H
 
-class ActiveMonitorState
+#include "MonitorState.h"
+
+class ActiveMonitorState : public MonitorState
 {
+
+public:
+    ActiveMonitorState(Communication* communication, Account* account);
 
 };
 

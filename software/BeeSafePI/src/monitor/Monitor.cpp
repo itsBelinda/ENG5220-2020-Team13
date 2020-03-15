@@ -1,24 +1,53 @@
 #include "Monitor.h"
 
-// Constructor is used to initialise the Monitor thread.
-Monitor::Monitor()
+// Explicit constructor is used to define the account and the communications link.
+Monitor::Monitor(Communication *communication, Account *account)
 {
-    monitorThreadRunning = false;
-    monitorThread = nullptr;
+    this->communication = communication;
+    this->account = account;
+
+    this->monitorThreadRunning = false;
+    this->monitorThread = nullptr;
+    this->monitorState = nullptr;
 }
 
-// Function starts the thread, stopping the previous thread if it is monitorThreadRunning.
+// Constructor simply initialises the monitor thread class with the communications link.
+Monitor::Monitor(Communication *communication)
+{
+    this->communication = communication;
+
+    this->account = nullptr;
+    this->monitorThreadRunning = false;
+    this->monitorThread = nullptr;
+    this->monitorState = nullptr;
+}
+
+// Starts the thread with the existent account details.
 bool Monitor::start()
 {
+    return start(account);
+}
 
-    // TODO: Check that the relevant variables are present.
+// Starts the thread with a new account.
+bool Monitor::start(Account *account)
+{
 
-    // If the thread is currently monitorThreadRunning, stop it.
+    // Requisites must be present i.e. communications and account.
+    if (communication == nullptr || account == nullptr) {
+        return false;
+    }
+
+    // Check if the thread is currently running, stop if so.
     if (monitorThreadRunning && monitorThread != nullptr) {
         stop();
     }
 
-    // Start the new thread.
+    // Update the account pointer if necessary.
+    if (this->account != account) {
+        this->account = account;
+    }
+
+    // Finally, start the thread and return.
     monitorThread = new std::thread(Monitor::execute, this);
     return true;
 }
@@ -26,7 +55,6 @@ bool Monitor::start()
 // Stops the monitor thread.
 void Monitor::stop()
 {
-
     // Stop the thread.
     monitorThreadRunning = false;
     monitorThread->join();
@@ -34,15 +62,13 @@ void Monitor::stop()
     // Handle thread cleanup.
     delete monitorThread;
     monitorThread = nullptr;
-
-    // TODO: Handles data cleanup.
-
-
 }
 
 // The main loop that is being executed.
 void Monitor::run()
 {
+
+    // TODO: Initialise the required resources.
 
     // Update the monitorThreadRunning flag.
     monitorThreadRunning = true;
@@ -50,7 +76,7 @@ void Monitor::run()
     // The main game loop.
     while (monitorThreadRunning) {
 
-        // TODO: HERE!
+        // TODO: Detection code resides in here.
 
     }
 }

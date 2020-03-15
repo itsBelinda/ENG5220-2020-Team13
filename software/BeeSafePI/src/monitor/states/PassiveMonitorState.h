@@ -2,7 +2,13 @@
 #define BEESAFEPI_PASSIVEMONITORSTATE_H
 
 
-class PassiveMonitorState {
+#include "MonitorState.h"
+
+class PassiveMonitorState : public MonitorState
+{
+
+public:
+    PassiveMonitorState(Communication* communication, Account* account);
 
 };
 

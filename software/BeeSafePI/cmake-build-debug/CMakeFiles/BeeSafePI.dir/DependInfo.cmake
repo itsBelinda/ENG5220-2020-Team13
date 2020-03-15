@@ -1,10 +1,29 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "C"
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_C
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/comms/Uart.c" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/comms/Uart.c.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/comms/Ublox.c" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/comms/Ublox.c.o"
+  )
+set(CMAKE_C_COMPILER_ID "AppleClang")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_C
+  "CPPREST_FORCE_HTTP_CLIENT_ASIO"
+  "CPPREST_FORCE_HTTP_LISTENER_ASIO"
+  "CPPREST_NO_SSL_LEAK_SUPPRESS"
+  )
+
+# The include file search paths:
+set(CMAKE_C_TARGET_INCLUDE_PATH
+  "/usr/local/include"
+  )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/Main.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/Main.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/comms/Communication.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/comms/Communication.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/contact/Contact.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/Account.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/device/AccountBuilder.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o"

@@ -10,11 +10,14 @@ file(REMOVE_RECURSE
   "CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/comms/Communication.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/comms/Ublox.c.o"
+  "CMakeFiles/BeeSafePI.dir/src/comms/Uart.c.o"
   "BeeSafePI.pdb"
   "BeeSafePI"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang C CXX)
   include(CMakeFiles/BeeSafePI.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()
