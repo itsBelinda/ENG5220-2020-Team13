@@ -34,7 +34,6 @@ private:
 
     // Attributes for the location.
 
-
     // Static function executes the monitor run thread.
     static void execute(Monitor* const monitor)
     {

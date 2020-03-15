@@ -29,7 +29,7 @@
           <file leaf-file-name="Monitor.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/monitor/Monitor.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="540">
+                <state relative-caret-position="494">
                   <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
                   <folding />
                 </state>
@@ -133,8 +133,8 @@
           <file leaf-file-name="Monitor.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/monitor/Monitor.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="525">
-                  <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+                <state relative-caret-position="435">
+                  <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
                   <folding>
                     <element signature="e#57#89#0" expanded="true" />
                   </folding>
@@ -180,8 +180,8 @@
         <option value="$PROJECT_DIR$/src/monitor/PassiveMonitorState.cpp" />
         <option value="$PROJECT_DIR$/src/monitor/PassiveMonitorState.h" />
         <option value="$PROJECT_DIR$/src/monitor/ActiveMonitorState.h" />
-        <option value="$PROJECT_DIR$/src/monitor/Monitor.h" />
         <option value="$PROJECT_DIR$/src/monitor/Monitor.cpp" />
+        <option value="$PROJECT_DIR$/src/monitor/Monitor.h" />
       </list>
     </option>
   </component>
@@ -326,12 +326,12 @@
       <workItem from="1582995430605" duration="223000" />
       <workItem from="1583939716786" duration="2195000" />
       <workItem from="1584295294609" duration="724000" />
-      <workItem from="1584296332869" duration="9028000" />
+      <workItem from="1584296332869" duration="9843000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79156000" />
+    <option name="totallyTimeSpent" value="79971000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
@@ -740,8 +740,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monitor/Monitor.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="435">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
             <element signature="e#57#89#0" expanded="true" />
           </folding>
@@ -750,7 +750,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monitor/Monitor.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
+        <state relative-caret-position="494">
           <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
