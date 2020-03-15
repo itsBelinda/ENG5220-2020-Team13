@@ -312,33 +312,6 @@ src/geo/RoundFence.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.s
 .PHONY : src/geo/RoundFence.cpp.s
 
-src/monitor/Monitor.o: src/monitor/Monitor.cpp.o
-
-.PHONY : src/monitor/Monitor.o
-
-# target to build an object file
-src/monitor/Monitor.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o
-.PHONY : src/monitor/Monitor.cpp.o
-
-src/monitor/Monitor.i: src/monitor/Monitor.cpp.i
-
-.PHONY : src/monitor/Monitor.i
-
-# target to preprocess a source file
-src/monitor/Monitor.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.i
-.PHONY : src/monitor/Monitor.cpp.i
-
-src/monitor/Monitor.s: src/monitor/Monitor.cpp.s
-
-.PHONY : src/monitor/Monitor.s
-
-# target to generate assembly for a file
-src/monitor/Monitor.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.s
-.PHONY : src/monitor/Monitor.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -369,9 +342,6 @@ help:
 	@echo "... src/geo/RoundFence.o"
 	@echo "... src/geo/RoundFence.i"
 	@echo "... src/geo/RoundFence.s"
-	@echo "... src/monitor/Monitor.o"
-	@echo "... src/monitor/Monitor.i"
-	@echo "... src/monitor/Monitor.s"
 .PHONY : help
 
 
