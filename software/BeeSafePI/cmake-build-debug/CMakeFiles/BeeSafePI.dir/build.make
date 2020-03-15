@@ -225,6 +225,102 @@ CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o.provides: CMakeFiles/Be
 CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o
 
 
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o: ../src/monitor/Monitor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/Monitor.cpp
+
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/Monitor.cpp > CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.i
+
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/Monitor.cpp -o CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.s
+
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o.requires:
+
+.PHONY : CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o.requires
+
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o.requires
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o.provides.build
+.PHONY : CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o.provides
+
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o
+
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
+CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o: ../src/monitor/states/MonitorState.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/states/MonitorState.cpp
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/states/MonitorState.cpp > CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.i
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/states/MonitorState.cpp -o CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.s
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o.requires:
+
+.PHONY : CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o.requires
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o.requires
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o.provides.build
+.PHONY : CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o.provides
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o
+
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
+CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o: ../src/monitor/states/PassiveMonitorState.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/states/PassiveMonitorState.cpp
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/states/PassiveMonitorState.cpp > CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.i
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/states/PassiveMonitorState.cpp -o CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.s
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o.requires:
+
+.PHONY : CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o.requires
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o.requires
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o.provides.build
+.PHONY : CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o.provides
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o
+
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o: CMakeFiles/BeeSafePI.dir/flags.make
+CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o: ../src/monitor/states/ActiveMonitorState.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o -c /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/states/ActiveMonitorState.cpp
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/states/ActiveMonitorState.cpp > CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.i
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/monitor/states/ActiveMonitorState.cpp -o CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.s
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o.requires:
+
+.PHONY : CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o.requires
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o.provides: CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o.requires
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o.provides.build
+.PHONY : CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o.provides
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o.provides.build: CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o
+
+
 # Object files for target BeeSafePI
 BeeSafePI_OBJECTS = \
 "CMakeFiles/BeeSafePI.dir/src/Main.cpp.o" \
@@ -233,7 +329,11 @@ BeeSafePI_OBJECTS = \
 "CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o" \
 "CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o" \
 "CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o" \
-"CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o"
+"CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o" \
+"CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o" \
+"CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o" \
+"CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o" \
+"CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o"
 
 # External object files for target BeeSafePI
 BeeSafePI_EXTERNAL_OBJECTS =
@@ -245,12 +345,16 @@ BeeSafePI: CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o
 BeeSafePI: CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o
 BeeSafePI: CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o
 BeeSafePI: CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o
+BeeSafePI: CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o
+BeeSafePI: CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o
+BeeSafePI: CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o
+BeeSafePI: CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o
 BeeSafePI: CMakeFiles/BeeSafePI.dir/build.make
 BeeSafePI: /usr/local/lib/libcpprest.2.10.dylib
 BeeSafePI: /usr/lib/libssl.dylib
 BeeSafePI: /usr/lib/libcrypto.dylib
 BeeSafePI: CMakeFiles/BeeSafePI.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable BeeSafePI"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable BeeSafePI"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BeeSafePI.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -265,6 +369,10 @@ CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/contact/Contact.
 CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/geo/Fence.cpp.o.requires
 CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/device/Account.cpp.o.requires
 CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/device/AccountBuilder.cpp.o.requires
+CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o.requires
+CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o.requires
+CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o.requires
+CMakeFiles/BeeSafePI.dir/requires: CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o.requires
 
 .PHONY : CMakeFiles/BeeSafePI.dir/requires
 

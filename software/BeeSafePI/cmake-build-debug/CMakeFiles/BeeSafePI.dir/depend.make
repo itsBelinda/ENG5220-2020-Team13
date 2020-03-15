@@ -4980,3 +4980,18 @@ CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.o: /usr/local/include/pplx/pplxl
 CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.o: /usr/local/include/pplx/pplxtasks.h
 CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.o: /usr/local/include/pplx/pplxwin.h
 
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o: ../src/monitor/Monitor.cpp
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o: ../src/monitor/Monitor.h
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o: ../src/monitor/states/ActiveMonitorState.h
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o: ../src/monitor/states/MonitorState.h
+CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o: ../src/monitor/states/PassiveMonitorState.h
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o: ../src/monitor/states/ActiveMonitorState.cpp
+CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o: ../src/monitor/states/ActiveMonitorState.h
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o: ../src/monitor/states/MonitorState.cpp
+CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o: ../src/monitor/states/MonitorState.h
+
+CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o: ../src/monitor/states/PassiveMonitorState.cpp
+CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o: ../src/monitor/states/PassiveMonitorState.h
+

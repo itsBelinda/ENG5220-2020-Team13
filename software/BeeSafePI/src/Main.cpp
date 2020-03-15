@@ -59,5 +59,7 @@ int main()
     Account account(contacts, fences);
     account.saveSerialisedAccount("output.json");
 
+    std::cout << "Finished monitorThreadRunning the code." << std::endl;
+
     return 0;
 }

@@ -1,0 +1,10 @@
+#ifndef BEESAFEPI_MONITORSTATE_H
+#define BEESAFEPI_MONITORSTATE_H
+
+
+class MonitorState {
+
+};
+
+
+#endif //BEESAFEPI_MONITORSTATE_H

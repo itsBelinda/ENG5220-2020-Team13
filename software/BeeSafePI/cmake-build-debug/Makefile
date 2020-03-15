@@ -312,6 +312,114 @@ src/geo/RoundFence.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/geo/RoundFence.cpp.s
 .PHONY : src/geo/RoundFence.cpp.s
 
+src/monitor/Monitor.o: src/monitor/Monitor.cpp.o
+
+.PHONY : src/monitor/Monitor.o
+
+# target to build an object file
+src/monitor/Monitor.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.o
+.PHONY : src/monitor/Monitor.cpp.o
+
+src/monitor/Monitor.i: src/monitor/Monitor.cpp.i
+
+.PHONY : src/monitor/Monitor.i
+
+# target to preprocess a source file
+src/monitor/Monitor.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.i
+.PHONY : src/monitor/Monitor.cpp.i
+
+src/monitor/Monitor.s: src/monitor/Monitor.cpp.s
+
+.PHONY : src/monitor/Monitor.s
+
+# target to generate assembly for a file
+src/monitor/Monitor.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/Monitor.cpp.s
+.PHONY : src/monitor/Monitor.cpp.s
+
+src/monitor/states/ActiveMonitorState.o: src/monitor/states/ActiveMonitorState.cpp.o
+
+.PHONY : src/monitor/states/ActiveMonitorState.o
+
+# target to build an object file
+src/monitor/states/ActiveMonitorState.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o
+.PHONY : src/monitor/states/ActiveMonitorState.cpp.o
+
+src/monitor/states/ActiveMonitorState.i: src/monitor/states/ActiveMonitorState.cpp.i
+
+.PHONY : src/monitor/states/ActiveMonitorState.i
+
+# target to preprocess a source file
+src/monitor/states/ActiveMonitorState.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.i
+.PHONY : src/monitor/states/ActiveMonitorState.cpp.i
+
+src/monitor/states/ActiveMonitorState.s: src/monitor/states/ActiveMonitorState.cpp.s
+
+.PHONY : src/monitor/states/ActiveMonitorState.s
+
+# target to generate assembly for a file
+src/monitor/states/ActiveMonitorState.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.s
+.PHONY : src/monitor/states/ActiveMonitorState.cpp.s
+
+src/monitor/states/MonitorState.o: src/monitor/states/MonitorState.cpp.o
+
+.PHONY : src/monitor/states/MonitorState.o
+
+# target to build an object file
+src/monitor/states/MonitorState.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o
+.PHONY : src/monitor/states/MonitorState.cpp.o
+
+src/monitor/states/MonitorState.i: src/monitor/states/MonitorState.cpp.i
+
+.PHONY : src/monitor/states/MonitorState.i
+
+# target to preprocess a source file
+src/monitor/states/MonitorState.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.i
+.PHONY : src/monitor/states/MonitorState.cpp.i
+
+src/monitor/states/MonitorState.s: src/monitor/states/MonitorState.cpp.s
+
+.PHONY : src/monitor/states/MonitorState.s
+
+# target to generate assembly for a file
+src/monitor/states/MonitorState.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.s
+.PHONY : src/monitor/states/MonitorState.cpp.s
+
+src/monitor/states/PassiveMonitorState.o: src/monitor/states/PassiveMonitorState.cpp.o
+
+.PHONY : src/monitor/states/PassiveMonitorState.o
+
+# target to build an object file
+src/monitor/states/PassiveMonitorState.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o
+.PHONY : src/monitor/states/PassiveMonitorState.cpp.o
+
+src/monitor/states/PassiveMonitorState.i: src/monitor/states/PassiveMonitorState.cpp.i
+
+.PHONY : src/monitor/states/PassiveMonitorState.i
+
+# target to preprocess a source file
+src/monitor/states/PassiveMonitorState.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.i
+.PHONY : src/monitor/states/PassiveMonitorState.cpp.i
+
+src/monitor/states/PassiveMonitorState.s: src/monitor/states/PassiveMonitorState.cpp.s
+
+.PHONY : src/monitor/states/PassiveMonitorState.s
+
+# target to generate assembly for a file
+src/monitor/states/PassiveMonitorState.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.s
+.PHONY : src/monitor/states/PassiveMonitorState.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -342,6 +450,18 @@ help:
 	@echo "... src/geo/RoundFence.o"
 	@echo "... src/geo/RoundFence.i"
 	@echo "... src/geo/RoundFence.s"
+	@echo "... src/monitor/Monitor.o"
+	@echo "... src/monitor/Monitor.i"
+	@echo "... src/monitor/Monitor.s"
+	@echo "... src/monitor/states/ActiveMonitorState.o"
+	@echo "... src/monitor/states/ActiveMonitorState.i"
+	@echo "... src/monitor/states/ActiveMonitorState.s"
+	@echo "... src/monitor/states/MonitorState.o"
+	@echo "... src/monitor/states/MonitorState.i"
+	@echo "... src/monitor/states/MonitorState.s"
+	@echo "... src/monitor/states/PassiveMonitorState.o"
+	@echo "... src/monitor/states/PassiveMonitorState.i"
+	@echo "... src/monitor/states/PassiveMonitorState.s"
 .PHONY : help
 
 
