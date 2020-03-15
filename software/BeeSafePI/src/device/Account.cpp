@@ -13,6 +13,13 @@ Account::Account(std::vector<Contact*>& contacts, std::vector<Fence*>& fences)
     this->fences = fences;
 }
 
+// Copy constructor for the account object.
+Account::Account(const Account &account)
+{
+    this->contacts = account.contacts;
+    this->fences = account.fences;
+}
+
 // Destructor used to clear all the memory occupied by the account.
 Account::~Account()
 {

@@ -21,10 +21,9 @@ class Account
 
 public:
 
-    // Constructors.
+    // Constructors / destructors.
     Account(std::vector<Contact*>& contacts, std::vector<Fence*>& fences);
-
-    // Destructors.
+    Account(const Account &account);
     ~Account();
 
 public:

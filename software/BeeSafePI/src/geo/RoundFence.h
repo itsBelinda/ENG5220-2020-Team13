@@ -17,6 +17,7 @@ public:
     // Constructors.
     RoundFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, double latitude, double longitude, double radius);
     RoundFence(bool safe, double latitude, double longitude, double radius);
+    RoundFence(const RoundFence &roundFence);
 
 public:
 

@@ -28,6 +28,7 @@ public:
     // Constructors.
     explicit Fence(bool safe);
     Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week);
+    Fence(const Fence &fence);
 
     // Destructors.
     virtual ~Fence() = 0;

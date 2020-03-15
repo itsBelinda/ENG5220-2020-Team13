@@ -20,6 +20,14 @@ PolyFence::PolyFence(bool safe, const std::vector<std::pair<double, double>>& co
     calculateFenceConstants();
 }
 
+// Copy constructor for the poly fence.
+PolyFence::PolyFence(const PolyFence &polyFence)
+        : Fence(polyFence)
+{
+    this->coordinates = polyFence.coordinates;
+    calculateFenceConstants();
+}
+
 // Get a vector of latitude and longitude pairs.
 const std::vector<std::pair<double, double>>& PolyFence::getCoordinates()
 {

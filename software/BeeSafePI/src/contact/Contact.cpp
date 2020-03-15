@@ -10,6 +10,15 @@ Contact::Contact(const std::string& forename, const std::string& surname,
     this->key = key;
 }
 
+// Define the copy constructor.
+Contact::Contact(const Contact &contact)
+{
+    this->forename = contact.forename;
+    this->surname = contact.surname;
+    this->number = contact.number;
+    this->key = contact.key;
+}
+
 // The destructor used by the contact.
 Contact::~Contact() = default;
 

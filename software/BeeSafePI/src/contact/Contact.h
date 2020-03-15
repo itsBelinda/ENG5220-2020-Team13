@@ -16,11 +16,10 @@ class Contact
 
 public:
 
-    // Constructors.
+    // Constructors / destructors.
     Contact(const std::string& forename, const std::string& surname,
             const std::string& number, const std::string& key);
-
-    // Destructors.
+    Contact(const Contact &contact);
     ~Contact();
 
 public:

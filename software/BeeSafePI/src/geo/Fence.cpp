@@ -20,6 +20,13 @@ Fence::Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::
     this->week = week;
 }
 
+// The copy constructor.
+Fence::Fence(const Fence &fence)
+{
+    this->safe = fence.safe;
+    this->week = fence.week;
+}
+
 // Fence destructor.
 Fence::~Fence() = default;
 
@@ -114,7 +121,7 @@ web::json::value Fence::serialiseFence()
                      day.second[i].first.tm_min
             );
 
-            //
+            // serialise the from time.
             jsonFence[U(JSON_KEY_FENCE_WEEK)][days[day.first]][i][U(JSON_KEY_FENCE_TIME_FROM)]
                     = web::json::value::string(U(dayTimeBuffer));
 

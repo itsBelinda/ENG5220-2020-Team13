@@ -21,6 +21,15 @@ RoundFence::RoundFence(bool safe, double latitude, double longitude, double radi
     this->radius = radius;
 }
 
+// Copy constructor for the round fence object.
+RoundFence::RoundFence(const RoundFence &roundFence)
+        : Fence(roundFence)
+{
+    this->latitude = roundFence.latitude;
+    this->longitude = roundFence.longitude;
+    this->radius = roundFence.radius;
+}
+
 // Get the latitude of the fence.
 double RoundFence::getLatitude()
 {
