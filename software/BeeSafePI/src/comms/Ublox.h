@@ -1,0 +1,3 @@
+#ifndef BEESAFEPI_UBLOX_H
+#define BEESAFEPI_UBLOX_H
+#endif //BEESAFEPI_UBLOX_H
