@@ -4,6 +4,10 @@
 #include "../contact/Contact.h"
 #include "../geo/Fence.h"
 
+// Library inclusions.
+#include <cpprest/json.h>
+
+// System inclusions.
 #include <string>
 #include <vector>
 
