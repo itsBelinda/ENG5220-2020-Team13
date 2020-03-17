@@ -22,12 +22,12 @@ Monitor::Monitor(Comms * const comms, Account * const account)
  * interface. Note, starting will require the account to be passed to the
  * thread.
  *
- * @param communication The communications interface used to obtain the location of the
+ * @param comms The communications interface used to obtain the location of the
  *      device and send messages.
  */
-Monitor::Monitor(Comms * const communication)
+Monitor::Monitor(Comms * const comms)
 {
-    this->comms = communication;
+    this->comms = comms;
 
     this->account = nullptr;
     this->monitorThreadRunning = false;
