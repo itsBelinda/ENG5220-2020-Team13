@@ -2,103 +2,26 @@
 |                                 ECO   REPORT                                 |
 |                                                                    Page   1  |
 |------------------------------------------------------------------------------|
-|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V0.brd                             |
-|                                                    Tue Mar 10 07:37:27 2020  |
+|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V1.brd                             |
+|                                                    Tue Mar 17 20:54:13 2020  |
 |------------------------------------------------------------------------------|
 | NET CHANGES                                                                  |
 |- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
 |   net  name |  type of change |    pin_id     |   x   |   y   |   to  net    |
 |- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
-  N022175      net RENAMED (to net name listed on right)           N668381      
+  GND          pins MOVED FROM this net (to net name listed on right)
+                                 R19.1           -1559.0 -610.00
+                                                                           V_PI
+                                 R20.1           -1559.0 -550.00
+                                                                           V_PI
+                                 R21.1           -1559.0 -430.00
+                                                                           V_PI
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N022176      net RENAMED (to net name listed on right)           N665861      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N022177      net RENAMED (to net name listed on right)           N664861      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N022178      net RENAMED (to net name listed on right)           N664261      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N022179      net RENAMED (to net name listed on right)           N668781      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N107838      net RENAMED (to net name listed on right)           N666061      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N107839      net RENAMED (to net name listed on right)           N667709      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N0221710     net RENAMED (to net name listed on right)           N665461      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N0221711     net RENAMED (to net name listed on right)           N6719611     
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N0221712     net RENAMED (to net name listed on right)           N664661      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N0221717     net RENAMED (to net name listed on right)           N665261      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N0221723     net RENAMED (to net name listed on right)           N666461      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N0221724     net RENAMED (to net name listed on right)           N669181      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N0221727     net RENAMED (to net name listed on right)           N666661      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N0221728     net RENAMED (to net name listed on right)           N669781      
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N1078310     net RENAMED (to net name listed on right)           N6677010     
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  N1078311     net RENAMED (to net name listed on right)           N6677011     
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  V_PI         pins ADDED TO this existing net (pins not previously on any net)
-                                 U4.1            1364.41 -1116.9
-                                 U4.17            564.41 -1116.9
-|------------------------------------------------------------------------------|
-|                                 ECO   REPORT                                 |
-|                                                                    Page   2  |
+  V_PI         pins MOVED FROM this net (to net name listed on right)
+                                 R22.1           -1559.0 -490.00
+                                                                            GND
 |------------------------------------------------------------------------------|
-|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V0.brd                             |
-|                                                    Tue Mar 10 07:37:27 2020  |
-|------------------------------------------------------------------------------|
-| COMPONENT DEFINITION added to design                                         |
-|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
-|    device type                                                               |
-|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
- LT1764AEQ_DPAK6P170_1404X457L12
- RASPBERRY PI B+_2_GU-RASP-PI-3_
- SARA-G3_UBLOX_SARA-G350-02X-01_
- SIM_CON_0_JAE_SJ115712_SIM_CON
- SN74AVC4T774_SOP16P65_500X640X1
-|------------------------------------------------------------------------------|
-|                                 ECO   REPORT                                 |
-|                                                                    Page   3  |
-|------------------------------------------------------------------------------|
-|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V0.brd                             |
-|                                                    Tue Mar 10 07:37:27 2020  |
-|------------------------------------------------------------------------------|
-| COMPONENTS CHANGED from one device type to another in design                 |
-|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
-|    ref des        | new device type     |   x   |   y   |  old  device type  |
-|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
- J3                  SIM_CON_0_JAE_SJ115712_SIM_CON 1400.00 -720.00 SIM_CON_JAE_SJ115712_SIM_CON
- U1                  LT1764AEQ_DPAK6P170_1404X457L12 1100.00  240.00 LT1764AEQ_DPAK6P170_1404X457L127X83T61-1_LT1764AEQ
- U2                  SARA-G3_UBLOX_SARA-G350-02X-01_ -500.00 -220.00 SARA-G3_UBLOX_SARA-G350-02X-01_SARA-G3
- U3                  SN74AVC4T774_SOP16P65_500X640X1 -1340.0 -670.00 SN74AVC4T774_SOP16P65_500X640X108L60X24_SN74AVC4T774PW
- U4                  RASPBERRY PI B+_2_GU-RASP-PI-3_ 1640.00  900.00 RASPBERRY PI B+_2_GU-RASP-PI-3_RASPBERRY PI B+
-|------------------------------------------------------------------------------|
-|                                 ECO   REPORT                                 |
-|                                                                    Page   4  |
-|------------------------------------------------------------------------------|
-|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V0.brd                             |
-|                                                    Tue Mar 10 07:37:27 2020  |
-|------------------------------------------------------------------------------|
-| SLOT PROPERTIES added to design                                              |
-|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
-|   slot_id    |   x   |   y   |   property   |             value              |
-|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
- J3.3           1400.00 -720.00 PRIM_FILE      .\pstchip.dat
- U1.5           1100.00  240.00 PRIM_FILE      .\pstchip.dat
- U2.4           -500.00 -220.00 PRIM_FILE      .\pstchip.dat
- U3.9           -1340.0 -670.00 PRIM_FILE      .\pstchip.dat
- U4.4           1640.00  900.00 PRIM_FILE      .\pstchip.dat
-|------------------------------------------------------------------------------|
-|       Nets changed          :      19                                        |
-|       Comp definitions added:       5                                        |
-|       Components changed    :       5                                        |
-|       Slot property added   :       5                                        |
+|       Nets changed          :       4                                        |
 |                                                                              |
-|   Total ECO changes reported:      34                                        |
+|   Total ECO changes reported:       4                                        |
 |------------------------------------------------------------------------------|

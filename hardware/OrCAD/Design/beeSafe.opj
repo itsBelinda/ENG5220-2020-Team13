@@ -52,9 +52,9 @@
     ("Allegro Netlist Create DCF File" "FALSE")
     ("Update Allegro Board" "TRUE")
     ("Allegro Netlist Input Board File"
-       "K:\OrCAD\Design\BeeSafe\allegro\beeSafe_1V0.brd")
-    ("Allegro Netlist Output Board File"
        "K:\OrCAD\Design\BeeSafe\allegro\beeSafe_1V1.brd")
+    ("Allegro Netlist Output Board File"
+       "K:\OrCAD\Design\BeeSafe\allegro\beeSafe_1V2.brd")
     ("Allegro Netlist Remove Etch" "FALSE")
     ("Allegro Netlist Place Changed Component" "ALWAYS_REPLACE")
     ("Allegro Netlist Open Board in Allegro" "ORCAD")
@@ -98,20 +98,19 @@
       (Path "Design Resources")
       (Path "Design Resources" ".\beesafe.dsn")
       (Path "Design Resources" ".\beesafe.dsn" "SCHEMATIC1")
-      (Path "Outputs")
-      (Select "Design Resources" ".\beesafe.dsn" "SCHEMATIC1"))
+      (Path "Outputs"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 0 486 0 866"))
+        (Placement "44 0 1 -1 -1 -1 -1 0 250 0 866"))
       (Tab 0))
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 2 3 -1 -1 -8 -31 -291 1048 53 508")
-        (Scroll "-288 0")
-        (Zoom "64")
+        (Placement "44 0 1 -1 -1 -8 -31 -291 1048 53 508")
+        (Scroll "0 374")
+        (Zoom "128")
         (Occurrence "/"))
       (Path "K:\ORCAD\DESIGN\BEESAFE\BEESAFE.DSN")
       (Schematic "SCHEMATIC1")
@@ -119,9 +118,9 @@
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -8 -31 104 1531 104 478")
-        (Scroll "-57 256")
-        (Zoom "109")
+        (Placement "44 2 3 -1 -1 -8 -31 104 1531 104 478")
+        (Scroll "0 998")
+        (Zoom "240")
         (Occurrence "/"))
       (Path "K:\ORCAD\DESIGN\BEESAFE\BEESAFE.DSN")
       (Schematic "SCHEMATIC1")
