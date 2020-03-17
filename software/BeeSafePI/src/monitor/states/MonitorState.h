@@ -9,10 +9,11 @@
 class MonitorState
 {
 
-protected:
+public:
 
     // Constructors and destructors.
     MonitorState(Comms* comms, Account* account);
+    virtual ~MonitorState();
 
 public:
 

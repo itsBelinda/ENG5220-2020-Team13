@@ -10,6 +10,7 @@ public:
 
     // Constructors and destructors.
     ActiveMonitorState(Comms* comms, Account* account);
+    ~ActiveMonitorState() override;
 
 public:
 

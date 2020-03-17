@@ -12,3 +12,10 @@ MonitorState::MonitorState(Comms * const comms, Account * const account)
     this->comms = comms;
     this->account = account;
 }
+
+/**
+ * Destructor is used to release / free any resources occupied by the
+ * MonitorState base class instance. Note, no resources are used, thus
+ * the default destructor is utilised.
+ */
+MonitorState::~MonitorState() = default;

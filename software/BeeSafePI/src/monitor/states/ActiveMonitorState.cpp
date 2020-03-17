@@ -15,6 +15,12 @@ ActiveMonitorState::ActiveMonitorState(Comms * const comms, Account * const acco
 }
 
 /**
+ * Destructor is used to clean up any resources occupied by the ActiveMonitorState
+ * instance.
+ */
+ActiveMonitorState::~ActiveMonitorState() = default;
+
+/**
  * Responsible for invoking the appropriate functions that are responsible for
  * monitoring the location of the device.
  *

@@ -16,6 +16,12 @@ PassiveMonitorState::PassiveMonitorState(Comms * const comms, Account * const ac
 }
 
 /**
+ * Destructor is used to clean up any resources occupied by the PassiveMonitorState
+ * instance.
+ */
+PassiveMonitorState::~PassiveMonitorState() = default;
+
+/**
  * Responsible for invoking the appropriate functions that are responsible for
  * monitoring the location of the device.
  *

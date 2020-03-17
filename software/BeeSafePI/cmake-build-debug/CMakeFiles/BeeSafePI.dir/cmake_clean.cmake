@@ -10,7 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/BeeSafePI.dir/src/monitor/states/MonitorState.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/monitor/states/PassiveMonitorState.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/monitor/states/ActiveMonitorState.cpp.o"
-  "CMakeFiles/BeeSafePI.dir/src/comms/Communication.cpp.o"
+  "CMakeFiles/BeeSafePI.dir/src/comms/Comms.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/comms/Ublox.cpp.o"
   "CMakeFiles/BeeSafePI.dir/src/comms/Uart.cpp.o"
   "BeeSafePI.pdb"

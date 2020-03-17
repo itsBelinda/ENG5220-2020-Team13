@@ -150,32 +150,32 @@ src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/Main.cpp.s
 .PHONY : src/Main.cpp.s
 
-src/comms/Communication.o: src/comms/Communication.cpp.o
+src/comms/Comms.o: src/comms/Comms.cpp.o
 
-.PHONY : src/comms/Communication.o
+.PHONY : src/comms/Comms.o
 
 # target to build an object file
-src/comms/Communication.cpp.o:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Communication.cpp.o
-.PHONY : src/comms/Communication.cpp.o
+src/comms/Comms.cpp.o:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Comms.cpp.o
+.PHONY : src/comms/Comms.cpp.o
 
-src/comms/Communication.i: src/comms/Communication.cpp.i
+src/comms/Comms.i: src/comms/Comms.cpp.i
 
-.PHONY : src/comms/Communication.i
+.PHONY : src/comms/Comms.i
 
 # target to preprocess a source file
-src/comms/Communication.cpp.i:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Communication.cpp.i
-.PHONY : src/comms/Communication.cpp.i
+src/comms/Comms.cpp.i:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Comms.cpp.i
+.PHONY : src/comms/Comms.cpp.i
 
-src/comms/Communication.s: src/comms/Communication.cpp.s
+src/comms/Comms.s: src/comms/Comms.cpp.s
 
-.PHONY : src/comms/Communication.s
+.PHONY : src/comms/Comms.s
 
 # target to generate assembly for a file
-src/comms/Communication.cpp.s:
-	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Communication.cpp.s
-.PHONY : src/comms/Communication.cpp.s
+src/comms/Comms.cpp.s:
+	$(MAKE) -f CMakeFiles/BeeSafePI.dir/build.make CMakeFiles/BeeSafePI.dir/src/comms/Comms.cpp.s
+.PHONY : src/comms/Comms.cpp.s
 
 src/comms/Uart.o: src/comms/Uart.cpp.o
 
@@ -513,9 +513,9 @@ help:
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"
-	@echo "... src/comms/Communication.o"
-	@echo "... src/comms/Communication.i"
-	@echo "... src/comms/Communication.s"
+	@echo "... src/comms/Comms.o"
+	@echo "... src/comms/Comms.i"
+	@echo "... src/comms/Comms.s"
 	@echo "... src/comms/Uart.o"
 	@echo "... src/comms/Uart.i"
 	@echo "... src/comms/Uart.s"

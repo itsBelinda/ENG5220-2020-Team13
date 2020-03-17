@@ -11,6 +11,7 @@ public:
 
     // Constructors and destructors.
     PassiveMonitorState(Comms* comms, Account* account);
+    ~PassiveMonitorState() override;
 
 public:
 

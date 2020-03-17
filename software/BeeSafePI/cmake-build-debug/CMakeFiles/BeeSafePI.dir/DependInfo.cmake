@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/Main.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/Main.cpp.o"
-  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/comms/Communication.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/comms/Communication.cpp.o"
+  "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/comms/Comms.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/comms/Comms.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/comms/Uart.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/comms/Uart.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/comms/Ublox.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/comms/Ublox.cpp.o"
   "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/src/contact/Contact.cpp" "/Users/danielsvasiljevs/CLionProjects/BeeSafe/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir/src/contact/Contact.cpp.o"

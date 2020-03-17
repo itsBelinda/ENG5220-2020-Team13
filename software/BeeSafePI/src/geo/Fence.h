@@ -44,7 +44,7 @@ public:
     bool isPresent(const std::time_t& time);
 
     // Inherited interfaces.
-    virtual bool isInside(double latitude, double longitude) = 0;
+    virtual bool isInside(std::pair<double, double> &latLng) = 0;
     virtual web::json::value serialiseFence();
 
 private:
