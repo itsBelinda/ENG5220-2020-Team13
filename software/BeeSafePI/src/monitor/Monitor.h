@@ -1,7 +1,7 @@
 #ifndef BEESAFEPI_MONITOR_H
 #define BEESAFEPI_MONITOR_H
 
-#include "../comms/Communication.h"
+#include "../comms/Comms.h"
 #include "../device/Account.h"
 
 #include "states/MonitorState.h"
@@ -9,15 +9,16 @@
 #include "states/PassiveMonitorState.h"
 
 #include <thread>
+#include <utility>
 
 class Monitor
 {
 
 public:
 
-    // Constructors, copy constructors, and destructors.
-    Monitor(Communication* communication, Account* account);
-    explicit Monitor(Communication* communication);
+    // Constructors and destructors.
+    Monitor(Comms* comms, Account* account);
+    explicit Monitor(Comms* comms);
 
 public:
 
@@ -28,23 +29,24 @@ public:
 
 private:
 
-    // Monitor thread main loop.
+    // The monitor thread loop.
     void run();
 
 private:
 
-    // Attributes for communication and the account.
-    Communication* communication;
+    // Communications and account pointers.
+    Comms* comms;
     Account* account;
 
-    // Attributes for threading.
+    // The thread and its status.
     bool monitorThreadRunning;
     std::thread* monitorThread;
 
-    // The monitor thread state and the location of the child.
+    // The state of the monitor thread.
+
     MonitorState *monitorState;
 
-    // Static function executes the monitor run thread.
+    // Runs the monitor thread.
     static void execute(Monitor* const monitor)
     {
         monitor->run();

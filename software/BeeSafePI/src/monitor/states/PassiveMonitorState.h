@@ -8,7 +8,14 @@ class PassiveMonitorState : public MonitorState
 {
 
 public:
-    PassiveMonitorState(Communication* communication, Account* account);
+
+    // Constructors and destructors.
+    PassiveMonitorState(Comms* comms, Account* account);
+
+public:
+
+    // Override the interface responsible for handling the latitude and longitude.
+    MonitorState* handleLatLng(std::pair<double, double> &latLng) override;
 
 };
 

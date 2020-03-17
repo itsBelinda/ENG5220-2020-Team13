@@ -1,9 +1,15 @@
 #include "Monitor.h"
 
-// Explicit constructor is used to define the account and the communications link.
-Monitor::Monitor(Communication *communication, Account *account)
+/**
+ * Constrictor explicitly initialises the monitor thread with the
+ * necessary parameters.
+ *
+ * @param comms The communications interface used to obtain the location and send messages.
+ * @param account The device account that defines the fences and contacts.
+ */
+Monitor::Monitor(Comms * const comms, Account * const account)
 {
-    this->communication = communication;
+    this->comms = comms;
     this->account = account;
 
     this->monitorThreadRunning = false;
@@ -11,10 +17,17 @@ Monitor::Monitor(Communication *communication, Account *account)
     this->monitorState = nullptr;
 }
 
-// Constructor simply initialises the monitor thread class with the communications link.
-Monitor::Monitor(Communication *communication)
+/**
+ * Constructor initialises the monitor thread only with the communications
+ * interface. Note, starting will require the account to be passed to the
+ * thread.
+ *
+ * @param communication The communications interface used to obtain the location of the
+ *      device and send messages.
+ */
+Monitor::Monitor(Comms * const communication)
 {
-    this->communication = communication;
+    this->comms = communication;
 
     this->account = nullptr;
     this->monitorThreadRunning = false;
@@ -22,37 +35,54 @@ Monitor::Monitor(Communication *communication)
     this->monitorState = nullptr;
 }
 
-// Starts the thread with the existent account details.
+/**
+ * Attempts to start the thread with the current account. If the thread
+ * is already running, calling this function is the equivalent of restarting
+ * the thread.
+ *
+ * @return True if the thread was successfully started, false otherwise.
+ */
 bool Monitor::start()
 {
     return start(account);
 }
 
-// Starts the thread with a new account.
-bool Monitor::start(Account *account)
+/**
+ * Attempts to start the thread with an explicit account. If the thread
+ * is already running, calling this function is the equivalent of restarting
+ * the thread.
+ *
+ * @param account The new account instance that should be used. Note,
+ *      this will overwrite the existing account instance.
+ * @return True if the thread was successfully started, false otherwise.
+ */
+bool Monitor::start(Account * const account)
 {
 
     // Requisites must be present i.e. communications and account.
-    if (communication == nullptr || account == nullptr) {
+    if (comms == nullptr || account == nullptr) {
         return false;
     }
 
-    // Check if the thread is currently running, stop if so.
+    // If the monitor thread is running, stop it.
     if (monitorThreadRunning && monitorThread != nullptr) {
         stop();
     }
 
-    // Update the account pointer if necessary.
+    // Potentially update the account.
     if (this->account != account) {
         this->account = account;
     }
 
-    // Finally, start the thread and return.
     monitorThread = new std::thread(Monitor::execute, this);
     return true;
 }
 
-// Stops the monitor thread.
+/**
+ * Blocks the invoking thread until the monitor thread has finished
+ * executing. Moreover, this will take care of cleaning up any resources
+ * occupied by the thread.
+ */
 void Monitor::stop()
 {
     // Stop the thread.
@@ -62,21 +92,34 @@ void Monitor::stop()
     // Handle thread cleanup.
     delete monitorThread;
     monitorThread = nullptr;
+
+    // Clean up the monitor state.
+    delete monitorState;
+    monitorState = nullptr;
 }
 
 // The main loop that is being executed.
 void Monitor::run()
 {
 
-    // TODO: Initialise the required resources.
-
-    // Update the monitorThreadRunning flag.
+    // Initialise the thread state.
+    monitorState = new PassiveMonitorState(comms, account);
     monitorThreadRunning = true;
 
-    // The main game loop.
+    // The main monitoring thread.
+    MonitorState *toMonitorState = nullptr;
     while (monitorThreadRunning) {
 
-        // TODO: Detection code resides in here.
+        // TODO: Get the location and store it within the ring buffer here!
+        std::pair<double, double> latLng = std::make_pair(0, 1);
 
+        // Permit the monitor state to handle the location; update state if necessary.
+        toMonitorState = monitorState->handleLatLng(latLng);
+        if (toMonitorState != nullptr) {
+            delete monitorState;
+            monitorState = toMonitorState;
+        }
+
+        // TODO: Potentially sleep the thread - get the location every second?
     }
 }
