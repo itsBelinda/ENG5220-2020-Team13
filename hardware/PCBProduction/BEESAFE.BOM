@@ -1,0 +1,34 @@
+SARA-G350 Raspberry PI Hat  Revised: Wednesday, March 18, 2020
+00001          Revision: 1.3
+
+
+
+
+
+
+
+Bill Of Materials          March 18,2020      16:09:45	Page1
+
+Item	Quantity	Reference	Part	Manufacturer	Part Nbr.
+______________________________________________
+
+1	2	C1,C2	10u	Murata	GRM188R61E106MA73D
+2	4	C4,C10,C12,C13	100n	Murata	GCM21BR71H104KA37K
+3	2	C5,R13	NC		
+4	4	C6,C7,C8,C9	47p	Murata	GRM1885C1H470JA01J
+5	1	C14	10n	Murata	GRM1885C1H103JA01D
+6	1	C15	15p	Murata	GRM1885C1H150JA01D
+7	1	C16	56p	Murata	GRM0335C1E560JA01D
+8	1	C17	300u	Kemet	T520D337M006ATE045
+9	4	D2,D3,D4,D5	ESD	Littelfuse Inc.	PESD0402-140
+10	1	J2	SMA_ANT	TE Connectivity AMP Connectors	5-1814832-1
+11	1	J3	SIM_CON	JAE Electronics	SF53S006VCBR2000
+12	1	R1	9.1k	Yageo	RC0805FR-079K1L
+13	18	R3,R4,R5,R6,R7,R8,R9,R10,	0	Yageo	RC0402JR-070RL
+		R11,R14,R15,R16,R17,R18,
+		R19,R20,R21,R22
+14	1	R12	100k	Yageo	RC0805FR-07100KL
+15	1	U1	LT1764AEQ	Linear Technology/Analog Devices	LT1764AEQ#PBF
+16	1	U2	SARA-G3	U-Blox	SARA-G350-02X-01
+17	1	U3	SN74AVC4T774PW	Texas Instruments	SN74AVC4T774PWR
+18	1	U4	Raspberry Pi B+	Raspberry Pi	Raspberry Pi 3 Model B

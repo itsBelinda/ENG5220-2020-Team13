@@ -14,3 +14,7 @@
 2020-03-17T20:54:13 ===> "K:/ORCAD/DESIGN/BEESAFE/allegro/pstxnet.dat"
 2020-03-17T20:54:13 ===> "K:/ORCAD/DESIGN/BEESAFE/allegro/pstxprt.dat"
 2020-03-17T20:54:13 ===> "K:/ORCAD/DESIGN/BEESAFE/allegro/pstdmlmodels.dat"
+2020-03-18T16:06:59 ===> "K:/ORCAD/DESIGN/BEESAFE/allegro/pstchip.dat"
+2020-03-18T16:06:59 ===> "K:/ORCAD/DESIGN/BEESAFE/allegro/pstxnet.dat"
+2020-03-18T16:06:59 ===> "K:/ORCAD/DESIGN/BEESAFE/allegro/pstxprt.dat"
+2020-03-18T16:06:59 ===> "K:/ORCAD/DESIGN/BEESAFE/allegro/pstdmlmodels.dat"

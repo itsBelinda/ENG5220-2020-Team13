@@ -2,26 +2,55 @@
 |                                 ECO   REPORT                                 |
 |                                                                    Page   1  |
 |------------------------------------------------------------------------------|
-|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V1.brd                             |
-|                                                    Tue Mar 17 20:54:13 2020  |
+|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V2.brd                             |
+|                                                    Wed Mar 18 16:06:59 2020  |
 |------------------------------------------------------------------------------|
-| NET CHANGES                                                                  |
+| COMPONENT DEFINITION added to design                                         |
 |- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
-|   net  name |  type of change |    pin_id     |   x   |   y   |   to  net    |
+|    device type                                                               |
 |- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
-  GND          pins MOVED FROM this net (to net name listed on right)
-                                 R19.1           -1559.0 -610.00
-                                                                           V_PI
-                                 R20.1           -1559.0 -550.00
-                                                                           V_PI
-                                 R21.1           -1559.0 -430.00
-                                                                           V_PI
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  V_PI         pins MOVED FROM this net (to net name listed on right)
-                                 R22.1           -1559.0 -490.00
-                                                                            GND
+ SMALL CAP_GU-C0805_NC
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   2  |
 |------------------------------------------------------------------------------|
-|       Nets changed          :       4                                        |
+|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V2.brd                             |
+|                                                    Wed Mar 18 16:06:59 2020  |
+|------------------------------------------------------------------------------|
+| COMPONENTS DELETED from design                                               |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    ref des        |    device type      |   x   |   y                        |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ C11                 CAP NP_GU-C0805_?     -1080.0   80.00
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   3  |
+|------------------------------------------------------------------------------|
+|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V2.brd                             |
+|                                                    Wed Mar 18 16:06:59 2020  |
+|------------------------------------------------------------------------------|
+| COMPONENTS CHANGED from one device type to another in design                 |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    ref des        | new device type     |   x   |   y   |  old  device type  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ C5                  SMALL CAP_GU-C0805_NC -370.00  470.00 SMALL CAP_GU-C0805_INF
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   4  |
+|------------------------------------------------------------------------------|
+|  K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V2.brd                             |
+|                                                    Wed Mar 18 16:06:59 2020  |
+|------------------------------------------------------------------------------|
+| SLOT PROPERTIES added to design                                              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|   slot_id    |   x   |   y   |   property   |             value              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ C5.2           -370.00  470.00 PRIM_FILE      .\pstchip.dat
+|------------------------------------------------------------------------------|
+|       Comp definitions added:       1                                        |
+|       Components deleted    :       1                                        |
+|       Components changed    :       1                                        |
+|       Slot property added   :       1                                        |
 |                                                                              |
 |   Total ECO changes reported:       4                                        |
 |------------------------------------------------------------------------------|
