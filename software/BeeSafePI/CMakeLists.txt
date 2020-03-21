@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(cmaketester)
+project(BeeSafePI)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -36,6 +36,6 @@ endif()
 
 find_package(cpprestsdk REQUIRED)
 
-add_executable(cmaketester src/Main.cpp src/geo/Fence.h src/geo/RoundFence.cpp src/geo/PolyFence.cpp src/contact/Contact.cpp src/contact/Contact.h src/geo/Fence.cpp src/geo/RoundFence.h src/geo/PolyFence.h src/device/Account.cpp src/device/Account.h src/device/AccountBuilder.cpp src/device/AccountBuilder.h src/monitor/Monitor.cpp src/monitor/Monitor.h src/monitor/states/MonitorState.cpp src/monitor/states/MonitorState.h src/monitor/states/PassiveMonitorState.cpp src/monitor/states/PassiveMonitorState.h src/monitor/states/ActiveMonitorState.cpp src/monitor/states/ActiveMonitorState.h src/comms/Comms.h src/comms/Comms.cpp src/comms/Ublox.h src/comms/Ublox.cpp src/comms/Uart.h src/comms/Uart.cpp)
-target_link_libraries(cmaketester PRIVATE cpprestsdk::cpprest)
+add_executable(BeeSafePI src/Main.cpp src/geo/Fence.h src/geo/RoundFence.cpp src/geo/PolyFence.cpp src/contact/Contact.cpp src/contact/Contact.h src/geo/Fence.cpp src/geo/RoundFence.h src/geo/PolyFence.h src/device/Account.cpp src/device/Account.h src/device/AccountBuilder.cpp src/device/AccountBuilder.h src/monitor/Monitor.cpp src/monitor/Monitor.h src/monitor/states/MonitorState.cpp src/monitor/states/MonitorState.h src/monitor/states/PassiveMonitorState.cpp src/monitor/states/PassiveMonitorState.h src/monitor/states/ActiveMonitorState.cpp src/monitor/states/ActiveMonitorState.h src/comms/Comms.h src/comms/Comms.cpp src/comms/Ublox.h src/comms/Ublox.cpp src/comms/Uart.h src/comms/Uart.cpp)
+target_link_libraries(BeeSafePI PRIVATE cpprestsdk::cpprest)
 
