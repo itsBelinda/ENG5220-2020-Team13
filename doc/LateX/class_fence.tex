@@ -1,0 +1,126 @@
+\hypertarget{class_fence}{}\doxysection{Fence Class Reference}
+\label{class_fence}\index{Fence@{Fence}}
+
+
+{\ttfamily \#include $<$Fence.\+h$>$}
+
+
+
+Inheritance diagram for Fence\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{class_fence__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_fence_a2b3579e4f270cb5bc669166eca97940e}{Fence}} (bool safe)
+\item 
+\mbox{\hyperlink{class_fence_afb4b0e8800b59c044fac07adf3ace599}{Fence}} (bool safe, const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&week)
+\item 
+\mbox{\hyperlink{class_fence_a3fdfc7240f1e938dab4c9534c63aa427}{Fence}} (const \mbox{\hyperlink{class_fence}{Fence}} \&fence)
+\item 
+virtual \mbox{\hyperlink{class_fence_a6c5e019535f94462bfab1ad19b865c55}{$\sim$\+Fence}} ()=0
+\item 
+const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ $>$ \& \mbox{\hyperlink{class_fence_a533d7eaba8b2d6774ec2c9dce05145eb}{get\+Week}} ()
+\item 
+const std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ \& \mbox{\hyperlink{class_fence_a818ee0fcbac0c2f9262a48916a79d73c}{get\+Times}} (int day)
+\item 
+bool \mbox{\hyperlink{class_fence_a4f0626e3b3189b6ab1c505c92952bcb2}{is\+Safe}} ()
+\item 
+bool \mbox{\hyperlink{class_fence_ace8033216db0b35934a1dc93a0bc81b3}{is\+Present}} ()
+\item 
+bool \mbox{\hyperlink{class_fence_ac752bdfd222c7ffbaa465e441aac1a25}{is\+Present}} (const std\+::time\+\_\+t \&time)
+\item 
+virtual bool \mbox{\hyperlink{class_fence_af2e6963c7667fc158ceec86015be6821}{is\+Inside}} (std\+::pair$<$ double, double $>$ \&lat\+Lng)=0
+\item 
+virtual web\+::json\+::value \mbox{\hyperlink{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}{serialise\+Fence}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_fence_a2b3579e4f270cb5bc669166eca97940e}\label{class_fence_a2b3579e4f270cb5bc669166eca97940e}} 
+\index{Fence@{Fence}!Fence@{Fence}}
+\index{Fence@{Fence}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{Fence()}{Fence()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Fence\+::\+Fence (\begin{DoxyParamCaption}\item[{bool}]{safe }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{class_fence_afb4b0e8800b59c044fac07adf3ace599}\label{class_fence_afb4b0e8800b59c044fac07adf3ace599}} 
+\index{Fence@{Fence}!Fence@{Fence}}
+\index{Fence@{Fence}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{Fence()}{Fence()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Fence\+::\+Fence (\begin{DoxyParamCaption}\item[{bool}]{safe,  }\item[{const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&}]{week }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_fence_a3fdfc7240f1e938dab4c9534c63aa427}\label{class_fence_a3fdfc7240f1e938dab4c9534c63aa427}} 
+\index{Fence@{Fence}!Fence@{Fence}}
+\index{Fence@{Fence}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{Fence()}{Fence()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Fence\+::\+Fence (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_fence}{Fence}} \&}]{fence }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_fence_a6c5e019535f94462bfab1ad19b865c55}\label{class_fence_a6c5e019535f94462bfab1ad19b865c55}} 
+\index{Fence@{Fence}!````~Fence@{$\sim$Fence}}
+\index{````~Fence@{$\sim$Fence}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{$\sim$Fence()}{~Fence()}}
+{\footnotesize\ttfamily Fence\+::$\sim$\+Fence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fence_a818ee0fcbac0c2f9262a48916a79d73c}\label{class_fence_a818ee0fcbac0c2f9262a48916a79d73c}} 
+\index{Fence@{Fence}!getTimes@{getTimes}}
+\index{getTimes@{getTimes}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{getTimes()}{getTimes()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ \& Fence\+::get\+Times (\begin{DoxyParamCaption}\item[{int}]{day }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_fence_a533d7eaba8b2d6774ec2c9dce05145eb}\label{class_fence_a533d7eaba8b2d6774ec2c9dce05145eb}} 
+\index{Fence@{Fence}!getWeek@{getWeek}}
+\index{getWeek@{getWeek}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{getWeek()}{getWeek()}}
+{\footnotesize\ttfamily const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ $>$ \& Fence\+::get\+Week (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_fence_af2e6963c7667fc158ceec86015be6821}\label{class_fence_af2e6963c7667fc158ceec86015be6821}} 
+\index{Fence@{Fence}!isInside@{isInside}}
+\index{isInside@{isInside}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{isInside()}{isInside()}}
+{\footnotesize\ttfamily virtual bool Fence\+::is\+Inside (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_poly_fence_ac3aaa0456f7841a68c75167d7f1f086d}{Poly\+Fence}}, and \mbox{\hyperlink{class_round_fence_abcea6171be75f2b8ac362326a4d87707}{Round\+Fence}}.
+
+\mbox{\Hypertarget{class_fence_ace8033216db0b35934a1dc93a0bc81b3}\label{class_fence_ace8033216db0b35934a1dc93a0bc81b3}} 
+\index{Fence@{Fence}!isPresent@{isPresent}}
+\index{isPresent@{isPresent}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{isPresent()}{isPresent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Fence\+::is\+Present (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_fence_ac752bdfd222c7ffbaa465e441aac1a25}\label{class_fence_ac752bdfd222c7ffbaa465e441aac1a25}} 
+\index{Fence@{Fence}!isPresent@{isPresent}}
+\index{isPresent@{isPresent}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{isPresent()}{isPresent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Fence\+::is\+Present (\begin{DoxyParamCaption}\item[{const std\+::time\+\_\+t \&}]{time }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_fence_a4f0626e3b3189b6ab1c505c92952bcb2}\label{class_fence_a4f0626e3b3189b6ab1c505c92952bcb2}} 
+\index{Fence@{Fence}!isSafe@{isSafe}}
+\index{isSafe@{isSafe}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{isSafe()}{isSafe()}}
+{\footnotesize\ttfamily bool Fence\+::is\+Safe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}\label{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}} 
+\index{Fence@{Fence}!serialiseFence@{serialiseFence}}
+\index{serialiseFence@{serialiseFence}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{serialiseFence()}{serialiseFence()}}
+{\footnotesize\ttfamily web\+::json\+::value Fence\+::serialise\+Fence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_poly_fence_ae748da10e4fd15f87b74e0d996f00103}{Poly\+Fence}}, and \mbox{\hyperlink{class_round_fence_ae9dd3e4291f7509ce557a6c28cdd682d}{Round\+Fence}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+geo/\mbox{\hyperlink{_fence_8h}{Fence.\+h}}\item 
+geo/\mbox{\hyperlink{_fence_8cpp}{Fence.\+cpp}}\end{DoxyCompactItemize}

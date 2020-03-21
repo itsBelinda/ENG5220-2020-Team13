@@ -1,0 +1,67 @@
+\hypertarget{class_monitor_state}{}\doxysection{Monitor\+State Class Reference}
+\label{class_monitor_state}\index{MonitorState@{MonitorState}}
+
+
+{\ttfamily \#include $<$Monitor\+State.\+h$>$}
+
+
+
+Inheritance diagram for Monitor\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{class_monitor_state__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_monitor_state_a4bd799448369464d71e66aaab96549e1}{Monitor\+State}} (\mbox{\hyperlink{class_comms}{Comms}} $\ast$comms, \mbox{\hyperlink{class_account}{Account}} $\ast$account)
+\item 
+virtual \mbox{\hyperlink{class_monitor_state_a8dc9d7a46aa3d0190ec65b0d56167d3e}{$\sim$\+Monitor\+State}} ()
+\item 
+virtual \mbox{\hyperlink{class_monitor_state}{Monitor\+State}} $\ast$ \mbox{\hyperlink{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}{handle\+Lat\+Lng}} (std\+::pair$<$ double, double $>$ \&lat\+Lng)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_monitor_state_a4bd799448369464d71e66aaab96549e1}\label{class_monitor_state_a4bd799448369464d71e66aaab96549e1}} 
+\index{MonitorState@{MonitorState}!MonitorState@{MonitorState}}
+\index{MonitorState@{MonitorState}!MonitorState@{MonitorState}}
+\doxysubsubsection{\texorpdfstring{MonitorState()}{MonitorState()}}
+{\footnotesize\ttfamily Monitor\+State\+::\+Monitor\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_comms}{Comms}} $\ast$}]{comms,  }\item[{\mbox{\hyperlink{class_account}{Account}} $\ast$}]{account }\end{DoxyParamCaption})}
+
+Constructor explicitly initialises the \mbox{\hyperlink{class_monitor_state}{Monitor\+State}} base class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comms} & The communications interface used to obtain additional information or send messages. \\
+\hline
+{\em account} & The device account instance that is being monitored. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monitor_state_a8dc9d7a46aa3d0190ec65b0d56167d3e}\label{class_monitor_state_a8dc9d7a46aa3d0190ec65b0d56167d3e}} 
+\index{MonitorState@{MonitorState}!````~MonitorState@{$\sim$MonitorState}}
+\index{````~MonitorState@{$\sim$MonitorState}!MonitorState@{MonitorState}}
+\doxysubsubsection{\texorpdfstring{$\sim$MonitorState()}{~MonitorState()}}
+{\footnotesize\ttfamily Monitor\+State\+::$\sim$\+Monitor\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+Destructor is used to release / free any resources occupied by the \mbox{\hyperlink{class_monitor_state}{Monitor\+State}} base class instance. Note, no resources are used, thus the default destructor is utilised. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}\label{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}} 
+\index{MonitorState@{MonitorState}!handleLatLng@{handleLatLng}}
+\index{handleLatLng@{handleLatLng}!MonitorState@{MonitorState}}
+\doxysubsubsection{\texorpdfstring{handleLatLng()}{handleLatLng()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_monitor_state}{Monitor\+State}}$\ast$ Monitor\+State\+::handle\+Lat\+Lng (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_passive_monitor_state_a173a7c8a4d0b8ecea5928e0c90dec26b}{Passive\+Monitor\+State}}, and \mbox{\hyperlink{class_active_monitor_state_a0eb7622ad3aa4d372d90589838cb50a9}{Active\+Monitor\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+monitor/states/\mbox{\hyperlink{_monitor_state_8h}{Monitor\+State.\+h}}\item 
+monitor/states/\mbox{\hyperlink{_monitor_state_8cpp}{Monitor\+State.\+cpp}}\end{DoxyCompactItemize}
