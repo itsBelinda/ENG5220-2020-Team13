@@ -45,8 +45,11 @@ bool MonitorState::isInFence(std::pair<double, double> &latLng) {
 
     //for (std::vector<Fence *>::iterator fence = vectorFences.begin() ; fence != vectorFences.end(); ++fence)
     /// Iterate through all the fences in account and check if position is inside.
+
+    //TODO: probably needs to be rewritten #6
+    // check with team for definition
     for (auto &&fence : vectorFences) {
-        if (fence->isInside(latLng) != true) {
+        if (!fence->isInside(latLng)) {
             return false;
         }
 

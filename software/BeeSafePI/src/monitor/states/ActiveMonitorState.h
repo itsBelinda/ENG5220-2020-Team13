@@ -16,7 +16,11 @@ public:
 
     // Override the interface responsible for handling the latitude and longitude.
     MonitorState* handleLatLng(std::pair<double, double> &latLng) override;
-
+private:
+    bool notified;
+    void notifyExitedFence();
+    void notifyBackInFence();
+    void sendLocation();
 };
 
 

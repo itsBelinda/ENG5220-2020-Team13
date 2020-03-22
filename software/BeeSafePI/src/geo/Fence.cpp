@@ -53,6 +53,7 @@ bool Fence::isInTime() {
 }
 
 // Check if the time is present in the virtual fence.
+//TODO: make sure this returns true if no time is set
 bool Fence::isInTime(const std::time_t &time) {
 
     // Extract information from system time.
@@ -92,6 +93,7 @@ bool Fence::isInTime(const std::time_t &time) {
     // By default the user is within the fence.
     return true;
 }
+
 
 bool Fence::isInside(std::pair<double, double> &latLng) {
     return( this->isInTime() && this->isInLocation(latLng));

@@ -22,8 +22,12 @@ PassiveMonitorState::PassiveMonitorState(Comms *const comms, Account *const acco
 PassiveMonitorState::~PassiveMonitorState() = default;
 
 /**
- * Responsible for invoking the appropriate functions that are responsible for
- * monitoring the location of the device.
+ * Handles passive location monitoring.
+ *
+ * When in the passive monitoring state, the current location is checked against
+ * the fences that are sored in account. If the current location is not a valid
+ * one for one (//TODO or all?) the fences, the state is switched to the active
+ * monitoring state.
  *
  * @param latLng The pair of latitude and longitude coordinates that are to be
  *      examined.
@@ -32,6 +36,7 @@ PassiveMonitorState::~PassiveMonitorState() = default;
  */
 MonitorState *PassiveMonitorState::handleLatLng(std::pair<double, double> &latLng) {
 
+    /// Check all fences if they are valid (or should only one be valid?)
     if (!this->isInFence(latLng)) {
 
         // TODO: how to properly access comms / account? (currently: made
