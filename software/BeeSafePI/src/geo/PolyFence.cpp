@@ -79,7 +79,7 @@ void PolyFence::calculateFenceConstants()
 }
 
 // Calculates whether or not latitude and longitude inside the poly fence.
-bool PolyFence::isInside(std::pair<double, double> &latLng)
+bool PolyFence::isInLocation(std::pair<double, double> &latLng)
 {
 
     bool oddNodes = false;

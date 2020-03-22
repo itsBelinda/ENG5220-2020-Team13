@@ -49,7 +49,7 @@ double RoundFence::getRadius()
 }
 
 // Calculates whether or not latitude and longitude inside fence.
-bool RoundFence::isInside(std::pair<double, double> &latLng)
+bool RoundFence::isInLocation(std::pair<double, double> &latLng)
 {
     double distance = std::sqrt((latLng.first - this->longitude) * (latLng.first - this->latitude)
                                 + (latLng.second - this->longitude) * (latLng.second - this->longitude));

@@ -36,6 +36,8 @@ Monitor::Monitor(Comms * const comms)
 }
 
 /**
+ * Start the monitor thread.
+ *
  * Attempts to start the thread with the current account. If the thread
  * is already running, calling this function is the equivalent of restarting
  * the thread.
@@ -48,6 +50,8 @@ bool Monitor::start()
 }
 
 /**
+ * Start the monitor thread.
+ *
  * Attempts to start the thread with an explicit account. If the thread
  * is already running, calling this function is the equivalent of restarting
  * the thread.
@@ -79,6 +83,8 @@ bool Monitor::start(Account * const account)
 }
 
 /**
+ * Stop the monitoring thread.
+ *
  * Blocks the invoking thread until the monitor thread has finished
  * executing. Moreover, this will take care of cleaning up any resources
  * occupied by the thread.
@@ -98,7 +104,13 @@ void Monitor::stop()
     monitorState = nullptr;
 }
 
-// The main loop that is being executed.
+/**
+ * Run the monitoring thread loop.
+ *
+ * While the thread is running, it can either be in active or passive state.
+ * Each performs different tasks.
+ *
+ */
 void Monitor::run()
 {
 
@@ -115,7 +127,7 @@ void Monitor::run()
 
         // Permit the monitor state to handle the location; update state if necessary.
         toMonitorState = monitorState->handleLatLng(latLng);
-        if (toMonitorState != nullptr) {
+        if (toMonitorState != nullptr) { // if its null --> no change
             delete monitorState;
             monitorState = toMonitorState;
         }
