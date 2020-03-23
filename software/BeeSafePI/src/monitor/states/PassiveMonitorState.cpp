@@ -9,7 +9,8 @@
  * @param account The account against which the coordinates are compared.
  */
 PassiveMonitorState::PassiveMonitorState(Comms *const comms, Account *const account)
-        : MonitorState(comms, account) {
+        : MonitorState(comms, account)
+{
 
     // TODO: Passive monitor state code.
 
@@ -26,18 +27,17 @@ PassiveMonitorState::~PassiveMonitorState() = default;
  *
  * When in the passive monitoring state, the current location is checked against
  * the fences that are sored in account. If the current location is not a valid
- * one for one (//TODO or all?) the fences, the state is switched to the active
- * monitoring state.
+ * one for any of the fences, the state is switched to the active monitoring state.
  *
  * @param latLng The pair of latitude and longitude coordinates that are to be
  *      examined.
  * @return A pointer to the new state if this state is incapable of handling the
  *      locations, nullptr otherwise.
  */
-MonitorState *PassiveMonitorState::handleLatLng(std::pair<double, double> &latLng) {
-
+MonitorState *PassiveMonitorState::handleLatLng(std::pair<double, double> &latLng)
+{
     /// Check all fences if they are valid (or should only one be valid?)
-    if (!this->isInFence(latLng)) {
+    if (!isInFence(latLng)) {
 
         // TODO: how to properly access comms / account? (currently: made
         //  them protected)

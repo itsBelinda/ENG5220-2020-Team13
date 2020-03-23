@@ -7,7 +7,8 @@
  *      or send messages.
  * @param account The device account instance that is being monitored.
  */
-MonitorState::MonitorState(Comms *const comms, Account *const account) {
+MonitorState::MonitorState(Comms *const comms, Account *const account)
+{
     this->comms = comms;
     this->account = account;
 }
@@ -35,8 +36,9 @@ MonitorState::~MonitorState() = default;
  *  True if the coordinates are within the specified fences, false if
  *  not or if there are no fences specified.
  */
-bool MonitorState::isInFence(std::pair<double, double> &latLng) {
-    std::vector<Fence *> vectorFences = this->account->getFences();
+bool MonitorState::isInFence(std::pair<double, double> &latLng)
+{
+    std::vector<Fence *> vectorFences = account->getFences();
 
     /// If there are no fences defined, the device cannot be inside, return false
     if (vectorFences.size() == 0) {
@@ -44,17 +46,13 @@ bool MonitorState::isInFence(std::pair<double, double> &latLng) {
     }
 
     //for (std::vector<Fence *>::iterator fence = vectorFences.begin() ; fence != vectorFences.end(); ++fence)
-    /// Iterate through all the fences in account and check if position is inside.
-
-    //TODO: probably needs to be rewritten #6
-    // check with team for definition
+    /// Iterate through all the fences in account and check if position is inside one of them.
     for (auto &&fence : vectorFences) {
-        if (!fence->isInside(latLng)) {
-            return false;
+        if (fence->isInside(latLng)) {
+            return true;
         }
-
     }
 
-    /// If the code ran until the end, all fences are fine.
-    return true;
+    /// If the code ran until the end, no valid fence was found. Device is outside of all fences.
+    return false;
 }
