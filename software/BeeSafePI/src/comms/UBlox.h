@@ -5,7 +5,6 @@
 #include "Uart.h"
 
 #include <string>
-#include <vector>
 
 class UBlox
 {
@@ -27,6 +26,11 @@ public:
     int getModelNumber(std::string &modelNumber);
     int getIMEI(std::string &imei);
     int getLocation(double &lat, double &lng);
+
+private:
+
+    // Configure the UBlox device.
+    int conf();
 
 private:
 

@@ -8,6 +8,8 @@
 
 class Comms
 {
+
+    /*
 public:
     //Constructors and destructor
 
@@ -21,10 +23,9 @@ public:
     int sendLocation();
 
 private:
-    Ublox *ublox;
     std::string params;
 
-
+*/
 
 };
 

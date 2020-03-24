@@ -20,6 +20,10 @@
 int main()
 {
 
+    std::string imei;
+    UBlox uBlox;
+    uBlox.getIMEI(imei);
+
     std::tm fromTime = {0};
     fromTime.tm_hour = 20;
     fromTime.tm_min = 30;

@@ -1,4 +1,5 @@
 #include "Comms.h"
+/*
 //--------Constructors and destructor--------
 
 //Empty constructor
@@ -67,3 +68,4 @@ bool Comms::isAlive(){
     return true;
 }
 
+*/

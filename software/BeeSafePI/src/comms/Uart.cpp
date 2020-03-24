@@ -189,7 +189,7 @@ ssize_t Uart::writeBuffer(std::string &cmd)
  * @return The number of chars (bytes) that have been successfully
  *      written to the device, -1 otherwise i.e. error.
  */
-ssize_t Uart::writeBuffer(char * const cmdBuffer)
+ssize_t Uart::writeBuffer(const char * const cmdBuffer)
 {
 
     // If the device is present, write a command.
