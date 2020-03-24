@@ -20,14 +20,15 @@
 #define JSON_KEY_FENCE_FENCE "Fence"
 
 // A virtual fence definition.
-class Fence
-{
+class Fence {
 
 public:
 
     // Constructors.
     explicit Fence(bool safe);
-    Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week);
+
+    Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week);
+
     Fence(const Fence &fence);
 
     // Destructors.
@@ -36,19 +37,25 @@ public:
 public:
 
     // Getters and setters.
-    const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& getWeek();
-    const std::vector<std::pair<std::tm, std::tm>>& getTimes(int day);
+    const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &getWeek();
+
+    const std::vector<std::pair<std::tm, std::tm>> &getTimes(int day);
 
     bool isSafe();
-    bool isPresent();
-    bool isPresent(const std::time_t& time);
+
+    bool isInTime();
+
+    bool isInTime(const std::time_t &time);
 
     // Inherited interfaces.
-    virtual bool isInside(std::pair<double, double> &latLng) = 0;
+    virtual bool isInLocation(std::pair<double, double> &latLng) = 0;
+
     virtual web::json::value serialiseFence();
 
-private:
+    /// isInside attributes to both location and time to be valid for the fence.
+    bool isInside(std::pair<double, double> &latLng);
 
+private:
     // Attributes.
     bool safe;
     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;

@@ -1,0 +1,5 @@
+<map id="MonitorState" name="MonitorState">
+<area shape="rect" id="node1" title=" " alt="" coords="103,5,199,32"/>
+<area shape="rect" id="node2" href="$class_active_monitor_state.html" title=" " alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node3" href="$class_passive_monitor_state.html" title=" " alt="" coords="160,80,301,107"/>
+</map>

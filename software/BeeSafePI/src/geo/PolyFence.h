@@ -33,7 +33,7 @@ public:
     void calculateFenceConstants();
 
     // Inherited interfaces.
-    bool isInside(std::pair<double, double> &latLng) override;
+    bool isInLocation(std::pair<double, double> &latLng) override;
     web::json::value serialiseFence() override;
 
 private:
