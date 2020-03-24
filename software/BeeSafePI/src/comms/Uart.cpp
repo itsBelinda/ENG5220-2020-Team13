@@ -174,7 +174,7 @@ ssize_t Uart::writeBuffer(std::string &cmd)
 
     // Convert the string into a char buffer.
     char cmdBuffer[cmd.size() + 1];
-    std::strcpy(cmdBuffer, cmd.c_str());
+    strcpy(cmdBuffer, cmd.c_str());
 
     // Attempt to write the converted command to the device.
     return writeBuffer(cmdBuffer);

@@ -50,7 +50,6 @@ std::string Ublox::sendLocation(std::string& params){
 
 std::string Ublox::getIMEI(std::string& params){
     //do all the calls necessary to fetch the IMEI
-
     return response;
 }
 
