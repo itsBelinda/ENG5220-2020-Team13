@@ -35,5 +35,5 @@ MonitorState* PassiveMonitorState::handleLatLng(std::pair<double, double> &latLn
 
     // TODO: Handle the checking of the latitude and longitude.
 
-    return nullptr;
+    return new ;
 }
