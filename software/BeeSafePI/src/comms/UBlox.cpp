@@ -38,15 +38,22 @@ bool UBlox::isOpen()
 
 int UBlox::getModelNumber(std::string &modelNumber)
 {
+
+    printf("Writing command\n");
+
     // Write the at command via uart.
     ssize_t rc = uart.writeBuffer(AT_COMMAND_GET_MODEL_NUMBER);
     if (rc == -1) {
         return -1;
     }
 
+    printf("Command written\n");
+
     // Read the echo, imei and status back from the device.
     char modelNumberBuffer[5];
     rc = uart.readBuffer(modelNumberBuffer, 5, 2000);
+
+    printf("Command successfully echoed");
 
     printf("Echo: %s", modelNumberBuffer);
 
