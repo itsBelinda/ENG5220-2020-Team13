@@ -2,31 +2,39 @@
 #ifndef BEESAFEPI_UBLOX_H
 #define BEESAFEPI_UBLOX_H
 
-#include <string>
-#include <vector>
 #include "Uart.h"
 
+#include <string>
+#include <vector>
 
-class Ublox{
+class UBlox
+{
+
 public:
-    //Constructors and destructor
-    Ublox();
-    ~Ublox();
+
+    // Constructors and destructors.
+    UBlox();
+    ~UBlox();
 
 public:
-    std::string config(std::string& params);
 
-    std::string sendText(std::string &params);
-    std::string getLocation(std::string &params);
-    std::string sendLocation(std::string &params);
-    std::string getIMEI(std::string &params);
+    // Getters and setters.
+    Uart &getUart();
+    int getDevice();
+    bool isOpen();
+
+    // Methods for querying the U-Blox chip.
+    int getModelNumber(std::string &modelNumber);
+    int getIMEI(std::string &imei);
+    int getLocation(double &lat, double &lng);
 
 private:
-    Uart *uart;
-    std::string response;
 
-    int checkConnection();
+    // Attributes.
+    Uart uart;
+
 };
+
 #endif //BEESAFEPI_UBLOX_H
 
 

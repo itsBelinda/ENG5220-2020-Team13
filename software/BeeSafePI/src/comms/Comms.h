@@ -2,7 +2,7 @@
 #define BEESAFEPI_COMMUNICATION_H
 
 #include <string>
-#include "Ublox.h"
+#include "UBlox.h"
 #include <vector>
 
 

@@ -1,63 +1,42 @@
 #include <chrono>
-#include "Ublox.h"
+#include "UBlox.h"
 
-//--------Constructors and destructor--------
+UBlox::UBlox()
+{
 
-//Constructor for
-//Ublox::Ublox() {}
-
-//Empty constructor
-Ublox::Ublox() {
 }
 
-//Destructor
-Ublox::~Ublox() {}
+UBlox::~UBlox()
+{
 
-//--------Getters--------
-
-
-//--------Setters--------
-
-
-//--------Other methods--------
-
-std::string Ublox::config(std::string& parameters){
-
-
-    return response;
 }
 
-std::string Ublox::sendText(std::string& params){
-    //do all the calls necessary to set up the text functionality
-
-    return response;
+Uart& UBlox::getUart()
+{
+    return uart;
 }
 
-std::string Ublox::getLocation(std::string& params){
-    //do all the calls necessary to set up the fetch locations functionality
-    //deal with the time comparison first
-    auto currentTime = std::chrono::system_clock::now();
-
-
-    return response;
+int UBlox::getDevice()
+{
+    return uart.getDevice();
 }
 
-std::string Ublox::sendLocation(std::string& params){
-    //do all the calls necessary to set up the send location to server functionality
-
-    return response;
+bool UBlox::isOpen()
+{
+    return uart.isOpen();
 }
 
-std::string Ublox::getIMEI(std::string& params){
-    //do all the calls necessary to fetch the IMEI
-    return response;
+int UBlox::getModelNumber(std::string &modelNumber)
+{
+    return -1;
 }
 
-int Ublox::checkConnection(){
-    uart->writeBuffer((std::string &) "OK");
-    //std::string response = uart->getReadBuffer();
-    if(response == "any errors really"){
-        return 1;
-    }
-    return 0;
+int UBlox::getIMEI(std::string &imei)
+{
+    return -1;
+}
+
+int UBlox::getLocation(double &lat, double &lng)
+{
+    return -1;
 }
