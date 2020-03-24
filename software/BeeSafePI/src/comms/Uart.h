@@ -11,34 +11,29 @@
 #include <vector>
 #include <termios.h>
 
+#define BAUD_RATE 115200
+#define DEVICE "/dev/ttyS0"
+
 class Uart{
-    //-----------emums------------
+    //-----------enums------------
     enum class PortState { CLOSED, OPEN };
-    enum class BaudRate { BR9600, BR115200 };
-    enum class Device { TTYS0, TTYAMA0 };
 
 public:
     //Constructors and destructor
-    Uart(const std::string &devName, BaudRate baud);
     Uart();
     ~Uart();
 
+    std::string getReadBuffer();
+
 public:
     //-----getters and setters------
-    void setDevice(const std::string &devName);
-    void setBaudRate(BaudRate baud);
 
     //--------other methods-----------
-    void openPort();
-    void closePort();
-
     void read(std::string& readInData);
     void write(std::string& writeOutData);
 
 private:
     //--------variables--------
-    std::string deviceName;
-    BaudRate baudRate;
     int device;
     PortState portState;
 
@@ -51,5 +46,6 @@ private:
 
 };
 #endif //BEESAFEPI_UART_H
+
 
 

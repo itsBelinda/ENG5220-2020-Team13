@@ -3,59 +3,34 @@
 
 //--------Constructors and destructor--------
 
-Uart::Uart(const std::string &devName, BaudRate baud){
-    deviceName = devName;
-    baudRate = baud;
+Uart::Uart(){
     readDataSize = max_bufferSize;
     readData.reserve(readDataSize);
 }
 
-//Empty constructor
-Uart::Uart() {}
-
 //Destructor
 Uart::~Uart(){
-    try { closePort(); }
+    try {
+        if(device != -1){
+            close(device);
+            device = -1;
+        }
+    }
     catch(...){ }
 }
 
 //-----getters and setters------
-void Uart::setDevice(const std::string &devName){
-    deviceName = devName;
-    if(portState == PortState::OPEN){
-        conf();
-    }
-}
-
-void Uart::setBaudRate(BaudRate baud){
-    baudRate = baud;
-    if(portState == PortState::OPEN){
-        conf();
-    }
-}
 
 //--------other methods-----------
-void Uart::openPort(){
-    device = open(deviceName.c_str(), O_RDWR | O_NOCTTY | O_NONBLOCK);
-    if (device == -1){
-        printf("Failed to open device\r\n");
-        printf("Error: %s\n",strerror(errno));
-    }
-    conf();
-    printf("Port open.");
-    portState = PortState::OPEN;
-}
-
-void Uart::closePort(){
-    if(device != -1){
-        close(device);
-        device = -1;
-    }
-    printf("Port closed.");
-    portState = PortState::CLOSED;
-}
 
 void Uart::read(std::string& readInData){
+    readInData.clear();
+    if(device == 0){
+        printf("Device not open\r\n");
+        printf("Error: %s\n",strerror(errno));
+    }
+    //add to readData
+    //ssize_t n = read(device);
 
 }
 
@@ -64,6 +39,11 @@ void Uart::write(std::string& writeOutData){
 }
 
 void Uart::conf(){
+    device = open(DEVICE, O_RDWR | O_NOCTTY | O_NONBLOCK);
+    if (device == -1){
+        printf("Failed to open device\r\n");
+        printf("Error: %s\n",strerror(errno));
+    }
 
     struct termios configuration;
     tcgetattr(device, &configuration);
@@ -75,17 +55,7 @@ void Uart::conf(){
     configuration.c_iflag = 0;
     configuration.c_oflag = 0;
     configuration.c_lflag = 0;
-
-    switch(baudRate) {
-        case BaudRate::BR9600:
-            cfsetspeed(&configuration, B9600);
-            break;
-        case BaudRate::BR115200:
-            cfsetspeed(&configuration, B115200);
-            break;
-        default:
-            throw std::runtime_error(std::string() + "baudRate cannot be set, choose one of the options");
-    }
+    cfsetspeed(&configuration, B115200);
 
     cfmakeraw(&configuration);
 
@@ -98,5 +68,14 @@ void Uart::conf(){
         printf("Failed to configure device\r\n");
         printf("Error: %s\n",strerror(errno));
     }
+
+    printf("Port open.");
+    portState = PortState::OPEN;
 }
+
+std::string Uart::getReadBuffer() {
+    std::string result(readData.begin(), readData.end());
+    return result;
+}
+
 

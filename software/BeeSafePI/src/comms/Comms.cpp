@@ -1,29 +1,24 @@
 #include "Comms.h"
 //--------Constructors and destructor--------
-//Constructor with contact specified
-Comms::Comms(Contact * contact) {
-    this->contact = contact;
-    ublox = new Ublox();
-}
 
 //Empty constructor
-Comms::Comms() {}
+Comms::Comms() {
+
+}
 
 //Destructor
 Comms::~Comms() {}
 
 //--------Getters--------
-Contact* Comms::getContact(){
-    return contact;
-}
 
 //--------Setters--------
-void Comms::setContact(Contact &contact){}
 
 //--------Other methods--------
-std::pair<double, double> Comms::fetchLocation(){
+std::pair<double, double> Comms::getLocation(){
+    isAlive();
+
     std::pair<double, double> loc;
-    std::string response = ublox->sendCommand((std::string &)"get_location",params);
+    std::string response = ublox->getLocation(params);
     std::vector<std::string> responses;
 
     //assuming response is space-separated - to update
@@ -42,18 +37,33 @@ std::pair<double, double> Comms::fetchLocation(){
     return loc;
 }
 
-int Comms::sendText(std::string message){
-    std::string number = contact->getNumber();
+int Comms::sendText(std::string number, std::string message){
+    isAlive();
     params = params+number+message;
-    std::string success = ublox->sendCommand((std::string &)"send_text",params);
+
 
     //error checking: filter success for any error messages
 
     return 0;
- }
+}
 
-bool isAlive(){
+int Comms::sendLocation(){
+    isAlive();
+    getLocation();
+
+
+    return 0;
+}
+
+std::string Comms::getIMEI(){
+    isAlive();
+
+    return "";
+}
+
+bool Comms::isAlive(){
     //check if connection still intact
 
     return true;
 }
+

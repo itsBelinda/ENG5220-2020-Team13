@@ -4,32 +4,29 @@
 #include <string>
 #include "Ublox.h"
 #include <vector>
-#include "../contact/Contact.h"
 
 
 class Comms
 {
 public:
     //Constructors and destructor
-    Comms(Contact * contact);
-    
+
     Comms();
     ~Comms();
 
 public:
-    std::pair<double, double> fetchLocation();
-    int sendText(std::string message);
-    Contact* getContact();
-    void setContact(Contact &contact);
-    
+    std::pair<double, double> getLocation();
+    int sendText(std::string number, std::string message);    bool isAlive();
+    std::string getIMEI();
+    int sendLocation();
+
 private:
     Ublox *ublox;
-
-    Contact * contact;
     std::string params;
 
 };
 
 #endif //BEESAFEPI_COMMUNICATION_H
+
 
 
