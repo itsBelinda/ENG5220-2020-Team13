@@ -36,6 +36,6 @@ endif()
 
 find_package(cpprestsdk REQUIRED)
 
-add_executable(BeeSafePI src/Main.cpp src/geo/Fence.h src/geo/RoundFence.cpp src/geo/PolyFence.cpp src/contact/Contact.cpp src/contact/Contact.h src/geo/Fence.cpp src/geo/RoundFence.h src/geo/PolyFence.h src/device/Account.cpp src/device/Account.h src/device/AccountBuilder.cpp src/device/AccountBuilder.h src/monitor/Monitor.cpp src/monitor/Monitor.h src/monitor/states/MonitorState.cpp src/monitor/states/MonitorState.h src/monitor/states/PassiveMonitorState.cpp src/monitor/states/PassiveMonitorState.h src/monitor/states/ActiveMonitorState.cpp src/monitor/states/ActiveMonitorState.h src/comms/Comms.h src/comms/Comms.cpp src/comms/UBlox.h src/comms/UBlox.cpp src/comms/Uart.h src/comms/Uart.cpp)
+add_executable(BeeSafePI src/Main.cpp src/geo/Fence.h src/geo/RoundFence.cpp src/geo/PolyFence.cpp src/contact/Contact.cpp src/contact/Contact.h src/geo/Fence.cpp src/geo/RoundFence.h src/geo/PolyFence.h src/device/Account.cpp src/device/Account.h src/device/AccountBuilder.cpp src/device/AccountBuilder.h src/monitor/Monitor.cpp src/monitor/Monitor.h src/monitor/states/MonitorState.cpp src/monitor/states/MonitorState.h src/monitor/states/PassiveMonitorState.cpp src/monitor/states/PassiveMonitorState.h src/monitor/states/ActiveMonitorState.cpp src/monitor/states/ActiveMonitorState.h src/comms/Comms.h src/comms/Comms.cpp src/comms/Ublox.h src/comms/Ublox.cpp src/comms/Uart.h src/comms/Uart.cpp)
 target_link_libraries(BeeSafePI PRIVATE cpprestsdk::cpprest)
 
