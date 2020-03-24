@@ -115,11 +115,6 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
         return -1;
     }
 
-    // Check that the buffer is big enough.
-    if (sizeof(buffer) < bytesExpected) {
-        return -1;
-    }
-
     // The number of bytes peeked; the last number of bytes peeked.
     size_t bytesPeeked = 0;
     size_t lastBytesPeeked = 0;
@@ -155,6 +150,8 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     if (bytesPeeked >= bytesExpected) {
         bytesPeeked = bytesExpected;
     }
+
+    printf("Nearly made it to the end.");
 
     // Read whatever bytes are present from the buffer.
     return read(device, buffer, bytesPeeked);
