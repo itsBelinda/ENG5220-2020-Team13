@@ -1,7 +1,7 @@
 #include "UBlox.h"
 
 // Define the AT commands that are used on the U-Blox device.
-#define AT_COMMAND_GET_MODEL_NUMBER "ATI0"
+#define AT_COMMAND_GET_MODEL_NUMBER "ATI0\r"
 #define AT_COMMAND_GET_IMEI "AT+GSN1"
 #define AT_COMMAND_GET_LOCATION ""
 
@@ -51,7 +51,7 @@ int UBlox::getModelNumber(std::string &modelNumber)
 
     // Read the echo, imei and status back from the device.
     char modelNumberBuffer[5];
-    rc = uart.readBuffer(modelNumberBuffer, 5, 2000);
+    rc = uart.readBuffer(modelNumberBuffer, 7, 2000);
 
     printf("Command successfully echoed");
 
