@@ -193,7 +193,7 @@ ssize_t Uart::writeBuffer(const char * const cmdBuffer)
 {
 
     // If the device is present, write a command.
-    if (device != -1) {
+    if (device != -1 && tcflush(device, TCIFLUSH) == 0) {
         return write(device, cmdBuffer, strlen(cmdBuffer) + 1);
     }
 
