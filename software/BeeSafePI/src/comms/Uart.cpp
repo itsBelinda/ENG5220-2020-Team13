@@ -125,7 +125,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     pause.tv_nsec = timeoutMs * 1000;
 
     // Keep peeking at the buffer until a timeout.
-    while (true) {
+    for(;;) {
 
         printf("Bytes peeked: %d\n", (int) bytesPeeked);
 
