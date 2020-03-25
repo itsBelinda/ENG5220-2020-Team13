@@ -50,6 +50,28 @@ int UBlox::getModelNumber(std::string &modelNumber)
     printf("Command written %d\n", (int) rc);
 
     // Read the echo, imei and status back from the device.
+    char modelNumberBuffer[40] = {'\0'};
+    rc = uart.readNext(modelNumberBuffer, 40, 1000);
+    printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
+
+    return rc;
+}
+
+/*
+int UBlox::getModelNumber(std::string &modelNumber)
+{
+
+    printf("Writing command\n");
+
+    // Write the at command via uart.
+    ssize_t rc = uart.writeBuffer(AT_COMMAND_GET_MODEL_NUMBER);
+    if (rc == -1) {
+        return -1;
+    }
+
+    printf("Command written %d\n", (int) rc);
+
+    // Read the echo, imei and status back from the device.
     char modelNumberBuffer[31] = {'\0'};
 
 
@@ -69,6 +91,7 @@ int UBlox::getModelNumber(std::string &modelNumber)
 
     return rc;
 }
+*/
 
 int UBlox::getIMEI(std::string &imei)
 {
