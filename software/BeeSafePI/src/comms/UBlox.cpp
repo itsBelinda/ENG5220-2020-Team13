@@ -47,7 +47,7 @@ int UBlox::getModelNumber(std::string &modelNumber)
         return -1;
     }
 
-    printf("Command written\n");
+    printf("Command written %d\n", (int) rc);
 
     // Read the echo, imei and status back from the device.
     char modelNumberBuffer[7] = {'\0'};
