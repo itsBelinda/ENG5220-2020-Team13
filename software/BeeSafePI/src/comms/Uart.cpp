@@ -122,7 +122,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     // Timing related variables.
     struct timespec pause = {0};
     pause.tv_sec = 0;
-    pause.tv_nsec = timeoutMs * 1000;
+    pause.tv_nsec = timeoutMs * 1000000;
 
     // Keep peeking at the buffer until a timeout.
     for(;;) {
@@ -161,7 +161,21 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     return read(device, buffer, bytesPeeked);
 }
 
+ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
+                       const int timeoutMs)
+{
 
+    // Check that the device is present.
+    if (device == -1) {
+        return -1;
+    }
+
+    // the number of bytes that were read.
+    size_t bytesPeeked;
+    size_t lastBytesPeeked;
+
+    return -1;
+}
 
 /**
  * Write a string to the device via the UArt
