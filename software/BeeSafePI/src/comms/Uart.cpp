@@ -121,7 +121,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
 
     // Timing related variables.
     struct timespec pause = {0};
-    pause.tv_sec = 0;
+    pause.tv_sec = timeoutMs / 1000;
     pause.tv_nsec = timeoutMs * 1000;
 
     // Keep peeking at the buffer until a timeout.
