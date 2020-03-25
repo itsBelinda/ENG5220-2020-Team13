@@ -65,6 +65,7 @@ int UBlox::getModelNumber(std::string &modelNumber)
         else if (modelNumberBuffer[i] == '\r') printf("/r");
         else printf("%c", modelNumberBuffer[i]);
     }
+    printf("\n");
 
     return rc;
 }
