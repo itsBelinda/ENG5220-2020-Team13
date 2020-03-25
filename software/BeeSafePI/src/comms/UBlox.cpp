@@ -3,8 +3,8 @@
 
 #define  MAX_CMD_LENGTH 544
 // Define the AT commands that are used on the U-Blox device.
-#define AT_COMMAND_GET_MODEL_NUMBER "ATI0\r\n"
-#define AT_COMMAND_GET_IMEI "AT+GSN1\r\n"
+#define AT_COMMAND_GET_MODEL_NUMBER "ATI0\r"
+#define AT_COMMAND_GET_IMEI "AT+GSN1\r"
 #define AT_COMMAND_GET_LOCATION ""
 
 // Define the states.
