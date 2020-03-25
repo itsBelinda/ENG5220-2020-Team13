@@ -51,7 +51,7 @@ int UBlox::getModelNumber(std::string &modelNumber)
 
     // Read the echo, imei and status back from the device.
     char modelNumberBuffer[6] = {'\0'};
-    rc = uart.readBuffer(modelNumberBuffer, 6, 4000);
+    rc = uart.readBuffer(modelNumberBuffer, 6, 1000);
 
     printf("Command successfully echoed\n");
 

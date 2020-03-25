@@ -137,7 +137,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
         }
 
         // Sleep the thread until an interrupt.
-        int rc = nanosleep(&pause, nullptr);
+        int rc = nanosleep(&pause, NULL);
         printf("Rc: %d\n", rc);
 
         ioctl(device, FIONREAD, &bytesPeeked);
