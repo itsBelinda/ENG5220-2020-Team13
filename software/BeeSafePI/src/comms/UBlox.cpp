@@ -53,6 +53,11 @@ int UBlox::getModelNumber(std::string &modelNumber)
     char modelNumberBuffer[40] = {'\0'};
     rc = uart.readNext(modelNumberBuffer, 40, 1000);
     printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
+    rc = uart.readNext(modelNumberBuffer, 40, 1000);
+    printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
+    rc = uart.readNext(modelNumberBuffer, 40, 1000);
+    rc = uart.readNext(modelNumberBuffer, 40, 1000);
+    printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
 
     return rc;
 }
