@@ -1,11 +1,32 @@
 #ifndef BEESAFEPI_COMMUNICATION_H
 #define BEESAFEPI_COMMUNICATION_H
 
+#include "UBlox.h"
+
 #include <string>
 #include <vector>
 
-
 class Comms
+{
+
+public:
+
+    // Constructors and destructors.
+    Comms();
+    ~Comms();
+
+public:
+
+    // TODO: Define the behaviour for the comms interface.
+
+private:
+
+    // Comms attributes.
+    UBlox uBlox;
+
+};
+
+class CommsX
 {
 
     /*

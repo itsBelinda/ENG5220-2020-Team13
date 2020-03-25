@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <string>
 #include <vector>
+#include <time.h>
 #include <termios.h>
 
 // Defines various device properties.
