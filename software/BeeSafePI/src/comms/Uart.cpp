@@ -161,6 +161,8 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     return read(device, buffer, bytesPeeked);
 }
 
+
+
 /**
  * Write a string to the device via the UArt
  * serial interface. Note, the string is converted
