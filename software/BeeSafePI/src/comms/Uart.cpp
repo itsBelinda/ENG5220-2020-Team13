@@ -120,7 +120,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     size_t lastBytesPeeked = 0;
 
     // Timing related variables.
-    struct timespec pause;
+    struct timespec pause = {0};
     pause.tv_sec = 0;
     pause.tv_nsec = timeoutMs * 1000;
 
@@ -137,7 +137,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
         }
 
         // Sleep the thread until an interrupt.
-        nanosleep(&pause, NULL);
+        nanosleep(&pause, nullptr);
         ioctl(device, FIONREAD, &bytesPeeked);
 
         // Check if the read has timed out.
