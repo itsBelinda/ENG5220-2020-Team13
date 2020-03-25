@@ -121,8 +121,8 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
 
     // Timing related variables.
     struct timespec pause = {0};
-    pause.tv_sec = 0;
-    pause.tv_nsec = timeoutMs * 1000000;
+    pause.tv_sec = timeoutMs / 1000;
+    pause.tv_nsec = timeoutMs * 1000;
 
     // Keep peeking at the buffer until a timeout.
     for(;;) {
@@ -170,11 +170,58 @@ ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
         return -1;
     }
 
-    // the number of bytes that were read.
-    size_t bytesPeeked;
-    size_t lastBytesPeeked;
+    // The number of bytes that have been peeked and read.
+    size_t bytesPeeked = 0;
+    ssize_t bytesRead = 0;
 
-    return -1;
+    // The next and last read indexes.
+    size_t nextReadIndex = 0;
+    size_t lastReadIndex = 0;
+
+    // The last read character.
+    char lastReadChar;
+
+    // Timeout pause.
+    struct timespec timeoutPause = {0};
+    timeoutPause.tv_sec = timeoutMs / 1000;
+    timeoutPause.tv_nsec = timeoutMs * 1000;
+
+    // Keep reading the buffer until crlf.
+    for (;;) {
+
+        // If the buffer has been exceeded, return -1.
+        lastReadIndex = nextReadIndex;
+        if (lastReadIndex >= resultBufferLen) {
+            return -1;
+        }
+
+        // If there are no characters within the buffer, sleep.
+        ioctl(device, FIONREAD, &bytesPeeked);
+        if (bytesPeeked <= 0 && nanosleep(&timeoutPause, nullptr)) {
+            return -1;
+        }
+
+        // Read in a single character from the serial buffer.
+        bytesRead = read(device, &lastReadChar, 1);
+        if (bytesRead == -1) {
+            return -1;
+        } else if (bytesRead == 1) {
+
+            // Write the character to the buffer, check if '\n'.
+            resultBuffer[nextReadIndex++] = lastReadChar;
+            if (lastReadChar == '\n') {
+                break;
+            }
+        }
+
+        // If no new bytes have been read and we have timed out, return.
+        if (nextReadIndex == lastReadIndex) {
+            return -1;
+        }
+    }
+
+    // Return the number of characters that have been read.
+    return nextReadIndex;
 }
 
 /**
