@@ -1,7 +1,7 @@
 #include "UBlox.h"
 
 // Define the AT commands that are used on the U-Blox device.
-#define AT_COMMAND_GET_MODEL_NUMBER "ATI0\r\n"
+#define AT_COMMAND_GET_MODEL_NUMBER "ATI0"
 #define AT_COMMAND_GET_IMEI "AT+GSN1"
 #define AT_COMMAND_GET_LOCATION ""
 
