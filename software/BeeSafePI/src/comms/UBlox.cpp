@@ -32,7 +32,7 @@ int UBlox::conf()
     return -1;
 }
 
-Uart &UBlox::getUart()
+Uart& UBlox::getUart()
 {
     return uart;
 }
@@ -58,25 +58,15 @@ int UBlox::getModelNumber(std::string &modelNumber)
         return -1;
     }
 
-    printf("Command written %d\n", (int) rc);
+    printf("Command written\n");
 
     // Read the echo, imei and status back from the device.
-    char modelNumberBuffer[31] = {'\0'};
+    char modelNumberBuffer[7] = {'\0'};
+    rc = uart.readBuffer(modelNumberBuffer, 7, 4000);
 
-
-    rc = uart.readBuffer(modelNumberBuffer, 31, 1000);
-
-    printf("Command successfully echoed\n");
+    printf("Command successfully echoed");
 
     printf("Read, %d Echo: %s\n", (int) rc, modelNumberBuffer);
-
-    // Figure out the format.
-    for (int i = 0; i < 31; ++i) {
-        if (modelNumberBuffer[i] == '\n') printf("/n");
-        else if (modelNumberBuffer[i] == '\r') printf("/r");
-        else printf("%c", modelNumberBuffer[i]);
-    }
-    printf("\n");
 
     return rc;
 }

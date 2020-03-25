@@ -161,8 +161,6 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     return read(device, buffer, bytesPeeked);
 }
 
-
-
 /**
  * Write a string to the device via the UArt
  * serial interface. Note, the string is converted
@@ -197,7 +195,6 @@ ssize_t Uart::writeBuffer(const char * const cmdBuffer)
 
     // If the device is present, write a command.
     if (device != -1 && tcflush(device, TCIFLUSH) == 0) {
-        printf("Writing: %s, len: %d", cmdBuffer, (int) strlen(cmdBuffer));
         return write(device, cmdBuffer, strlen(cmdBuffer) + 1);
     }
 
