@@ -127,6 +127,8 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     // Keep peeking at the buffer until a timeout.
     while (true) {
 
+        printf("Bytes peeked: %d\n", (int) bytesPeeked);
+
         // Update the last number of bytes peeked; break if block is met.
         lastBytesPeeked = bytesPeeked;
         if (bytesPeeked >= bytesExpected) {
