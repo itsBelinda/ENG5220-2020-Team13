@@ -161,6 +161,19 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     return read(device, buffer, bytesPeeked);
 }
 
+
+/**
+ * A non blocking means for reading data from the serial buffer up
+ * until the first '\n' character is read.
+ *
+ * @param resultBuffer The buffer into which the result will be read. Note,
+ *      results read into the buffer are invalid if the method returns -1.
+ * @param resultBufferLen The length of the buffer into which the results are
+ *      read.
+ * @param timeoutMs The intra-character timeout. Avoided if character present,
+ *      blocks the thread for the timeout ms if not.
+ * @return The number of characters read (including '\n'), -1 otherwise.
+ */
 ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
                        const int timeoutMs)
 {
@@ -212,6 +225,9 @@ ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
             if (lastReadChar == '\n') {
                 break;
             }
+
+            // Skip to the next character.
+            continue;
         }
 
         // If no new bytes have been read and we have timed out, return.

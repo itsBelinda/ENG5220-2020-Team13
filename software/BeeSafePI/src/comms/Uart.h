@@ -34,7 +34,6 @@ public:
 
     // For reading and writing from and to the device.
     ssize_t readBuffer(char *buffer, size_t bytesExpected, int timeoutMs);
-
     ssize_t readNext(char * resultBuffer, size_t resultBufferLen, int timeoutMs);
 
     ssize_t writeBuffer(std::string &cmd);
