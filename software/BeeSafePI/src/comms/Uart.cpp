@@ -125,20 +125,26 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     pause.tv_nsec = timeoutMs * 1000;
 
     // Keep peeking at the buffer until a timeout.
-    while (true) {
+    for(;;) {
+
+        printf("Bytes peeked: %d\n", (int) bytesPeeked);
 
         // Update the last number of bytes peeked; break if block is met.
         lastBytesPeeked = bytesPeeked;
         if (bytesPeeked >= bytesExpected) {
+            printf("Bytes have met.\n");
             break;
         }
 
         // Sleep the thread until an interrupt.
-        nanosleep(&pause, nullptr);
+        int rc = nanosleep(&pause, NULL);
+        printf("Rc: %d\n", rc);
+
         ioctl(device, FIONREAD, &bytesPeeked);
 
         // Check if the read has timed out.
         if (bytesPeeked == lastBytesPeeked) {
+            printf("Timeout has occurred\n");
             break;
         }
     }
@@ -151,11 +157,11 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
         bytesPeeked = bytesExpected;
     }
 
-    printf("Nearly made it to the end.");
-
     // Read whatever bytes are present from the buffer.
     return read(device, buffer, bytesPeeked);
 }
+
+
 
 /**
  * Write a string to the device via the UArt
@@ -191,6 +197,7 @@ ssize_t Uart::writeBuffer(const char * const cmdBuffer)
 
     // If the device is present, write a command.
     if (device != -1 && tcflush(device, TCIFLUSH) == 0) {
+        printf("Writing: %s, len: %d", cmdBuffer, (int) strlen(cmdBuffer));
         return write(device, cmdBuffer, strlen(cmdBuffer) + 1);
     }
 
