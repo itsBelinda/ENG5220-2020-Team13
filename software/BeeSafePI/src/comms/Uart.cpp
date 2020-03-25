@@ -130,6 +130,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
         // Update the last number of bytes peeked; break if block is met.
         lastBytesPeeked = bytesPeeked;
         if (bytesPeeked >= bytesExpected) {
+            printf("Bytes have met.\n");
             break;
         }
 
@@ -139,6 +140,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
 
         // Check if the read has timed out.
         if (bytesPeeked == lastBytesPeeked) {
+            printf("Timeout has occurred\n");
             break;
         }
     }
@@ -150,8 +152,6 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     if (bytesPeeked >= bytesExpected) {
         bytesPeeked = bytesExpected;
     }
-
-    printf("Nearly made it to the end.");
 
     // Read whatever bytes are present from the buffer.
     return read(device, buffer, bytesPeeked);
