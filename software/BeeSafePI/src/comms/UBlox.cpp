@@ -4,7 +4,7 @@
 #define  MAX_CMD_LENGTH 544
 // Define the AT commands that are used on the U-Blox device.
 #define AT_COMMAND_GET_MODEL_NUMBER "ATI0\r"
-#define AT_COMMAND_GET_IMEI "AT+GSN1\r"
+#define AT_COMMAND_GET_IMEI "ATI5\r"
 #define AT_COMMAND_GET_LOCATION ""
 
 // Define the states.
@@ -13,11 +13,11 @@
 #define AT_STATUS_ABORTED "ABORTED"
 
 // Define expected response sizes
-#define SZ_RESPONSE_IMEI 17 //TODO: check
+#define SZ_RESPONSE_IMEI 30 //TODO: check
 #define SZ_RESPONSE_STATUS 4 //TODO: check
 
 // Define timeouts
-#define RX_TIMEOUT 4000 // timeout in ms
+#define RX_TIMEOUT 1000 // timeout in ms
 
 
 UBlox::UBlox()
@@ -112,7 +112,7 @@ int UBlox::getModelNumber(std::string &modelNumber)
 int UBlox::getIMEI(std::string &imei)
 {
     bool result = false;
-    char replyBuffer[MAX_CMD_LENGTH];
+    char replyBuffer[MAX_CMD_LENGTH] = {'\0'};
     printf("Writing command IMEI\n");
 
     // Write the at command via uart.
@@ -128,7 +128,7 @@ int UBlox::getIMEI(std::string &imei)
         return -1; // TODO: error codes? or handle here?
     }
 
-    printf("Response received\n");
+    printf("Response received: %s\n",replyBuffer);
 
     result = checkStatus();
     if (result != true) {
@@ -150,7 +150,7 @@ int UBlox::getLocation(double &lat, double &lng)
 bool UBlox::sendCmd(const char *const cmdBuffer)
 {
     int expSize = sizeof(cmdBuffer);
-    char echoBuffer[sizeof(cmdBuffer)] = {'\0'};
+    char echoBuffer[40] = {'\0'};
 
     // Write the at command via uart.
     ssize_t nTx = uart.writeBuffer(cmdBuffer);
@@ -160,29 +160,29 @@ bool UBlox::sendCmd(const char *const cmdBuffer)
 
     printf("Command written\n");
     ssize_t nRx = uart.readNext(echoBuffer, 40, RX_TIMEOUT);
-
-    if (nRx != nTx || strcmp(cmdBuffer, echoBuffer)) {
-        printf("unexpected echo cmd: sent %s, received: %s\n", AT_COMMAND_GET_IMEI, echoBuffer);
-        return false;
-    } else {
-        printf("Command was successfully echoed %s\n", echoBuffer);
-    }
+    printf("echo read: %s\n", echoBuffer);
+//    if (nRx != nTx || strcmp(cmdBuffer, echoBuffer)) {
+//        printf("unexpected echo cmd: sent %s, received: %s\n", AT_COMMAND_GET_IMEI, echoBuffer);
+//        return false;
+//    } else {
+//        printf("Command was successfully echoed %s\n", echoBuffer);
+//    }
 
     return true;
 }
 
-// todo: possilby get rid of siez
+// todo: possilby get rid of size
 bool UBlox::getReply(char *const replyBuffer, int expSize) // TODO: what happens if buffer size too small? fixed
 // size?
 // static?
 {
     ssize_t nRx = uart.readNext(replyBuffer, 40, RX_TIMEOUT);
-    if (nRx != expSize) {//TODO:
-        printf("unexpected answer received: %s\n", replyBuffer);
-        return false;
-    } else {
-        printf("Answer successfully received\n");
-    }
+//    if (nRx != expSize) {//TODO:
+//        printf("unexpected answer received: %s\n", replyBuffer);
+//        return false;
+//    } else {
+//        printf("Answer successfully received\n");
+//    }
 
     return true;
 }
@@ -191,11 +191,11 @@ bool UBlox::checkStatus()
 {
     char statusBuffer[SZ_RESPONSE_STATUS] = {'\0'};
     ssize_t nRx = uart.readNext(statusBuffer, 40, RX_TIMEOUT);
-
-    if (nRx != SZ_RESPONSE_STATUS) {
-        printf("unexpected answer received: %s\n", statusBuffer);
-        return false;
-    } else {
+    nRx = uart.readNext(statusBuffer, 40, RX_TIMEOUT);
+//    if (nRx != SZ_RESPONSE_STATUS) {
+//        printf("unexpected answer received: %s\n", statusBuffer);
+//        return false;
+//    } else {
         std::string reply = statusBuffer;
         if (findCharArray(AT_STATUS_OK, statusBuffer) == true) {
             printf("Status OK\n");
@@ -208,19 +208,27 @@ bool UBlox::checkStatus()
             // TODO: aborted status needs to be handled
             printf("Status ABORTED\n"); // TODO: handle here or error code?
             return false;
-        }
+        } else {
+	    printf("Status unknown: %s", statusBuffer);
+	    return false;
+	}
 
-    }
+//    }
 }
 
 // todo helper
 bool UBlox::findCharArray(const char *const needle, const char *const haystack)
 {
-    const char *result = NULL;
-    //std::string::find()
-    result = std::strstr(needle, haystack);
-    if (result != NULL) {
+    const char *cresult = NULL;
+    printf("looking for %s in %s\n", needle , haystack);
+    cresult = std::strstr(needle, haystack);
+    std::string hs(haystack); 
+    std::string nd(needle);
+    std::size_t result = hs.find(nd);
+    if (result != std::string::npos) {
+	printf("found\n");
         return true;
     }
+    printf("not found\n");
     return false;
 }
