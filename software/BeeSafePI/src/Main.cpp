@@ -24,6 +24,7 @@ int main()
     UBlox uBlox;
     uBlox.getModelNumber(imei);
     uBlox.getIMEI(imei);
+    uBlox.anyCmd(imei);
 
     std::tm fromTime = {0};
     fromTime.tm_hour = 20;

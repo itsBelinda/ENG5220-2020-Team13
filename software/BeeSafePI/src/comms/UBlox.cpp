@@ -153,27 +153,31 @@ int UBlox::anyCmd(std::string &imei)
         if (nRx <= 0) {
             printf("UART read error or timeout\n");
             return -1; // TODO: error codes? or handle here?
-        }else if (findCharArray(AT_STATUS_OK, rxBuffer) == true) {
-            printf("Status OK\n");
-            return 0;
-        } else if (findCharArray(AT_STATUS_ERROR, rxBuffer) == true) {
-            printf("Status ERROR\n"); // TODO: handle here or error code?
-            // TODO: error status needs to be handled
-            return -1;
-        } else if (findCharArray(AT_STATUS_OK, rxBuffer) == true) {
-            // TODO: aborted status needs to be handled
-            printf("Status ABORTED\n"); // TODO: handle here or error code?
-            return -1;
         } else {
-            printf("Status unknown: %s", rxBuffer);
-            return -1;
+            std::string tmpString(rxBuffer);
+            std::string replyString(tmpString.substr(0, nRx));
+            if (findCharArray(AT_STATUS_OK, rxBuffer) == true) {
+                printf("Status OK\n");
+                //return 0;
+            } else if (findCharArray(AT_STATUS_ERROR, rxBuffer) == true) {
+                printf("Status ERROR\n"); // TODO: handle here or error code?
+                // TODO: error status needs to be handled
+                return -1;
+            } else if (findCharArray(AT_STATUS_OK, rxBuffer) == true) {
+                // TODO: aborted status needs to be handled
+                printf("Status ABORTED\n"); // TODO: handle here or error code?
+                return -1;
+            } else {
+                printf("Status unknown: %s", rxBuffer);
+                return -1;
+            }
         }
+
+
+        imei = rxBuffer; // char array to string //todo: trailing zeros?
+
+        return 0;
     }
-
-
-    imei = rxBuffer; // char array to string //todo: trailing zeros?
-
-    return 0;
 }
 
 int UBlox::getIMEI(std::string &imei)

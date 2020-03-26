@@ -236,10 +236,6 @@ ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
         }
     }
 
-
-    // Set the buffer bytes to null terminators.
-    memset(resultBuffer, '\0', nextReadIndex);
-
     // Return the number of characters that have been read.
     return nextReadIndex;
 }
