@@ -17,6 +17,8 @@
 #define SZ_RESPONSE_STATUS 4 //TODO: check
 
 // Define timeouts
+#define ECHO_TIMEOUT 1000 // timeout in ms
+#define CMD_TIMEOUT 1000 // timeout in ms
 #define RX_TIMEOUT 1000 // timeout in ms
 
 
@@ -32,7 +34,7 @@ int UBlox::conf()
     return -1;
 }
 
-Uart& UBlox::getUart()
+Uart &UBlox::getUart()
 {
     return uart;
 }
@@ -109,6 +111,71 @@ int UBlox::getModelNumber(std::string &modelNumber)
 }
 */
 
+int UBlox::anyCmd(std::string &imei)
+{
+    const char *const cmd = AT_COMMAND_GET_IMEI;
+    bool result = false;
+    size_t nTx;
+    printf("Writing command IMEI\n");
+
+    // Write the at command via uart.
+    nTx = uart.writeBuffer(cmd);
+    if (nTx == -1) {
+        printf("UART write error\n");
+        return -1; // TODO: error codes? or handle here?
+    }
+
+    ssize_t nRx = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT); // TODO: need for length?
+
+    if (nRx <= 0) {
+        printf("UART read error or timeout\n");
+        return -1; // TODO: error codes? or handle here?
+    }
+
+    printf("echo read: %s\n", rxBuffer);
+    if (findCharArray(cmd, rxBuffer) != true) {
+        printf("invalid echo\n");
+        return -1;
+    }
+
+
+    nRx = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT); // TODO: need for length?
+
+    if (nRx <= 0) {
+        printf("UART read error or timeout\n");
+        return -1; // TODO: error codes? or handle here?
+    }
+
+    printf("answer read: %s\n", rxBuffer);
+
+    for (int i = 0; i < 1; ++i) { //TODO: switch to timeout
+        nRx = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, RX_TIMEOUT);
+        if (nRx <= 0) {
+            printf("UART read error or timeout\n");
+            return -1; // TODO: error codes? or handle here?
+        }else if (findCharArray(AT_STATUS_OK, rxBuffer) == true) {
+            printf("Status OK\n");
+            return 0;
+        } else if (findCharArray(AT_STATUS_ERROR, rxBuffer) == true) {
+            printf("Status ERROR\n"); // TODO: handle here or error code?
+            // TODO: error status needs to be handled
+            return -1;
+        } else if (findCharArray(AT_STATUS_OK, rxBuffer) == true) {
+            // TODO: aborted status needs to be handled
+            printf("Status ABORTED\n"); // TODO: handle here or error code?
+            return -1;
+        } else {
+            printf("Status unknown: %s", rxBuffer);
+            return -1;
+        }
+    }
+
+
+    imei = rxBuffer; // char array to string //todo: trailing zeros?
+
+    return 0;
+}
+
 int UBlox::getIMEI(std::string &imei)
 {
     bool result = false;
@@ -128,7 +195,7 @@ int UBlox::getIMEI(std::string &imei)
         return -1; // TODO: error codes? or handle here?
     }
 
-    printf("Response received: %s\n",replyBuffer);
+    printf("Response received: %s\n", replyBuffer);
 
     result = checkStatus();
     if (result != true) {
@@ -196,22 +263,22 @@ bool UBlox::checkStatus()
 //        printf("unexpected answer received: %s\n", statusBuffer);
 //        return false;
 //    } else {
-        std::string reply = statusBuffer;
-        if (findCharArray(AT_STATUS_OK, statusBuffer) == true) {
-            printf("Status OK\n");
-            return true;
-        } else if (findCharArray(AT_STATUS_ERROR, statusBuffer) == true) {
-            printf("Status ERROR\n"); // TODO: handle here or error code?
-            // TODO: error status needs to be handled
-            return false;
-        } else if (findCharArray(AT_STATUS_OK, statusBuffer) == true) {
-            // TODO: aborted status needs to be handled
-            printf("Status ABORTED\n"); // TODO: handle here or error code?
-            return false;
-        } else {
-	    printf("Status unknown: %s", statusBuffer);
-	    return false;
-	}
+    std::string reply = statusBuffer;
+    if (findCharArray(AT_STATUS_OK, statusBuffer) == true) {
+        printf("Status OK\n");
+        return true;
+    } else if (findCharArray(AT_STATUS_ERROR, statusBuffer) == true) {
+        printf("Status ERROR\n"); // TODO: handle here or error code?
+        // TODO: error status needs to be handled
+        return false;
+    } else if (findCharArray(AT_STATUS_OK, statusBuffer) == true) {
+        // TODO: aborted status needs to be handled
+        printf("Status ABORTED\n"); // TODO: handle here or error code?
+        return false;
+    } else {
+        printf("Status unknown: %s", statusBuffer);
+        return false;
+    }
 
 //    }
 }
@@ -219,16 +286,13 @@ bool UBlox::checkStatus()
 // todo helper
 bool UBlox::findCharArray(const char *const needle, const char *const haystack)
 {
-    const char *cresult = NULL;
-    printf("looking for %s in %s\n", needle , haystack);
-    cresult = std::strstr(needle, haystack);
-    std::string hs(haystack); 
+    //printf("looking for %s in %s\n", needle , haystack);
+    std::string hs(haystack);
     std::string nd(needle);
-    std::size_t result = hs.find(nd);
-    if (result != std::string::npos) {
-	printf("found\n");
+    if (hs.find(nd) != std::string::npos) {
+        //printf("found\n");
         return true;
     }
-    printf("not found\n");
+    //printf("not found\n");
     return false;
 }
