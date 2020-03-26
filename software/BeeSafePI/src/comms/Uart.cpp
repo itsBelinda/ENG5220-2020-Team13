@@ -162,6 +162,83 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
 }
 
 
+/**
+ * A non blocking means for reading data from the serial buffer up
+ * until the first '\n' character is read.
+ *
+ * @param resultBuffer The buffer into which the result will be read. Note,
+ *      results read into the buffer are invalid if the method returns -1.
+ * @param resultBufferLen The length of the buffer into which the results are
+ *      read.
+ * @param timeoutMs The intra-character timeout. Avoided if character present,
+ *      blocks the thread for the timeout ms if not.
+ * @return The number of characters read (including '\n'), -1 otherwise.
+ */
+ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
+                       const int timeoutMs)
+{
+
+    // Check that the device is present.
+    if (device == -1) {
+        return -1;
+    }
+
+    // The number of bytes that have been peeked and read.
+    size_t bytesPeeked = 0;
+    ssize_t bytesRead = 0;
+
+    // The next and last read indexes.
+    size_t nextReadIndex = 0;
+    size_t lastReadIndex = 0;
+
+    // The last read character.
+    char lastReadChar;
+
+    // Timeout pause.
+    struct timespec timeoutPause = {0};
+    timeoutPause.tv_sec = timeoutMs / 1000;
+    timeoutPause.tv_nsec = timeoutMs * 1000;
+
+    // Keep reading the buffer until crlf.
+    for (;;) {
+
+        // If the buffer has been exceeded, return -1.
+        lastReadIndex = nextReadIndex;
+        if (lastReadIndex >= resultBufferLen) {
+            return -1;
+        }
+
+        // If there are no characters within the buffer, sleep.
+        ioctl(device, FIONREAD, &bytesPeeked);
+        if (bytesPeeked <= 0 && nanosleep(&timeoutPause, nullptr)) {
+            return -1;
+        }
+
+        // Read in a single character from the serial buffer.
+        bytesRead = read(device, &lastReadChar, 1);
+        if (bytesRead == -1) {
+            return -1;
+        } else if (bytesRead == 1) {
+
+            // Write the character to the buffer, check if '\n'.
+            resultBuffer[nextReadIndex++] = lastReadChar;
+            if (lastReadChar == '\n') {
+                break;
+            }
+
+            // Skip to the next character.
+            continue;
+        }
+
+        // If no new bytes have been read and we have timed out, return.
+        if (nextReadIndex == lastReadIndex) {
+            return -1;
+        }
+    }
+
+    // Return the number of characters that have been read.
+    return nextReadIndex;
+}
 
 /**
  * Write a string to the device via the UArt

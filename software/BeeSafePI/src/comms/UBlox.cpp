@@ -58,74 +58,58 @@ int UBlox::getModelNumber(std::string &modelNumber)
         return -1;
     }
 
-    printf("Command written\n");
+    printf("Command written %d\n", (int) rc);
 
     // Read the echo, imei and status back from the device.
-    char modelNumberBuffer[7] = {'\0'};
-    rc = uart.readBuffer(modelNumberBuffer, 7, 4000);
-
-    printf("Command successfully echoed");
-
-    printf("Read, %d Echo: %s\n", (int) rc, modelNumberBuffer);
+    char modelNumberBuffer[40] = {'\0'};
+    rc = uart.readNext(modelNumberBuffer, 40, 1000);
+    printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
+    rc = uart.readNext(modelNumberBuffer, 40, 1000);
+    printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
+    rc = uart.readNext(modelNumberBuffer, 40, 1000);
+    rc = uart.readNext(modelNumberBuffer, 40, 1000);
+    printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
 
     return rc;
 }
 
-int UBlox::getIMEI(std::string &imei)
+/*
+int UBlox::getModelNumber(std::string &modelNumber)
 {
 
-    printf("Writing command IMEI\n");
+    printf("Writing command\n");
 
     // Write the at command via uart.
-    ssize_t nTx = uart.writeBuffer(AT_COMMAND_GET_IMEI);
-    if (nTx == -1) {
+    ssize_t rc = uart.writeBuffer(AT_COMMAND_GET_MODEL_NUMBER);
+    if (rc == -1) {
         return -1;
     }
 
-    printf("Command written\n");
-
-    char echoBuffer[sizeof(AT_COMMAND_GET_IMEI)] = {'\0'}; // TODO: doesn't let me use nTx
-    ssize_t nRx = uart.readBuffer(echoBuffer, sizeof(AT_COMMAND_GET_IMEI), RX_TIMEOUT);
-
-    //TODO: do in separate function
-    if (nRx != nTx) {//TODO: check formatting of return first|| strcmp(AT_COMMAND_GET_IMEI,echoBuffer)) {
-        printf("unexpected echo cmd: sent %s, received: %s\n", AT_COMMAND_GET_IMEI, echoBuffer);
-        return -1;
-    } else {
-        printf("Command successfully echoed\n");
-    }
-
-
+    printf("Command written %d\n", (int) rc);
 
     // Read the echo, imei and status back from the device.
-    char imeiBuffer[SZ_RESPONSE_IMEI] = {'\0'};
-    nRx = uart.readBuffer(imeiBuffer, SZ_RESPONSE_IMEI, RX_TIMEOUT);
+    char modelNumberBuffer[31] = {'\0'};
 
-    //TODO: do in separate function
-    if (nRx != SZ_RESPONSE_IMEI) {//TODO: check formatting of return first|| strcmp(AT_COMMAND_GET_IMEI,echoBuffer)) {
-        printf("unexpected answer received: %s\n", imeiBuffer);
-        return -1;
-    } else {
-        printf("Answer successfully received\n");
+
+    rc = uart.readBuffer(modelNumberBuffer, 31, 1000);
+
+    printf("Command successfully echoed\n");
+
+    printf("Read, %d Echo: %s\n", (int) rc, modelNumberBuffer);
+
+    // Figure out the format.
+    for (int i = 0; i < 31; ++i) {
+        if (modelNumberBuffer[i] == '\n') printf("/n");
+        else if (modelNumberBuffer[i] == '\r') printf("/r");
+        else printf("%c", modelNumberBuffer[i]);
     }
+    printf("\n");
 
-    char statusBuffer[SZ_RESPONSE_STATUS] = {'\0'};
-    nRx = uart.readBuffer(statusBuffer, SZ_RESPONSE_STATUS, RX_TIMEOUT);
-
-    //TODO: do in separate function
-    if (nRx != SZ_RESPONSE_IMEI) {//TODO: check formatting of return first|| strcmp(AT_COMMAND_GET_IMEI,echoBuffer)) {
-        printf("unexpected answer received: %s\n", statusBuffer);
-        return -1;
-    } else {
-        printf("Answer successfully received\n");
-    }
-
-
-    return 0;
-    return -1;
+    return rc;
 }
+*/
 
-int UBlox::getIMEI2(std::string &imei)
+int UBlox::getIMEI(std::string &imei)
 {
     bool result = false;
     char replyBuffer[MAX_CMD_LENGTH];
