@@ -159,7 +159,7 @@ bool UBlox::sendCmd(const char *const cmdBuffer)
     }
 
     printf("Command written\n");
-    ssize_t nRx = uart.readBuffer(echoBuffer, expSize, RX_TIMEOUT);
+    ssize_t nRx = uart.readNext(echoBuffer, 40, RX_TIMEOUT);
 
     if (nRx != nTx || strcmp(cmdBuffer, echoBuffer)) {
         printf("unexpected echo cmd: sent %s, received: %s\n", AT_COMMAND_GET_IMEI, echoBuffer);
@@ -176,7 +176,7 @@ bool UBlox::getReply(char *const replyBuffer, int expSize) // TODO: what happens
 // size?
 // static?
 {
-    ssize_t nRx = uart.readBuffer(replyBuffer, expSize, RX_TIMEOUT);
+    ssize_t nRx = uart.readNext(replyBuffer, 40, RX_TIMEOUT);
     if (nRx != expSize) {//TODO:
         printf("unexpected answer received: %s\n", replyBuffer);
         return false;
@@ -190,7 +190,7 @@ bool UBlox::getReply(char *const replyBuffer, int expSize) // TODO: what happens
 bool UBlox::checkStatus()
 {
     char statusBuffer[SZ_RESPONSE_STATUS] = {'\0'};
-    ssize_t nRx = uart.readBuffer(statusBuffer, SZ_RESPONSE_STATUS, RX_TIMEOUT);
+    ssize_t nRx = uart.readNext(statusBuffer, 40, RX_TIMEOUT);
 
     if (nRx != SZ_RESPONSE_STATUS) {
         printf("unexpected answer received: %s\n", statusBuffer);
