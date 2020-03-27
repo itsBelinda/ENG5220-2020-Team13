@@ -202,10 +202,6 @@ bool UBlox::checkStatusOK()
             //return 0;
         } else if (!checkNoError(checkBuffer)) {
             return -1;
-        } else if (findCharArray(AT_STATUS_OK, checkBuffer)) {
-            // TODO: aborted status needs to be handled
-            printf("Status ABORTED\n"); // TODO: handle here or error code?
-            return -1;
         } else {
             printf("Status unknown: %s", checkBuffer);
             return -1;
