@@ -16,109 +16,53 @@
       <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_account_builder_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_active_monitor_state_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_comms_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_comms_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_comms_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_comms_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_comms_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_comms_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_comms_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_comms_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_comms_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_comms_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_contact_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_contact_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_contact_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_contact_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_contact_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_contact_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_contact_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_contact_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_contact_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_contact_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_fence_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_fence_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_fence_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_fence_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_fence_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_fence_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_fence_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_fence_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_fence_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_fence_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_main_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_main_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_main_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_main_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_monitor_state_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_passive_monitor_state_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_poly_fence_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_round_fence_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_uart_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_uart_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_uart_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_uart_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_uart_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_uart_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_uart_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_uart_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_uart_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_uart_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_ublox_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_ublox_8cpp.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_ublox_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_ublox_8cpp__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/_ublox_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_ublox_8h.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_ublox_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_ublox_8h__dep__incl.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/_ublox_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/_ublox_8h__incl.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/annotated.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/annotated.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/bee.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/bee.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/build/text.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/build/text.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_account.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_account.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_account_builder.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_account_builder.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_active_monitor_state.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_active_monitor_state.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_active_monitor_state__coll__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_active_monitor_state__coll__graph.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_active_monitor_state__inherit__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_active_monitor_state__inherit__graph.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_comms.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_comms.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_contact.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_contact.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_fence.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_fence.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_fence__inherit__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_fence__inherit__graph.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_monitor.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_monitor.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_monitor_state.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_monitor_state.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_monitor_state__inherit__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_monitor_state__inherit__graph.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_passive_monitor_state.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_passive_monitor_state.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_passive_monitor_state__coll__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_passive_monitor_state__coll__graph.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_passive_monitor_state__inherit__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_passive_monitor_state__inherit__graph.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_poly_fence.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_poly_fence.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_poly_fence__coll__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_poly_fence__coll__graph.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_poly_fence__inherit__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_poly_fence__inherit__graph.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_round_fence.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_round_fence.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_round_fence__coll__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_round_fence__coll__graph.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_round_fence__inherit__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_round_fence__inherit__graph.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_uart.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_uart.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/class_ublox.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/class_ublox.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4_dep.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4_dep.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/dir_2bcd72cd0b092dad44d5d2bb06eea6c2.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/dir_2bcd72cd0b092dad44d5d2bb06eea6c2.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/dir_4796d783f2f9bd0a81f564028084bc34.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/dir_4796d783f2f9bd0a81f564028084bc34.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/dir_820b2b9dd608784780e51ab49715a98b.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/dir_820b2b9dd608784780e51ab49715a98b.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/dir_820b2b9dd608784780e51ab49715a98b_dep.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/dir_820b2b9dd608784780e51ab49715a98b_dep.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/dir_9329a9f26436799d824de1a435a6965f.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/dir_9329a9f26436799d824de1a435a6965f.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/dir_9329a9f26436799d824de1a435a6965f_dep.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/dir_9329a9f26436799d824de1a435a6965f_dep.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/dir_c99b046f6a8d3f36fae42dc3ac4f1052.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/dir_c99b046f6a8d3f36fae42dc3ac4f1052.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/doxygen.sty" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/doxygen.sty" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/LateX/figures/uofg.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/figures/uofg.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/files.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/files.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/hierarchy.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/hierarchy.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/longtable_doxygen.sty" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/longtable_doxygen.sty" afterDir="false" />
@@ -127,131 +71,87 @@
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/refman.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/refman.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/tabu_doxygen.sty" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/tabu_doxygen.sty" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/LateX/text.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/LateX/text.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/about.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/about.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_account_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_account_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_account_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_builder_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_builder_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_builder_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_builder_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_account_builder_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_builder_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_builder_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_builder_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_builder_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_builder_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_account_builder_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_builder_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_builder_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_builder_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_account_builder_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_builder_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_account_builder_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_account_builder_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_active_monitor_state_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_comms_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_comms_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_comms_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_comms_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_comms_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_comms_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_comms_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_comms_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_comms_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_comms_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_comms_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_comms_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_comms_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_comms_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_comms_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_comms_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_comms_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_comms_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_contact_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_contact_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_contact_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_contact_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_contact_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_contact_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_contact_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_contact_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_contact_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_contact_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_contact_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_contact_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_contact_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_contact_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_contact_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_contact_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_contact_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_contact_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_fence_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_fence_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_fence_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_fence_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_fence_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_fence_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_fence_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_fence_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_fence_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_fence_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_fence_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_fence_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_fence_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_fence_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_fence_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_fence_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_fence_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_fence_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_main_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_main_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_main_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_main_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_main_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_main_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_state_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_state_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_state_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_state_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_state_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_state_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_monitor_state_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_passive_monitor_state_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_poly_fence_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_poly_fence_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_poly_fence_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_poly_fence_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_poly_fence_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_poly_fence_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_poly_fence_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_round_fence_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_round_fence_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_round_fence_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_round_fence_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_round_fence_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_round_fence_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_round_fence_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_round_fence_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_round_fence_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_round_fence_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_round_fence_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_round_fence_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_round_fence_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_round_fence_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_round_fence_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_round_fence_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_round_fence_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_round_fence_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_uart_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_uart_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_uart_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_uart_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_uart_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_uart_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_uart_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_uart_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_uart_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_uart_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_uart_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_uart_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_uart_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_uart_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_uart_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_uart_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_uart_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_uart_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_ublox_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_ublox_8cpp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_ublox_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_ublox_8cpp__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_ublox_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_ublox_8cpp__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_ublox_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_ublox_8h.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_ublox_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_ublox_8h__dep__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_ublox_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_ublox_8h__dep__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_ublox_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_ublox_8h__incl.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/_ublox_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_ublox_8h__incl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/_ublox_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/_ublox_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/annotated.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/annotated.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/bc_s.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/bc_s.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/bdwn.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/bdwn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/bee.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/bee.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_account-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_account-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_account_builder-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_account_builder-members.html" afterDir="false" />
@@ -259,9 +159,7 @@
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state__coll__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state__coll__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state__coll__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state__coll__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state__inherit__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state__inherit__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state__inherit__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_active_monitor_state__inherit__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_comms-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_comms-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_comms.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_comms.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_contact-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_contact-members.html" afterDir="false" />
@@ -269,37 +167,28 @@
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_fence-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_fence-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_fence.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_fence.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_fence__inherit__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_fence__inherit__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_fence__inherit__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_fence__inherit__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_monitor-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_monitor-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_monitor.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_monitor.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_monitor_state-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_monitor_state-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_monitor_state.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_monitor_state.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_monitor_state__inherit__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_monitor_state__inherit__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_monitor_state__inherit__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_monitor_state__inherit__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state__coll__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state__coll__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state__coll__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state__coll__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state__inherit__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state__inherit__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state__inherit__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_passive_monitor_state__inherit__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_poly_fence-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_poly_fence-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_poly_fence.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_poly_fence.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_poly_fence__coll__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_poly_fence__coll__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_poly_fence__coll__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_poly_fence__coll__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_poly_fence__inherit__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_poly_fence__inherit__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_poly_fence__inherit__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_poly_fence__inherit__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_round_fence-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_round_fence-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_round_fence.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_round_fence.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_round_fence__coll__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_round_fence__coll__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_round_fence__coll__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_round_fence__coll__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_round_fence__inherit__graph.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_round_fence__inherit__graph.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/class_round_fence__inherit__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_round_fence__inherit__graph.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_uart-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_uart-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_uart.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_uart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_ublox-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_ublox-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/class_ublox.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/class_ublox.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/classes.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/classes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/closed.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/closed.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_000002_000001.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_000002_000001.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_000002_000003.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_000002_000003.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_000004_000000.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_000004_000000.html" afterDir="false" />
@@ -309,58 +198,37 @@
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_000005_000002.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_000005_000002.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4_dep.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4_dep.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4_dep.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_1fcb3bf4dc93ae6058d2c81ac1df99e4_dep.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_2bcd72cd0b092dad44d5d2bb06eea6c2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_2bcd72cd0b092dad44d5d2bb06eea6c2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_4796d783f2f9bd0a81f564028084bc34.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_4796d783f2f9bd0a81f564028084bc34.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_820b2b9dd608784780e51ab49715a98b.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_820b2b9dd608784780e51ab49715a98b.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_820b2b9dd608784780e51ab49715a98b_dep.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_820b2b9dd608784780e51ab49715a98b_dep.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/dir_820b2b9dd608784780e51ab49715a98b_dep.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_820b2b9dd608784780e51ab49715a98b_dep.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_9329a9f26436799d824de1a435a6965f.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_9329a9f26436799d824de1a435a6965f.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_9329a9f26436799d824de1a435a6965f_dep.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_9329a9f26436799d824de1a435a6965f_dep.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/dir_9329a9f26436799d824de1a435a6965f_dep.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_9329a9f26436799d824de1a435a6965f_dep.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dir_c99b046f6a8d3f36fae42dc3ac4f1052.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dir_c99b046f6a8d3f36fae42dc3ac4f1052.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/doc.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/doc.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/doxygen.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/doxygen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/doxygen.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/doxygen.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/dynsections.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/dynsections.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/files.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/files.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/folderclosed.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/folderclosed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/folderopen.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/folderopen.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/functions.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/functions.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/functions_func.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/functions_func.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/globals.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/globals.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/globals_defs.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/globals_defs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/globals_func.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/globals_func.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/graph_legend.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/graph_legend.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/graph_legend.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/graph_legend.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/hierarchy.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/hierarchy.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_0.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_0.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_0.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_1.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_1.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_2.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_2.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_3.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_3.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_4.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_4.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_4.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_5.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_5.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_5.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_6.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_6.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_6.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_7.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_7.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_7.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_8.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_8.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/inherit_graph_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherit_graph_8.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/inherits.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/inherits.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/jquery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/menudata.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/menudata.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/nav_f.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/nav_f.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/nav_g.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/nav_g.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/nav_h.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/nav_h.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/open.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/open.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/all_0.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/all_0.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/all_0.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/all_0.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/all_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/all_1.html" afterDir="false" />
@@ -405,7 +273,6 @@
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/classes_5.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/classes_5.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/classes_6.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/classes_6.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/classes_6.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/classes_6.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/search/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/close.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/defines_0.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/defines_0.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/defines_0.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/defines_0.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/defines_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/defines_1.html" afterDir="false" />
@@ -450,38 +317,13 @@
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/functions_b.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/functions_b.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/functions_c.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/functions_c.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/functions_c.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/functions_c.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/search/mag_sel.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/mag_sel.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/nomatches.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/nomatches.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/search.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/search/search_l.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/search_l.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/search/search_m.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/search_m.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/search/search_r.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/search_r.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/html/search/searchdata.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/search/searchdata.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/splitbar.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/splitbar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/sync_off.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/sync_off.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/sync_on.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/sync_on.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/tab_a.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/tab_a.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/tab_b.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/tab_b.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/tab_h.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/tab_h.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/tab_s.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/tab_s.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/html/tabs.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/html/tabs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/latex/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/latex/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/latex/doxygen.sty" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/latex/doxygen.sty" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/latex/md_README.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/latex/md_README.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/latex/refman.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/latex/refman.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/logo/bee.eps" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/logo/bee.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/logo/bee.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/logo/bee.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../doc/project_plan" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/project_plan" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../doc/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/MainBoard_SARA-G3_0V0.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/MainBoard_SARA-G3_0V0.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/MainBoard_SARA-G3_0V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/MainBoard_SARA-G3_0V2.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/BEESAFE.DRC" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/BEESAFE.DRC" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/BEESAFE.DSN" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/BEESAFE.DSN" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/BEESAFE.DSNlck" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/BEESAFE.DSNlck" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/BEESAFE_0.DBK" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/BEESAFE_0.DBK" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/allegro.jrl" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/allegro.jrl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/beeSafe_1V0.brd" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/beeSafe_1V0.brd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/eco.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/eco.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/last_import_time.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/last_import_time.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/netrev.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/allegro/netrev.lst" afterDir="false" />
@@ -494,40 +336,10 @@
       <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/signoise.run/cases.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/signoise.run/cases.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Design/signoise.run/cases.cfg,1" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Design/signoise.run/cases.cfg,1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/SN74AVC4T774PW.INI" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/SN74AVC4T774PW.INI" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/SN74AVC4T774PW.OLB" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/SN74AVC4T774PW.OLB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/c218h145t185_230_43.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/c218h145t185_230_43.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/dpak6p170_1404x457l127x83t61-1.psm" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/dpak6p170_1404x457l127x83t61-1.psm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/gu_sma_jack_str.psm" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/gu_sma_jack_str.psm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/jae_sj115712.psm" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/jae_sj115712.psm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r140_35.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r140_35.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r140_35r9.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r140_35r9.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r160_190.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r160_190.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r308_109r25.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r308_109r25.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r54_80.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r54_80.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r65_135.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r65_135.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r65_140.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r65_140.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r757_1050p24xr125_132r25.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r757_1050p24xr125_132r25.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r80_150.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r80_150.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r90_150.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/r90_150.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/s110.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/s110.pad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/s_r147_35_m147_35_p147_35.pad" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/s_r147_35_m147_35_p147_35.pad" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/sn74avc4t774pw.opj" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/sn74avc4t774pw.opj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/sop16p65_500x640x108l60x24.psm" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/sop16p65_500x640x108l60x24.psm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/sop65p640x120-16n.psm" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/sop65p640x120-16n.psm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/ublox_sara-g350-02x-01.psm" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Footprints/ublox_sara-g350-02x-01.psm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Library/GU-MICROPROCESSOR.OLB" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Library/GU-MICROPROCESSOR.OLB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Library/MYLIB.OLB" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Library/MYLIB.OLB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/OrCAD/Library/MYLIB_0.OBK" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/OrCAD/Library/MYLIB_0.OBK" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/PCBProduction/BOTTOM.art" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/PCBProduction/BOTTOM.art" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/PCBProduction/DesignOutline.art" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/PCBProduction/DesignOutline.art" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/PCBProduction/PCBbot.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/PCBProduction/PCBbot.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/PCBProduction/PCBtop.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/PCBProduction/PCBtop.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/PCBProduction/TOP.art" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/PCBProduction/TOP.art" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../hardware/PCBProduction/beeSafe_1V0-1-2.drl" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/PCBProduction/beeSafe_1V0-1-2.drl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../hardware/about.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../hardware/about.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/BeeSafePI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BeeSafePI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -559,12 +371,10 @@
       <change beforePath="$PROJECT_DIR$/src/monitor/states/MonitorState.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/states/MonitorState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monitor/states/PassiveMonitorState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/states/PassiveMonitorState.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monitor/states/PassiveMonitorState.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/states/PassiveMonitorState.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../testing/about.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../testing/about.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../testing/testreceive.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../testing/testreceive.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../testing/testsend.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../testing/testsend.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../tools/YAT_file/SingleAutomaticResponseTemplate.yat" beforeDir="false" afterPath="$PROJECT_DIR$/../../tools/YAT_file/SingleAutomaticResponseTemplate.yat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../tools/YAT_file/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../tools/YAT_file/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tools/about.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../tools/about.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -660,6 +470,7 @@
       <workItem from="1585061497301" duration="11748000" />
       <workItem from="1585077692148" duration="3854000" />
       <workItem from="1585216470310" duration="1060000" />
+      <workItem from="1585322822464" duration="473000" />
     </task>
     <servers />
   </component>
@@ -667,9 +478,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1585216480367">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1585322823136">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585216480367" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585322823136" />
   </component>
 </project>
