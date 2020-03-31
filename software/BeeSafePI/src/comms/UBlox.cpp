@@ -3,11 +3,24 @@
 
 #define  MAX_CMD_LENGTH 544
 // Define the AT commands that are used on the U-Blox device.
-#define AT_COMMAND_GET_MODEL_NUMBER "ATI0\r"
+// Device identification
+#define AT_COMMAND_GET_MODEL_NUMBER "ATI\r"
 #define AT_COMMAND_GET_IMEI "ATI5\r"
-#define AT_COMMAND_GET_LOCATION "AT+ULOC=2,3,0,5,1\r"
-#define AT_COMMAND_MSG_FORMAT "AT+CMGF1"
-#define AT_COMMAND_SEND_MSG "AT+CMGF1"
+
+// get location
+#define AT_COMMAND_SET_SCAN "AT+ULOCCELL=1\" // deep scan
+#define AT_COMMAND_GET_LOCATION "AT+ULOC=2,2,0,300,500\r"
+
+// write text message
+#define AT_COMMAND_MSG_TXT "AT+CMGF=1\r" // Text message mode
+#define AT_COMMAND_MSG_PDU "AT+CMGF=0\r" // PDU message mode
+#define AT_COMMAND_SEND_MSG "AT+CMGS=\"%s\"\r"
+
+// setup Internet connection:
+#define AT_COMMAND_GET_GPRS_ATTACH "AT+CGATT?\r"
+#define AT_COMMAND_GET_GPRS_CONNECT "AT+UPSND=0,8\r"
+#define AT_COMMAND_ACTIVATE_PSD "AT+UPSDA=0,3\r"
+
 
 // Define the states.
 #define AT_STATUS_OK "OK"
