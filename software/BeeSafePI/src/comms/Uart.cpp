@@ -236,6 +236,11 @@ ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
         }
     }
 
+    // Add terminating zero if not the whole buffer was used (do not count as read byte):
+    if (nextReadIndex < resultBufferLen) {
+        resultBuffer[nextReadIndex] = '\0';
+    }
+
     // Return the number of characters that have been read.
     return nextReadIndex;
 }

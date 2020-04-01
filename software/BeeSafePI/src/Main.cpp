@@ -20,11 +20,19 @@
 int main()
 {
 
+    double lat = 0.0;
+    double lng = 0.0;
     std::string imei;
     UBlox uBlox;
     uBlox.getModelNumber(imei);
     uBlox.getIMEI(imei);
 
+//    if( uBlox.checkConnections() == false){
+//        printf("Connections not established.\n");
+//    } else {
+//        uBlox.getLocation(&lat, &lng);
+//        printf("read loc: %d, %d", lat, lng);
+//    }
     uBlox.sendMsg((std::string &) "+417747329169", (std::string &) "This was sent from the beeSafe PI program.");
 
     std::tm fromTime = {0};

@@ -27,9 +27,14 @@ public:
     // Methods for querying the U-Blox chip.
     int getModelNumber(std::string &modelNumber);
     int getIMEI(std::string &imei);
-    int getLocation(double &lat, double &lng);
+    int requestLocation();
+    int getLocation(double *const lat, double *const lng);
     int sendMsg(std::string &nbr, std::string &message);
 
+    bool tempGetLoc(double *const lat, double *const lng);
+    bool activatePSD();
+    bool checkConnections();
+    bool checkPSD();
 private:
 
     // Configure the UBlox device.
@@ -45,8 +50,9 @@ private:
 
     // Attributes.
     Uart uart;
+    bool locationRequested;
     char rxBuffer[MAX_BUFFER_LENGTH] = {'\0'};
-
+    double getSysTimeMS();
 };
 
 #endif //BEESAFEPI_UBLOX_H

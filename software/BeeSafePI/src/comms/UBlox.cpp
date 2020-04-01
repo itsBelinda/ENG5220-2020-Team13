@@ -1,4 +1,6 @@
 #include <boost/compatibility/cpp_c_headers/cstring>
+#include <bits/stdc++.h>
+#include <boost/algorithm/string.hpp>
 #include "UBlox.h"
 
 #define  MAX_CMD_LENGTH 544
@@ -9,7 +11,7 @@
 
 // get location
 #define AT_COMMAND_SET_SCAN "AT+ULOCCELL=1\r" // deep scan
-#define AT_COMMAND_GET_LOCATION "AT+ULOC=2,2,0,300,500\r"
+#define AT_COMMAND_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
 
 // write text message
 #define AT_COMMAND_MSG_TXT "AT+CMGF=1\r" // Text message mode
@@ -19,7 +21,7 @@
 
 // setup Internet connection:
 #define AT_COMMAND_GET_GPRS_ATTACH "AT+CGATT?\r"
-#define AT_COMMAND_GET_GPRS_CONNECT "AT+UPSND=0,8\r"
+#define AT_COMMAND_GET_PSD_CONNECT "AT+UPSND=0,8\r"
 #define AT_COMMAND_ACTIVATE_PSD "AT+UPSDA=0,3\r"
 
 
@@ -28,18 +30,36 @@
 #define AT_STATUS_ERROR "ERROR"
 #define AT_STATUS_ABORTED "ABORTED"
 
-// Define expected response sizes
-#define SZ_RESPONSE_IMEI 30 //TODO: check
-#define SZ_RESPONSE_STATUS 4 //TODO: check
+//Define expected responses
+#define REPLY_MSG "+CMGS"
+#define REPLY_LOC "+UULOC"
+#define REPLY_GPRS_ATTACH_0 "+CGATT: 1"
+#define REPLY_GPRS_ATTACH_1 "+CGATT: 1"
+#define REPLY_PSD_0 "AT+UPSND=0,8,0"
+#define REPLY_PSD_1 "AT+UPSND=0,8,1"
 
-// Define timeouts
+
+// Define different timeouts
 #define ECHO_TIMEOUT 1000 // timeout in ms
-#define CMD_TIMEOUT 1000 // timeout in ms
+#define CHECK_TIMEOUT 10 // timeout in ms
 #define RX_TIMEOUT 1000 // timeout in ms
+// TODO: only temporary
+#define LOC_TIMEOUT 120 // timeout in seconds (!)
 
-
+/*
+ * This UBlox class is currently only for testing purposes. It is to
+ * test and show the basic functionality of the u-blox module with the least
+ * effort and in one place.
+ * A code refactoring to fit in to the final architecture of the software is
+ * required.
+ * Timeouts should be reduced drastically or (better) removed completely where
+ * possible.
+ *
+ *
+ */
 UBlox::UBlox()
 {
+    locationRequested = false;
     conf();
 }
 
@@ -98,12 +118,161 @@ int UBlox::getIMEI(std::string &imei)
     return processCmd(AT_COMMAND_GET_IMEI, imei);
 }
 
-int UBlox::getLocation(double &lat, double &lng)
+// Todo: the following two functions should be removed
+bool UBlox::tempGetLoc(double *const lat, double *const lng)
 {
+    //
+    if( !checkConnections()){
+        printf("Connection setup/check failed\n");
+        return false;
+    }
+    if( !checkPSD() ){
+        printf("PSD check failed\n");
+        return false;
+    }
+
+    if( !requestLocation() ){
+        printf("Request location failed\n");
+        return false;
+    }
+
+    double requestTime = getSysTimeMS();
+    double currentTime = getSysTimeMS();
+
+    do{
+        if(getLocation(lat, lng) == 0){
+            return true;
+        }
+    }while((requestTime - currentTime) > LOC_TIMEOUT);
+
+
+    printf("Get location timeout\n");
+    return false;
+}
+
+double UBlox::getSysTimeMS()
+{
+    auto now = std::chrono::system_clock::now();
+    return std::chrono::system_clock::to_time_t(now);;
+}
+
+bool UBlox::checkConnections()
+{
+    std::string gprsAttach;
+    processCmd(AT_COMMAND_GET_GPRS_ATTACH, gprsAttach);
+
+    // Check GPRS attach status
+    // This should be connected automatically.
+    if (!gprsAttach.find(REPLY_GPRS_ATTACH_1)) {
+        //TODO: could be handled
+        printf("GPRS not attached\n");
+        return false;
+    }
+
+    // Check PSD connection, this should be done regularly when
+    // connected to the internet
+    if (!checkPSD()) {
+        // If not yet connected at startup, try to connect now.
+        return activatePSD();
+    } else {
+        return true;
+    }
+
+}
+
+bool UBlox::checkPSD()
+{
+    std::string pdsState;
+    processCmd(AT_COMMAND_GET_PSD_CONNECT, pdsState);
+
+    if (pdsState.find(REPLY_PSD_1)) {
+        printf("PSD activated\n");
+        return true;
+    } else if (pdsState.find(REPLY_PSD_0)) {
+        printf("PSD not activated\n");
+        return false;
+    } else {
+        printf("PSD unexpected result\n");
+        return false;
+    }
+}
+
+bool UBlox::activatePSD()
+{
+    std::string pdsState;
+    processCmd(AT_COMMAND_ACTIVATE_PSD, pdsState);
+    if (!pdsState.find(REPLY_PSD_1)) {
+        printf("PSD not activated\n");
+        return false;
+    }
+    return true;
+}
+
+int UBlox::requestLocation()
+{
+    // It's not necessary to check if a location request is ongoing, if
+    // a location request is ongoing and a new one is sent, this will
+    // abort the old one, and start a new one.
+    // The (unresolved) result from the old request will be printed out.
+    //if( locationRequested == true )
+
     std::string location;
     //TODO: processing of return needed!
     // TODO: still needs testing (probaly setup)
-    return processCmd(AT_COMMAND_GET_LOCATION, location);
+    if (processCmd(AT_COMMAND_GET_LOCATION) != 0) {
+        printf("Location request failed\n");
+        return -1;
+    }
+    printf("Location request sent, wait for answer...\n");
+    //
+    // TODO: check for answer from  monitoring state directly
+    // TODO: ideally, signal from UART if new data is available
+    locationRequested = true;
+    return 0;
+}
+
+int UBlox::getLocation( double *const lat, double *const lng)
+{
+    if( locationRequested == false ){
+        printf("Location request has not been sent.");
+    }
+    size_t nBytes;
+    std::string location;
+
+    nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, CHECK_TIMEOUT);
+
+    if (nBytes <= 0) {
+        return -1;
+    }
+
+    // The expected result is (result type = 0)
+    //+UULOC: 13/04/2011,09:54:51.000,45.6334520,13.0618620,49,1
+    std::vector<std::string> result;
+    boost::split(result, rxBuffer, boost::is_any_of(",:"));
+    if (result.size()!= 8 || !result[0].find(REPLY_LOC) ){
+        printf("invalid response found:\n %s\n", rxBuffer);
+        return -1;;
+    }
+
+    // Todo: exceptions
+    try {
+        *lat = std::stod(result[4]);
+        *lng = std::stod(result[5]);
+    } catch (const std::invalid_argument&) {
+        std::cerr << "Argument is invalid\n";
+        *lat = 0.0;
+        *lng = 0.0;
+        //throw;
+    } catch (const std::out_of_range&) {
+        std::cerr << "Argument is out of range for a double\n";
+        *lat = 0.0;
+        *lng = 0.0;
+        //throw;
+    }
+
+    locationRequested = false;
+
+    return 0;
 }
 
 
@@ -117,7 +286,7 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
         return -1;
     }
     // Write the number into the AT command
-    snprintf(cmdBuffer, sizeof(rxBuffer), AT_COMMAND_MSG_NBR, nbr.c_str());
+    snprintf(cmdBuffer, sizeof(cmdBuffer), AT_COMMAND_MSG_NBR, nbr.c_str());
 
     nBytes = uart.writeBuffer(cmdBuffer);
     if (nBytes == -1) {
@@ -152,7 +321,30 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
         return false;
     }
 
-    //TODO: not implemented
+    // Read the response
+    nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT);
+
+    if (nBytes <= 0) {
+        printf("UART read error or timeout\n");
+        return false;
+    }
+
+    printf("answer read: %s\n", rxBuffer);
+
+    if (!checkNoError(rxBuffer)) { // TODO: if we are sure that no valid answer can be 2 bytes, this can be
+        // changed to also check for OK,
+        return -1;
+    }
+
+    if (!findCharArray(REPLY_MSG, rxBuffer)) {
+        printf("invalid echo\n");
+        return false;
+    }
+
+    if (!checkStatusOK()) {
+        return -1;
+    }
+
     return 0;
 }
 
