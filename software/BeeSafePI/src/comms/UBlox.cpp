@@ -16,8 +16,8 @@
 // write text message
 #define AT_COMMAND_MSG_TXT "AT+CMGF=1\r" // Text message mode
 #define AT_COMMAND_MSG_PDU "AT+CMGF=0\r" // PDU message mode
-#define AT_COMMAND_MSG_NBR "AT+CMGS=\"%s\"\r"
-#define AT_COMMAND_MSG_END "\x1A\r"
+#define AT_COMMAND_MSG_NBR "AT+CMGS=\"+447747329169\"\r"
+#define AT_COMMAND_MSG_END "\x1A"
 
 // setup Internet connection:
 #define AT_COMMAND_GET_GPRS_ATTACH "AT+CGATT?\r"
@@ -285,10 +285,12 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
     if (processCmd(AT_COMMAND_MSG_TXT) == -1) {
         return -1;
     }
-    // Write the number into the AT command
-    snprintf(cmdBuffer, sizeof(cmdBuffer), AT_COMMAND_MSG_NBR, nbr.c_str());
 
-    nBytes = uart.writeBuffer(cmdBuffer);
+    // Write the number into the AT command
+    //snprintf(cmdBuffer, sizeof(cmdBuffer), AT_COMMAND_MSG_NBR, nbr.c_str());
+//    printf("Send message: %s",AT_COMMAND_MSG_NBR);
+
+    nBytes = uart.writeBuffer(AT_COMMAND_MSG_NBR);
     if (nBytes == -1) {
         printf("UART write error\n");
         return false;
@@ -302,26 +304,34 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
     }
 
     printf("echo read: %s\n", rxBuffer);
-    if (!findCharArray(">", rxBuffer)) {
-        printf("invalid echo\n");
-        return false;
+    if(!findCharArray(AT_COMMAND_MSG_NBR,rxBuffer)){
+	printf("invalid cmd echo\n");
+	return false;
     }
 
     // Now the text message can be written to the serial interface
-    nBytes = uart.writeBuffer(message);
+    // In case the message has \r, it would be returned seperately (echo)
+    // avoid \r in message to not handle that, or read back after every \r
+    nBytes = uart.writeBuffer("This is a text message sent from the PI");
     if (nBytes == -1) {
-        printf("UART write error\n");
+        printf("UART write message error\n");
         return false;
     }
 
     // Write send sequence
     nBytes = uart.writeBuffer(AT_COMMAND_MSG_END);
     if (nBytes == -1) {
-        printf("UART write error\n");
+        printf("UART write end of message error\n");
         return false;
     }
 
-    // Read the response
+    nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, 5000);
+    if (nBytes == -1) {
+        printf("UART read message back error\n");
+        return false;
+    }
+
+    printf("sent message %s\n",rxBuffer);
     nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT);
 
     if (nBytes <= 0) {
@@ -360,7 +370,7 @@ int UBlox::processCmd(const char *const cmd)
     if (!checkStatusOK()) {
         return -1;
     }
-
+    printf("Cmd written, successfully");
     return 0;
 
 }
@@ -434,7 +444,7 @@ bool UBlox::checkStatusOK()
 
     if (nRx <= 0) {
         printf("UART read error or timeout\n");
-        return -1;
+        return false;
     } else {
         // if the result is OK, the device often sends \r\n first, if only two bytes are received, we
         // read again and check for OK
@@ -443,16 +453,16 @@ bool UBlox::checkStatusOK()
         }
         if (findCharArray(AT_STATUS_OK, checkBuffer)) {
             printf("Status OK\n");
-            //return 0;
+            return true;
         } else if (!checkNoError(checkBuffer)) {
-            return -1;
+            return false;
         } else if (findCharArray(AT_STATUS_OK, checkBuffer)) {
             // TODO: aborted status needs to be handled
             printf("Status ABORTED\n"); // TODO: handle here or error code?
-            return -1;
+            return false;
         } else {
             printf("Status unknown: %s", checkBuffer);
-            return -1;
+            return false;
         }
     }
 }

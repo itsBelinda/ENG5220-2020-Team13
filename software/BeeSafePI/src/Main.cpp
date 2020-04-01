@@ -33,7 +33,7 @@ int main()
 //        uBlox.getLocation(&lat, &lng);
 //        printf("read loc: %d, %d", lat, lng);
 //    }
-    uBlox.sendMsg((std::string &) "+417747329169", (std::string &) "This was sent from the beeSafe PI program.");
+    uBlox.sendMsg((std::string &) "+417747329169", (std::string &) "This was sent from the beeSafe PI program.\r");
 
     std::tm fromTime = {0};
     fromTime.tm_hour = 20;
