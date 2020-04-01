@@ -35,8 +35,8 @@
 #define REPLY_LOC "+UULOC"
 #define REPLY_GPRS_ATTACH_0 "+CGATT: 1"
 #define REPLY_GPRS_ATTACH_1 "+CGATT: 1"
-#define REPLY_PSD_0 "AT+UPSND=0,8,0"
-#define REPLY_PSD_1 "AT+UPSND=0,8,1"
+#define REPLY_PSD_0 "+UPSND: 0,8,0"
+#define REPLY_PSD_1 "+UPSND: 0,8,1"
 
 
 // Define different timeouts
@@ -44,7 +44,7 @@
 #define CHECK_TIMEOUT 10 // timeout in ms
 #define RX_TIMEOUT 1000 // timeout in ms
 // TODO: only temporary
-#define LOC_TIMEOUT 120 // timeout in seconds (!)
+#define LOC_TIMEOUT 1200000 // timeout in ms (!)
 
 /*
  * This UBlox class is currently only for testing purposes. It is to
@@ -87,7 +87,6 @@ bool UBlox::isOpen()
 
 int UBlox::getModelNumber(std::string &modelNumber)
 {
-
     printf("Writing command\n");
 
     // Write the at command via uart.
@@ -131,7 +130,7 @@ bool UBlox::tempGetLoc(double *const lat, double *const lng)
         return false;
     }
 
-    if( !requestLocation() ){
+    if( requestLocation()==-1 ){
         printf("Request location failed\n");
         return false;
     }
@@ -143,7 +142,8 @@ bool UBlox::tempGetLoc(double *const lat, double *const lng)
         if(getLocation(lat, lng) == 0){
             return true;
         }
-    }while((requestTime - currentTime) > LOC_TIMEOUT);
+	currentTime = getSysTimeMS();
+    }while((currentTime-requestTime) < LOC_TIMEOUT);
 
 
     printf("Get location timeout\n");
@@ -160,10 +160,12 @@ bool UBlox::checkConnections()
 {
     std::string gprsAttach;
     processCmd(AT_COMMAND_GET_GPRS_ATTACH, gprsAttach);
-
+    printf("gprs: %s", gprsAttach);
+    std::string gprs(rxBuffer);
+//gprsAttach(&rxBuffer[0]);
     // Check GPRS attach status
     // This should be connected automatically.
-    if (!gprsAttach.find(REPLY_GPRS_ATTACH_1)) {
+    if (!findCharArray(REPLY_GPRS_ATTACH_1,rxBuffer)) {
         //TODO: could be handled
         printf("GPRS not attached\n");
         return false;
@@ -184,11 +186,11 @@ bool UBlox::checkPSD()
 {
     std::string pdsState;
     processCmd(AT_COMMAND_GET_PSD_CONNECT, pdsState);
-
-    if (pdsState.find(REPLY_PSD_1)) {
+    //pdsState(rxBuffer);
+    if (findCharArray(REPLY_PSD_1,rxBuffer)) {
         printf("PSD activated\n");
         return true;
-    } else if (pdsState.find(REPLY_PSD_0)) {
+    } else if (findCharArray(REPLY_PSD_0,rxBuffer)) {
         printf("PSD not activated\n");
         return false;
     } else {
@@ -201,7 +203,8 @@ bool UBlox::activatePSD()
 {
     std::string pdsState;
     processCmd(AT_COMMAND_ACTIVATE_PSD, pdsState);
-    if (!pdsState.find(REPLY_PSD_1)) {
+    //pdsState(rxBuffer);
+    if (!findCharArray(REPLY_PSD_1,rxBuffer)) {
         printf("PSD not activated\n");
         return false;
     }
@@ -240,8 +243,8 @@ int UBlox::getLocation( double *const lat, double *const lng)
     std::string location;
 
     nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, CHECK_TIMEOUT);
-
-    if (nBytes <= 0) {
+    // ignore everything small
+    if (nBytes <= 50) {
         return -1;
     }
 
@@ -249,11 +252,13 @@ int UBlox::getLocation( double *const lat, double *const lng)
     //+UULOC: 13/04/2011,09:54:51.000,45.6334520,13.0618620,49,1
     std::vector<std::string> result;
     boost::split(result, rxBuffer, boost::is_any_of(",:"));
-    if (result.size()!= 8 || !result[0].find(REPLY_LOC) ){
+    if (!findCharArray(REPLY_LOC,rxBuffer) ){//TODO: use string functions
         printf("invalid response found:\n %s\n", rxBuffer);
         return -1;;
     }
 
+    printf("Response found:\n %s\n", rxBuffer);
+    if( result.size() >= 5) {
     // Todo: exceptions
     try {
         *lat = std::stod(result[4]);
@@ -269,7 +274,7 @@ int UBlox::getLocation( double *const lat, double *const lng)
         *lng = 0.0;
         //throw;
     }
-
+  }
     locationRequested = false;
 
     return 0;
@@ -401,8 +406,8 @@ int UBlox::processCmd(const char *const cmd, std::string &response)
     if (!checkStatusOK()) {
         return -1;
     }
-
-    response = rxBuffer; // char array to string //todo: trailing zeros? @dan: the private buffer's data is not deleted
+    //TODO: could not get this to work!!
+    response.assign( rxBuffer); // char array to string //todo: trailing zeros? @dan: the private buffer's data is not deleted
     // seems like too much work: is it possilbe to only send the data until
     // the first \n or \0 (if inserted in Uart) (I tried and failed)
     // or do we have to reset it every time?
