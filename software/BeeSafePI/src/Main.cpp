@@ -25,6 +25,8 @@ int main()
     uBlox.getModelNumber(imei);
     uBlox.getIMEI(imei);
 
+    uBlox.sendMsg((std::string &) "+417747329169", (std::string &) "This was sent from the beeSafe PI program.");
+
     std::tm fromTime = {0};
     fromTime.tm_hour = 20;
     fromTime.tm_min = 30;
@@ -49,18 +51,18 @@ int main()
     coordinates.push_back(std::pair<double, double>(30, 40));
     coordinates.push_back(std::pair<double, double>(50, 60));
 
-    Fence* polyFence = new PolyFence(false, week, coordinates);
+    Fence *polyFence = new PolyFence(false, week, coordinates);
 
-    Fence* roundFence = new RoundFence(true, week, 10, 20, 10);
+    Fence *roundFence = new RoundFence(true, week, 10, 20, 10);
 
-    std::vector<Fence*> fences;
+    std::vector<Fence *> fences;
     fences.push_back(roundFence);
     fences.push_back(polyFence);
 
-    Contact* contact1 = new Contact("Daniels", "Vasiljevs", "0121DO1", "Coke");
-    Contact* contact2 = new Contact("Ben", "Smith", "124232", "Pepsi");
+    Contact *contact1 = new Contact("Daniels", "Vasiljevs", "0121DO1", "Coke");
+    Contact *contact2 = new Contact("Ben", "Smith", "124232", "Pepsi");
 
-    std::vector<Contact*> contacts;
+    std::vector<Contact *> contacts;
     contacts.push_back(contact1);
     contacts.push_back(contact2);
 

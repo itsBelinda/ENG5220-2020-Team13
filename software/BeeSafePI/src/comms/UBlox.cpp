@@ -8,13 +8,14 @@
 #define AT_COMMAND_GET_IMEI "ATI5\r"
 
 // get location
-#define AT_COMMAND_SET_SCAN "AT+ULOCCELL=1\" // deep scan
+#define AT_COMMAND_SET_SCAN "AT+ULOCCELL=1\r" // deep scan
 #define AT_COMMAND_GET_LOCATION "AT+ULOC=2,2,0,300,500\r"
 
 // write text message
 #define AT_COMMAND_MSG_TXT "AT+CMGF=1\r" // Text message mode
 #define AT_COMMAND_MSG_PDU "AT+CMGF=0\r" // PDU message mode
-#define AT_COMMAND_SEND_MSG "AT+CMGS=\"%s\"\r"
+#define AT_COMMAND_MSG_NBR "AT+CMGS=\"%s\"\r"
+#define AT_COMMAND_MSG_END "\x1A\r"
 
 // setup Internet connection:
 #define AT_COMMAND_GET_GPRS_ATTACH "AT+CGATT?\r"
@@ -108,9 +109,47 @@ int UBlox::getLocation(double &lat, double &lng)
 
 int UBlox::sendMsg(std::string &nbr, std::string &message)
 {
+    size_t nBytes;
+    char cmdBuffer[32];
+
     //TODO: can this be configured as standard?
-    if (processCmd(AT_COMMAND_MSG_FORMAT) == -1) {
+    if (processCmd(AT_COMMAND_MSG_TXT) == -1) {
         return -1;
+    }
+    // Write the number into the AT command
+    snprintf(cmdBuffer, sizeof(rxBuffer), AT_COMMAND_MSG_NBR, nbr.c_str());
+
+    nBytes = uart.writeBuffer(cmdBuffer);
+    if (nBytes == -1) {
+        printf("UART write error\n");
+        return false;
+    }
+
+    nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT);
+
+    if (nBytes <= 0) {
+        printf("UART read error or timeout\n");
+        return false;
+    }
+
+    printf("echo read: %s\n", rxBuffer);
+    if (!findCharArray(">", rxBuffer)) {
+        printf("invalid echo\n");
+        return false;
+    }
+
+    // Now the text message can be written to the serial interface
+    nBytes = uart.writeBuffer(message);
+    if (nBytes == -1) {
+        printf("UART write error\n");
+        return false;
+    }
+
+    // Write send sequence
+    nBytes = uart.writeBuffer(AT_COMMAND_MSG_END);
+    if (nBytes == -1) {
+        printf("UART write error\n");
+        return false;
     }
 
     //TODO: not implemented
