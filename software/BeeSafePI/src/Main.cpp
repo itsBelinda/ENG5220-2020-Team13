@@ -26,11 +26,11 @@ int main()
     UBlox uBlox;
     uBlox.getModelNumber(imei);
     uBlox.getIMEI(imei);
-
+    std::cout << imei << std::endl;
 
     std::string phoneNbr("+447747329169");
     std::string txtMsg("This was sent from the beeSafe PI program."); // avoid \r for simplicity.
-    uBlox.sendMsg(phoneNbr, txtMsg);
+    //uBlox.sendMsg(phoneNbr, txtMsg);
 
     std::tm fromTime = {0};
     fromTime.tm_hour = 20;

@@ -45,6 +45,7 @@ private:
     bool checkStatusOK();
     static bool findCharArray(const char *const needle, const char *const haystack);
     static bool checkNoError(const char *const checkBuffer);
+    static double getSysTimeMS();
 
 private:
 
@@ -52,7 +53,6 @@ private:
     Uart uart;
     bool locationRequested;
     char rxBuffer[MAX_BUFFER_LENGTH] = {'\0'};
-    double getSysTimeMS();
 };
 
 #endif //BEESAFEPI_UBLOX_H
