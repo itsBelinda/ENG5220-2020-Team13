@@ -47,6 +47,7 @@
 #define ECHO_TIMEOUT 1000 // timeout in ms
 #define CHECK_TIMEOUT 10 // timeout in ms
 #define RX_TIMEOUT 1000 // timeout in ms
+#define NETWORK_TIMEOUT 5000 // timeout in ms
 // TODO: only temporary
 #define LOC_TIMEOUT 1200000 // timeout in ms (!)
 
@@ -91,7 +92,7 @@ bool UBlox::isOpen()
 
 int UBlox::getModelNumber(std::string &modelNumber)
 {
-    return processCmd(AT_COMMAND_GET_MODEL_NUMBER, modelNumber);
+    return processCmd(AT_COMMAND_GET_MODEL_NUMBER, RX_TIMEOUT, modelNumber);
     printf("Writing command\n");
 
     // Write the at command via uart.
@@ -119,7 +120,7 @@ int UBlox::getModelNumber(std::string &modelNumber)
 int UBlox::getIMEI(std::string &imei)
 {
     //TODO: processing of return needed?
-    return processCmd(AT_COMMAND_GET_IMEI, imei);
+    return processCmd(AT_COMMAND_GET_IMEI, RX_TIMEOUT, imei);
 }
 
 // Todo: the following two functions should be removed
@@ -163,7 +164,7 @@ double UBlox::getSysTimeMS()
 bool UBlox::checkConnections()
 {
     std::string gprsAttach;
-    processCmd(AT_COMMAND_GET_GPRS_ATTACH, gprsAttach);
+    processCmd(AT_COMMAND_GET_GPRS_ATTACH, RX_TIMEOUT, gprsAttach);
 
     // Check GPRS attach status
     // This should be connected automatically.
@@ -187,7 +188,7 @@ bool UBlox::checkConnections()
 bool UBlox::checkPSD()
 {
     std::string pdsState;
-    processCmd(AT_COMMAND_GET_PSD_CONNECT, pdsState);
+    processCmd(AT_COMMAND_GET_PSD_CONNECT, RX_TIMEOUT, pdsState);
 
     if (findCharArray(REPLY_PSD_1, rxBuffer)) {
         std::cout << "PSD activated" << std::endl;
@@ -204,7 +205,7 @@ bool UBlox::checkPSD()
 bool UBlox::activatePSD()
 {
     std::string pdsState;
-    processCmd(AT_COMMAND_ACTIVATE_PSD, pdsState);
+    processCmd(AT_COMMAND_ACTIVATE_PSD, NETWORK_TIMEOUT, pdsState);
     //pdsState(rxBuffer);
     if (!findCharArray(REPLY_PSD_1, rxBuffer)) {
         std::cerr << "PSD not activated" << std::endl;
@@ -244,7 +245,9 @@ int UBlox::getLocation(double *const lat, double *const lng)
     size_t nBytes;
     nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, CHECK_TIMEOUT);
     // ignore everything small, this is not the requested result
-    if (nBytes < 5) {
+    // TODO: at this point, rxBuffer still reports new data, but it always contains
+    // the same old data (tests with "screen" show that no new data should be received).
+    if (nBytes < 59) {
         return -1;
     }
 
@@ -265,8 +268,8 @@ int UBlox::getLocation(double *const lat, double *const lng)
     std::cout << "Response found: " << rxBuffer << std::endl;
     if (result.size() == 6) {
         try {
-            *lat = std::stod(result[3]);
-            *lng = std::stod(result[4]);
+            *lat = std::stod(result[2]);
+            *lng = std::stod(result[3]);
         } catch (const std::invalid_argument &) {
             std::cerr << "Argument is invalid." << std::endl;
             *lat = 0.0;
@@ -350,7 +353,7 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
 
     // Getting the message back could take a while, it is being sent. (no tests have been made as to how long it
     // actually takes.
-    nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, 5000);
+    nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, NETWORK_TIMEOUT);
     if (nBytes == -1) {
         std::cerr << "UART read error or timeout" << std::endl;
         return false;
@@ -396,13 +399,13 @@ int UBlox::processCmd(const char *const cmd)
 
 }
 
-int UBlox::processCmd(const char *const cmd, std::string &response)
+int UBlox::processCmd(const char *const cmd, int timeout, std::string &response)
 {
     if (!sendCmd(cmd)) {
         return -1;// TODO: error codes? or handle here? why -1 and not true/false? @dan
     }
 
-    size_t nRx = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT); // TODO: need for length? @dan
+    size_t nRx = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, timeout); // TODO: need for length? @dan
 
     if (nRx <= 0) {
         std::cerr << "UART read error or timeout" << std::endl;
@@ -416,7 +419,6 @@ int UBlox::processCmd(const char *const cmd, std::string &response)
         // changed to also check for OK,
         return -1;
     }
-
 
     if (!checkStatusOK()) {
         return -1;

@@ -31,6 +31,10 @@ int main()
     std::string phoneNbr("+447747329169");
     std::string txtMsg("This was sent from the beeSafe PI program."); // avoid \r for simplicity.
     //uBlox.sendMsg(phoneNbr, txtMsg);
+    uBlox.tempGetLoc(&lat, &lng);
+    std::cout.precision(17);
+    std::cout << "Position found: " << lat << " , " << lng << std::endl;
+
 
     std::tm fromTime = {0};
     fromTime.tm_hour = 20;
