@@ -18,9 +18,10 @@
 #define AT_COMMAND_MSG_PDU "AT+CMGF=0\r" // PDU message mode
 #define AT_CMD_MSG_PT1 "AT+CMGS=\""
 // here comes the phone number
-#define AT_CMD_MSG_PT2 "\r"
+#define AT_CMD_MSG_PT2 "\"\r"
 // here comes the message
 #define AT_CMD_MSG_END "\x1A"
+#define AT_CMD_MSG_ESC "\x1B"
 
 // setup Internet connection:
 #define AT_COMMAND_GET_GPRS_ATTACH "AT+CGATT?\r"
@@ -163,7 +164,6 @@ bool UBlox::checkConnections()
 {
     std::string gprsAttach;
     processCmd(AT_COMMAND_GET_GPRS_ATTACH, gprsAttach);
-    printf("gprs: %s", gprsAttach);
     std::string gprs(rxBuffer);
 //gprsAttach(&rxBuffer[0]);
     // Check GPRS attach status
@@ -240,7 +240,7 @@ int UBlox::requestLocation()
 int UBlox::getLocation(double *const lat, double *const lng)
 {
     if (locationRequested == false) {
-        printf("Location request has not been sent.");
+        std::cerr << "Location request has not been sent." << std::endl;
     }
     size_t nBytes;
     std::string location;
@@ -256,23 +256,23 @@ int UBlox::getLocation(double *const lat, double *const lng)
     std::vector<std::string> result;
     boost::split(result, rxBuffer, boost::is_any_of(",:"));
     if (!findCharArray(REPLY_LOC, rxBuffer)) {//TODO: use string functions
-        printf("invalid response found:\n %s\n", rxBuffer);
+        std::cerr << "invalid response found: " << rxBuffer << std::endl;
         return -1;;
     }
 
-    printf("Response found:\n %s\n", rxBuffer);
+    std::cout << "Response found: " << rxBuffer << std::endl;
     if (result.size() >= 5) {
         // Todo: exceptions
         try {
             *lat = std::stod(result[4]);
             *lng = std::stod(result[5]);
         } catch (const std::invalid_argument &) {
-            std::cerr << "Argument is invalid\n";
+            std::cerr << "Argument is invalid" << std::endl;
             *lat = 0.0;
             *lng = 0.0;
             //throw;
         } catch (const std::out_of_range &) {
-            std::cerr << "Argument is out of range for a double\n";
+            std::cerr << "Argument is out of range for a double" << std::endl;
             *lat = 0.0;
             *lng = 0.0;
             //throw;
@@ -288,52 +288,53 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
 {
     size_t nBytes;
     char cmdBuffer[32];
-    //TODO: can this be configured as standard?
+
+    // Message mode needs to be configured (default is 0). It is enough to do this once
+    // at startup, but better to at least check every time.
     if (processCmd(AT_COMMAND_MSG_TXT) == -1) {
         return -1;
     }
 
-    // Write the number into the AT command
+    // Write the phone number into the AT command
     std::stringstream ss;
     ss << AT_CMD_MSG_PT1 << nbr << AT_CMD_MSG_PT2;
-    // Extend lifetime of the references so they can be passed to UART
+    // Extend lifetime of the reference so it can be passed to UART
     const std::string &cmdString = ss.str();
-    //const char* cmdChar = cmdString.c_str();
-    std::cout << nbr <<  std::endl;
-    std::cout << ss.str() <<  std::endl;
-    //std::cout << cmdChar <<  std::endl;
     nBytes = uart.writeBuffer(cmdString);
     if (nBytes == -1) {
-        printf("UART write error\n");
+        std::cerr << "UART write error" << std::endl;
         return false;
     }
 
+    // Read back the echo
     nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT);
-
     if (nBytes <= 0) {
-        printf("UART read error or timeout\n");
+        std::cerr << "UART read error or timeout" << std::endl;
         return false;
     }
-
-    printf("echo read: %s\n", rxBuffer);
-    std::string response(rxBuffer);
-    if (!response.find(cmdString)) {
-        printf("invalid cmd echo\n");
+    // this is not working:
+    //std::string response(rxBuffer);
+    //if (!response.find(cmdString)) {
+    if(!findCharArray(AT_CMD_MSG_PT1, rxBuffer)){
+        std::cerr << "invalid cmd echo: " << rxBuffer << std::endl;
+        nBytes = uart.writeBuffer(AT_CMD_MSG_ESC);
         return false;
     }
 
     // Now the text message can be written to the serial interface
-    // In case the message has \r, it would be returned seperately (echo)
+    // In case the message has \r, it would be returned separately (echo)
     // avoid \r in message to not handle that, or read back after every \r
     nBytes = uart.writeBuffer(message);
     if (nBytes == -1) {
         printf("UART write message error\n");
+        nBytes = uart.writeBuffer(AT_CMD_MSG_ESC);
         return false;
     }
 
     // Write send sequence
     nBytes = uart.writeBuffer(AT_CMD_MSG_END);
     if (nBytes == -1) {
+        nBytes = uart.writeBuffer(AT_CMD_MSG_ESC);
         printf("UART write end of message error\n");
         return false;
     }

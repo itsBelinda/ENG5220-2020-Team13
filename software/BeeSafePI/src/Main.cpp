@@ -28,7 +28,7 @@ int main()
     uBlox.getIMEI(imei);
 
 
-    std::string phoneNbr("+417747329169");
+    std::string phoneNbr("+447747329169");
     std::string txtMsg("This was sent from the beeSafe PI program."); // avoid \r for simplicity.
     uBlox.sendMsg(phoneNbr, txtMsg);
 
