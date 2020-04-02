@@ -16,8 +16,11 @@
 // write text message
 #define AT_COMMAND_MSG_TXT "AT+CMGF=1\r" // Text message mode
 #define AT_COMMAND_MSG_PDU "AT+CMGF=0\r" // PDU message mode
-#define AT_COMMAND_MSG_NBR "AT+CMGS=\"+447747329169\"\r"
-#define AT_COMMAND_MSG_END "\x1A"
+#define AT_CMD_MSG_PT1 "AT+CMGS=\""
+// here comes the phone number
+#define AT_CMD_MSG_PT2 "\r"
+// here comes the message
+#define AT_CMD_MSG_END "\x1A"
 
 // setup Internet connection:
 #define AT_COMMAND_GET_GPRS_ATTACH "AT+CGATT?\r"
@@ -121,16 +124,16 @@ int UBlox::getIMEI(std::string &imei)
 bool UBlox::tempGetLoc(double *const lat, double *const lng)
 {
     //
-    if( !checkConnections()){
+    if (!checkConnections()) {
         printf("Connection setup/check failed\n");
         return false;
     }
-    if( !checkPSD() ){
+    if (!checkPSD()) {
         printf("PSD check failed\n");
         return false;
     }
 
-    if( requestLocation()==-1 ){
+    if (requestLocation() == -1) {
         printf("Request location failed\n");
         return false;
     }
@@ -138,12 +141,12 @@ bool UBlox::tempGetLoc(double *const lat, double *const lng)
     double requestTime = getSysTimeMS();
     double currentTime = getSysTimeMS();
 
-    do{
-        if(getLocation(lat, lng) == 0){
+    do {
+        if (getLocation(lat, lng) == 0) {
             return true;
         }
-	currentTime = getSysTimeMS();
-    }while((currentTime-requestTime) < LOC_TIMEOUT);
+        currentTime = getSysTimeMS();
+    } while ((currentTime - requestTime) < LOC_TIMEOUT);
 
 
     printf("Get location timeout\n");
@@ -165,7 +168,7 @@ bool UBlox::checkConnections()
 //gprsAttach(&rxBuffer[0]);
     // Check GPRS attach status
     // This should be connected automatically.
-    if (!findCharArray(REPLY_GPRS_ATTACH_1,rxBuffer)) {
+    if (!findCharArray(REPLY_GPRS_ATTACH_1, rxBuffer)) {
         //TODO: could be handled
         printf("GPRS not attached\n");
         return false;
@@ -187,10 +190,10 @@ bool UBlox::checkPSD()
     std::string pdsState;
     processCmd(AT_COMMAND_GET_PSD_CONNECT, pdsState);
     //pdsState(rxBuffer);
-    if (findCharArray(REPLY_PSD_1,rxBuffer)) {
+    if (findCharArray(REPLY_PSD_1, rxBuffer)) {
         printf("PSD activated\n");
         return true;
-    } else if (findCharArray(REPLY_PSD_0,rxBuffer)) {
+    } else if (findCharArray(REPLY_PSD_0, rxBuffer)) {
         printf("PSD not activated\n");
         return false;
     } else {
@@ -204,7 +207,7 @@ bool UBlox::activatePSD()
     std::string pdsState;
     processCmd(AT_COMMAND_ACTIVATE_PSD, pdsState);
     //pdsState(rxBuffer);
-    if (!findCharArray(REPLY_PSD_1,rxBuffer)) {
+    if (!findCharArray(REPLY_PSD_1, rxBuffer)) {
         printf("PSD not activated\n");
         return false;
     }
@@ -234,9 +237,9 @@ int UBlox::requestLocation()
     return 0;
 }
 
-int UBlox::getLocation( double *const lat, double *const lng)
+int UBlox::getLocation(double *const lat, double *const lng)
 {
-    if( locationRequested == false ){
+    if (locationRequested == false) {
         printf("Location request has not been sent.");
     }
     size_t nBytes;
@@ -252,29 +255,29 @@ int UBlox::getLocation( double *const lat, double *const lng)
     //+UULOC: 13/04/2011,09:54:51.000,45.6334520,13.0618620,49,1
     std::vector<std::string> result;
     boost::split(result, rxBuffer, boost::is_any_of(",:"));
-    if (!findCharArray(REPLY_LOC,rxBuffer) ){//TODO: use string functions
+    if (!findCharArray(REPLY_LOC, rxBuffer)) {//TODO: use string functions
         printf("invalid response found:\n %s\n", rxBuffer);
         return -1;;
     }
 
     printf("Response found:\n %s\n", rxBuffer);
-    if( result.size() >= 5) {
-    // Todo: exceptions
-    try {
-        *lat = std::stod(result[4]);
-        *lng = std::stod(result[5]);
-    } catch (const std::invalid_argument&) {
-        std::cerr << "Argument is invalid\n";
-        *lat = 0.0;
-        *lng = 0.0;
-        //throw;
-    } catch (const std::out_of_range&) {
-        std::cerr << "Argument is out of range for a double\n";
-        *lat = 0.0;
-        *lng = 0.0;
-        //throw;
+    if (result.size() >= 5) {
+        // Todo: exceptions
+        try {
+            *lat = std::stod(result[4]);
+            *lng = std::stod(result[5]);
+        } catch (const std::invalid_argument &) {
+            std::cerr << "Argument is invalid\n";
+            *lat = 0.0;
+            *lng = 0.0;
+            //throw;
+        } catch (const std::out_of_range &) {
+            std::cerr << "Argument is out of range for a double\n";
+            *lat = 0.0;
+            *lng = 0.0;
+            //throw;
+        }
     }
-  }
     locationRequested = false;
 
     return 0;
@@ -285,17 +288,21 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
 {
     size_t nBytes;
     char cmdBuffer[32];
-
     //TODO: can this be configured as standard?
     if (processCmd(AT_COMMAND_MSG_TXT) == -1) {
         return -1;
     }
 
     // Write the number into the AT command
-    //snprintf(cmdBuffer, sizeof(cmdBuffer), AT_COMMAND_MSG_NBR, nbr.c_str());
-//    printf("Send message: %s",AT_COMMAND_MSG_NBR);
-
-    nBytes = uart.writeBuffer(AT_COMMAND_MSG_NBR);
+    std::stringstream ss;
+    ss << AT_CMD_MSG_PT1 << nbr << AT_CMD_MSG_PT2;
+    // Extend lifetime of the references so they can be passed to UART
+    const std::string &cmdString = ss.str();
+    //const char* cmdChar = cmdString.c_str();
+    std::cout << nbr <<  std::endl;
+    std::cout << ss.str() <<  std::endl;
+    //std::cout << cmdChar <<  std::endl;
+    nBytes = uart.writeBuffer(cmdString);
     if (nBytes == -1) {
         printf("UART write error\n");
         return false;
@@ -309,22 +316,23 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
     }
 
     printf("echo read: %s\n", rxBuffer);
-    if(!findCharArray(AT_COMMAND_MSG_NBR,rxBuffer)){
-	printf("invalid cmd echo\n");
-	return false;
+    std::string response(rxBuffer);
+    if (!response.find(cmdString)) {
+        printf("invalid cmd echo\n");
+        return false;
     }
 
     // Now the text message can be written to the serial interface
     // In case the message has \r, it would be returned seperately (echo)
     // avoid \r in message to not handle that, or read back after every \r
-    nBytes = uart.writeBuffer("This is a text message sent from the PI");
+    nBytes = uart.writeBuffer(message);
     if (nBytes == -1) {
         printf("UART write message error\n");
         return false;
     }
 
     // Write send sequence
-    nBytes = uart.writeBuffer(AT_COMMAND_MSG_END);
+    nBytes = uart.writeBuffer(AT_CMD_MSG_END);
     if (nBytes == -1) {
         printf("UART write end of message error\n");
         return false;
@@ -336,7 +344,7 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
         return false;
     }
 
-    printf("sent message %s\n",rxBuffer);
+    printf("sent message %s\n", rxBuffer);
     nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT);
 
     if (nBytes <= 0) {
@@ -407,7 +415,8 @@ int UBlox::processCmd(const char *const cmd, std::string &response)
         return -1;
     }
     //TODO: could not get this to work!!
-    response.assign( rxBuffer); // char array to string //todo: trailing zeros? @dan: the private buffer's data is not deleted
+    response.assign(
+            rxBuffer); // char array to string //todo: trailing zeros? @dan: the private buffer's data is not deleted
     // seems like too much work: is it possilbe to only send the data until
     // the first \n or \0 (if inserted in Uart) (I tried and failed)
     // or do we have to reset it every time?

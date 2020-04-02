@@ -27,13 +27,10 @@ int main()
     uBlox.getModelNumber(imei);
     uBlox.getIMEI(imei);
 
-//    if( uBlox.checkConnections() == false){
-//        printf("Connections not established.\n");
-//    } else {
-//        uBlox.getLocation(&lat, &lng);
-//        printf("read loc: %d, %d", lat, lng);
-//    }
-    uBlox.sendMsg((std::string &) "+417747329169", (std::string &) "This was sent from the beeSafe PI program.\r");
+
+    std::string phoneNbr("+417747329169");
+    std::string txtMsg("This was sent from the beeSafe PI program."); // avoid \r for simplicity.
+    uBlox.sendMsg(phoneNbr, txtMsg);
 
     std::tm fromTime = {0};
     fromTime.tm_hour = 20;

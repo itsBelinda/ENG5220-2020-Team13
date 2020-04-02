@@ -254,7 +254,7 @@ ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
  * @return The number of chars (bytes) that have been successfully
  *      written to the device, -1 otherwise i.e. error.
  */
-ssize_t Uart::writeBuffer(std::string &cmd)
+ssize_t Uart::writeBuffer(const std::string &cmd)
 {
 
     // Convert the string into a char buffer.
