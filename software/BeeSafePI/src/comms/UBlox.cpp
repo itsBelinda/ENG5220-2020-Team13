@@ -116,34 +116,48 @@ int UBlox::getModelNumber(std::string &modelNumber)
     return rc;
 }
 
-
+/**
+ * Requests the IMEI 
+ * @param imei
+ * @return
+ */
 int UBlox::getIMEI(std::string &imei)
 {
-    //TODO: processing of return needed?
     return processCmd(AT_COMMAND_GET_IMEI, RX_TIMEOUT, imei);
 }
 
-// Todo: the following two functions should be removed
+/**
+ * This is a function to test the location functionality.
+ * @param lat A pointer to the double to store the latitude.
+ * @param lng A pointer to the double to store the longitude.
+ * @return true if the request could be handled successfully
+ */
 bool UBlox::tempGetLoc(double *const lat, double *const lng)
 {
-    //
+    // This should be done once at the beginning.
+    // Checks and sets up internet connection (internet connection is not automatic)
     if (!checkConnections()) {
         std::cerr << "Connection setup/check failed" << std::endl;
         return false;
     }
+
+    // This should be done before starting the location request.
+    // Make sure an internet connection is active.
     if (!checkPSD()) {
         std::cerr << "CPSD check failed" << std::endl;
         return false;
     }
 
+    // Start the location request
     if (requestLocation() == -1) {
         std::cerr << "Request location failed" << std::endl;
         return false;
     }
 
     double requestTime = getSysTimeMS();
-    double currentTime = getSysTimeMS();
+    double currentTime;
 
+    // Try to receive the location for some time.
     do {
         if (getLocation(lat, lng) == 0) {
             return true;
@@ -155,12 +169,17 @@ bool UBlox::tempGetLoc(double *const lat, double *const lng)
     return false;
 }
 
-double UBlox::getSysTimeMS()
-{
-    auto now = std::chrono::system_clock::now();
-    return std::chrono::system_clock::to_time_t(now);;
-}
 
+
+/**
+ * Checks the device connectivity.
+ *
+ * Checks if the GPRS connection is made (this should be done automatically).
+ * In case there is GPRS connectivity, the internet connection is checked and activated if
+ * needed.
+ *
+ * @return Ture if all the necessary connections are active.
+ */
 bool UBlox::checkConnections()
 {
     std::string gprsAttach;
@@ -168,7 +187,7 @@ bool UBlox::checkConnections()
 
     // Check GPRS attach status
     // This should be connected automatically.
-    if (!findCharArray(REPLY_GPRS_ATTACH_1, rxBuffer)) {
+    if (gprsAttach.find(REPLY_GPRS_ATTACH_1) == std::string::npos) {
         //TODO: could be handled
         std::cerr << "GPRS not attached" << std::endl;
         return false;
@@ -184,16 +203,20 @@ bool UBlox::checkConnections()
     }
 
 }
-
+/**
+ * Checks if the internet connection of the device is activated.
+ *
+ * @return True if the connection is active, false if it is not or if the command failed.
+ */
 bool UBlox::checkPSD()
 {
     std::string pdsState;
     processCmd(AT_COMMAND_GET_PSD_CONNECT, RX_TIMEOUT, pdsState);
 
-    if (findCharArray(REPLY_PSD_1, rxBuffer)) {
+    if (pdsState.find(REPLY_PSD_1) != std::string::npos) {
         std::cout << "PSD activated" << std::endl;
         return true;
-    } else if (findCharArray(REPLY_PSD_0, rxBuffer)) {
+    } else if (pdsState.find(REPLY_PSD_0) != std::string::npos) {
         std::cerr << "PSD not activated" << std::endl;
         return false;
     } else {
@@ -202,18 +225,31 @@ bool UBlox::checkPSD()
     }
 }
 
+/**
+ * Sends the command to activate the internet connection of the device.
+ * This command can take a while to respond. It will eventually put out, if the activation was successfull.
+ *
+ * @return true if successful, false if not.
+ */
 bool UBlox::activatePSD()
 {
     std::string pdsState;
     processCmd(AT_COMMAND_ACTIVATE_PSD, NETWORK_TIMEOUT, pdsState);
-    //pdsState(rxBuffer);
-    if (!findCharArray(REPLY_PSD_1, rxBuffer)) {
+
+    if (pdsState.find(REPLY_PSD_1) != std::string::npos) {
         std::cerr << "PSD not activated" << std::endl;
         return false;
     }
     return true;
 }
-
+/**
+ * Request the location from the u-blox module.
+ *
+ * After calling this function, getLocation() has to be called to retreive the location information.
+ * If this function is called while a previous request is ongoing, that request will be abortet, the
+ * best location estimation will be printed out and a new request will be sent.
+ * @return 0 if successful, -1 if not successful.
+ */
 int UBlox::requestLocation()
 {
     // It's not necessary to check if a location request is ongoing, if
@@ -237,17 +273,26 @@ int UBlox::requestLocation()
     return 0;
 }
 
+/**
+ * Try to get the location from the device.
+ * This command has to be called after requestLocation(), to try to receive the location.
+ * Because the timing can differ a lot, this function needs to be called repeatedly,
+ * Ideally only when there is new data available from the u-blox device.
+ *
+ * @param lat A pointer to the double to store the latitude.
+ * @param lng A pointer to the double to store the longitude.
+ * @return 0 if successful, -1 if not successful.
+ */
 int UBlox::getLocation(double *const lat, double *const lng)
 {
-    if (locationRequested == false) {
+    if (!locationRequested) {
         std::cerr << "Location request has not been sent." << std::endl;
     }
     size_t nBytes;
     nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, CHECK_TIMEOUT);
     // ignore everything small, this is not the requested result
-    // TODO: at this point, rxBuffer still reports new data, but it always contains
-    // the same old data (tests with "screen" show that no new data should be received).
-    if (nBytes < 59) {
+    // TODO: at this point, readNext returning (unsigned value) -1 is not helpful.
+    if (nBytes != -1 && nBytes > 59 ) {
         return -1;
     }
 
@@ -261,7 +306,7 @@ int UBlox::getLocation(double *const lat, double *const lng)
 
     if (result[0].find(REPLY_LOC) == std::string::npos) {//TODO: use string functions
         std::cerr << "invalid response found: " << rxBuffer << std::endl;
-        return -1;;
+        return -1;
     }
 
     locationRequested = false;
@@ -289,8 +334,14 @@ int UBlox::getLocation(double *const lat, double *const lng)
     return 0;
 }
 
-
-int UBlox::sendMsg(std::string &nbr, std::string &message)
+/**
+ * Sends a text message (SMS) to the specified number.
+ *
+ * @param nbr A string reference to the number to send the message to.
+ * @param message A string reference to the message to send. Should not contain \\r.
+ * @return 0 if successful, -1 if not successful.
+ */
+int UBlox::sendMsg(const std::string &nbr, const std::string &message)
 {
     size_t nBytes;
     char cmdBuffer[32];
@@ -384,9 +435,14 @@ int UBlox::sendMsg(std::string &nbr, std::string &message)
 }
 
 //TODO: only have one function with option to get response or not.
+/**
+ * Sends a command to the u-blox device and checks the correct echo and status.
+ *
+ * @param cmd  The AT command to send to the u-blox device.
+ * @return 0 if successful, -1 if not successful.
+ */
 int UBlox::processCmd(const char *const cmd)
 {
-
     if (!sendCmd(cmd)) {
         return -1;// TODO: error codes? or handle here? why -1 and not true/false? @dan
     }
@@ -394,30 +450,50 @@ int UBlox::processCmd(const char *const cmd)
     if (!checkStatusOK()) {
         return -1;
     }
-
     return 0;
 
 }
 
+/**
+ * Sends a command to the u-blox device and gets the response.
+ *
+ * This function checks for the correct echo response and the status that is sent back.
+ *
+ * @param cmd The AT command to send to the u-blox device.
+ * @param timeout The maximum timeout that is allowed to pass after sending the command until the response is received.
+ * @param response A String reference to store the response from the u-blox device.
+ * @return 0 if successful, -1 if not successful //TODo: add either error codes or just return true or false.
+ */
 int UBlox::processCmd(const char *const cmd, int timeout, std::string &response)
 {
+    // Send the cmd and ckeck for corrct echo
     if (!sendCmd(cmd)) {
         return -1;// TODO: error codes? or handle here? why -1 and not true/false? @dan
     }
 
-    size_t nRx = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, timeout); // TODO: need for length? @dan
-
-    if (nRx <= 0) {
+    // Read in the next line from the device
+    size_t nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, timeout); // TODO: need for length? @dan
+    if (nBytes <= 0) {
         std::cerr << "UART read error or timeout" << std::endl;
         return -1;
     }
-
     std::cout << "answer read: " << rxBuffer;
     response.assign(rxBuffer);
 
-    if (!checkNoError(rxBuffer)) { // TODO: if we are sure that no valid answer can be 2 bytes, this can be
-        // changed to also check for OK,
+    // Check that the response was not an error.
+    // Alternatively, the response could come after the OK, check for that, too
+    if (!checkNoError(rxBuffer)) {
         return -1;
+    }else if ( findCharArray(AT_STATUS_OK, rxBuffer)){
+        nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, timeout);
+        if (nBytes <= 0) {
+            std::cerr << "UART read error or timeout" << std::endl;
+            return -1;
+        } else {
+            std::cout << "answer read: " << rxBuffer;
+            response.assign(rxBuffer);
+        }
+
     }
 
     if (!checkStatusOK()) {
@@ -427,7 +503,12 @@ int UBlox::processCmd(const char *const cmd, int timeout, std::string &response)
 
 }
 
-
+/**
+ * Sends an AT command to the u-blox device and checks for the right echo
+ *
+ * @param cmdBuffer A pointer to the buffer containing the AT command.
+ * @return true, if the command was successfully sent and the echo was received
+ */
 bool UBlox::sendCmd(const char *const cmdBuffer)
 {
     size_t nBytes;
@@ -452,11 +533,18 @@ bool UBlox::sendCmd(const char *const cmdBuffer)
     return true;
 }
 
+/**
+ * Reads in a line from the u-blox device and checks if it is a OK or another status.
+ *
+ * Accounts for OK sometimes being preceded by "\\n\\r". In case the line that was read is only two bytes, the next
+ * line is read as well.
+ *
+ * @return true if the status that was received is OK.
+ */
 bool UBlox::checkStatusOK()
 {
     // needs separate buffer to not overwrite the response.
-    char checkBuffer[MAX_BUFFER_LENGTH];
-    ssize_t nRx = uart.readNext(checkBuffer, MAX_BUFFER_LENGTH, RX_TIMEOUT);
+    ssize_t nRx = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, RX_TIMEOUT);
 
     if (nRx <= 0) {
         std::cerr << "UART read error or timeout" << std::endl;
@@ -465,20 +553,42 @@ bool UBlox::checkStatusOK()
         // if the result is OK, the device often (not always) sends \r\n first, if only two bytes are received,
         // read again and check for OK
         if (nRx == 2) {
-            nRx = uart.readNext(checkBuffer, MAX_BUFFER_LENGTH, RX_TIMEOUT);
+            nRx = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, RX_TIMEOUT);
         }
-        if (findCharArray(AT_STATUS_OK, checkBuffer)) {
+        if (findCharArray(AT_STATUS_OK, rxBuffer)) {
             std::cout << "Status OK" << std::endl;
             return true;
-        } else if (!checkNoError(checkBuffer)) {
+        } else if (!checkNoError(rxBuffer)) {
             return false;
         } else {
-            std::cerr << "Status unknown: " << checkBuffer << std::endl;
+            std::cerr << "Status unknown: " << rxBuffer << std::endl;
             return false;
         }
     }
 }
 
+
+// todo helper functions:
+
+/**
+ * Gets the current system time in ms.
+ *
+ * @return The current system time in ms.
+ */
+double UBlox::getSysTimeMS()
+{
+    auto now = std::chrono::system_clock::now();
+    return std::chrono::system_clock::to_time_t(now);;
+}
+
+/**
+ * Check that no error status was received.
+ *
+ * If the device is expected to send a response, but somehow cannot, it sends back a status instead.
+ *
+ * @param checkBuffer A pointer to the buffer to check.
+ * @return True if no error was found, false if it was found.
+ */
 bool UBlox::checkNoError(const char *const checkBuffer)
 {
     if (findCharArray(AT_STATUS_ERROR, checkBuffer)) {
@@ -493,7 +603,12 @@ bool UBlox::checkNoError(const char *const checkBuffer)
     return true;
 }
 
-// todo helper
+/**
+ * Helper function to find a set of chars in another set of chars.
+ * @param needle The chars to find.
+ * @param haystack The chars to look in.
+ * @return True if the set was found, false if not.
+ */
 bool UBlox::findCharArray(const char *const needle, const char *const haystack)
 {
     //printf("looking for %s in %s\n", needle , haystack);

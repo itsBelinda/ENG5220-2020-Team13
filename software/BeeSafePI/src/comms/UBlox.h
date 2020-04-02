@@ -29,7 +29,7 @@ public:
     int getIMEI(std::string &imei);
     int requestLocation();
     int getLocation(double *const lat, double *const lng);
-    int sendMsg(std::string &nbr, std::string &message);
+    int sendMsg(const std::string &nbr, const std::string &message);
 
     bool tempGetLoc(double *const lat, double *const lng);
     bool activatePSD();
