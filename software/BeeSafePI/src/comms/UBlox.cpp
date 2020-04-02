@@ -46,12 +46,12 @@
 // Define different timeouts
 #define ECHO_TIMEOUT 1000 // timeout in ms
 #define CHECK_TIMEOUT 10 // timeout in ms
-#define RX_TIMEOUT 1000 // timeout in ms
+#define RX_TIMEOUT 1500 // timeout in ms
 #define NETWORK_TIMEOUT 5000 // timeout in ms
 // TODO: only temporary
 #define LOC_TIMEOUT 1200000 // timeout in ms (!)
 
-/*
+/**
  * This UBlox class is currently only for testing purposes. It is to
  * test and show the basic functionality of the u-blox module with the least
  * effort and in one place.
@@ -59,8 +59,6 @@
  * required.
  * Timeouts should be reduced drastically or (better) removed completely where
  * possible.
- *
- *
  */
 UBlox::UBlox()
 {
@@ -90,9 +88,15 @@ bool UBlox::isOpen()
     return uart.isOpen();
 }
 
+/**
+ * Gets the model number from the device.
+ *
+ * @param imei A string containing the model number
+ * @return 0 if successful, -1 if not successful
+ */
 int UBlox::getModelNumber(std::string &modelNumber)
 {
-    return processCmd(AT_COMMAND_GET_MODEL_NUMBER, RX_TIMEOUT, modelNumber);
+    return processCmd(AT_COMMAND_GET_MODEL_NUMBER, modelNumber);
     printf("Writing command\n");
 
     // Write the at command via uart.
@@ -117,13 +121,14 @@ int UBlox::getModelNumber(std::string &modelNumber)
 }
 
 /**
- * Requests the IMEI 
- * @param imei
- * @return
+ * Gets the International Mobile Equipment Identity (IMEI) number from the device.
+ *
+ * @param imei A string containing the IMEI number
+ * @return 0 if successful, -1 if not successful
  */
 int UBlox::getIMEI(std::string &imei)
 {
-    return processCmd(AT_COMMAND_GET_IMEI, RX_TIMEOUT, imei);
+    return processCmd(AT_COMMAND_GET_IMEI, imei);
 }
 
 /**
@@ -183,7 +188,7 @@ bool UBlox::tempGetLoc(double *const lat, double *const lng)
 bool UBlox::checkConnections()
 {
     std::string gprsAttach;
-    processCmd(AT_COMMAND_GET_GPRS_ATTACH, RX_TIMEOUT, gprsAttach);
+    processCmd(AT_COMMAND_GET_GPRS_ATTACH, gprsAttach);
 
     // Check GPRS attach status
     // This should be connected automatically.
@@ -211,7 +216,7 @@ bool UBlox::checkConnections()
 bool UBlox::checkPSD()
 {
     std::string pdsState;
-    processCmd(AT_COMMAND_GET_PSD_CONNECT, RX_TIMEOUT, pdsState);
+    processCmd(AT_COMMAND_GET_PSD_CONNECT, pdsState);
 
     if (pdsState.find(REPLY_PSD_1) != std::string::npos) {
         std::cout << "PSD activated" << std::endl;
@@ -234,7 +239,7 @@ bool UBlox::checkPSD()
 bool UBlox::activatePSD()
 {
     std::string pdsState;
-    processCmd(AT_COMMAND_ACTIVATE_PSD, NETWORK_TIMEOUT, pdsState);
+    processCmd(AT_COMMAND_ACTIVATE_PSD);
 
     if (pdsState.find(REPLY_PSD_1) != std::string::npos) {
         std::cerr << "PSD not activated" << std::endl;
@@ -292,7 +297,7 @@ int UBlox::getLocation(double *const lat, double *const lng)
     nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, CHECK_TIMEOUT);
     // ignore everything small, this is not the requested result
     // TODO: at this point, readNext returning (unsigned value) -1 is not helpful.
-    if (nBytes != -1 && nBytes > 59 ) {
+    if (nBytes == -1 || nBytes < 59 ) {
         return -1;
     }
 
@@ -460,11 +465,10 @@ int UBlox::processCmd(const char *const cmd)
  * This function checks for the correct echo response and the status that is sent back.
  *
  * @param cmd The AT command to send to the u-blox device.
- * @param timeout The maximum timeout that is allowed to pass after sending the command until the response is received.
  * @param response A String reference to store the response from the u-blox device.
  * @return 0 if successful, -1 if not successful //TODo: add either error codes or just return true or false.
  */
-int UBlox::processCmd(const char *const cmd, int timeout, std::string &response)
+int UBlox::processCmd(const char *const cmd, std::string &response)
 {
     // Send the cmd and ckeck for corrct echo
     if (!sendCmd(cmd)) {
@@ -472,7 +476,7 @@ int UBlox::processCmd(const char *const cmd, int timeout, std::string &response)
     }
 
     // Read in the next line from the device
-    size_t nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, timeout); // TODO: need for length? @dan
+    size_t nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, RX_TIMEOUT); // TODO: need for length? @dan
     if (nBytes <= 0) {
         std::cerr << "UART read error or timeout" << std::endl;
         return -1;
@@ -485,7 +489,7 @@ int UBlox::processCmd(const char *const cmd, int timeout, std::string &response)
     if (!checkNoError(rxBuffer)) {
         return -1;
     }else if ( findCharArray(AT_STATUS_OK, rxBuffer)){
-        nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, timeout);
+        nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, RX_TIMEOUT);
         if (nBytes <= 0) {
             std::cerr << "UART read error or timeout" << std::endl;
             return -1;

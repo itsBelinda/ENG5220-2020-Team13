@@ -40,7 +40,7 @@ private:
     // Configure the UBlox device.
     int conf();
     int processCmd(const char *const cmd);
-    int processCmd(const char *const cmd, int timeout, std::string &response);
+    int processCmd(const char *const cmd, std::string &response);
     bool sendCmd(const char * const cmdBuffer);
     bool checkStatusOK();
     static bool findCharArray(const char *const needle, const char *const haystack);

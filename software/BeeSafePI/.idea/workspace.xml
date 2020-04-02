@@ -342,6 +342,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/BeeSafePI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BeeSafePI.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.cpp" afterDir="false" />
@@ -390,11 +391,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="1680" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
   </component>
   <component name="ProjectId" id="1Zf3kQQ1tFe5DX1LijREVZExINa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -471,6 +467,7 @@
       <workItem from="1585077692148" duration="3854000" />
       <workItem from="1585216470310" duration="1060000" />
       <workItem from="1585322822464" duration="473000" />
+      <workItem from="1585859946049" duration="587000" />
     </task>
     <servers />
   </component>
