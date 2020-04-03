@@ -564,6 +564,7 @@ bool UBlox::checkStatusOK()
             return true;
         } else if (!checkNoError(rxBuffer)) {
             return false;
+
         } else {
             std::cerr << "Status unknown: " << rxBuffer << std::endl;
             return false;
