@@ -32,3 +32,8 @@ ______________________________________________
 16	1	U2	SARA-G3	U-Blox	SARA-G350-02X-01
 17	1	U3	SN74AVC4T774PW	Texas Instruments	SN74AVC4T774PWR
 18	1	U4	Raspberry Pi B+	Raspberry Pi	Raspberry Pi 3 Model B
+
+
+Aditionally needed, but not on the PCB:
+	1	Antenna		PulseLarsen Antennas	W3404SMA
+	1	Tall header	Adafruit		1992
