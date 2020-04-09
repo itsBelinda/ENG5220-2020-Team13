@@ -138,6 +138,8 @@ bool UBlox::getIMEI(std::string &imei)
         return false;
     }
 
+    printf("%s\n", rxBuffer);
+
     return true;
 }
 
