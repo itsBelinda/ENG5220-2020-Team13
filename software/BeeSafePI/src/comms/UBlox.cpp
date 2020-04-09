@@ -111,6 +111,8 @@ bool UBlox::getModelNumber(std::string &modelNumber)
         return false;
     }
 
+    printf("%s\n", rxBuffer);
+
     return true;
 }
 
