@@ -1,9 +1,9 @@
-#include "Uart.h"
+#include "UArt.h"
 
 #include <stdexcept>
 #include <sys/ioctl.h>
 
-Uart::Uart()
+UArt::UArt()
 {
     device = -1;
     conf();
@@ -13,14 +13,14 @@ Uart::Uart()
  * Destructor is used to close the comms i.e. the Uart
  * serial interface.
  */
-Uart::~Uart()
+UArt::~UArt()
 {
     if (device != -1) {
         close(device);
     }
 }
 
-int Uart::conf()
+int UArt::conf()
 {
 
     // Open the device.
@@ -84,12 +84,12 @@ err:
  *
  * @return True if the device is open (!=-1), false otherwise.
  */
-bool Uart::isOpen()
+bool UArt::isDeviceOpen()
 {
     return device != -1;
 }
 
-int Uart::getDevice()
+int UArt::getDevice()
 {
     return device;
 }
@@ -106,8 +106,8 @@ int Uart::getDevice()
  * @return The number of bytes that have successfully been read, -1
  *      otherwise i.e. errors.
  */
-ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
-                         const int timeoutMs)
+ssize_t UArt::readExpected(char *buffer, size_t bytesExpected,
+                           int timeoutMs)
 {
 
     // Check that the device has been established.
@@ -174,7 +174,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
  *      blocks the thread for the timeout ms if not.
  * @return The number of characters read (including '\n'), -1 otherwise.
  */
-ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
+ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
                        const int timeoutMs)
 {
 
@@ -249,7 +249,7 @@ ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
  * @return The number of chars (bytes) that have been successfully
  *      written to the device, -1 otherwise i.e. error.
  */
-ssize_t Uart::writeBuffer(std::string &cmd)
+ssize_t UArt::writeNext(std::string &cmd)
 {
 
     // Convert the string into a char buffer.
@@ -257,7 +257,7 @@ ssize_t Uart::writeBuffer(std::string &cmd)
     strcpy(cmdBuffer, cmd.c_str());
 
     // Attempt to write the converted command to the device.
-    return writeBuffer(cmdBuffer);
+    return writeNext(cmdBuffer);
 }
 
 /**
@@ -269,7 +269,7 @@ ssize_t Uart::writeBuffer(std::string &cmd)
  * @return The number of chars (bytes) that have been successfully
  *      written to the device, -1 otherwise i.e. error.
  */
-ssize_t Uart::writeBuffer(const char * const cmdBuffer)
+ssize_t UArt::writeNext(const char *cmdBuffer)
 {
 
     // If the device is present, write a command.

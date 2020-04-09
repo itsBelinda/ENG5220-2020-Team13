@@ -17,27 +17,28 @@
 #define DEVICE_BAUD_RATE 115200
 #define DEVICE_MAX_BUFFER_SIZE 1024
 
-class Uart
+class UArt
 {
 
 public:
 
     // Constructors & Destructors
-    Uart();
-    ~Uart();
+    UArt();
+    ~UArt();
 
 public:
 
     // Generic getters and setters.
-    bool isOpen();
+    bool isDeviceOpen();
     int getDevice();
 
-    // For reading and writing from and to the device.
-    ssize_t readBuffer(char *buffer, size_t bytesExpected, int timeoutMs);
+    // For reading commands from the device via uart.
+    ssize_t readExpected(char *buffer, size_t bytesExpected, int timeoutMs);
     ssize_t readNext(char * resultBuffer, size_t resultBufferLen, int timeoutMs);
 
-    ssize_t writeBuffer(std::string &cmd);
-    ssize_t writeBuffer(const char *cmdBuffer);
+    // For writing commands via uart to the device.
+    ssize_t writeNext(std::string &cmd);
+    ssize_t writeNext(const char *cmdBuffer);
 
 private:
     int conf();

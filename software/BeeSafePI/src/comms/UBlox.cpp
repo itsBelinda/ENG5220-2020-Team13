@@ -1,28 +1,42 @@
 #include <boost/compatibility/cpp_c_headers/cstring>
+#include <iostream>
+
+#include "string.h"
+
 #include "UBlox.h"
 
-#define  MAX_CMD_LENGTH 544
-// Define the AT commands that are used on the U-Blox device.
-#define AT_COMMAND_GET_MODEL_NUMBER "ATI0\r"
-#define AT_COMMAND_GET_IMEI "ATI5\r"
-#define AT_COMMAND_GET_LOCATION "AT+ULOC=2,3,0,5,1\r"
-#define AT_COMMAND_MSG_FORMAT "AT+CMGF1"
-#define AT_COMMAND_SEND_MSG "AT+CMGF1"
+// Define generic u-blox commands for obtaining additional information.
+#define AT_CMD_GET_MODEL_NUMBER "ATI\r"
+#define AT_CMD_GET_IMEI "ATI5\r"
 
-// Define the states.
-#define AT_STATUS_OK "OK"
-#define AT_STATUS_ERROR "ERROR"
-#define AT_STATUS_ABORTED "ABORTED"
+// Commands for checking if the necessary components are present / enabled.
+#define AT_CMD_GPRS_ATTACHED "AT+CGATT?\r"
+#define AT_CMD_ATTACH_GPRS ""
+#define AT_CMD_PSD_CONNECTED "AT+UPSND=0,8\r"
+#define AT_CMD_CONNECT_PSD "AT+UPSDA=0,3\r"
 
-// Define expected response sizes
-#define SZ_RESPONSE_IMEI 30 //TODO: check
-#define SZ_RESPONSE_STATUS 4 //TODO: check
+// Location specific commands.
+#define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
+#define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
 
-// Define timeouts
-#define ECHO_TIMEOUT 1000 // timeout in ms
-#define CMD_TIMEOUT 1000 // timeout in ms
-#define RX_TIMEOUT 1000 // timeout in ms
+// Define the response states (from u-blox).
+#define AT_RESPONSE_STATUS_OK "OK"
+#define AT_RESPONSE_STATUS_ERROR "ERROR"
+#define AT_RESPONSE_STATUS_ABORTED "ABORTED"
 
+// Define responses to commands.
+#define AT_RESPONSE_PSD_CONNECTED ""
+#define AT_RESPONSE_PSD_NOT_CONNECTED ""
+
+// Define timeouts for the commands.
+#define RX_TIMEOUT 10
+#define RX_TIMEOUT_ECHO 1000
+#define RX_TIMEOUT_STATUS 1000
+
+#define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
+#define RX_TIMEOUT_CMD_GET_IMEI 1000
+#define RX_TIMEOUT_CMD_IS_GPRS_ATTACHED 1000
+#define RX_TIMEOUT_CMD_IS_PSD_CONNECTED 1000
 
 UBlox::UBlox()
 {
@@ -36,198 +50,173 @@ int UBlox::conf()
     return -1;
 }
 
-Uart &UBlox::getUart()
+UArt &UBlox::getUArtInterface()
 {
     return uart;
 }
 
-int UBlox::getDevice()
+int UBlox::getUArtDevice()
 {
     return uart.getDevice();
 }
 
-bool UBlox::isOpen()
+bool UBlox::isUArtOpen()
 {
-    return uart.isOpen();
+    return uart.isDeviceOpen();
 }
 
-int UBlox::getModelNumber(std::string &modelNumber)
+bool UBlox::hasGPRS()
+{
+    return false;
+}
+
+bool UBlox::hasPSD()
+{
+    return false;
+}
+
+bool UBlox::attachGPRS()
+{
+    return false;
+}
+
+bool UBlox::connectPSD()
+{
+    return false;
+}
+
+bool UBlox::getModelNumber(std::string &modelNumber)
 {
 
-    printf("Writing command\n");
+    // Write the command to via uart, check if successfully written.
+    ssize_t rc = writeNext(AT_CMD_GET_MODEL_NUMBER);
+    if (rc == -1) {
+        return false;
+    }
 
-    // Write the at command via uart.
-    ssize_t rc = uart.writeBuffer(AT_COMMAND_GET_MODEL_NUMBER);
+    // Read the model number from the chip.
+    rc = readNext(RX_TIMEOUT_CMD_GET_MODEL_NUMBER);
+    if (rc == -1) {
+        return false;
+    }
+    modelNumber.assign(rxBuffer, strlen(rxBuffer));
+
+    // Print the model number...
+    std::cout << modelNumber << std::endl;
+
+    // Get the status from the chip.
+    if ((rc = readNext(RX_TIMEOUT)) != 2) {
+        return false;
+    } else if ((rc = readNext(RX_TIMEOUT_STATUS)) != 4) {
+        return false;
+    }
+
+    return true;
+}
+
+bool UBlox::getIMEI(std::string &imei)
+{
+    // Write a command and check that is has been successfully written.
+    ssize_t rc = writeNext(AT_CMD_GET_IMEI);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Read the IMEI number from the chip.
+    rc = readNext(RX_TIMEOUT_CMD_GET_IMEI);
+    if (rc == -1) {
+        return false;
+    }
+    imei.assign(rxBuffer, strlen(rxBuffer));
+
+    std::cout << imei << std::endl;
+
+    // Get the status of the command.
+    if ((rc = readNext(RX_TIMEOUT)) != 2) {
+        return false;
+    } else if ((rc = readNext(RX_TIMEOUT_STATUS)) != 4) {
+        return false;
+    }
+
+    return true;
+}
+
+bool UBlox::getLocation(double &lat, double &lng)
+{
+    // Check connections, these should be enabled.
+    // Activate any if necessary.
+    // Send the message for getting the location, await response.
+    // If we timeout, do we abort?
+    return true;
+}
+
+bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
+{
+    return false;
+}
+
+bool UBlox::sendLocation(std::string &phoneNumber, double lat, double lng)
+{
+    return false;
+}
+
+/**
+ * Writes the next command to u-blox via the uart interface.
+ * However, it should be noted that the rx buffer is cleared prior
+ * to reading the echo.
+ *
+ * @param command The command that is to be written via uart to the u-blox
+ *      device. Note, must end in \r.
+ * @return -1 if there was an error, n (representing length of the echo) otherwise.
+ */
+ssize_t UBlox::writeNext(const char * const command)
+{
+
+    // Attempt to write the command.
+    ssize_t rc = uart.writeNext(command);
     if (rc == -1) {
         return -1;
     }
 
-    printf("Command written %d\n", (int) rc);
-
-    // Read the echo, imei and status back from the device.
-    char modelNumberBuffer[40] = {'\0'};
-    rc = uart.readNext(modelNumberBuffer, 40, 1000);
-    printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
-    rc = uart.readNext(modelNumberBuffer, 40, 1000);
-    printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
-    rc = uart.readNext(modelNumberBuffer, 40, 1000);
-    rc = uart.readNext(modelNumberBuffer, 40, 1000);
-    printf("Rc: %d, Result: %s", (int) rc, modelNumberBuffer);
-
-    return rc;
-}
-
-
-int UBlox::getIMEI(std::string &imei)
-{
-    //TODO: processing of return needed?
-    return processCmd(AT_COMMAND_GET_IMEI, imei);
-}
-
-int UBlox::getLocation(double &lat, double &lng)
-{
-    std::string location;
-    //TODO: processing of return needed!
-    // TODO: still needs testing (probaly setup)
-    return processCmd(AT_COMMAND_GET_LOCATION, location);
-}
-
-
-int UBlox::sendMsg(std::string &nbr, std::string &message)
-{
-    //TODO: can this be configured as standard?
-    if (processCmd(AT_COMMAND_MSG_FORMAT) == -1) {
+    // Commands always echo, read it.
+    rc = readNext(RX_TIMEOUT_ECHO);
+    if (rc == -1) {
         return -1;
     }
 
-    //TODO: not implemented
-    return 0;
+    // If the echo is the same length, command successfully written.
+    return strlen(command) == rc;
 }
 
-//TODO: only have one function with option to get response or not.
-int UBlox::processCmd(const char *const cmd)
+/**
+ * Read the next response from the uart interface into the rx buffer.
+ * Note, the rx buffer is cleared (set to null terminators) prior to
+ * reading the response from the said interface.
+ *
+ * @param timeout The timeout in ms prior to discarding the query.
+ * @return -1 if there was an error, n (representing length) otherwise.
+ */
+ssize_t UBlox::readNext(int timeout)
 {
-    printf("Writing command \n");
-
-    if (!sendCmd(cmd)) {
-        return -1;// TODO: error codes? or handle here? why -1 and not true/false? @dan
-    }
-
-    if (!checkStatusOK()) {
-        return -1;
-    }
-
-    return 0;
-
+    clearRx();
+    return uart.readNext(rxBuffer, AT_CMD_BUFF_LEN, timeout);
 }
 
-int UBlox::processCmd(const char *const cmd, std::string &response)
+/**
+ * Clear the RX buffer; usually done prior to reading the next
+ * response from the uart interface.
+ */
+void UBlox::clearRx()
 {
-    printf("Writing command \n");
-
-    if (!sendCmd(cmd)) {
-        return -1;// TODO: error codes? or handle here? why -1 and not true/false? @dan
+    for (auto& byte : rxBuffer) {
+        byte = '\0';
     }
-
-    size_t nRx = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT); // TODO: need for length? @dan
-
-    if (nRx <= 0) {
-        printf("UART read error or timeout\n");
-        return -1;
-    }
-
-    printf("answer read: %s\n", rxBuffer);
-
-    if (!checkNoError(rxBuffer)) { // TODO: if we are sure that no valid answer can be 2 bytes, this can be
-        // changed to also check for OK,
-        return -1;
-    }
-
-
-    if (!checkStatusOK()) {
-        return -1;
-    }
-
-    response = rxBuffer; // char array to string //todo: trailing zeros? @dan: the private buffer's data is not deleted
-    // seems like too much work: is it possilbe to only send the data until
-    // the first \n or \0 (if inserted in Uart) (I tried and failed)
-    // or do we have to reset it every time?
-
-    return 0;
-
 }
 
-
-bool UBlox::sendCmd(const char *const cmdBuffer)
+char UBlox::checkRxStatus()
 {
-    size_t nBytes;
-    nBytes = uart.writeBuffer(cmdBuffer);
-    if (nBytes == -1) {
-        printf("UART write error\n");
-        return false;
-    }
-
-    nBytes = uart.readNext(rxBuffer, MAX_BUFFER_LENGTH, ECHO_TIMEOUT);
-
-    if (nBytes <= 0) {
-        printf("UART read error or timeout\n");
-        return false;
-    }
-
-    printf("echo read: %s\n", rxBuffer);
-    if (!findCharArray(cmdBuffer, rxBuffer)) {
-        printf("invalid echo\n");
-        return false;
-    }
-    return true;
+    return -1;
 }
 
-bool UBlox::checkStatusOK()
-{
-    // needs separate buffer to not overwrite the response.
-    char checkBuffer[MAX_BUFFER_LENGTH];
-    ssize_t nRx = uart.readNext(checkBuffer, MAX_BUFFER_LENGTH, RX_TIMEOUT);
 
-    if (nRx <= 0) {
-        printf("UART read error or timeout\n");
-        return -1;
-    } else {
-        // if the result is OK, the device often sends \r\n first, if only two bytes are received, we
-        // read again and check for OK
-        if (nRx == 2) {
-            nRx = uart.readNext(checkBuffer, MAX_BUFFER_LENGTH, RX_TIMEOUT);
-        }
-        if (findCharArray(AT_STATUS_OK, checkBuffer)) {
-            printf("Status OK\n");
-            //return 0;
-        } else if (!checkNoError(checkBuffer)) {
-            return -1;
-        } else {
-            printf("Status unknown: %s", checkBuffer);
-            return -1;
-        }
-    }
-}
 
-bool UBlox::checkNoError(const char *const checkBuffer)
-{
-    if (findCharArray(AT_STATUS_ERROR, checkBuffer)) {
-        printf("Status ERROR\n");
-        // TODO: error status needs to be handled
-        return false;
-    } else if (findCharArray(AT_STATUS_ABORTED, checkBuffer)) {
-        // TODO: aborted status needs to be handled
-        printf("Status ABORTED\n");
-        return false;
-    }
-    return true;
-}
-
-// todo helper
-bool UBlox::findCharArray(const char *const needle, const char *const haystack)
-{
-    //printf("looking for %s in %s\n", needle , haystack);
-    std::string hs(haystack);
-    std::string nd(needle);
-    return hs.find(nd) != std::string::npos;
-}
