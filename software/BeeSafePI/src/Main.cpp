@@ -44,6 +44,9 @@ int main()
     success = uBlox.hasPSD(psdConnected);
     std::cout << "PSD Connected (after)" << psdConnected << ", success: " << success << std::endl;
 
+    double lat, lng;
+    success = uBlox.getLocation(lat, lng);
+
     // Attach psd.
     // Determine if psd attached.
     std::tm fromTime = {0};

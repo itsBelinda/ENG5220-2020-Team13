@@ -37,6 +37,7 @@
 #define RX_TIMEOUT_ECHO 1000
 #define RX_TIMEOUT_STATUS 1000
 
+#define RX_TIMEOUT_CMD_GET_LOCATION 1200000
 #define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
 #define RX_TIMEOUT_CMD_GET_IMEI 1000
 #define RX_TIMEOUT_CMD_GET_GPRS_ATTACHED 1000
@@ -190,6 +191,26 @@ bool UBlox::getIMEI(std::string &imei)
 
 bool UBlox::getLocation(double &lat, double &lng)
 {
+    // Attempt to get the location from the device.
+    ssize_t rc = writeCommand(AT_CMD_GET_LOCATION);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Read the status of the command.
+    const char* const status = readResponseStatus(false);
+    if (status != AT_CMD_STATUS_CODE_OK) {
+        return false;
+    }
+
+    // Read the raw location from the device.
+    rc = readResponse(RX_TIMEOUT_CMD_GET_LOCATION);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Print the response to the screen.
+    printf("Response: %s\n", buffer);
 
     return true;
 }
