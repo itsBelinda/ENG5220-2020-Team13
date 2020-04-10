@@ -47,7 +47,7 @@
 #define RX_TIMEOUT_STATUS 1000
 #define RX_TIMEOUT_NETWORK 10000
 
-#define RX_TIMEOUT_CMD_GET_LOCATION 800000
+#define RX_TIMEOUT_CMD_GET_LOCATION 200000
 #define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
 #define RX_TIMEOUT_CMD_GET_IMEI 1000
 #define RX_TIMEOUT_CMD_GET_GPRS_ATTACHED 1000
@@ -221,7 +221,7 @@ bool UBlox::getLocation(double &lat, double &lng)
 
     // Read the raw location from the device.
     rc = readResponse(RX_TIMEOUT_CMD_GET_LOCATION);
-    printf("Response: %s\n", buffer);
+    printf("Response: %s (%d)\n", buffer, (int) rc);
     if (rc == -1) {
         printf("Failed to read the location! %s\n", buffer);
         return false;
@@ -233,8 +233,9 @@ bool UBlox::getLocation(double &lat, double &lng)
     return true;
 }
 
-bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
+bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &message)
 {
+
     // TODO: START: Move this into its own method!
     // Set the text message type.
     ssize_t ct = writeCommand(AT_MSG_MODE_TEXT);
@@ -275,7 +276,8 @@ bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
     return readResponseStatus(false) == AT_CMD_STATUS_CODE_OK;
 }
 
-bool UBlox::sendLocation(std::string &phoneNumber, double lat, double lng)
+bool UBlox::sendLocation(const std::string &phoneNumber, const double lat,
+                         const double lng)
 {
     return false;
 }

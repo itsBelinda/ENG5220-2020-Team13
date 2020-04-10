@@ -40,8 +40,8 @@ public:
     bool getLocation(double &lat, double &lng);
 
     // Methods for outgoing commands.
-    bool sendMessage(std::string &phoneNumber, std::string &message);
-    bool sendLocation(std::string &phoneNumber, double lat, double lng);
+    bool sendMessage(const std::string &phoneNumber, const std::string &message);
+    bool sendLocation(const std::string &phoneNumber, double lat, double lng);
 
 private:
 
