@@ -41,8 +41,9 @@ int main()
     //success = uBlox.connectPSD(psdConnected, urc);
     //std::cout << "PSD Connection: " << psdConnected << "URC " << urc << " success: " << success << std::endl;
 
-    //double lat, lng;
-    //success = uBlox.getLocation(lat, lng);
+    double lat, lng;
+    success = uBlox.getLocation(lat, lng);
+    std::cout << lat << ", " << lng << ", success: " << success << std::endl;
 
     std::string nbr = "+447455787051";
     std::string msg = "TESTING THE SENDING OF TEXT MESSAGES!";
