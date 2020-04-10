@@ -219,6 +219,18 @@ bool UBlox::getLocation(double &lat, double &lng)
         return false;
     }
 
+    // TODO: Check if this is an error!
+    rc = readResponse(RX_TIMEOUT_CMD_GET_LOCATION);
+    for (char c : buffer) {
+        if (c == '\r') {
+            printf("\\r");
+        } else if (c=='\n') {
+            printf("\\n");
+        }
+    }
+    printf("\n");
+    printf("Response: (%d) %s\n", (int) rc, buffer);
+
     // Read the raw location from the device.
     rc = readResponse(RX_TIMEOUT_CMD_GET_LOCATION);
     printf("Response: (%d) %s\n", (int) rc, buffer);
