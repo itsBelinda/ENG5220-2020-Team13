@@ -27,6 +27,8 @@
 
 // Define the commands and formats for sending messages.
 #define AT_CMD_SEND_MSG_NUMBER "AT+CMGS=\"%s\"\r"
+#define AT_CMD_SEND_MSG_ESC "\x1B"
+#define AT_CMD_SEND_MSG_END "\x1A"
 
 // Define expected responses from the device.
 #define AT_CMD_RESPONSE_GPRS_IS_ATTACHED "+CGATT: 1"
@@ -43,6 +45,7 @@
 #define RX_TIMEOUT 10
 #define RX_TIMEOUT_ECHO 1000
 #define RX_TIMEOUT_STATUS 1000
+#define RX_TIMEOUT_NETWORK 10000
 
 #define RX_TIMEOUT_CMD_GET_LOCATION 800000
 #define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
@@ -226,12 +229,35 @@ bool UBlox::getLocation(double &lat, double &lng)
 
 bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
 {
-    // Write the number to the device.
+    // Format the command and write it to the device.
     char phoneNumberCmd[strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size() - 1] = {'\0'};
     sprintf(phoneNumberCmd, AT_CMD_SEND_MSG_NUMBER, phoneNumber.c_str());
+    ssize_t rc = writeCommand(phoneNumberCmd);
+    if (rc == -1) {
+        return false;
+    }
 
-    printf("Printing number...%s\n", phoneNumberCmd);
-    return false;
+    // Write the message to the device.
+    rc = uart.writeNext(message);
+    if (rc == -1) {
+        uart.writeNext(AT_CMD_SEND_MSG_ESC);
+        return false;
+    }
+
+    // Write the end message cmd to the device.
+    rc = uart.writeNext(AT_CMD_SEND_MSG_END);
+    if (rc == -1) {
+        uart.writeNext(AT_CMD_SEND_MSG_ESC);
+    }
+
+    // Await the echo from the device.
+    rc = uart.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Read the status of the command.
+    return readResponseStatus(false) == AT_CMD_STATUS_CODE_OK;
 }
 
 bool UBlox::sendLocation(std::string &phoneNumber, double lat, double lng)
