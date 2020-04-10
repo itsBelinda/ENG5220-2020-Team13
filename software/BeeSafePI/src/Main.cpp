@@ -27,8 +27,8 @@ int main()
 
     // Determine if gprs is attached.
     bool gprsAttached = false;
-    bool success = false;
-    std::cout << "GPRS: Attached: " << uBlox.hasGPRS(gprsAttached) << ", attached: "<< gprsAttached << std::endl;
+    bool success = uBlox.hasGPRS(gprsAttached);
+    std::cout << "GPRS: Attached: " << gprsAttached << ", success: " << success << std::endl;
 
     // Determine if psd attached.
     bool psdConnected = false;
