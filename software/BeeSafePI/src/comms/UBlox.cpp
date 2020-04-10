@@ -131,6 +131,8 @@ bool UBlox::connectPSD(bool &connected, std::string &urc)
         return false;
     }
 
+    printf("Response (connect PSD): %s\n", buffer);
+
     // Read the status of the connection.
     const char* status = readResponseStatus(false);
     if (status == AT_CMD_STATUS_CODE_OK) {
