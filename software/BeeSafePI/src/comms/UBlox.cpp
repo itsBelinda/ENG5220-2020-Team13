@@ -63,6 +63,11 @@ UBlox::~UBlox() = default;
 
 int UBlox::configure()
 {
+    // TODO: Check if GPRS is present,
+    // TODO: Check if PSD is present,
+    // TODO: Attach PSD if not,
+    // TODO: Configure the sending of messagesm
+    // TODO: Configure the scanning of location.
     return -1;
 }
 
@@ -214,6 +219,10 @@ bool UBlox::getLocation(double &lat, double &lng)
         return false;
     }
 
+    // Is there something in between?
+    rc = readResponse(RX_TIMEOUT);
+    printf("Hmm? %d\n", (int) rc);
+
     // Read the raw location from the device.
     rc = readResponse(RX_TIMEOUT_CMD_GET_LOCATION);
     if (rc == -1) {
@@ -229,11 +238,14 @@ bool UBlox::getLocation(double &lat, double &lng)
 
 bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
 {
+    // TODO: START: Move this into its own method!
     // Set the text message type.
     ssize_t ct = writeCommand(AT_MSG_MODE_TEXT);
     if (ct == -1) {
         return false;
     }
+    // TODO: END: Move this into its own method!
+
 
     // Format the command and write it to the device.
     char phoneNumberCmd[strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size() - 1] = {'\0'};
@@ -246,7 +258,6 @@ bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
     // Write the message to the device.
     rc = uart.writeNext(message);
     if (rc == -1) {
-        printf("Failed to write the message\n");
         uart.writeNext(AT_CMD_SEND_MSG_ESC);
         return false;
     }
@@ -254,14 +265,12 @@ bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
     // Write the end message cmd to the device.
     rc = uart.writeNext(AT_CMD_SEND_MSG_END);
     if (rc == -1) {
-        printf("Failed to end the message\n");
         uart.writeNext(AT_CMD_SEND_MSG_ESC);
     }
 
     // Await the echo from the device.
     rc = uart.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
     if (rc == -1 || strncmp(message.c_str(), buffer, message.size()) != 0) {
-        printf("Failed to obtain message echo\n");
         return false;
     }
 
