@@ -231,6 +231,9 @@ bool UBlox::getLocation(double &lat, double &lng)
 
     // TODO: Check timeout!
 
+    // TODO: Work on finding out timeout values, optimise the code to run faster.
+    // TODO: Check the scan mode for the getting the location.
+
     printf("\n");
     printf("Response: (%d) %s\n", (int) rc, buffer);
 
