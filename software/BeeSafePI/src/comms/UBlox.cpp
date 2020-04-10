@@ -226,7 +226,7 @@ bool UBlox::getLocation(double &lat, double &lng)
 
 bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
 {
-    printf("\nPrinting phone number (%s):...\n", phoneNumber);
+    printf("\nPrinting phone number (%s):...\n", phoneNumber.c_str());
 
     // Write the number to the device.
     char phoneNumberCmd[strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size() - 1] = {'\0'};
