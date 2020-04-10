@@ -9,24 +9,28 @@
 #define AT_CMD_GET_MODEL_NUMBER "ATI\r"
 #define AT_CMD_GET_IMEI "ATI5\r"
 
-// Commands for checking if the necessary components are present / enabled.
-#define AT_CMD_GPRS_ATTACHED "AT+CGATT?\r"
-#define AT_CMD_ATTACH_GPRS ""
-#define AT_CMD_PSD_CONNECTED "AT+UPSND=0,8\r"
-#define AT_CMD_CONNECT_PSD "AT+UPSDA=0,3\r"
+// GPRS specific commands.
+#define AT_CMD_GET_GPRS_ATTACHED "AT+CGATT?\r"
+
+// Internet specific commands.
+#define AT_CMD_GET_PSD_CONNECTED "AT+UPSND=0,8\r"
+#define AT_CMD_SET_PSD_CONNECTION "AT+UPSDA=0,3\r"
 
 // Location specific commands.
+#define AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
 #define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
 #define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
 
-// Define the response states (from u-blox).
-#define AT_RESPONSE_STATUS_OK "OK"
-#define AT_RESPONSE_STATUS_ERROR "ERROR"
-#define AT_RESPONSE_STATUS_ABORTED "ABORTED"
+// Define expected responses from the device.
+#define AT_CMD_RESPONSE_GPRS_IS_ATTACHED "+CGATT: 1"
+#define AT_CMD_RESPONSE_GPRS_NOT_ATTACHED "+CGATT: 0"
+#define AT_CMD_RESPONSE_PSD_IS_CONNECTED "+UPSND: 0,8,1"
+#define AT_CMD_RESPONSE_PSD_NOT_CONNECTED "+UPSND: 0,8,0"
 
-// Define responses to commands.
-#define AT_RESPONSE_PSD_CONNECTED ""
-#define AT_RESPONSE_PSD_NOT_CONNECTED ""
+// Define the status codes returned by the device.
+#define AT_CMD_STATUS_CODE_OK "OK"
+#define AT_CMD_STATUS_CODE_ERROR "ERROR"
+#define AT_CMD_STATUS_CODE_ABORTED "ABORTED"
 
 // Define timeouts for the commands.
 #define RX_TIMEOUT 10
@@ -35,8 +39,9 @@
 
 #define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
 #define RX_TIMEOUT_CMD_GET_IMEI 1000
-#define RX_TIMEOUT_CMD_IS_GPRS_ATTACHED 1000
-#define RX_TIMEOUT_CMD_IS_PSD_CONNECTED 1000
+#define RX_TIMEOUT_CMD_GET_GPRS_ATTACHED 1000
+#define RX_TIMEOUT_CMD_GET_PSD_CONNECTED 1000
+#define RX_TIMEOUT_CMD_SET_PSD_CONNECTION 1000
 
 UBlox::UBlox()
 {
@@ -55,14 +60,60 @@ const UArt& UBlox::getUArt()
     return uart;
 }
 
-bool UBlox::hasGPRS()
+bool UBlox::hasGPRS(bool &attached)
 {
-    return false;
+    // Write the command to the device via uart.
+    ssize_t rc = writeCommand(AT_CMD_GET_GPRS_ATTACHED);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Check whether the device has been attached.
+    rc = readResponse(RX_TIMEOUT_CMD_GET_GPRS_ATTACHED);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Determine whether the GPRS has been attached.
+    if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_IS_ATTACHED, 9) == 0) {
+        attached = true;
+    } else if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_NOT_ATTACHED, 9) == 0) {
+        attached = false;
+    } else {
+        return false;
+    }
+
+    // Finally, determine the status of the command.
+    return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
 }
 
-bool UBlox::hasPSD()
+bool UBlox::hasPSD(bool &connected)
 {
-    return false;
+    // Write the command to the device via uart.
+    ssize_t rc = writeCommand(AT_CMD_GET_PSD_CONNECTED);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Check whether the device has an internet connection.
+    rc = readResponse(RX_TIMEOUT_CMD_GET_PSD_CONNECTED);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Determine if PSD has been connected.
+    if (strncmp(buffer, AT_CMD_RESPONSE_PSD_IS_CONNECTED,
+                strlen(AT_CMD_RESPONSE_PSD_IS_CONNECTED)) == 0) {
+        connected = true;
+    } else if (strncmp(buffer, AT_CMD_RESPONSE_PSD_NOT_CONNECTED,
+                       strlen(AT_CMD_RESPONSE_PSD_NOT_CONNECTED)) == 0) {
+        connected = false;
+    } else {
+        return false;
+    }
+
+    // Finally, determine the status of the command.
+    return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 bool UBlox::attachGPRS()
@@ -70,9 +121,31 @@ bool UBlox::attachGPRS()
     return false;
 }
 
-bool UBlox::connectPSD()
+bool UBlox::connectPSD(bool &connected, std::string &urc)
 {
-    return false;
+    // Write the command to activate PSD.
+    ssize_t rc = writeCommand(AT_CMD_SET_PSD_CONNECTION);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Read the status of the connection.
+    const char* status = readResponseStatus(false);
+    if (status == AT_CMD_STATUS_CODE_OK) {
+        connected = true;
+    } else {
+        return false;
+    }
+
+    // Read the URC response.
+    rc = readResponse(RX_TIMEOUT_CMD_SET_PSD_CONNECTION);
+    if (rc == -1) {
+        return false;
+    }
+    urc.assign(buffer);
+
+    // We have successfully connected the PSD.
+    return true;
 }
 
 bool UBlox::getModelNumber(std::string &modelNumber)
@@ -92,7 +165,7 @@ bool UBlox::getModelNumber(std::string &modelNumber)
     std::cout << modelNumber << std::endl;
 
     // Read the status of the command.
-    return readResponseStatus(true) == AT_RESPONSE_STATUS_OK;
+    return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 bool UBlox::getIMEI(std::string &imei)
@@ -112,11 +185,12 @@ bool UBlox::getIMEI(std::string &imei)
     std::cout << imei << std::endl;
 
     // Finally, return the status of the command.
-    return readResponseStatus(true) == AT_RESPONSE_STATUS_OK;
+    return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 bool UBlox::getLocation(double &lat, double &lng)
 {
+
     return true;
 }
 
@@ -210,12 +284,12 @@ const char* UBlox::readResponseStatus(const bool crlf)
 const char* const UBlox::resolveResponseBuffStatus()
 {
     // Compare the response against known status responses.
-    if (strncmp(buffer, AT_RESPONSE_STATUS_OK, 2) == 0) {
-        return AT_RESPONSE_STATUS_OK;
-    } else if (strncmp(buffer, AT_RESPONSE_STATUS_ERROR, 5) == 0) {
-        return AT_RESPONSE_STATUS_ERROR;
-    } else if (strncmp(buffer, AT_RESPONSE_STATUS_ABORTED, 7) == 0) {
-        return AT_RESPONSE_STATUS_ABORTED;
+    if (strncmp(buffer, AT_CMD_STATUS_CODE_OK, 2) == 0) {
+        return AT_CMD_STATUS_CODE_OK;
+    } else if (strncmp(buffer, AT_CMD_STATUS_CODE_ERROR, 5) == 0) {
+        return AT_CMD_STATUS_CODE_ERROR;
+    } else if (strncmp(buffer, AT_CMD_STATUS_CODE_ABORTED, 7) == 0) {
+        return AT_CMD_STATUS_CODE_ABORTED;
     } else {
         return nullptr;
     }

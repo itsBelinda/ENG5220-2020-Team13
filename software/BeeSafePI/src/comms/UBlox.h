@@ -24,12 +24,12 @@ public:
     const UArt &getUArt();
 
     // Connection specific functions.
-    bool hasGPRS();
-    bool hasPSD();
+    bool hasGPRS(bool &attached);
+    bool hasPSD(bool &connected);
 
     // Methods for connecting / attaching GPRS / PSD.
     bool attachGPRS();
-    bool connectPSD();
+    bool connectPSD(bool &connected, std::string &urc);
 
     // Methods for querying the U-Blox chip.
     bool getModelNumber(std::string &modelNumber);

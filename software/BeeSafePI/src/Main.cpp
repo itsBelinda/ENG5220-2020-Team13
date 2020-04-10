@@ -22,9 +22,30 @@ int main()
 
     std::string imei;
     UBlox uBlox;
-    std::cout << "Model Num:" << uBlox.getModelNumber(imei) << std::endl;
-    std::cout << "IMEI" << uBlox.getIMEI(imei) << std::endl;
+    std::cout << "Model Num: " << uBlox.getModelNumber(imei) << std::endl;
+    std::cout << "IMEI: " << uBlox.getIMEI(imei) << std::endl;
 
+    // Determine if gprs is attached.
+    bool gprsAttached = false;
+    bool success = false;
+    std::cout << "GPRS: Attached: " << uBlox.hasGPRS(gprsAttached) << ", attached: "<< gprsAttached << std::endl;
+
+    // Determine if psd attached.
+    bool psdConnected = false;
+    std::string urc;
+
+    uBlox.hasPSD(psdConnected);
+    std::cout << "PSD Connected " << psdConnected << std::endl;
+
+    // Connect the PSD:
+    success = uBlox.connectPSD(psdConnected, urc);
+    std::cout << "PSD Connection: " << psdConnected << "URC " << urc << " success: " << success << std::endl;
+
+    uBlox.hasPSD(psdConnected);
+    std::cout << "PSD Connected " << psdConnected << std::endl;
+
+    // Attach psd.
+    // Determine if psd attached.
     std::tm fromTime = {0};
     fromTime.tm_hour = 20;
     fromTime.tm_min = 30;
