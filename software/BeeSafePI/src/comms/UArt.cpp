@@ -221,6 +221,7 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
         } else if (bytesRead == 1) {
 
             // Write the character to the buffer, check if '\n'.
+            printf("%c", lastReadChar);
             resultBuffer[nextReadIndex++] = lastReadChar;
             if (lastReadChar == '\n') {
                 break;
