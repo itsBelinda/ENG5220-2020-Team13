@@ -101,8 +101,6 @@ bool UBlox::hasPSD(bool &connected)
         return false;
     }
 
-    printf("Response %s: \n", buffer);
-
     // Determine if PSD has been connected.
     if (strncmp(buffer, AT_CMD_RESPONSE_PSD_IS_CONNECTED,
                 strlen(AT_CMD_RESPONSE_PSD_IS_CONNECTED)) == 0) {
@@ -133,8 +131,6 @@ bool UBlox::connectPSD(bool &connected, std::string &urc)
 
     // Read the status of the connection.
     const char* status = readResponseStatus(false);
-    printf("Response (connect PSD): %s\n", buffer);
-
     if (status == AT_CMD_STATUS_CODE_OK) {
         connected = true;
     } else {

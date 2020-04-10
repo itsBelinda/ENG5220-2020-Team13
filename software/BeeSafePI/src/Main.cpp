@@ -34,15 +34,15 @@ int main()
     bool psdConnected = false;
     std::string urc;
 
-    uBlox.hasPSD(psdConnected);
-    std::cout << "PSD Connected " << psdConnected << std::endl;
+    success = uBlox.hasPSD(psdConnected);
+    std::cout << "PSD Connected (before)" << psdConnected << ", success: " << success << std::endl;
 
     // Connect the PSD:
     success = uBlox.connectPSD(psdConnected, urc);
     std::cout << "PSD Connection: " << psdConnected << "URC " << urc << " success: " << success << std::endl;
 
-    uBlox.hasPSD(psdConnected);
-    std::cout << "PSD Connected " << psdConnected << std::endl;
+    success = uBlox.hasPSD(psdConnected);
+    std::cout << "PSD Connected (after)" << psdConnected << ", success: " << success << std::endl;
 
     // Attach psd.
     // Determine if psd attached.
