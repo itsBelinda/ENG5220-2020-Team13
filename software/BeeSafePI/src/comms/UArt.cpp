@@ -205,12 +205,14 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
         // If the buffer has been exceeded, return -1.
         lastReadIndex = nextReadIndex;
         if (lastReadIndex >= resultBufferLen) {
+            printf("Buffer exceeded\n");
             return -1;
         }
 
         // If there are no characters within the buffer, sleep.
         ioctl(device, FIONREAD, &bytesPeeked);
         if (bytesPeeked <= 0 && nanosleep(&timeoutPause, nullptr)) {
+            printf("Timeout\n");
             return -1;
         }
 
@@ -221,7 +223,7 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
         } else if (bytesRead == 1) {
 
             // Write the character to the buffer, check if '\n'.
-            printf("%c", lastReadChar);
+            printf("Buffer %s\n", resultBuffer);
             resultBuffer[nextReadIndex++] = lastReadChar;
             if (lastReadChar == '\n') {
                 break;
@@ -233,6 +235,7 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
 
         // If no new bytes have been read and we have timed out, return.
         if (nextReadIndex == lastReadIndex) {
+            printf("No new bytes\n");
             return -1;
         }
     }
