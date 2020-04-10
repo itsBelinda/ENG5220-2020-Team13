@@ -43,6 +43,7 @@ int main()
 
     double lat, lng;
     success = uBlox.getLocation(lat, lng);
+    std::cout.precision(17);
     std::cout << lat << ", " << lng << ", success: " << success << std::endl;
 
     std::string nbr = "+447455787051";
