@@ -230,6 +230,7 @@ bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
     char phoneNumberCmd[strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size() - 1] = {'\0'};
     sprintf(phoneNumberCmd, AT_CMD_SEND_MSG_NUMBER, phoneNumber);
 
+    printf("Printing phone number:...\n");
     for (char c : phoneNumberCmd) {
         printf("%c", c);
     }
