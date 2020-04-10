@@ -34,10 +34,10 @@ public:
 
     // For reading commands from the device via uart.
     ssize_t readExpected(char *buffer, size_t bytesExpected, int timeoutMs);
-    ssize_t readNext(char * resultBuffer, size_t resultBufferLen, int timeoutMs);
+    ssize_t readNext(char *resultBuffer, size_t resultBufferLen, int timeoutMs);
 
     // For writing commands via uart to the device.
-    ssize_t writeNext(std::string &cmd);
+    ssize_t writeNext(const std::string &cmd);
     ssize_t writeNext(const char *cmdBuffer);
 
 private:

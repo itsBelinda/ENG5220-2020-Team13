@@ -40,29 +40,19 @@
 
 UBlox::UBlox()
 {
-    conf();
+    configure();
 }
 
 UBlox::~UBlox() = default;
 
-int UBlox::conf()
+int UBlox::configure()
 {
     return -1;
 }
 
-UArt &UBlox::getUArtInterface()
+const UArt& UBlox::getUArt()
 {
     return uart;
-}
-
-int UBlox::getUArtDevice()
-{
-    return uart.getDevice();
-}
-
-bool UBlox::isUArtOpen()
-{
-    return uart.isDeviceOpen();
 }
 
 bool UBlox::hasGPRS()
@@ -87,70 +77,46 @@ bool UBlox::connectPSD()
 
 bool UBlox::getModelNumber(std::string &modelNumber)
 {
-
-    // Write the command to via uart, check if successfully written.
-    ssize_t rc = writeNext(AT_CMD_GET_MODEL_NUMBER);
+    // Write the command to the device via uart.
+    ssize_t rc = writeCommand(AT_CMD_GET_MODEL_NUMBER);
     if (rc == -1) {
         return false;
     }
 
-    // Read the model number from the chip.
-    rc = readNext(RX_TIMEOUT_CMD_GET_MODEL_NUMBER);
+    // Read the response from the chip.
+    rc = readResponse(RX_TIMEOUT_CMD_GET_MODEL_NUMBER);
     if (rc == -1) {
         return false;
     }
-    modelNumber.assign(rxBuffer, strlen(rxBuffer));
-
-    // Print the model number...
+    modelNumber.assign(buffer, strlen(buffer));
     std::cout << modelNumber << std::endl;
 
-    // Get the status from the chip.
-    if ((rc = readNext(RX_TIMEOUT)) != 2) {
-        return false;
-    } else if ((rc = readNext(RX_TIMEOUT_STATUS)) != 4) {
-        return false;
-    }
-
-    printf("%s\n", rxBuffer);
-
-    return true;
+    // Read the status of the command.
+    return readResponseStatus(true) == AT_RESPONSE_STATUS_OK;
 }
 
 bool UBlox::getIMEI(std::string &imei)
 {
     // Write a command and check that is has been successfully written.
-    ssize_t rc = writeNext(AT_CMD_GET_IMEI);
+    ssize_t rc = writeCommand(AT_CMD_GET_IMEI);
     if (rc == -1) {
         return false;
     }
 
     // Read the IMEI number from the chip.
-    rc = readNext(RX_TIMEOUT_CMD_GET_IMEI);
+    rc = readResponse(RX_TIMEOUT_CMD_GET_IMEI);
     if (rc == -1) {
         return false;
     }
-    imei.assign(rxBuffer, strlen(rxBuffer));
-
+    imei.assign(buffer, strlen(buffer));
     std::cout << imei << std::endl;
 
-    // Get the status of the command.
-    if ((rc = readNext(RX_TIMEOUT)) != 2) {
-        return false;
-    } else if ((rc = readNext(RX_TIMEOUT_STATUS)) != 4) {
-        return false;
-    }
-
-    printf("%s\n", rxBuffer);
-
-    return true;
+    // Finally, return the status of the command.
+    return readResponseStatus(true) == AT_RESPONSE_STATUS_OK;
 }
 
 bool UBlox::getLocation(double &lat, double &lng)
 {
-    // Check connections, these should be enabled.
-    // Activate any if necessary.
-    // Send the message for getting the location, await response.
-    // If we timeout, do we abort?
     return true;
 }
 
@@ -173,22 +139,21 @@ bool UBlox::sendLocation(std::string &phoneNumber, double lat, double lng)
  *      device. Note, must end in \r.
  * @return -1 if there was an error, n (representing length of the echo) otherwise.
  */
-ssize_t UBlox::writeNext(const char * const command)
+ssize_t UBlox::writeCommand(const char *command)
 {
-
-    // Attempt to write the command.
+    // Write the command to the device.
     ssize_t rc = uart.writeNext(command);
     if (rc == -1) {
         return -1;
     }
 
-    // Commands always echo, read it.
-    rc = readNext(RX_TIMEOUT_ECHO);
+    // Read the response i.e. echo. If present, command successful.
+    rc = readResponse(RX_TIMEOUT_ECHO);
     if (rc == -1) {
         return -1;
     }
 
-    // If the echo is the same length, command successfully written.
+    // If the lengths match, command successfully echoed.
     return strlen(command) == rc;
 }
 
@@ -200,27 +165,71 @@ ssize_t UBlox::writeNext(const char * const command)
  * @param timeout The timeout in ms prior to discarding the query.
  * @return -1 if there was an error, n (representing length) otherwise.
  */
-ssize_t UBlox::readNext(int timeout)
+ssize_t UBlox::readResponse(const int timeoutMs)
 {
-    clearRx();
-    return uart.readNext(rxBuffer, AT_CMD_BUFF_LEN, timeout);
+    // Clear the buffer and read the response from the device.
+    clearResponseBuff();
+    return uart.readNext(buffer, AT_CMD_BUFF_LEN, timeoutMs);
+}
+
+/**
+ * Read the next response from the uart interface into the rx buffer.
+ * Additionally, interpret the response as a status and return a pointer
+ * to the C string representing the status of the command.
+ *
+ * @return nullptr if the response could not be interpreted, a pointer
+ *      otherwise.
+ */
+const char* UBlox::readResponseStatus(const bool crlf)
+{
+    // An additional \r\n is expected before the status.
+    ssize_t rc = -1;
+    if (crlf) {
+        rc = readResponse(RX_TIMEOUT);
+        if (rc != 2) {
+            return nullptr;
+        }
+    }
+
+    // Read the response as a generic response.
+    rc = readResponse(RX_TIMEOUT_STATUS);
+    if (rc == -1) {
+        return nullptr;
+    }
+
+    // Attempt to resolve the response status within the buffer.
+    return resolveResponseBuffStatus();
+}
+
+/**
+ * Function attempts to interpret the response within the buffer as a
+ * status response i.e. OK, ERROR, ABORTED.
+ *
+ * @return The status within the buffer, nullptr otherwise.
+ */
+const char* const UBlox::resolveResponseBuffStatus()
+{
+    // Compare the response against known status responses.
+    if (strncmp(buffer, AT_RESPONSE_STATUS_OK, 2) == 0) {
+        return AT_RESPONSE_STATUS_OK;
+    } else if (strncmp(buffer, AT_RESPONSE_STATUS_ERROR, 5) == 0) {
+        return AT_RESPONSE_STATUS_ERROR;
+    } else if (strncmp(buffer, AT_RESPONSE_STATUS_ABORTED, 7) == 0) {
+        return AT_RESPONSE_STATUS_ABORTED;
+    } else {
+        return nullptr;
+    }
 }
 
 /**
  * Clear the RX buffer; usually done prior to reading the next
  * response from the uart interface.
  */
-void UBlox::clearRx()
+void UBlox::clearResponseBuff()
 {
-    for (auto& byte : rxBuffer) {
+    // Iterate the buffer, resetting the chars to null terminators.
+    for (auto& byte : buffer) {
         byte = '\0';
     }
 }
-
-char UBlox::checkRxStatus()
-{
-    return -1;
-}
-
-
 

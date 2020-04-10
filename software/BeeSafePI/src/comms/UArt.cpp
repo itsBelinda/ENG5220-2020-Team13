@@ -249,7 +249,7 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
  * @return The number of chars (bytes) that have been successfully
  *      written to the device, -1 otherwise i.e. error.
  */
-ssize_t UArt::writeNext(std::string &cmd)
+ssize_t UArt::writeNext(const std::string &cmd)
 {
 
     // Convert the string into a char buffer.
@@ -271,13 +271,9 @@ ssize_t UArt::writeNext(std::string &cmd)
  */
 ssize_t UArt::writeNext(const char *cmdBuffer)
 {
-
-    // If the device is present, write a command.
     if (device != -1 && tcflush(device, TCIFLUSH) == 0) {
         return write(device, cmdBuffer, strlen(cmdBuffer) + 1);
     }
-
-    // Failed to write to serial.
     return -1;
 }
 

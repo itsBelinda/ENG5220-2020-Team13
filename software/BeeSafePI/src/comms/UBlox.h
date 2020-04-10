@@ -20,10 +20,8 @@ public:
 
 public:
 
-    // Getters and setters.
-    UArt &getUArtInterface();
-    int getUArtDevice();
-    bool isUArtOpen();
+    // Get the UArt interface.
+    const UArt &getUArt();
 
     // Connection specific functions.
     bool hasGPRS();
@@ -45,22 +43,24 @@ public:
 private:
 
     // Configure the UBlox device.
-    int conf();
+    int configure();
 
-    // Write and read via the uart interface.
-    ssize_t writeNext(const char *command);
-    ssize_t readNext(int timeout);
+    // For writing to and reading from the device.
+    ssize_t writeCommand(const char *command);
+    ssize_t readResponse(int timeoutMs);
+    const char* readResponseStatus(bool crlf);
 
-    // Buffer specific commands.
-    void clearRx();
-    char checkRxStatus();
+    // Resolve the response status within the buffer.
+    const char* const resolveResponseBuffStatus();
+
+    // Clear the response buffer.
+    void clearResponseBuff();
 
 private:
 
-    // Attributes.
+    // The uart interface and the buffer into which responses are written.
     UArt uart;
-
-    char rxBuffer[AT_CMD_BUFF_LEN] = {'\0'};
+    char buffer[AT_CMD_BUFF_LEN] = {'\0'};
 
 };
 
