@@ -228,6 +228,9 @@ bool UBlox::getLocation(double &lat, double &lng)
             printf("\\n");
         }
     }
+
+    // TODO: Check timeout!
+
     printf("\n");
     printf("Response: (%d) %s\n", (int) rc, buffer);
 
