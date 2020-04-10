@@ -229,6 +229,12 @@ bool UBlox::getLocation(double &lat, double &lng)
 
 bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
 {
+    // Set the text message type.
+    ssize_t ct = writeCommand(AT_MSG_MODE_TEXT);
+    if (ct == -1) {
+        return false;
+    }
+
     // Format the command and write it to the device.
     char phoneNumberCmd[strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size() - 1] = {'\0'};
     sprintf(phoneNumberCmd, AT_CMD_SEND_MSG_NUMBER, phoneNumber.c_str());
@@ -240,6 +246,7 @@ bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
     // Write the message to the device.
     rc = uart.writeNext(message);
     if (rc == -1) {
+        printf("Failed to write the message\n");
         uart.writeNext(AT_CMD_SEND_MSG_ESC);
         return false;
     }
@@ -247,12 +254,14 @@ bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
     // Write the end message cmd to the device.
     rc = uart.writeNext(AT_CMD_SEND_MSG_END);
     if (rc == -1) {
+        printf("Failed to end the message\n");
         uart.writeNext(AT_CMD_SEND_MSG_ESC);
     }
 
     // Await the echo from the device.
     rc = uart.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
     if (rc == -1) {
+        printf("Failed to obtain message echo\n");
         return false;
     }
 
