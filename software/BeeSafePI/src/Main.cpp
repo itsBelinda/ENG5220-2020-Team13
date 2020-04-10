@@ -51,7 +51,7 @@ int main()
 
     //std::string nbr = "+447455787051";
     std::string nbr = "+447397319137";
-    std::string msg = "HEY ASSHOLE!";
+    std::string msg = "HEY ASSHOLE!!!!!!!!!!!";
 
     for (int i = 0; i < 20; i++) {
         uBlox.sendMessage(nbr, msg);
