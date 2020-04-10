@@ -227,7 +227,7 @@ bool UBlox::getLocation(double &lat, double &lng)
 bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
 {
     // Write the number to the device.
-    const char* phoneNumberCmd[strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size()] = {'\0'};
+    char* phoneNumberCmd[strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size()] = {'\0'};
     printf("Number array size: %d", (int) (strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size()));
     return false;
 }
