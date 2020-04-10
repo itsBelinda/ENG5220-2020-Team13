@@ -45,7 +45,7 @@ int main()
     //success = uBlox.getLocation(lat, lng);
 
     std::string nbr = "+447455787051";
-    std::string msg = "TEST";
+    std::string msg = "TESTING THE SENDING OF TEXT MESSAGES!";
     uBlox.sendMessage(nbr, msg);
 
     // Attach psd.
