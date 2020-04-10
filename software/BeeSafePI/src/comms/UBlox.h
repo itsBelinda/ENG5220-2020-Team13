@@ -31,6 +31,9 @@ public:
     bool attachGPRS();
     bool connectPSD(bool &connected, std::string &urc);
 
+    // Get and set the message mode of the device.
+
+
     // Methods for querying the U-Blox chip.
     bool getModelNumber(std::string &modelNumber);
     bool getIMEI(std::string &imei);

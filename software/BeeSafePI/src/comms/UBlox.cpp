@@ -21,6 +21,13 @@
 #define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
 #define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
 
+// Define the message modes for sending text messages.
+#define AT_MSG_MODE_TEXT "AT+CMGF=1\r"
+#define AT_MSG_MODE_PDU "AT+CMGF=0\r"
+
+// Define the commands and formats for sending messages.
+#define AT_CMD_SEND_MSG_NUMBER "AT+CMGS=\"%s\"\r"
+
 // Define expected responses from the device.
 #define AT_CMD_RESPONSE_GPRS_IS_ATTACHED "+CGATT: 1"
 #define AT_CMD_RESPONSE_GPRS_NOT_ATTACHED "+CGATT: 0"
@@ -219,6 +226,9 @@ bool UBlox::getLocation(double &lat, double &lng)
 
 bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
 {
+    // Write the number to the device.
+    const char* phoneNumberCmd[strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size()] = {'\0'};
+    printf("Number array size: %d", (int) (strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size()));
     return false;
 }
 

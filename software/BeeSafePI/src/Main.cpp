@@ -38,14 +38,15 @@ int main()
     std::cout << "PSD Connected (before)" << psdConnected << ", success: " << success << std::endl;
 
     // Connect the PSD:
-    success = uBlox.connectPSD(psdConnected, urc);
-    std::cout << "PSD Connection: " << psdConnected << "URC " << urc << " success: " << success << std::endl;
+    //success = uBlox.connectPSD(psdConnected, urc);
+    //std::cout << "PSD Connection: " << psdConnected << "URC " << urc << " success: " << success << std::endl;
 
-    success = uBlox.hasPSD(psdConnected);
-    std::cout << "PSD Connected (after)" << psdConnected << ", success: " << success << std::endl;
+    //double lat, lng;
+    //success = uBlox.getLocation(lat, lng);
 
-    double lat, lng;
-    success = uBlox.getLocation(lat, lng);
+    std::string nbr = "+447455787051";
+    std::string msg = "TEST";
+    uBlox.sendMessage(nbr, msg);
 
     // Attach psd.
     // Determine if psd attached.
