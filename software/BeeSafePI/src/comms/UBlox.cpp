@@ -260,8 +260,7 @@ bool UBlox::sendMessage(std::string &phoneNumber, std::string &message)
 
     // Await the echo from the device.
     rc = uart.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
-    printf("%s\n", buffer);
-    if (rc == -1) {
+    if (rc == -1 || strncmp(message.c_str(), buffer, message.size()) != 0) {
         printf("Failed to obtain message echo\n");
         return false;
     }
