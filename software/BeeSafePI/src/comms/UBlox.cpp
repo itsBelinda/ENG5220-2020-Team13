@@ -199,6 +199,7 @@ bool UBlox::getLocation(double &lat, double &lng)
 
     // Read the status of the command.
     const char* const status = readResponseStatus(false);
+    printf("Buffer: %s, status: %s\n", buffer, status);
     if (status != AT_CMD_STATUS_CODE_OK) {
         return false;
     }
