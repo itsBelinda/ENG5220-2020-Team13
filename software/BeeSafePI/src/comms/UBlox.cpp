@@ -37,7 +37,7 @@
 #define RX_TIMEOUT_ECHO 1000
 #define RX_TIMEOUT_STATUS 1000
 
-#define RX_TIMEOUT_CMD_GET_LOCATION 1200000
+#define RX_TIMEOUT_CMD_GET_LOCATION 1000
 #define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
 #define RX_TIMEOUT_CMD_GET_IMEI 1000
 #define RX_TIMEOUT_CMD_GET_GPRS_ATTACHED 1000
@@ -197,11 +197,8 @@ bool UBlox::getLocation(double &lat, double &lng)
         return false;
     }
 
-    printf("Buff: %s\n", buffer);
-
     // Read the status of the command.
     const char* const status = readResponseStatus(false);
-    printf("Status: %s\n", status);
     if (status != AT_CMD_STATUS_CODE_OK) {
         return false;
     }
@@ -209,6 +206,7 @@ bool UBlox::getLocation(double &lat, double &lng)
     // Read the raw location from the device.
     rc = readResponse(RX_TIMEOUT_CMD_GET_LOCATION);
     if (rc == -1) {
+        printf("Failed to read the location!");
         return false;
     }
 
