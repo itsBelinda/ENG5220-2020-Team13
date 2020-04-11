@@ -1,12 +1,16 @@
 #include "UArt.h"
 
-#include <stdexcept>
+// The posix definition that's to be used.
+#define _POSIX_C_SOURCE 199309L
+
+// System inclusions.
+#include <ctime>
 #include <sys/ioctl.h>
 
 UArt::UArt()
 {
     device = -1;
-    conf();
+    configure();
 }
 
 /**
@@ -20,7 +24,7 @@ UArt::~UArt()
     }
 }
 
-int UArt::conf()
+int UArt::configure()
 {
 
     // Open the device.
@@ -52,7 +56,6 @@ int UArt::conf()
         goto err;
     }
 
-    // TODO: Sets the terminal?
     cfmakeraw(&configuration);
 
     // Set the parameters associated with the terminal.
@@ -122,29 +125,23 @@ ssize_t UArt::readExpected(char *buffer, size_t bytesExpected,
     // Timing related variables.
     struct timespec pause = {0};
     pause.tv_sec = timeoutMs / 1000;
-    pause.tv_nsec = timeoutMs * 1000;
+    pause.tv_nsec = (timeoutMs % 1000) * 1000000L;
 
     // Keep peeking at the buffer until a timeout.
     for(;;) {
 
-        printf("Bytes peeked: %d\n", (int) bytesPeeked);
-
         // Update the last number of bytes peeked; break if block is met.
         lastBytesPeeked = bytesPeeked;
         if (bytesPeeked >= bytesExpected) {
-            printf("Bytes have met.\n");
             break;
         }
 
         // Sleep the thread until an interrupt.
-        int rc = nanosleep(&pause, NULL);
-        printf("Rc: %d\n", rc);
-
+        int rc = nanosleep(&pause, nullptr);
         ioctl(device, FIONREAD, &bytesPeeked);
 
         // Check if the read has timed out.
         if (bytesPeeked == lastBytesPeeked) {
-            printf("Timeout has occurred\n");
             break;
         }
     }
@@ -197,7 +194,7 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
     // Timeout pause.
     struct timespec timeoutPause = {0};
     timeoutPause.tv_sec = timeoutMs / 1000;
-    timeoutPause.tv_nsec = timeoutMs * 1000;
+    timeoutPause.tv_nsec = (timeoutMs % 1000) * 1000000L;
 
     // Keep reading the buffer until crlf.
     for (;;) {
@@ -205,14 +202,12 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
         // If the buffer has been exceeded, return -1.
         lastReadIndex = nextReadIndex;
         if (lastReadIndex >= resultBufferLen) {
-            printf("Buffer exceeded\n");
             return -1;
         }
 
         // If there are no characters within the buffer, sleep.
         ioctl(device, FIONREAD, &bytesPeeked);
         if (bytesPeeked <= 0 && nanosleep(&timeoutPause, nullptr)) {
-            printf("Timeout\n");
             return -1;
         }
 
@@ -234,7 +229,6 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
 
         // If no new bytes have been read and we have timed out, return.
         if (nextReadIndex == lastReadIndex) {
-            printf("No new bytes\n");
             return -1;
         }
     }
@@ -279,4 +273,3 @@ ssize_t UArt::writeNext(const char *cmdBuffer)
     }
     return -1;
 }
-

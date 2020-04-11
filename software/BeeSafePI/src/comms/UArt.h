@@ -12,10 +12,9 @@
 #include <time.h>
 #include <termios.h>
 
-// Defines various device properties.
+// Define device properties.
 #define DEVICE_PATH "/dev/ttyS0"
 #define DEVICE_BAUD_RATE 115200
-#define DEVICE_MAX_BUFFER_SIZE 1024
 
 class UArt
 {
@@ -28,20 +27,20 @@ public:
 
 public:
 
+    // Invoked to configure / reconfigure the uArt interface.
+    int configure();
+
     // Generic getters and setters.
     bool isDeviceOpen();
     int getDevice();
 
-    // For reading commands from the device via uart.
+    // For reading commands from the device via uArt.
     ssize_t readExpected(char *buffer, size_t bytesExpected, int timeoutMs);
     ssize_t readNext(char *resultBuffer, size_t resultBufferLen, int timeoutMs);
 
-    // For writing commands via uart to the device.
+    // For writing commands via uArt to the device.
     ssize_t writeNext(const std::string &cmd);
     ssize_t writeNext(const char *cmdBuffer);
-
-private:
-    int conf();
 
 private:
 

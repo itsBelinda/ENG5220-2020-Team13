@@ -1,9 +1,8 @@
+#include "UBlox.h"
+
+// System inclusions.
 #include <boost/compatibility/cpp_c_headers/cstring>
 #include <iostream>
-
-#include "string.h"
-
-#include "UBlox.h"
 
 // Define generic u-blox commands for obtaining additional information.
 #define AT_CMD_GET_MODEL_NUMBER "ATI\r"
@@ -17,15 +16,11 @@
 #define AT_CMD_SET_PSD_CONNECTION "AT+UPSDA=0,3\r"
 
 // Location specific commands.
+#define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
 #define AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
 #define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
-#define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
 
 // Define the message modes for sending text messages.
-#define AT_MSG_MODE_TEXT "AT+CMGF=1\r"
-#define AT_MSG_MODE_PDU "AT+CMGF=0\r"
-
-// Define the commands and formats for sending messages.
 #define AT_CMD_SEND_MSG_NUMBER "AT+CMGS=\"%s\"\r"
 #define AT_CMD_SEND_MSG_ESC "\x1B"
 #define AT_CMD_SEND_MSG_END "\x1A"
@@ -47,7 +42,7 @@
 #define RX_TIMEOUT_STATUS 1000
 #define RX_TIMEOUT_NETWORK 100
 
-#define RX_TIMEOUT_CMD_GET_LOCATION 200000
+#define RX_TIMEOUT_CMD_GET_LOCATION 180000
 #define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
 #define RX_TIMEOUT_CMD_GET_IMEI 1000
 #define RX_TIMEOUT_CMD_GET_GPRS_ATTACHED 1000
@@ -73,12 +68,12 @@ int UBlox::configure()
 
 const UArt& UBlox::getUArt()
 {
-    return uart;
+    return uArt;
 }
 
 bool UBlox::hasGPRS(bool &attached)
 {
-    // Write the command to the device via uart.
+    // Write the command to the device via uArt.
     ssize_t rc = writeCommand(AT_CMD_GET_GPRS_ATTACHED);
     if (rc == -1) {
         return false;
@@ -105,7 +100,7 @@ bool UBlox::hasGPRS(bool &attached)
 
 bool UBlox::hasPSD(bool &connected)
 {
-    // Write the command to the device via uart.
+    // Write the command to the device via uArt.
     ssize_t rc = writeCommand(AT_CMD_GET_PSD_CONNECTED);
     if (rc == -1) {
         return false;
@@ -164,9 +159,19 @@ bool UBlox::connectPSD(bool &connected, std::string &urc)
     return true;
 }
 
+bool UBlox::getSendMessageMode(const char *const mode)
+{
+    return true;
+}
+
+bool UBlox::setSendMessageMode(const char *const mode)
+{
+    return true;
+}
+
 bool UBlox::getModelNumber(std::string &modelNumber)
 {
-    // Write the command to the device via uart.
+    // Write the command to the device via uArt.
     ssize_t rc = writeCommand(AT_CMD_GET_MODEL_NUMBER);
     if (rc == -1) {
         return false;
@@ -178,7 +183,6 @@ bool UBlox::getModelNumber(std::string &modelNumber)
         return false;
     }
     modelNumber.assign(buffer, strlen(buffer));
-    std::cout << modelNumber << std::endl;
 
     // Read the status of the command.
     return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
@@ -198,7 +202,6 @@ bool UBlox::getIMEI(std::string &imei)
         return false;
     }
     imei.assign(buffer, strlen(buffer));
-    std::cout << imei << std::endl;
 
     // Finally, return the status of the command.
     return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
@@ -256,36 +259,40 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
 
     // TODO: START: Move this into its own method!
     // Set the text message type.
-    ssize_t ct = writeCommand(AT_MSG_MODE_TEXT);
+    ssize_t ct = writeCommand(AT_CMD_SEND_MSG_SET_MODE_TEXT);
     if (ct == -1) {
         return false;
     }
     // TODO: END: Move this into its own method!
 
 
-    // Format the command and write it to the device.
-    char phoneNumberCmd[strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size() - 1] = {'\0'};
+    // Format the phone number command.
+    size_t phoneNumberCmdLen = strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size() - 1;
+    char phoneNumberCmd[phoneNumberCmdLen];
+    memset(phoneNumberCmd, '\0', phoneNumberCmdLen);
     sprintf(phoneNumberCmd, AT_CMD_SEND_MSG_NUMBER, phoneNumber.c_str());
+
+    // Write the phone number command to the device.
     ssize_t rc = writeCommand(phoneNumberCmd);
     if (rc == -1) {
         return false;
     }
 
     // Write the message to the device.
-    rc = uart.writeNext(message);
+    rc = uArt.writeNext(message);
     if (rc == -1) {
-        uart.writeNext(AT_CMD_SEND_MSG_ESC);
+        uArt.writeNext(AT_CMD_SEND_MSG_ESC);
         return false;
     }
 
     // Write the end message cmd to the device.
-    rc = uart.writeNext(AT_CMD_SEND_MSG_END);
+    rc = uArt.writeNext(AT_CMD_SEND_MSG_END);
     if (rc == -1) {
-        uart.writeNext(AT_CMD_SEND_MSG_ESC);
+        uArt.writeNext(AT_CMD_SEND_MSG_ESC);
     }
 
     // Await the echo from the device.
-    rc = uart.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
+    rc = uArt.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
     if (rc == -1 || strncmp(message.c_str(), buffer, message.size()) != 0) {
         return false;
     }
@@ -312,7 +319,7 @@ bool UBlox::sendLocation(const std::string &phoneNumber, const double lat,
 ssize_t UBlox::writeCommand(const char *command)
 {
     // Write the command to the device.
-    ssize_t rc = uart.writeNext(command);
+    ssize_t rc = uArt.writeNext(command);
     if (rc == -1) {
         return -1;
     }
@@ -339,7 +346,7 @@ ssize_t UBlox::readResponse(const int timeoutMs)
 {
     // Clear the buffer and read the response from the device.
     clearResponseBuff();
-    return uart.readNext(buffer, AT_CMD_BUFF_LEN, timeoutMs);
+    return uArt.readNext(buffer, AT_CMD_BUFF_LEN, timeoutMs);
 }
 
 /**

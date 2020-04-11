@@ -4,48 +4,40 @@
 #include "UBlox.h"
 
 #include <string>
-#include <vector>
+#include <utility>
 
 class Comms
 {
 
 public:
 
-    // Constructors and destructors.
-    Comms();
+    // Constructor and destructor.
+    explicit Comms();
     ~Comms();
 
 public:
 
-    // TODO: Define the behaviour for the comms interface.
+    // Invoked to configure / re-configure the comms.
+    bool configure();
+
+    // Get the uBlox device that's being communicated to.
+    const UBlox &getUBlox();
+
+    // Incoming / getters from the device.
+    bool getModelNumber(std::string &modelNumber);
+    bool getIMEI(std::string &imei);
+    bool getLocation(std::pair<double, double> &latLng);
+    bool getLocation(double &lat, double &lng);
+
+    // Outgoing / setters to the device.
+    bool sendMessage(const std::string &phoneNumber, const std::string &message);
+    bool sendLocation(const std::string &phoneNumber, const std::pair<double, double> &latLng);
+    bool sendLocation(const std::string &phoneNumber, double lat, double lng);
 
 private:
 
-    // Comms attributes.
+    // The u-blox that's used as a means of communication.
     UBlox uBlox;
-
-};
-
-class CommsX
-{
-
-    /*
-public:
-    //Constructors and destructor
-
-    Comms();
-    ~Comms();
-
-public:
-    std::pair<double, double> getLocation();
-    int sendText(std::string number, std::string message);    bool isAlive();
-    std::string getIMEI();
-    int sendLocation();
-
-private:
-    std::string params;
-
-*/
 
 };
 

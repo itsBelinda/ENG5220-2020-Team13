@@ -41,21 +41,13 @@ int main()
     //success = uBlox.connectPSD(psdConnected, urc);
     //std::cout << "PSD Connection: " << psdConnected << "URC " << urc << " success: " << success << std::endl;
 
-    /*
     double lat, lng;
     success = uBlox.getLocation(lat, lng);
     std::cout.precision(17);
     std::cout << lat << ", " << lng << ", success: " << success << std::endl;
 
-    */
-
-    //std::string nbr = "+447455787051";
-    std::string nbr = "+447397319137";
+    std::string nbr = "+447455787051";
     std::string msg = "HEY ASSHOLE!!!!!!!!!!!";
-
-    for (int i = 0; i < 20; i++) {
-        uBlox.sendMessage(nbr, msg);
-    }
 
     // Attach psd.
     // Determine if psd attached.

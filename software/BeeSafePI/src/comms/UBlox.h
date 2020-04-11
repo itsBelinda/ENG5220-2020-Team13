@@ -4,10 +4,15 @@
 
 #include "UArt.h"
 
+// System inclusions.
 #include <string>
 
 // The length of the response buffer.
 #define AT_CMD_BUFF_LEN 544
+
+// Commands that enable the user to define the message mode.
+#define AT_CMD_SEND_MSG_SET_MODE_TEXT "AT+CMGF=1\r"
+#define AT_CMD_SEND_MSG_SET_MODE_PDU "AT+CMGF=0\r"
 
 class UBlox
 {
@@ -20,6 +25,9 @@ public:
 
 public:
 
+    // Invoked to configure / re-configure the uBlox device.
+    int configure();
+
     // Get the UArt interface.
     const UArt &getUArt();
 
@@ -31,8 +39,9 @@ public:
     bool attachGPRS();
     bool connectPSD(bool &connected, std::string &urc);
 
-    // Get and set the message mode of the device.
-
+    // Methods for getting and setting the message mode.
+    bool getSendMessageMode(const char *mode);
+    bool setSendMessageMode(const char *mode);
 
     // Methods for querying the U-Blox chip.
     bool getModelNumber(std::string &modelNumber);
@@ -44,9 +53,6 @@ public:
     bool sendLocation(const std::string &phoneNumber, double lat, double lng);
 
 private:
-
-    // Configure the UBlox device.
-    int configure();
 
     // For writing to and reading from the device.
     ssize_t writeCommand(const char *command);
@@ -61,8 +67,8 @@ private:
 
 private:
 
-    // The uart interface and the buffer into which responses are written.
-    UArt uart;
+    // The uArt interface and the buffer into which responses are written.
+    UArt uArt;
     char buffer[AT_CMD_BUFF_LEN] = {'\0'};
 
 };
