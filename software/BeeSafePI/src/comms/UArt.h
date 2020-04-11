@@ -2,14 +2,11 @@
 #define BEESAFEPI_UART_H
 
 #include <stdio.h>
-#include <string.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <string>
-#include <vector>
-#include <time.h>
 #include <termios.h>
 
 // Define device properties.
@@ -27,11 +24,11 @@ public:
 
 public:
 
-    // Invoked to configure / reconfigure the uArt interface.
-    int configure();
+    // Invoked to (re-)configure the UART interface.
+    bool configure();
 
-    // Generic getters and setters.
-    bool isDeviceOpen();
+    // Generic getters and setters for the device.
+    bool hasDevice();
     int getDevice();
 
     // For reading commands from the device via uArt.

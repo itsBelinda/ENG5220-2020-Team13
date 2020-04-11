@@ -17,8 +17,6 @@
 
 // Location specific commands.
 #define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
-#define AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
-#define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
 
 // Define the message modes for sending text messages.
 #define AT_CMD_SEND_MSG_NUMBER "AT+CMGS=\"%s\"\r"
@@ -51,19 +49,58 @@
 
 UBlox::UBlox()
 {
+    ready = false;
     configure();
 }
 
 UBlox::~UBlox() = default;
 
-int UBlox::configure()
+bool UBlox::isReady()
 {
-    // TODO: Check if GPRS is present,
-    // TODO: Check if PSD is present,
-    // TODO: Attach PSD if not,
-    // TODO: Configure the sending of messagesm
-    // TODO: Configure the scanning of location.
-    return -1;
+    return ready;
+}
+
+bool UBlox::configure()
+{
+
+    // Ready is set to false, attempting to reconfigure.
+    ready = false;
+
+    // If the UART interface does not possess a device, it cannot be configured.
+    if (!uArt.hasDevice()) {
+        return false;
+    }
+
+    // Check that GPRS is attached!
+    bool gprsAttached = false;
+    if (!hasGPRS(gprsAttached) || !gprsAttached) {
+        return false;
+    }
+
+    // Check if PSD is connected, if not, do so.
+    bool psdConnected = false;
+    std::string psdUrc;
+    if (!hasPSD(psdConnected)) {
+        return false;
+    } else if (!psdConnected) {
+        if (!connectPSD(psdConnected, psdUrc) || !psdConnected) {
+            return false;
+        }
+    }
+
+    // Configure the sending of messages.
+    if (!setSendMessageMode(AT_CMD_SEND_MSG_SET_MODE_TEXT)) {
+        return false;
+    }
+
+    // Set the scan mode for the location.
+    if (!setLocationScanMode(AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL)) {
+        return false;
+    }
+
+    // The device has been successfully configured.
+    ready = true;
+    return true;
 }
 
 const UArt& UBlox::getUArt()
@@ -166,6 +203,23 @@ bool UBlox::getSendMessageMode(const char *const mode)
 
 bool UBlox::setSendMessageMode(const char *const mode)
 {
+    // TODO: START: Move this into its own method!
+    // Set the text message type.
+    ssize_t ct = writeCommand(AT_CMD_SEND_MSG_SET_MODE_TEXT);
+    if (ct == -1) {
+        return false;
+    }
+    // TODO: END: Move this into its own method!
+    return true;
+}
+
+bool UBlox::getLocationScanMode(const char *scanMode)
+{
+    return true;
+}
+
+bool UBlox::setLocationScanMode(const char *scanMode)
+{
     return true;
 }
 
@@ -256,16 +310,6 @@ bool UBlox::getLocation(double &lat, double &lng)
 
 bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &message)
 {
-
-    // TODO: START: Move this into its own method!
-    // Set the text message type.
-    ssize_t ct = writeCommand(AT_CMD_SEND_MSG_SET_MODE_TEXT);
-    if (ct == -1) {
-        return false;
-    }
-    // TODO: END: Move this into its own method!
-
-
     // Format the phone number command.
     size_t phoneNumberCmdLen = strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size() - 1;
     char phoneNumberCmd[phoneNumberCmdLen];

@@ -7,6 +7,10 @@
 #include <ctime>
 #include <sys/ioctl.h>
 
+/**
+ * Constructor instantiates an instance of the UArt class. Moreover
+ * this method implicitly attempts to configure the device.
+ */
 UArt::UArt()
 {
     device = -1;
@@ -14,8 +18,8 @@ UArt::UArt()
 }
 
 /**
- * Destructor is used to close the comms i.e. the Uart
- * serial interface.
+ * Destructor is responsible for closing the serial connection
+ * to the device - if one exists.
  */
 UArt::~UArt()
 {
@@ -24,15 +28,28 @@ UArt::~UArt()
     }
 }
 
-int UArt::configure()
+/**
+ * Method invocation establishes a connection with the u-box
+ * device via the UART interface. In doing so, the method
+ * implicitly configures the device serial port.
+ *
+ * @return True if the connection via the serial interface has been
+ *      established and configured, false otherwise.
+ */
+bool UArt::configure()
 {
+
+    // If the device is open, close it.
+    if (device != -1) {
+        close(device);
+    }
 
     // Open the device.
     device = open(DEVICE_PATH, O_RDWR | O_NOCTTY | O_NONBLOCK);
     if (device == -1) {
         fprintf(stderr, "Failed to open device\r\n");
         fprintf(stderr, "Error: %s\n",strerror(errno));
-        return -1;
+        return false;
     }
 
     // Get the current device configuration.
@@ -65,7 +82,7 @@ int UArt::configure()
     }
 
     // Device successfully configured, return.
-    return 0;
+    return true;
 
     // Handle any errors during the configuration process.
 err:
@@ -78,20 +95,25 @@ err:
     close(device);
     device = -1;
 
-    return -1;
+    return false;
 }
 
 /**
- * Check whether or not the device has been opened and configured.
- * 'device' will always be -1 if the latter is not achieved.
+ * Getter for determining if the device connection has successfully been
+ * established and configured.
  *
- * @return True if the device is open (!=-1), false otherwise.
+ * @return True if the device is open (!=-1) and configured, false otherwise.
  */
-bool UArt::isDeviceOpen()
+bool UArt::hasDevice()
 {
     return device != -1;
 }
 
+/**
+ * Get the device for which the UART serial connection has been established.
+ *
+ * @return !=-1 i.e. the device, otherwise -1 (no device present).
+ */
 int UArt::getDevice()
 {
     return device;
@@ -109,8 +131,8 @@ int UArt::getDevice()
  * @return The number of bytes that have successfully been read, -1
  *      otherwise i.e. errors.
  */
-ssize_t UArt::readExpected(char *buffer, size_t bytesExpected,
-                           int timeoutMs)
+ssize_t UArt::readExpected(char * const buffer, const size_t bytesExpected,
+                           const int timeoutMs)
 {
 
     // Check that the device has been established.
@@ -238,9 +260,9 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
 }
 
 /**
- * Write a string to the device via the UArt
- * serial interface. Note, the string is converted
- * to a character array and only then written.
+ * Write a string to the device via the UART serial interface. Note
+ * that the commands should end with \r. Additionally, the command
+ * passed as a parameter will implicitly be converted to a C-string.
  *
  * @param cmd The string command sent via the serial interface.
  * @return The number of chars (bytes) that have been successfully
@@ -258,13 +280,13 @@ ssize_t UArt::writeNext(const std::string &cmd)
 }
 
 /**
- * Write a character array (C-string) to the device via the Uart
- * serial interface.
+ * Write a C-string (char array) to the device via the UART serial
+ * interface. Note, commands should end with \r.
  *
- * @param cmdBuffer The C-string command that is to be written to the
- *      device.
+ * @param cmdBuffer The C-string command that is to be written to
+ *      the device via the UART interface.
  * @return The number of chars (bytes) that have been successfully
- *      written to the device, -1 otherwise i.e. error.
+ *      written to the device, -1 otherwise.
  */
 ssize_t UArt::writeNext(const char *cmdBuffer)
 {

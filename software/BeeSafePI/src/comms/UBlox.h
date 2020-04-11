@@ -10,9 +10,13 @@
 // The length of the response buffer.
 #define AT_CMD_BUFF_LEN 544
 
-// Commands that enable the user to define the message mode.
+// Publicly available set send message mode commands.
 #define AT_CMD_SEND_MSG_SET_MODE_TEXT "AT+CMGF=1\r"
 #define AT_CMD_SEND_MSG_SET_MODE_PDU "AT+CMGF=0\r"
+
+// Publicly available set location scan mode commands.
+#define AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
+#define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
 
 class UBlox
 {
@@ -25,8 +29,11 @@ public:
 
 public:
 
-    // Invoked to configure / re-configure the uBlox device.
-    int configure();
+    // Invoked to configure / reconfigure the device.
+    bool configure();
+
+    // Determine if the UBlox device is ready to be used.
+    bool isReady();
 
     // Get the UArt interface.
     const UArt &getUArt();
@@ -40,8 +47,12 @@ public:
     bool connectPSD(bool &connected, std::string &urc);
 
     // Methods for getting and setting the message mode.
-    bool getSendMessageMode(const char *mode);
-    bool setSendMessageMode(const char *mode);
+    bool getSendMessageMode(const char *msgMode);
+    bool setSendMessageMode(const char *msgMode);
+
+    // Getting and setting the location scan mode.
+    bool getLocationScanMode(const char *scanMode);
+    bool setLocationScanMode(const char *scanMode);
 
     // Methods for querying the U-Blox chip.
     bool getModelNumber(std::string &modelNumber);
@@ -66,6 +77,9 @@ private:
     void clearResponseBuff();
 
 private:
+
+    // Determine if the device is ready i.e. configured.
+    bool ready;
 
     // The uArt interface and the buffer into which responses are written.
     UArt uArt;
