@@ -322,12 +322,25 @@ bool UBlox::getLocation(double &lat, double &lng)
         return false;
     }
 
+    /*
     char* nextToken = buffer;
     for (char* token = strtok_r(buffer, ",", &nextToken);
             token != nullptr;
             token = strtok_r(nullptr, ",", &nextToken)) {
         printf("Token: %s\n", token);
     }
+     */
+
+    char* nextToken = buffer;
+    char* token = strtok_r(buffer, ",", &nextToken);
+
+    // Discard the date and time fields of the response.
+    strtok_r(nullptr, ",", &nextToken);
+    strtok_r(nullptr, ",", &nextToken);
+
+    // Get the latitude.
+    token = strtok_r(nullptr, ",", &nextToken);
+    printf("token: %s\n", token);
 
     /*
 
