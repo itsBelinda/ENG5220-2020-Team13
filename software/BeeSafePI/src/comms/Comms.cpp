@@ -16,7 +16,7 @@ bool Comms::init()
     // Lock and initialise the comms interface.
     mtx.lock();
     bool initialised = uBlox.init();
-    mtx.lock();
+    mtx.unlock();
 
     // Whether or not the comms was successfully initialised.
     return initialised;
