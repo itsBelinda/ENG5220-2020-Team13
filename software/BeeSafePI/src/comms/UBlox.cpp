@@ -129,9 +129,10 @@ bool UBlox::hasGPRS(bool &attached)
                        strlen(AT_CMD_RESPONSE_GPRS_NOT_ATTACHED)) == 0) {
         attached = false;
     } else {
-        printf("FAILED HERE?!\n");
         return false;
     }
+
+    printf("FAILS here?");
 
     // Finally, determine the status of the command.
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
