@@ -27,7 +27,17 @@ int main()
     // Check that the internet connection has been established.
     bool psdConnected = false;
     rc = comms.hasPSD(psdConnected);
-    std::cout << "PSD Connected, success: " << rc << ". connected: " << psdConnected << std::endl;
+    std::cout << "PSD Connected, success: " << rc << ", connected: " << psdConnected << std::endl;
+
+    // Check that comms is able to get the model number.
+    std::string modelNumber;
+    rc = comms.getModelNumber(modelNumber);
+    std::cout << "Model Number, success: " << rc << ", number: " << modelNumber << std::endl;
+
+    // Check that the comms is able to get the IMEI number.
+    std::string imei;
+    rc = comms.getIMEI(imei);
+    std::cout << "IMEI, success: " << rc << ", imei: " << imei << std::endl;
 
     return 0;
 }
