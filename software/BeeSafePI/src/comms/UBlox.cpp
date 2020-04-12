@@ -11,7 +11,7 @@
 #define AT_CMD_GET_IMEI "ATI5\r"
 
 // GPRS (network) related commands.
-#define AT_CMD_START_AUTOMATIC_REGISTRATION "AT+COPS=0"
+#define AT_CMD_START_AUTOMATIC_REGISTRATION "AT+COPS=0\r"
 #define AT_CMD_GET_GPRS_ATTACHED "AT+CGATT?\r"
 
 // PSD (internet) related commands.
