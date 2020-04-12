@@ -54,15 +54,18 @@ bool UBlox::init()
 {
     // Initialise the UART device and interface.
     if (!uArt.init()) {
-        printf("INIT FAILED\n");
         return false;
     }
+
+    printf("INIT HERE?\n");
 
     // Check if GPRS is attached.
     bool gprsAttached = false;
     if (!hasGPRS(gprsAttached) || !gprsAttached) {
         return false;
     }
+
+    printf("INIT HERE??\n");
 
     // Check if there is an internet connection.
     bool psdConnected = false;
@@ -75,7 +78,7 @@ bool UBlox::init()
         }
     }
 
-    printf("INIT HERE\n");
+    printf("INIT HERE 1\n");
 
     // Configure the sending of messages.
     if (!setSendMessageMode(AT_CMD_SEND_MSG_SET_MODE_TEXT)) {
