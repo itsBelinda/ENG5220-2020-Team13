@@ -389,7 +389,11 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
     printf("Here? %s\n", buffer);
 
     // Read the status of the command.
-    return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
+    readStatusResponse(false);
+    printf("Here? %d %s\n", strlen(buffer), buffer);
+
+    return true;
+    //return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
 
 
