@@ -323,20 +323,17 @@ bool UBlox::getLocation(double &lat, double &lng)
     }
 
     // Delimit the response, discarding first two date and time results.
-    char* token;
     char* nextToken = buffer;
     strtok_r(buffer, ",", &nextToken);
     strtok_r(nullptr, ",", &nextToken);
 
     // Extract the latitude token from the response.
-    token = strtok_r(nullptr, ",", &nextToken);
-    printf("token: %s\n", token);
-    lat = std::strtod(token, &nextToken);
+    char* latToken = strtok_r(nullptr, ",", &nextToken);
+    lat = std::strtod(latToken, &nextToken);
 
     // Extract the longitude token from the response.
-    token = strtok_r(nullptr, ",", &nextToken);
-    printf("token: %s\n", token);
-    lng = std::strtod(token, &nextToken);
+    char* lngToken = strtok_r(nullptr, ",", &nextToken);
+    lng = std::strtod(lngToken, &nextToken);
 
     // Print the response to the screen.
     printf("Response: %s\n", buffer);
