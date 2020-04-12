@@ -129,6 +129,7 @@ bool UBlox::hasGPRS(bool &attached)
                        strlen(AT_CMD_RESPONSE_GPRS_NOT_ATTACHED)) == 0) {
         attached = false;
     } else {
+        printf("FAILED HERE?!\n");
         return false;
     }
 
