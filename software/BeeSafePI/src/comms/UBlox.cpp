@@ -235,7 +235,7 @@ bool UBlox::setSendMessageMode(const char *const mode)
     }
 
     // Check that the status was successful.
-    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
+    return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
 
 /**
