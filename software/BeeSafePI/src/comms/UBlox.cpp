@@ -353,15 +353,11 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
     memset(phoneNumberCmd, '\0', phoneNumberCmdLen);
     sprintf(phoneNumberCmd, AT_CMD_SEND_MSG_NUMBER, phoneNumber.c_str());
 
-    printf("Here?\n");
-
     // Write the phone number command to the device.
     ssize_t rc = writeCommand(phoneNumberCmd);
     if (rc == -1) {
         return false;
     }
-
-    printf("Here?\n");
 
     // Write the message to the device.
     rc = uArt.writeNext(message);
@@ -370,15 +366,11 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
         return false;
     }
 
-    printf("Here?\n");
-
     // Write the end message cmd to the device.
     rc = uArt.writeNext(AT_CMD_SEND_MSG_END);
     if (rc == -1) {
         uArt.writeNext(AT_CMD_SEND_MSG_ESC);
     }
-
-    printf("Here?\n");
 
     // Await the echo from the device.
     rc = uArt.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
@@ -386,21 +378,14 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
         return false;
     }
 
-    printf("Here? %s\n", buffer);
+    // Read the initial response.
+    rc = readRawResponse(RX_TIMEOUT_ECHO);
+    if (rc == -1) {
+        return false;
+    }
 
-    // Read the status of the command.
-    readStatusResponse(false);
-    printf("Here? %d %s\n", strlen(buffer), buffer);
-
-    readStatusResponse(false);
-    printf("Here? %d %s\n", strlen(buffer), buffer);
-
-    readStatusResponse(false);
-    printf("Here? %d %s\n", strlen(buffer), buffer);
-
-
-    return true;
-    //return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
+    // Read the final status and check if its okay.
+    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 
