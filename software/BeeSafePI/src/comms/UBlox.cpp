@@ -339,7 +339,7 @@ bool UBlox::getLocation(double &lat, double &lng)
 
     // Get the latitude.
     token = strtok_r(nullptr, ",", &nextToken);
-    printf("lat: %s\n", token);
+    lng = std::strtod(token, &token + strlen(token));
 
     // Get the longitude.
     token = strtok_r(nullptr, ",", &nextToken);
