@@ -42,7 +42,7 @@
 #define RX_TIMEOUT_CMD_GET_LOCATION 120000
 #define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
 #define RX_TIMEOUT_CMD_GET_IMEI 1000
-#define RX_TIMEOUT_CMD_GET_GPRS_ATTACHED 1000
+#define RX_TIMEOUT_CMD_GET_GPRS_ATTACHED 2000
 #define RX_TIMEOUT_CMD_GET_PSD_CONNECTED 1000
 #define RX_TIMEOUT_CMD_SET_PSD_CONNECTION 1000
 
@@ -115,16 +115,11 @@ bool UBlox::hasGPRS(bool &attached)
         return false;
     }
 
-    printf("HERE?????\n");
-
     // Check whether the device has been attached.
     rc = readRawResponse(RX_TIMEOUT_CMD_GET_GPRS_ATTACHED);
     if (rc == -1) {
         return false;
     }
-
-
-    printf("HERE?????h dhsiu dhsaui dhuias\n");
 
     // Determine whether the GPRS has been attached.
     if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_IS_ATTACHED,
