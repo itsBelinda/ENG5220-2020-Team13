@@ -54,6 +54,7 @@ bool UBlox::init()
 {
     // Initialise the UART device and interface.
     if (!uArt.init()) {
+        printf("INIT FAILED\n");
         return false;
     }
 
@@ -74,14 +75,14 @@ bool UBlox::init()
         }
     }
 
-    printf("INIT HERE");
+    printf("INIT HERE\n");
 
     // Configure the sending of messages.
     if (!setSendMessageMode(AT_CMD_SEND_MSG_SET_MODE_TEXT)) {
         return false;
     }
 
-    printf("INIT HERE 2");
+    printf("INIT HERE 2\n");
 
     return true;
 }
