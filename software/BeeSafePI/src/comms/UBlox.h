@@ -8,13 +8,14 @@
 // The length of the response buffer.
 #define AT_CMD_BUFF_LEN 544
 
-// Options for setting the text mode.
+// Define the possible send message modes.
 #define SEND_TEXT_MODE_TEXT 0
 #define SEND_TEXT_MODE_PDU 1
 
-// Publicly available set location scan mode commands.
-#define AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
-#define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
+// Define the possible scan location modes.
+#define LOCATION_SCAN_MODE_NORMAL 0
+#define LOCATION_SCAN_MODE_DEEP 1
+#define LOCATION_SCAN_MODE_HYBRID 2
 
 class UBlox
 {
@@ -42,8 +43,8 @@ public:
     bool connectPSD(bool &connected, std::string &urc);
 
     // Methods for getting and setting the message mode.
-    bool getSendMessageMode(const char *msgMode);
-    bool setSendMessageMode(const char *msgMode);
+    bool getSendMessageMode(char &mode);
+    bool setSendMessageMode(char mode);
 
     // Methods for querying the U-Blox device.
     bool getModelNumber(std::string &modelNumber);

@@ -17,6 +17,8 @@
 
 // Location specific commands.
 #define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
+#define AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
+#define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
 
 // Define the message modes for sending text messages.
 #define AT_CMD_SEND_MSG_SET_MODE_TEXT "AT+CMGF=1\r"
@@ -211,7 +213,7 @@ bool UBlox::connectPSD(bool &connected, std::string &urc)
     return true;
 }
 
-bool UBlox::getSendMessageMode(const char *const mode)
+bool UBlox::getSendMessageMode(char &mode)
 {
     return true;
 }
@@ -223,7 +225,7 @@ bool UBlox::getSendMessageMode(const char *const mode)
  *      SEND_TEXT_MODE_PDU.
  * @return True if the mode was successfully set, false otherwise.
  */
-bool UBlox::setSendMessageMode(const char *const mode)
+bool UBlox::setSendMessageMode(const char mode)
 {
     // Set the mode of the text messages.
     const char* const setModeCmd = mode == SEND_TEXT_MODE_TEXT
@@ -237,6 +239,8 @@ bool UBlox::setSendMessageMode(const char *const mode)
     // Check that the status was successful.
     return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
+
+
 
 /**
  * Get the model number of the u-blox device.
