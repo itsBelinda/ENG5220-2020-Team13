@@ -483,6 +483,7 @@ ssize_t UBlox::writeCommand(const char *command)
 
     // Read the raw echo response and check lengths to determine if echoed.
     rc = readRawResponse(RX_TIMEOUT_ECHO);
+    printf("WC, RC: %d %s\n", rc, buffer);
     if (rc == -1) {
         return -1;
     }
