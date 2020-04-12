@@ -4,6 +4,7 @@
 #include <boost/compatibility/cpp_c_headers/cstring>
 #include <iostream>
 #include <cstring>
+#include <string.h>
 
 // Define generic u-blox commands for obtaining additional information.
 #define AT_CMD_GET_MODEL_NUMBER "ATI\r"
@@ -310,11 +311,6 @@ bool UBlox::getLocation(double &lat, double &lng)
         }
     }
 
-    // TODO: Check timeout!
-
-    // TODO: Work on finding out timeout values, optimise the code to run faster.
-    // TODO: Check the scan mode for the getting the location.
-
     printf("\n");
     printf("Response: (%d) %s\n", (int) rc, buffer);
 
@@ -325,6 +321,15 @@ bool UBlox::getLocation(double &lat, double &lng)
         printf("Failed to read the location! %s\n", buffer);
         return false;
     }
+
+    // Delimit the response, discarding first two date and time results.
+    char* nextToken = buffer;
+    strtok_r(buffer, ",", &nextToken);
+    strtok_r(buffer, ",", &nextToken);
+
+    // Delimit and obtain the latitude and longitude from the response.
+    lat = std::stod(strtok_r(buffer, ",", &nextToken));
+    lng = std::stod(strtok_r(buffer, ",", &nextToken));
 
     // Print the response to the screen.
     printf("Response: %s\n", buffer);
