@@ -3,6 +3,7 @@
 // System inclusions.
 #include <boost/compatibility/cpp_c_headers/cstring>
 #include <iostream>
+#include <cstring>
 
 // Define generic u-blox commands for obtaining additional information.
 #define AT_CMD_GET_MODEL_NUMBER "ATI\r"
