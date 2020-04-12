@@ -4,15 +4,32 @@ Comms::Comms() = default;
 
 Comms::~Comms() = default;
 
+/**
+ * Initialise or re-initialise the comms interface. Any prior non-default
+ * configurations will be reset.
+ *
+ * @return True if the comms interface was successfully initialised, false
+ *      otherwise.
+ */
 bool Comms::init()
 {
+    // Lock and initialise the comms interface.
+    mtx.lock();
     bool initialised = uBlox.init();
+    mtx.lock();
+
+    // Whether or not the comms was successfully initialised.
     return initialised;
 }
 
 /**
  * Get the u-blox device that the comms interface utilises
  * for communication.
+ *
+ * Invocation of the function does not lock the comms interface.
+ * Moreover, there are no locks associated with underlying structures.
+ * Thus, this function (and the returned instance of UBlox) should be
+ * used with extreme care.
  *
  * @return An instance of the UBlox device utilised to communicate
  *      via the UART interface.
@@ -24,11 +41,6 @@ const UBlox& Comms::getUBlox()
 
 /**
  * Determines whether or not the GPRS is attached to the device.
- *
- * Function will block concurrent access to the comms interface to prevent
- * errors / side effects from occurring. Handling locking on lower levels becomes
- * too complex / messy given the interoperability of the underlying functions,
- * hence here.
  *
  * @param attached The bool reference into which the result of whether
  *      or not GPRS is attached will be stored.
@@ -49,11 +61,6 @@ bool Comms::hasGPRS(bool &attached)
 /**
  * Determines whether or not the PSD (internet) is connected.
  *
- * Function will block concurrent access to the comms interface to prevent
- * errors / side effects from occurring. Handling locking on lower levels becomes
- * too complex / messy given the interoperability of the underlying functions,
- * hence here.
- *
  * @param connected The bool reference into which the result of whether
  *      or not the PSD (internet) is connected will be stored.
  * @return True if the function successfully obtained the result, false
@@ -73,11 +80,6 @@ bool Comms::hasPSD(bool &connected)
 /**
  * Get the model number of the u-Blox device.
  *
- * Function will block concurrent access to the comms interface to prevent
- * errors / side effects from occurring. Handling locking on lower levels becomes
- * too complex / messy given the interoperability of the underlying functions,
- * hence here.
- *
  * @param modelNumber The string reference into which the result i.e.
  *      model number will be stored.
  * @return True if the function successfully obtained the result, false
@@ -95,17 +97,87 @@ bool Comms::getModelNumber(std::string &modelNumber)
 }
 
 /**
- * Get the IMEI code associated with the device.
+ * Get the IMEI number associated with the device.
  *
- * @param imei The string reference into which the result i.e. imei will
+ * @param imeiNumber The string reference into which the result i.e. imei will
  *      be stored.
  * @return  True if the function successfully obtained the result, false
  *      otherwise.
  */
-bool Comms::getIMEI(std::string &imei)
+bool Comms::getIMEI(std::string &imeiNumber)
 {
-    // Locks the comms interface and get the imei number.
-    bool rc = uBlox.getIMEI(imei);
+    // Locks the comms interface and get the imeiNumber number.
+    mtx.lock();
+    bool rc = uBlox.getIMEI(imeiNumber);
+    mtx.unlock();
+
+    // Return the result of the function.
     return rc;
 }
 
+/**
+ * Get the location of the device on which the code is being run.
+ *
+ * Note, the function delegates the locking to the
+ * getLocation(double &lat, double &lng).
+ *
+ * @param latLng The pair structure into which the result is to be placed.
+ *      'first' represents the latitude whereas 'second' represents the
+ *      latitude.
+ * @return True if the function returned successfully, false otherwise.
+ */
+bool Comms::getLocation(std::pair<double, double> &latLng)
+{
+    return getLocation(latLng.first, latLng.second);
+}
+
+/**
+ * Get the location of the device on which the code is being run.
+ *
+ * @param lat The geo-location latitude.
+ * @param lng The geo-location longitude.
+ * @return True if the function returned successfully, false otherwise.
+ */
+bool Comms::getLocation(double &lat, double &lng)
+{
+    // Lock the comms interface and get the latitude and longitude.
+    mtx.lock();
+    bool rc = uBlox.getLocation(lat, lng);
+    mtx.unlock();
+
+    // Return the result of the operation.
+    return rc;
+}
+
+/**
+ * Send a message to a contacts phone number via the UBlox device.
+ *
+ * Note, the function delegates the locking to the
+ * sendMessage(string &phoneNumber, string &message) function.
+ *
+ * @param contact The contact (phone number) to which the message will be sent.
+ * @param message The message contents that are to be sent.
+ * @return True if the message was successfully sent, false otherwise.
+ */
+bool Comms::sendMessage(Contact &contact, const std::string &message)
+{
+   return sendMessage(contact.getNumber(), message);
+}
+
+/**
+ * Send a message to a mobile phone via the UBlox device.
+ *
+ * @param phoneNumber The phone number to which the message will be sent.
+ * @param message The message contents that are to be sent.
+ * @return True if the message was sent successfully, false otherwise.
+ */
+bool Comms::sendMessage(const std::string &phoneNumber, const std::string &message)
+{
+    // Lock the comms interface and set a message.
+    mtx.lock();
+    bool rc = uBlox.sendMessage(phoneNumber, message);
+    mtx.unlock();
+
+    // Return the result of the operation.
+    return rc;
+}
