@@ -343,6 +343,8 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
         return false;
     }
 
+    printf("HERE");
+
     // Write the message to the device.
     rc = uArt.writeNext(message);
     if (rc == -1) {
@@ -350,11 +352,15 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
         return false;
     }
 
+    printf("HERE 2");
+
     // Write the end message cmd to the device.
     rc = uArt.writeNext(AT_CMD_SEND_MSG_END);
     if (rc == -1) {
         uArt.writeNext(AT_CMD_SEND_MSG_ESC);
     }
+
+    printf("HERE 3");
 
     // Await the echo from the device.
     rc = uArt.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
