@@ -248,6 +248,7 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
         // Read in a single character from the serial buffer.
         bytesRead = read(device, &lastReadChar, 1);
         if (bytesRead == -1) {
+            printf("NOPE?");
             return -1;
         } else if (bytesRead == 1) {
 
@@ -263,6 +264,7 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
 
         // If no new bytes have been read and we have timed out, return.
         if (nextReadIndex == lastReadIndex) {
+            printf("SECOND TIMEOUT?");
             return -1;
         }
     }
