@@ -115,11 +115,16 @@ bool UBlox::hasGPRS(bool &attached)
         return false;
     }
 
+    printf("HERE?????\n");
+
     // Check whether the device has been attached.
     rc = readRawResponse(RX_TIMEOUT_CMD_GET_GPRS_ATTACHED);
     if (rc == -1) {
         return false;
     }
+
+
+    printf("HERE?????h dhsiu dhsaui dhuias\n");
 
     // Determine whether the GPRS has been attached.
     if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_IS_ATTACHED,
@@ -131,8 +136,6 @@ bool UBlox::hasGPRS(bool &attached)
     } else {
         return false;
     }
-
-    printf("FAILS here?");
 
     // Finally, determine the status of the command.
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
