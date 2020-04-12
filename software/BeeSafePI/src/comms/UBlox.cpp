@@ -61,7 +61,9 @@ bool UBlox::init()
 
     // Check if GPRS is attached.
     bool gprsAttached = false;
-    if (!hasGPRS(gprsAttached) || !gprsAttached) {
+    if (!hasGPRS(gprsAttached)) {
+        return false;
+    } else if (!gprsAttached) {
         return false;
     }
 
@@ -123,10 +125,10 @@ bool UBlox::hasGPRS(bool &attached)
 
     // Determine whether the GPRS has been attached.
     if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_IS_ATTACHED,
-                9) == 0) {
+                strlen(AT_CMD_RESPONSE_GPRS_IS_ATTACHED)) == 0) {
         attached = true;
     } else if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_NOT_ATTACHED,
-                      9) == 0) {
+                       strlen(AT_CMD_RESPONSE_GPRS_NOT_ATTACHED)) == 0) {
         attached = false;
     } else {
         return false;
