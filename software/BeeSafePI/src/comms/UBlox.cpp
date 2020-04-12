@@ -333,6 +333,9 @@ bool UBlox::getLocation(double &lat, double &lng)
 
     // Extract the longitude token from the response.
     char* lngToken = strtok_r(nullptr, ",", &nextToken);
+    if (nextToken == nullptr) {
+        printf("is null\n");
+    }
     lng = std::strtod(lngToken, &nextToken);
 
     // Print the response to the screen.
