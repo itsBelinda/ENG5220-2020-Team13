@@ -322,6 +322,15 @@ bool UBlox::getLocation(double &lat, double &lng)
         return false;
     }
 
+    char* nextToken = buffer;
+    for (char* token = strtok_r(buffer, ",", &nextToken);
+            token != nullptr;
+            token = strtok_r(nullptr, ",", &nextToken)) {
+        printf("Token: %s\n", token);
+    }
+
+    /*
+
     // Delimit the response, discarding first two date and time results.
     char* nextToken = buffer;
     strtok_r(buffer, ",", &nextToken);
@@ -340,6 +349,8 @@ bool UBlox::getLocation(double &lat, double &lng)
         printf("is null\n");
     }
     lng = std::strtod(lngToken, &nextToken);
+
+    */
 
     // Print the response to the screen.
     printf("Response: %s\n", buffer);
