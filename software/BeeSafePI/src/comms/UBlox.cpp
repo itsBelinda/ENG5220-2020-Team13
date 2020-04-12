@@ -66,6 +66,7 @@ bool UBlox::init()
     }
 
     bool success = attachGPRS();
+    printf("success: %d\n", success);
 
     // Check if GPRS is attached.
     bool gprsAttached = false;
