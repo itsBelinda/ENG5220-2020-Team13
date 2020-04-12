@@ -234,21 +234,18 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
         // If the buffer has been exceeded, return -1.
         lastReadIndex = nextReadIndex;
         if (lastReadIndex >= resultBufferLen) {
-            printf("HERE?");
             return -1;
         }
 
         // If there are no characters within the buffer, sleep.
         ioctl(device, FIONREAD, &bytesPeeked);
         if (bytesPeeked <= 0 && nanosleep(&timeoutPause, nullptr)) {
-            printf("TIMEOUT?");
             return -1;
         }
 
         // Read in a single character from the serial buffer.
         bytesRead = read(device, &lastReadChar, 1);
         if (bytesRead == -1) {
-            printf("NOPE?");
             return -1;
         } else if (bytesRead == 1) {
 
@@ -264,7 +261,6 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
 
         // If no new bytes have been read and we have timed out, return.
         if (nextReadIndex == lastReadIndex) {
-            printf("SECOND TIMEOUT?");
             return -1;
         }
     }

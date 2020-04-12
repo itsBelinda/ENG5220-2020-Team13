@@ -13,13 +13,12 @@
 // GPRS (network) related commands.
 #define AT_CMD_START_AUTOMATIC_REGISTRATION "AT+COPS=0\r"
 #define AT_CMD_GET_GPRS_ATTACHED "AT+CGATT?\r"
-
-// PSD (internet) related commands.
 #define AT_CMD_GET_PSD_CONNECTED "AT+UPSND=0,8\r"
 #define AT_CMD_SET_PSD_CONNECTION "AT+UPSDA=0,3\r"
 
 // Location specific commands.
 #define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
+#define AT_CMD_GET_LOCATION_SCAN_MODE "AT+ULOCCELL?\r"
 #define AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
 #define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
 
@@ -65,20 +64,10 @@ bool UBlox::init()
         return false;
     }
 
-    bool success = attachGPRS();
-    printf("success: %d\n", success);
-
     // Check if GPRS is attached.
     bool gprsAttached = false;
     if (!hasGPRS(gprsAttached)) {
         return false;
-    } else if (!gprsAttached) {
-        if (!attachGPRS()) {
-            return false;
-        }
-        if (!hasGPRS(gprsAttached) || !gprsAttached) {
-            return false;
-        }
     }
 
     // Check if there is an internet connection.
@@ -94,15 +83,16 @@ bool UBlox::init()
 
     // Configure the sending of messages.
     if (!setSendMessageMode(SEND_TEXT_MODE_TEXT)) {
-        printf("Failed to initialise set message mode.\n");
         return false;
     }
 
     // Configure the scan mode for obtaining the location.
     if (!setLocationScanMode(LOCATION_SCAN_MODE_NORMAL)) {
-        printf("Failed to set the scan mode.");
         return false;
     }
+
+    char x;
+    getLocationScanMode(x);
 
     return true;
 }
@@ -200,12 +190,8 @@ bool UBlox::attachGPRS()
     // Force automatic network registration.
     ssize_t rc = writeCommand(AT_CMD_START_AUTOMATIC_REGISTRATION);
     if (rc == -1) {
-        printf("Rc: %d %s\n", rc, buffer);
         return false;
     }
-
-    rc = readRawResponse(RX_TIMEOUT_CMD_GET_LOCATION);
-    printf("Rc: %d %s\n", rc, buffer);
 
     // Obtain the response from the device.
     return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
@@ -276,6 +262,15 @@ bool UBlox::setSendMessageMode(const char sendMessageMode)
 
 bool UBlox::getLocationScanMode(char &scanMode)
 {
+    // Write the command for obtaining the location scan mode.
+    ssize_t rc = writeCommand(AT_CMD_GET_LOCATION_SCAN_MODE);
+    if (rc == -1) {
+        return false;
+    }
+
+    readRawResponse(RX_TIMEOUT_CMD_GET_LOCATION);
+    printf("%d %s\n", strlen(buffer), buffer);
+
     return true;
 }
 
