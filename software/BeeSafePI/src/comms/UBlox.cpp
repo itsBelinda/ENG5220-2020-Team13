@@ -19,9 +19,11 @@
 #define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
 
 // Define the message modes for sending text messages.
-#define AT_CMD_SEND_MSG_NUMBER "AT+CMGS=\"%s\"\r"
-#define AT_CMD_SEND_MSG_ESC "\x1B"
-#define AT_CMD_SEND_MSG_END "\x1A"
+#define AT_CMD_SEND_MSG_SET_MODE_TEXT "AT+CMGF=1\r"
+#define AT_CMD_SEND_MSG_SET_MODE_PDU "AT+CMGF=0\r"
+#define AT_CMD_SEND_MSG_SET_NUMBER "AT+CMGS=\"%s\"\r"
+#define AT_CMD_SEND_MSG_SET_ESC "\x1B"
+#define AT_CMD_SEND_MSG_SET_END "\x1A"
 
 // Define expected responses from the device.
 #define AT_CMD_RESPONSE_GPRS_IS_ATTACHED "+CGATT: 1"
@@ -58,8 +60,6 @@ bool UBlox::init()
         return false;
     }
 
-    printf("INIT HERE?\n");
-
     // Check if GPRS is attached.
     bool gprsAttached = false;
     if (!hasGPRS(gprsAttached)) {
@@ -67,8 +67,6 @@ bool UBlox::init()
     } else if (!gprsAttached) {
         return false;
     }
-
-    printf("INIT HERE??\n");
 
     // Check if there is an internet connection.
     bool psdConnected = false;
@@ -81,14 +79,10 @@ bool UBlox::init()
         }
     }
 
-    printf("INIT HERE 1\n");
-
     // Configure the sending of messages.
-    if (!setSendMessageMode(AT_CMD_SEND_MSG_SET_MODE_TEXT)) {
+    if (!setSendMessageMode(SEND_TEXT_MODE_TEXT)) {
         return false;
     }
-
-    printf("INIT HERE 2\n");
 
     return true;
 }
@@ -221,16 +215,26 @@ bool UBlox::getSendMessageMode(const char *const mode)
     return true;
 }
 
+/**
+ * Function permits the sending of messages mode to be reconfigured.
+ *
+ * @param mode The mode that's to be set; see SEND_TEXT_MODE_TEXT /
+ *      SEND_TEXT_MODE_PDU.
+ * @return True if the mode was successfully set, false otherwise.
+ */
 bool UBlox::setSendMessageMode(const char *const mode)
 {
-    // TODO: START: Move this into its own method!
-    // Set the text message type.
-    ssize_t ct = writeCommand(AT_CMD_SEND_MSG_SET_MODE_TEXT);
-    if (ct == -1) {
+    // Set the mode of the text messages.
+    const char* const setModeCmd = mode == SEND_TEXT_MODE_TEXT
+                                   ? AT_CMD_SEND_MSG_SET_MODE_TEXT
+                                   : AT_CMD_SEND_MSG_SET_MODE_PDU;
+    ssize_t rc = writeCommand(setModeCmd);
+    if (rc == -1) {
         return false;
     }
-    // TODO: END: Move this into its own method!
-    return true;
+
+    // Check that the status was successful.
+    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 /**
@@ -348,10 +352,10 @@ bool UBlox::getLocation(double &lat, double &lng)
 bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &message)
 {
     // Format the phone number command.
-    size_t phoneNumberCmdLen = strlen(AT_CMD_SEND_MSG_NUMBER) + phoneNumber.size() - 1;
+    size_t phoneNumberCmdLen = strlen(AT_CMD_SEND_MSG_SET_NUMBER) + phoneNumber.size() - 1;
     char phoneNumberCmd[phoneNumberCmdLen];
     memset(phoneNumberCmd, '\0', phoneNumberCmdLen);
-    sprintf(phoneNumberCmd, AT_CMD_SEND_MSG_NUMBER, phoneNumber.c_str());
+    sprintf(phoneNumberCmd, AT_CMD_SEND_MSG_SET_NUMBER, phoneNumber.c_str());
 
     // Write the phone number command to the device.
     ssize_t rc = writeCommand(phoneNumberCmd);
@@ -362,14 +366,14 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
     // Write the message to the device.
     rc = uArt.writeNext(message);
     if (rc == -1) {
-        uArt.writeNext(AT_CMD_SEND_MSG_ESC);
+        uArt.writeNext(AT_CMD_SEND_MSG_SET_ESC);
         return false;
     }
 
     // Write the end message cmd to the device.
-    rc = uArt.writeNext(AT_CMD_SEND_MSG_END);
+    rc = uArt.writeNext(AT_CMD_SEND_MSG_SET_END);
     if (rc == -1) {
-        uArt.writeNext(AT_CMD_SEND_MSG_ESC);
+        uArt.writeNext(AT_CMD_SEND_MSG_SET_ESC);
     }
 
     // Await the echo from the device.
@@ -388,10 +392,10 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
-// TODO: Implement this once everything else is functioning!
 bool UBlox::sendLocation(const std::string &phoneNumber, const double lat,
                          const double lng)
 {
+    // TODO: Implement the functionality that permits the location to be sent and displayed, live.
     return false;
 }
 

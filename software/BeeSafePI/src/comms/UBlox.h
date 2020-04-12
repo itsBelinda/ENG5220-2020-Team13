@@ -8,9 +8,9 @@
 // The length of the response buffer.
 #define AT_CMD_BUFF_LEN 544
 
-// Publicly available set send message mode commands.
-#define AT_CMD_SEND_MSG_SET_MODE_TEXT "AT+CMGF=1\r"
-#define AT_CMD_SEND_MSG_SET_MODE_PDU "AT+CMGF=0\r"
+// Options for setting the text mode.
+#define SEND_TEXT_MODE_TEXT 0
+#define SEND_TEXT_MODE_PDU 1
 
 // Publicly available set location scan mode commands.
 #define AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
