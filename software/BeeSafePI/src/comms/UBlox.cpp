@@ -10,8 +10,11 @@
 #define AT_CMD_GET_MODEL_NUMBER "ATI\r"
 #define AT_CMD_GET_IMEI "ATI5\r"
 
-// GPRS and PSD related commands.
+// GPRS (network) related commands.
+#define AT_CMD_START_AUTOMATIC_REGISTRATION "AT+COPS=0"
 #define AT_CMD_GET_GPRS_ATTACHED "AT+CGATT?\r"
+
+// PSD (internet) related commands.
 #define AT_CMD_GET_PSD_CONNECTED "AT+UPSND=0,8\r"
 #define AT_CMD_SET_PSD_CONNECTION "AT+UPSDA=0,3\r"
 
@@ -62,12 +65,19 @@ bool UBlox::init()
         return false;
     }
 
+    bool success = attachGPRS();
+
     // Check if GPRS is attached.
     bool gprsAttached = false;
     if (!hasGPRS(gprsAttached)) {
         return false;
     } else if (!gprsAttached) {
-        return false;
+        if (!attachGPRS()) {
+            return false;
+        }
+        if (!hasGPRS(gprsAttached) || !gprsAttached) {
+            return false;
+        }
     }
 
     // Check if there is an internet connection.
@@ -177,11 +187,23 @@ bool UBlox::hasPSD(bool &connected)
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
+/**
+ * Attempt to force the device to automatically register for the network.
+ * Moreover, this command implicitly attaches GPRS.
+ *
+ * @return True if the automatic registration has been completed, false
+ *      otherwise.
+ */
 bool UBlox::attachGPRS()
 {
-    // TODO: Run AT-COPS=0
-    // TODO: Check what can be done here!
-    return false;
+    // Force automatic network registration.
+    ssize_t rc = writeCommand(AT_CMD_START_AUTOMATIC_REGISTRATION);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Obtain the response from the device.
+    return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
 
 /**
@@ -252,6 +274,14 @@ bool UBlox::getLocationScanMode(char &scanMode)
     return true;
 }
 
+/**
+ * Set the location scan mode for the device.
+ *
+ * @param scanMode The type of scan mode (LOCATION_SCAN_MODE_NORMAL or
+ *      LOCATION_SCAN_MODE_DEEP) that's to be utilised for obtaining the location
+ *      of the device.
+ * @return True if the location scan mode was usccessfully set, false otherwise.
+ */
 bool UBlox::setLocationScanMode(const char scanMode)
 {
     // Set the location scan mode.
