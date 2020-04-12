@@ -353,11 +353,15 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
     memset(phoneNumberCmd, '\0', phoneNumberCmdLen);
     sprintf(phoneNumberCmd, AT_CMD_SEND_MSG_NUMBER, phoneNumber.c_str());
 
+    printf("Here?\n");
+
     // Write the phone number command to the device.
     ssize_t rc = writeCommand(phoneNumberCmd);
     if (rc == -1) {
         return false;
     }
+
+    printf("Here?\n");
 
     // Write the message to the device.
     rc = uArt.writeNext(message);
@@ -366,17 +370,23 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
         return false;
     }
 
+    printf("Here?\n");
+
     // Write the end message cmd to the device.
     rc = uArt.writeNext(AT_CMD_SEND_MSG_END);
     if (rc == -1) {
         uArt.writeNext(AT_CMD_SEND_MSG_ESC);
     }
 
+    printf("Here?\n");
+
     // Await the echo from the device.
     rc = uArt.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
     if (rc == -1 || strncmp(message.c_str(), buffer, message.size()) != 0) {
         return false;
     }
+
+    printf("Here?\n");
 
     // Read the status of the command.
     return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
