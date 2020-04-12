@@ -234,12 +234,14 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
         // If the buffer has been exceeded, return -1.
         lastReadIndex = nextReadIndex;
         if (lastReadIndex >= resultBufferLen) {
+            printf("HERE?");
             return -1;
         }
 
         // If there are no characters within the buffer, sleep.
         ioctl(device, FIONREAD, &bytesPeeked);
         if (bytesPeeked <= 0 && nanosleep(&timeoutPause, nullptr)) {
+            printf("TIMEOUT?");
             return -1;
         }
 
