@@ -285,7 +285,15 @@ bool UBlox::getIMEI(std::string &imeiNumber)
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
-
+/**
+ * Get the CellLocation location from the u-blox device. Note,
+ * this function may take up to 3 minutes in order to return a location.
+ *
+ * @param lat The double reference into which the latitude is to be stored.
+ * @param lng The double reference into which the longitude is to be stored.
+ * @return True if the device was able to successfully get the latitude and longitude
+ *      of the device, false otherwise.
+ */
 bool UBlox::getLocation(double &lat, double &lng)
 {
     // Attempt to get the location from the device.
@@ -296,40 +304,21 @@ bool UBlox::getLocation(double &lat, double &lng)
 
     // Read the status of the command.
     const char* const status = readStatusResponse(false);
-    printf("Buffer: %s, status: %s\n", buffer, status);
     if (status != AT_CMD_STATUS_CODE_OK) {
         return false;
     }
 
-    // TODO: Check if this is an error!
+    // Read the first two bytes (\r\n).
     rc = readRawResponse(RX_TIMEOUT_CMD_GET_LOCATION);
-    for (char c : buffer) {
-        if (c == '\r') {
-            printf("\\r");
-        } else if (c=='\n') {
-            printf("\\n");
-        }
-    }
-
-    printf("\n");
-    printf("Response: (%d) %s\n", (int) rc, buffer);
-
-    // Read the raw location from the device.
-    rc = readRawResponse(RX_TIMEOUT_CMD_GET_LOCATION);
-    printf("Response: (%d) %s\n", (int) rc, buffer);
     if (rc == -1) {
-        printf("Failed to read the location! %s\n", buffer);
         return false;
     }
 
-    /*
-    char* nextToken = buffer;
-    for (char* token = strtok_r(buffer, ",", &nextToken);
-            token != nullptr;
-            token = strtok_r(nullptr, ",", &nextToken)) {
-        printf("Token: %s\n", token);
+    // Read the actual response.
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_LOCATION);
+    if (rc == -1) {
+        return false;
     }
-     */
 
     char* nextToken = buffer;
 
@@ -344,33 +333,6 @@ bool UBlox::getLocation(double &lat, double &lng)
     // Get the longitude.
     token = strtok_r(nullptr, ",", &nextToken);
     lng = std::strtod(token, nullptr);
-
-
-    /*
-
-    // Delimit the response, discarding first two date and time results.
-    char* nextToken = buffer;
-    strtok_r(buffer, ",", &nextToken);
-    strtok_r(nullptr, ",", &nextToken);
-
-    // Extract the latitude token from the response.
-    char* latToken = strtok_r(nullptr, ",", &nextToken);
-    if (nextToken == nullptr) {
-        printf("is null\n");
-    }
-    lat = std::strtod(latToken, &nextToken);
-
-    // Extract the longitude token from the response.
-    char* lngToken = strtok_r(nullptr, ",", &nextToken);
-    if (nextToken == nullptr) {
-        printf("is null\n");
-    }
-    lng = std::strtod(lngToken, &nextToken);
-
-    */
-
-    // Print the response to the screen.
-    printf("Response: %s\n", buffer);
 
     return true;
 }
