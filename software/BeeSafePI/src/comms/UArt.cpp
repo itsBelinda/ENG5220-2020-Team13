@@ -1,25 +1,35 @@
+// Include the header header.
 #include "UArt.h"
 
-// The posix definition that's to be used.
-#define _POSIX_C_SOURCE 199309L
-
-// System inclusions.
-#include <ctime>
+// Include system libraries.
+#include <termios.h>
+#include <fcntl.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
+#include <cerrno>
+
+// Include the c time library for nanosleep.
+#define _POSIX_C_SOURCE 199309L
+#include <ctime>
+
+// Define the device path and baud rate.
+#define DEVICE_PATH "/dev/ttyS0"
+#define DEVICE_BAUD_RATE 115200
+
 
 /**
- * Constructor instantiates an instance of the UArt class. Moreover
- * this method implicitly attempts to configure the device.
+ * Constructor initialises an instance of the UArt interface class.
+ * Note, this does not establish a connection. This should be done
+ * by explicitly calling the init() function on the instance.
  */
 UArt::UArt()
 {
     device = -1;
-    configure();
 }
 
 /**
- * Destructor is responsible for closing the serial connection
- * to the device - if one exists.
+ * Destructor is responsible for cleaning up the resources occupied.
+ * Note, this will implicitly close the device.
  */
 UArt::~UArt()
 {
@@ -29,14 +39,13 @@ UArt::~UArt()
 }
 
 /**
- * Method invocation establishes a connection with the u-box
- * device via the UART interface. In doing so, the method
- * implicitly configures the device serial port.
+ * Method invocation establishes a connection with the u-blox device
+ * via the UART interface. This function should be invoked explicitly.
  *
- * @return True if the connection via the serial interface has been
- *      established and configured, false otherwise.
+ * @return True if the serial connection via the serial interface has been
+ *      successfully established and configured, false otherwise.
  */
-bool UArt::configure()
+bool UArt::init()
 {
 
     // If the device is open, close it.
@@ -264,34 +273,34 @@ ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
  * that the commands should end with \r. Additionally, the command
  * passed as a parameter will implicitly be converted to a C-string.
  *
- * @param cmd The string command sent via the serial interface.
+ * @param command The string command sent via the serial interface.
  * @return The number of chars (bytes) that have been successfully
  *      written to the device, -1 otherwise i.e. error.
  */
-ssize_t UArt::writeNext(const std::string &cmd)
+ssize_t UArt::writeNext(const std::string &command)
 {
 
     // Convert the string into a char buffer.
-    char cmdBuffer[cmd.size() + 1];
-    strcpy(cmdBuffer, cmd.c_str());
+    char commandBuffer[command.size() + 1];
+    strcpy(commandBuffer, command.c_str());
 
     // Attempt to write the converted command to the device.
-    return writeNext(cmdBuffer);
+    return writeNext(commandBuffer);
 }
 
 /**
  * Write a C-string (char array) to the device via the UART serial
  * interface. Note, commands should end with \r.
  *
- * @param cmdBuffer The C-string command that is to be written to
+ * @param command The C-string command that is to be written to
  *      the device via the UART interface.
  * @return The number of chars (bytes) that have been successfully
  *      written to the device, -1 otherwise.
  */
-ssize_t UArt::writeNext(const char *cmdBuffer)
+ssize_t UArt::writeNext(const char *command)
 {
     if (device != -1 && tcflush(device, TCIFLUSH) == 0) {
-        return write(device, cmdBuffer, strlen(cmdBuffer) + 1);
+        return write(device, command, strlen(command) + 1);
     }
     return -1;
 }

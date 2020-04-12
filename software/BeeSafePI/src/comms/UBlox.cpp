@@ -8,10 +8,8 @@
 #define AT_CMD_GET_MODEL_NUMBER "ATI\r"
 #define AT_CMD_GET_IMEI "ATI5\r"
 
-// GPRS specific commands.
+// GPRS and PSD related commands.
 #define AT_CMD_GET_GPRS_ATTACHED "AT+CGATT?\r"
-
-// Internet specific commands.
 #define AT_CMD_GET_PSD_CONNECTED "AT+UPSND=0,8\r"
 #define AT_CMD_SET_PSD_CONNECTION "AT+UPSDA=0,3\r"
 
@@ -47,37 +45,24 @@
 #define RX_TIMEOUT_CMD_GET_PSD_CONNECTED 1000
 #define RX_TIMEOUT_CMD_SET_PSD_CONNECTION 1000
 
-UBlox::UBlox()
-{
-    ready = false;
-    configure();
-}
+UBlox::UBlox() = default;
 
 UBlox::~UBlox() = default;
 
-bool UBlox::isReady()
+bool UBlox::init()
 {
-    return ready;
-}
-
-bool UBlox::configure()
-{
-
-    // Ready is set to false, attempting to reconfigure.
-    ready = false;
-
-    // If the UART interface does not possess a device, it cannot be configured.
-    if (!uArt.hasDevice()) {
+    // Initialise the UART device and interface.
+    if (!uArt.init()) {
         return false;
     }
 
-    // Check that GPRS is attached!
+    // Check if GPRS is attached.
     bool gprsAttached = false;
     if (!hasGPRS(gprsAttached) || !gprsAttached) {
         return false;
     }
 
-    // Check if PSD is connected, if not, do so.
+    // Check if there is an internet connection.
     bool psdConnected = false;
     std::string psdUrc;
     if (!hasPSD(psdConnected)) {
@@ -93,16 +78,15 @@ bool UBlox::configure()
         return false;
     }
 
-    // Set the scan mode for the location.
-    if (!setLocationScanMode(AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL)) {
-        return false;
-    }
-
-    // The device has been successfully configured.
-    ready = true;
     return true;
 }
 
+/**
+ * Getter for the UART interface through which the commands are sent to the device.
+ *
+ * @return An instance of the UArt interface via which the commands are sent
+ *      to the device.
+ */
 const UArt& UBlox::getUArt()
 {
     return uArt;
@@ -117,10 +101,12 @@ bool UBlox::hasGPRS(bool &attached)
     }
 
     // Check whether the device has been attached.
-    rc = readResponse(RX_TIMEOUT_CMD_GET_GPRS_ATTACHED);
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_GPRS_ATTACHED);
     if (rc == -1) {
         return false;
     }
+
+    // TODO: Maybe figure out a way to refine this?
 
     // Determine whether the GPRS has been attached.
     if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_IS_ATTACHED, 9) == 0) {
@@ -132,7 +118,7 @@ bool UBlox::hasGPRS(bool &attached)
     }
 
     // Finally, determine the status of the command.
-    return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
+    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 bool UBlox::hasPSD(bool &connected)
@@ -144,7 +130,7 @@ bool UBlox::hasPSD(bool &connected)
     }
 
     // Check whether the device has an internet connection.
-    rc = readResponse(RX_TIMEOUT_CMD_GET_PSD_CONNECTED);
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_PSD_CONNECTED);
     if (rc == -1) {
         return false;
     }
@@ -161,7 +147,7 @@ bool UBlox::hasPSD(bool &connected)
     }
 
     // Finally, determine the status of the command.
-    return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
+    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 bool UBlox::attachGPRS()
@@ -178,7 +164,7 @@ bool UBlox::connectPSD(bool &connected, std::string &urc)
     }
 
     // Read the status of the connection.
-    const char* status = readResponseStatus(false);
+    const char* status = readStatusResponse(false);
     if (status == AT_CMD_STATUS_CODE_OK) {
         connected = true;
     } else {
@@ -186,7 +172,7 @@ bool UBlox::connectPSD(bool &connected, std::string &urc)
     }
 
     // Read the URC response.
-    rc = readResponse(RX_TIMEOUT_CMD_SET_PSD_CONNECTION);
+    rc = readRawResponse(RX_TIMEOUT_CMD_SET_PSD_CONNECTION);
     if (rc == -1) {
         return false;
     }
@@ -213,16 +199,13 @@ bool UBlox::setSendMessageMode(const char *const mode)
     return true;
 }
 
-bool UBlox::getLocationScanMode(const char *scanMode)
-{
-    return true;
-}
-
-bool UBlox::setLocationScanMode(const char *scanMode)
-{
-    return true;
-}
-
+/**
+ * Get the model number of the u-blox device.
+ *
+ * @param modelNumber The string reference into which the model number
+ *      is to be stored.
+ * @return True if the model number was successfully returned, false otherwise.
+ */
 bool UBlox::getModelNumber(std::string &modelNumber)
 {
     // Write the command to the device via uArt.
@@ -232,16 +215,23 @@ bool UBlox::getModelNumber(std::string &modelNumber)
     }
 
     // Read the response from the chip.
-    rc = readResponse(RX_TIMEOUT_CMD_GET_MODEL_NUMBER);
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_MODEL_NUMBER);
     if (rc == -1) {
         return false;
     }
-    modelNumber.assign(buffer, strlen(buffer));
+    modelNumber.assign(buffer, strlen(buffer) - 1);
 
     // Read the status of the command.
-    return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
+    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
+/**
+ * Get the IMEI of the u-blox device.
+ *
+ * @param imei The string reference into which the IMEI code is to be
+ *      stored.
+ * @return True if the IMEI was successfully returned, false otherwise.
+ */
 bool UBlox::getIMEI(std::string &imei)
 {
     // Write a command and check that is has been successfully written.
@@ -251,14 +241,14 @@ bool UBlox::getIMEI(std::string &imei)
     }
 
     // Read the IMEI number from the chip.
-    rc = readResponse(RX_TIMEOUT_CMD_GET_IMEI);
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_IMEI);
     if (rc == -1) {
         return false;
     }
-    imei.assign(buffer, strlen(buffer));
+    imei.assign(buffer, strlen(buffer) - 1);
 
     // Finally, return the status of the command.
-    return readResponseStatus(true) == AT_CMD_STATUS_CODE_OK;
+    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 bool UBlox::getLocation(double &lat, double &lng)
@@ -270,14 +260,14 @@ bool UBlox::getLocation(double &lat, double &lng)
     }
 
     // Read the status of the command.
-    const char* const status = readResponseStatus(false);
+    const char* const status = readStatusResponse(false);
     printf("Buffer: %s, status: %s\n", buffer, status);
     if (status != AT_CMD_STATUS_CODE_OK) {
         return false;
     }
 
     // TODO: Check if this is an error!
-    rc = readResponse(RX_TIMEOUT_CMD_GET_LOCATION);
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_LOCATION);
     for (char c : buffer) {
         if (c == '\r') {
             printf("\\r");
@@ -295,7 +285,7 @@ bool UBlox::getLocation(double &lat, double &lng)
     printf("Response: (%d) %s\n", (int) rc, buffer);
 
     // Read the raw location from the device.
-    rc = readResponse(RX_TIMEOUT_CMD_GET_LOCATION);
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_LOCATION);
     printf("Response: (%d) %s\n", (int) rc, buffer);
     if (rc == -1) {
         printf("Failed to read the location! %s\n", buffer);
@@ -308,6 +298,14 @@ bool UBlox::getLocation(double &lat, double &lng)
     return true;
 }
 
+/**
+ * Compose an outgoing message - sent via the UART interface to the device
+ * which in turn is sent by the said UBlox device.
+ *
+ * @param phoneNumber The phone number to which the message is sent.
+ * @param message The message that is to be sent.
+ * @return True if the message was successfully sent, false otherwise.
+ */
 bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &message)
 {
     // Format the phone number command.
@@ -342,7 +340,7 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
     }
 
     // Read the status of the command.
-    return readResponseStatus(false) == AT_CMD_STATUS_CODE_OK;
+    return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
 
 bool UBlox::sendLocation(const std::string &phoneNumber, const double lat,
@@ -368,13 +366,11 @@ ssize_t UBlox::writeCommand(const char *command)
         return -1;
     }
 
-    // Read the response i.e. echo. If present, command successful.
-    rc = readResponse(RX_TIMEOUT_ECHO);
+    // Read the raw echo response and check lengths to determine if echoed.
+    rc = readRawResponse(RX_TIMEOUT_ECHO);
     if (rc == -1) {
         return -1;
     }
-
-    // If the lengths match, command successfully echoed.
     return strlen(command) == rc;
 }
 
@@ -386,7 +382,7 @@ ssize_t UBlox::writeCommand(const char *command)
  * @param timeout The timeout in ms prior to discarding the query.
  * @return -1 if there was an error, n (representing length) otherwise.
  */
-ssize_t UBlox::readResponse(const int timeoutMs)
+ssize_t UBlox::readRawResponse(int timeoutMs)
 {
     // Clear the buffer and read the response from the device.
     clearResponseBuff();
@@ -401,41 +397,44 @@ ssize_t UBlox::readResponse(const int timeoutMs)
  * @return nullptr if the response could not be interpreted, a pointer
  *      otherwise.
  */
-const char* UBlox::readResponseStatus(const bool crlf)
+const char* UBlox::readStatusResponse(bool crlf)
 {
-    // An additional \r\n is expected before the status.
+    // Occasionally there are preceding \r\n; read and discard.
     ssize_t rc = -1;
     if (crlf) {
-        rc = readResponse(RX_TIMEOUT);
+        rc = readRawResponse(RX_TIMEOUT);
         if (rc != 2) {
             return nullptr;
         }
     }
 
-    // Read the response as a generic response.
-    rc = readResponse(RX_TIMEOUT_STATUS);
+    // Generically read the device response and attempt to resolve the status.
+    rc = readRawResponse(RX_TIMEOUT_STATUS);
     if (rc == -1) {
         return nullptr;
     }
-
-    // Attempt to resolve the response status within the buffer.
-    return resolveResponseBuffStatus();
+    return checkResponseBuffStatus();
 }
 
 /**
- * Function attempts to interpret the response within the buffer as a
- * status response i.e. OK, ERROR, ABORTED.
+ * Attempt to determine the response status from the device that's
+ * currently within the buffer - it may or may not be a status response.
  *
- * @return The status within the buffer, nullptr otherwise.
+ * These functions should the treated as a state machine.
+ *
+ * @return A pointer to a resolved status code, nullptr otherwise.
  */
-const char* const UBlox::resolveResponseBuffStatus()
+const char* const UBlox::checkResponseBuffStatus()
 {
-    // Compare the response against known status responses.
-    if (strncmp(buffer, AT_CMD_STATUS_CODE_OK, 2) == 0) {
+    // Match a status by comparing the strings.
+    if (strncmp(buffer, AT_CMD_STATUS_CODE_OK,
+                strlen(AT_CMD_STATUS_CODE_OK)) == 0) {
         return AT_CMD_STATUS_CODE_OK;
-    } else if (strncmp(buffer, AT_CMD_STATUS_CODE_ERROR, 5) == 0) {
+    } else if (strncmp(buffer, AT_CMD_STATUS_CODE_ERROR,
+                       strlen(AT_CMD_STATUS_CODE_ERROR)) == 0) {
         return AT_CMD_STATUS_CODE_ERROR;
-    } else if (strncmp(buffer, AT_CMD_STATUS_CODE_ABORTED, 7) == 0) {
+    } else if (strncmp(buffer, AT_CMD_STATUS_CODE_ABORTED,
+                       strlen(AT_CMD_STATUS_CODE_ABORTED)) == 0) {
         return AT_CMD_STATUS_CODE_ABORTED;
     } else {
         return nullptr;
@@ -443,14 +442,11 @@ const char* const UBlox::resolveResponseBuffStatus()
 }
 
 /**
- * Clear the RX buffer; usually done prior to reading the next
- * response from the uart interface.
+ * Clear the response buffer i.e. set all elements of the array
+ * to null terminators.
  */
 void UBlox::clearResponseBuff()
 {
-    // Iterate the buffer, resetting the chars to null terminators.
-    for (auto& byte : buffer) {
-        byte = '\0';
-    }
+    std::memset(buffer, '\0', AT_CMD_BUFF_LEN);
 }
 

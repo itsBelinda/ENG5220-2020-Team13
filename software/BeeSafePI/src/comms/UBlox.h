@@ -1,10 +1,8 @@
-
 #ifndef BEESAFEPI_UBLOX_H
 #define BEESAFEPI_UBLOX_H
 
 #include "UArt.h"
 
-// System inclusions.
 #include <string>
 
 // The length of the response buffer.
@@ -29,13 +27,10 @@ public:
 
 public:
 
-    // Invoked to configure / reconfigure the device.
-    bool configure();
+    // Initialise serial interface and UBlox device.
+    bool init();
 
-    // Determine if the UBlox device is ready to be used.
-    bool isReady();
-
-    // Get the UArt interface.
+    // Get the UArt interface on which the UBlox interface sits.
     const UArt &getUArt();
 
     // Connection specific functions.
@@ -50,10 +45,6 @@ public:
     bool getSendMessageMode(const char *msgMode);
     bool setSendMessageMode(const char *msgMode);
 
-    // Getting and setting the location scan mode.
-    bool getLocationScanMode(const char *scanMode);
-    bool setLocationScanMode(const char *scanMode);
-
     // Methods for querying the U-Blox chip.
     bool getModelNumber(std::string &modelNumber);
     bool getIMEI(std::string &imei);
@@ -65,21 +56,20 @@ public:
 
 private:
 
-    // For writing to and reading from the device.
+    // Write a command to the device via the UART interface.
     ssize_t writeCommand(const char *command);
-    ssize_t readResponse(int timeoutMs);
-    const char* readResponseStatus(bool crlf);
 
-    // Resolve the response status within the buffer.
-    const char* const resolveResponseBuffStatus();
+    // Read into the buffer a raw response or a status response.
+    ssize_t readRawResponse(int timeoutMs);
+    const char* readStatusResponse(bool crlf);
 
-    // Clear the response buffer.
+    // Resolve the status within the UBlox buffer.
+    const char* const checkResponseBuffStatus();
+
+    // Utilised for clearing the UBlox buffer.
     void clearResponseBuff();
 
 private:
-
-    // Determine if the device is ready i.e. configured.
-    bool ready;
 
     // The uArt interface and the buffer into which responses are written.
     UArt uArt;

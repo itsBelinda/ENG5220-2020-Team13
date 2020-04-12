@@ -1,43 +1,53 @@
 #include "Comms.h"
 
-Comms::Comms()
-{
-}
+Comms::Comms() = default;
 
 Comms::~Comms() = default;
 
-bool Comms::configure()
+bool Comms::init()
 {
-    return true;
+    bool initialised = uBlox.init();
+    return initialised;
 }
 
+/**
+ * Get the u-blox device that the comms interface utilises
+ * for communication.
+ *
+ * @return An instance of the UBlox device utilised to communicate
+ *      via the UART interface.
+ */
 const UBlox& Comms::getUBlox()
 {
     return uBlox;
 }
 
-bool Comms::getModelNumber(std::string &modelNumber)
+/**
+ * Determines whether or not the GPRS is attached to the device.
+ *
+ * @param attached The bool reference into which the result of whether
+ *      or not GPRS is attached will be stored.
+ * @return True if the function successfully obtained the result, false
+ *      otherwise.
+ */
+bool Comms::hasGPRS(bool &attached)
 {
-    return uBlox.getModelNumber(modelNumber);
+    // Lock the comms interface and check if GPRS is attached.
+    bool rc = uBlox.hasGPRS(attached);
+    return rc;
 }
 
-bool Comms::getIMEI(std::string &imei)
+/**
+ * Determines whether or not the PSD (internet) is connected.
+ *
+ * @param connected The bool reference into which the result of whether
+ *      or not the PSD (internet) is connected will be stored.
+ * @return True if the function successfully obtained the result, false
+ *      otherwise.
+ */
+bool Comms::hasPSD(bool &connected)
 {
-    return uBlox.getIMEI(imei);
+    // Lock the comms interface and check if PSD connected.
+    bool rc = uBlox.hasPSD(connected);
+    return rc;
 }
-
-bool Comms::getLocation(std::pair<double, double> &latLng)
-{
-    return getLocation(latLng.first, latLng.second);
-}
-
-bool Comms::getLocation(double &lat, double &lng)
-{
-    return uBlox.getLocation(lat, lng);
-}
-
-bool Comms::sendMessage(const std::string &phoneNumber, const std::string &message)
-{
-    return uBlox.sendMessage(phoneNumber, message);
-}
-
