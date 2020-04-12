@@ -74,10 +74,14 @@ bool UBlox::init()
         }
     }
 
+    printf("INIT HERE");
+
     // Configure the sending of messages.
     if (!setSendMessageMode(AT_CMD_SEND_MSG_SET_MODE_TEXT)) {
         return false;
     }
+
+    printf("INIT HERE 2");
 
     return true;
 }
