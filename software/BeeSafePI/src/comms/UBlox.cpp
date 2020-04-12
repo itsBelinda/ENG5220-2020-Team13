@@ -203,6 +203,9 @@ bool UBlox::attachGPRS()
         return false;
     }
 
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_LOCATION);
+    printf("Rc: %d %s\n", rc, buffer);
+
     // Obtain the response from the device.
     return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
