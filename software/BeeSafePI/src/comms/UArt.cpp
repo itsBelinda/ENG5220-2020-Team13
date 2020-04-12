@@ -91,8 +91,6 @@ bool UArt::init()
         goto err;
     }
 
-    printf("Successfully configured");
-
     // Device successfully configured, return.
     return true;
 

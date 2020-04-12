@@ -28,10 +28,17 @@ public:
     bool hasGPRS(bool &attached);
     bool hasPSD(bool &connected);
 
+    // Methods for querying the U-Blox device.
+    bool getModelNumber(std::string &modelNumber);
+    bool getIMEI(std::string &imei);
+
 private:
 
     // The u-Blox device that is being communicated with.
     UBlox uBlox;
+
+    // The lock utilised to prevent concurrent access.
+    std::mutex mtx;
 
 };
 

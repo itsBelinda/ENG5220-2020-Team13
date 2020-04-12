@@ -45,7 +45,7 @@ public:
     bool getSendMessageMode(const char *msgMode);
     bool setSendMessageMode(const char *msgMode);
 
-    // Methods for querying the U-Blox chip.
+    // Methods for querying the U-Blox device.
     bool getModelNumber(std::string &modelNumber);
     bool getIMEI(std::string &imei);
     bool getLocation(double &lat, double &lng);

@@ -136,6 +136,8 @@ bool UBlox::hasPSD(bool &connected)
         return false;
     }
 
+    // TODO: Maybe figure out a way of refining this too?
+
     // Determine if PSD has been connected.
     if (strncmp(buffer, AT_CMD_RESPONSE_PSD_IS_CONNECTED,
                 strlen(AT_CMD_RESPONSE_PSD_IS_CONNECTED)) == 0) {
