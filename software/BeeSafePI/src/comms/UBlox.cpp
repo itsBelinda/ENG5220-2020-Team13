@@ -386,7 +386,7 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
         return false;
     }
 
-    printf("Here?\n");
+    printf("Here? %s\n", buffer);
 
     // Read the status of the command.
     return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
