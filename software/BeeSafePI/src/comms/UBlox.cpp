@@ -87,7 +87,7 @@ bool UBlox::init()
     }
 
     // Configure the scan mode for obtaining the location.
-    if (!setLocationScanMode(LOCATION_SCAN_MODE_NORMAL)) {
+    if (!setLocationScanMode(LOCATION_SCAN_MODE_DEEP)) {
         return false;
     }
 
