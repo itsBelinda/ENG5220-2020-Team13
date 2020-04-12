@@ -200,7 +200,7 @@ bool UBlox::attachGPRS()
     // Force automatic network registration.
     ssize_t rc = writeCommand(AT_CMD_START_AUTOMATIC_REGISTRATION);
     if (rc == -1) {
-        printf("Fails here?!");
+        printf("Rc: %d %s\n", rc, buffer);
         return false;
     }
 
