@@ -47,7 +47,7 @@ public:
 
     // Methods for querying the U-Blox device.
     bool getModelNumber(std::string &modelNumber);
-    bool getIMEI(std::string &imei);
+    bool getIMEI(std::string &imeiNumber);
     bool getLocation(double &lat, double &lng);
 
     // Methods for outgoing commands.

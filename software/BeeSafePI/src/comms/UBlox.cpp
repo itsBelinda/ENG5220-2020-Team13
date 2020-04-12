@@ -123,10 +123,10 @@ bool UBlox::hasGPRS(bool &attached)
 
     // Determine whether the GPRS has been attached.
     if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_IS_ATTACHED,
-                strlen(AT_CMD_RESPONSE_GPRS_IS_ATTACHED)) == 0) {
+                9) == 0) {
         attached = true;
     } else if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_NOT_ATTACHED,
-                       strlen(AT_CMD_RESPONSE_GPRS_NOT_ATTACHED)) == 0) {
+                      9) == 0) {
         attached = false;
     } else {
         return false;
@@ -259,11 +259,11 @@ bool UBlox::getModelNumber(std::string &modelNumber)
 /**
  * Get the IMEI of the u-blox device.
  *
- * @param imei The string reference into which the IMEI code is to be
+ * @param imeiNumber The string reference into which the IMEI code is to be
  *      stored.
  * @return True if the IMEI was successfully returned, false otherwise.
  */
-bool UBlox::getIMEI(std::string &imei)
+bool UBlox::getIMEI(std::string &imeiNumber)
 {
     // Write a command and check that is has been successfully written.
     ssize_t rc = writeCommand(AT_CMD_GET_IMEI);
@@ -276,11 +276,12 @@ bool UBlox::getIMEI(std::string &imei)
     if (rc == -1) {
         return false;
     }
-    imei.assign(buffer, strlen(buffer) - 1);
+    imeiNumber.assign(buffer, strlen(buffer) - 1);
 
     // Finally, return the status of the command.
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
+
 
 bool UBlox::getLocation(double &lat, double &lng)
 {
@@ -351,8 +352,6 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
         return false;
     }
 
-    printf("HERE");
-
     // Write the message to the device.
     rc = uArt.writeNext(message);
     if (rc == -1) {
@@ -360,15 +359,11 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
         return false;
     }
 
-    printf("HERE 2");
-
     // Write the end message cmd to the device.
     rc = uArt.writeNext(AT_CMD_SEND_MSG_END);
     if (rc == -1) {
         uArt.writeNext(AT_CMD_SEND_MSG_ESC);
     }
-
-    printf("HERE 3");
 
     // Await the echo from the device.
     rc = uArt.readNext(buffer, AT_CMD_BUFF_LEN, RX_TIMEOUT_NETWORK);
