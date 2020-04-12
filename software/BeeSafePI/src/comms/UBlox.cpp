@@ -388,22 +388,12 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
-
-
-
-
 // TODO: Implement this once everything else is functioning!
 bool UBlox::sendLocation(const std::string &phoneNumber, const double lat,
                          const double lng)
 {
     return false;
 }
-
-
-
-
-
-
 
 /**
  * Writes the next command to u-blox via the uart interface.

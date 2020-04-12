@@ -41,8 +41,9 @@ int main()
     std::cout << "IMEI, success: " << rc << ", imei: " << imei << std::endl;
 
     // Check the sending of messages.
-    std::string phoneNumber = "+447455787051";
-    std::string message = "TEST MESSAGE";
+    //std::string phoneNumber = "+447455787051";
+    std::string phoneNumber = "+447939652867";
+    std::string message = "THERE IS A BEAST IN YOUR AREA! GET OUT!";
     rc = comms.sendMessage(phoneNumber, message);
     std::cout << "Sending message, success: " << rc << std::endl;
 
