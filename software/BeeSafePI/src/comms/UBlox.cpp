@@ -81,6 +81,7 @@ bool UBlox::init()
 
     // Configure the sending of messages.
     if (!setSendMessageMode(SEND_TEXT_MODE_TEXT)) {
+        printf("Failed to initialise set message mode.\n");
         return false;
     }
 
