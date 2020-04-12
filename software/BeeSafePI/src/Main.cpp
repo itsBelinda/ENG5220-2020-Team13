@@ -15,7 +15,7 @@ int main()
     // Attempt to instantiate the comms interface.
     Comms comms;
     if (!comms.init()) {
-        fprintf(stderr, "Failed to initialise the comms interface.");
+        fprintf(std::stderr, "Failed to initialise the comms interface.");
         return -1;
     }
 
