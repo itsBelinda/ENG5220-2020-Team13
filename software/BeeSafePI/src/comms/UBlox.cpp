@@ -87,6 +87,12 @@ bool UBlox::init()
         return false;
     }
 
+    // Configure the scan mode for obtaining the location.
+    if (!setLocationScanMode(LOCATION_SCAN_MODE_NORMAL)) {
+        printf("Failed to set the scan mode.");
+        return false;
+    }
+
     return true;
 }
 
@@ -173,6 +179,7 @@ bool UBlox::hasPSD(bool &connected)
 
 bool UBlox::attachGPRS()
 {
+    // TODO: Run AT-COPS=0
     // TODO: Check what can be done here!
     return false;
 }
@@ -221,26 +228,44 @@ bool UBlox::getSendMessageMode(char &mode)
 /**
  * Function permits the sending of messages mode to be reconfigured.
  *
- * @param mode The mode that's to be set; see SEND_TEXT_MODE_TEXT /
+ * @param sendMessageMode The mode that's to be set; see SEND_TEXT_MODE_TEXT /
  *      SEND_TEXT_MODE_PDU.
  * @return True if the mode was successfully set, false otherwise.
  */
-bool UBlox::setSendMessageMode(const char mode)
+bool UBlox::setSendMessageMode(const char sendMessageMode)
 {
     // Set the mode of the text messages.
-    const char* const setModeCmd = mode == SEND_TEXT_MODE_TEXT
+    const char* const sendMsgModeCmd = sendMessageMode == SEND_TEXT_MODE_TEXT
                                    ? AT_CMD_SEND_MSG_SET_MODE_TEXT
                                    : AT_CMD_SEND_MSG_SET_MODE_PDU;
-    ssize_t rc = writeCommand(setModeCmd);
+    ssize_t rc = writeCommand(sendMsgModeCmd);
     if (rc == -1) {
         return false;
     }
 
-    // Check that the status was successful.
+    // Check that the status was OK.
     return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
 
+bool UBlox::getLocationScanMode(char &scanMode)
+{
+    return true;
+}
 
+bool UBlox::setLocationScanMode(const char scanMode)
+{
+    // Set the location scan mode.
+    const char* const locScanModeCmd = scanMode == LOCATION_SCAN_MODE_NORMAL
+                                       ? AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL
+                                       : AT_CMD_SET_LOCATION_SCAN_MODE_DEEP;
+    ssize_t rc = writeCommand(locScanModeCmd);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Check that the status is OK.
+    return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
+}
 
 /**
  * Get the model number of the u-blox device.

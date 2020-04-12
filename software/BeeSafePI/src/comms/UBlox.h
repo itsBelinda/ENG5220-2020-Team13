@@ -15,7 +15,6 @@
 // Define the possible scan location modes.
 #define LOCATION_SCAN_MODE_NORMAL 0
 #define LOCATION_SCAN_MODE_DEEP 1
-#define LOCATION_SCAN_MODE_HYBRID 2
 
 class UBlox
 {
@@ -44,7 +43,11 @@ public:
 
     // Methods for getting and setting the message mode.
     bool getSendMessageMode(char &mode);
-    bool setSendMessageMode(char mode);
+    bool setSendMessageMode(char sendMessageMode);
+
+    // Methods for getting and setting the location scan mode.
+    bool getLocationScanMode(char &scanMode);
+    bool setLocationScanMode(char scanMode);
 
     // Methods for querying the U-Blox device.
     bool getModelNumber(std::string &modelNumber);
