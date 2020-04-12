@@ -17,10 +17,10 @@
 #define AT_CMD_SET_PSD_CONNECTION "AT+UPSDA=0,3\r"
 
 // Location specific commands.
-#define AT_CMD_GET_LOCATION "AT+ULOC=2,2,0,120,500\r"
-#define AT_CMD_GET_LOCATION_SCAN_MODE "AT+ULOCCELL?\r"
-#define AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
-#define AT_CMD_SET_LOCATION_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
+#define AT_CMD_GET_LOC "AT+ULOC=2,2,0,120,500\r"
+#define AT_CMD_GET_LOC_SCAN_MODE "AT+ULOCCELL?\r"
+#define AT_CMD_SET_LOC_SCAN_MODE_NORMAL "AT+ULOCCELL=0\r"
+#define AT_CMD_SET_LOC_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
 
 // Define the message modes for sending text messages.
 #define AT_CMD_SEND_MSG_SET_MODE_TEXT "AT+CMGF=1\r"
@@ -35,6 +35,9 @@
 #define AT_CMD_RESPONSE_PSD_IS_CONNECTED "+UPSND: 0,8,1"
 #define AT_CMD_RESPONSE_PSD_NOT_CONNECTED "+UPSND: 0,8,0"
 
+#define AT_CMD_RESPONSE_LOC_SCAN_MODE_NORMAL "+ULOCCELL: 0,0,\"\",\"\",0,0"
+#define AT_CMD_RESPONSE_LOC_SCAN_MODE_DEEP "+ULOCCELL: 1,0,\"\",\"\",0,0"
+
 // Define the status codes returned by the device.
 #define AT_CMD_STATUS_CODE_OK "OK"
 #define AT_CMD_STATUS_CODE_ERROR "ERROR"
@@ -46,6 +49,7 @@
 #define RX_TIMEOUT_STATUS 1000
 #define RX_TIMEOUT_NETWORK 5000
 
+#define RX_TIMEOUT_CMD_GET_LOC_SCAN_MODE 1000
 #define RX_TIMEOUT_CMD_GET_LOCATION 120000
 #define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
 #define RX_TIMEOUT_CMD_GET_IMEI 1000
@@ -260,18 +264,41 @@ bool UBlox::setSendMessageMode(const char sendMessageMode)
     return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
 
+/**
+ * Get the scan mode utilised for obtaining the location of the device.
+ *
+ * @param scanMode The mode that's to be set (LOC_SCAN_MODE_NORMAL or
+ *      LOC_SCAN_MODE_DEEP).
+ * @return True if the location scan mode was obtained successfully, false
+ *      otherwise.
+ */
 bool UBlox::getLocationScanMode(char &scanMode)
 {
     // Write the command for obtaining the location scan mode.
-    ssize_t rc = writeCommand(AT_CMD_GET_LOCATION_SCAN_MODE);
+    ssize_t rc = writeCommand(AT_CMD_GET_LOC_SCAN_MODE);
     if (rc == -1) {
         return false;
     }
 
-    readRawResponse(RX_TIMEOUT_CMD_GET_LOCATION);
-    printf("%d %s\n", strlen(buffer), buffer);
+    // Read the response obtained from the device.
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_LOC_SCAN_MODE);
+    if (rc == -1) {
+        return false;
+    }
 
-    return true;
+    // Determine the mode utilised.
+    if (strncmp(buffer, AT_CMD_RESPONSE_LOC_SCAN_MODE_NORMAL,
+                strlen(AT_CMD_RESPONSE_LOC_SCAN_MODE_NORMAL)) == 0) {
+        scanMode = LOCATION_SCAN_MODE_NORMAL;
+    } else if (strncmp(buffer, AT_CMD_RESPONSE_LOC_SCAN_MODE_DEEP,
+                       strlen(AT_CMD_RESPONSE_LOC_SCAN_MODE_DEEP)) == 0) {
+        scanMode = LOCATION_SCAN_MODE_DEEP;
+    } else {
+        return false;
+    }
+
+    // Finally, read the status of the command.
+    return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
 
 /**
@@ -286,8 +313,8 @@ bool UBlox::setLocationScanMode(const char scanMode)
 {
     // Set the location scan mode.
     const char* const locScanModeCmd = scanMode == LOCATION_SCAN_MODE_NORMAL
-                                       ? AT_CMD_SET_LOCATION_SCAN_MODE_NORMAL
-                                       : AT_CMD_SET_LOCATION_SCAN_MODE_DEEP;
+                                       ? AT_CMD_SET_LOC_SCAN_MODE_NORMAL
+                                       : AT_CMD_SET_LOC_SCAN_MODE_DEEP;
     ssize_t rc = writeCommand(locScanModeCmd);
     if (rc == -1) {
         return false;
@@ -361,7 +388,7 @@ bool UBlox::getIMEI(std::string &imeiNumber)
 bool UBlox::getLocation(double &lat, double &lng)
 {
     // Attempt to get the location from the device.
-    ssize_t rc = writeCommand(AT_CMD_GET_LOCATION);
+    ssize_t rc = writeCommand(AT_CMD_GET_LOC);
     if (rc == -1) {
         return false;
     }
