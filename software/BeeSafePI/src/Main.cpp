@@ -7,6 +7,7 @@
 #include "geo/PolyFence.h"
 #include "monitor/Monitor.h"
 
+#include <utility>
 #include <iostream>
 
 int main()
@@ -38,6 +39,17 @@ int main()
     std::string imei;
     rc = comms.getIMEI(imei);
     std::cout << "IMEI, success: " << rc << ", imei: " << imei << std::endl;
+
+    // Check the sending of messages.
+    std::string phoneNumber = "+447455787051";
+    std::string message = "TEST MESSAGE";
+    rc = comms.sendMessage(phoneNumber, message);
+    std::cout << "Sending message, success: " << rc << std::endl;
+
+    // Test the getting of the location.
+    std::pair<double, double> latLng;
+    rc = comms.getLocation(latLng);
+    std::cout << "Location, success: " << rc << ", lat: " << latLng.first << ", lng: " << latLng.second << std::endl;
 
     return 0;
 }

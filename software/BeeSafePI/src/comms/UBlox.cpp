@@ -93,6 +93,12 @@ const UArt& UBlox::getUArt()
     return uArt;
 }
 
+/**
+ * Getter for determining whether or not GPRS is attached.
+ *
+ * @param attached The bool reference into which the result is to be stored.
+ * @return True if the result was successfully obtained, false otherwise.
+ */
 bool UBlox::hasGPRS(bool &attached)
 {
     // Write the command to the device via uArt.
@@ -107,12 +113,12 @@ bool UBlox::hasGPRS(bool &attached)
         return false;
     }
 
-    // TODO: Maybe figure out a way to refine this?
-
     // Determine whether the GPRS has been attached.
-    if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_IS_ATTACHED, 9) == 0) {
+    if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_IS_ATTACHED,
+                strlen(AT_CMD_RESPONSE_GPRS_IS_ATTACHED)) == 0) {
         attached = true;
-    } else if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_NOT_ATTACHED, 9) == 0) {
+    } else if (strncmp(buffer, AT_CMD_RESPONSE_GPRS_NOT_ATTACHED,
+                       strlen(AT_CMD_RESPONSE_GPRS_NOT_ATTACHED)) == 0) {
         attached = false;
     } else {
         return false;
@@ -122,6 +128,12 @@ bool UBlox::hasGPRS(bool &attached)
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
+/**
+ * Getter for determining whether or not PSD (internet) is connected.
+ *
+ * @param connected The bool reference into which the result is to be stored.
+ * @return True if the result was successfully obtained, false otherwise.
+ */
 bool UBlox::hasPSD(bool &connected)
 {
     // Write the command to the device via uArt.
@@ -135,8 +147,6 @@ bool UBlox::hasPSD(bool &connected)
     if (rc == -1) {
         return false;
     }
-
-    // TODO: Maybe figure out a way of refining this too?
 
     // Determine if PSD has been connected.
     if (strncmp(buffer, AT_CMD_RESPONSE_PSD_IS_CONNECTED,
@@ -155,9 +165,19 @@ bool UBlox::hasPSD(bool &connected)
 
 bool UBlox::attachGPRS()
 {
+    // TODO: Check what can be done here!
     return false;
 }
 
+/**
+ * Attempt to connect the device to the internet. This should be performed
+ * regularly if the location is to be obtained.
+ *
+ * @param connected The bool reference into which the result is to be stored i.e.
+ *      whether or not the internet was successfully connected.
+ * @param urc Additional data returned regarding the connection.
+ * @return True if the result was successfully obtained, false otherwise.
+ */
 bool UBlox::connectPSD(bool &connected, std::string &urc)
 {
     // Write the command to activate PSD.
@@ -346,11 +366,22 @@ bool UBlox::sendMessage(const std::string &phoneNumber, const std::string &messa
     return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
 }
 
+
+
+
+
+// TODO: Implement this once everything else is functioning!
 bool UBlox::sendLocation(const std::string &phoneNumber, const double lat,
                          const double lng)
 {
     return false;
 }
+
+
+
+
+
+
 
 /**
  * Writes the next command to u-blox via the uart interface.
