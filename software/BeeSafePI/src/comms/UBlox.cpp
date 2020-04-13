@@ -23,6 +23,7 @@
 #define AT_CMD_SET_LOC_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
 
 // Define the message modes for sending text messages.
+#define AT_CMD_SEND_MSG_GET_MODE "AT+CMGF?"
 #define AT_CMD_SEND_MSG_SET_MODE_TEXT "AT+CMGF=1\r"
 #define AT_CMD_SEND_MSG_SET_MODE_PDU "AT+CMGF=0\r"
 #define AT_CMD_SEND_MSG_SET_NUMBER "AT+CMGS=\"%s\"\r"
@@ -50,6 +51,7 @@
 #define RX_TIMEOUT_NETWORK 5000
 
 #define RX_TIMEOUT_CMD_GET_LOC_SCAN_MODE 1000
+#define RX_TIMEOUT_CMD_GET_SEND_MSG_MODE 1000
 #define RX_TIMEOUT_CMD_GET_LOCATION 120000
 #define RX_TIMEOUT_CMD_GET_MODEL_NUMBER 1000
 #define RX_TIMEOUT_CMD_GET_IMEI 1000
@@ -67,6 +69,9 @@ bool UBlox::init()
     if (!uArt.init()) {
         return false;
     }
+
+    // TODO: Check if we're registered with the net. If not, then attach gprs.
+    // TODO: Start registration here / attachment.
 
     // Check if GPRS is attached.
     bool gprsAttached = false;
@@ -90,14 +95,14 @@ bool UBlox::init()
         return false;
     }
 
+    char x;
+    bool success = getSendMessageMode(x);
+    printf("Success: %d, mode: %d\n", success, x);
+
     // Configure the scan mode for obtaining the location.
     if (!setLocationScanMode(LOCATION_SCAN_MODE_DEEP)) {
         return false;
     }
-
-    char x;
-    bool success = getLocationScanMode(x);
-    printf("Success: %d, %d", success, x);
 
     return true;
 }
@@ -240,7 +245,23 @@ bool UBlox::connectPSD(bool &connected, std::string &urc)
 
 bool UBlox::getSendMessageMode(char &mode)
 {
-    return true;
+    // Write the command to get the send message mode.
+    ssize_t rc = writeCommand(AT_CMD_SEND_MSG_GET_MODE);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Read the response from the device.
+    rc = readRawResponse(RX_TIMEOUT_CMD_GET_SEND_MSG_MODE);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Determine which of the modes has been utilised.
+    printf("%d %s\n", strlen(buffer), buffer);
+
+    // Finally, determine the status of the command.
+    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 /**
