@@ -96,7 +96,8 @@ bool UBlox::init()
     }
 
     char x;
-    getLocationScanMode(x);
+    bool success = getLocationScanMode(x);
+    printf("Success: %d, %d", success, x);
 
     return true;
 }
