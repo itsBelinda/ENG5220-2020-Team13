@@ -42,6 +42,9 @@
 #define AT_CMD_RESPONSE_LOC_SCAN_MODE_NORMAL "+ULOCCELL: 0,0,\"\",\"\",0,0"
 #define AT_CMD_RESPONSE_LOC_SCAN_MODE_DEEP "+ULOCCELL: 1,0,\"\",\"\",0,0"
 
+#define AT_CMD_RESPONSE_HAS_REGISTERED "+COPS: 0"
+#define AT_CMD_RESPONSE_HAS_NOT_REGISTERED "+COPS: 1"
+
 // Define the status codes returned by the device.
 #define AT_CMD_STATUS_CODE_OK "OK"
 #define AT_CMD_STATUS_CODE_ERROR "ERROR"
@@ -122,6 +125,14 @@ const UArt& UBlox::getUArt()
     return uArt;
 }
 
+/**
+ * Invoked to determine whether or not the device SIM has been registered
+ * with the GSM network.
+ *
+ * @param registered The bool reference into which the result is to be stored.
+ * @return True if the SIM has been registered with the GSM network, false
+ *      otherwise.
+ */
 bool UBlox::hasRegistered(bool &registered)
 {
     // Write the command for checking if the user has registered.
@@ -136,7 +147,16 @@ bool UBlox::hasRegistered(bool &registered)
         return false;
     }
 
-    printf("Buffer: %d %s\n", (int) strlen(buffer), buffer);
+    // Check that we have registered for the network.
+    if (strncmp(buffer, AT_CMD_RESPONSE_HAS_REGISTERED,
+                strlen(AT_CMD_RESPONSE_HAS_REGISTERED)) == 0) {
+        registered = true;
+    } else if (strncmp(buffer, AT_CMD_RESPONSE_HAS_NOT_REGISTERED,
+                       strlen(AT_CMD_RESPONSE_HAS_NOT_REGISTERED)) == 0) {
+        registered = false;
+    } else {
+        return false;
+    }
 
     // Read the status command status response.
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
@@ -233,6 +253,7 @@ bool UBlox::attachGPRS()
 
 bool UBlox::startAutoRegistration(bool &registered)
 {
+    
     return true;
 }
 
