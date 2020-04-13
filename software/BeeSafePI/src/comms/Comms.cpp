@@ -39,6 +39,8 @@ const UBlox& Comms::getUBlox()
     return uBlox;
 }
 
+
+
 /**
  * Determines whether or not the GPRS is attached to the device.
  *
@@ -74,6 +76,25 @@ bool Comms::hasPSD(bool &connected)
     mtx.unlock();
 
     // Return the result of the function.
+    return rc;
+}
+
+/**
+ * Attempt to connect to the internet.
+ *
+ * @param connected A bool reference into which the result is to be stored i.e.
+ *      whether a connection was successfully established.
+ * @param urc A reference into which additional information is to be stored.
+ * @return True if the command was successfully executed, false otherwise.
+ */
+bool Comms::connectPSD(bool &connected, std::string &urc)
+{
+    // Lock the comms interface and connect.
+    mtx.lock();
+    bool rc = uBlox.connectPSD(connected, urc);
+    mtx.unlock();
+
+    // Return the state of the command.
     return rc;
 }
 

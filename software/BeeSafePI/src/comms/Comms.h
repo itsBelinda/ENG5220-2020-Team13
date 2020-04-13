@@ -39,6 +39,8 @@ public:
     bool hasGPRS(bool &attached);
     bool hasPSD(bool &connected);
 
+    bool connectPSD(bool &connected, std::string &urc);
+
     // Get information about the device.
     bool getModelNumber(std::string &modelNumber);
     bool getIMEI(std::string &imeiNumber);
