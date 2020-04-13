@@ -23,7 +23,7 @@
 #define AT_CMD_SET_LOC_SCAN_MODE_DEEP "AT+ULOCCELL=1\r"
 
 // Define the message modes for sending text messages.
-#define AT_CMD_SEND_MSG_GET_MODE "AT+CMGF?"
+#define AT_CMD_SEND_MSG_GET_MODE "AT+CMGF?\r"
 #define AT_CMD_SEND_MSG_SET_MODE_TEXT "AT+CMGF=1\r"
 #define AT_CMD_SEND_MSG_SET_MODE_PDU "AT+CMGF=0\r"
 #define AT_CMD_SEND_MSG_SET_NUMBER "AT+CMGS=\"%s\"\r"
@@ -248,12 +248,14 @@ bool UBlox::getSendMessageMode(char &mode)
     // Write the command to get the send message mode.
     ssize_t rc = writeCommand(AT_CMD_SEND_MSG_GET_MODE);
     if (rc == -1) {
+        printf("Failed here?!!!!");
         return false;
     }
 
     // Read the response from the device.
     rc = readRawResponse(RX_TIMEOUT_CMD_GET_SEND_MSG_MODE);
     if (rc == -1) {
+        printf("Failed here!!?");
         return false;
     }
 
