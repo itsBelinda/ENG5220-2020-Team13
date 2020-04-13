@@ -34,11 +34,13 @@ public:
     const UArt &getUArt();
 
     // Connection specific functions.
+    bool hasRegistered(bool &registered);
     bool hasGPRS(bool &attached);
     bool hasPSD(bool &connected);
 
     // Methods for connecting / attaching GPRS / PSD.
     bool attachGPRS();
+    bool startAutoRegistration(bool &registered);
     bool connectPSD(bool &connected, std::string &urc);
 
     // Methods for getting and setting the message mode.

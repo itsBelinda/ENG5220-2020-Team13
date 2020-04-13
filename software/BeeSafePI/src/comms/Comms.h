@@ -36,9 +36,12 @@ public:
     const UBlox &getUBlox();
 
     // Connection specific functions.
+    bool hasRegistered(bool &registered);
     bool hasGPRS(bool &attached);
     bool hasPSD(bool &connected);
 
+    // Establish connections.
+    bool startAutoRegistration(bool &registered);
     bool connectPSD(bool &connected, std::string &urc);
 
     // Get information about the device.
@@ -56,7 +59,6 @@ public:
     // Getting the CellLocate location from the device.
     bool getLocation(std::pair<double, double> &latLng);
     bool getLocation(double &lat, double &lng);
-
 
     bool sendMessage(Contact &contact, const std::string &message);
     bool sendMessage(const std::string &phoneNumber, const std::string &message);

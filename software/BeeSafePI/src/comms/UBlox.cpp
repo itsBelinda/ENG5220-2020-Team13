@@ -11,7 +11,8 @@
 #define AT_CMD_GET_IMEI "ATI5\r"
 
 // GPRS (network) related commands.
-#define AT_CMD_START_AUTOMATIC_REGISTRATION "AT+COPS=0\r"
+#define AT_CMD_HAS_REGISTERED "AT+COPS?\r"
+#define AT_CMD_START_AUTO_REGISTRATION "AT+COPS=0\r"
 #define AT_CMD_GET_GPRS_ATTACHED "AT+CGATT?\r"
 #define AT_CMD_GET_PSD_CONNECTED "AT+UPSND=0,8\r"
 #define AT_CMD_SET_PSD_CONNECTION "AT+UPSDA=0,3\r"
@@ -52,6 +53,7 @@
 #define RX_TIMEOUT_STATUS 1000
 #define RX_TIMEOUT_NETWORK 5000
 
+#define RX_TIMEOUT_CMD_HAS_REGISTERED 1500
 #define RX_TIMEOUT_CMD_GET_LOC_SCAN_MODE 1000
 #define RX_TIMEOUT_CMD_GET_SEND_MSG_MODE 1000
 #define RX_TIMEOUT_CMD_GET_LOCATION 120000
@@ -71,6 +73,10 @@ bool UBlox::init()
     if (!uArt.init()) {
         return false;
     }
+
+    bool registered = false;
+    bool sx = hasRegistered(registered);
+    printf("Reg: %d, suc: %d\n", registered, sx);
 
     // TODO: Check if we're registered with the net. If not, then attach gprs.
     // TODO: Start registration here / attachment.
@@ -114,6 +120,26 @@ bool UBlox::init()
 const UArt& UBlox::getUArt()
 {
     return uArt;
+}
+
+bool UBlox::hasRegistered(bool &registered)
+{
+    // Write the command for checking if the user has registered.
+    ssize_t rc = writeCommand(AT_CMD_HAS_REGISTERED);
+    if (rc == -1) {
+        return false;
+    }
+
+    // Read the raw response.
+    rc = readRawResponse(RX_TIMEOUT_CMD_HAS_REGISTERED);
+    if (rc == -1) {
+        return false;
+    }
+
+    printf("Buffer: %d %s\n", (int) strlen(buffer), buffer);
+
+    // Read the status command status response.
+    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 /**
@@ -196,13 +222,18 @@ bool UBlox::hasPSD(bool &connected)
 bool UBlox::attachGPRS()
 {
     // Force automatic network registration.
-    ssize_t rc = writeCommand(AT_CMD_START_AUTOMATIC_REGISTRATION);
+    ssize_t rc = writeCommand(AT_CMD_START_AUTO_REGISTRATION);
     if (rc == -1) {
         return false;
     }
 
     // Obtain the response from the device.
     return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
+}
+
+bool UBlox::startAutoRegistration(bool &registered)
+{
+    return true;
 }
 
 /**

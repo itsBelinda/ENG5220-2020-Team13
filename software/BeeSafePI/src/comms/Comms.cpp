@@ -39,7 +39,23 @@ const UBlox& Comms::getUBlox()
     return uBlox;
 }
 
+/**
+ * Checks whether or not the device sim is registered with a network.
+ *
+ * @param registered The bool reference into which the result is to be stored.
+ * @return True if the device successfully returned the result, false
+ *      otherwise.
+ */
+bool Comms::hasRegistered(bool &registered)
+{
+    // Lock comms and check if the device is registered to the network.
+    mtx.lock();
+    bool rc = uBlox.hasRegistered(registered);
+    mtx.unlock();
 
+    // Return the state of the command.
+    return rc;
+}
 
 /**
  * Determines whether or not the GPRS is attached to the device.
@@ -76,6 +92,25 @@ bool Comms::hasPSD(bool &connected)
     mtx.unlock();
 
     // Return the result of the function.
+    return rc;
+}
+
+/**
+ * Starts the auto registration process if the sim has not already been
+ * registered,
+ *
+ * @param registered The bool reference into which the auto registration
+ *      result is to be stored.
+ * @return True if the command was successfully run, false otherwise.
+ */
+bool Comms::startAutoRegistration(bool &registered)
+{
+    // Lock comms and start the auto registration.
+    mtx.lock();
+    bool rc = uBlox.startAutoRegistration(registered);
+    mtx.unlock();
+
+    // Return the state of the command.
     return rc;
 }
 
