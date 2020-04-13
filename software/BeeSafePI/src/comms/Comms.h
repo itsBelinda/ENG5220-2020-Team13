@@ -39,15 +39,26 @@ public:
     bool hasGPRS(bool &attached);
     bool hasPSD(bool &connected);
 
-    // Methods for incoming / getting data from the device.
+    // Get information about the device.
     bool getModelNumber(std::string &modelNumber);
     bool getIMEI(std::string &imeiNumber);
+
+    // Getting and setting the message mode.
+    bool getSendMessageMode(char &sendMsgMode);
+    bool setSendMessageMode(char sendMsgMode);
+
+    // Getting and setting the location scan mode.
+    bool getLocationScanMode(char &locScanMode);
+    bool setLocationScanMode(char locScanMode);
+
+    // Getting the CellLocate location from the device.
     bool getLocation(std::pair<double, double> &latLng);
     bool getLocation(double &lat, double &lng);
 
-    // Methods for outgoing / sending data to the device (and beyond).
+
     bool sendMessage(Contact &contact, const std::string &message);
     bool sendMessage(const std::string &phoneNumber, const std::string &message);
+
 
 private:
 

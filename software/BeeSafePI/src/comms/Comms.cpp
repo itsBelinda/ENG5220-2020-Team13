@@ -116,6 +116,83 @@ bool Comms::getIMEI(std::string &imeiNumber)
 }
 
 /**
+ * Get the send message mode utilised by the device to send text messages.
+ *
+ * @param sendMsgMode The char reference into which the mode (SEND_TEXT_MODE_PDU
+ *      or SEND_TEXT_MODE_TEXT) is to be stored.
+ * @return True if the function successfully obtained the send message mode
+ *      false otherwise.
+ */
+bool Comms::getSendMessageMode(char &sendMsgMode)
+{
+    // Lock the comms interface and get the message mode.
+    mtx.lock();
+    bool rc = uBlox.getSendMessageMode(sendMsgMode);
+    mtx.unlock();
+
+    // Return the state of the function.
+    return rc;
+}
+
+/**
+ * Setting the send message mode that is to be used for sending text messages
+ * to a mobile device.
+ *
+ * @param sendMsgMode The mode that's to be utilised (SEND_TEXT_MODE_PDU
+ *      or SEND_TEXT_MODE_TEXT).
+ * @return True if the mode was successfully set, false otherwise.
+ */
+bool Comms::setSendMessageMode(const char sendMsgMode)
+{
+    // Lock the comms interface and set the message mode.
+    mtx.lock();
+    bool rc = uBlox.setSendMessageMode(sendMsgMode);
+    mtx.unlock();
+
+    // Return the state of the function.
+    return rc;
+}
+
+/**
+ * Get the CellLocate location scan mode that's utilised for obtaining the
+ * latitude and longitude coordinates.
+ *
+ * @param locScanMode The char reference into which the mode (LOC_SCAN_MODE_NORMAL
+ *      or LOC_SCAN_MODE_DEEP) is to be stored.
+ * @return True if the function successfully returned a result, false otherwise.
+ */
+bool Comms::getLocationScanMode(char &locScanMode)
+{
+    // Lock the comms and get the location scan mode.
+    mtx.lock();
+    bool rc = uBlox.getLocationScanMode(locScanMode);
+    mtx.unlock();
+
+    // Return the state of the function.
+    return rc;
+}
+
+/**
+ * Set the CellLocate location scan mode that is to be used for obtaining
+ * the latitude and longitude coordinates.
+ *
+ * @param locScanMode The mode (LOC_SCAN_MODE_NORMAL or LOC_SCAN_MODE_DEEP) that is
+ *      to be used for obtaining the location.
+ * @return True if the function successfully set the location scan mode, false
+ *      otherwise.
+ */
+bool Comms::setLocationScanMode(const char locScanMode)
+{
+    // Lock comms and set the location scan mode.
+    mtx.lock();
+    bool rc = uBlox.setLocationScanMode(locScanMode);
+    mtx.unlock();
+
+    // Return the state of the function.
+    return rc;
+}
+
+/**
  * Get the location of the device on which the code is being run.
  *
  * Note, the function delegates the locking to the
