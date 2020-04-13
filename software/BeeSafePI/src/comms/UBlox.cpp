@@ -299,7 +299,7 @@ bool UBlox::getLocationScanMode(char &scanMode)
     }
 
     // Finally, read the status of the command.
-    return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
+    return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
 }
 
 /**
