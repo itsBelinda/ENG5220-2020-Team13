@@ -11,11 +11,11 @@
 #include <mutex>
 
 /**
- * Comms class enabled the underlying device objects to be invoked in a thread-safe
+ * Comms class enables the underlying device objects to be invoked in a thread-safe
  * manner, concurrently.
  *
  * Unless specified otherwise, functions within the class will
- * block access to prevent errors / side-effects from propegating in lower levels;
+ * block access to prevent errors / side-effects from propagating in lower levels;
  * this is difficult to manage given the interoperability of functions.
  */
 class Comms

@@ -75,12 +75,6 @@ bool UBlox::init()
     // TODO: Check if we're registered with the net. If not, then attach gprs.
     // TODO: Start registration here / attachment.
 
-    // Check if GPRS is attached.
-    bool gprsAttached = false;
-    if (!hasGPRS(gprsAttached)) {
-        return false;
-    }
-
     // Check if there is an internet connection.
     bool psdConnected = false;
     std::string psdUrc;
@@ -92,14 +86,16 @@ bool UBlox::init()
         }
     }
 
+    // Check if GPRS is attached.
+    bool gprsAttached = false;
+    if (!hasGPRS(gprsAttached)) {
+        return false;
+    }
+
     // Configure the sending of messages.
     if (!setSendMessageMode(SEND_TEXT_MODE_TEXT)) {
         return false;
     }
-
-    char x;
-    bool success = getSendMessageMode(x);
-    printf("Success: %d, mode: %d\n", success, x);
 
     // Configure the scan mode for obtaining the location.
     if (!setLocationScanMode(LOC_SCAN_MODE_DEEP)) {
