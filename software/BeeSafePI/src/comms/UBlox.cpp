@@ -36,6 +36,8 @@
 #define AT_CMD_RESPONSE_PSD_IS_CONNECTED "+UPSND: 0,8,1"
 #define AT_CMD_RESPONSE_PSD_NOT_CONNECTED "+UPSND: 0,8,0"
 
+#define AT_CMD_RESPONSE_SEND_MSG_MODE_PDU "+CMGF: 0"
+#define AT_CMD_RESPONSE_SEND_MSG_MODE_TEXT "+CMGF: 1"
 #define AT_CMD_RESPONSE_LOC_SCAN_MODE_NORMAL "+ULOCCELL: 0,0,\"\",\"\",0,0"
 #define AT_CMD_RESPONSE_LOC_SCAN_MODE_DEEP "+ULOCCELL: 1,0,\"\",\"\",0,0"
 
@@ -100,7 +102,7 @@ bool UBlox::init()
     printf("Success: %d, mode: %d\n", success, x);
 
     // Configure the scan mode for obtaining the location.
-    if (!setLocationScanMode(LOCATION_SCAN_MODE_DEEP)) {
+    if (!setLocationScanMode(LOC_SCAN_MODE_DEEP)) {
         return false;
     }
 
@@ -243,24 +245,38 @@ bool UBlox::connectPSD(bool &connected, std::string &urc)
     return true;
 }
 
+/**
+ * Get the send message mode that the device is operating on.
+ *
+ * @param mode The char reference into which the mode utilised for sending of messages
+ *      (SEND_TEXT_MODE_PDU or SEND_TEXT_MODE_TEXT) is to be stored.
+ * @return True if the message mode was successfully obtained, false
+ *      otherwise.
+ */
 bool UBlox::getSendMessageMode(char &mode)
 {
     // Write the command to get the send message mode.
     ssize_t rc = writeCommand(AT_CMD_SEND_MSG_GET_MODE);
     if (rc == -1) {
-        printf("Failed here?!!!!");
         return false;
     }
 
     // Read the response from the device.
     rc = readRawResponse(RX_TIMEOUT_CMD_GET_SEND_MSG_MODE);
     if (rc == -1) {
-        printf("Failed here!!?");
         return false;
     }
 
     // Determine which of the modes has been utilised.
-    printf("%d %s\n", strlen(buffer), buffer);
+    if (strncmp(buffer, AT_CMD_RESPONSE_SEND_MSG_MODE_TEXT,
+                strlen(AT_CMD_RESPONSE_SEND_MSG_MODE_TEXT)) == 0) {
+        mode = SEND_TEXT_MODE_TEXT;
+    } else if (strncmp(buffer, AT_CMD_RESPONSE_SEND_MSG_MODE_PDU,
+                       strlen(AT_CMD_RESPONSE_SEND_MSG_MODE_PDU)) == 0) {
+        mode = SEND_TEXT_MODE_PDU;
+    } else {
+        return false;
+    }
 
     // Finally, determine the status of the command.
     return readStatusResponse(true) == AT_CMD_STATUS_CODE_OK;
@@ -291,8 +307,8 @@ bool UBlox::setSendMessageMode(const char sendMessageMode)
 /**
  * Get the scan mode utilised for obtaining the location of the device.
  *
- * @param scanMode The mode that's to be set (LOC_SCAN_MODE_NORMAL or
- *      LOC_SCAN_MODE_DEEP).
+ * @param scanMode The char reference into which the mode that is utilised
+ *      (LOC_SCAN_MODE_NORMAL or LOC_SCAN_MODE_DEEP) is to be stored.
  * @return True if the location scan mode was obtained successfully, false
  *      otherwise.
  */
@@ -313,10 +329,10 @@ bool UBlox::getLocationScanMode(char &scanMode)
     // Determine the mode utilised.
     if (strncmp(buffer, AT_CMD_RESPONSE_LOC_SCAN_MODE_NORMAL,
                 strlen(AT_CMD_RESPONSE_LOC_SCAN_MODE_NORMAL)) == 0) {
-        scanMode = LOCATION_SCAN_MODE_NORMAL;
+        scanMode = LOC_SCAN_MODE_NORMAL;
     } else if (strncmp(buffer, AT_CMD_RESPONSE_LOC_SCAN_MODE_DEEP,
                        strlen(AT_CMD_RESPONSE_LOC_SCAN_MODE_DEEP)) == 0) {
-        scanMode = LOCATION_SCAN_MODE_DEEP;
+        scanMode = LOC_SCAN_MODE_DEEP;
     } else {
         return false;
     }
@@ -336,7 +352,7 @@ bool UBlox::getLocationScanMode(char &scanMode)
 bool UBlox::setLocationScanMode(const char scanMode)
 {
     // Set the location scan mode.
-    const char* const locScanModeCmd = scanMode == LOCATION_SCAN_MODE_NORMAL
+    const char* const locScanModeCmd = scanMode == LOC_SCAN_MODE_NORMAL
                                        ? AT_CMD_SET_LOC_SCAN_MODE_NORMAL
                                        : AT_CMD_SET_LOC_SCAN_MODE_DEEP;
     ssize_t rc = writeCommand(locScanModeCmd);

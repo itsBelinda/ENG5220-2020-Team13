@@ -9,12 +9,12 @@
 #define AT_CMD_BUFF_LEN 544
 
 // Define the possible send message modes.
-#define SEND_TEXT_MODE_TEXT 0
-#define SEND_TEXT_MODE_PDU 1
+#define SEND_TEXT_MODE_PDU 0
+#define SEND_TEXT_MODE_TEXT 1
 
 // Define the possible scan location modes.
-#define LOCATION_SCAN_MODE_NORMAL 0
-#define LOCATION_SCAN_MODE_DEEP 1
+#define LOC_SCAN_MODE_NORMAL 0
+#define LOC_SCAN_MODE_DEEP 1
 
 class UBlox
 {
