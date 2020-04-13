@@ -233,28 +233,28 @@ bool UBlox::hasPSD(bool &connected)
 }
 
 /**
- * Attempt to force the device to automatically register for the network.
- * Moreover, this command implicitly attaches GPRS.
+ * Force start automatic registration of the network. Note, the function will
+ * implicitly invoke the hasRegistered function to determine whether the SIM
+ * has been registered.
  *
- * @return True if the automatic registration has been completed, false
- *      otherwise.
+ * @param registered A boolean reference for storing the result.
+ * @return True if the command was successfully processed, false otherwise.
  */
-bool UBlox::attachGPRS()
+bool UBlox::startAutoRegistration(bool &registered)
 {
-    // Force automatic network registration.
+    // Force start auto registration.
     ssize_t rc = writeCommand(AT_CMD_START_AUTO_REGISTRATION);
     if (rc == -1) {
         return false;
     }
 
-    // Obtain the response from the device.
-    return readStatusResponse(false) == AT_CMD_STATUS_CODE_OK;
-}
+    // Check whether the command executed successfully.
+    if (readStatusResponse(false) != AT_CMD_STATUS_CODE_OK) {
+        return false;
+    }
 
-bool UBlox::startAutoRegistration(bool &registered)
-{
-    
-    return true;
+    // Finally check whether the device has registered.
+    return hasRegistered(registered);
 }
 
 /**

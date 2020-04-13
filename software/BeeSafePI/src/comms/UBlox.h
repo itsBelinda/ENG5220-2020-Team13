@@ -39,7 +39,6 @@ public:
     bool hasPSD(bool &connected);
 
     // Methods for connecting / attaching GPRS / PSD.
-    bool attachGPRS();
     bool startAutoRegistration(bool &registered);
     bool connectPSD(bool &connected, std::string &urc);
 
