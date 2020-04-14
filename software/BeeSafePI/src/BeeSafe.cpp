@@ -103,8 +103,11 @@ bool BeeSafeManager::init()
 
     // The account can be null.
     auto account = initAccount(ACCOUNT_PATH);
-
-    std::cout << "HERE" << std::endl;
+    if (account == nullptr) {
+        std::cout << "Failed to load account." << std::endl;
+    } else {
+        std::cout << "Successfully loaded account." << std::endl;
+    }
 
     // We have successfully initialised the manager.
     this->comms = comms;
