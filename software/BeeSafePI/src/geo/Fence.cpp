@@ -115,7 +115,7 @@ web::json::value Fence::serialiseFence() {
     for (auto &day : week) {
         for (int i = 0; i < day.second.size(); ++i) {
 
-            std::cout << "i: " << i << std::endl;
+            std::cout << "Day: " << days[day.first] << ", Time: " << day.second[i].second.tm_hour << ":" << day.second[i].second.tm_min << std::endl;
 
             // Format the string that's to be written.
             snprintf(dayTimeBuffer,
@@ -124,6 +124,8 @@ web::json::value Fence::serialiseFence() {
                      day.second[i].first.tm_hour,
                      day.second[i].first.tm_min
             );
+
+            std::cout << "Buffer: " << dayTimeBuffer << std::endl;
 
             // serialise the from time.
             jsonFence[U(JSON_KEY_FENCE_WEEK)][days[day.first]][i][U(JSON_KEY_FENCE_TIME_FROM)]
