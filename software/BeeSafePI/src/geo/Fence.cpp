@@ -103,6 +103,8 @@ bool Fence::isInside(std::pair<double, double> &latLng) {
 // Serialise the fence instance into a JSON element.
 web::json::value Fence::serialiseFence() {
 
+    std::cout << "HERE! IN! ACCOUNT!" << std::endl;
+
     // The list of day names and the fence root element, respectively.
     const std::string days[] = JSON_KEY_FENCE_DAYS;
     char dayTimeBuffer[DAY_TIME_BUFFER_SIZE];
