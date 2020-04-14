@@ -2,6 +2,7 @@
 
 // System inclusions.
 #include <sstream>
+#include "iostream"
 
 // Define the format according to which the date time will be written.
 #define DAY_TIME_STRING_FORMAT "%d:%d"
@@ -113,6 +114,8 @@ web::json::value Fence::serialiseFence() {
     jsonFence[U(JSON_KEY_FENCE_SAFE)] = web::json::value::boolean(safe);
     for (auto &day : week) {
         for (int i = 0; i < day.second.size(); ++i) {
+
+            std::cout << "i: " << i << std::endl;
 
             // Format the string that's to be written.
             snprintf(dayTimeBuffer,
