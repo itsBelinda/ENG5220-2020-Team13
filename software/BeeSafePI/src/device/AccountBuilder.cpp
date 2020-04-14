@@ -95,6 +95,7 @@ bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement
            && jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))
            && jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_RADIUS));
     std::cout << "RC: " << rc << std::endl;
+    
     return rc;
 }
 
