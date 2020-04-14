@@ -2,6 +2,7 @@
 
 // System inclusions.
 #include <sstream>
+#include "iostream"
 
 // Define the format according to which the date time will be written.
 #define DAY_TIME_STRING_FORMAT "%d:%d"
@@ -102,12 +103,14 @@ bool Fence::isInside(std::pair<double, double> &latLng) {
 // Serialise the fence instance into a JSON element.
 web::json::value Fence::serialiseFence() {
 
+
     // The list of day names and the fence root element, respectively.
     const std::string days[] = JSON_KEY_FENCE_DAYS;
     char dayTimeBuffer[DAY_TIME_BUFFER_SIZE];
 
     // The root fence json element.
     web::json::value jsonFence = web::json::value::object();
+
 
     // Serialise generic fence attributes.
     jsonFence[U(JSON_KEY_FENCE_SAFE)] = web::json::value::boolean(safe);

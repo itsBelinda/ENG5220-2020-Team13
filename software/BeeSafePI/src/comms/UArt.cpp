@@ -1,34 +1,66 @@
-#include "Uart.h"
+// Include the header header.
+#include "UArt.h"
 
-#include <stdexcept>
+// Include system libraries.
+#include <termios.h>
+#include <fcntl.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
+#include <cerrno>
+#include <iostream>
+#include <cstring>
 
-Uart::Uart()
+// Include the c time library for nanosleep.
+#define _POSIX_C_SOURCE 199309L
+#include <ctime>
+
+// Define the device path and baud rate.
+#define DEVICE_PATH "/dev/ttyS0"
+#define DEVICE_BAUD_RATE 115200
+
+
+/**
+ * Constructor initialises an instance of the UArt interface class.
+ * Note, this does not establish a connection. This should be done
+ * by explicitly calling the init() function on the instance.
+ */
+UArt::UArt()
 {
     device = -1;
-    conf();
 }
 
 /**
- * Destructor is used to close the comms i.e. the Uart
- * serial interface.
+ * Destructor is responsible for cleaning up the resources occupied.
+ * Note, this will implicitly close the device.
  */
-Uart::~Uart()
+UArt::~UArt()
 {
     if (device != -1) {
         close(device);
     }
 }
 
-int Uart::conf()
+/**
+ * Method invocation establishes a connection with the u-blox device
+ * via the UART interface. This function should be invoked explicitly.
+ *
+ * @return True if the serial connection via the serial interface has been
+ *      successfully established and configured, false otherwise.
+ */
+bool UArt::init()
 {
+
+    // If the device is open, close it.
+    if (device != -1) {
+        close(device);
+    }
 
     // Open the device.
     device = open(DEVICE_PATH, O_RDWR | O_NOCTTY | O_NONBLOCK);
     if (device == -1) {
         fprintf(stderr, "Failed to open device\r\n");
         fprintf(stderr, "Error: %s\n",strerror(errno));
-        return -1;
+        return false;
     }
 
     // Get the current device configuration.
@@ -52,7 +84,6 @@ int Uart::conf()
         goto err;
     }
 
-    // TODO: Sets the terminal?
     cfmakeraw(&configuration);
 
     // Set the parameters associated with the terminal.
@@ -62,7 +93,7 @@ int Uart::conf()
     }
 
     // Device successfully configured, return.
-    return 0;
+    return true;
 
     // Handle any errors during the configuration process.
 err:
@@ -75,21 +106,26 @@ err:
     close(device);
     device = -1;
 
-    return -1;
+    return false;
 }
 
 /**
- * Check whether or not the device has been opened and configured.
- * 'device' will always be -1 if the latter is not achieved.
+ * Getter for determining if the device connection has successfully been
+ * established and configured.
  *
- * @return True if the device is open (!=-1), false otherwise.
+ * @return True if the device is open (!=-1) and configured, false otherwise.
  */
-bool Uart::isOpen()
+bool UArt::hasDevice()
 {
     return device != -1;
 }
 
-int Uart::getDevice()
+/**
+ * Get the device for which the UART serial connection has been established.
+ *
+ * @return !=-1 i.e. the device, otherwise -1 (no device present).
+ */
+int UArt::getDevice()
 {
     return device;
 }
@@ -106,8 +142,8 @@ int Uart::getDevice()
  * @return The number of bytes that have successfully been read, -1
  *      otherwise i.e. errors.
  */
-ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
-                         const int timeoutMs)
+ssize_t UArt::readExpected(char * const buffer, const size_t bytesExpected,
+                           const int timeoutMs)
 {
 
     // Check that the device has been established.
@@ -122,29 +158,23 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
     // Timing related variables.
     struct timespec pause = {0};
     pause.tv_sec = timeoutMs / 1000;
-    pause.tv_nsec = timeoutMs * 1000;
+    pause.tv_nsec = (timeoutMs % 1000) * 1000000L;
 
     // Keep peeking at the buffer until a timeout.
     for(;;) {
 
-        printf("Bytes peeked: %d\n", (int) bytesPeeked);
-
         // Update the last number of bytes peeked; break if block is met.
         lastBytesPeeked = bytesPeeked;
         if (bytesPeeked >= bytesExpected) {
-            printf("Bytes have met.\n");
             break;
         }
 
         // Sleep the thread until an interrupt.
-        int rc = nanosleep(&pause, NULL);
-        printf("Rc: %d\n", rc);
-
+        int rc = nanosleep(&pause, nullptr);
         ioctl(device, FIONREAD, &bytesPeeked);
 
         // Check if the read has timed out.
         if (bytesPeeked == lastBytesPeeked) {
-            printf("Timeout has occurred\n");
             break;
         }
     }
@@ -174,7 +204,7 @@ ssize_t Uart::readBuffer(char * const buffer, size_t bytesExpected,
  *      blocks the thread for the timeout ms if not.
  * @return The number of characters read (including '\n'), -1 otherwise.
  */
-ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
+ssize_t UArt::readNext(char * const resultBuffer, const size_t resultBufferLen,
                        const int timeoutMs)
 {
 
@@ -197,7 +227,7 @@ ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
     // Timeout pause.
     struct timespec timeoutPause = {0};
     timeoutPause.tv_sec = timeoutMs / 1000;
-    timeoutPause.tv_nsec = timeoutMs * 1000;
+    timeoutPause.tv_nsec = (timeoutMs % 1000) * 1000000L;
 
     // Keep reading the buffer until crlf.
     for (;;) {
@@ -241,44 +271,38 @@ ssize_t Uart::readNext(char * const resultBuffer, const size_t resultBufferLen,
 }
 
 /**
- * Write a string to the device via the UArt
- * serial interface. Note, the string is converted
- * to a character array and only then written.
+ * Write a string to the device via the UART serial interface. Note
+ * that the commands should end with \r. Additionally, the command
+ * passed as a parameter will implicitly be converted to a C-string.
  *
- * @param cmd The string command sent via the serial interface.
+ * @param command The string command sent via the serial interface.
  * @return The number of chars (bytes) that have been successfully
  *      written to the device, -1 otherwise i.e. error.
  */
-ssize_t Uart::writeBuffer(std::string &cmd)
+ssize_t UArt::writeNext(const std::string &command)
 {
 
     // Convert the string into a char buffer.
-    char cmdBuffer[cmd.size() + 1];
-    strcpy(cmdBuffer, cmd.c_str());
+    char commandBuffer[command.size() + 1];
+    strcpy(commandBuffer, command.c_str());
 
     // Attempt to write the converted command to the device.
-    return writeBuffer(cmdBuffer);
+    return writeNext(commandBuffer);
 }
 
 /**
- * Write a character array (C-string) to the device via the Uart
- * serial interface.
+ * Write a C-string (char array) to the device via the UART serial
+ * interface. Note, commands should end with \r.
  *
- * @param cmdBuffer The C-string command that is to be written to the
- *      device.
+ * @param command The C-string command that is to be written to
+ *      the device via the UART interface.
  * @return The number of chars (bytes) that have been successfully
- *      written to the device, -1 otherwise i.e. error.
+ *      written to the device, -1 otherwise.
  */
-ssize_t Uart::writeBuffer(const char * const cmdBuffer)
+ssize_t UArt::writeNext(const char *command)
 {
-
-    // If the device is present, write a command.
     if (device != -1 && tcflush(device, TCIFLUSH) == 0) {
-        printf("Writing: %s, len: %d", cmdBuffer, (int) strlen(cmdBuffer));
-        return write(device, cmdBuffer, strlen(cmdBuffer) + 1);
+        return write(device, command, strlen(command) + 1);
     }
-
-    // Failed to write to serial.
     return -1;
 }
-

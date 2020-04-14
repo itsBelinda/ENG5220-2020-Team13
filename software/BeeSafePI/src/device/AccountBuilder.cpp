@@ -65,25 +65,24 @@ bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonElement)
 {
     return !jsonElement.is_null() && jsonElement.is_object()
            && jsonElement.has_boolean_field(U(JSON_KEY_FENCE_SAFE))
-           && jsonElement.has_array_field(U(JSON_KEY_FENCE_WEEK))
-           && jsonElement.has_object_field(U(JSON_KEY_FENCE_FENCE));
+           && jsonElement.has_object_field(U(JSON_KEY_FENCE_WEEK))
+           && jsonElement.has_field(U(JSON_KEY_FENCE_FENCE));
 }
 
 // Check that json element has round fence attributes.
 bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement)
 {
-    return !jsonElement.is_null() && jsonElement.is_object()
-           && jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_LATITUDE))
-           && jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))
-           && jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_RADIUS));
+    bool rc = !jsonElement.is_null() && jsonElement.is_object()
+           && jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LATITUDE))
+           && jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))
+           && jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_RADIUS));
+    return rc;
 }
 
 // Check whether the element has poly fence structure.
 bool AccountBuilder::hasPolyFenceAttributes(const web::json::value &jsonElement)
 {
-    return !jsonElement.is_null() && jsonElement.is_object()
-           && jsonElement.has_double_field(U(JSON_KEY_POLY_FENCE_LATITUDE))
-           && jsonElement.has_double_field(U(JSON_KEY_POLY_FENCE_LONGITUDE));
+    return !jsonElement.is_null() && jsonElement.is_array();
 }
 
 // Generic function for clearing vectors.
@@ -119,6 +118,7 @@ bool AccountBuilder::buildFences(const web::json::array &jsonFences, std::vector
     Fence* fence = nullptr;
     for (auto& element : jsonFences) {
         if (!hasFenceAttributes(element)) {
+            std::cout << element << std::endl;
             return false;
         }
         fence = buildFence(element);
@@ -172,9 +172,13 @@ std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWee
     struct std::tm fromTm = {0};
     struct std::tm toTm = {0};
     for (int i = 0; i < days->length(); ++i) {
-        if (!jsonWeek.has_object_field(U(days[i]))) {
+
+        // Check that the week object has a specific day [array].
+        if (!jsonWeek.has_array_field(U(days[i]))) {
             continue;
         }
+
+        // Get the array of times for that day.
         const web::json::array& times = jsonWeek.at(U(days[i])).as_array();
         if (times.size() == 0) {
             continue;
