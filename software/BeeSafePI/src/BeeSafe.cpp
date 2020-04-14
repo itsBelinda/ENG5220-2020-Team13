@@ -147,7 +147,7 @@ Comms* BeeSafeManager::initComms()
         if (init) {
             break;
         } else {
-            std::cout << "Comms initialisation attempt " << tries << " / " << INIT_COMMS_TRIES << " failed." << std::endl;
+            std::cerr << "... comms initialisation attempt " << tries << " / " << INIT_COMMS_TRIES << " failed." << std::endl;
         }
 
     } while (tries < INIT_COMMS_TRIES);

@@ -1,5 +1,7 @@
 #include "Monitor.h"
 
+#define CONNECT_PSD_TRIES 3
+
 /**
  * Constrictor explicitly initialises the monitor thread with the
  * necessary parameters.
@@ -118,16 +120,57 @@ void Monitor::run()
     monitorState = new PassiveMonitorState(comms, account);
     monitorThreadRunning = true;
 
+    // Generic return code.
+    bool rc = false;
+
+    // PSD related variables.
+    int psdConnectionTries = 0;
+    std::string psdUrc;
+    bool psdConnected = false;
+
+    // Pair into which the latitude and longitude shall be stored.
+    std::pair<double, double> latLng;
+
     // The main monitoring thread.
     MonitorState *toMonitorState = nullptr;
     while (monitorThreadRunning) {
 
-        // Get the latitude and longitude of the device.
-        std::pair<double, double> latLng;
-        std::cout << "Lat: " << latLng.first << ", Lng: " << latLng.second << std::endl;
+        // Check that we have access to the internet.
+        rc = comms->hasPSD(psdConnected);
+        if (!rc) {
+            psdConnectionTries = 0;
+            do {
 
-        // TODO: Try 3-times, then re-init the internet
-        // TODO: Try reinit if not kill thread, kill program.
+                psdConnectionTries++;
+                std::cout << "PSD connection attempt " << psdConnectionTries << " / " << CONNECT_PSD_TRIES << "..." << std::endl;
+
+                // Attempt to reconnect.
+                rc = comms->connectPSD(psdConnected, psdUrc);
+                if (rc && psdConnected) {
+                    std::cout << "... PSD successfully connected." << std::endl;
+                    break;
+                } else {
+                    std::cerr << "... PSD connection attempt " << psdConnectionTries << " / " << CONNECT_PSD_TRIES << " failed." << std::endl;
+                }
+
+            } while (psdConnectionTries < CONNECT_PSD_TRIES);
+        }
+
+        // If we are not connected try again.
+        if (!psdConnected) {
+            std::cerr << "Failed to connect PSD." << std::endl;
+            continue;
+        }
+
+        // Try to get the latitude and longitude.
+        std::cout << "Getting device coordinates..." << std::endl;
+        rc = comms->getLocation(latLng);
+        if (!rc) {
+            std::cerr << "Failed to get the location." << std::endl;
+            continue;
+        }
+        std::cout << "... device coordinates (lat: " << latLng.first << ", lng: " << latLng.second << ") successfully obtained." << std::endl;
+
 
         // Permit the monitor state to handle the location; update state if necessary.
         /*
