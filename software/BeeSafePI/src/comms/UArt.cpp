@@ -7,6 +7,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <cerrno>
+#include <iostream>
 #include <cstring>
 
 // Include the c time library for nanosleep.
