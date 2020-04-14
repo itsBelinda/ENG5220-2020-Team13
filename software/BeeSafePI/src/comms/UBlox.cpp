@@ -72,45 +72,74 @@ UBlox::~UBlox() = default;
 
 bool UBlox::init()
 {
+    std::cout << "Starting u-Blox device initialisation..." << std::endl;
+
     // Initialise the UART device and interface.
     if (!uArt.init()) {
+        std::cerr << "Failed to initialise UART interface." << std::endl;
         return false;
     }
 
-    bool registered = false;
-    bool sx = hasRegistered(registered);
-    printf("Reg: %d, suc: %d\n", registered, sx);
-
-    // TODO: Check if we're registered with the net. If not, then attach gprs.
-    // TODO: Start registration here / attachment.
-
-    // Check if there is an internet connection.
-    bool psdConnected = false;
-    std::string psdUrc;
-    if (!hasPSD(psdConnected)) {
+    // Check if the SIM has been registered.
+    std::cout << "Starting SIM registration checks..." << std::endl;
+    bool simRegistered = false;
+    if (!hasRegistered(simRegistered)) {
+        std::cerr << "Failed SIM registration checks." << std::endl;
         return false;
-    } else if (!psdConnected) {
-        if (!connectPSD(psdConnected, psdUrc) || !psdConnected) {
+    } else if (!simRegistered) {
+        std::cout << "Starting automatic SIM registration..." << std::endl;
+        if (!startAutoRegistration(simRegistered)) {
+            std::cerr << "Failed to start automatic SIM registration." << std::endl;
+            return false;
+        } else if (!simRegistered) {
+            std::cerr << "Failed to register SIM." << std::endl;
             return false;
         }
+        std::cout << "SIM successfully registered." << std::endl;
     }
 
     // Check if GPRS is attached.
+    std::cout << "Starting GPRS checks..." << std::endl;
     bool gprsAttached = false;
     if (!hasGPRS(gprsAttached)) {
+        std::cerr << "Failed GPRS checks." << std::endl;
         return false;
+    }
+    std::cout << "GPRS attached: " << gprsAttached << std::endl;
+
+    // Check if there is an internet connection.
+    std::cout << "Starting PSD checks..." << std::endl;
+    bool psdConnected = false;
+    std::string psdUrc;
+    if (!hasPSD(psdConnected)) {
+        std::cerr << "Failed PSD checks." << std::endl;
+        return false;
+    } else if (!psdConnected || !gprsAttached) {
+        std::cout << "Starting PSD connection..." << std::endl;
+        if (!connectPSD(psdConnected, psdUrc) || !psdConnected) {
+            std::cerr << "Failed to establish PSD connection." << std::endl;
+            return false;
+        }
+        std::cout << "PSD successfully connected." << std::endl;
     }
 
     // Configure the sending of messages.
+    std::cout << "Setting send message mode..." << std::endl;
     if (!setSendMessageMode(SEND_TEXT_MODE_TEXT)) {
+        std::cerr << "Failed to set the send message mode." << std::endl;
         return false;
     }
+    std::cout << "Send message mode successfully set." << std::endl;
 
     // Configure the scan mode for obtaining the location.
+    std::cout << "Setting location scan mode..." << std::endl;
     if (!setLocationScanMode(LOC_SCAN_MODE_DEEP)) {
+        std::cerr << "Failed to set the location scan mode." << std::endl;
         return false;
     }
+    std::cout << "Location scan mode successfully set." << std::endl;
 
+    std::cout << "u-Blox device successfully initialised." << std::endl;
     return true;
 }
 
