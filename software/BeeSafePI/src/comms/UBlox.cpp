@@ -98,7 +98,7 @@ bool UBlox::init()
         }
         std::cout << "... SIM successfully registered." << std::endl;
     }
-    std::cout << "SIM registration checks finished." << std::endl;
+    std::cout << "... SIM registration checks finished." << std::endl;
 
     // Check if GPRS is attached.
     std::cout << "Starting GPRS checks..." << std::endl;
@@ -132,7 +132,7 @@ bool UBlox::init()
         std::cerr << "Failed to set send message mode." << std::endl;
         return false;
     }
-    std::cout << "Send message mode successfully set." << std::endl;
+    std::cout << "... send message mode successfully set." << std::endl;
 
     // Configure the scan mode for obtaining the location.
     std::cout << "Setting location scan mode..." << std::endl;
@@ -140,7 +140,7 @@ bool UBlox::init()
         std::cerr << "Failed to set the location scan mode." << std::endl;
         return false;
     }
-    std::cout << "Location scan mode successfully set." << std::endl;
+    std::cout << "... location scan mode successfully set." << std::endl;
 
     return true;
 }
