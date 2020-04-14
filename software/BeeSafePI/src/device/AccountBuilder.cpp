@@ -175,6 +175,7 @@ Fence* AccountBuilder::buildFence(const web::json::value &element)
     } else if (hasPolyFenceAttributes(fence)) {
         return buildPolyFence(safe, map, fence);
     } else {
+        std::cout << "Here>>   " << element << std::endl;
         return nullptr;
     }
 }
