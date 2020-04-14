@@ -73,7 +73,7 @@ bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonElement)
         std::cout << "no safe" << std::endl;
     } else if (!jsonElement.has_object_field(U(JSON_KEY_FENCE_WEEK))) {
         std::cout << "no week" << std::endl;
-    } else if (!jsonElement.has_object_field(U(JSON_KEY_FENCE_FENCE))) {
+    } else if (!jsonElement.has_field(U(JSON_KEY_FENCE_FENCE))) {
         std::cout << "no fence" << std::endl;
     } else if (jsonElement.is_null()) {
         std::cout << "is null" << std::endl;
@@ -82,7 +82,7 @@ bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonElement)
     return !jsonElement.is_null() && jsonElement.is_object()
            && jsonElement.has_boolean_field(U(JSON_KEY_FENCE_SAFE))
            && jsonElement.has_object_field(U(JSON_KEY_FENCE_WEEK))
-           && jsonElement.has_object_field(U(JSON_KEY_FENCE_FENCE));
+           && jsonElement.has_field(U(JSON_KEY_FENCE_FENCE));
 }
 
 // Check that json element has round fence attributes.
