@@ -27,8 +27,6 @@ Account* AccountBuilder::build()
         return nullptr;
     }
 
-    std::cout << "ACCOUNT: Here..." << std::endl;
-
     // Create the fences for the device.
     const web::json::array& jsonFences = root.at(U(JSON_KEY_ACCOUNT_FENCES)).as_array();
     std::vector<Fence*> fences;
@@ -37,12 +35,8 @@ Account* AccountBuilder::build()
     if (!buildFences(jsonFences, fences)) {
         clearVector(contacts);
         clearVector(fences);
-        std::cout << "Failed here..." << std::endl;
         return nullptr;
     }
-
-
-    std::cout << "ACCOUNT: Here......." << std::endl;
 
     // We have fuccessfully created an device instance.
     return new Account(contacts, fences);
@@ -69,16 +63,6 @@ bool AccountBuilder::hasContactAttributes(const web::json::value &jsonElement)
 // Check that the element has general fence attributes.
 bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonElement)
 {
-    if (!jsonElement.has_boolean_field(U(JSON_KEY_FENCE_SAFE))) {
-        std::cout << "no safe" << std::endl;
-    } else if (!jsonElement.has_object_field(U(JSON_KEY_FENCE_WEEK))) {
-        std::cout << "no week" << std::endl;
-    } else if (!jsonElement.has_field(U(JSON_KEY_FENCE_FENCE))) {
-        std::cout << "no fence" << std::endl;
-    } else if (jsonElement.is_null()) {
-        std::cout << "is null" << std::endl;
-    }
-
     return !jsonElement.is_null() && jsonElement.is_object()
            && jsonElement.has_boolean_field(U(JSON_KEY_FENCE_SAFE))
            && jsonElement.has_object_field(U(JSON_KEY_FENCE_WEEK))
@@ -88,14 +72,10 @@ bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonElement)
 // Check that json element has round fence attributes.
 bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement)
 {
-    std::cout << "FENCE " << jsonElement << std::endl;
-
     bool rc = !jsonElement.is_null() && jsonElement.is_object()
            && jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LATITUDE))
            && jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))
            && jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_RADIUS));
-    std::cout << "RC: " << rc << std::endl;
-
     return rc;
 }
 
@@ -139,12 +119,10 @@ bool AccountBuilder::buildFences(const web::json::array &jsonFences, std::vector
     for (auto& element : jsonFences) {
         if (!hasFenceAttributes(element)) {
             std::cout << element << std::endl;
-            std::cout << "Failed for fence has attributes..." << std::endl;
             return false;
         }
         fence = buildFence(element);
         if (fence == nullptr) {
-            std::cout << "Failed to build fence" << std::endl;
             return false;
         }
         fences.push_back(fence);
@@ -178,7 +156,6 @@ Fence* AccountBuilder::buildFence(const web::json::value &element)
     } else if (hasPolyFenceAttributes(fence)) {
         return buildPolyFence(safe, map, fence);
     } else {
-        std::cout << "Here>>   " << element << std::endl;
         return nullptr;
     }
 }
@@ -188,14 +165,6 @@ std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWee
 {
     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
     const std::string days[] = JSON_KEY_FENCE_DAYS;
-
-    std::cout << days << std::endl;
-
-    for (int i = 0; i < days->length(); ++i) {
-        std::cout << days->length() << " IT IS DAY: " << days[i] << std::endl;
-    }
-
-    std::cout << "WEEK IS: " << jsonWeek << std::endl;
 
     // Parse the string representation of time for each week, converting them into the tm (time) structure.
     std::vector<std::pair<std::tm, std::tm>> dayTimes;

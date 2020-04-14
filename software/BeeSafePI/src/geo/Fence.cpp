@@ -103,7 +103,6 @@ bool Fence::isInside(std::pair<double, double> &latLng) {
 // Serialise the fence instance into a JSON element.
 web::json::value Fence::serialiseFence() {
 
-    std::cout << "HERE! IN! ACCOUNT!" << std::endl;
 
     // The list of day names and the fence root element, respectively.
     const std::string days[] = JSON_KEY_FENCE_DAYS;
@@ -112,14 +111,11 @@ web::json::value Fence::serialiseFence() {
     // The root fence json element.
     web::json::value jsonFence = web::json::value::object();
 
-    std::cout << "Days: " << week.size() << std::endl;
 
     // Serialise generic fence attributes.
     jsonFence[U(JSON_KEY_FENCE_SAFE)] = web::json::value::boolean(safe);
     for (auto &day : week) {
         for (int i = 0; i < day.second.size(); ++i) {
-
-            std::cout << "Day: " << days[day.first] << ", Time: " << day.second[i].second.tm_hour << ":" << day.second[i].second.tm_min << std::endl;
 
             // Format the string that's to be written.
             snprintf(dayTimeBuffer,
@@ -128,8 +124,6 @@ web::json::value Fence::serialiseFence() {
                      day.second[i].first.tm_hour,
                      day.second[i].first.tm_min
             );
-
-            std::cout << "Buffer: " << dayTimeBuffer << std::endl;
 
             // serialise the from time.
             jsonFence[U(JSON_KEY_FENCE_WEEK)][days[day.first]][i][U(JSON_KEY_FENCE_TIME_FROM)]
