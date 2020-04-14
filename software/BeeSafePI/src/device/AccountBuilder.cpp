@@ -192,7 +192,7 @@ std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWee
     std::cout << days << std::endl;
 
     for (int i = 0; i < days->length(); ++i) {
-        std::cout << "IT IS DAY: " << days[i] << std::endl;
+        std::cout << days->length() << " IT IS DAY: " << days[i] << std::endl;
     }
 
     std::cout << "WEEK IS: " << jsonWeek << std::endl;
