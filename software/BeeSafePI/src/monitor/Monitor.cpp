@@ -131,7 +131,5 @@ void Monitor::run()
             delete monitorState;
             monitorState = toMonitorState;
         }
-
-        // TODO: Potentially sleep the thread - get the location every second?
     }
 }
