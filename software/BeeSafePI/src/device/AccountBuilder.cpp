@@ -197,7 +197,7 @@ std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWee
     struct std::tm fromTm = {0};
     struct std::tm toTm = {0};
     for (int i = 0; i < days->length(); ++i) {
-        if (!jsonWeek.has_object_field(U(days[i]))) {
+        if (!jsonWeek.has_array_field(U(days[i]))) {
             std::cout << "Does not have day " << days[i] << std::endl;
             continue;
         }
