@@ -200,8 +200,6 @@ Account* BeeSafeManager::initAccount(const char* const path)
         AccountBuilder accountBuilder(sStream, ec);
         auto account = accountBuilder.build();
 
-        std::cout << ec.value() << ", " << ec.message() << std::endl;
-
         // Close the file stream.
         ifStream.close();
 
