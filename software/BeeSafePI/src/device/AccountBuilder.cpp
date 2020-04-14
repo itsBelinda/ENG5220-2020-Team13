@@ -189,6 +189,8 @@ std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWee
     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
     const std::string days[] = JSON_KEY_FENCE_DAYS;
 
+    std::cout << days << std::endl;
+
     for (int i = 0; i < days->length(); ++i) {
         std::cout << "IT IS DAY: " << days[i] << std::endl;
     }
