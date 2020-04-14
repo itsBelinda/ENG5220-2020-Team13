@@ -106,6 +106,7 @@ bool BeeSafeManager::init()
     if (account == nullptr) {
         std::cout << "Failed to load account." << std::endl;
     } else {
+        account->saveSerialisedAccount("LOADED_ACCOUNT.json");
         std::cout << "Successfully loaded account." << std::endl;
     }
 
