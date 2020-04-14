@@ -189,6 +189,10 @@ std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWee
     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
     const std::string days[] = JSON_KEY_FENCE_DAYS;
 
+    for (int i = 0; i < days->length(); ++i) {
+        std::cout << "IT IS DAY: " << days[i] << std::endl;
+    }
+
     std::cout << "WEEK IS: " << jsonWeek << std::endl;
 
     // Parse the string representation of time for each week, converting them into the tm (time) structure.
@@ -197,10 +201,13 @@ std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWee
     struct std::tm fromTm = {0};
     struct std::tm toTm = {0};
     for (int i = 0; i < days->length(); ++i) {
+
+        // Check that the week object has a specific day [array].
         if (!jsonWeek.has_array_field(U(days[i]))) {
-            std::cout << "Does not have day " << days[i] << std::endl;
             continue;
         }
+
+        // Get the array of times for that day.
         const web::json::array& times = jsonWeek.at(U(days[i])).as_array();
         if (times.size() == 0) {
             continue;
