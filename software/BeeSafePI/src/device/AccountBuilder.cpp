@@ -97,6 +97,8 @@ bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement
 // Check whether the element has poly fence structure.
 bool AccountBuilder::hasPolyFenceAttributes(const web::json::value &jsonElement)
 {
+    std::cout << "TESTING POLY ATTRS" << jsonElement << std::endl;
+
     return !jsonElement.is_null() && jsonElement.is_object()
            && jsonElement.has_double_field(U(JSON_KEY_POLY_FENCE_LATITUDE))
            && jsonElement.has_double_field(U(JSON_KEY_POLY_FENCE_LONGITUDE));
@@ -168,6 +170,8 @@ Fence* AccountBuilder::buildFence(const web::json::value &element)
     bool safe = element.at(U(JSON_KEY_FENCE_SAFE)).as_bool();
     auto map = buildWeekMap(element.at(U(JSON_KEY_FENCE_WEEK)));
     const web::json::value& fence = element.at(U(JSON_KEY_FENCE_FENCE));
+
+    std::cout << "FENCE " << fence << std::endl;
 
     // Combine general fence attributes with fence specific attributes.
     if (hasRoundFenceAttributes(fence)) {
