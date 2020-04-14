@@ -195,12 +195,12 @@ Account* BeeSafeManager::initAccount(const char* const path)
         utility::stringstream_t sStream;
         sStream << ifStream.rdbuf();
 
-        std::cout << "Here..." << std::endl;
-
         // Attempt to build the JSON file.
         std::error_code ec;
         AccountBuilder accountBuilder(sStream, ec);
         auto account = accountBuilder.build();
+
+        std::cout << ec.value() << ", " << ec.message() << std::endl;
 
         // Close the file stream.
         ifStream.close();
