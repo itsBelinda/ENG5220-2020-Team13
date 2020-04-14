@@ -72,13 +72,14 @@ UBlox::~UBlox() = default;
 
 bool UBlox::init()
 {
-    std::cout << "Starting u-Blox device initialisation..." << std::endl;
 
     // Initialise the UART device and interface.
+    std::cout << "Initialising UART interface..." << std::endl;
     if (!uArt.init()) {
         std::cerr << "Failed to initialise UART interface." << std::endl;
         return false;
     }
+    std::cout << "... UART interface successfully initialised." << std::endl;
 
     // Check if the SIM has been registered.
     std::cout << "Starting SIM registration checks..." << std::endl;
@@ -95,8 +96,9 @@ bool UBlox::init()
             std::cerr << "Failed to register SIM." << std::endl;
             return false;
         }
-        std::cout << "SIM successfully registered." << std::endl;
+        std::cout << "... SIM successfully registered." << std::endl;
     }
+    std::cout << "SIM registration checks finished." << std::endl;
 
     // Check if GPRS is attached.
     std::cout << "Starting GPRS checks..." << std::endl;
@@ -105,7 +107,8 @@ bool UBlox::init()
         std::cerr << "Failed GPRS checks." << std::endl;
         return false;
     }
-    std::cout << "GPRS attached: " << gprsAttached << std::endl;
+    std::cout << "GPRS attached? " << gprsAttached << std::endl
+              << "... GPRS checks finished." << std::endl;
 
     // Check if there is an internet connection.
     std::cout << "Starting PSD checks..." << std::endl;
@@ -115,18 +118,18 @@ bool UBlox::init()
         std::cerr << "Failed PSD checks." << std::endl;
         return false;
     } else if (!psdConnected || !gprsAttached) {
-        std::cout << "Starting PSD connection..." << std::endl;
+        std::cout << "Initialising PSD connection..." << std::endl;
         if (!connectPSD(psdConnected, psdUrc) || !psdConnected) {
             std::cerr << "Failed to establish PSD connection." << std::endl;
             return false;
         }
-        std::cout << "PSD successfully connected." << std::endl;
+        std::cout << "... PSD connection successfully initialised." << std::endl;
     }
 
     // Configure the sending of messages.
     std::cout << "Setting send message mode..." << std::endl;
     if (!setSendMessageMode(SEND_TEXT_MODE_TEXT)) {
-        std::cerr << "Failed to set the send message mode." << std::endl;
+        std::cerr << "Failed to set send message mode." << std::endl;
         return false;
     }
     std::cout << "Send message mode successfully set." << std::endl;
@@ -139,7 +142,6 @@ bool UBlox::init()
     }
     std::cout << "Location scan mode successfully set." << std::endl;
 
-    std::cout << "u-Blox device successfully initialised." << std::endl;
     return true;
 }
 

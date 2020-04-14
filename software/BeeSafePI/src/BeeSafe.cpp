@@ -89,7 +89,7 @@ bool BeeSafeManager::init()
     delete this->account;
 
     // First, attempt to init comms.
-    std::cout << std::endl << "Initialising comms interface..." << std::endl;
+    std::cout << "Initialising comms interface..." << std::endl;
     auto comms = initComms();
     if (comms == nullptr) {
         std::cerr << "Failed to initialise comms interface." << std::endl;
@@ -98,7 +98,7 @@ bool BeeSafeManager::init()
     std::cout << "... comms interface successfully initialised." << std::endl;
 
     // Attempt to initialise the monitor thread.
-    std::cout << std::endl << "Initialising monitor thread..." << std::endl;
+    std::cout << "Initialising monitor thread..." << std::endl;
     auto monitor = initMonitor(comms);
     if (monitor == nullptr) {
         std::cerr << "Failed to initialise monitor thread." << std::endl;
@@ -108,7 +108,7 @@ bool BeeSafeManager::init()
     std::cout << "... monitor thread successfully initialised." << std::endl;
 
     // The account can be null.
-    std::cout << std::endl << "Initialising account..." << std::endl;
+    std::cout << "Initialising account..." << std::endl;
     auto account = initAccount(ACCOUNT_PATH);
     if (account == nullptr) {
         std::cerr << "Failed to initialise account." << std::endl;
