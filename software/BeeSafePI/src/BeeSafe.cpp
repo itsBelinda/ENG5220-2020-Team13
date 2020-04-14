@@ -13,6 +13,8 @@
 
 #define INIT_COMMS_TRIES 3
 
+#define ACCOUNT_PATH "account.json"
+
 BeeSafeManager::BeeSafeManager()
 {
     comms = nullptr;
@@ -33,6 +35,19 @@ BeeSafeManager::~BeeSafeManager()
     delete account;
 }
 
+/**
+ * Responsible for attempting to initialise the BeeSafeManager i.e. all
+ * necessary components required in order to successfully run the device.
+ *
+ * Due to connectivity, the device may not initialise, first. Thus, this is done
+ * up to three times.
+ *
+ * Note, successful initialisation may yield an account ptr == nullptr.
+ * This occurs in the event the device does not possess a saved instance of
+ * fences, contacts and timings.
+ *
+ * @return True if no errors were met, false otherwise.
+ */
 bool BeeSafeManager::init()
 {
     // Prevents potential memory leaks.
@@ -43,7 +58,33 @@ bool BeeSafeManager::init()
     delete comms;
     delete account;
 
-    comms = new Comms();
+    // Attempt to initialise comms.
+    comms = initComms();
+    if (comms == nullptr) {
+        std::cerr << "Failed to initialise comms." << std::endl;
+        return false;
+    }
+
+    // Create the monitor instance without the account.
+    monitor = new Monitor(comms);
+
+    // Attempt to load the account file.
+    account = initAccount();
+
+    // We have successfully initialised the manager.
+    return true;
+}
+
+/**
+ * Function attempts to initialise the comms.
+ *
+ * @return True if the comms was successfully initialised, false
+ *      otherwise.
+ */
+Comms* BeeSafeManager::initComms()
+{
+    // Create a new instance of comms.
+    auto comms = new Comms();
 
     // Attempt to establish the comms interface.
     bool commsInit = false;
@@ -62,16 +103,16 @@ bool BeeSafeManager::init()
 
     // If the comms was not initialised, return.
     if (!commsInit) {
-        std::cerr << "Failed to initialise comms." << std::endl;
-        return false;
+        return nullptr;
     }
 
-    // Create the monitor instance without the account.
-    monitor = new Monitor(comms);
+    return comms;
+}
 
-    // TODO: Check whether a user account is present.
-
-    return true;
+Account* BeeSafeManager::initAccount()
+{
+    // TODO:
+    return nullptr;
 }
 
 bool BeeSafeManager::start()
@@ -85,7 +126,7 @@ bool BeeSafeManager::start()
         }
     }
 
-    // TODO: Get account from web API.
+    // TODO: Get account from web API and try again.
 
     return true;
 }

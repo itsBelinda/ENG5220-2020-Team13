@@ -16,9 +16,15 @@ public:
 
 public:
 
-    //
+    // Initialise and start the manager.
     bool init();
     bool start();
+
+private:
+
+    // Attempt to initialise the account.
+    Comms* initComms();
+    Account* initAccount();
 
 private:
 
