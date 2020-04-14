@@ -10,7 +10,9 @@ The BeeSafe project is a low-cost, open source tracking device. It is designed t
 ## Installation
 To build our project, first clone the BeeSafe Github repository with
 <br>
-`git clone https://github.com/itsBelinda/ENG5220-2020-Team13`
+```
+git clone https://github.com/itsBelinda/ENG5220-2020-Team13
+```
 <br>
 Next, run the installation script `installBeeSafe.sh` in the root folder of the repository: this will install all required dependencies. **Note:** For optional dependencies, you can choose to install them or not by uncommenting or commenting them in the installation script.
 <br>
@@ -42,7 +44,7 @@ Is there a feature you would like to see implemented in this project? We welcome
 We welcome other contributions, too, so pull requests of patches, improvements, etc. are encouraged! By default we ask you pull the `master` branch. We only ask you to be mindful, and keep pull requests in scope and relevant. If you would be interested in contributing a larger piece of work and/or it may not be in line the above tips, please do get in touch with a <a href="https://github.com/itsBelinda/ENG5220-2020-Team13/blob/master/README.md#credits">maintainer</a> for a discussion!
 
 ### Coding conventions
-For the coding conventions we use, please look at the <a href="https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Coding-Conventions">wiki page</a> discussing it in depth!
+For the coding conventions we use, please look at the <a href="https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Contributions">wiki page</a> discussing it in depth!
 
 ## Feedback
 If you have any, more general feedback about our project, give us a shout by filling out this <a href="">form</a>!  [TODO]
