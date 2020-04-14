@@ -125,6 +125,7 @@ bool UBlox::init()
         }
         std::cout << "... PSD connection successfully initialised." << std::endl;
     }
+    std::cout << "... PSD checks finished." << std::endl;
 
     // Configure the sending of messages.
     std::cout << "Setting send message mode..." << std::endl;
