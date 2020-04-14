@@ -13,7 +13,7 @@
 
 #define INIT_COMMS_TRIES 3
 
-#define ACCOUNT_PATH "account.json"
+#define ACCOUNT_PATH "Account.json"
 
 BeeSafeManager::BeeSafeManager()
 {
@@ -78,8 +78,8 @@ bool BeeSafeManager::init()
 /**
  * Function attempts to initialise the comms.
  *
- * @return True if the comms was successfully initialised, false
- *      otherwise.
+ * @return A pointer to an instance of comms if it was successfully initialised,
+ *      nullptr otherwise.
  */
 Comms* BeeSafeManager::initComms()
 {
@@ -109,9 +109,16 @@ Comms* BeeSafeManager::initComms()
     return comms;
 }
 
+/**
+ * Function attempts to initialise the account instance that defines
+ * the contacts and fences.
+ *
+ * @return A pointer to an instance of Account if it was successfully initialised,
+ *      nullptr otherwise.
+ */
 Account* BeeSafeManager::initAccount()
 {
-    // TODO:
+    // TODO: Read the account file.
     return nullptr;
 }
 

@@ -122,8 +122,10 @@ void Monitor::run()
     MonitorState *toMonitorState = nullptr;
     while (monitorThreadRunning) {
 
-        // TODO: Get the location and store it within the ring buffer here!
-        std::pair<double, double> latLng = std::make_pair(0, 1);
+        // Get the latitude and longitude of the device.
+        std::pair<double, double> latLng;
+        
+
 
         // Permit the monitor state to handle the location; update state if necessary.
         toMonitorState = monitorState->handleLatLng(latLng);
