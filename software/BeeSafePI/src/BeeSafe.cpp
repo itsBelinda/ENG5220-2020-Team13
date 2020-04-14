@@ -7,7 +7,7 @@
 
 #define INIT_COMMS_TRIES 3
 
-#define ACCOUNT_PATH "/home/dans/dev/software/BeeSafePI/Account_TEST.json"
+#define ACCOUNT_PATH "/home/dans/dev/software/BeeSafePI/Account.json"
 
 /**
  * Constructor used to initialise an instance of the BeeSafeManager class.
@@ -184,14 +184,18 @@ Account* BeeSafeManager::initAccount(const char* const path)
         utility::ifstream_t ifStream;
         ifStream.open(path);
         if (ifStream.fail()) {
+            std::cerr << "Failed." << std::endl;
             return nullptr;
         } else if (!ifStream.is_open()) {
+            std::cerr << "Failed to open file." << std::endl;
             return nullptr;
         }
 
         // Stream the file.
         utility::stringstream_t sStream;
         sStream << ifStream.rdbuf();
+
+        std::cout << "Here..." << std::endl;
 
         // Attempt to build the JSON file.
         std::error_code ec;
