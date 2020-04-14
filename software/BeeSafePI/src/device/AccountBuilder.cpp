@@ -71,7 +71,7 @@ bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonElement)
 {
     if (!jsonElement.has_boolean_field(U(JSON_KEY_FENCE_SAFE))) {
         std::cout << "no safe" << std::endl;
-    } else if (!jsonElement.has_array_field(U(JSON_KEY_FENCE_WEEK))) {
+    } else if (!jsonElement.has_object_field(U(JSON_KEY_FENCE_WEEK))) {
         std::cout << "no week" << std::endl;
     } else if (!jsonElement.has_object_field(U(JSON_KEY_FENCE_FENCE))) {
         std::cout << "no fence" << std::endl;
