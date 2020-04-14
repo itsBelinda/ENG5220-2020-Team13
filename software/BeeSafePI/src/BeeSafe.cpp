@@ -270,7 +270,7 @@ void createAccount()
 
     // Create tmp coordinates.
     std::vector<std::pair<double, double>> coordinates;
-    coordinates.emplace_back(std::make_pair(20, 30));
+    coordinates.emplace_back(std::make_pair(20.5, 30));
     coordinates.emplace_back(std::make_pair(30, 20));
 
     // Create tmp fences.

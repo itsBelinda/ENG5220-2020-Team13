@@ -90,9 +90,9 @@ bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement
 {
     if (!jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LATITUDE))) {
         std::cout << "no lat" << std::endl;
-    } else if (!jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))) {
+    } else if (!jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))) {
         std::cout << "no lng" << std::endl;
-    } else if (!jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_RADIUS))) {
+    } else if (!jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_RADIUS))) {
         std::cout << "no rad" << std::endl;
     }
 
