@@ -1,12 +1,6 @@
 #include "BeeSafe.h"
 
-#include "comms/UBlox.h"
 #include "device/AccountBuilder.h"
-#include "device/Account.h"
-#include "contact/Contact.h"
-#include "geo/RoundFence.h"
-#include "geo/PolyFence.h"
-#include "monitor/Monitor.h"
 
 #include <utility>
 #include <iostream>
@@ -15,6 +9,9 @@
 
 #define ACCOUNT_PATH "Account.json"
 
+/**
+ * Constructor used to initialise an instance of the BeeSafeManager class.
+ */
 BeeSafeManager::BeeSafeManager()
 {
     comms = nullptr;
@@ -22,6 +19,10 @@ BeeSafeManager::BeeSafeManager()
     monitor = nullptr;
 }
 
+/**
+ * Destructor is responsible for releasing any resources occupied by the BeeSafeManager
+ * instance. Note, if the monitor thread is running, it will implicitly be stopped.
+ */
 BeeSafeManager::~BeeSafeManager()
 {
     // Delete monitor first to illegal memory access.
@@ -36,90 +37,172 @@ BeeSafeManager::~BeeSafeManager()
 }
 
 /**
- * Responsible for attempting to initialise the BeeSafeManager i.e. all
- * necessary components required in order to successfully run the device.
+ * Get the managers communication interface.
  *
- * Due to connectivity, the device may not initialise, first. Thus, this is done
- * up to three times.
- *
- * Note, successful initialisation may yield an account ptr == nullptr.
- * This occurs in the event the device does not possess a saved instance of
- * fences, contacts and timings.
- *
- * @return True if no errors were met, false otherwise.
+ * @return A pointer to the Comms interface instance (if initialised), a nullptr otherwise.
  */
-bool BeeSafeManager::init()
+Comms* const BeeSafeManager::getComms()
 {
-    // Prevents potential memory leaks.
-    if (monitor != nullptr) {
-        monitor->stop();
-        delete monitor;
-    }
-    delete comms;
-    delete account;
-
-    // Attempt to initialise comms.
-    comms = initComms();
-    if (comms == nullptr) {
-        std::cerr << "Failed to initialise comms." << std::endl;
-        return false;
-    }
-
-    // Create the monitor instance without the account.
-    monitor = new Monitor(comms);
-
-    // Attempt to load the account file.
-    account = initAccount();
-
-    // We have successfully initialised the manager.
-    return true;
-}
-
-/**
- * Function attempts to initialise the comms.
- *
- * @return A pointer to an instance of comms if it was successfully initialised,
- *      nullptr otherwise.
- */
-Comms* BeeSafeManager::initComms()
-{
-    // Create a new instance of comms.
-    auto comms = new Comms();
-
-    // Attempt to establish the comms interface.
-    bool commsInit = false;
-    short tries = 0;
-    do {
-        tries++;
-        std::cout << "Attempting to initialise comms... " << tries << "/" << INIT_COMMS_TRIES << "." << std::endl;
-        commsInit = comms->init();
-        if (!commsInit) {
-            std::cerr << "Attempt " << tries << "/" << INIT_COMMS_TRIES << " to initialise comms failed." << std::endl;
-        } else {
-            std::cout << "Attempt " << tries << "/" << INIT_COMMS_TRIES << " successfully initialised comms." << std::endl;
-            break;
-        }
-    } while (tries < INIT_COMMS_TRIES);
-
-    // If the comms was not initialised, return.
-    if (!commsInit) {
-        return nullptr;
-    }
-
     return comms;
 }
 
 /**
- * Function attempts to initialise the account instance that defines
- * the contacts and fences.
+ * Get the monitor thread responsible for checking the users location.
  *
- * @return A pointer to an instance of Account if it was successfully initialised,
+ * @return A pointer to the Monitor thread (if initialised), nullptr otherwise.
+ */
+Monitor* const BeeSafeManager::getMonitor()
+{
+    return monitor;
+}
+
+/**
+ * Get the device Account being monitored.
+ *
+ * @return A pointer to an Account instance (if initialised), nullptr otherwise.
+ */
+Account* const BeeSafeManager::getAccount()
+{
+    return account;
+}
+
+/**
+ * Attempt to initialise the BeeSafeManager instance responsible for
+ * managing the monitor thread, comms and accounts. Note, the function will
+ * only set the member pointers in the event all necessary sub-systems are
+ * initialised.
+ *
+ * Furthermore, because an account may not be already present on the device,
+ * the resulting member account pointer _may be a nullptr_.
+ *
+ * @return True if all necessary components have been initialised, false
+ *      otherwise.
+ */
+bool BeeSafeManager::init()
+{
+    // Prevent memory leaks by releasing occupied resources.
+    if (this->monitor != nullptr) {
+        this->monitor->stop();
+        delete this->monitor;
+    }
+    delete this->comms;
+    delete this->account;
+
+    // First, attempt to init comms.
+    auto comms = initComms();
+    if (comms == nullptr) {
+        return false;
+    }
+
+    // Attempt to initialise the monitor thread.
+    auto monitor = initMonitor(comms);
+    if (monitor == nullptr) {
+        delete comms;
+        return false;
+    }
+
+    // The account can be null.
+    auto account = initAccount(ACCOUNT_PATH);
+
+    // We have successfully initialised the manager.
+    this->comms = comms;
+    this->monitor = monitor;
+    this->account = account;
+
+    return true;
+}
+
+/**
+ * Function is responsible for the creation / initialisation of the Comms
+ * interface instance.
+ *
+ * @return A pointer to an instance of Comms (if successfully initialised / created),
  *      nullptr otherwise.
  */
-Account* BeeSafeManager::initAccount()
+Comms* BeeSafeManager::initComms()
 {
-    // TODO: Read the account file.
+    auto comms = new Comms();
+
+    // Try numerous times to initialise the comms interface.
+    bool init = false;
+    short tries = 0;
+    do {
+
+        // Attempt to initialise the interface.
+        tries++;
+        init = comms->init();
+        if (init) {
+            break;
+        }
+
+    } while (tries < INIT_COMMS_TRIES);
+
+    // We failed to initialise the interface.
+    if (!init) {
+        delete comms;
+        return nullptr;
+    }
+
+    // Successfully return the comms instance.
+    return comms;
+}
+
+/**
+ * Function is responsible for the creation / initialisation of the Monitor
+ * thread instance.
+ *
+ * @param comms The communication interface that's to be utilised.
+ * @return A pointer to an instance of Monitor (if successfully initialised / created),
+ *      nullptr otherwise.
+ */
+Monitor* BeeSafeManager::initMonitor(Comms* const comms)
+{
+    if (comms != nullptr) {
+        return new Monitor(comms);
+    }
     return nullptr;
+}
+
+/**
+ * Function is responsible for the initialisation / creation (reading) of the
+ * local Account instance.
+ *
+ * @param path The file path of the JSON file i.e. the path to where the Account.json
+ *      file resides.
+ * @return A pointer to an instance of Account if it was successfully read, parsed
+ *      and created, nullptr otherwise.
+ */
+Account* BeeSafeManager::initAccount(const char* const path)
+{
+    try {
+        // Attempt to read the file.
+        utility::ifstream_t ifStream;
+        ifStream.open(path);
+        if (ifStream.fail()) {
+            return nullptr;
+        } else if (!ifStream.is_open()) {
+            return nullptr;
+        }
+
+        // Stream the file.
+        utility::stringstream_t sStream;
+        sStream << ifStream.rdbuf();
+
+        // Attempt to build the JSON file.
+        std::error_code ec;
+        AccountBuilder accountBuilder(sStream, ec);
+        auto account = accountBuilder.build();
+
+        // Close the file stream.
+        ifStream.close();
+
+        // Return an account instance, may be null.
+        return account;
+
+    } catch (web::json::json_exception &e) {
+        std::cerr << e.what() << std::endl;
+        return nullptr;
+    }
 }
 
 bool BeeSafeManager::start()

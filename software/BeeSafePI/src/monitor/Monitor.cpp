@@ -124,7 +124,7 @@ void Monitor::run()
 
         // Get the latitude and longitude of the device.
         std::pair<double, double> latLng;
-        
+
 
 
         // Permit the monitor state to handle the location; update state if necessary.

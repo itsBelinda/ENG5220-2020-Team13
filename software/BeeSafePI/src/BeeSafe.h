@@ -16,15 +16,25 @@ public:
 
 public:
 
+    // Get the comminications interface and monitor thread.
+    Comms* const getComms();
+    Monitor* const getMonitor();
+
+    // Get the account being managed / monitored.
+    Account* const getAccount();
+
     // Initialise and start the manager.
     bool init();
     bool start();
 
 private:
 
-    // Attempt to initialise the account.
+    // Initialise comms and monitor.
     Comms* initComms();
-    Account* initAccount();
+    Monitor *initMonitor(Comms *comms);
+
+    // Initialise the account instance.
+    Account* initAccount(const char* path);
 
 private:
 
