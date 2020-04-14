@@ -89,25 +89,31 @@ bool BeeSafeManager::init()
     delete this->account;
 
     // First, attempt to init comms.
+    std::cout << "Initialising comms interface..." << std::endl;
     auto comms = initComms();
     if (comms == nullptr) {
+        std::cerr << "Failed to initialise comms interface." << std::endl;
         return false;
     }
+    std::cout << "... comms interface successfully initialised." << std::endl;
 
     // Attempt to initialise the monitor thread.
+    std::cout << "Initialising monitor thread..." << std::endl;
     auto monitor = initMonitor(comms);
     if (monitor == nullptr) {
+        std::cerr << "Failed to initialise monitor thread." << std::endl;
         delete comms;
         return false;
     }
+    std::cout << "... monitor thread successfully initialised." << std::endl;
 
     // The account can be null.
+    std::cout << "Initialising account..." << std::endl;
     auto account = initAccount(ACCOUNT_PATH);
     if (account == nullptr) {
-        std::cout << "Failed to load account." << std::endl;
+        std::cerr << "Failed to initialise account." << std::endl;
     } else {
-        account->saveSerialisedAccount("LOADED_ACCOUNT.json");
-        std::cout << "Successfully loaded account." << std::endl;
+        std::cout << "... account successfully initialised." << std::endl;
     }
 
     // We have successfully initialised the manager.
@@ -136,9 +142,12 @@ Comms* BeeSafeManager::initComms()
 
         // Attempt to initialise the interface.
         tries++;
+        std::cout << "Comms initialisation attempt " << tries << " / " << INIT_COMMS_TRIES << "..." <<  std::endl;
         init = comms->init();
         if (init) {
             break;
+        } else {
+            std::cout << "Comms initialisation attempt " << tries << " / " << INIT_COMMS_TRIES << " failed." << std::endl;
         }
 
     } while (tries < INIT_COMMS_TRIES);
@@ -185,10 +194,11 @@ Account* BeeSafeManager::initAccount(const char* const path)
         utility::ifstream_t ifStream;
         ifStream.open(path);
         if (ifStream.fail()) {
-            std::cerr << "Failed." << std::endl;
+            std::cerr << "Failed to load account file: " << ACCOUNT_PATH
+                      << ". Maybe doesn't exist yet?" << std::endl;
             return nullptr;
         } else if (!ifStream.is_open()) {
-            std::cerr << "Failed to open file." << std::endl;
+            std::cerr << "Failed to open account file: " << ACCOUNT_PATH << "." << std::endl;
             return nullptr;
         }
 
@@ -200,6 +210,11 @@ Account* BeeSafeManager::initAccount(const char* const path)
         std::error_code ec;
         AccountBuilder accountBuilder(sStream, ec);
         auto account = accountBuilder.build();
+
+        if (account == nullptr) {
+            std::cerr << "Failed to build account file: " << ACCOUNT_PATH
+                      << ". Error code: " << ec.value() << ", message: " << ec.message() << std::endl;
+        }
 
         // Close the file stream.
         ifStream.close();
@@ -301,9 +316,14 @@ int main()
 
     // Create an instance of the manager.
     auto beeSafeManager = new BeeSafeManager();
+
+    // Initialise the BeeSafePI manager.
+    std::cout << "Initialising manager..." << std::endl;
     if (!beeSafeManager->init()) {
+        std::cerr << "Failed to initialise the manager. Stopping." << std::endl;
         return EXIT_FAILURE;
     }
+    std::cout << "... manager successfully initialised." << std::endl;
 
     // Start the manager loop.
     return beeSafeManager->start()
