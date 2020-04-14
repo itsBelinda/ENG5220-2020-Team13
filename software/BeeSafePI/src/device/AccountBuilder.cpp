@@ -88,6 +88,9 @@ bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonElement)
 // Check that json element has round fence attributes.
 bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement)
 {
+    std::cout << "FENCE " << jsonElement << std::endl;
+
+
     if (!jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LATITUDE))) {
         std::cout << "no lat" << std::endl;
     } else if (!jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))) {
@@ -174,8 +177,6 @@ Fence* AccountBuilder::buildFence(const web::json::value &element)
     bool safe = element.at(U(JSON_KEY_FENCE_SAFE)).as_bool();
     auto map = buildWeekMap(element.at(U(JSON_KEY_FENCE_WEEK)));
     const web::json::value& fence = element.at(U(JSON_KEY_FENCE_FENCE));
-
-    std::cout << "FENCE " << fence << std::endl;
 
     // Combine general fence attributes with fence specific attributes.
     if (hasRoundFenceAttributes(fence)) {
