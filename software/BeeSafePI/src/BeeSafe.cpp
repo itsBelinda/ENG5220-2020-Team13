@@ -94,6 +94,7 @@ int main()
     // Create an instance of the manager.
     BeeSafeManager beeSafeManager;
     if (!beeSafeManager.init()) {
+        std::cerr << "Failed to initialise manager." << std::endl;
         return EXIT_FAILURE;
     }
 
