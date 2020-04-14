@@ -81,7 +81,7 @@ bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonElement)
 
     return !jsonElement.is_null() && jsonElement.is_object()
            && jsonElement.has_boolean_field(U(JSON_KEY_FENCE_SAFE))
-           && jsonElement.has_array_field(U(JSON_KEY_FENCE_WEEK))
+           && jsonElement.has_object_field(U(JSON_KEY_FENCE_WEEK))
            && jsonElement.has_object_field(U(JSON_KEY_FENCE_FENCE));
 }
 
