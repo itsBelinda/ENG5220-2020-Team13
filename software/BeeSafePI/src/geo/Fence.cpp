@@ -112,6 +112,8 @@ web::json::value Fence::serialiseFence() {
     // The root fence json element.
     web::json::value jsonFence = web::json::value::object();
 
+    std::cout << "Days: " << week.size() << std::endl;
+
     // Serialise generic fence attributes.
     jsonFence[U(JSON_KEY_FENCE_SAFE)] = web::json::value::boolean(safe);
     for (auto &day : week) {
