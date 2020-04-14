@@ -7,7 +7,7 @@
 
 #define INIT_COMMS_TRIES 3
 
-#define ACCOUNT_PATH "/home/dans/dev/software/BeeSafePI/Account.json"
+#define ACCOUNT_PATH "/home/dans/dev/software/BeeSafePI/Account_TEST.json"
 
 /**
  * Constructor used to initialise an instance of the BeeSafeManager class.
