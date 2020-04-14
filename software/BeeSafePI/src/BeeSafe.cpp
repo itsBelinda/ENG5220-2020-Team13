@@ -76,6 +76,9 @@ bool BeeSafeManager::init()
 
 bool BeeSafeManager::start()
 {
+
+    printf("HERE\n");
+
     // If the account is not null, start the monitor thread.
     if (account != nullptr) {
         if (!monitor->start(account)) {
@@ -83,6 +86,8 @@ bool BeeSafeManager::start()
             return false;
         }
     }
+
+    printf("HERE 2\n");
 
     // TODO: Get account from web API.
 
