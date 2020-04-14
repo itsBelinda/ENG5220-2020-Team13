@@ -47,7 +47,7 @@ bool BeeSafeManager::init()
 
     // Attempt to establish the comms interface.
     bool commsInit = false;
-    char tries = 0;
+    short tries = 0;
     do {
         tries++;
         std::cout << "Attempting to initialise comms... " << tries << "/" << INIT_COMMS_TRIES << "." << std::endl;
@@ -77,8 +77,6 @@ bool BeeSafeManager::init()
 bool BeeSafeManager::start()
 {
 
-    printf("HERE\n");
-
     // If the account is not null, start the monitor thread.
     if (account != nullptr) {
         if (!monitor->start(account)) {
@@ -86,8 +84,6 @@ bool BeeSafeManager::start()
             return false;
         }
     }
-
-    printf("HERE 2\n");
 
     // TODO: Get account from web API.
 
