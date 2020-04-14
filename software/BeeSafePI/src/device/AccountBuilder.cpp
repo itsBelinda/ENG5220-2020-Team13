@@ -125,7 +125,7 @@ bool AccountBuilder::buildFences(const web::json::array &jsonFences, std::vector
     Fence* fence = nullptr;
     for (auto& element : jsonFences) {
         if (!hasFenceAttributes(element)) {
-            std::cout << element.as_string() << std::endl;
+            std::cout << element << std::endl;
             std::cout << "Failed for fence has attributes..." << std::endl;
             return false;
         }
