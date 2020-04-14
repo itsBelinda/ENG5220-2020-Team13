@@ -124,14 +124,18 @@ void Monitor::run()
 
         // Get the latitude and longitude of the device.
         std::pair<double, double> latLng;
+        std::cout << "Lat: " << latLng.first << ", Lng: " << latLng.second << std::endl;
 
-
+        // TODO: Try 3-times, then re-init the internet
+        // TODO: Try reinit if not kill thread, kill program.
 
         // Permit the monitor state to handle the location; update state if necessary.
+        /*
         toMonitorState = monitorState->handleLatLng(latLng);
         if (toMonitorState != nullptr) { // if its null --> no change
             delete monitorState;
             monitorState = toMonitorState;
         }
+         */
     }
 }

@@ -104,6 +104,8 @@ bool BeeSafeManager::init()
     // The account can be null.
     auto account = initAccount(ACCOUNT_PATH);
 
+    std::cout << "HERE" << std::endl;
+
     // We have successfully initialised the manager.
     this->comms = comms;
     this->monitor = monitor;
@@ -205,6 +207,7 @@ Account* BeeSafeManager::initAccount(const char* const path)
     }
 }
 
+
 bool BeeSafeManager::start()
 {
 
@@ -216,17 +219,83 @@ bool BeeSafeManager::start()
         }
     }
 
-    // TODO: Get account from web API and try again.
+    // TODO: Implement the manager thread for obtaining the account data file.
 
     return true;
 }
 
+void createAccount()
+{
+    // Create temp times.
+    std::tm fromTime1 = {0};
+    fromTime1.tm_hour = 9;
+    fromTime1.tm_min = 30;
+
+    std::tm toTime1 = {0};
+    toTime1.tm_hour = 20;
+    toTime1.tm_min = 10;
+
+    std::tm fromTime2 = {0};
+    fromTime2.tm_hour = 9;
+    fromTime2.tm_min = 30;
+
+    std::tm toTime2 = {0};
+    toTime2.tm_hour = 14;
+    toTime2.tm_min = 20;
+
+    std::tm fromTime3 = {0};
+    fromTime3.tm_hour = 9;
+    fromTime3.tm_min = 30;
+
+    std::tm toTime3 = {0};
+    toTime3.tm_hour = 12;
+    toTime3.tm_min = 10;
+
+    // Create a temp day.
+    std::vector<std::pair<std::tm, std::tm>> day;
+    day.emplace_back(std::make_pair(fromTime1, toTime1));
+    day.emplace_back(std::make_pair(fromTime2, toTime2));
+    day.emplace_back(std::make_pair(fromTime3, toTime3));
+
+    // Create temp week.
+    std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
+    week.insert(std::make_pair(0, day));
+    week.insert(std::make_pair(2, day));
+    week.insert(std::make_pair(3, day));
+
+    // Create tmp coordinates.
+    std::vector<std::pair<double, double>> coordinates;
+    coordinates.emplace_back(std::make_pair(20, 30));
+    coordinates.emplace_back(std::make_pair(30, 20));
+
+    // Create tmp fences.
+    Fence *polyFence = new PolyFence(false, week, coordinates);
+    Fence *roundFence = new RoundFence(true, week, 10, 20, 10);
+
+    std::vector<Fence*> fences;
+    fences.emplace_back(polyFence);
+    fences.emplace_back(roundFence);
+
+    // Create temp contacts.
+    Contact* contact1 = new Contact("Daniels", "Vasiljevs", "0121DO1", "Coke");
+    Contact* contact2 = new Contact("Ben", "Smith", "124232", "Pepsi");
+
+    std::vector<Contact*> contacts;
+    contacts.push_back(contact1);
+    contacts.push_back(contact2);
+
+    Account account(contacts, fences);
+    account.saveSerialisedAccount(ACCOUNT_PATH);
+}
+
 int main()
 {
+
+    createAccount();
+
     // Create an instance of the manager.
     auto beeSafeManager = new BeeSafeManager();
     if (!beeSafeManager->init()) {
-        std::cerr << "Failed to initialise manager." << std::endl;
         return EXIT_FAILURE;
     }
 
