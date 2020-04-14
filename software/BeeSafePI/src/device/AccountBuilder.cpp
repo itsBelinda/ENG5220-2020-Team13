@@ -97,11 +97,7 @@ bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement
 // Check whether the element has poly fence structure.
 bool AccountBuilder::hasPolyFenceAttributes(const web::json::value &jsonElement)
 {
-    std::cout << "TESTING POLY ATTRS" << jsonElement << std::endl;
-
-    return !jsonElement.is_null() && jsonElement.is_object()
-           && jsonElement.has_double_field(U(JSON_KEY_POLY_FENCE_LATITUDE))
-           && jsonElement.has_double_field(U(JSON_KEY_POLY_FENCE_LONGITUDE));
+    return !jsonElement.is_null() && jsonElement.is_array();
 }
 
 // Generic function for clearing vectors.
