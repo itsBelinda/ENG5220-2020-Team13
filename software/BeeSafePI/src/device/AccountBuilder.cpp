@@ -69,6 +69,16 @@ bool AccountBuilder::hasContactAttributes(const web::json::value &jsonElement)
 // Check that the element has general fence attributes.
 bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonElement)
 {
+    if (!jsonElement.has_boolean_field(U(JSON_KEY_FENCE_SAFE))) {
+        std::cout << "no safe" << std::endl;
+    } else if (!jsonElement.has_array_field(U(JSON_KEY_FENCE_WEEK))) {
+        std::cout << "no week" << std::endl;
+    } else if (!jsonElement.has_object_field(U(JSON_KEY_FENCE_FENCE))) {
+        std::cout << "no fence" << std::endl;
+    } else if (jsonElement.is_null()) {
+        std::cout << "is null" << std::endl;
+    }
+
     return !jsonElement.is_null() && jsonElement.is_object()
            && jsonElement.has_boolean_field(U(JSON_KEY_FENCE_SAFE))
            && jsonElement.has_array_field(U(JSON_KEY_FENCE_WEEK))
