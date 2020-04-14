@@ -90,23 +90,12 @@ bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement
 {
     std::cout << "FENCE " << jsonElement << std::endl;
 
-
-    if (jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LATITUDE))) {
-        std::cout << "no lat" << std::endl;
-    } else if (jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))) {
-        std::cout << "no lng" << std::endl;
-    } else if (jsonElement.has_number_field(U(JSON_KEY_ROUND_FENCE_RADIUS))) {
-        std::cout << "no rad" << std::endl;
-    } else if (!jsonElement.is_null()) {
-        std::cout << "is null" << std::endl;
-    } else if (jsonElement.is_object()) {
-        std::cout << "is not object" << std::endl;
-    }
-
-    return !jsonElement.is_null() && jsonElement.is_object()
+    bool rc = !jsonElement.is_null() && jsonElement.is_object()
            && jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_LATITUDE))
            && jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_LONGITUDE))
            && jsonElement.has_double_field(U(JSON_KEY_ROUND_FENCE_RADIUS));
+    std::cout << "RC: " << rc << std::endl;
+    return rc;
 }
 
 // Check whether the element has poly fence structure.
