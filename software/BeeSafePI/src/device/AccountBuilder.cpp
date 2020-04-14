@@ -27,7 +27,7 @@ Account* AccountBuilder::build()
         return nullptr;
     }
 
-    std::cout << "Here..." << std::endl;
+    std::cout << "ACCOUNT: Here..." << std::endl;
 
     // Create the fences for the device.
     const web::json::array& jsonFences = root.at(U(JSON_KEY_ACCOUNT_FENCES)).as_array();
@@ -37,11 +37,12 @@ Account* AccountBuilder::build()
     if (!buildFences(jsonFences, fences)) {
         clearVector(contacts);
         clearVector(fences);
+        std::cout << "Failed here..." << std::endl;
         return nullptr;
     }
 
 
-    std::cout << "Here......." << std::endl;
+    std::cout << "ACCOUNT: Here......." << std::endl;
 
     // We have fuccessfully created an device instance.
     return new Account(contacts, fences);
