@@ -189,6 +189,8 @@ std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWee
     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
     const std::string days[] = JSON_KEY_FENCE_DAYS;
 
+    std::cout << "WEEK IS: " << jsonWeek << std::endl;
+
     // Parse the string representation of time for each week, converting them into the tm (time) structure.
     std::vector<std::pair<std::tm, std::tm>> dayTimes;
     std::pair<std::tm, std::tm> dayTime;
