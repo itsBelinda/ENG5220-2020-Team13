@@ -3,9 +3,10 @@
 #include <cmath>
 
 // Explicit round fence constructor.
-RoundFence::RoundFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week, double latitude,
+RoundFence::RoundFence(std::string &name, bool safe,
+                       const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week, double latitude,
                        double longitude, double radius)
-        : Fence(safe, week)
+        : Fence(name, safe, week)
 {
     this->latitude = latitude;
     this->longitude = longitude;
@@ -13,8 +14,8 @@ RoundFence::RoundFence(bool safe, const std::map<int, std::vector<std::pair<std:
 }
 
 // Basic RoundFence constructor.
-RoundFence::RoundFence(bool safe, double latitude, double longitude, double radius)
-        : Fence(safe)
+RoundFence::RoundFence(std::string &name, bool safe, double latitude, double longitude, double radius)
+        : Fence(name, safe)
 {
     this->latitude = latitude;
     this->longitude = longitude;
@@ -64,11 +65,11 @@ web::json::value RoundFence::serialiseFence()
     web::json::value jsonFence = Fence::serialiseFence();
 
     // Serialise RoundFence specific attributes.
-    jsonFence[U(JSON_KEY_FENCE_FENCE)][U(JSON_KEY_ROUND_FENCE_LATITUDE)]
+    jsonFence[U(JSON_KEY_FENCE_DEFINITION)][U(JSON_KEY_ROUND_FENCE_LATITUDE)]
             = web::json::value::number(latitude);
-    jsonFence[U(JSON_KEY_FENCE_FENCE)][U(JSON_KEY_ROUND_FENCE_LONGITUDE)]
+    jsonFence[U(JSON_KEY_FENCE_DEFINITION)][U(JSON_KEY_ROUND_FENCE_LONGITUDE)]
             = web::json::value::number(longitude);;
-    jsonFence[U(JSON_KEY_FENCE_FENCE)][U(JSON_KEY_ROUND_FENCE_RADIUS)]
+    jsonFence[U(JSON_KEY_FENCE_DEFINITION)][U(JSON_KEY_ROUND_FENCE_RADIUS)]
             = web::json::value::number(radius);
 
     // Return the serialised fence.

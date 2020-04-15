@@ -29,7 +29,7 @@ private:
     // For checking the json structure.
     bool hasAccountAttributes(const web::json::value& jsonAccountElement);
     bool hasContactAttributes(const web::json::value& jsonElement);
-    bool hasFenceAttributes(const web::json::value& jsonElement);
+    bool hasFenceAttributes(const web::json::value& jsonFenceElement);
     bool hasRoundFenceAttributes(const web::json::value& jsonElement);
     bool hasPolyFenceAttributes(const web::json::value& jsonElement);
 
@@ -44,8 +44,8 @@ private:
     Contact* buildContact(const web::json::value& jsonContact);
     Fence* buildFence(const web::json::value& jsonFence);
     std::map<int, std::vector<std::pair<std::tm, std::tm>>> buildWeekMap(const web::json::value &week);
-    RoundFence* buildRoundFence(bool safe, std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const web::json::value& jsonRoundFence);
-    PolyFence* buildPolyFence(bool safe, std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const web::json::value& jsonPolyFence);
+    RoundFence* buildRoundFence(std::string &name, bool safe, std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const web::json::value& jsonRoundFence);
+    PolyFence* buildPolyFence(std::string &name, bool safe, std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const web::json::value& jsonPolyFence);
 
     // Used for building the Account instance from the string stream.
 public:

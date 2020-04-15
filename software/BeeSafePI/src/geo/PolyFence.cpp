@@ -4,17 +4,17 @@
 #include <cmath>
 
 // Explicit poly fence constructor
-PolyFence::PolyFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week,
+PolyFence::PolyFence(std::string &name, bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week,
                      const std::vector<std::pair<double, double>> &coordinates)
-        : Fence(safe, week)
+        : Fence(name, safe, week)
 {
     this->coordinates = coordinates;
     calculateFenceConstants();
 }
 
 // Basic poly fence constructor.
-PolyFence::PolyFence(bool safe, const std::vector<std::pair<double, double>>& coordinates)
-        : Fence(safe)
+PolyFence::PolyFence(std::string &name, bool safe, const std::vector<std::pair<double, double>>& coordinates)
+        : Fence(name, safe)
 {
     this->coordinates = coordinates;
     calculateFenceConstants();
@@ -107,9 +107,9 @@ web::json::value PolyFence::serialiseFence()
 
     // Serialise PolyFence specific attributes.
     for (int i = 0; i < coordinates.size(); ++i) {
-        jsonFence[U(JSON_KEY_FENCE_FENCE)][i][U(JSON_KEY_POLY_FENCE_LATITUDE)]
+        jsonFence[U(JSON_KEY_FENCE_DEFINITION)][i][U(JSON_KEY_POLY_FENCE_LATITUDE)]
                 = web::json::value::number(coordinates[i].first);
-        jsonFence[U(JSON_KEY_FENCE_FENCE)][i][U(JSON_KEY_POLY_FENCE_LONGITUDE)]
+        jsonFence[U(JSON_KEY_FENCE_DEFINITION)][i][U(JSON_KEY_POLY_FENCE_LONGITUDE)]
                 = web::json::value::number(coordinates[i].second);
     }
 
