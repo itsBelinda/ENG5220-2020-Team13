@@ -80,7 +80,6 @@ bool Monitor::start(Account * const account)
         this->account = account;
     }
 
-    std::cout << "HERE?!" << std::endl;
     monitorThread = new std::thread(Monitor::execute, this);
     return true;
 }
@@ -131,6 +130,8 @@ void Monitor::run()
 
     // Pair into which the latitude and longitude shall be stored.
     std::pair<double, double> latLng;
+
+    std::cout << "HERE?!" << std::endl;
 
     // The main monitoring thread.
     MonitorState *toMonitorState = nullptr;
