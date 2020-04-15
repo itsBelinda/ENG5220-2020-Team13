@@ -238,6 +238,7 @@ bool BeeSafeManager::start()
             std::cerr << "Failed to start the monitor thread." << std::endl;
             return false;
         }
+        std::cout << "HERE?!" << std::endl;
     }
 
     // TODO: Implement the manager thread for obtaining the account data file.
