@@ -30,23 +30,24 @@ public:
 
     // Constructors and destructors.
     MonitorState(Comms *comms, Account *account);
-
     virtual ~MonitorState();
 
 public:
 
+    // Get the state name.
+    virtual const char* getStateName() = 0;
+
     // Handle the new location of the device.
     virtual MonitorState *handleLatLng(std::pair<double, double> &latLng) = 0;
 
-
 protected:
-    /// Communications and account attributes.
+
+    // Communications and account attributes.
     Comms *comms;
     Account *account;
 
-    /// Override the interface responsible for handling the latitude and longitude.
+    // Override the interface responsible for handling the latitude and longitude.
     bool isInFence(std::pair<double, double> &latLng);
-
 
 };
 

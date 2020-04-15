@@ -2,6 +2,8 @@
 #include "ActiveMonitorState.h"
 #include "PassiveMonitorState.h"
 
+#define ACTIVE_STATE_NAME "Active"
+
 /**
  * Constructor explicitly initialises the ActiveMonitorState class instance.
  *
@@ -23,6 +25,11 @@ ActiveMonitorState::ActiveMonitorState(Comms *const comms, Account *const accoun
  * instance.
  */
 ActiveMonitorState::~ActiveMonitorState() = default;
+
+const char* ActiveMonitorState::getStateName()
+{
+    return ACTIVE_STATE_NAME;
+}
 
 /**
  * Handles active location monitoring.

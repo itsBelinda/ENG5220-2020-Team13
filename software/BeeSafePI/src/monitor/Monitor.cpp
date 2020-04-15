@@ -105,10 +105,6 @@ void Monitor::join()
     // Handle thread cleanup.
     delete monitorThread;
     monitorThread = nullptr;
-
-    // Clean up the monitor state.
-    delete monitorState;
-    monitorState = nullptr;
 }
 
 /**
@@ -161,10 +157,10 @@ void Monitor::run()
             } while (psdConnectionTries < CONNECT_PSD_TRIES);
         }
 
-        // If we are not connected try again.
+        // Failed to connect. Kill the thread.
         if (!psdConnected) {
             std::cerr << "Failed to connect PSD." << std::endl;
-            continue;
+            break;
         }
 
         // Try to get the latitude and longitude.
@@ -176,14 +172,20 @@ void Monitor::run()
         }
         std::cout << "... device coordinates (lat: " << latLng.first << ", lng: " << latLng.second << ") successfully obtained." << std::endl;
 
-
         // Permit the monitor state to handle the location; update state if necessary.
-        /*
+        std::cout << "Starting " << monitorState->getStateName() << " state checks..." << std::endl;
         toMonitorState = monitorState->handleLatLng(latLng);
-        if (toMonitorState != nullptr) { // if its null --> no change
+        if (toMonitorState != nullptr) {
+            std::cout << "Switching from state " << monitorState->getStateName() << " to state " << toMonitorState->getStateName() << "." << std::endl;
             delete monitorState;
             monitorState = toMonitorState;
+        } else {
+            std::cout << "No state change occurred." << std::endl;
         }
-         */
+        std::cout << "... state checks complete." << std::endl;
     }
+
+    // Clean up the monitor state.
+    delete monitorState;
+    monitorState = nullptr;
 }
