@@ -131,11 +131,11 @@ void Monitor::run()
     // Pair into which the latitude and longitude shall be stored.
     std::pair<double, double> latLng;
 
-    std::cout << "HERE?!" << std::endl;
-
     // The main monitoring thread.
     MonitorState *toMonitorState = nullptr;
     while (monitorThreadRunning) {
+
+        std::cout << "HERE?!" << std::endl;
 
         // Check that we have access to the internet.
         rc = comms->hasPSD(psdConnected);
