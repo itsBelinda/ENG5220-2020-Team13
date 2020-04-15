@@ -113,6 +113,7 @@ bool BeeSafeManager::init()
     if (account == nullptr) {
         std::cerr << "Failed to initialise account." << std::endl;
     } else {
+        account->saveSerialisedAccount("/home/dans/dev/software/BeeSafePI/Account_Verif.json");
         std::cout << "... account successfully initialised." << std::endl;
     }
 
