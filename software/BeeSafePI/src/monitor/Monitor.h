@@ -22,10 +22,13 @@ public:
 
 public:
 
-    // Starting and stopping the thread.
+    // Starting the thead.
     bool start();
     bool start(Account* account);
+
+    // Stopping and joining the thread.
     void stop();
+    void join();
 
 private:
 

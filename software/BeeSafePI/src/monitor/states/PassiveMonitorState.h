@@ -1,8 +1,9 @@
 #ifndef BEESAFEPI_PASSIVEMONITORSTATE_H
 #define BEESAFEPI_PASSIVEMONITORSTATE_H
 
-
 #include "MonitorState.h"
+
+#define PASSIVE_STATE_NAME "Passive"
 
 class PassiveMonitorState : public MonitorState
 {
@@ -19,6 +20,5 @@ public:
     MonitorState* handleLatLng(std::pair<double, double> &latLng) override;
 
 };
-
 
 #endif //BEESAFEPI_PASSIVEMONITORSTATE_H

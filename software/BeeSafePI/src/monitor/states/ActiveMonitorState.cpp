@@ -9,7 +9,7 @@
  * @param account The account that the monitor state is monitoring.
  */
 ActiveMonitorState::ActiveMonitorState(Comms *const comms, Account *const account)
-        : MonitorState(comms, account)
+        : MonitorState(ACTIVE_STATE_NAME, comms, account)
 {
     notified = false;
     delayNotification = 0;

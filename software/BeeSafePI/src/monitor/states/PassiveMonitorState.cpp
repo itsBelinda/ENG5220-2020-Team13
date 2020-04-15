@@ -9,12 +9,7 @@
  * @param account The account against which the coordinates are compared.
  */
 PassiveMonitorState::PassiveMonitorState(Comms *const comms, Account *const account)
-        : MonitorState(comms, account)
-{
-
-    // TODO: Passive monitor state code.
-
-}
+        : MonitorState(PASSIVE_STATE_NAME, comms, account) {}
 
 /**
  * Destructor is used to clean up any resources occupied by the PassiveMonitorState
@@ -22,26 +17,27 @@ PassiveMonitorState::PassiveMonitorState(Comms *const comms, Account *const acco
  */
 PassiveMonitorState::~PassiveMonitorState() = default;
 
+
 /**
- * Handles passive location monitoring.
+ * Handles passive location monitoring; passively handled monitoring i.e. no notifications /
+ * storage.
  *
- * When in the passive monitoring state, the current location is checked against
- * the fences that are sored in account. If the current location is not a valid
- * one for any of the fences, the state is switched to the active monitoring state.
+ * When in the positive monitoring state, the current location is checked against the fences
+ * that are stored in account. If the device is out of a fence, the state is switched to the
+ * active monitoring state.
  *
- * @param latLng The pair of latitude and longitude coordinates that are to be
- *      examined.
- * @return A pointer to the new state if this state is incapable of handling the
- *      locations, nullptr otherwise.
+ * @param latLng The pair containing the latitude (first) and longitude (second) coordinates
+ *      of the device.
+ * @return Nullptr if state remains in passive, a pointer to ActiveMonitorState if the
+ *      device should be monitored.
  */
 MonitorState *PassiveMonitorState::handleLatLng(std::pair<double, double> &latLng)
 {
-    /// Check all fences if they are valid (or should only one be valid?)
-    if (!isInFence(latLng)) {
-        // TODO: how to properly access comms / account? (currently: made
-        //  them protected)
-        ActiveMonitorState *activeMonitorState = new ActiveMonitorState(comms, account);
-        return activeMonitorState;
+    // If the device is within the account fences, return (keep passive state).
+    if (isInFence(latLng)) {
+        return nullptr;
     }
-    return nullptr;
+
+    // A fence has been breached. Begin monitoring in an active state.
+    return new ActiveMonitorState(comms, account);
 }
