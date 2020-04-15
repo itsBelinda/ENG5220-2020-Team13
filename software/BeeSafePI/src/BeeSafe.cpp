@@ -339,7 +339,7 @@ void createAccount()
     // Create tmp fences.
     Fence *schoolFence = new PolyFence(true, week, schoolCoords);
     Fence *pathFence = new PolyFence(true,week,pathCoords);
-    Fence *homeFence = new RoundFence(true, week, 10, 55.828182, -4.213159);
+    Fence *homeFence = new RoundFence(true, week, 55.828182, -4.213159, 10);
 
     std::vector<Fence*> fences;
     fences.emplace_back(schoolFence);
