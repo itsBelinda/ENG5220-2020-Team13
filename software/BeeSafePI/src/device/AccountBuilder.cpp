@@ -17,6 +17,9 @@ Account* AccountBuilder::build()
         return nullptr;
     }
 
+    // Get the name for the account.
+    std::string name = root.at(U(JSON_KEY_ACCOUNT_NAME)).as_string();
+
     // Create contacts for the device.
     const web::json::array& jsonContacts = root.at(U(JSON_KEY_ACCOUNT_CONTACTS)).as_array();
     std::vector<Contact*> contacts;
@@ -39,15 +42,16 @@ Account* AccountBuilder::build()
     }
 
     // We have fuccessfully created an device instance.
-    return new Account(contacts, fences);
+    return new Account(name, contacts, fences);
 }
 
 // Check that json has device attributes.
-bool AccountBuilder::hasAccountAttributes(const web::json::value &jsonElement)
+bool AccountBuilder::hasAccountAttributes(const web::json::value &jsonAccountElement)
 {
-    return !jsonElement.is_null() && jsonElement.is_object()
-           && jsonElement.has_array_field(U(JSON_KEY_ACCOUNT_CONTACTS))
-           && jsonElement.has_array_field(U(JSON_KEY_ACCOUNT_FENCES));
+    return !jsonAccountElement.is_null() && jsonAccountElement.is_object()
+           && jsonAccountElement.has_string_field(U(JSON_KEY_ACCOUNT_NAME))
+           && jsonAccountElement.has_array_field(U(JSON_KEY_ACCOUNT_CONTACTS))
+           && jsonAccountElement.has_array_field(U(JSON_KEY_ACCOUNT_FENCES));
 }
 
 // Check that JSON element has Contact attributes i.e. structure.

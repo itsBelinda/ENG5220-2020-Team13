@@ -27,7 +27,7 @@ public:
 private:
 
     // For checking the json structure.
-    bool hasAccountAttributes(const web::json::value& jsonElement);
+    bool hasAccountAttributes(const web::json::value& jsonAccountElement);
     bool hasContactAttributes(const web::json::value& jsonElement);
     bool hasFenceAttributes(const web::json::value& jsonElement);
     bool hasRoundFenceAttributes(const web::json::value& jsonElement);

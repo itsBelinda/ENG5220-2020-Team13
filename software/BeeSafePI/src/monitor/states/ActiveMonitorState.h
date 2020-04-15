@@ -1,11 +1,16 @@
 #ifndef BEESAFEPI_ACTIVEMONITORSTATE_H
 #define BEESAFEPI_ACTIVEMONITORSTATE_H
 
-// System inclusions.
-#include <chrono>
-
 #include "MonitorState.h"
 
+#include "../../contact/Contact.h"
+
+// System inclusions.
+#include <chrono>
+#include <map>
+#include <utility>
+
+// The name of the state.
 #define ACTIVE_STATE_NAME "Active"
 
 
@@ -26,17 +31,32 @@ public:
 
 public:
 
+    // Get state / time since perimeter crossed crossed.
+    bool isPerimeterCrossed();
+    std::chrono::time_point<std::chrono::steady_clock> getSincePerimeterCrossed();
+
+    // A mapping for the sent notifications.
+    std::vector<std::pair<Contact*, bool>> &getSentNotifications();
+
     // Override the interface responsible for handling the latitude and longitude.
     MonitorState* handleLatLng(std::pair<double, double> &latLng) override;
 
 private:
-    bool notified;
-    short delayNotification;
-    double lastLocTime;
-    void notifyExitedFence();
-    void notifyBackInFence();
-    void sendLocation();
-    static double getSysTimeMS();
+
+    // Notification related functions.
+    bool allNotificationsSent();
+    void setSentNotifications(bool sent);
+    void sendNotifications(bool ignoreSent, const char* notificationMsg);
+
+private:
+
+    // Whether the perimeter has been crossed.
+    bool perimeterCrossed;
+    std::chrono::time_point<std::chrono::steady_clock> sincePerimeterCrossed;
+
+    // Whether or not the parents have been notified.
+    std::vector<std::pair<Contact*, bool>> sentNotifications;
+
 };
 
 

@@ -354,7 +354,8 @@ void createAccount()
     contacts.push_back(contact1);
     contacts.push_back(contact2);
 
-    Account account(contacts, fences);
+    std::string name = "AccountNameTest";
+    Account account(name, contacts, fences);
     account.saveSerialisedAccount(ACCOUNT_PATH);
 }
 
