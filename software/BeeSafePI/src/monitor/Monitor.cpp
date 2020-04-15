@@ -70,9 +70,9 @@ bool Monitor::start(Account * const account)
         return false;
     }
 
-    // If the monitor thread is running, stop it.
+    // If the monitor thread is running, join it.
     if (monitorThreadRunning && monitorThread != nullptr) {
-        stop();
+        join();
     }
 
     // Potentially update the account.
@@ -84,6 +84,12 @@ bool Monitor::start(Account * const account)
     return true;
 }
 
+void Monitor::stop()
+{
+    monitorThreadRunning = false;
+    join();
+}
+
 /**
  * Stop the monitoring thread.
  *
@@ -91,10 +97,9 @@ bool Monitor::start(Account * const account)
  * executing. Moreover, this will take care of cleaning up any resources
  * occupied by the thread.
  */
-void Monitor::stop()
+void Monitor::join()
 {
-    // Stop the thread.
-    monitorThreadRunning = false;
+    // Waits for the thread to join.
     monitorThread->join();
 
     // Handle thread cleanup.
@@ -134,8 +139,6 @@ void Monitor::run()
     // The main monitoring thread.
     MonitorState *toMonitorState = nullptr;
     while (monitorThreadRunning) {
-
-        std::cout << "HERE?!" << std::endl;
 
         // Check that we have access to the internet.
         rc = comms->hasPSD(psdConnected);

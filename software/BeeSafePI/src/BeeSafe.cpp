@@ -27,7 +27,7 @@ BeeSafeManager::~BeeSafeManager()
 {
     // Delete monitor first to illegal memory access.
     if (monitor != nullptr) {
-        monitor->stop();
+        monitor->join();
         delete monitor;
     }
 
@@ -82,7 +82,7 @@ bool BeeSafeManager::init()
 {
     // Prevent memory leaks by releasing occupied resources.
     if (this->monitor != nullptr) {
-        this->monitor->stop();
+        this->monitor->join();
         delete this->monitor;
     }
     delete this->comms;
@@ -238,6 +238,7 @@ bool BeeSafeManager::start()
             std::cerr << "Failed to start the monitor thread." << std::endl;
             return false;
         }
+        monitor->join();
     }
 
     // TODO: Implement the manager thread for obtaining the account data file.
