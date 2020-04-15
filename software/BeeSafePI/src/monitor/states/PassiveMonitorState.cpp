@@ -11,7 +11,7 @@
  * @param account The account against which the coordinates are compared.
  */
 PassiveMonitorState::PassiveMonitorState(Comms *const comms, Account *const account)
-        : MonitorState(comms, account) {}
+        : MonitorState(PASSIVE_STATE_NAME, comms, account) {}
 
 /**
  * Destructor is used to clean up any resources occupied by the PassiveMonitorState
@@ -19,15 +19,6 @@ PassiveMonitorState::PassiveMonitorState(Comms *const comms, Account *const acco
  */
 PassiveMonitorState::~PassiveMonitorState() = default;
 
-/**
- * Getter for the passive state name.
- *
- * @return A c-string pointer to the state name.
- */
-const char* PassiveMonitorState::getStateName()
-{
-    return PASSIVE_STATE_NAME;
-}
 
 /**
  * Handles passive location monitoring; passively handled monitoring i.e. no notifications /

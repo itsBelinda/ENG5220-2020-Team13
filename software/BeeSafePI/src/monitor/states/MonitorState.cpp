@@ -7,13 +7,19 @@
  *      or send messages.
  * @param account The device account instance that is being monitored.
  */
-MonitorState::MonitorState(Comms *const comms, Account *const account)
+MonitorState::MonitorState(const char* const stateName, Comms *const comms, Account *const account)
 {
+    this->stateName = stateName;
     this->comms = comms;
     this->account = account;
 }
 
 MonitorState::~MonitorState() = default;
+
+const char* const MonitorState::getStateName()
+{
+    return stateName;
+}
 
 /**
  * Function checks whether or not the latitude and longitudes are within the defined fences.

@@ -22,10 +22,7 @@ public:
     ~ActiveMonitorState() override;
 
 public:
-
-    // Override the function for getting the state name.
-    const char* getStateName() override;
-
+    
     // Override the interface responsible for handling the latitude and longitude.
     MonitorState* handleLatLng(std::pair<double, double> &latLng) override;
 
