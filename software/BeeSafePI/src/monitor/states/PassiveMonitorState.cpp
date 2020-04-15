@@ -45,7 +45,7 @@ const char* PassiveMonitorState::getStateName()
 MonitorState *PassiveMonitorState::handleLatLng(std::pair<double, double> &latLng)
 {
     // If the device is within the account fences, return (keep passive state).
-    if (true || isInFence(latLng)) {
+    if (isInFence(latLng)) {
         return nullptr;
     }
 
