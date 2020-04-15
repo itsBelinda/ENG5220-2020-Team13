@@ -80,6 +80,7 @@ bool Monitor::start(Account * const account)
         this->account = account;
     }
 
+    std::cout << "HERE?!" << std::endl;
     monitorThread = new std::thread(Monitor::execute, this);
     return true;
 }
