@@ -284,18 +284,66 @@ void createAccount()
     week.insert(std::make_pair(2, day));
     week.insert(std::make_pair(3, day));
 
-    // Create tmp coordinates.
-    std::vector<std::pair<double, double>> coordinates;
-    coordinates.emplace_back(std::make_pair(20.5, 30));
-    coordinates.emplace_back(std::make_pair(30, 20));
+    // Create school coordinates.
+    std::vector<std::pair<double, double>> schoolCoords;
+    schoolCoords.emplace_back(std::make_pair(55.8295041, -4.2118943));
+    schoolCoords.emplace_back(std::make_pair(55.8295026, -4.2118996));
+    schoolCoords.emplace_back(std::make_pair(55.8294408, -4.2119104));
+    schoolCoords.emplace_back(std::make_pair(55.8294423, -4.2119613));
+    schoolCoords.emplace_back(std::make_pair(55.8293232, -4.2119533));
+    schoolCoords.emplace_back(std::make_pair(55.8293172, -4.2120498));
+    schoolCoords.emplace_back(std::make_pair(55.8292328, -4.2120418));
+    schoolCoords.emplace_back(std::make_pair(55.8292252, -4.2121276));
+    schoolCoords.emplace_back(std::make_pair(55.8290655, -4.2121169));
+    schoolCoords.emplace_back(std::make_pair(55.8290504, -4.2121813));
+    schoolCoords.emplace_back(std::make_pair(55.8289449, -4.2121598));
+    schoolCoords.emplace_back(std::make_pair(55.8289479, -4.2120928));
+    schoolCoords.emplace_back(std::make_pair(55.8289615, -4.2117736));
+    schoolCoords.emplace_back(std::make_pair(55.8290112, -4.2111540));
+    schoolCoords.emplace_back(std::make_pair(55.8292358, -4.2111620));
+    schoolCoords.emplace_back(std::make_pair(55.8292448, -4.2112345));
+    schoolCoords.emplace_back(std::make_pair(55.8295086, -4.2112613));
+    schoolCoords.emplace_back(std::make_pair(55.8295041, -4.2118943));
+
+    // Create path coordinates.
+    std::vector<std::pair<double, double>> pathCoords;
+    pathCoords.emplace_back(std::make_pair(55.8289916, -4.2116421));
+    pathCoords.emplace_back(std::make_pair(55.8289901, -4.2116529));
+    pathCoords.emplace_back(std::make_pair(55.8289765, -4.2117923));
+    pathCoords.emplace_back(std::make_pair(55.8289569, -4.2121732));
+    pathCoords.emplace_back(std::make_pair(55.8289057, -4.2128813));
+    pathCoords.emplace_back(std::make_pair(55.8284158, -4.2128465));
+    pathCoords.emplace_back(std::make_pair(55.8284384, -4.2123529));
+    pathCoords.emplace_back(std::make_pair(55.8283389, -4.2122912));
+    pathCoords.emplace_back(std::make_pair(55.828345, -4.2121169));
+    pathCoords.emplace_back(std::make_pair(55.8282877, -4.2121142));
+    pathCoords.emplace_back(std::make_pair(55.8282798, -4.2133507));
+    pathCoords.emplace_back(std::make_pair(55.8282482, -4.2133668));
+    pathCoords.emplace_back(std::make_pair(55.828212, -4.2133829));
+    pathCoords.emplace_back(std::make_pair(55.8282108, -4.2130637));
+    pathCoords.emplace_back(std::make_pair(55.8282289, -4.2119908));
+    pathCoords.emplace_back(std::make_pair(55.8282862, -4.2119855));
+    pathCoords.emplace_back(std::make_pair(55.8283947, -4.2120203));
+    pathCoords.emplace_back(std::make_pair(55.8283902, -4.2121652));
+    pathCoords.emplace_back(std::make_pair(55.8284399, -4.2121625));
+    pathCoords.emplace_back(std::make_pair(55.828548, -4.2121491));
+    pathCoords.emplace_back(std::make_pair(55.8285273, -4.2127177));
+    pathCoords.emplace_back(std::make_pair(55.8287745, -4.2127097));
+    pathCoords.emplace_back(std::make_pair(55.8287836, -4.2122403));
+    pathCoords.emplace_back(std::make_pair(55.8288559, -4.2122591));
+    pathCoords.emplace_back(std::make_pair(55.8288997, -4.2116126));
+    pathCoords.emplace_back(std::make_pair(55.8289916, -4.2116421));
+
 
     // Create tmp fences.
-    Fence *polyFence = new PolyFence(false, week, coordinates);
-    Fence *roundFence = new RoundFence(true, week, 10.5, 20, 10);
+    Fence *schoolFence = new PolyFence(true, week, schoolCoords);
+    Fence *pathFence = new PolyFence(true,week,pathCoords);
+    Fence *homeFence = new RoundFence(true, week, 10, 55.828182, -4.213159);
 
     std::vector<Fence*> fences;
-    fences.emplace_back(polyFence);
-    fences.emplace_back(roundFence);
+    fences.emplace_back(schoolFence);
+    fences.emplace_back(pathFence);
+    fences.emplace_back(homeFence);
 
     // Create temp contacts.
     Contact* contact1 = new Contact("Daniels", "Vasiljevs", "0121DO1", "Coke");
