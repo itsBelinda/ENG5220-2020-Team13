@@ -6,6 +6,9 @@
 
 #include "MonitorState.h"
 
+#define ACTIVE_STATE_NAME "Active"
+
+
 //! Delay counter how many times the location has to be updated outside of the
 //! fence before a notification is sent.
 #define DELAY_NOTIFICATION_CNT  10
@@ -22,7 +25,7 @@ public:
     ~ActiveMonitorState() override;
 
 public:
-    
+
     // Override the interface responsible for handling the latitude and longitude.
     MonitorState* handleLatLng(std::pair<double, double> &latLng) override;
 

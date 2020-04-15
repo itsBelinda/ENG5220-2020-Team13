@@ -2,8 +2,6 @@
 #include "ActiveMonitorState.h"
 #include "PassiveMonitorState.h"
 
-#define ACTIVE_STATE_NAME "Active"
-
 /**
  * Constructor explicitly initialises the ActiveMonitorState class instance.
  *
