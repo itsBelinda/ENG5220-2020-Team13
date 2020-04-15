@@ -24,7 +24,9 @@ before_script:
 script:
   - make
   - cd src/
-  - ./BeeSafePI
+# if the final project is ran, TravisCI does not compile due to the program
+# relying on hardware being connected
+#  - ./BeeSafePI
   - cd ..
   - ctest
 
