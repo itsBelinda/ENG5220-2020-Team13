@@ -1,0 +1,167 @@
+{% extends 'web/base.html' %}
+{% load staticfiles %}
+
+<!-- Override the title block to display an appropriate page title. -->
+{% block title_block %}
+	Welcome!
+{% endblock %}
+
+<!-- Opposed to navigating, scroll to the top of the page. -->
+{% block nav_brand_block %}
+	<a class="navbar-brand js-scroll-trigger" href="#page-top">BeeSafe</a>
+{% endblock %}
+
+<!-- Override the dynamic navigation options for the website. -->
+{% block nav_items_block %}
+	<li class="nav-item">
+		<a class="nav-link js-scroll-trigger" href="#services">Services</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link js-scroll-trigger" href="#team">Team</a>
+	</li>
+{% endblock %}
+
+<!-- Override the content block to display index related information. -->
+{% block content_block %}
+
+	<!-- Header -->
+	<header class="masthead">
+		<div class="container">
+			<div class="intro-text">
+				<div class="intro-lead-in">Welcome To Our Studio!</div>
+				<div class="intro-heading text-uppercase">It's Nice To Meet You</div>
+				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+			</div>
+		</div>
+	</header>
+
+	<!-- Services -->
+	<section class="page-section" id="services">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">Services</h2>
+					<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Live Tracking</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-street-view fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Virtual Fences</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-theater-masks fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Abnormality Detection</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Team -->
+	<section class="bg-light page-section" id="team">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+					<h3 class="section-subheading text-muted">The 'Bees' making your world a safer place.</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img class="mx-auto rounded-circle" src="{% static 'web/img/team/zsuzsi.jpg' %}" alt="">
+						<h4>Zsuzsi Szügyi</h4>
+						<p class="text-muted">Project Manager / Software Engineer</p>
+						<ul class="list-inline social-buttons">
+							<li class="list-inline-item">
+								<a href="#">
+									<i class="fab fa-twitter"></i>
+								</a>
+							</li>
+							<li class="list-inline-item">
+								<a href="#">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+							</li>
+							<li class="list-inline-item">
+								<a href="#">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img class="mx-auto rounded-circle" src="{% static 'web/img/team/belinda.jpg' %}" alt="">
+						<h4>Belinda Kneubühler</h4>
+						<p class="text-muted">Lead Hardware Engineer</p>
+						<ul class="list-inline social-buttons">
+							<li class="list-inline-item">
+								<a href="#">
+									<i class="fab fa-twitter"></i>
+								</a>
+							</li>
+							<li class="list-inline-item">
+								<a href="#">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+							</li>
+							<li class="list-inline-item">
+								<a href="#">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img class="mx-auto rounded-circle" src="{% static 'web/img/team/daniels.jpg' %}" alt="">
+						<h4>Daniels Vasiljevs</h4>
+						<p class="text-muted">Software / Hardware Engineer</p>
+						<ul class="list-inline social-buttons">
+							<li class="list-inline-item">
+								<a href="#">
+									<i class="fab fa-twitter"></i>
+								</a>
+							</li>
+							<li class="list-inline-item">
+								<a href="#">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+							</li>
+							<li class="list-inline-item">
+								<a href="#">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 mx-auto text-center">
+					<p class="large text-muted">Please refrain from contacting any of the engineers directly regarding any encountered issues. Insead, contact our support team by emailing: support@beesafe.com</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

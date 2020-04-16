@@ -1,0 +1,139 @@
+{% extends 'web/base.html' %}
+{% load staticfiles %}
+
+<!-- Override the title block to display an appropriate page title. -->
+{% block title_block %}
+	Account!
+{% endblock %}
+
+<!-- Override the dynamic navigation options for the website. -->
+{% block nav_items_block %}
+	<li class="nav-item">
+		<a class="nav-link js-scroll-trigger" href="#contacts">Contacts</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link js-scroll-trigger" href="#fences">Fences</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link js-scroll-trigger" href="#devices">Devices</a>
+	</li>
+{% endblock %}
+
+<!-- Override the content for the account page. -->
+{% block content_block %}
+	
+	<!-- Contacts -->
+	<section class="bg-light page-section" id="contacts">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">Services</h2>
+					<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Live Tracking</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-street-view fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Virtual Fences</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-theater-masks fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Abnormality Detection</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Fences -->
+	<section class="bg-light page-section" id="fences">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">Services</h2>
+					<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Live Tracking</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-street-view fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Virtual Fences</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-theater-masks fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Abnormality Detection</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Fences -->
+	<section class="bg-light page-section" id="devices">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">Services</h2>
+					<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Live Tracking</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-street-view fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Virtual Fences</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-theater-masks fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Abnormality Detection</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
