@@ -73,8 +73,8 @@ void ActiveMonitorState::sendMessageNotifications(bool forceAll, std::string &me
 
             // Notify the contact.
             std::cout << "Notifying contact "
-                      << notifiableContact.first->getSurname()
-                      << notifiableContact.first->getSurname()
+                      << notifiableContact.first->getForename()
+                      << " " << notifiableContact.first->getSurname()
                       << "... ";
             notifiableContact.second = comms->sendMessage(*notifiableContact.first, message);
             std::cout << (notifiableContact.second ? "Success!" : "Failed!") << std::endl;
