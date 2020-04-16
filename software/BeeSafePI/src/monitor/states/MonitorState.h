@@ -50,7 +50,7 @@ protected:
     Account *account;
 
     // Override the interface responsible for handling the latitude and longitude.
-    bool isInFence(std::pair<double, double> &latLng);
+    Fence* getCrossedFence(std::pair<double, double> &latLng);
 
 };
 

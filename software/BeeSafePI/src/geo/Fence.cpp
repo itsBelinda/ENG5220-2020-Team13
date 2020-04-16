@@ -122,7 +122,6 @@ web::json::value Fence::serialiseFence() {
     // The root fence json element.
     web::json::value jsonFence = web::json::value::object();
 
-
     // Serialise the name and safety of the fence.
     jsonFence[U(JSON_KEY_FENCE_NAME)] = web::json::value::string(name);
     jsonFence[U(JSON_KEY_FENCE_SAFE)] = web::json::value::boolean(safe);

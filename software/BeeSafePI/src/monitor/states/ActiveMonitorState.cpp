@@ -58,33 +58,46 @@ void ActiveMonitorState::setSentNotifications(bool sent)
     }
 }
 
-void ActiveMonitorState::sendNotifications(bool ignoreSent, const char* msg)
+void ActiveMonitorState::sendMessageNotifications(bool forceAll, std::string &message)
 {
-
+    for (auto notifiableContact : sentNotifications) {
+        if (!notifiableContact.second || forceAll) {
+            notifiableContact.second = comms->sendMessage(*notifiableContact.first, message);
+        }
+    }
 }
 
 MonitorState* ActiveMonitorState::handleLatLng(std::pair<double, double> &latLng)
 {
-    // Check whether the device is inside the fence or not.
-    bool inside = isInFence(latLng);
+    // Get the fence the device has left.
+    Fence* crossedFence = getCrossedFence(latLng);
+    bool inside = crossedFence == nullptr;
+
+    // If the fence has been crossed, update the monitor states.
     if (inside != perimeterCrossed) {
         perimeterCrossed = inside;
         sincePerimeterCrossed = std::chrono::steady_clock::now();
         setSentNotifications(false);
     }
 
-    // Calculate the amount of time that has passed.
+    // Elapsed seconds since monitor (perimeterCrossed) state change.
     auto now = std::chrono::steady_clock::now();
     long long int elapsedMs = std::chrono::duration_cast<std::chrono::seconds>
             (now - sincePerimeterCrossed).count();
 
-    // Notify contacts device back inside.
+    // Handle notifications.
     if (inside && elapsedMs > STEPPED_INSIDE_NOTIFICATION_DELAY_SEC) {
-        sendNotifications(true, "");
+
+        // Send a message informing the contacts that the device has returned.
+        std::string message = "Device " + account->getName() + " has returned to the fence.";
+        sendMessageNotifications(true, message);
+
     } else if (!inside && elapsedMs > STEPPED_OUTSIDE_NOTIFICATION_DELAY_SEC) {
 
-        // Determine whether this is the first notification or reminder.
-
+        // Send a message informing the contacts that the device has left the fence.
+        std::string message = "Device " + account->getName()
+                              + " has left fence " + crossedFence->getName() + ".";
+        sendMessageNotifications(false, message);
 
     }
 

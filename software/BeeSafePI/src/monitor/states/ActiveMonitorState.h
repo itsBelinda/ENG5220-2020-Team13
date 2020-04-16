@@ -46,7 +46,7 @@ private:
     // Notification related functions.
     bool allNotificationsSent();
     void setSentNotifications(bool sent);
-    void sendNotifications(bool ignoreSent, const char* notificationMsg);
+    void sendMessageNotifications(bool forceAll, std::string &message);
 
 private:
 
