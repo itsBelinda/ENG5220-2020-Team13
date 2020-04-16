@@ -4,6 +4,7 @@
 #include "PassiveMonitorState.h"
 
 // System inclusions
+#include <iostream>
 
 // Time periods after which the notifications should be send; validation periods.
 #define STEPPED_OUTSIDE_NOTIFICATION_DELAY_SEC 5
@@ -60,9 +61,24 @@ void ActiveMonitorState::setSentNotifications(bool sent)
 
 void ActiveMonitorState::sendMessageNotifications(bool forceAll, std::string &message)
 {
+    // Check that all contacts have been notified.
+    if (!forceAll && allNotificationsSent()) {
+        std::cout << "All contacts already notified." << std::endl;
+        return;
+    }
+
+    // Notify contacts.
     for (auto notifiableContact : sentNotifications) {
         if (!notifiableContact.second || forceAll) {
+
+            // Notify the contact.
+            std::cout << "Notifying contact "
+                      << notifiableContact.first->getSurname()
+                      << notifiableContact.first->getSurname()
+                      << "... ";
             notifiableContact.second = comms->sendMessage(*notifiableContact.first, message);
+            std::cout << (notifiableContact.second ? "Success!" : "Failed!") << std::endl;
+
         }
     }
 }
@@ -70,15 +86,18 @@ void ActiveMonitorState::sendMessageNotifications(bool forceAll, std::string &me
 MonitorState* ActiveMonitorState::handleLatLng(std::pair<double, double> &latLng)
 {
     // Get the fence the device has left.
+    std::cout << "Checking fences..." << std::endl;
     Fence* crossedFence = getCrossedFence(latLng);
     bool inside = crossedFence == nullptr;
 
     // If the fence has been crossed, update the monitor states.
     if (inside != perimeterCrossed) {
+        std::cout << "Switching from state " << perimeterCrossed << " to state " << inside << std::endl;
         perimeterCrossed = inside;
         sincePerimeterCrossed = std::chrono::steady_clock::now();
         setSentNotifications(false);
     }
+    std::cout << "... fence checks complete." << std::endl;
 
     // Elapsed seconds since monitor (perimeterCrossed) state change.
     auto now = std::chrono::steady_clock::now();
@@ -89,15 +108,19 @@ MonitorState* ActiveMonitorState::handleLatLng(std::pair<double, double> &latLng
     if (inside && elapsedMs > STEPPED_INSIDE_NOTIFICATION_DELAY_SEC) {
 
         // Send a message informing the contacts that the device has returned.
+        std::cout << "Notifying contacts (back inside) ..." << std::endl;
         std::string message = "Device " + account->getName() + " has returned to the fence.";
         sendMessageNotifications(true, message);
+        std::cout << "... contacts successfully notified (back inside)." << std::endl;
 
     } else if (!inside && elapsedMs > STEPPED_OUTSIDE_NOTIFICATION_DELAY_SEC) {
 
         // Send a message informing the contacts that the device has left the fence.
+        std::cout << "Notifying contacts (outside) ..." << std::endl;
         std::string message = "Device " + account->getName()
                               + " has left fence " + crossedFence->getName() + ".";
         sendMessageNotifications(false, message);
+        std::cout << "... contacts successfully notified (outside)." << std::endl;
 
     }
 

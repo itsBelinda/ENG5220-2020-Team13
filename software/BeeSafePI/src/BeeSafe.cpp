@@ -351,12 +351,10 @@ void createAccount()
     fences.emplace_back(homeFence);
 
     // Create temp contacts.
-    Contact* contact1 = new Contact("Daniels", "Vasiljevs", "0121DO1", "Coke");
-    Contact* contact2 = new Contact("Ben", "Smith", "124232", "Pepsi");
+    Contact* contact1 = new Contact("Daniels", "Vasiljevs", "+447455787051", "Coke");
 
     std::vector<Contact*> contacts;
     contacts.push_back(contact1);
-    contacts.push_back(contact2);
 
     std::string name = "AccountNameTest";
     Account account(name, contacts, fences);
