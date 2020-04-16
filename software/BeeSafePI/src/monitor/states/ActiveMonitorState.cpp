@@ -68,7 +68,7 @@ void ActiveMonitorState::sendMessageNotifications(bool forceAll, std::string &me
     }
 
     // Notify contacts.
-    for (auto notifiableContact : sentNotifications) {
+    for (auto &notifiableContact : sentNotifications) {
         if (!notifiableContact.second || forceAll) {
 
             // Notify the contact.
@@ -101,11 +101,11 @@ MonitorState* ActiveMonitorState::handleLatLng(std::pair<double, double> &latLng
 
     // Elapsed seconds since monitor (perimeterCrossed) state change.
     auto now = std::chrono::steady_clock::now();
-    long long int elapsedMs = std::chrono::duration_cast<std::chrono::seconds>
+    long long int elapsedSec = std::chrono::duration_cast<std::chrono::seconds>
             (now - sincePerimeterCrossed).count();
 
     // Handle notifications.
-    if (inside && elapsedMs > STEPPED_INSIDE_NOTIFICATION_DELAY_SEC) {
+    if (inside && elapsedSec > STEPPED_INSIDE_NOTIFICATION_DELAY_SEC) {
 
         // Send a message informing the contacts that the device has returned.
         std::cout << "Notifying contacts (back inside) ..." << std::endl;
@@ -113,7 +113,7 @@ MonitorState* ActiveMonitorState::handleLatLng(std::pair<double, double> &latLng
         sendMessageNotifications(true, message);
         std::cout << "... contacts successfully notified (back inside)." << std::endl;
 
-    } else if (!inside && elapsedMs > STEPPED_OUTSIDE_NOTIFICATION_DELAY_SEC) {
+    } else if (!inside && elapsedSec > STEPPED_OUTSIDE_NOTIFICATION_DELAY_SEC) {
 
         // Send a message informing the contacts that the device has left the fence.
         std::cout << "Notifying contacts (outside) ..." << std::endl;
@@ -125,7 +125,7 @@ MonitorState* ActiveMonitorState::handleLatLng(std::pair<double, double> &latLng
     }
 
     // If the device has reentered the fence and parents have been notified, switch.
-    return inside && elapsedMs > STEPPED_INSIDE_NOTIFICATION_DELAY_SEC
+    return inside && elapsedSec > STEPPED_INSIDE_NOTIFICATION_DELAY_SEC
            ? new PassiveMonitorState(comms, account)
            : nullptr;
 }
