@@ -96,15 +96,7 @@ bool BeeSafeManager::init()
         return false;
     }
     std::cout << "... comms interface successfully initialised." << std::endl;
-
-    // MESSING AROUND WITH FRIENDS!
-    std::string nbr1 = "+447926293004";
-    std::string nbr2 = "07756678762";
-    std::string message = "am gonna batter you! I know where u stay";
-
-    comms->sendMessage(nbr1, message);
-    comms->sendMessage(nbr2, message);
-
+    
     // Attempt to initialise the monitor thread.
     std::cout << "Initialising monitor thread..." << std::endl;
     auto monitor = initMonitor(comms);
