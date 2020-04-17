@@ -1,0 +1,248 @@
+{
+  "fences": [
+    {
+      "fence": {
+        "coordinates": {
+          "latitude": "55.828182",
+          "longitude": "-4.213159"
+        },
+        "radius": 10,
+        "type": "round"
+      },
+      "name": "home"
+    },
+    {
+      "fence": {
+        "coordinates": {
+          "latitude": "55.8214197",
+          "longitude": "-4.213"
+        },
+        "radius": 100,
+        "type": "round"
+      },
+      "name": "playground"
+    },
+    {
+      "fence": {
+        "coordinates": [
+          {
+            "latitude": "55.8295041",
+            "longitude": "-4.2118943"
+          },
+          {
+            "latitude": "55.8295026",
+            "longitude": "-4.2118996"
+          },
+          {
+            "latitude": "55.8294408",
+            "longitude": "-4.2119104"
+          },
+          {
+            "latitude": "55.8294423",
+            "longitude": "-4.2119613"
+          },
+          {
+            "latitude": "55.8293232",
+            "longitude": "-4.2119533"
+          },
+          {
+            "latitude": "55.8293172",
+            "longitude": "-4.2120498"
+          },
+          {
+            "latitude": "55.8292328",
+            "longitude": "-4.2120418"
+          },
+          {
+            "latitude": "55.8292252",
+            "longitude": "-4.2121276"
+          },
+          {
+            "latitude": "55.8290655",
+            "longitude": "-4.2121169"
+          },
+          {
+            "latitude": "55.8290504",
+            "longitude": "-4.2121813"
+          },
+          {
+            "latitude": "55.8289449",
+            "longitude": "-4.2121598"
+          },
+          {
+            "latitude": "55.8289479",
+            "longitude": "-4.2120928"
+          },
+          {
+            "latitude": "55.8289615",
+            "longitude": "-4.2117736"
+          },
+          {
+            "latitude": "55.8290112",
+            "longitude": "-4.211154"
+          },
+          {
+            "latitude": "55.8292358",
+            "longitude": "-4.211162"
+          },
+          {
+            "latitude": "55.8292448",
+            "longitude": "-4.2112345"
+          },
+          {
+            "latitude": "55.8295086",
+            "longitude": "-4.2112613"
+          },
+          {
+            "latitude": "55.8295041",
+            "longitude": "-4.2118943"
+          }
+        ],
+        "type": "poly"
+      },
+      "name": "school"
+    },
+    {
+      "fence": {
+        "coordinates": [
+          {
+            "latitude": "55.8289916",
+            "longitude": "-4.2116421"
+          },
+          {
+            "latitude": "55.8289901",
+            "longitude": "-4.2116529"
+          },
+          {
+            "latitude": "55.8289765",
+            "longitude": "-4.2117923"
+          },
+          {
+            "latitude": "55.8289569",
+            "longitude": "-4.2121732"
+          },
+          {
+            "latitude": "55.8289057",
+            "longitude": "-4.2128813"
+          },
+          {
+            "latitude": "55.8284158",
+            "longitude": "-4.2128465"
+          },
+          {
+            "latitude": "55.8284384",
+            "longitude": "-4.2123529"
+          },
+          {
+            "latitude": "55.8283389",
+            "longitude": "-4.2122912"
+          },
+          {
+            "latitude": "55.828345",
+            "longitude": "-4.2121169"
+          },
+          {
+            "latitude": "55.8282877",
+            "longitude": "-4.2121142"
+          },
+          {
+            "latitude": "55.8282798",
+            "longitude": "-4.2133507"
+          },
+          {
+            "latitude": "55.8282482",
+            "longitude": "-4.2133668"
+          },
+          {
+            "latitude": "55.828212",
+            "longitude": "-4.2133829"
+          },
+          {
+            "latitude": "55.8282108",
+            "longitude": "-4.2130637"
+          },
+          {
+            "latitude": "55.8282289",
+            "longitude": "-4.2119908"
+          },
+          {
+            "latitude": "55.8282862",
+            "longitude": "-4.2119855"
+          },
+          {
+            "latitude": "55.8283947",
+            "longitude": "-4.2120203"
+          },
+          {
+            "latitude": "55.8283902",
+            "longitude": "-4.2121652"
+          },
+          {
+            "latitude": "55.8284399",
+            "longitude": "-4.2121625"
+          },
+          {
+            "latitude": "55.828548",
+            "longitude": "-4.2121491"
+          },
+          {
+            "latitude": "55.8285273",
+            "longitude": "-4.2127177"
+          },
+          {
+            "latitude": "55.8287745",
+            "longitude": "-4.2127097"
+          },
+          {
+            "latitude": "55.8287836",
+            "longitude": "-4.2122403"
+          },
+          {
+            "latitude": "55.8288559",
+            "longitude": "-4.2122591"
+          },
+          {
+            "latitude": "55.8288997",
+            "longitude": "-4.2116126"
+          },
+          {
+            "latitude": "55.8289916",
+            "longitude": "-4.2116421"
+          }
+        ],
+        "type": "poly"
+      },
+      "name": "pathtoschool"
+    }
+  ],
+  "positions": [
+    {
+      "coordinates": {
+        "latitude": "55.828181",
+        "longitude": "-4.213150"
+      },
+      "name": "current"
+    },
+    {
+      "coordinates": {
+        "latitude": "55.828231",
+        "longitude": "-4.213250"
+      },
+      "name": "old"
+    },
+    {
+      "coordinates": {
+        "latitude": "55.828281",
+        "longitude": "-4.213350"
+      },
+      "name": "old"
+    },
+    {
+      "coordinates": {
+        "latitude": "55.828281",
+        "longitude": "-4.213450"
+      },
+      "name": "old"
+    }
+  ]
+}
