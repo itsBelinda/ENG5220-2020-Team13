@@ -1,1 +1,0 @@
-contains all the necessary information about the used tools (version, setup info) for this project.

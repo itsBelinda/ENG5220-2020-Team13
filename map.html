@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+	
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+	
+	<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+	
+	<!-- JS and libraries -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- jQuery import -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script> <!-- For reprojections -->
+	<script src="https://epsg.io/27700.js"></script>
+	
+    <title>Prototype</title>
+    <style type="text/css">
+      body { overflow: hidden; }
+
+      .navbar-offset { margin-top: 50px; }
+      #map { position: absolute; top: 50px; bottom: 0px; left: 0px; right: 0px; }
+      #map .ol-zoom { font-size: 1.2em; }
+
+      .zoom-top-opened-sidebar { margin-top: 5px; }
+      .zoom-top-collapsed { margin-top: 45px; }
+
+      .mini-submenu{
+        display:none;  
+        background-color: rgba(255, 255, 255, 0.46);
+        border: 1px solid rgba(0, 0, 0, 0.9);
+        border-radius: 4px;
+        padding: 9px;  
+        /*position: relative;*/
+        width: 42px;
+        text-align: center;
+      }
+
+      .mini-submenu-left {
+        position: absolute;
+        top: 150px;
+        left: .5em;
+        z-index: 40;
+      }
+
+      #map { z-index: 35; }
+
+      .sidebar { z-index: 45; }
+
+      .main-row { position: relative; top: 0; }
+
+      .mini-submenu:hover{
+        cursor: pointer;
+      }
+
+      .slide-submenu{
+        background: rgba(0, 0, 0, 0.45);
+        display: inline-block;
+        padding: 0 8px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+    </style>
+
+    <script type="text/javascript">
+
+      function applyMargins() {
+        var leftToggler = $(".mini-submenu-left");
+        if (leftToggler.is(":visible")) {
+          $("#map .ol-zoom")
+            .css("margin-left", 0)
+            .removeClass("zoom-top-opened-sidebar")
+            .addClass("zoom-top-collapsed");
+        } else {
+          $("#map .ol-zoom")
+            .css("margin-left", $(".sidebar-left").width())
+            .removeClass("zoom-top-opened-sidebar")
+            .removeClass("zoom-top-collapsed");
+        }
+      }
+
+      function isConstrained() {
+        return $(".sidebar").width() == $(window).width();
+      }
+
+      function applyInitialUIState() {
+        if (isConstrained()) {
+          $(".sidebar-left .sidebar-body").fadeOut('slide');
+          $('.mini-submenu-left').fadeIn();
+        }
+      }
+
+      $(function(){
+        $('.sidebar-left .slide-submenu').on('click',function() {
+          var thisEl = $(this);
+          thisEl.closest('.sidebar-body').fadeOut('slide',function(){
+            $('.mini-submenu-left').fadeIn();
+            applyMargins();
+          });
+        });
+
+        $('.mini-submenu-left').on('click',function() {
+          var thisEl = $(this);
+          $('.sidebar-left .sidebar-body').toggle('slide');
+          thisEl.hide();
+          applyMargins();
+        });
+
+        $(window).on("resize", applyMargins);
+
+        applyInitialUIState();
+        applyMargins();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">BeeSafe Map</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="index.html">Back to homepage</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+       </nav>
+    </div>
+    <div>
+      <div class="navbar-offset"></div>
+      <div id="map"></div>
+      <div class="row main-row">
+        <div class="col-sm-4 col-md-3 sidebar sidebar-left pull-left">
+          <div class="panel-group sidebar-body" id="accordion-left">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#layers">
+                    <i class="fa fa-list-alt"></i>
+                    Fences
+                  </a>
+                  <span class="pull-right slide-submenu">
+                    <i class="fa fa-chevron-left"></i>
+                  </span>
+                </h4>
+              </div>
+              <div id="layers" class="panel-collapse collapse in">
+                <div id="fenceList"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mini-submenu mini-submenu-left pull-left">
+        <i class="fa fa-list-alt"></i>
+      </div>
+    </div>
+	<script type="text/javascript">
+		// Your web app's Firebase configuration
+	    var firebaseConfig = {
+	  	    apiKey: "AIzaSyDmlKrtrodcGLZv7VtuGkHKMDa2dlxM_Q0",
+		    authDomain: "beesafemap.firebaseapp.com",
+	  	    databaseURL: "https://beesafemap.firebaseio.com",
+	  	    projectId: "beesafemap",
+	  	    storageBucket: "beesafemap.appspot.com",
+	  	    messagingSenderId: "724921760297",
+  		    appId: "1:724921760297:web:9ba001c482d3f688d23a38"
+  	    };
+	    // Initialize Firebase
+	    var db = firebase.initializeApp(firebaseConfig).database();
+		
+		
+//------------------------------------------------------------
+        var map = L.map('map',{
+			center: [55.828182,-4.213159],
+			minZoom: 2,
+			zoom: 18
+		});
+		
+		L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			subdomains: ['a','b','c']
+		}).addTo( map );
+
+		var positionRefs = db.ref('positions');
+		positionRefs.on('value',function(snapshot) {
+			snapshot.forEach(function(subSnapshot) {
+				var position = subSnapshot.val();
+				if (position["name"]=="current"){
+					var coordinates = position["coordinates"];
+					var currentMarker = L.AwesomeMarkers.icon({icon: 'star', markerColor: 'red'});
+					L.marker([coordinates["latitude"],coordinates["longitude"]], {icon: currentMarker})
+					.bindPopup( "Current location" )
+					.addTo( map );
+				}
+				if (position["name"]=="old"){
+					var coordinates = position["coordinates"];
+					var currentMarker = L.AwesomeMarkers.icon({icon: 'star', markerColor: 'blue'});
+					L.marker([coordinates["latitude"],coordinates["longitude"]], {icon: currentMarker})
+					.bindPopup( "Old location" )
+					.addTo( map );
+				}
+			});
+		});
+		
+		var fenceArray = [];
+		
+		var fenceRefs = db.ref('fences');
+		fenceRefs.on('value',function(snapshot) {
+			snapshot.forEach(function(subSnapshot) {
+				var location = subSnapshot.val();
+				var tempFence = location["fence"];
+				
+				if (tempFence["type"]=="round"){
+				L.circle([tempFence["coordinates"]["latitude"], tempFence["coordinates"]["longitude"]], {radius: tempFence["radius"], color: 'green'})
+				.bindPopup(location["name"])
+				.addTo(map);
+				
+				fenceList.insertAdjacentHTML( 'beforeend',"<a href=\"#\" class=\"list-group-item\"> <i class=\"fa fa-globe\"></i> " + location["name"]+ " </a>");
+				}
+				
+				if (tempFence["type"]=="poly"){
+				var tempCoord = tempFence["coordinates"];
+				var latlngs = [];
+				for(var i = 0; i < tempCoord.length; i++)
+				{
+					var coordItem = tempCoord[i];
+					latlngs.push([coordItem["latitude"], coordItem["longitude"]]);
+				}
+				console.log(latlngs);
+				
+				var polygon = L.polygon(latlngs, {color: 'blue'})
+				.bindPopup(location["name"])
+				.addTo(map);
+				
+				fenceList.insertAdjacentHTML( 'beforeend',"<a href=\"#\" class=\"list-group-item\"> <i class=\"fa fa-globe\"></i> " + location["name"]+ " </a>");
+				}
+			});
+		});
+		
+    </script>
+  </body>
+</html>
