@@ -7,52 +7,35 @@
  *      or send messages.
  * @param account The device account instance that is being monitored.
  */
-MonitorState::MonitorState(Comms *const comms, Account *const account)
+MonitorState::MonitorState(const char* const stateName, Comms *const comms, Account *const account)
 {
+    this->stateName = stateName;
     this->comms = comms;
     this->account = account;
 }
 
-/**
- * Destructor is used to release / free any resources occupied by the
- * MonitorState base class instance. Note, no resources are used, thus
- * the default destructor is utilised.
- */
 MonitorState::~MonitorState() = default;
 
-//TODO: do this here or have function in account? (Account::isInside(latLng))
-// IMO it makes more sense to be here... but not 100% sure.
-/**
- * Checks coordinates if they are in the fence.
- *
- * Loops through all the fences in Account and checks if they are fulfilled.
- * If there is no fence, false is returned. If the fence has a time associated,
- * it needs to be in the fence during the time.
- *
- * @param std::pair<double, double> latLng
- *  The pair of latitude and longitude coordinates that are to be
- *  examined.
- * @return bool
- *  True if the coordinates are within the specified fences, false if
- *  not or if there are no fences specified.
- */
-bool MonitorState::isInFence(std::pair<double, double> &latLng)
+const char* const MonitorState::getStateName()
+{
+    return stateName;
+}
+
+Fence* MonitorState::getCrossedFence(std::pair<double, double> &latLng)
 {
     std::vector<Fence *> vectorFences = account->getFences();
 
-    /// If there are no fences defined, the device cannot be inside, return false
-    if (vectorFences.size() == 0) {
-        return false;
+    // If there are no fences, then return nullptr i.e. no fence to be outside of.
+    if (vectorFences.empty()) {
+        return nullptr;
     }
 
-    //for (std::vector<Fence *>::iterator fence = vectorFences.begin() ; fence != vectorFences.end(); ++fence)
-    /// Iterate through all the fences in account and check if position is inside one of them.
+    // Iterate the fences within the account class to determine if the device is inside.
     for (auto &&fence : vectorFences) {
-        if (fence->isInside(latLng)) {
-            return true;
+        if (!fence->isInside(latLng)) {
+            return fence;
         }
     }
 
-    /// If the code ran until the end, no valid fence was found. Device is outside of all fences.
-    return false;
+    return nullptr;
 }

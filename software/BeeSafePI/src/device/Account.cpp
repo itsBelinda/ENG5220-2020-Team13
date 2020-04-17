@@ -7,8 +7,10 @@
 #include <cpprest/json.h>
 
 // Constructor used to create an instance of the Account class.
-Account::Account(std::vector<Contact*>& contacts, std::vector<Fence*>& fences)
+Account::Account(std::string &name, std::vector<Contact*>& contacts,
+                 std::vector<Fence*>& fences)
 {
+    this->name = name;
     this->contacts = contacts;
     this->fences = fences;
 }
@@ -16,6 +18,7 @@ Account::Account(std::vector<Contact*>& contacts, std::vector<Fence*>& fences)
 // Copy constructor for the account object.
 Account::Account(const Account &account)
 {
+    this->name = name;
     this->contacts = account.contacts;
     this->fences = account.fences;
 }
@@ -35,14 +38,19 @@ Account::~Account()
     }
 }
 
+std::string& Account::getName()
+{
+    return name;
+}
+
 // Get the vector containing the contact details for the device.
-const std::vector<Contact*>& Account::getContacts()
+std::vector<Contact*>& Account::getContacts()
 {
     return contacts;
 }
 
 // Get the vector of geo fences for the device.
-const std::vector<Fence*>& Account::getFences()
+std::vector<Fence*>& Account::getFences()
 {
     return fences;
 }
@@ -51,8 +59,12 @@ const std::vector<Fence*>& Account::getFences()
 web::json::value Account::serialiseAccount()
 {
     web::json::value jsonAccount = web::json::value::object();
-    jsonAccount[utility::string_t(U(JSON_KEY_ACCOUNT_CONTACTS))] = serialiseAccountContacts();
-    jsonAccount[utility::string_t(U(JSON_KEY_ACCOUNT_FENCES))] = serialiseAccountFences();
+    jsonAccount[utility::string_t(U(JSON_KEY_ACCOUNT_NAME))]
+            = web::json::value::string(U(name));
+    jsonAccount[utility::string_t(U(JSON_KEY_ACCOUNT_CONTACTS))]
+            = serialiseAccountContacts();
+    jsonAccount[utility::string_t(U(JSON_KEY_ACCOUNT_FENCES))]
+            = serialiseAccountFences();
     return jsonAccount;
 }
 

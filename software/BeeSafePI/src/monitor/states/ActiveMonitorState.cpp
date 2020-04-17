@@ -1,129 +1,131 @@
 
 #include "ActiveMonitorState.h"
+
 #include "PassiveMonitorState.h"
 
-/**
- * Constructor explicitly initialises the ActiveMonitorState class instance.
- *
- * @param comms The communications interface for sending messages etc.
- * @param account The account that the monitor state is monitoring.
- */
-ActiveMonitorState::ActiveMonitorState(Comms *const comms, Account *const account)
-        : MonitorState(comms, account)
-{
-    notified = false;
-    delayNotification = 0;
-    lastLocTime = 0;
-    // TODO: Active monitor state code.
+// System inclusions
+#include <iostream>
 
+// Time periods after which the notifications should be send; validation periods.
+#define STEPPED_OUTSIDE_NOTIFICATION_DELAY_SEC 5
+#define STEPPED_INSIDE_NOTIFICATION_DELAY_SEC 20
+
+ActiveMonitorState::ActiveMonitorState(Comms *const comms, Account *const account)
+        : MonitorState(ACTIVE_STATE_NAME, comms, account)
+{
+
+    // By definition the device just crossed the perimeter.
+    perimeterCrossed = true;
+    sincePerimeterCrossed = std::chrono::steady_clock::now();
+
+    // Populate the notifications.
+    for (Contact *contact : account->getContacts()) {
+        sentNotifications.emplace_back(std::make_pair(contact, false));
+    }
 }
 
-/**
- * Destructor is used to clean up any resources occupied by the ActiveMonitorState
- * instance.
- */
+
 ActiveMonitorState::~ActiveMonitorState() = default;
 
-/**
- * Handles active location monitoring.
- *
- * When in the active monitoring state, the account will be notified
- *
- * @param latLng The pair of latitude and longitude coordinates that are to be
- *      examined.
- * @return A pointer to the new state if this state is incapable of handling the
- *      locations, nullptr otherwise.
- */
-MonitorState *ActiveMonitorState::handleLatLng(std::pair<double, double> &latLng)
+bool ActiveMonitorState::isPerimeterCrossed()
 {
-    /// If fences are valid, go back to passive monitoring (can be immediately!)
-    if (isInFence(latLng)) {
-        if (notified) {
-            notifyBackInFence();
-        }
-        // TODO: how to properly access comms / account? (currently: made
-        //  them protected)
-        PassiveMonitorState *passiveMonitorState = new PassiveMonitorState(comms, account);
-        return passiveMonitorState;
-    }
+    return perimeterCrossed;
+}
 
-    // TODO: notify account about active monitoring
-    // send location somewhere?
-    // check if we are back in the
-    if (!notified) {
+std::chrono::time_point<std::chrono::steady_clock> ActiveMonitorState::getSincePerimeterCrossed()
+{
+    return sincePerimeterCrossed;
+}
 
-        if (delayNotification < DELAY_NOTIFICATION_CNT) {// use cnt for now, might be updated to time like location?
-            delayNotification++;
-        } else {
-            //account->getContacts()?
-            notifyExitedFence();
-            notified = true; // TODO: save notified for each contact individually (not done now, because
-            // it's not clear if it can be properly identified if notification was successful
-            // Additionally: is it feasible to have multiple contacts? How many are allowed?
-            // How how long does it take to send it to one?
-            lastLocTime = getSysTimeMS();
-            // Do not send the location until exit notification has been sent.
-            return nullptr;
+std::vector<std::pair<Contact*, bool>>& ActiveMonitorState::getSentNotifications()
+{
+    return sentNotifications;
+}
+
+bool ActiveMonitorState::allNotificationsSent()
+{
+    for (auto& notifiableContact : sentNotifications) {
+        if (!notifiableContact.second) {
+            return false;
         }
     }
+    return true;
+}
 
-    double currentTime = getSysTimeMS();
+void ActiveMonitorState::setSentNotifications(bool sent)
+{
+    for (auto& notifiableContact : sentNotifications) {
+        notifiableContact.second = sent;
+    }
+}
 
-    if ((lastLocTime - currentTime) > UPDATE_LOC_MS) {
-        sendLocation();
-        lastLocTime = currentTime;
+void ActiveMonitorState::sendMessageNotifications(bool forceAll, std::string &message)
+{
+    // Check that all contacts have been notified.
+    if (!forceAll && allNotificationsSent()) {
+        std::cout << "All contacts already notified." << std::endl;
+        return;
     }
 
-    return nullptr;
+    // Notify contacts.
+    for (auto &notifiableContact : sentNotifications) {
+        if (!notifiableContact.second || forceAll) {
+
+            // Notify the contact.
+            std::cout << "Notifying contact "
+                      << notifiableContact.first->getForename()
+                      << " " << notifiableContact.first->getSurname()
+                      << "... ";
+            notifiableContact.second = comms->sendMessage(*notifiableContact.first, message);
+            std::cout << (notifiableContact.second ? "Success!" : "Failed!") << std::endl;
+
+        }
+    }
 }
 
-/**
- * Handles notification that the device has exited the valid fence(s).
- *
- * When in the active monitoring state, a notification is sent to the contact(s) in account through the comms
- * interface, that the device is now longer in a valid fence.
- *
- */
-void ActiveMonitorState::notifyExitedFence()
+MonitorState* ActiveMonitorState::handleLatLng(std::pair<double, double> &latLng)
 {
-    // comms.
-}
+    // Get the fence the device has left.
+    std::cout << "Checking fences..." << std::endl;
+    Fence* crossedFence = getCrossedFence(latLng);
+    bool inside = crossedFence == nullptr;
 
-/**
- * Handles notification that the device has re-entered the valid fence(s).
- *
- * When in the active monitoring state, a notification is sent to the contact(s) in account through the comms
- * interface, that the device is back in a valid fence.
- *
- */
-void ActiveMonitorState::notifyBackInFence()
-{
+    // If the fence has been crossed, update the monitor states.
+    if (inside != perimeterCrossed) {
+        std::cout << "Switching from state " << perimeterCrossed << " to state " << inside << std::endl;
+        perimeterCrossed = inside;
+        sincePerimeterCrossed = std::chrono::steady_clock::now();
+        setSentNotifications(false);
+    }
+    std::cout << "... fence checks complete." << std::endl;
 
+    // Elapsed seconds since monitor (perimeterCrossed) state change.
+    auto now = std::chrono::steady_clock::now();
+    long long int elapsedSec = std::chrono::duration_cast<std::chrono::seconds>
+            (now - sincePerimeterCrossed).count();
 
-}
+    // Handle notifications.
+    if (inside && elapsedSec > STEPPED_INSIDE_NOTIFICATION_DELAY_SEC) {
 
-/**
- * Sends the current location of the device to (where?)
- *
- * TODO: add more description
- *
- */
-void ActiveMonitorState::sendLocation()
-{
+        // Send a message informing the contacts that the device has returned.
+        std::cout << "Notifying contacts (back inside) ..." << std::endl;
+        std::string message = "Device " + account->getName() + " has returned to the fence.";
+        sendMessageNotifications(true, message);
+        std::cout << "... contacts successfully notified (back inside)." << std::endl;
 
-}
+    } else if (!inside && elapsedSec > STEPPED_OUTSIDE_NOTIFICATION_DELAY_SEC) {
 
-// maybe put thin in "helper functions":
-/**
- * Gets the system time in ms and returns it as a double.
- *
- * @return double
- *   The system time in ms as a double.
- */
-double ActiveMonitorState::getSysTimeMS()
-{
+        // Send a message informing the contacts that the device has left the fence.
+        std::cout << "Notifying contacts (outside) ..." << std::endl;
+        std::string message = "Device " + account->getName()
+                              + " has left fence " + crossedFence->getName() + ".";
+        sendMessageNotifications(false, message);
+        std::cout << "... contacts successfully notified (outside)." << std::endl;
 
-    // TODO: check with DAN
-    auto now = std::chrono::system_clock::now();
-    return std::chrono::system_clock::to_time_t(now);;
+    }
+
+    // If the device has reentered the fence and parents have been notified, switch.
+    return inside && elapsedSec > STEPPED_INSIDE_NOTIFICATION_DELAY_SEC
+           ? new PassiveMonitorState(comms, account)
+           : nullptr;
 }

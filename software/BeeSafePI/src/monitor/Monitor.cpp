@@ -1,5 +1,7 @@
 #include "Monitor.h"
 
+#define CONNECT_PSD_TRIES 3
+
 /**
  * Constrictor explicitly initialises the monitor thread with the
  * necessary parameters.
@@ -68,9 +70,9 @@ bool Monitor::start(Account * const account)
         return false;
     }
 
-    // If the monitor thread is running, stop it.
+    // If the monitor thread is running, join it.
     if (monitorThreadRunning && monitorThread != nullptr) {
-        stop();
+        join();
     }
 
     // Potentially update the account.
@@ -82,6 +84,12 @@ bool Monitor::start(Account * const account)
     return true;
 }
 
+void Monitor::stop()
+{
+    monitorThreadRunning = false;
+    join();
+}
+
 /**
  * Stop the monitoring thread.
  *
@@ -89,19 +97,14 @@ bool Monitor::start(Account * const account)
  * executing. Moreover, this will take care of cleaning up any resources
  * occupied by the thread.
  */
-void Monitor::stop()
+void Monitor::join()
 {
-    // Stop the thread.
-    monitorThreadRunning = false;
+    // Waits for the thread to join.
     monitorThread->join();
 
     // Handle thread cleanup.
     delete monitorThread;
     monitorThread = nullptr;
-
-    // Clean up the monitor state.
-    delete monitorState;
-    monitorState = nullptr;
 }
 
 /**
@@ -118,24 +121,71 @@ void Monitor::run()
     monitorState = new PassiveMonitorState(comms, account);
     monitorThreadRunning = true;
 
+    // Generic return code.
+    bool rc = false;
+
+    // PSD related variables.
+    int psdConnectionTries = 0;
+    std::string psdUrc;
+    bool psdConnected = false;
+
+    // Pair into which the latitude and longitude shall be stored.
+    std::pair<double, double> latLng;
+
     // The main monitoring thread.
     MonitorState *toMonitorState = nullptr;
     while (monitorThreadRunning) {
 
-        // Get the latitude and longitude of the device.
-        std::pair<double, double> latLng;
-        std::cout << "Lat: " << latLng.first << ", Lng: " << latLng.second << std::endl;
+        // Check that we have access to the internet.
+        rc = comms->hasPSD(psdConnected);
+        if (!rc) {
+            psdConnectionTries = 0;
+            do {
 
-        // TODO: Try 3-times, then re-init the internet
-        // TODO: Try reinit if not kill thread, kill program.
+                psdConnectionTries++;
+                std::cout << "PSD connection attempt " << psdConnectionTries << " / " << CONNECT_PSD_TRIES << "..." << std::endl;
+
+                // Attempt to reconnect.
+                rc = comms->connectPSD(psdConnected, psdUrc);
+                if (rc && psdConnected) {
+                    std::cout << "... PSD successfully connected." << std::endl;
+                    break;
+                } else {
+                    std::cerr << "... PSD connection attempt " << psdConnectionTries << " / " << CONNECT_PSD_TRIES << " failed." << std::endl;
+                }
+
+            } while (psdConnectionTries < CONNECT_PSD_TRIES);
+        }
+
+        // Failed to connect. Kill the thread.
+        if (!psdConnected) {
+            std::cerr << "Failed to connect PSD." << std::endl;
+            break;
+        }
+
+        // Try to get the latitude and longitude.
+        std::cout << "Getting device coordinates..." << std::endl;
+        rc = comms->getLocation(latLng);
+        if (!rc) {
+            std::cerr << "Failed to get the location." << std::endl;
+            continue;
+        }
+        std::cout << "... device coordinates (lat: " << latLng.first << ", lng: " << latLng.second << ") successfully obtained." << std::endl;
 
         // Permit the monitor state to handle the location; update state if necessary.
-        /*
+        std::cout << "Starting " << monitorState->getStateName() << " state checks..." << std::endl;
         toMonitorState = monitorState->handleLatLng(latLng);
-        if (toMonitorState != nullptr) { // if its null --> no change
+        if (toMonitorState != nullptr) {
+            std::cout << "Switching from state " << monitorState->getStateName() << " to state " << toMonitorState->getStateName() << "." << std::endl;
             delete monitorState;
             monitorState = toMonitorState;
+        } else {
+            std::cout << "No state change occurred." << std::endl;
         }
-         */
+        std::cout << "... state checks complete." << std::endl;
     }
+
+    // Clean up the monitor state.
+    delete monitorState;
+    monitorState = nullptr;
 }

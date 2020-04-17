@@ -8,25 +8,36 @@
 #define DAY_TIME_STRING_FORMAT "%d:%d"
 #define DAY_TIME_BUFFER_SIZE 6
 
-// Defines the constructor for the fence.
-Fence::Fence(bool safe) {
-    this->safe = safe;
-}
-
 // Explicitly define the fence.
-Fence::Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week) {
+Fence::Fence(std::string &name, bool safe,
+             const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week)
+{
+    this->name = name;
     this->safe = safe;
     this->week = week;
 }
 
+// Defines the constructor for the fence.
+Fence::Fence(std::string &name, bool safe)
+{
+    this->name = name;
+    this->safe = safe;
+}
+
 // The copy constructor.
 Fence::Fence(const Fence &fence) {
+    this->name = fence.name;
     this->safe = fence.safe;
     this->week = fence.week;
 }
 
 // Fence destructor.
 Fence::~Fence() = default;
+
+std::string& Fence::getName()
+{
+    return name;
+}
 
 bool isInLocation(std::pair<double, double> &pair);
 
@@ -111,9 +122,12 @@ web::json::value Fence::serialiseFence() {
     // The root fence json element.
     web::json::value jsonFence = web::json::value::object();
 
-
-    // Serialise generic fence attributes.
+    // Serialise the name and safety of the fence.
+    jsonFence[U(JSON_KEY_FENCE_NAME)] = web::json::value::string(name);
     jsonFence[U(JSON_KEY_FENCE_SAFE)] = web::json::value::boolean(safe);
+
+    // Serialise the week i.e. days and times.
+    jsonFence[U(JSON_KEY_FENCE_WEEK)] = web::json::value::object();
     for (auto &day : week) {
         for (int i = 0; i < day.second.size(); ++i) {
 
