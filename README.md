@@ -47,7 +47,7 @@ We welcome other contributions, too, so pull requests of patches, improvements, 
 For the coding conventions we use, please look at the <a href="https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Contributions#coding-conventions">wiki page</a> discussing it in depth!
 
 ## Feedback
-If you have any, more general feedback about our project, give us a shout by filling out this <a href="">form</a>!  [TODO]
+If you have any, more general feedback about our project, give us a shout by filling out this <a href="https://forms.gle/tGHM2jB7GBWfdgk3A">form</a>!
 
 <br>
 Feel free to also reach out to us via email, on beesafe.uofg [at] gmail.com!
