@@ -1,3 +1,26 @@
+/**
+ * \file Monitor.cpp
+ * \class Monitor
+ *
+ * \ingroup Monitor
+ *
+ * \brief The Monitor class, handling the threads of monitor state classes and connects the device and communication functionalities.
+ *
+ * The Monitor class maintains the threads for Active and Passive monitoring state, serving the account information that needs to be
+ * contacted in case of emergency, and facilitates the real-time connection between the communication module(package) and the
+ * administrative, device-side features.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #include "Monitor.h"
 
 #define CONNECT_PSD_TRIES 3

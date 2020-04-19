@@ -4,7 +4,10 @@ project(BeeSafePI)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# TODO: Implement conditionals for the Linux, windows, and apple.
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
+
+add_compile_options(--coverage -O0)
 
 if(UNIX AND APPLE)
     message(STATUS "Platform: Apple")
@@ -36,6 +39,7 @@ endif()
 
 find_package(cpprestsdk REQUIRED)
 
-add_executable(BeeSafePI src/BeeSafe.cpp src/geo/Fence.h src/geo/RoundFence.cpp src/geo/PolyFence.cpp src/contact/Contact.cpp src/contact/Contact.h src/geo/Fence.cpp src/geo/RoundFence.h src/geo/PolyFence.h src/device/Account.cpp src/device/Account.h src/device/AccountBuilder.cpp src/device/AccountBuilder.h src/monitor/Monitor.cpp src/monitor/Monitor.h src/monitor/states/MonitorState.cpp src/monitor/states/MonitorState.h src/monitor/states/PassiveMonitorState.cpp src/monitor/states/PassiveMonitorState.h src/monitor/states/ActiveMonitorState.cpp src/monitor/states/ActiveMonitorState.h src/comms/Comms.h src/comms/Comms.cpp src/comms/UBlox.h src/comms/UBlox.cpp src/comms/UArt.h src/comms/UArt.cpp src/BeeSafe.h)
-target_link_libraries(BeeSafePI PRIVATE cpprestsdk::cpprest)
+add_subdirectory(src)
 
+enable_testing()
+add_subdirectory(tests)

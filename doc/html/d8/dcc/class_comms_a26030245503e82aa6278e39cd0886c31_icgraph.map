@@ -1,0 +1,5 @@
+<map id="Comms::getLocation" name="Comms::getLocation">
+<area shape="rect" id="node2" href="$d9/df7/class_monitor.html#a81666ecd4a8db05fd3090f7e47eca6ed" title="Monitor::run" alt="" coords="196,5,287,32"/>
+<area shape="rect" id="node3" href="$d9/df7/class_monitor.html#a79e0c78d0973bee48418aedf3aedb2ba" title="Monitor::execute" alt="" coords="335,5,453,32"/>
+<area shape="rect" id="node4" href="$d9/df7/class_monitor.html#a5a01b1c1084f0826a01c184519491cf6" title="Monitor::start" alt="" coords="501,5,600,32"/>
+</map>

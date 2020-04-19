@@ -1,3 +1,30 @@
+/**
+ * \file Account.h
+ * \class Account
+ *
+ * \defgroup Device Device
+ * \brief The package handling the account creation and management
+ * \ingroup Device
+ *
+ * \brief The Account class creates the overall user Account object with the relevant Fences and Contacts
+ *
+ * The Account class creates the overall user Account object. This includes the Fences specified by the user with all their
+ * relevant details, as well as the Contacts who need to be notified in case the device leaves or heads into a Fence when
+ * not supposed to. The Account class is also the overall manager of JSON-C++ object conversions, facilitating the creation of
+ * the overall JSON data file related to a user.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
+
 #ifndef BEESAFEPI_ACCOUNT_H
 #define BEESAFEPI_ACCOUNT_H
 

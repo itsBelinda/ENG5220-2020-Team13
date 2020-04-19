@@ -1,3 +1,27 @@
+/**
+ * \file Fence.cpp
+ * \class Fence
+ *
+ * \ingroup Geo
+ *
+ * \brief The Fence parent class providing generic functionality for handling fences.
+ *
+ * The Fence class is the parent class to the Poly- and RoundFence classes. It provides methods to create and manage
+ * the details of fences regardless of type, such as what times on what days is it considered a safezone, checks if the
+ * device is within the time and physical boundaries of the location they are at, and provides a super function to
+ * converting the Fence objects into JSON objects to be handled by the online database.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #include "Fence.h"
 
 // System inclusions.

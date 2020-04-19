@@ -1,0 +1,68 @@
+\hypertarget{_account_8h}{}\section{software/\+Bee\+Safe\+P\+I/src/device/\+Account.h File Reference}
+\label{_account_8h}\index{software/\+Bee\+Safe\+P\+I/src/device/\+Account.\+h@{software/\+Bee\+Safe\+P\+I/src/device/\+Account.\+h}}
+{\ttfamily \#include \char`\"{}../contact/\+Contact.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../geo/\+Fence.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cpprest/json.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for Account.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d6/d7d/_account_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/d23/_account_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_account}{Account}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{class_account}{Account} class creates the overall user \hyperlink{class_account}{Account} object with the relevant Fences and Contacts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_account_8h_ac2f820be22c4390a71ec34abe54694c5}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+ME}~\char`\"{}Name\char`\"{}
+\item 
+\#define \hyperlink{_account_8h_a9a5dc301a4b04c85ce3b865530cd6ca7}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+C\+O\+N\+T\+A\+C\+TS}~\char`\"{}Contacts\char`\"{}
+\item 
+\#define \hyperlink{_account_8h_a83ba8a12dba5582a5a125d3ced877c6e}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+F\+E\+N\+C\+ES}~\char`\"{}Fences\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_account_8h_a9a5dc301a4b04c85ce3b865530cd6ca7}\label{_account_8h_a9a5dc301a4b04c85ce3b865530cd6ca7}} 
+\index{Account.\+h@{Account.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+C\+O\+N\+T\+A\+C\+TS@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+C\+O\+N\+T\+A\+C\+TS}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+C\+O\+N\+T\+A\+C\+TS@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+C\+O\+N\+T\+A\+C\+TS}!Account.\+h@{Account.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+C\+O\+N\+T\+A\+C\+TS}{JSON\_KEY\_ACCOUNT\_CONTACTS}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+C\+O\+N\+T\+A\+C\+TS~\char`\"{}Contacts\char`\"{}}
+
+
+
+Definition at line 43 of file Account.\+h.
+
+\mbox{\Hypertarget{_account_8h_a83ba8a12dba5582a5a125d3ced877c6e}\label{_account_8h_a83ba8a12dba5582a5a125d3ced877c6e}} 
+\index{Account.\+h@{Account.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+F\+E\+N\+C\+ES@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+F\+E\+N\+C\+ES}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+F\+E\+N\+C\+ES@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+F\+E\+N\+C\+ES}!Account.\+h@{Account.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+F\+E\+N\+C\+ES}{JSON\_KEY\_ACCOUNT\_FENCES}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+F\+E\+N\+C\+ES~\char`\"{}Fences\char`\"{}}
+
+
+
+Definition at line 44 of file Account.\+h.
+
+\mbox{\Hypertarget{_account_8h_ac2f820be22c4390a71ec34abe54694c5}\label{_account_8h_ac2f820be22c4390a71ec34abe54694c5}} 
+\index{Account.\+h@{Account.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+ME@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+ME}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+ME@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+ME}!Account.\+h@{Account.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+ME}{JSON\_KEY\_ACCOUNT\_NAME}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+ME~\char`\"{}Name\char`\"{}}
+
+
+
+Definition at line 42 of file Account.\+h.
+

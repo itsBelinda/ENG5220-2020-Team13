@@ -1,3 +1,30 @@
+/**
+ * \file Comms.h
+ * \class Comms
+ *
+ * \defgroup Comms Comms
+ * \brief The package handling the communication aspects of the project
+ * \ingroup Comms
+ *
+ * \brief A high-level wrapper for the communication features
+ *
+ * The Comms class acts as a high-level wrapper over the UBlox class, enabling the underlying device objects to be invoked in a thread-safe
+ * manner, concurrently. By calling the UBlox commands describing higher level communications functions such as getting a location and
+ * sending a text message, and "wrapping it" in a mutex lock it ensures the safe interactions with and operations of the
+ * hardware connected to the Raspberry Pi. Unless specified otherwise, functions within the class will block access to prevent
+ * errors / side-effects from propagating in lower levels; this is difficult to manage given the interoperability of functions.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #ifndef BEESAFEPI_COMMUNICATION_H
 #define BEESAFEPI_COMMUNICATION_H
 
@@ -10,14 +37,7 @@
 #include <utility>
 #include <mutex>
 
-/**
- * Comms class enables the underlying device objects to be invoked in a thread-safe
- * manner, concurrently.
- *
- * Unless specified otherwise, functions within the class will
- * block access to prevent errors / side-effects from propagating in lower levels;
- * this is difficult to manage given the interoperability of functions.
- */
+
 class Comms
 {
 
@@ -60,6 +80,7 @@ public:
     bool getLocation(std::pair<double, double> &latLng);
     bool getLocation(double &lat, double &lng);
 
+    // Sending a text message
     bool sendMessage(Contact &contact, const std::string &message);
     bool sendMessage(const std::string &phoneNumber, const std::string &message);
 

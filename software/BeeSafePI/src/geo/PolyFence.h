@@ -1,3 +1,28 @@
+/**
+ * \file PolyFence.h
+ * \class PolyFence
+ *
+ * \ingroup Geo
+ *
+ * \brief The PolyFence class contains the type specific methods and parameters relating to fences that are polygon shaped.
+ *
+ * The PolyFence class contains the type specific methods and parameters relating to fences that are polygon shaped.
+ * The functionality related to polygon fences describes the calculations of whether a location falls within a fence or not, setting
+ * the boundaries/dimensions of the polygon, the times and days of a fence counting as a safe zone, and the convesion of PolyFence
+ * objects into JSON format.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
+
 #ifndef BEESAFEPI_POLYFENCE_H
 #define BEESAFEPI_POLYFENCE_H
 

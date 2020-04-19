@@ -1,15 +1,47 @@
+/**
+ * \file AccountBuilder.cpp
+ * \class AccountBuilder
+ *
+ * \ingroup Device
+ *
+ * \brief The AccountBuilder class creates and maintains Fence, Account and Contact objects
+ *
+ * The AccountBuilder class is a utility, builder class creating Account, different types of Fence and Contact C++ objects from
+ * JSON file data from outside the immediate program. It parses the JSON objects and populates the appropriate C++ objects in the
+ * relevant format. It also verifies the correctness of the information relating to each class.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #include "AccountBuilder.h"
 
 // Used for parsing the time format.
 #define JSON_VALUE_TIME_FORMAT "%H:%M"
 
-// Initialise the device builder.
+/**
+ * Initialise the device builder.
+ *
+ * @param stream: the stringstream used to parse data from
+ * @param errorCode: the error code in which any errors need to be returned
+ */
 AccountBuilder::AccountBuilder(utility::stringstream_t &stream, std::error_code &errorCode)
 {
     this->root = web::json::value::parse(stream, errorCode);
 }
 
-// Builds an instance of the Account class.
+/**
+ * Builds an instance of the Account class.
+ *
+ * @return an account object created
+ */
 Account* AccountBuilder::build()
 {
     // Check whether the element matches the device file.
@@ -45,7 +77,12 @@ Account* AccountBuilder::build()
     return new Account(name, contacts, fences);
 }
 
-// Check that json has device attributes.
+/**
+ * Check that json has device attributes.
+ *
+ * @param jsonElement: the JSON element investigated
+ * @return a boolean value based on whether the JSON element has device attributes
+ */
 bool AccountBuilder::hasAccountAttributes(const web::json::value &jsonAccountElement)
 {
     return !jsonAccountElement.is_null() && jsonAccountElement.is_object()
@@ -54,7 +91,12 @@ bool AccountBuilder::hasAccountAttributes(const web::json::value &jsonAccountEle
            && jsonAccountElement.has_array_field(U(JSON_KEY_ACCOUNT_FENCES));
 }
 
-// Check that JSON element has Contact attributes i.e. structure.
+/**
+ * Check that JSON element has Contact attributes i.e. structure.
+ *
+* @param jsonElement: the JSON element investigated
+ * @return a boolean value based on whether the JSON element has contact attributes
+ */
 bool AccountBuilder::hasContactAttributes(const web::json::value &jsonElement)
 {
     return !jsonElement.is_null() && jsonElement.is_object()
@@ -64,7 +106,12 @@ bool AccountBuilder::hasContactAttributes(const web::json::value &jsonElement)
            && jsonElement.has_string_field(U(JSON_KEY_CONTACT_KEY));
 }
 
-// Check that the element has general fence attributes.
+/**
+ * Check that the element has general fence attributes.
+ *
+* @param jsonElement: the JSON element investigated
+ * @return a boolean value based on whether the JSON element has general fence attributes
+ */
 bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonFenceElement)
 {
     return !jsonFenceElement.is_null() && jsonFenceElement.is_object()
@@ -74,7 +121,12 @@ bool AccountBuilder::hasFenceAttributes(const web::json::value &jsonFenceElement
            && jsonFenceElement.has_field(U(JSON_KEY_FENCE_DEFINITION));
 }
 
-// Check that json element has round fence attributes.
+/**
+ * Check that json element has round fence attributes.
+ *
+ * @param jsonElement: the JSON element investigated
+ * @return a boolean value based on whether the JSON element has round fence attributes
+ */
 bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement)
 {
     bool rc = !jsonElement.is_null() && jsonElement.is_object()
@@ -84,13 +136,22 @@ bool AccountBuilder::hasRoundFenceAttributes(const web::json::value &jsonElement
     return rc;
 }
 
-// Check whether the element has poly fence structure.
+/**
+ * Check whether the element has poly fence structure.
+ *
+ * @param jsonElement: the json element investigated
+ * @return a boolean value based on whether the json element has polyfence attributes
+ */
 bool AccountBuilder::hasPolyFenceAttributes(const web::json::value &jsonElement)
 {
     return !jsonElement.is_null() && jsonElement.is_array();
 }
 
-// Generic function for clearing vectors.
+/**
+ * Generic function for clearing vectors.
+ *
+ * @param vector: the vector that needs to be cleared
+ */
 template<typename T>
 void AccountBuilder::clearVector(std::vector<T>& vector)
 {
@@ -100,7 +161,13 @@ void AccountBuilder::clearVector(std::vector<T>& vector)
     vector.clear();
 }
 
-// Build a contact vector.
+/**
+ * Builder method for creating a contact vector.
+ *
+ * @param jsonContacts: the contact input data in JSON format
+ * @param contacts: the contact vector that is to be populated with contact objects from the JSON data
+ * @return: a boolean value whether the operation succeeded and the object created
+ */
 bool AccountBuilder::buildContacts(const web::json::array &jsonContacts, std::vector<Contact *> &contacts)
 {
     Contact* contact = nullptr;
@@ -117,7 +184,13 @@ bool AccountBuilder::buildContacts(const web::json::array &jsonContacts, std::ve
     return true;
 }
 
-// Build a fence vector.
+/**
+ * Builder method to create a fence vector.
+ *
+ * @param jsonFences the fence input data in JSON format
+ * @param fences: The fence vector that is to be populated with the JSON data fences
+ * @return: a boolean value whether the operation succeeded and the object created
+ */
 bool AccountBuilder::buildFences(const web::json::array &jsonFences, std::vector<Fence *> &fences)
 {
     Fence* fence = nullptr;
@@ -135,7 +208,12 @@ bool AccountBuilder::buildFences(const web::json::array &jsonFences, std::vector
     return true;
 }
 
-// Used to create an instance of a Contact based on JSON element.
+/**
+ * Builder method used to create an instance of a Contact based on JSON element.
+ *
+ * @param json: the input data of the contact in JSON format
+ * @return: a new C++ Contact object with all the relevant parameters populated
+ */
 Contact* AccountBuilder::buildContact(const web::json::value &json)
 {
     return new Contact(
@@ -146,7 +224,12 @@ Contact* AccountBuilder::buildContact(const web::json::value &json)
     );
 }
 
-// Used to create an instance of a fence.
+/**
+ * Builder method used to create an instance of a fence.
+ *
+ * @param element: a json object containing all the data related to this fence object
+ * @return a fence object that holds all the relevant values
+ */
 Fence* AccountBuilder::buildFence(const web::json::value &element)
 {
 
@@ -166,7 +249,12 @@ Fence* AccountBuilder::buildFence(const web::json::value &element)
     }
 }
 
-// Creates a new instance of the timing map for a given fence.
+/**
+ * Creates a new instance of the timing map for a given fence.
+ *
+ * @param jsonWeek: the input week data as JSON
+ * @return a map structure of the week with the specific times and days added
+ */
 std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWeekMap(const web::json::value &jsonWeek)
 {
     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
@@ -207,7 +295,15 @@ std::map<int, std::vector<std::pair<std::tm, std::tm>>> AccountBuilder::buildWee
     return week;
 }
 
-// Create a new instance of round fence.
+/**
+ * Create a new instance of round fence.
+ *
+ * @param name: the name of the fence
+ * @param safe: whether the fence is safe or not
+ * @param week: the times and dates on which this zone is safe or not
+ * @param jsonFence: the fence details in json format
+ * @return A RoundFence c++ object populated with the values necessary
+ */
 RoundFence* AccountBuilder::buildRoundFence(std::string &name, bool safe, std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week,
                                             const web::json::value& jsonRoundFence)
 {
@@ -221,7 +317,15 @@ RoundFence* AccountBuilder::buildRoundFence(std::string &name, bool safe, std::m
     );
 }
 
-// Creates an instance of a poly fence.
+/**
+ * Creates an instance of a poly fence.
+ *
+ * @param name: the name of the fence
+ * @param safe: whether the fence is safe or not
+ * @param week: the times and dates on which this zone is safe or not
+ * @param jsonFence: the fence details in json format
+ * @return A PolyFence c++ object populated with the values necessary
+ */
 PolyFence* AccountBuilder::buildPolyFence(std::string &name, bool safe, std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week,
                                           const web::json::value& jsonFence)
 {

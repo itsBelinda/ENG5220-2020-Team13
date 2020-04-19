@@ -1,3 +1,26 @@
+/**
+ * \file AccountBuilder.h
+ * \class AccountBuilder
+ *
+ * \ingroup Device
+ *
+ * \brief The AccountBuilder class creates and maintains Fence, Account and Contact objects
+ *
+ * The AccountBuilder class is a utility, builder class creating Account, different types of Fence and Contact C++ objects from
+ * JSON file data from outside the immediate program. It parses the JSON objects and populates the appropriate C++ objects in the
+ * relevant format. It also verifies the correctness of the information relating to each class.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #ifndef BEESAFEPI_ACCOUNTBUILDER_H
 #define BEESAFEPI_ACCOUNTBUILDER_H
 
@@ -22,6 +45,7 @@ class AccountBuilder
 {
 
 public:
+    // Constructor
     AccountBuilder(utility::stringstream_t &stream, std::error_code &errorCode);
 
 private:

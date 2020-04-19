@@ -1,0 +1,7 @@
+<map id="UBlox::setSendMessageMode" name="UBlox::setSendMessageMode">
+<area shape="rect" id="node2" href="$d8/dcc/class_comms.html#a1b6f5cafba74fc0e175f057e15656362" title="Comms::setSendMessageMode" alt="" coords="252,5,461,32"/>
+<area shape="rect" id="node3" href="$da/df6/class_u_blox.html#a34c2f507ff3bbd21b9aea788a015527a" title="UBlox::init" alt="" coords="315,56,398,83"/>
+<area shape="rect" id="node4" href="$d8/dcc/class_comms.html#aa0519d3ed2d5bd6aad60101080ac2de7" title="Comms::init" alt="" coords="509,56,603,83"/>
+<area shape="rect" id="node5" href="$d5/d75/class_bee_safe_manager.html#a28306d7ccf7136a6086d666f4ebb6566" title="BeeSafeManager::initComms" alt="" coords="651,56,844,83"/>
+<area shape="rect" id="node6" href="$d5/d75/class_bee_safe_manager.html#a2f16b09c454e21c887d14ac5483973cf" title="BeeSafeManager::init" alt="" coords="892,56,1039,83"/>
+</map>

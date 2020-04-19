@@ -1,0 +1,317 @@
+\hypertarget{class_contact}{}\section{Contact Class Reference}
+\label{class_contact}\index{Contact@{Contact}}
+
+
+The \hyperlink{class_contact}{Contact} class handling the declaration and maintenance of emergency contact information.  
+
+
+
+
+{\ttfamily \#include $<$Contact.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_contact_a7851a082367f1d01b04b3f8467b9751c}{Contact} (const std\+::string \&\hyperlink{class_contact_af64e25f3271abad7970293e6adfdf457}{forename}, const std\+::string \&\hyperlink{class_contact_a22518b332de3bd09ed94eb4d9de54894}{surname}, const std\+::string \&\hyperlink{class_contact_abd24eed27b661da4ab20553443212437}{number}, const std\+::string \&\hyperlink{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}{key})
+\item 
+\hyperlink{class_contact_a9657abb8a68839149c8d928b4c16a82c}{Contact} (const \hyperlink{class_contact}{Contact} \&contact)
+\item 
+\hyperlink{class_contact_ab68013cc59e3d640735c573e52c35219}{$\sim$\+Contact} ()
+\item 
+const std\+::string \& \hyperlink{class_contact_a2a2311964fe1a1e48ff41f4ddf355c60}{get\+Forename} ()
+\item 
+const std\+::string \& \hyperlink{class_contact_aba3d4900ea3173f38b7f296536226bb9}{get\+Surname} ()
+\item 
+const std\+::string \& \hyperlink{class_contact_a612095b153e05538c32400c4c44cb1aa}{get\+Number} ()
+\item 
+const std\+::string \& \hyperlink{class_contact_a9be97218caf5efd7dabe2b237d85a22f}{get\+Key} ()
+\item 
+web\+::json\+::value \hyperlink{class_contact_ae52f56140bbde46dd30cb90dd6cfba4f}{serialise\+Contact} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_contact_af64e25f3271abad7970293e6adfdf457}{forename}
+\item 
+std\+::string \hyperlink{class_contact_a22518b332de3bd09ed94eb4d9de54894}{surname}
+\item 
+std\+::string \hyperlink{class_contact_abd24eed27b661da4ab20553443212437}{number}
+\item 
+std\+::string \hyperlink{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}{key}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_contact}{Contact} class handling the declaration and maintenance of emergency contact information. 
+
+The \hyperlink{class_contact}{Contact} class creates the objects containing the information of emergency contacts that must be notified when the device leaves a designated fence area/safe zone, and manages this information\textquotesingle{}s conversion to J\+S\+ON format for the database online.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 38 of file Contact.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_contact_a7851a082367f1d01b04b3f8467b9751c}\label{class_contact_a7851a082367f1d01b04b3f8467b9751c}} 
+\index{Contact@{Contact}!Contact@{Contact}}
+\index{Contact@{Contact}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{Contact()}{Contact()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Contact\+::\+Contact (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{forename,  }\item[{const std\+::string \&}]{surname,  }\item[{const std\+::string \&}]{number,  }\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+The explicit constructor for the \hyperlink{class_contact}{Contact} class
+
+
+\begin{DoxyParams}{Parameters}
+{\em forename} & The contact\textquotesingle{}s forename \\
+\hline
+{\em surname} & The contact\textquotesingle{}s surname \\
+\hline
+{\em number} & The contact\textquotesingle{}s phone number \\
+\hline
+{\em key} & The user/contact\textquotesingle{}s A\+PI key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file Contact.\+cpp.
+
+
+\begin{DoxyCode}
+36 \{
+37     this->\hyperlink{class_contact_af64e25f3271abad7970293e6adfdf457}{forename} = \hyperlink{class_contact_af64e25f3271abad7970293e6adfdf457}{forename};
+38     this->\hyperlink{class_contact_a22518b332de3bd09ed94eb4d9de54894}{surname} = \hyperlink{class_contact_a22518b332de3bd09ed94eb4d9de54894}{surname};
+39     this->\hyperlink{class_contact_abd24eed27b661da4ab20553443212437}{number} = \hyperlink{class_contact_abd24eed27b661da4ab20553443212437}{number};
+40     this->\hyperlink{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}{key} = \hyperlink{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}{key};
+41 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_contact_a9657abb8a68839149c8d928b4c16a82c}\label{class_contact_a9657abb8a68839149c8d928b4c16a82c}} 
+\index{Contact@{Contact}!Contact@{Contact}}
+\index{Contact@{Contact}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{Contact()}{Contact()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Contact\+::\+Contact (\begin{DoxyParamCaption}\item[{const \hyperlink{class_contact}{Contact} \&}]{contact }\end{DoxyParamCaption})}
+
+The \hyperlink{class_contact}{Contact} class copy constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em contact} & the contact object to be copied \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file Contact.\+cpp.
+
+
+\begin{DoxyCode}
+49 \{
+50     this->\hyperlink{class_contact_af64e25f3271abad7970293e6adfdf457}{forename} = contact.\hyperlink{class_contact_af64e25f3271abad7970293e6adfdf457}{forename};
+51     this->\hyperlink{class_contact_a22518b332de3bd09ed94eb4d9de54894}{surname} = contact.\hyperlink{class_contact_a22518b332de3bd09ed94eb4d9de54894}{surname};
+52     this->\hyperlink{class_contact_abd24eed27b661da4ab20553443212437}{number} = contact.\hyperlink{class_contact_abd24eed27b661da4ab20553443212437}{number};
+53     this->\hyperlink{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}{key} = contact.\hyperlink{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}{key};
+54 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{dd/d2a/class_contact_a9657abb8a68839149c8d928b4c16a82c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_contact_ab68013cc59e3d640735c573e52c35219}\label{class_contact_ab68013cc59e3d640735c573e52c35219}} 
+\index{Contact@{Contact}!````~Contact@{$\sim$\+Contact}}
+\index{````~Contact@{$\sim$\+Contact}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{$\sim$\+Contact()}{~Contact()}}
+{\footnotesize\ttfamily Contact\+::$\sim$\+Contact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+The \hyperlink{class_contact}{Contact} class destructor. Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{dd/d2a/class_contact_ab68013cc59e3d640735c573e52c35219_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_contact_a2a2311964fe1a1e48ff41f4ddf355c60}\label{class_contact_a2a2311964fe1a1e48ff41f4ddf355c60}} 
+\index{Contact@{Contact}!get\+Forename@{get\+Forename}}
+\index{get\+Forename@{get\+Forename}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{get\+Forename()}{getForename()}}
+{\footnotesize\ttfamily const std\+::string \& Contact\+::get\+Forename (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A getter for the first name of the contact. A public accessor for an otherwise private variable.
+
+\begin{DoxyReturn}{Returns}
+the contact\textquotesingle{}s forename 
+\end{DoxyReturn}
+
+
+Definition at line 67 of file Contact.\+cpp.
+
+
+\begin{DoxyCode}
+68 \{
+69     \textcolor{keywordflow}{return} \hyperlink{class_contact_af64e25f3271abad7970293e6adfdf457}{forename};
+70 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_contact_a9be97218caf5efd7dabe2b237d85a22f}\label{class_contact_a9be97218caf5efd7dabe2b237d85a22f}} 
+\index{Contact@{Contact}!get\+Key@{get\+Key}}
+\index{get\+Key@{get\+Key}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{get\+Key()}{getKey()}}
+{\footnotesize\ttfamily const std\+::string \& Contact\+::get\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A getter for the A\+PI key of the contact. A public accessor for an otherwise private variable.
+
+\begin{DoxyReturn}{Returns}
+the contact/user A\+PI key 
+\end{DoxyReturn}
+
+
+Definition at line 100 of file Contact.\+cpp.
+
+
+\begin{DoxyCode}
+101 \{
+102     \textcolor{keywordflow}{return} \hyperlink{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}{key};
+103 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_contact_a612095b153e05538c32400c4c44cb1aa}\label{class_contact_a612095b153e05538c32400c4c44cb1aa}} 
+\index{Contact@{Contact}!get\+Number@{get\+Number}}
+\index{get\+Number@{get\+Number}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{get\+Number()}{getNumber()}}
+{\footnotesize\ttfamily const std\+::string \& Contact\+::get\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A getter for the number of the contact. A public accessor for an otherwise private variable.
+
+\begin{DoxyReturn}{Returns}
+the contact phone number 
+\end{DoxyReturn}
+
+
+Definition at line 89 of file Contact.\+cpp.
+
+
+\begin{DoxyCode}
+90 \{
+91     \textcolor{keywordflow}{return} \hyperlink{class_contact_abd24eed27b661da4ab20553443212437}{number};
+92 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d2a/class_contact_a612095b153e05538c32400c4c44cb1aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_contact_aba3d4900ea3173f38b7f296536226bb9}\label{class_contact_aba3d4900ea3173f38b7f296536226bb9}} 
+\index{Contact@{Contact}!get\+Surname@{get\+Surname}}
+\index{get\+Surname@{get\+Surname}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{get\+Surname()}{getSurname()}}
+{\footnotesize\ttfamily const std\+::string \& Contact\+::get\+Surname (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A getter for the last name of the contact. A public accessor for an otherwise private variable.
+
+\begin{DoxyReturn}{Returns}
+the contact\textquotesingle{}s surname. 
+\end{DoxyReturn}
+
+
+Definition at line 78 of file Contact.\+cpp.
+
+
+\begin{DoxyCode}
+79 \{
+80     \textcolor{keywordflow}{return} \hyperlink{class_contact_a22518b332de3bd09ed94eb4d9de54894}{surname};
+81 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_contact_ae52f56140bbde46dd30cb90dd6cfba4f}\label{class_contact_ae52f56140bbde46dd30cb90dd6cfba4f}} 
+\index{Contact@{Contact}!serialise\+Contact@{serialise\+Contact}}
+\index{serialise\+Contact@{serialise\+Contact}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{serialise\+Contact()}{serialiseContact()}}
+{\footnotesize\ttfamily web\+::json\+::value Contact\+::serialise\+Contact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A method to serialise the contact into a J\+S\+ON element.
+
+\begin{DoxyReturn}{Returns}
+a J\+S\+ON object containing the \hyperlink{class_contact}{Contact} information 
+\end{DoxyReturn}
+
+
+Definition at line 110 of file Contact.\+cpp.
+
+
+\begin{DoxyCode}
+111 \{
+112     web::json::value jsonContact = web::json::value::object();
+113     jsonContact[utility::string\_t(U(\hyperlink{_contact_8h_a18b1ad44af79fea17bfed22ff66f94f8}{JSON\_KEY\_CONTACT\_FORENAME}))] = 
+      web::json::value::string(U(\hyperlink{class_contact_af64e25f3271abad7970293e6adfdf457}{forename}));
+114     jsonContact[utility::string\_t(U(\hyperlink{_contact_8h_a579318fe639c3cf3628817c4090be13e}{JSON\_KEY\_CONTACT\_SURNAME}))] = 
+      web::json::value::string(U(\hyperlink{class_contact_a22518b332de3bd09ed94eb4d9de54894}{surname}));
+115     jsonContact[utility::string\_t(U(\hyperlink{_contact_8h_a97dc3d327e5283642c81bc7d6a572ced}{JSON\_KEY\_CONTACT\_NUMBER}))] = 
+      web::json::value::string(U(\hyperlink{class_contact_abd24eed27b661da4ab20553443212437}{number}));
+116     jsonContact[utility::string\_t(U(\hyperlink{_contact_8h_a90f2095b835454d47c72995503684937}{JSON\_KEY\_CONTACT\_KEY}))] = web::json::value::string(
+      U(\hyperlink{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}{key}));
+117     \textcolor{keywordflow}{return} jsonContact;
+118 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_contact_af64e25f3271abad7970293e6adfdf457}\label{class_contact_af64e25f3271abad7970293e6adfdf457}} 
+\index{Contact@{Contact}!forename@{forename}}
+\index{forename@{forename}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{forename}{forename}}
+{\footnotesize\ttfamily std\+::string Contact\+::forename\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 63 of file Contact.\+h.
+
+\mbox{\Hypertarget{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}\label{class_contact_a5bc7925e6356e29c9cbad7266f0a4340}} 
+\index{Contact@{Contact}!key@{key}}
+\index{key@{key}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{key}{key}}
+{\footnotesize\ttfamily std\+::string Contact\+::key\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 66 of file Contact.\+h.
+
+\mbox{\Hypertarget{class_contact_abd24eed27b661da4ab20553443212437}\label{class_contact_abd24eed27b661da4ab20553443212437}} 
+\index{Contact@{Contact}!number@{number}}
+\index{number@{number}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{number}{number}}
+{\footnotesize\ttfamily std\+::string Contact\+::number\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 65 of file Contact.\+h.
+
+\mbox{\Hypertarget{class_contact_a22518b332de3bd09ed94eb4d9de54894}\label{class_contact_a22518b332de3bd09ed94eb4d9de54894}} 
+\index{Contact@{Contact}!surname@{surname}}
+\index{surname@{surname}!Contact@{Contact}}
+\subsubsection{\texorpdfstring{surname}{surname}}
+{\footnotesize\ttfamily std\+::string Contact\+::surname\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 64 of file Contact.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/contact/\hyperlink{_contact_8h}{Contact.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/contact/\hyperlink{_contact_8cpp}{Contact.\+cpp}\end{DoxyCompactItemize}

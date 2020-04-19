@@ -1,0 +1,15 @@
+<map id="software/BeeSafePI/src/comms/UBlox.h" name="software/BeeSafePI/src/comms/UBlox.h">
+<area shape="rect" id="node2" href="$d1/dd7/_comms_8h.html" title="software/BeeSafePI\l/src/comms/Comms.h" alt="" coords="474,95,626,136"/>
+<area shape="rect" id="node14" href="$db/d60/_u_blox_8cpp.html" title="software/BeeSafePI\l/src/comms/UBlox.cpp" alt="" coords="650,95,806,136"/>
+<area shape="rect" id="node3" href="$d7/db3/_bee_safe_8h.html" title="software/BeeSafePI\l/src/BeeSafe.h" alt="" coords="102,496,240,537"/>
+<area shape="rect" id="node5" href="$dd/d29/_monitor_8h.html" title="software/BeeSafePI\l/src/monitor/Monitor.h" alt="" coords="431,399,580,441"/>
+<area shape="rect" id="node7" href="$de/d7f/_monitor_state_8h.html" title="software/BeeSafePI\l/src/monitor/states\l/MonitorState.h" alt="" coords="399,184,538,240"/>
+<area shape="rect" id="node13" href="$d1/dd8/_comms_8cpp.html" title="software/BeeSafePI\l/src/comms/Comms.cpp" alt="" coords="669,191,836,233"/>
+<area shape="rect" id="node4" href="$dd/d20/_bee_safe_8cpp.html" title="software/BeeSafePI\l/src/BeeSafe.cpp" alt="" coords="102,585,240,627"/>
+<area shape="rect" id="node6" href="$dd/d8c/_monitor_8cpp.html" title="software/BeeSafePI\l/src/monitor/Monitor.cpp" alt="" coords="424,496,587,537"/>
+<area shape="rect" id="node8" href="$dd/d42/_active_monitor_state_8h.html" title="software/BeeSafePI\l/src/monitor/states\l/ActiveMonitorState.h" alt="" coords="394,288,542,344"/>
+<area shape="rect" id="node11" href="$d9/d8a/_passive_monitor_state_8h.html" title="software/BeeSafePI\l/src/monitor/states\l/PassiveMonitorState.h" alt="" coords="48,288,206,344"/>
+<area shape="rect" id="node12" href="$d8/db9/_monitor_state_8cpp.html" title="software/BeeSafePI\l/src/monitor/states\l/MonitorState.cpp" alt="" coords="231,288,370,344"/>
+<area shape="rect" id="node9" href="$d3/d4a/_active_monitor_state_8cpp.html" title="software/BeeSafePI\l/src/monitor/states\l/ActiveMonitorState.cpp" alt="" coords="47,392,210,448"/>
+<area shape="rect" id="node10" href="$df/da3/_passive_monitor_state_8cpp.html" title="software/BeeSafePI\l/src/monitor/states\l/PassiveMonitorState.cpp" alt="" coords="234,392,406,448"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="Monitor::join" name="Monitor::join">
+<area shape="rect" id="node2" href="$d5/d75/class_bee_safe_manager.html#ac99fb148bcac3aa3f51e96fdf7bc0c1b" title="BeeSafeManager::~BeeSafe\lManager" alt="" coords="147,5,335,47"/>
+<area shape="rect" id="node3" href="$d5/d75/class_bee_safe_manager.html#a2f16b09c454e21c887d14ac5483973cf" title="BeeSafeManager::init" alt="" coords="167,71,314,98"/>
+<area shape="rect" id="node5" href="$d5/d75/class_bee_safe_manager.html#a7242d89761621de0e09ec9ea360fca27" title="BeeSafeManager::start" alt="" coords="163,122,319,149"/>
+<area shape="rect" id="node6" href="$d9/df7/class_monitor.html#a5a01b1c1084f0826a01c184519491cf6" title="Monitor::start" alt="" coords="191,173,290,199"/>
+<area shape="rect" id="node7" href="$d9/df7/class_monitor.html#a13fb20dc3bd5c8739f5a820cf7433cd8" title="Monitor::stop" alt="" coords="191,223,290,250"/>
+<area shape="rect" id="node4" href="$d5/d75/class_bee_safe_manager.html#a28306d7ccf7136a6086d666f4ebb6566" title="BeeSafeManager::initComms" alt="" coords="383,71,576,98"/>
+</map>
