@@ -1,7 +1,7 @@
 # ENG5220-2020-Team13: BeeSafe
 ## Status:
-[![build](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13.svg?token=kxeDEXY2kiCv968c3pfm&branch=unit_tests)](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13)
-[![codecov](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13/branch/unit_tests/graph/badge.svg?)](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13)
+[![build](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13.svg?token=kxeDEXY2kiCv968c3pfm&branch=devpi)](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13)
+[![codecov](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13/branch/devpi/graph/badge.svg?)](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13)
 <br>Currently in development.
 
 ## Description
