@@ -34,12 +34,6 @@ int main () {
 //    //-----serialiseFence()-----
 //    //tested for in Round/PolyFence I guess
 //
-//    //-----isInTime()-----
-//    //Note: adjust to and fromTimes at the beginning of test for this to pass
-//    if(!(fence1->isInTime())){
-//        cout << "Test failed";
-//    }
-//
 //    std::tm testTime = {0};
 //    testTime.tm_hour = 13;
 //    testTime.tm_min = 30;

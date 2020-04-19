@@ -7,7 +7,7 @@
 
 #define INIT_COMMS_TRIES 3
 
-#define ACCOUNT_PATH "/home/dans/dev/software/BeeSafePI/Account.json"
+#define ACCOUNT_PATH "../../data/Account.json"
 
 /**
  * Constructor used to initialise an instance of the BeeSafeManager class.
@@ -113,7 +113,7 @@ bool BeeSafeManager::init()
     if (account == nullptr) {
         std::cerr << "Failed to initialise account." << std::endl;
     } else {
-        account->saveSerialisedAccount("/home/dans/dev/software/BeeSafePI/Account_Verif.json");
+        account->saveSerialisedAccount("../../data/Account_Verif.json");
         std::cout << "... account successfully initialised." << std::endl;
     }
 
