@@ -169,7 +169,7 @@
     </div>
 	<script type="text/javascript">
 		// Your web app's Firebase configuration
-	      var firebaseConfig = {
+	    var firebaseConfig = {
 		    apiKey: "AIzaSyD7Z6l8GWY4cOdxW98s_1toZubnsBQkkTc",
 		    authDomain: "beesafeeng5220.firebaseapp.com",
 		    databaseURL: "https://beesafeeng5220.firebaseio.com",
@@ -177,8 +177,7 @@
 		    storageBucket: "beesafeeng5220.appspot.com",
 		    messagingSenderId: "32397401630",
 		    appId: "1:32397401630:web:605a5a25c385f65207180f"
-	      };
-
+	    };
 	    // Initialize Firebase
 	    var db = firebase.initializeApp(firebaseConfig).database();
 		
@@ -195,18 +194,19 @@
 			subdomains: ['a','b','c']
 		}).addTo( map );
 
-		var positionRefs = db.ref('positions');
+		//TODO: Child location needs to be added to JSON file on the Pi end, then we can configure the web app to show it
+		var positionRefs = db.ref('Positions');
 		positionRefs.on('value',function(snapshot) {
 			snapshot.forEach(function(subSnapshot) {
 				var position = subSnapshot.val();
-				if (position["name"]=="current"){
+				if (position["Name"]=="current"){
 					var coordinates = position["coordinates"];
 					var currentMarker = L.AwesomeMarkers.icon({icon: 'star', markerColor: 'red'});
 					L.marker([coordinates["latitude"],coordinates["longitude"]], {icon: currentMarker})
 					.bindPopup( "Current location" )
 					.addTo( map );
 				}
-				if (position["name"]=="old"){
+				if (position["Name"]=="old"){
 					var coordinates = position["coordinates"];
 					var currentMarker = L.AwesomeMarkers.icon({icon: 'star', markerColor: 'blue'});
 					L.marker([coordinates["latitude"],coordinates["longitude"]], {icon: currentMarker})
@@ -218,36 +218,38 @@
 		
 		var fenceArray = [];
 		
-		var fenceRefs = db.ref('fences');
+		var fenceRefs = db.ref('Fences');
 		fenceRefs.on('value',function(snapshot) {
 			snapshot.forEach(function(subSnapshot) {
 				var location = subSnapshot.val();
-				var tempFence = location["fence"];
+				var tempFence = location["Definition"];
+				console.log(tempFence);
 				
-				if (tempFence["type"]=="round"){
-				L.circle([tempFence["coordinates"]["latitude"], tempFence["coordinates"]["longitude"]], {radius: tempFence["radius"], color: 'green'})
-				.bindPopup(location["name"])
+				if (tempFence instanceof Array){
+					console.log("poly");
+					var latlngs = [];
+					for(var i = 0; i < tempFence.length; i++)
+					{
+						var coordItem = tempFence[i];
+						latlngs.push([coordItem["Latitude"], coordItem["Longitude"]]);
+					}
+					console.log(latlngs);
+					
+					var polygon = L.polygon(latlngs, {color: 'blue'})
+					.bindPopup(location["Name"])
+					.addTo(map);
+					
+					fenceList.insertAdjacentHTML( 'beforeend',"<a href=\"#\" class=\"list-group-item\"> <i class=\"fa fa-globe\"></i> " + location["Name"]+ " </a>");
+				} else {
+				console.log("round");
+				L.circle([tempFence["Latitude"], tempFence["Longitude"]], {radius: tempFence["Radius"], color: 'green'})
+				.bindPopup(location["Name"])
 				.addTo(map);
 				
-				fenceList.insertAdjacentHTML( 'beforeend',"<a href=\"#\" class=\"list-group-item\"> <i class=\"fa fa-globe\"></i> " + location["name"]+ " </a>");
+				fenceList.insertAdjacentHTML( 'beforeend',"<a href=\"#\" class=\"list-group-item\"> <i class=\"fa fa-globe\"></i> " + location["Name"]+ " </a>");
 				}
 				
-				if (tempFence["type"]=="poly"){
-				var tempCoord = tempFence["coordinates"];
-				var latlngs = [];
-				for(var i = 0; i < tempCoord.length; i++)
-				{
-					var coordItem = tempCoord[i];
-					latlngs.push([coordItem["latitude"], coordItem["longitude"]]);
-				}
-				console.log(latlngs);
 				
-				var polygon = L.polygon(latlngs, {color: 'blue'})
-				.bindPopup(location["name"])
-				.addTo(map);
-				
-				fenceList.insertAdjacentHTML( 'beforeend',"<a href=\"#\" class=\"list-group-item\"> <i class=\"fa fa-globe\"></i> " + location["name"]+ " </a>");
-				}
 			});
 		});
 		
