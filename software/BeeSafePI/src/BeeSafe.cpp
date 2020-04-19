@@ -1,3 +1,26 @@
+/**
+ * \file BeeSafe.cpp
+ * \class BeeSafeManager
+ *
+ * \ingroup BeeSafePi
+ *
+ * \brief The BeeSafe class initiates the complete program
+ *
+ * The BeeSafe class creates the instances of classes required to communicate with the hardware, the monitors overseeing
+ * that, and the account information to whom the system must reach out in case of an emergency. Containing the main() function,
+ * this is the root of the BeeSafe API.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #include "BeeSafe.h"
 
 #include "device/AccountBuilder.h"
@@ -5,8 +28,11 @@
 #include <utility>
 #include <iostream>
 
+// The limit after how many failed initialisations should
+// Comms be considered broken and the program stop running
 #define INIT_COMMS_TRIES 3
 
+// The path of the JSON file read from and into as local data backup
 #define ACCOUNT_PATH "../../data/Account.json"
 
 /**
@@ -229,7 +255,11 @@ Account* BeeSafeManager::initAccount(const char* const path)
     }
 }
 
-
+/**
+ * A method to start the monitor thread.
+ *
+ * @return True if the thread could be successfully started.
+ */
 bool BeeSafeManager::start()
 {
 
@@ -247,6 +277,13 @@ bool BeeSafeManager::start()
     return true;
 }
 
+/**
+ * A method to create a user account with all necessary details filled in for both the Contacts and Fences objects
+ * This is then passed to the program based on which the program verifies the movements of the device, and takes
+ * appropriate responses if an alert of incorrect action is received. This method creates a weekly safe time rota,
+ * and uses sets of coordinates to create fences for the user. Once the emergency contact is added, the details are
+ * used to create the Account object.
+ */
 void createAccount()
 {
     // Create temp times.
@@ -361,6 +398,11 @@ void createAccount()
     account.saveSerialisedAccount(ACCOUNT_PATH);
 }
 
+/**
+ * The main function initialising and running the program.
+ *
+ * @return Returns 0 if the run was successful, otherwise returns 1.
+ */
 int main()
 {
 

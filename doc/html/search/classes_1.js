@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['comms_101',['Comms',['../class_comms.html',1,'']]],
-  ['contact_102',['Contact',['../class_contact.html',1,'']]]
+  ['beesafemanager',['BeeSafeManager',['../d5/d75/class_bee_safe_manager.html',1,'']]]
 ];

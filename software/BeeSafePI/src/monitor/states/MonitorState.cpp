@@ -1,3 +1,25 @@
+/**
+ * \file MonitorState.cpp
+ * \class MonitorState
+ *
+ * \ingroup Monitor
+ *
+ * \brief The parent monitor state class
+ *
+ * The parent class to ActiveMonitorState and PassiveMonitorState. It provides generic functionality
+ * by defining how to handle when the device crosses a fence boundary.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #include "MonitorState.h"
 
 /**

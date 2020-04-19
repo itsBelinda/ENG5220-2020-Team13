@@ -1,0 +1,485 @@
+\hypertarget{class_u_art}{}\section{U\+Art Class Reference}
+\label{class_u_art}\index{U\+Art@{U\+Art}}
+
+
+The lowest level communication handler between the Pi and the P\+CB.  
+
+
+
+
+{\ttfamily \#include $<$U\+Art.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_art_a2704c05ac50a1817a56d74010f18057a}{U\+Art} ()
+\item 
+\hyperlink{class_u_art_af512edbca927cd2c76b72c33c13c93d0}{$\sim$\+U\+Art} ()
+\item 
+bool \hyperlink{class_u_art_a51adaa81c08d92599768c0303e5abc94}{init} ()
+\item 
+bool \hyperlink{class_u_art_a40bc3c5d20a6c316004bab3ef45e6916}{has\+Device} ()
+\item 
+int \hyperlink{class_u_art_aa7d8ab3e9439a553764e0fd81d83f143}{get\+Device} ()
+\item 
+ssize\+\_\+t \hyperlink{class_u_art_a4dcaf74a46b8c76784511284f330a97f}{read\+Expected} (char $\ast$buffer, size\+\_\+t bytes\+Expected, int timeout\+Ms)
+\item 
+ssize\+\_\+t \hyperlink{class_u_art_aa4818ca67447e251680b4b8d28c8bba5}{read\+Next} (char $\ast$result\+Buffer, size\+\_\+t result\+Buffer\+Len, int timeout\+Ms)
+\item 
+ssize\+\_\+t \hyperlink{class_u_art_aad1ddb133fe430a92527584eec2e674f}{write\+Next} (const std\+::string \&command)
+\item 
+ssize\+\_\+t \hyperlink{class_u_art_a6353ec5c21b038ca034bacaca8873713}{write\+Next} (const char $\ast$command)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The lowest level communication handler between the Pi and the P\+CB. 
+
+The \hyperlink{class_u_art}{U\+Art} class handles the low-\/level communication between the Raspberry Pi and the P\+CB (specifically the Ublox G\+SM module on it), implementing the Universal Asynchronous Receiver/\+Transmitter protocol. This class opens and closes the tty devices on the Pi so that it can communicate with the P\+CB via G\+P\+IO pins using the U\+A\+RT protocol. The class contains methods and parameters that pertain to byte-\/level communication via the protocol, including the specific configuration options necessary.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 31 of file U\+Art.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_u_art_a2704c05ac50a1817a56d74010f18057a}\label{class_u_art_a2704c05ac50a1817a56d74010f18057a}} 
+\index{U\+Art@{U\+Art}!U\+Art@{U\+Art}}
+\index{U\+Art@{U\+Art}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{U\+Art()}{UArt()}}
+{\footnotesize\ttfamily U\+Art\+::\+U\+Art (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor initialises an instance of the \hyperlink{class_u_art}{U\+Art} interface class. Note, this does not establish a connection. This should be done by explicitly calling the \hyperlink{class_u_art_a51adaa81c08d92599768c0303e5abc94}{init()} function on the instance. 
+
+Definition at line 51 of file U\+Art.\+cpp.
+
+
+\begin{DoxyCode}
+52 \{
+53     \hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} = -1;
+54 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_u_art_af512edbca927cd2c76b72c33c13c93d0}\label{class_u_art_af512edbca927cd2c76b72c33c13c93d0}} 
+\index{U\+Art@{U\+Art}!````~U\+Art@{$\sim$\+U\+Art}}
+\index{````~U\+Art@{$\sim$\+U\+Art}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{$\sim$\+U\+Art()}{~UArt()}}
+{\footnotesize\ttfamily U\+Art\+::$\sim$\+U\+Art (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor is responsible for cleaning up the resources occupied. Note, this will implicitly close the device. 
+
+Definition at line 60 of file U\+Art.\+cpp.
+
+
+\begin{DoxyCode}
+61 \{
+62     \textcolor{keywordflow}{if} (\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} != -1) \{
+63         close(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device});
+64     \}
+65 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_u_art_aa7d8ab3e9439a553764e0fd81d83f143}\label{class_u_art_aa7d8ab3e9439a553764e0fd81d83f143}} 
+\index{U\+Art@{U\+Art}!get\+Device@{get\+Device}}
+\index{get\+Device@{get\+Device}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{get\+Device()}{getDevice()}}
+{\footnotesize\ttfamily int U\+Art\+::get\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the device for which the U\+A\+RT serial connection has been established.
+
+\begin{DoxyReturn}{Returns}
+!=-\/1 i.\+e. the device, otherwise -\/1 (no device present). 
+\end{DoxyReturn}
+
+
+Definition at line 152 of file U\+Art.\+cpp.
+
+
+\begin{DoxyCode}
+153 \{
+154     \textcolor{keywordflow}{return} \hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device};
+155 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_u_art_a40bc3c5d20a6c316004bab3ef45e6916}\label{class_u_art_a40bc3c5d20a6c316004bab3ef45e6916}} 
+\index{U\+Art@{U\+Art}!has\+Device@{has\+Device}}
+\index{has\+Device@{has\+Device}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{has\+Device()}{hasDevice()}}
+{\footnotesize\ttfamily bool U\+Art\+::has\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter for determining if the device connection has successfully been established and configured.
+
+\begin{DoxyReturn}{Returns}
+True if the device is open (!=-\/1) and configured, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 142 of file U\+Art.\+cpp.
+
+
+\begin{DoxyCode}
+143 \{
+144     \textcolor{keywordflow}{return} \hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} != -1;
+145 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_u_art_a51adaa81c08d92599768c0303e5abc94}\label{class_u_art_a51adaa81c08d92599768c0303e5abc94}} 
+\index{U\+Art@{U\+Art}!init@{init}}
+\index{init@{init}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily bool U\+Art\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Method invocation establishes a connection with the u-\/blox device via the U\+A\+RT interface. This function should be invoked explicitly.
+
+\begin{DoxyReturn}{Returns}
+True if the serial connection via the serial interface has been successfully established and configured, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 74 of file U\+Art.\+cpp.
+
+
+\begin{DoxyCode}
+75 \{
+76 
+77     \textcolor{comment}{// If the device is open, close it.}
+78     \textcolor{keywordflow}{if} (\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} != -1) \{
+79         close(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device});
+80     \}
+81 
+82     \textcolor{comment}{// Open the device.}
+83     \hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} = open(\hyperlink{_u_art_8cpp_a74925a96730e9a56b81fc0715cfc36a3}{DEVICE\_PATH}, O\_RDWR | O\_NOCTTY | O\_NONBLOCK);
+84     \textcolor{keywordflow}{if} (\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} == -1) \{
+85         fprintf(stderr, \textcolor{stringliteral}{"Failed to open device\(\backslash\)r\(\backslash\)n"});
+86         fprintf(stderr, \textcolor{stringliteral}{"Error: %s\(\backslash\)n"},strerror(errno));
+87         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+88     \}
+89 
+90     \textcolor{comment}{// Get the current device configuration.}
+91     \textcolor{keyword}{struct }termios configuration = \{0\};
+92     \textcolor{keywordflow}{if} (tcgetattr(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}, &configuration) != 0) \{
+93         \textcolor{keywordflow}{goto} err;
+94     \}
+95 
+96     \textcolor{comment}{// Reconfigure the device.}
+97     configuration.c\_cflag &= ~CSTOPB;
+98     configuration.c\_cflag |= CLOCAL;
+99     configuration.c\_cflag |= CREAD;
+100     configuration.c\_cc[VTIME] = 0;
+101     configuration.c\_cc[VMIN] = 0;
+102     configuration.c\_iflag = 0;
+103     configuration.c\_oflag = 0;
+104     configuration.c\_lflag = 0;
+105 
+106     \textcolor{comment}{// Set the speed.}
+107     \textcolor{keywordflow}{if} (cfsetspeed(&configuration, \hyperlink{_u_art_8cpp_a6855b12895cf5ae6c2d37d2f37cedcd3}{DEVICE\_BAUD\_RATE})) \{
+108         \textcolor{keywordflow}{goto} err;
+109     \}
+110 
+111     cfmakeraw(&configuration);
+112 
+113     \textcolor{comment}{// Set the parameters associated with the terminal.}
+114     \textcolor{keywordflow}{if} (tcsetattr(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}, TCSANOW, &configuration) < 0
+115         || tcsetattr(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}, TCSAFLUSH, &configuration) < 0) \{
+116         \textcolor{keywordflow}{goto} err;
+117     \}
+118 
+119     \textcolor{comment}{// Device successfully configured, return.}
+120     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+121 
+122     \textcolor{comment}{// Handle any errors during the configuration process.}
+123 err:
+124 
+125     \textcolor{comment}{// Display the errors.}
+126     fprintf(stderr, \textcolor{stringliteral}{"Failed to configure the device\(\backslash\)r\(\backslash\)n"});
+127     fprintf(stderr, \textcolor{stringliteral}{"Error: %s\(\backslash\)n"},strerror(errno));
+128 
+129     \textcolor{comment}{// Handle clean-up.}
+130     close(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device});
+131     \hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} = -1;
+132 
+133     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+134 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d88/class_u_art_a51adaa81c08d92599768c0303e5abc94_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_art_a4dcaf74a46b8c76784511284f330a97f}\label{class_u_art_a4dcaf74a46b8c76784511284f330a97f}} 
+\index{U\+Art@{U\+Art}!read\+Expected@{read\+Expected}}
+\index{read\+Expected@{read\+Expected}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{read\+Expected()}{readExpected()}}
+{\footnotesize\ttfamily ssize\+\_\+t U\+Art\+::read\+Expected (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{size\+\_\+t}]{bytes\+Expected,  }\item[{int}]{timeout\+Ms }\end{DoxyParamCaption})}
+
+Peeking algorithm for reading bytes from the serial buffer. Note, this method is capable of receiving larger blocks; using peeking + general timeout, issues pertaining to indefinite timeouts are resolved.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The char array into which the result will be written. \\
+\hline
+{\em bytes\+Expected} & The number of bytes that are to be returned. \\
+\hline
+{\em timeout\+Ms} & How long to wait for data before returning. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes that have successfully been read, -\/1 otherwise i.\+e. errors. 
+\end{DoxyReturn}
+
+
+Definition at line 169 of file U\+Art.\+cpp.
+
+
+\begin{DoxyCode}
+171 \{
+172 
+173     \textcolor{comment}{// Check that the device has been established.}
+174     \textcolor{keywordflow}{if} (\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} == -1) \{
+175         \textcolor{keywordflow}{return} -1;
+176     \}
+177 
+178     \textcolor{comment}{// The number of bytes peeked; the last number of bytes peeked.}
+179     \textcolor{keywordtype}{size\_t} bytesPeeked = 0;
+180     \textcolor{keywordtype}{size\_t} lastBytesPeeked = 0;
+181 
+182     \textcolor{comment}{// Timing related variables.}
+183     \textcolor{keyword}{struct }timespec pause = \{0\};
+184     pause.tv\_sec = timeoutMs / 1000;
+185     pause.tv\_nsec = (timeoutMs % 1000) * 1000000L;
+186 
+187     \textcolor{comment}{// Keep peeking at the buffer until a timeout.}
+188     \textcolor{keywordflow}{for}(;;) \{
+189 
+190         \textcolor{comment}{// Update the last number of bytes peeked; break if block is met.}
+191         lastBytesPeeked = bytesPeeked;
+192         \textcolor{keywordflow}{if} (bytesPeeked >= bytesExpected) \{
+193             \textcolor{keywordflow}{break};
+194         \}
+195 
+196         \textcolor{comment}{// Sleep the thread until an interrupt.}
+197         \textcolor{keywordtype}{int} rc = nanosleep(&pause, \textcolor{keyword}{nullptr});
+198         ioctl(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}, FIONREAD, &bytesPeeked);
+199 
+200         \textcolor{comment}{// Check if the read has timed out.}
+201         \textcolor{keywordflow}{if} (bytesPeeked == lastBytesPeeked) \{
+202             \textcolor{keywordflow}{break};
+203         \}
+204     \}
+205 
+206     \textcolor{comment}{// Set the buffer bytes to null terminators.}
+207     memset(buffer, \textcolor{charliteral}{'\(\backslash\)0'}, bytesExpected);
+208 
+209     \textcolor{comment}{// Read the block regardless of what's within.}
+210     \textcolor{keywordflow}{if} (bytesPeeked >= bytesExpected) \{
+211         bytesPeeked = bytesExpected;
+212     \}
+213 
+214     \textcolor{comment}{// Read whatever bytes are present from the buffer.}
+215     \textcolor{keywordflow}{return} read(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}, buffer, bytesPeeked);
+216 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_u_art_aa4818ca67447e251680b4b8d28c8bba5}\label{class_u_art_aa4818ca67447e251680b4b8d28c8bba5}} 
+\index{U\+Art@{U\+Art}!read\+Next@{read\+Next}}
+\index{read\+Next@{read\+Next}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{read\+Next()}{readNext()}}
+{\footnotesize\ttfamily ssize\+\_\+t U\+Art\+::read\+Next (\begin{DoxyParamCaption}\item[{char $\ast$}]{result\+Buffer,  }\item[{size\+\_\+t}]{result\+Buffer\+Len,  }\item[{int}]{timeout\+Ms }\end{DoxyParamCaption})}
+
+A non blocking means for reading data from the serial buffer up until the first \textquotesingle{}~\newline
+\textquotesingle{} character is read.
+
+
+\begin{DoxyParams}{Parameters}
+{\em result\+Buffer} & The buffer into which the result will be read. Note, results read into the buffer are invalid if the method returns -\/1. \\
+\hline
+{\em result\+Buffer\+Len} & The length of the buffer into which the results are read. \\
+\hline
+{\em timeout\+Ms} & The intra-\/character timeout. Avoided if character present, blocks the thread for the timeout ms if not. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of characters read (including \textquotesingle{}~\newline
+\textquotesingle{}), -\/1 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 231 of file U\+Art.\+cpp.
+
+
+\begin{DoxyCode}
+233 \{
+234 
+235     \textcolor{comment}{// Check that the device is present.}
+236     \textcolor{keywordflow}{if} (\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} == -1) \{
+237         \textcolor{keywordflow}{return} -1;
+238     \}
+239 
+240     \textcolor{comment}{// The number of bytes that have been peeked and read.}
+241     \textcolor{keywordtype}{size\_t} bytesPeeked = 0;
+242     ssize\_t bytesRead = 0;
+243 
+244     \textcolor{comment}{// The next and last read indexes.}
+245     \textcolor{keywordtype}{size\_t} nextReadIndex = 0;
+246     \textcolor{keywordtype}{size\_t} lastReadIndex = 0;
+247 
+248     \textcolor{comment}{// The last read character.}
+249     \textcolor{keywordtype}{char} lastReadChar;
+250 
+251     \textcolor{comment}{// Timeout pause.}
+252     \textcolor{keyword}{struct }timespec timeoutPause = \{0\};
+253     timeoutPause.tv\_sec = timeoutMs / 1000;
+254     timeoutPause.tv\_nsec = (timeoutMs % 1000) * 1000000L;
+255 
+256     \textcolor{comment}{// Keep reading the buffer until crlf.}
+257     \textcolor{keywordflow}{for} (;;) \{
+258 
+259         \textcolor{comment}{// If the buffer has been exceeded, return -1.}
+260         lastReadIndex = nextReadIndex;
+261         \textcolor{keywordflow}{if} (lastReadIndex >= resultBufferLen) \{
+262             \textcolor{keywordflow}{return} -1;
+263         \}
+264 
+265         \textcolor{comment}{// If there are no characters within the buffer, sleep.}
+266         ioctl(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}, FIONREAD, &bytesPeeked);
+267         \textcolor{keywordflow}{if} (bytesPeeked <= 0 && nanosleep(&timeoutPause, \textcolor{keyword}{nullptr})) \{
+268             \textcolor{keywordflow}{return} -1;
+269         \}
+270 
+271         \textcolor{comment}{// Read in a single character from the serial buffer.}
+272         bytesRead = read(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}, &lastReadChar, 1);
+273         \textcolor{keywordflow}{if} (bytesRead == -1) \{
+274             \textcolor{keywordflow}{return} -1;
+275         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (bytesRead == 1) \{
+276 
+277             \textcolor{comment}{// Write the character to the buffer, check if '\(\backslash\)n'.}
+278             resultBuffer[nextReadIndex++] = lastReadChar;
+279             \textcolor{keywordflow}{if} (lastReadChar == \textcolor{charliteral}{'\(\backslash\)n'}) \{
+280                 \textcolor{keywordflow}{break};
+281             \}
+282 
+283             \textcolor{comment}{// Skip to the next character.}
+284             \textcolor{keywordflow}{continue};
+285         \}
+286 
+287         \textcolor{comment}{// If no new bytes have been read and we have timed out, return.}
+288         \textcolor{keywordflow}{if} (nextReadIndex == lastReadIndex) \{
+289             \textcolor{keywordflow}{return} -1;
+290         \}
+291     \}
+292 
+293     \textcolor{comment}{// Return the number of characters that have been read.}
+294     \textcolor{keywordflow}{return} nextReadIndex;
+295 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d88/class_u_art_aa4818ca67447e251680b4b8d28c8bba5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_art_aad1ddb133fe430a92527584eec2e674f}\label{class_u_art_aad1ddb133fe430a92527584eec2e674f}} 
+\index{U\+Art@{U\+Art}!write\+Next@{write\+Next}}
+\index{write\+Next@{write\+Next}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{write\+Next()}{writeNext()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ssize\+\_\+t U\+Art\+::write\+Next (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{command }\end{DoxyParamCaption})}
+
+Write a string to the device via the U\+A\+RT serial interface. Note that the commands should end with . Additionally, the command passed as a parameter will implicitly be converted to a C-\/string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & The string command sent via the serial interface. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of chars (bytes) that have been successfully written to the device, -\/1 otherwise i.\+e. error. 
+\end{DoxyReturn}
+
+
+Definition at line 306 of file U\+Art.\+cpp.
+
+
+\begin{DoxyCode}
+307 \{
+308 
+309     \textcolor{comment}{// Convert the string into a char buffer.}
+310     \textcolor{keywordtype}{char} commandBuffer[command.size() + 1];
+311     strcpy(commandBuffer, command.c\_str());
+312 
+313     \textcolor{comment}{// Attempt to write the converted command to the device.}
+314     \textcolor{keywordflow}{return} \hyperlink{class_u_art_aad1ddb133fe430a92527584eec2e674f}{writeNext}(commandBuffer);
+315 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d88/class_u_art_aad1ddb133fe430a92527584eec2e674f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_art_a6353ec5c21b038ca034bacaca8873713}\label{class_u_art_a6353ec5c21b038ca034bacaca8873713}} 
+\index{U\+Art@{U\+Art}!write\+Next@{write\+Next}}
+\index{write\+Next@{write\+Next}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{write\+Next()}{writeNext()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ssize\+\_\+t U\+Art\+::write\+Next (\begin{DoxyParamCaption}\item[{const char $\ast$}]{command }\end{DoxyParamCaption})}
+
+Write a C-\/string (char array) to the device via the U\+A\+RT serial interface. Note, commands should end with .
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & The C-\/string command that is to be written to the device via the U\+A\+RT interface. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of chars (bytes) that have been successfully written to the device, -\/1 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 326 of file U\+Art.\+cpp.
+
+
+\begin{DoxyCode}
+327 \{
+328     \textcolor{keywordflow}{if} (\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device} != -1 && tcflush(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}, TCIFLUSH) == 0) \{
+329         \textcolor{keywordflow}{return} write(\hyperlink{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}{device}, command, strlen(command) + 1);
+330     \}
+331     \textcolor{keywordflow}{return} -1;
+332 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}\label{class_u_art_a61fb55cc7c92c85f2219dffcfb58bc12}} 
+\index{U\+Art@{U\+Art}!device@{device}}
+\index{device@{device}!U\+Art@{U\+Art}}
+\subsubsection{\texorpdfstring{device}{device}}
+{\footnotesize\ttfamily int U\+Art\+::device\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 60 of file U\+Art.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/comms/\hyperlink{_u_art_8h}{U\+Art.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/comms/\hyperlink{_u_art_8cpp}{U\+Art.\+cpp}\end{DoxyCompactItemize}

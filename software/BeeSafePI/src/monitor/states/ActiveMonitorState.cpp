@@ -1,3 +1,25 @@
+/**
+ * \file ActiveMonitorState.cpp
+ * \class ActiveMonitorState
+ *
+ * \ingroup Monitor
+ *
+ * \brief The active monitor state child class
+ *
+ * The child class to MonitorState. It handles the functionality of what to do when the device is outside a fence,
+ * by defining how to handle notifications, and constantly monitoring if the device returns to the fence to hand
+ * over to the PassiveMonitorState class.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date $Date: 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
 
 #include "ActiveMonitorState.h"
 

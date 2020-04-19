@@ -1,0 +1,161 @@
+\hypertarget{class_passive_monitor_state}{}\section{Passive\+Monitor\+State Class Reference}
+\label{class_passive_monitor_state}\index{Passive\+Monitor\+State@{Passive\+Monitor\+State}}
+
+
+The passive monitor state child class.  
+
+
+
+
+{\ttfamily \#include $<$Passive\+Monitor\+State.\+h$>$}
+
+
+
+Inheritance diagram for Passive\+Monitor\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{d2/d78/class_passive_monitor_state__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Passive\+Monitor\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{db/de8/class_passive_monitor_state__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_passive_monitor_state_a91d992e619e8e1d3d47875a1933542b7}{Passive\+Monitor\+State} (\hyperlink{class_comms}{Comms} $\ast$\hyperlink{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}{comms}, \hyperlink{class_account}{Account} $\ast$\hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account})
+\item 
+\hyperlink{class_passive_monitor_state_a43a2e90a01187c40513899e4f9b5d804}{$\sim$\+Passive\+Monitor\+State} () override
+\item 
+\hyperlink{class_monitor_state}{Monitor\+State} $\ast$ \hyperlink{class_passive_monitor_state_a173a7c8a4d0b8ecea5928e0c90dec26b}{handle\+Lat\+Lng} (std\+::pair$<$ double, double $>$ \&lat\+Lng) override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The passive monitor state child class. 
+
+The child class to \hyperlink{class_monitor_state}{Monitor\+State}. It handles the functionality of what to do when the device is inside a fence, by dormantly monitoring the coordinates at which the device is at, so that in case of an event it can hand over to the \hyperlink{class_active_monitor_state}{Active\+Monitor\+State} to handle notifications and further monitoring.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 33 of file Passive\+Monitor\+State.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_passive_monitor_state_a91d992e619e8e1d3d47875a1933542b7}\label{class_passive_monitor_state_a91d992e619e8e1d3d47875a1933542b7}} 
+\index{Passive\+Monitor\+State@{Passive\+Monitor\+State}!Passive\+Monitor\+State@{Passive\+Monitor\+State}}
+\index{Passive\+Monitor\+State@{Passive\+Monitor\+State}!Passive\+Monitor\+State@{Passive\+Monitor\+State}}
+\subsubsection{\texorpdfstring{Passive\+Monitor\+State()}{PassiveMonitorState()}}
+{\footnotesize\ttfamily Passive\+Monitor\+State\+::\+Passive\+Monitor\+State (\begin{DoxyParamCaption}\item[{\hyperlink{class_comms}{Comms} $\ast$}]{comms,  }\item[{\hyperlink{class_account}{Account} $\ast$}]{account }\end{DoxyParamCaption})}
+
+Constructor explicitly initialises the \hyperlink{class_passive_monitor_state}{Passive\+Monitor\+State} class instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comms} & The communications interface for the underling hardware. \\
+\hline
+{\em account} & The account against which the coordinates are compared. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file Passive\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+36         : \hyperlink{class_monitor_state_ace027ab9e5703ac4e4b808eeebc3c961}{MonitorState}(\hyperlink{_passive_monitor_state_8h_a01326d372e7d0a078fe71bdab8adf0d9}{PASSIVE\_STATE\_NAME}, comms, account) \{\}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{dd/d30/class_passive_monitor_state_a91d992e619e8e1d3d47875a1933542b7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_passive_monitor_state_a43a2e90a01187c40513899e4f9b5d804}\label{class_passive_monitor_state_a43a2e90a01187c40513899e4f9b5d804}} 
+\index{Passive\+Monitor\+State@{Passive\+Monitor\+State}!````~Passive\+Monitor\+State@{$\sim$\+Passive\+Monitor\+State}}
+\index{````~Passive\+Monitor\+State@{$\sim$\+Passive\+Monitor\+State}!Passive\+Monitor\+State@{Passive\+Monitor\+State}}
+\subsubsection{\texorpdfstring{$\sim$\+Passive\+Monitor\+State()}{~PassiveMonitorState()}}
+{\footnotesize\ttfamily Passive\+Monitor\+State\+::$\sim$\+Passive\+Monitor\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+Destructor is used to clean up any resources occupied by the \hyperlink{class_passive_monitor_state}{Passive\+Monitor\+State} instance. Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{dd/d30/class_passive_monitor_state_a43a2e90a01187c40513899e4f9b5d804_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_passive_monitor_state_a173a7c8a4d0b8ecea5928e0c90dec26b}\label{class_passive_monitor_state_a173a7c8a4d0b8ecea5928e0c90dec26b}} 
+\index{Passive\+Monitor\+State@{Passive\+Monitor\+State}!handle\+Lat\+Lng@{handle\+Lat\+Lng}}
+\index{handle\+Lat\+Lng@{handle\+Lat\+Lng}!Passive\+Monitor\+State@{Passive\+Monitor\+State}}
+\subsubsection{\texorpdfstring{handle\+Lat\+Lng()}{handleLatLng()}}
+{\footnotesize\ttfamily \hyperlink{class_monitor_state}{Monitor\+State} $\ast$ Passive\+Monitor\+State\+::handle\+Lat\+Lng (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Handles passive location monitoring; passively handled monitoring i.\+e. no notifications / storage.
+
+When in the positive monitoring state, the current location is checked against the fences that are stored in account. If the device is out of a fence, the state is switched to the active monitoring state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat\+Lng} & The pair containing the latitude (first) and longitude (second) coordinates of the device. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nullptr if state remains in passive, a pointer to \hyperlink{class_active_monitor_state}{Active\+Monitor\+State} if the device should be monitored. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}{Monitor\+State}.
+
+
+
+Definition at line 58 of file Passive\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+59 \{
+60     \textcolor{comment}{// If the device is within the account fences, return (keep passive state).}
+61     \textcolor{keywordflow}{if} (\hyperlink{class_monitor_state_a332c5f42bf46cd217e36f300e5279766}{getCrossedFence}(latLng) == \textcolor{keyword}{nullptr}) \{
+62         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+63     \}
+64 
+65     \textcolor{comment}{// A fence has been breached. Begin monitoring in an active state.}
+66     \textcolor{keywordflow}{return} \textcolor{keyword}{new} \hyperlink{class_active_monitor_state}{ActiveMonitorState}(\hyperlink{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}{comms}, \hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account});
+67 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d30/class_passive_monitor_state_a173a7c8a4d0b8ecea5928e0c90dec26b_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/monitor/states/\hyperlink{_passive_monitor_state_8h}{Passive\+Monitor\+State.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/monitor/states/\hyperlink{_passive_monitor_state_8cpp}{Passive\+Monitor\+State.\+cpp}\end{DoxyCompactItemize}

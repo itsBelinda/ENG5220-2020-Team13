@@ -1,6 +1,36 @@
+/**
+ * \file Contact.cpp
+ * \class Contact
+ *
+ * \ingroup Contact
+ *
+ * \brief The Contact class handling the declaration and maintenance of emergency contact information
+ *
+ * The Contact class creates the objects containing the information of emergency contacts that must be notified when the
+ * device leaves a designated fence area/safe zone, and manages this information's conversion to JSON format for the database online.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
+
 #include "Contact.h"
 
-// Constructor for device contact.
+/**
+ * The explicit constructor for the Contact class
+ *
+ * @param forename: The contact's forename
+ * @param surname: The contact's surname
+ * @param number: The contact's phone number
+ * @param key: The user/contact's API key
+ */
 Contact::Contact(const std::string& forename, const std::string& surname,
                  const std::string& number, const std::string& key)
 {
@@ -10,7 +40,11 @@ Contact::Contact(const std::string& forename, const std::string& surname,
     this->key = key;
 }
 
-// Define the copy constructor.
+/**
+ * The Contact class copy constructor.
+ *
+ * @param contact: the contact object to be copied
+ */
 Contact::Contact(const Contact &contact)
 {
     this->forename = contact.forename;
@@ -19,34 +53,60 @@ Contact::Contact(const Contact &contact)
     this->key = contact.key;
 }
 
-// The destructor used by the contact.
+/**
+ * The Contact class destructor.
+ */
 Contact::~Contact() = default;
 
-// The first name of the contact.
+/**
+ * A getter for the first name of the contact.
+ * A public accessor for an otherwise private variable.
+ *
+ * @return the contact's forename
+ */
 const std::string& Contact::getForename()
 {
     return forename;
 }
 
-// The last name of the contact.
+/**
+ * A getter for the last name of the contact.
+ * A public accessor for an otherwise private variable.
+ *
+ * @return the contact's surname.
+ */
 const std::string& Contact::getSurname()
 {
     return surname;
 }
 
-// The number of the contact.
+/**
+ * A getter for the number of the contact.
+ * A public accessor for an otherwise private variable.
+ *
+ *  @return the contact phone number
+ */
 const std::string& Contact::getNumber()
 {
     return number;
 }
 
-// The API key of the contact.
+/**
+ * A getter for the API key of the contact.
+ * A public accessor for an otherwise private variable.
+ *
+ * @return the contact/user API key
+ */
 const std::string& Contact::getKey()
 {
     return key;
 }
 
-// Serialise the contact into a JSON element.
+/**
+ * A method to serialise the contact into a JSON element.
+ *
+ * @return a JSON object containing the Contact information
+ */
 web::json::value Contact::serialiseContact()
 {
     web::json::value jsonContact = web::json::value::object();

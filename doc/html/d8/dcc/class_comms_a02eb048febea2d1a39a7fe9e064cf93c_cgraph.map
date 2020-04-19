@@ -1,0 +1,10 @@
+<map id="Comms::getModelNumber" name="Comms::getModelNumber">
+<area shape="rect" id="node2" href="$da/df6/class_u_blox.html#ab9b9a03e10360c931686c1fe04af078d" title="UBlox::getModelNumber" alt="" coords="228,56,393,83"/>
+<area shape="rect" id="node3" href="$da/df6/class_u_blox.html#af604d1897a66192bf1c2a11997f2634d" title="UBlox::writeCommand" alt="" coords="458,5,613,32"/>
+<area shape="rect" id="node5" href="$da/df6/class_u_blox.html#ab4a7ab4b8922d91e23f273ae160c1bed" title="UBlox::readRawResponse" alt="" coords="681,56,858,83"/>
+<area shape="rect" id="node8" href="$da/df6/class_u_blox.html#a4eaca5b1b1c4b5b6f6164b220dd43e0b" title="UBlox::readStatusResponse" alt="" coords="441,107,629,133"/>
+<area shape="rect" id="node4" href="$d9/d88/class_u_art.html#aad1ddb133fe430a92527584eec2e674f" title="UArt::writeNext" alt="" coords="713,5,826,32"/>
+<area shape="rect" id="node6" href="$da/df6/class_u_blox.html#afc846fbcb1cbd49057b5ce39cd0e0dd6" title="UBlox::clearResponseBuff" alt="" coords="909,31,1087,57"/>
+<area shape="rect" id="node7" href="$d9/d88/class_u_art.html#aa4818ca67447e251680b4b8d28c8bba5" title="UArt::readNext" alt="" coords="943,81,1053,108"/>
+<area shape="rect" id="node9" href="$da/df6/class_u_blox.html#aab6ad68e4c7522278f19ceab1dc2a58d" title="UBlox::checkResponseBuff\lStatus" alt="" coords="677,107,861,149"/>
+</map>

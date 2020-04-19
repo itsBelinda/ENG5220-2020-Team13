@@ -1,0 +1,535 @@
+\hypertarget{class_bee_safe_manager}{}\section{Bee\+Safe\+Manager Class Reference}
+\label{class_bee_safe_manager}\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+
+
+The Bee\+Safe class initiates the complete program.  
+
+
+
+
+{\ttfamily \#include $<$Bee\+Safe.\+h$>$}
+
+
+
+Collaboration diagram for Bee\+Safe\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{d7/d13/class_bee_safe_manager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_bee_safe_manager_a4a897d6317bdc548fb235d0cdb2877b1}{Bee\+Safe\+Manager} ()
+\item 
+\hyperlink{class_bee_safe_manager_ac99fb148bcac3aa3f51e96fdf7bc0c1b}{$\sim$\+Bee\+Safe\+Manager} ()
+\item 
+\hyperlink{class_comms}{Comms} $\ast$const \hyperlink{class_bee_safe_manager_a8c4c98723335cfcc179fcbf3f8c3d9d3}{get\+Comms} ()
+\item 
+\hyperlink{class_monitor}{Monitor} $\ast$const \hyperlink{class_bee_safe_manager_acc33322594eea80e4b4b21e580713c00}{get\+Monitor} ()
+\item 
+\hyperlink{class_account}{Account} $\ast$const \hyperlink{class_bee_safe_manager_a4052276ed4263cdbe715ce115e1ccee2}{get\+Account} ()
+\item 
+bool \hyperlink{class_bee_safe_manager_a2f16b09c454e21c887d14ac5483973cf}{init} ()
+\item 
+bool \hyperlink{class_bee_safe_manager_a7242d89761621de0e09ec9ea360fca27}{start} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_comms}{Comms} $\ast$ \hyperlink{class_bee_safe_manager_a28306d7ccf7136a6086d666f4ebb6566}{init\+Comms} ()
+\item 
+\hyperlink{class_monitor}{Monitor} $\ast$ \hyperlink{class_bee_safe_manager_ad30babe45ead2cb6a5b0559afa5bc5ff}{init\+Monitor} (\hyperlink{class_comms}{Comms} $\ast$\hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms})
+\item 
+\hyperlink{class_account}{Account} $\ast$ \hyperlink{class_bee_safe_manager_a7395aeacd246ce69c65f255a2eab1d04}{init\+Account} (const char $\ast$path)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_comms}{Comms} $\ast$ \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms}
+\item 
+\hyperlink{class_monitor}{Monitor} $\ast$ \hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor}
+\item 
+\hyperlink{class_account}{Account} $\ast$ \hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Bee\+Safe class initiates the complete program. 
+
+The Bee\+Safe class creates the instances of classes required to communicate with the hardware, the monitors overseeing that, and the account information to whom the system must reach out in case of an emergency. Containing the \hyperlink{_bee_safe_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()} function, this is the root of the Bee\+Safe A\+PI.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 34 of file Bee\+Safe.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bee_safe_manager_a4a897d6317bdc548fb235d0cdb2877b1}\label{class_bee_safe_manager_a4a897d6317bdc548fb235d0cdb2877b1}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{Bee\+Safe\+Manager()}{BeeSafeManager()}}
+{\footnotesize\ttfamily Bee\+Safe\+Manager\+::\+Bee\+Safe\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor used to initialise an instance of the \hyperlink{class_bee_safe_manager}{Bee\+Safe\+Manager} class. 
+
+Definition at line 41 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+42 \{
+43     \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms} = \textcolor{keyword}{nullptr};
+44     \hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account} = \textcolor{keyword}{nullptr};
+45     \hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor} = \textcolor{keyword}{nullptr};
+46 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{d5/d75/class_bee_safe_manager_a4a897d6317bdc548fb235d0cdb2877b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_bee_safe_manager_ac99fb148bcac3aa3f51e96fdf7bc0c1b}\label{class_bee_safe_manager_ac99fb148bcac3aa3f51e96fdf7bc0c1b}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!````~Bee\+Safe\+Manager@{$\sim$\+Bee\+Safe\+Manager}}
+\index{````~Bee\+Safe\+Manager@{$\sim$\+Bee\+Safe\+Manager}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{$\sim$\+Bee\+Safe\+Manager()}{~BeeSafeManager()}}
+{\footnotesize\ttfamily Bee\+Safe\+Manager\+::$\sim$\+Bee\+Safe\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor is responsible for releasing any resources occupied by the \hyperlink{class_bee_safe_manager}{Bee\+Safe\+Manager} instance. Note, if the monitor thread is running, it will implicitly be stopped. 
+
+Definition at line 52 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+53 \{
+54     \textcolor{comment}{// Delete monitor first to illegal memory access.}
+55     \textcolor{keywordflow}{if} (\hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor} != \textcolor{keyword}{nullptr}) \{
+56         \hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor}->\hyperlink{class_monitor_a2d2e309666c98333a317c9786f94f6ad}{join}();
+57         \textcolor{keyword}{delete} \hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor};
+58     \}
+59 
+60     \textcolor{comment}{// Finally, delete the comms and account.}
+61     \textcolor{keyword}{delete} \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms};
+62     \textcolor{keyword}{delete} \hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account};
+63 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{d5/d75/class_bee_safe_manager_ac99fb148bcac3aa3f51e96fdf7bc0c1b_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bee_safe_manager_a4052276ed4263cdbe715ce115e1ccee2}\label{class_bee_safe_manager_a4052276ed4263cdbe715ce115e1ccee2}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!get\+Account@{get\+Account}}
+\index{get\+Account@{get\+Account}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{get\+Account()}{getAccount()}}
+{\footnotesize\ttfamily \hyperlink{class_account}{Account} $\ast$const Bee\+Safe\+Manager\+::get\+Account (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the device \hyperlink{class_account}{Account} being monitored.
+
+\begin{DoxyReturn}{Returns}
+A pointer to an \hyperlink{class_account}{Account} instance (if initialised), nullptr otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 90 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+91 \{
+92     \textcolor{keywordflow}{return} \hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account};
+93 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bee_safe_manager_a8c4c98723335cfcc179fcbf3f8c3d9d3}\label{class_bee_safe_manager_a8c4c98723335cfcc179fcbf3f8c3d9d3}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!get\+Comms@{get\+Comms}}
+\index{get\+Comms@{get\+Comms}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{get\+Comms()}{getComms()}}
+{\footnotesize\ttfamily \hyperlink{class_comms}{Comms} $\ast$const Bee\+Safe\+Manager\+::get\+Comms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the managers communication interface.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the \hyperlink{class_comms}{Comms} interface instance (if initialised), a nullptr otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+71 \{
+72     \textcolor{keywordflow}{return} \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms};
+73 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bee_safe_manager_acc33322594eea80e4b4b21e580713c00}\label{class_bee_safe_manager_acc33322594eea80e4b4b21e580713c00}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!get\+Monitor@{get\+Monitor}}
+\index{get\+Monitor@{get\+Monitor}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{get\+Monitor()}{getMonitor()}}
+{\footnotesize\ttfamily \hyperlink{class_monitor}{Monitor} $\ast$const Bee\+Safe\+Manager\+::get\+Monitor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the monitor thread responsible for checking the users location.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the \hyperlink{class_monitor}{Monitor} thread (if initialised), nullptr otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 80 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+81 \{
+82     \textcolor{keywordflow}{return} \hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor};
+83 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bee_safe_manager_a2f16b09c454e21c887d14ac5483973cf}\label{class_bee_safe_manager_a2f16b09c454e21c887d14ac5483973cf}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!init@{init}}
+\index{init@{init}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily bool Bee\+Safe\+Manager\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Attempt to initialise the \hyperlink{class_bee_safe_manager}{Bee\+Safe\+Manager} instance responsible for managing the monitor thread, comms and accounts. Note, the function will only set the member pointers in the event all necessary sub-\/systems are initialised.
+
+Furthermore, because an account may not be already present on the device, the resulting member account pointer {\itshape may be a nullptr}.
+
+\begin{DoxyReturn}{Returns}
+True if all necessary components have been initialised, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 107 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+108 \{
+109     \textcolor{comment}{// Prevent memory leaks by releasing occupied resources.}
+110     \textcolor{keywordflow}{if} (this->\hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor} != \textcolor{keyword}{nullptr}) \{
+111         this->\hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor}->\hyperlink{class_monitor_a2d2e309666c98333a317c9786f94f6ad}{join}();
+112         \textcolor{keyword}{delete} this->\hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor};
+113     \}
+114     \textcolor{keyword}{delete} this->\hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms};
+115     \textcolor{keyword}{delete} this->\hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account};
+116 
+117     \textcolor{comment}{// First, attempt to init comms.}
+118     std::cout << \textcolor{stringliteral}{"Initialising comms interface..."} << std::endl;
+119     \textcolor{keyword}{auto} \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms} = \hyperlink{class_bee_safe_manager_a28306d7ccf7136a6086d666f4ebb6566}{initComms}();
+120     \textcolor{keywordflow}{if} (\hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms} == \textcolor{keyword}{nullptr}) \{
+121         std::cerr << \textcolor{stringliteral}{"Failed to initialise comms interface."} << std::endl;
+122         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+123     \}
+124     std::cout << \textcolor{stringliteral}{"... comms interface successfully initialised."} << std::endl;
+125     
+126     \textcolor{comment}{// Attempt to initialise the monitor thread.}
+127     std::cout << \textcolor{stringliteral}{"Initialising monitor thread..."} << std::endl;
+128     \textcolor{keyword}{auto} \hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor} = \hyperlink{class_bee_safe_manager_ad30babe45ead2cb6a5b0559afa5bc5ff}{initMonitor}(\hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms});
+129     \textcolor{keywordflow}{if} (\hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor} == \textcolor{keyword}{nullptr}) \{
+130         std::cerr << \textcolor{stringliteral}{"Failed to initialise monitor thread."} << std::endl;
+131         \textcolor{keyword}{delete} \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms};
+132         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+133     \}
+134     std::cout << \textcolor{stringliteral}{"... monitor thread successfully initialised."} << std::endl;
+135 
+136     \textcolor{comment}{// The account can be null.}
+137     std::cout << \textcolor{stringliteral}{"Initialising account..."} << std::endl;
+138     \textcolor{keyword}{auto} \hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account} = \hyperlink{class_bee_safe_manager_a7395aeacd246ce69c65f255a2eab1d04}{initAccount}(\hyperlink{_bee_safe_8cpp_aeadb35b2afa47797b56f17423460fad8}{ACCOUNT\_PATH});
+139     \textcolor{keywordflow}{if} (\hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account} == \textcolor{keyword}{nullptr}) \{
+140         std::cerr << \textcolor{stringliteral}{"Failed to initialise account."} << std::endl;
+141     \} \textcolor{keywordflow}{else} \{
+142         \hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account}->\hyperlink{class_account_a9ff3a257536bc933e0a39207bb89243d}{saveSerialisedAccount}(\textcolor{stringliteral}{"../../data/Account\_Verif.json"});
+143         std::cout << \textcolor{stringliteral}{"... account successfully initialised."} << std::endl;
+144     \}
+145 
+146     \textcolor{comment}{// We have successfully initialised the manager.}
+147     this->\hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms} = \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms};
+148     this->\hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor} = \hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor};
+149     this->\hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account} = \hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account};
+150 
+151     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+152 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d75/class_bee_safe_manager_a2f16b09c454e21c887d14ac5483973cf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d75/class_bee_safe_manager_a2f16b09c454e21c887d14ac5483973cf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_bee_safe_manager_a7395aeacd246ce69c65f255a2eab1d04}\label{class_bee_safe_manager_a7395aeacd246ce69c65f255a2eab1d04}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!init\+Account@{init\+Account}}
+\index{init\+Account@{init\+Account}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{init\+Account()}{initAccount()}}
+{\footnotesize\ttfamily \hyperlink{class_account}{Account} $\ast$ Bee\+Safe\+Manager\+::init\+Account (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Function is responsible for the initialisation / creation (reading) of the local \hyperlink{class_account}{Account} instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path of the J\+S\+ON file i.\+e. the path to where the Account.\+json file resides. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an instance of \hyperlink{class_account}{Account} if it was successfully read, parsed and created, nullptr otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 217 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+218 \{
+219     \textcolor{keywordflow}{try} \{
+220         \textcolor{comment}{// Attempt to read the file.}
+221         utility::ifstream\_t ifStream;
+222         ifStream.open(path);
+223         \textcolor{keywordflow}{if} (ifStream.fail()) \{
+224             std::cerr << \textcolor{stringliteral}{"Failed to load account file: "} << \hyperlink{_bee_safe_8cpp_aeadb35b2afa47797b56f17423460fad8}{ACCOUNT\_PATH}
+225                       << \textcolor{stringliteral}{". Maybe doesn't exist yet?"} << std::endl;
+226             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+227         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!ifStream.is\_open()) \{
+228             std::cerr << \textcolor{stringliteral}{"Failed to open account file: "} << \hyperlink{_bee_safe_8cpp_aeadb35b2afa47797b56f17423460fad8}{ACCOUNT\_PATH} << \textcolor{stringliteral}{"."} << std::endl;
+229             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+230         \}
+231 
+232         \textcolor{comment}{// Stream the file.}
+233         utility::stringstream\_t sStream;
+234         sStream << ifStream.rdbuf();
+235 
+236         \textcolor{comment}{// Attempt to build the JSON file.}
+237         std::error\_code ec;
+238         \hyperlink{class_account_builder}{AccountBuilder} accountBuilder(sStream, ec);
+239         \textcolor{keyword}{auto} \hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account} = accountBuilder.build();
+240 
+241         \textcolor{keywordflow}{if} (\hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account} == \textcolor{keyword}{nullptr}) \{
+242             std::cerr << \textcolor{stringliteral}{"Failed to build account file: "} << \hyperlink{_bee_safe_8cpp_aeadb35b2afa47797b56f17423460fad8}{ACCOUNT\_PATH}
+243                       << \textcolor{stringliteral}{". Error code: "} << ec.value() << \textcolor{stringliteral}{", message: "} << ec.message() << std::endl;
+244         \}
+245 
+246         \textcolor{comment}{// Close the file stream.}
+247         ifStream.close();
+248 
+249         \textcolor{comment}{// Return an account instance, may be null.}
+250         \textcolor{keywordflow}{return} \hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account};
+251 
+252     \} \textcolor{keywordflow}{catch} (web::json::json\_exception &e) \{
+253         std::cerr << e.what() << std::endl;
+254         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+255     \}
+256 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d75/class_bee_safe_manager_a7395aeacd246ce69c65f255a2eab1d04_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d75/class_bee_safe_manager_a7395aeacd246ce69c65f255a2eab1d04_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_bee_safe_manager_a28306d7ccf7136a6086d666f4ebb6566}\label{class_bee_safe_manager_a28306d7ccf7136a6086d666f4ebb6566}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!init\+Comms@{init\+Comms}}
+\index{init\+Comms@{init\+Comms}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{init\+Comms()}{initComms()}}
+{\footnotesize\ttfamily \hyperlink{class_comms}{Comms} $\ast$ Bee\+Safe\+Manager\+::init\+Comms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Function is responsible for the creation / initialisation of the \hyperlink{class_comms}{Comms} interface instance.
+
+\begin{DoxyReturn}{Returns}
+A pointer to an instance of \hyperlink{class_comms}{Comms} (if successfully initialised / created), nullptr otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 161 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+162 \{
+163     \textcolor{keyword}{auto} \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms} = \textcolor{keyword}{new} \hyperlink{class_comms}{Comms}();
+164 
+165     \textcolor{comment}{// Try numerous times to initialise the comms interface.}
+166     \textcolor{keywordtype}{bool} \hyperlink{class_bee_safe_manager_a2f16b09c454e21c887d14ac5483973cf}{init} = \textcolor{keyword}{false};
+167     \textcolor{keywordtype}{short} tries = 0;
+168     \textcolor{keywordflow}{do} \{
+169 
+170         \textcolor{comment}{// Attempt to initialise the interface.}
+171         tries++;
+172         std::cout << \textcolor{stringliteral}{"Comms initialisation attempt "} << tries << \textcolor{stringliteral}{" / "} << 
+      \hyperlink{_bee_safe_8cpp_aa5860d80bbb4527d5d2275aacfce65f7}{INIT\_COMMS\_TRIES} << \textcolor{stringliteral}{"..."} <<  std::endl;
+173         init = \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms}->\hyperlink{class_comms_aa0519d3ed2d5bd6aad60101080ac2de7}{init}();
+174         \textcolor{keywordflow}{if} (init) \{
+175             \textcolor{keywordflow}{break};
+176         \} \textcolor{keywordflow}{else} \{
+177             std::cerr << \textcolor{stringliteral}{"... comms initialisation attempt "} << tries << \textcolor{stringliteral}{" / "} << 
+      \hyperlink{_bee_safe_8cpp_aa5860d80bbb4527d5d2275aacfce65f7}{INIT\_COMMS\_TRIES} << \textcolor{stringliteral}{" failed."} << std::endl;
+178         \}
+179 
+180     \} \textcolor{keywordflow}{while} (tries < \hyperlink{_bee_safe_8cpp_aa5860d80bbb4527d5d2275aacfce65f7}{INIT\_COMMS\_TRIES});
+181 
+182     \textcolor{comment}{// We failed to initialise the interface.}
+183     \textcolor{keywordflow}{if} (!init) \{
+184         \textcolor{keyword}{delete} \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms};
+185         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+186     \}
+187 
+188     \textcolor{comment}{// Successfully return the comms instance.}
+189     \textcolor{keywordflow}{return} \hyperlink{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}{comms};
+190 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d75/class_bee_safe_manager_a28306d7ccf7136a6086d666f4ebb6566_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d75/class_bee_safe_manager_a28306d7ccf7136a6086d666f4ebb6566_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_bee_safe_manager_ad30babe45ead2cb6a5b0559afa5bc5ff}\label{class_bee_safe_manager_ad30babe45ead2cb6a5b0559afa5bc5ff}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!init\+Monitor@{init\+Monitor}}
+\index{init\+Monitor@{init\+Monitor}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{init\+Monitor()}{initMonitor()}}
+{\footnotesize\ttfamily \hyperlink{class_monitor}{Monitor} $\ast$ Bee\+Safe\+Manager\+::init\+Monitor (\begin{DoxyParamCaption}\item[{\hyperlink{class_comms}{Comms} $\ast$}]{comms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Function is responsible for the creation / initialisation of the \hyperlink{class_monitor}{Monitor} thread instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comms} & The communication interface that\textquotesingle{}s to be utilised. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an instance of \hyperlink{class_monitor}{Monitor} (if successfully initialised / created), nullptr otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 200 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+201 \{
+202     \textcolor{keywordflow}{if} (comms != \textcolor{keyword}{nullptr}) \{
+203         \textcolor{keywordflow}{return} \textcolor{keyword}{new} \hyperlink{class_monitor}{Monitor}(comms);
+204     \}
+205     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+206 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d75/class_bee_safe_manager_ad30babe45ead2cb6a5b0559afa5bc5ff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_bee_safe_manager_a7242d89761621de0e09ec9ea360fca27}\label{class_bee_safe_manager_a7242d89761621de0e09ec9ea360fca27}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!start@{start}}
+\index{start@{start}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily bool Bee\+Safe\+Manager\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A method to start the monitor thread.
+
+\begin{DoxyReturn}{Returns}
+True if the thread could be successfully started. 
+\end{DoxyReturn}
+
+
+Definition at line 263 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+264 \{
+265 
+266     \textcolor{comment}{// If the account is not null, start the monitor thread.}
+267     \textcolor{keywordflow}{if} (\hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account} != \textcolor{keyword}{nullptr}) \{
+268         \textcolor{keywordflow}{if} (!\hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor}->\hyperlink{class_monitor_a71dfa92dfa25ee137f4e3d5e01a8d673}{start}(\hyperlink{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}{account})) \{
+269             std::cerr << \textcolor{stringliteral}{"Failed to start the monitor thread."} << std::endl;
+270             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+271         \}
+272         \hyperlink{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}{monitor}->\hyperlink{class_monitor_a2d2e309666c98333a317c9786f94f6ad}{join}();
+273     \}
+274 
+275     \textcolor{comment}{// TODO: Implement the manager thread for obtaining the account data file.}
+276 
+277     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+278 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{d5/d75/class_bee_safe_manager_a7242d89761621de0e09ec9ea360fca27_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}\label{class_bee_safe_manager_a52bc9bc8c1ea9608b83d603b142443b0}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!account@{account}}
+\index{account@{account}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{account}{account}}
+{\footnotesize\ttfamily \hyperlink{class_account}{Account}$\ast$ Bee\+Safe\+Manager\+::account\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 72 of file Bee\+Safe.\+h.
+
+\mbox{\Hypertarget{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}\label{class_bee_safe_manager_a80b19afbb679d08be14d67a45447f9e1}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!comms@{comms}}
+\index{comms@{comms}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{comms}{comms}}
+{\footnotesize\ttfamily \hyperlink{class_comms}{Comms}$\ast$ Bee\+Safe\+Manager\+::comms\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 68 of file Bee\+Safe.\+h.
+
+\mbox{\Hypertarget{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}\label{class_bee_safe_manager_a3b885b4fb364228c914095f2e670f9af}} 
+\index{Bee\+Safe\+Manager@{Bee\+Safe\+Manager}!monitor@{monitor}}
+\index{monitor@{monitor}!Bee\+Safe\+Manager@{Bee\+Safe\+Manager}}
+\subsubsection{\texorpdfstring{monitor}{monitor}}
+{\footnotesize\ttfamily \hyperlink{class_monitor}{Monitor}$\ast$ Bee\+Safe\+Manager\+::monitor\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 69 of file Bee\+Safe.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/\hyperlink{_bee_safe_8h}{Bee\+Safe.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/\hyperlink{_bee_safe_8cpp}{Bee\+Safe.\+cpp}\end{DoxyCompactItemize}

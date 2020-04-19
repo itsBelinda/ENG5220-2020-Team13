@@ -1,7 +1,36 @@
+/**
+ * \file Comms.cpp
+ * \class Comms
+ *
+ * \ingroup Comms
+ *
+ * \brief A high-level wrapper for the communication features
+ *
+ * The Comms class acts as a high-level wrapper over the UBlox class, ensuring concurrency-safe access to the hardware. By calling the UBlox
+ * commands describing higher level communications functions such as getting a location and sending a text message, and "wrapping it" in a mutex lock
+ * it ensures the safe interactions with and operations of the hardware connected to the Raspberry Pi.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #include "Comms.h"
 
+/**
+ * The Comms class constructor.
+ */
 Comms::Comms() = default;
 
+/**
+ * The Comms class destructor.
+ */
 Comms::~Comms() = default;
 
 /**

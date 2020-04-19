@@ -1,18 +1,23 @@
 /**
+ * \file MonitorState.h
  * \class MonitorState
  *
- * \defgroup monitor
- * \ingroup monitor
+ * \ingroup Monitor
  *
- * \brief Provide an example
+ * \brief The parent monitor state class
  *
- * This class is meant as an example.  It is not useful by itself
- * rather its usefulness is only a function of how much it helps
- * the reader.  It is in a sense defined by the person who reads it
- * and otherwise does not exist in any real form.
+ * The parent class to ActiveMonitorState and PassiveMonitorState. It provides generic functionality
+ * by defining how to handle when the device crosses a fence boundary.
  *
- * \author $Author: bk $
+ * \author BeeSafe Team, Team 13
  *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
  */
 
 #ifndef BEESAFEPI_MONITORSTATE_H

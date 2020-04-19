@@ -1,0 +1,479 @@
+\hypertarget{class_monitor}{}\section{Monitor Class Reference}
+\label{class_monitor}\index{Monitor@{Monitor}}
+
+
+The \hyperlink{class_monitor}{Monitor} class, handling the threads of monitor state classes and connects the device and communication functionalities.  
+
+
+
+
+{\ttfamily \#include $<$Monitor.\+h$>$}
+
+
+
+Collaboration diagram for Monitor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{d0/d9f/class_monitor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_monitor_a092bf291d6c9d140c1edf59875ddf143}{Monitor} (\hyperlink{class_comms}{Comms} $\ast$\hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms}, \hyperlink{class_account}{Account} $\ast$\hyperlink{class_monitor_acacff99178fbcd9eae50801acc346bf4}{account})
+\item 
+\hyperlink{class_monitor_aa7e89b9dc22b89f4d12b82eda450c1a0}{Monitor} (\hyperlink{class_comms}{Comms} $\ast$\hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms})
+\item 
+bool \hyperlink{class_monitor_a71dfa92dfa25ee137f4e3d5e01a8d673}{start} ()
+\item 
+bool \hyperlink{class_monitor_a5a01b1c1084f0826a01c184519491cf6}{start} (\hyperlink{class_account}{Account} $\ast$\hyperlink{class_monitor_acacff99178fbcd9eae50801acc346bf4}{account})
+\item 
+void \hyperlink{class_monitor_a13fb20dc3bd5c8739f5a820cf7433cd8}{stop} ()
+\item 
+void \hyperlink{class_monitor_a2d2e309666c98333a317c9786f94f6ad}{join} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_monitor_a81666ecd4a8db05fd3090f7e47eca6ed}{run} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_monitor_a79e0c78d0973bee48418aedf3aedb2ba}{execute} (\hyperlink{class_monitor}{Monitor} $\ast$const monitor)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_comms}{Comms} $\ast$ \hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms}
+\item 
+\hyperlink{class_account}{Account} $\ast$ \hyperlink{class_monitor_acacff99178fbcd9eae50801acc346bf4}{account}
+\item 
+bool \hyperlink{class_monitor_a63d26dffb146b9cfd0705163f3dc4745}{monitor\+Thread\+Running}
+\item 
+std\+::thread $\ast$ \hyperlink{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}{monitor\+Thread}
+\item 
+\hyperlink{class_monitor_state}{Monitor\+State} $\ast$ \hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitor\+State}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_monitor}{Monitor} class, handling the threads of monitor state classes and connects the device and communication functionalities. 
+
+The \hyperlink{class_monitor}{Monitor} class maintains the threads for Active and Passive monitoring state, serving the account information that needs to be contacted in case of emergency, and facilitates the real-\/time connection between the communication module(package) and the administrative, device-\/side features.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 39 of file Monitor.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_monitor_a092bf291d6c9d140c1edf59875ddf143}\label{class_monitor_a092bf291d6c9d140c1edf59875ddf143}} 
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{Monitor()}{Monitor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Monitor\+::\+Monitor (\begin{DoxyParamCaption}\item[{\hyperlink{class_comms}{Comms} $\ast$}]{comms,  }\item[{\hyperlink{class_account}{Account} $\ast$}]{account }\end{DoxyParamCaption})}
+
+Constrictor explicitly initialises the monitor thread with the necessary parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comms} & The communications interface used to obtain the location and send messages. \\
+\hline
+{\em account} & The device account that defines the fences and contacts. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file Monitor.\+cpp.
+
+
+\begin{DoxyCode}
+36 \{
+37     this->comms = \hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms};
+38     this->account = \hyperlink{class_monitor_acacff99178fbcd9eae50801acc346bf4}{account};
+39 
+40     this->\hyperlink{class_monitor_a63d26dffb146b9cfd0705163f3dc4745}{monitorThreadRunning} = \textcolor{keyword}{false};
+41     this->\hyperlink{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}{monitorThread} = \textcolor{keyword}{nullptr};
+42     this->\hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState} = \textcolor{keyword}{nullptr};
+43 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_monitor_aa7e89b9dc22b89f4d12b82eda450c1a0}\label{class_monitor_aa7e89b9dc22b89f4d12b82eda450c1a0}} 
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{Monitor()}{Monitor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Monitor\+::\+Monitor (\begin{DoxyParamCaption}\item[{\hyperlink{class_comms}{Comms} $\ast$}]{comms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor initialises the monitor thread only with the communications interface. Note, starting will require the account to be passed to the thread.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comms} & The communications interface used to obtain the location of the device and send messages. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file Monitor.\+cpp.
+
+
+\begin{DoxyCode}
+54 \{
+55     this->comms = \hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms};
+56 
+57     this->\hyperlink{class_monitor_acacff99178fbcd9eae50801acc346bf4}{account} = \textcolor{keyword}{nullptr};
+58     this->\hyperlink{class_monitor_a63d26dffb146b9cfd0705163f3dc4745}{monitorThreadRunning} = \textcolor{keyword}{false};
+59     this->\hyperlink{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}{monitorThread} = \textcolor{keyword}{nullptr};
+60     this->\hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState} = \textcolor{keyword}{nullptr};
+61 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_monitor_a79e0c78d0973bee48418aedf3aedb2ba}\label{class_monitor_a79e0c78d0973bee48418aedf3aedb2ba}} 
+\index{Monitor@{Monitor}!execute@{execute}}
+\index{execute@{execute}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily static void Monitor\+::execute (\begin{DoxyParamCaption}\item[{\hyperlink{class_monitor}{Monitor} $\ast$const}]{monitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 78 of file Monitor.\+h.
+
+
+\begin{DoxyCode}
+79     \{
+80         monitor->\hyperlink{class_monitor_a81666ecd4a8db05fd3090f7e47eca6ed}{run}();
+81     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/df7/class_monitor_a79e0c78d0973bee48418aedf3aedb2ba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{d9/df7/class_monitor_a79e0c78d0973bee48418aedf3aedb2ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_monitor_a2d2e309666c98333a317c9786f94f6ad}\label{class_monitor_a2d2e309666c98333a317c9786f94f6ad}} 
+\index{Monitor@{Monitor}!join@{join}}
+\index{join@{join}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily void Monitor\+::join (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stop the monitoring thread.
+
+Blocks the invoking thread until the monitor thread has finished executing. Moreover, this will take care of cleaning up any resources occupied by the thread. 
+
+Definition at line 123 of file Monitor.\+cpp.
+
+
+\begin{DoxyCode}
+124 \{
+125     \textcolor{comment}{// Waits for the thread to join.}
+126     \hyperlink{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}{monitorThread}->join();
+127 
+128     \textcolor{comment}{// Handle thread cleanup.}
+129     \textcolor{keyword}{delete} \hyperlink{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}{monitorThread};
+130     \hyperlink{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}{monitorThread} = \textcolor{keyword}{nullptr};
+131 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/df7/class_monitor_a2d2e309666c98333a317c9786f94f6ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_monitor_a81666ecd4a8db05fd3090f7e47eca6ed}\label{class_monitor_a81666ecd4a8db05fd3090f7e47eca6ed}} 
+\index{Monitor@{Monitor}!run@{run}}
+\index{run@{run}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Monitor\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Run the monitoring thread loop.
+
+While the thread is running, it can either be in active or passive state. Each performs different tasks. 
+
+Definition at line 140 of file Monitor.\+cpp.
+
+
+\begin{DoxyCode}
+141 \{
+142 
+143     \textcolor{comment}{// Initialise the thread state.}
+144     \hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState} = \textcolor{keyword}{new} \hyperlink{class_passive_monitor_state}{PassiveMonitorState}(\hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms}, 
+      \hyperlink{class_monitor_acacff99178fbcd9eae50801acc346bf4}{account});
+145     \hyperlink{class_monitor_a63d26dffb146b9cfd0705163f3dc4745}{monitorThreadRunning} = \textcolor{keyword}{true};
+146 
+147     \textcolor{comment}{// Generic return code.}
+148     \textcolor{keywordtype}{bool} rc = \textcolor{keyword}{false};
+149 
+150     \textcolor{comment}{// PSD related variables.}
+151     \textcolor{keywordtype}{int} psdConnectionTries = 0;
+152     std::string psdUrc;
+153     \textcolor{keywordtype}{bool} psdConnected = \textcolor{keyword}{false};
+154 
+155     \textcolor{comment}{// Pair into which the latitude and longitude shall be stored.}
+156     std::pair<double, double> latLng;
+157 
+158     \textcolor{comment}{// The main monitoring thread.}
+159     \hyperlink{class_monitor_state}{MonitorState} *toMonitorState = \textcolor{keyword}{nullptr};
+160     \textcolor{keywordflow}{while} (\hyperlink{class_monitor_a63d26dffb146b9cfd0705163f3dc4745}{monitorThreadRunning}) \{
+161 
+162         \textcolor{comment}{// Check that we have access to the internet.}
+163         rc = \hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms}->\hyperlink{class_comms_a2c43ce409b48f4d28eefb7934cdd1523}{hasPSD}(psdConnected);
+164         \textcolor{keywordflow}{if} (!rc) \{
+165             psdConnectionTries = 0;
+166             \textcolor{keywordflow}{do} \{
+167 
+168                 psdConnectionTries++;
+169                 std::cout << \textcolor{stringliteral}{"PSD connection attempt "} << psdConnectionTries << \textcolor{stringliteral}{" / "} << 
+      \hyperlink{_monitor_8cpp_af5cf22b2d85959f36b7e007da57eaf37}{CONNECT\_PSD\_TRIES} << \textcolor{stringliteral}{"..."} << std::endl;
+170 
+171                 \textcolor{comment}{// Attempt to reconnect.}
+172                 rc = \hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms}->\hyperlink{class_comms_a6d720b51b543ec05b140efdde4cca824}{connectPSD}(psdConnected, psdUrc);
+173                 \textcolor{keywordflow}{if} (rc && psdConnected) \{
+174                     std::cout << \textcolor{stringliteral}{"... PSD successfully connected."} << std::endl;
+175                     \textcolor{keywordflow}{break};
+176                 \} \textcolor{keywordflow}{else} \{
+177                     std::cerr << \textcolor{stringliteral}{"... PSD connection attempt "} << psdConnectionTries << \textcolor{stringliteral}{" / "} << 
+      \hyperlink{_monitor_8cpp_af5cf22b2d85959f36b7e007da57eaf37}{CONNECT\_PSD\_TRIES} << \textcolor{stringliteral}{" failed."} << std::endl;
+178                 \}
+179 
+180             \} \textcolor{keywordflow}{while} (psdConnectionTries < \hyperlink{_monitor_8cpp_af5cf22b2d85959f36b7e007da57eaf37}{CONNECT\_PSD\_TRIES});
+181         \}
+182 
+183         \textcolor{comment}{// Failed to connect. Kill the thread.}
+184         \textcolor{keywordflow}{if} (!psdConnected) \{
+185             std::cerr << \textcolor{stringliteral}{"Failed to connect PSD."} << std::endl;
+186             \textcolor{keywordflow}{break};
+187         \}
+188 
+189         \textcolor{comment}{// Try to get the latitude and longitude.}
+190         std::cout << \textcolor{stringliteral}{"Getting device coordinates..."} << std::endl;
+191         rc = \hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms}->\hyperlink{class_comms_a26030245503e82aa6278e39cd0886c31}{getLocation}(latLng);
+192         \textcolor{keywordflow}{if} (!rc) \{
+193             std::cerr << \textcolor{stringliteral}{"Failed to get the location."} << std::endl;
+194             \textcolor{keywordflow}{continue};
+195         \}
+196         std::cout << \textcolor{stringliteral}{"... device coordinates (lat: "} << latLng.first << \textcolor{stringliteral}{", lng: "} << latLng.second << \textcolor{stringliteral}{")
+       successfully obtained."} << std::endl;
+197 
+198         \textcolor{comment}{// Permit the monitor state to handle the location; update state if necessary.}
+199         std::cout << \textcolor{stringliteral}{"Starting "} << \hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState}->\hyperlink{class_monitor_state_acb6d3a4de174058cb5b167fc04929ddb}{getStateName}() << \textcolor{stringliteral}{" state
+       checks..."} << std::endl;
+200         toMonitorState = \hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState}->\hyperlink{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}{handleLatLng}(latLng);
+201         \textcolor{keywordflow}{if} (toMonitorState != \textcolor{keyword}{nullptr}) \{
+202             std::cout << \textcolor{stringliteral}{"Switching from state "} << \hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState}->
+      \hyperlink{class_monitor_state_acb6d3a4de174058cb5b167fc04929ddb}{getStateName}() << \textcolor{stringliteral}{" to state "} << toMonitorState->\hyperlink{class_monitor_state_acb6d3a4de174058cb5b167fc04929ddb}{getStateName}() << \textcolor{stringliteral}{"."} << 
+      std::endl;
+203             \textcolor{keyword}{delete} \hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState};
+204             \hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState} = toMonitorState;
+205         \} \textcolor{keywordflow}{else} \{
+206             std::cout << \textcolor{stringliteral}{"No state change occurred."} << std::endl;
+207         \}
+208         std::cout << \textcolor{stringliteral}{"... state checks complete."} << std::endl;
+209     \}
+210 
+211     \textcolor{comment}{// Clean up the monitor state.}
+212     \textcolor{keyword}{delete} \hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState};
+213     \hyperlink{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}{monitorState} = \textcolor{keyword}{nullptr};
+214 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/df7/class_monitor_a81666ecd4a8db05fd3090f7e47eca6ed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/df7/class_monitor_a81666ecd4a8db05fd3090f7e47eca6ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_monitor_a71dfa92dfa25ee137f4e3d5e01a8d673}\label{class_monitor_a71dfa92dfa25ee137f4e3d5e01a8d673}} 
+\index{Monitor@{Monitor}!start@{start}}
+\index{start@{start}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{start()}{start()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Monitor\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Start the monitor thread.
+
+Attempts to start the thread with the current account. If the thread is already running, calling this function is the equivalent of restarting the thread.
+
+\begin{DoxyReturn}{Returns}
+True if the thread was successfully started, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 72 of file Monitor.\+cpp.
+
+
+\begin{DoxyCode}
+73 \{
+74     \textcolor{keywordflow}{return} \hyperlink{class_monitor_a71dfa92dfa25ee137f4e3d5e01a8d673}{start}(\hyperlink{class_monitor_acacff99178fbcd9eae50801acc346bf4}{account});
+75 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{d9/df7/class_monitor_a71dfa92dfa25ee137f4e3d5e01a8d673_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_monitor_a5a01b1c1084f0826a01c184519491cf6}\label{class_monitor_a5a01b1c1084f0826a01c184519491cf6}} 
+\index{Monitor@{Monitor}!start@{start}}
+\index{start@{start}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{start()}{start()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Monitor\+::start (\begin{DoxyParamCaption}\item[{\hyperlink{class_account}{Account} $\ast$}]{account }\end{DoxyParamCaption})}
+
+Start the monitor thread.
+
+Attempts to start the thread with an explicit account. If the thread is already running, calling this function is the equivalent of restarting the thread.
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & The new account instance that should be used. Note, this will overwrite the existing account instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the thread was successfully started, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 88 of file Monitor.\+cpp.
+
+
+\begin{DoxyCode}
+89 \{
+90 
+91     \textcolor{comment}{// Requisites must be present i.e. communications and account.}
+92     \textcolor{keywordflow}{if} (\hyperlink{class_monitor_a42fffadeba33ae6080b1d95783ca703b}{comms} == \textcolor{keyword}{nullptr} || account == \textcolor{keyword}{nullptr}) \{
+93         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+94     \}
+95 
+96     \textcolor{comment}{// If the monitor thread is running, join it.}
+97     \textcolor{keywordflow}{if} (\hyperlink{class_monitor_a63d26dffb146b9cfd0705163f3dc4745}{monitorThreadRunning} && \hyperlink{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}{monitorThread} != \textcolor{keyword}{nullptr}) \{
+98         \hyperlink{class_monitor_a2d2e309666c98333a317c9786f94f6ad}{join}();
+99     \}
+100 
+101     \textcolor{comment}{// Potentially update the account.}
+102     \textcolor{keywordflow}{if} (this->account != account) \{
+103         this->account = \hyperlink{class_monitor_acacff99178fbcd9eae50801acc346bf4}{account};
+104     \}
+105 
+106     \hyperlink{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}{monitorThread} = \textcolor{keyword}{new} std::thread(\hyperlink{class_monitor_a79e0c78d0973bee48418aedf3aedb2ba}{Monitor::execute}, \textcolor{keyword}{this});
+107     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+108 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/df7/class_monitor_a5a01b1c1084f0826a01c184519491cf6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_monitor_a13fb20dc3bd5c8739f5a820cf7433cd8}\label{class_monitor_a13fb20dc3bd5c8739f5a820cf7433cd8}} 
+\index{Monitor@{Monitor}!stop@{stop}}
+\index{stop@{stop}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Monitor\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 110 of file Monitor.\+cpp.
+
+
+\begin{DoxyCode}
+111 \{
+112     \hyperlink{class_monitor_a63d26dffb146b9cfd0705163f3dc4745}{monitorThreadRunning} = \textcolor{keyword}{false};
+113     \hyperlink{class_monitor_a2d2e309666c98333a317c9786f94f6ad}{join}();
+114 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{d9/df7/class_monitor_a13fb20dc3bd5c8739f5a820cf7433cd8_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_monitor_acacff99178fbcd9eae50801acc346bf4}\label{class_monitor_acacff99178fbcd9eae50801acc346bf4}} 
+\index{Monitor@{Monitor}!account@{account}}
+\index{account@{account}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{account}{account}}
+{\footnotesize\ttfamily \hyperlink{class_account}{Account}$\ast$ Monitor\+::account\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 67 of file Monitor.\+h.
+
+\mbox{\Hypertarget{class_monitor_a42fffadeba33ae6080b1d95783ca703b}\label{class_monitor_a42fffadeba33ae6080b1d95783ca703b}} 
+\index{Monitor@{Monitor}!comms@{comms}}
+\index{comms@{comms}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{comms}{comms}}
+{\footnotesize\ttfamily \hyperlink{class_comms}{Comms}$\ast$ Monitor\+::comms\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 66 of file Monitor.\+h.
+
+\mbox{\Hypertarget{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}\label{class_monitor_a56b40e06ac7f2f36520e82ee01a17d4c}} 
+\index{Monitor@{Monitor}!monitor\+State@{monitor\+State}}
+\index{monitor\+State@{monitor\+State}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{monitor\+State}{monitorState}}
+{\footnotesize\ttfamily \hyperlink{class_monitor_state}{Monitor\+State}$\ast$ Monitor\+::monitor\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 75 of file Monitor.\+h.
+
+\mbox{\Hypertarget{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}\label{class_monitor_a1e6bfb7c47a223d8bdc537e2cff07822}} 
+\index{Monitor@{Monitor}!monitor\+Thread@{monitor\+Thread}}
+\index{monitor\+Thread@{monitor\+Thread}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{monitor\+Thread}{monitorThread}}
+{\footnotesize\ttfamily std\+::thread$\ast$ Monitor\+::monitor\+Thread\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 71 of file Monitor.\+h.
+
+\mbox{\Hypertarget{class_monitor_a63d26dffb146b9cfd0705163f3dc4745}\label{class_monitor_a63d26dffb146b9cfd0705163f3dc4745}} 
+\index{Monitor@{Monitor}!monitor\+Thread\+Running@{monitor\+Thread\+Running}}
+\index{monitor\+Thread\+Running@{monitor\+Thread\+Running}!Monitor@{Monitor}}
+\subsubsection{\texorpdfstring{monitor\+Thread\+Running}{monitorThreadRunning}}
+{\footnotesize\ttfamily bool Monitor\+::monitor\+Thread\+Running\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 70 of file Monitor.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/monitor/\hyperlink{_monitor_8h}{Monitor.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/monitor/\hyperlink{_monitor_8cpp}{Monitor.\+cpp}\end{DoxyCompactItemize}

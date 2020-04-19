@@ -1,3 +1,29 @@
+/**
+ * \file Fence.h
+ * \class Fence
+ *
+ * \defgroup Geo Geo
+ * \brief The package handling the fence declaration and management.
+ * \ingroup Geo
+ *
+ * \brief The Fence parent class providing generic functionality for handling fences.
+ *
+ * The Fence class is the parent class to the Poly- and RoundFence classes. It provides methods to create and manage
+ * the details of fences regardless of type, such as what times on what days is it considered a safezone, checks if the
+ * device is within the time and physical boundaries of the location they are at, and provides a super function to
+ * converting the Fence objects into JSON objects to be handled by the online database.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #ifndef BEESAFEPI_FENCE_H
 #define BEESAFEPI_FENCE_H
 
@@ -36,32 +62,26 @@ public:
 
 public:
 
-    std::string &getName();
-
     // Getters and setters.
+    std::string &getName();
     const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &getWeek();
-
     const std::vector<std::pair<std::tm, std::tm>> &getTimes(int day);
 
     bool isSafe();
-
     bool isInTime();
-
     bool isInTime(const std::time_t &time);
 
     // Inherited interfaces.
     virtual bool isInLocation(std::pair<double, double> &latLng) = 0;
-
     virtual web::json::value serialiseFence();
 
-    /// isInside attributes to both location and time to be valid for the fence.
+    // isInside attributes to both location and time to be valid for the fence.
     bool isInside(std::pair<double, double> &latLng);
 
 private:
 
-    // The name of the fence.
+    // Fence attributes
     std::string name;
-
     bool safe;
     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
 

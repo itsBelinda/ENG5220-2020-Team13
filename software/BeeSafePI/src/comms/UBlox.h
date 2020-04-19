@@ -1,3 +1,28 @@
+/**
+ * \file UBlox.h
+ * \class UBlox
+ *
+ * \ingroup Comms
+ *
+ * \brief The class containing module specific functionality for the u-blox GSM module
+ *
+ * The UBlox class contains hardware and manufacturer-specific method calls, configuration options and some higher level wrappers
+ * to facilitate the communication requirements of this project via the u-blox SARA-G350 GSM module. This includes the universal
+ * AT commands used for mobile communications on the GSM network, as well as their specific implementation and configuration
+ * pertaining not only the u-blox company, but the specific make and model of the GSM module. It is a mid-level communications
+ * class making the UART I/O human-readable, grouping together commands related to the high-level communication features of Comms.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #ifndef BEESAFEPI_UBLOX_H
 #define BEESAFEPI_UBLOX_H
 

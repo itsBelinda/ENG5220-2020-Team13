@@ -1,3 +1,29 @@
+/**
+ * \file BeeSafe.h
+ * \class BeeSafeManager
+ *
+ * \defgroup BeeSafePi BeeSafePi
+ * \brief The package incorporating the entire BeeSafe Project
+ * \ingroup BeeSafePi
+ *
+ * \brief The BeeSafe class initiates the complete program
+ *
+ * The BeeSafe class creates the instances of classes required to communicate with the hardware, the monitors overseeing
+ * that, and the account information to whom the system must reach out in case of an emergency. Containing the main() function,
+ * this is the root of the BeeSafe API.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
+
 #ifndef BEESAFEPI_MAIN_H
 #define BEESAFEPI_MAIN_H
 

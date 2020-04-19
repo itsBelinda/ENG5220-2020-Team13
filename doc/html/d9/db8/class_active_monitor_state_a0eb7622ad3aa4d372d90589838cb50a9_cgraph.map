@@ -1,0 +1,13 @@
+<map id="ActiveMonitorState::handleLatLng" name="ActiveMonitorState::handleLatLng">
+<area shape="rect" id="node2" href="$dd/d45/class_monitor_state.html#a332c5f42bf46cd217e36f300e5279766" title="MonitorState::getCrossed\lFence" alt="" coords="193,5,364,47"/>
+<area shape="rect" id="node4" href="$d9/db8/class_active_monitor_state.html#adedd023d280922991a5dd980017549ec" title="ActiveMonitorState\l::setSentNotifications" alt="" coords="205,71,353,112"/>
+<area shape="rect" id="node5" href="$db/d22/class_account.html#a1ef22885e8c6f145475c3306a4e6d74a" title="Account::getName" alt="" coords="213,137,344,163"/>
+<area shape="rect" id="node6" href="$d9/db8/class_active_monitor_state.html#aae5b3a425c74e7017446be277d69c06d" title="ActiveMonitorState\l::sendMessageNotifications" alt="" coords="187,188,371,229"/>
+<area shape="rect" id="node10" href="$d0/db8/class_fence.html#a1d90d0ff61bec6cda8240f6365fc5d28" title="Fence::getName" alt="" coords="219,254,338,281"/>
+<area shape="rect" id="node3" href="$db/d22/class_account.html#a5117acc0c4ef7be21c5339bd9ae84e40" title="Account::getFences" alt="" coords="428,13,567,39"/>
+<area shape="rect" id="node7" href="$d9/db8/class_active_monitor_state.html#add557ab0dd0774482c08c982b82395e7" title="ActiveMonitorState\l::allNotificationsSent" alt="" coords="426,131,569,172"/>
+<area shape="rect" id="node8" href="$d8/dcc/class_comms.html#a30ab10ea604ab2b169ca66f3f1071c0e" title="Comms::sendMessage" alt="" coords="419,197,576,223"/>
+<area shape="rect" id="node9" href="$dd/d2a/class_contact.html#a612095b153e05538c32400c4c44cb1aa" title="Contact::getNumber" alt="" coords="624,197,764,223"/>
+<area shape="rect" id="node11" href="$d0/db8/class_fence.html#a80fb7fbb60592d3e8afc0ecb5122b987" title="Fence::isInLocation" alt="" coords="429,251,565,278"/>
+<area shape="rect" id="node12" href="$d0/db8/class_fence.html#a7695b0f94f461369703188a287a38ab4" title="Fence::isInTime" alt="" coords="439,302,555,329"/>
+</map>

@@ -1,3 +1,27 @@
+/**
+ * \file UArt.cpp
+ * \class UArt
+ *
+ * \ingroup Comms
+ *
+ * \brief The lowest level communication handler between the Pi and the PCB
+ *
+ * The UArt class handles the low-level communication between the Raspberry Pi and the PCB (specifically the Ublox GSM module on it),
+ * implementing the Universal Asynchronous Receiver/Transmitter protocol. This class opens and closes the tty devices on the Pi so
+ * that it can communicate with the PCB via GPIO pins using the UART protocol. The class contains methods and parameters that
+ * pertain to byte-level communication via the protocol, including the specific configuration options necessary.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 // Include the header header.
 #include "UArt.h"
 
