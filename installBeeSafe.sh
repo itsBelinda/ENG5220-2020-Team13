@@ -1,18 +1,18 @@
 #!/bin/sh
 
-sudo apt-get update -y -qq
-sudo apt-get upgrade -y -qq
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
-sudo apt-get install git -y -qq
-sudo apt-get install build-essential -y -qq
-sudo apt-get install cmake openssl libcpprest-dev -y -qq
+sudo apt-get install git -y
+sudo apt-get install build-essential -y
+sudo apt-get install cmake openssl libcpprest-dev -y
 
 # Not necessary packages, but are required to recreate the entire project
 # And are also quite handy
-sudo apt-get install flex bison doxygen graphviz libreadline6-dev lcov  -y -qq
+sudo apt-get install flex bison doxygen graphviz libreadline6-dev lcov  -y
 
 # Only handy packages
-sudo apt install screen npm -y -qq
+sudo apt install screen npm -y
 
 sudo apt-get clean
 
