@@ -1,11 +1,8 @@
-#include <iostream>
 #include "../src/device/Account.cpp"
-#include "../src/device/Account.h"
-#include "../src/contact/Contact.cpp"
-#include "../src/geo/RoundFence.h"
-#include "../src/geo/PolyFence.h"
-#include "../src/geo/Fence.h"
 #include "../src/device/AccountBuilder.h"
+
+#include <iostream>
+#include <cstring>
 
 #define ACCOUNT_PATH "../../build/data/TestAccount.json"
 
