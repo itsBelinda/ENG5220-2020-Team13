@@ -56,7 +56,7 @@ Contact::Contact(const Contact &contact)
 /**
  * The Contact class destructor.
  */
-Contact::~Contact = default;
+Contact::~Contact() = default;
 
 /**
  * A getter for the first name of the contact.
