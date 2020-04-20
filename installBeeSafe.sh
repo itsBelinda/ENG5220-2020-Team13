@@ -17,6 +17,7 @@ sudo apt install screen npm -y -qq
 sudo apt-get clean
 
 # Uncomment and edit if you prefer
+# And if weirdly you haven't happen to have done already
 #git config --global user.name "yourusername"
 #git config --global user.email "youremail@email.com"
-git clone https://github.com/itsBelinda/ENG5220-2020-Team13/
+#git clone https://github.com/itsBelinda/ENG5220-2020-Team13/
