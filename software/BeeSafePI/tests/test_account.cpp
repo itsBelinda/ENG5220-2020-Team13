@@ -1,4 +1,4 @@
-#include "../src/device/Account.cpp"
+#include "../src/device/Account.h"
 #include "../src/device/AccountBuilder.h"
 
 #include <iostream>
