@@ -3,6 +3,7 @@
 [![build](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13.svg?token=kxeDEXY2kiCv968c3pfm&branch=unit_tests)](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13)
 [![codecov](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13/branch/unit_tests/graph/badge.svg?)](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13)
 <br>Currently in development.
+# Archived branch
 
 ## Description
 The BeeSafe project is a low-cost, open source tracking device. It is designed to keep children safe by constantly monitoring their location, and alerting parents if the child leaves the designated safe zones. It consists of a Raspberry Pi 3B, and a purpose made PCB containing a u-blox SARA-G350 GSM module, through which the Pi continuously gathers location data, and processes whether the child is in a location it is supposed to be at that time, and if the child is at a place they should not be, the device sends a text message to the parent with the child’s location they can track through a web interface. 
