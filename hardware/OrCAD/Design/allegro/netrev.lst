@@ -2,9 +2,9 @@
 (                                                                     )
 (    Allegro Netrev Import Logic                                      )
 (                                                                     )
-(    Drawing          : beeSafe_1V0.brd                               )
+(    Drawing          : beeSafe_1V2.brd                               )
 (    Software Version : 17.2S055                                      )
-(    Date/Time        : Tue Feb 25 11:51:04 2020                      )
+(    Date/Time        : Wed Mar 18 16:06:59 2020                      )
 (                                                                     )
 (---------------------------------------------------------------------)
 
@@ -19,19 +19,19 @@ Missing symbol has error:    No
 DRC update:                  Yes
 Schematic directory:         'K:\ORCAD\DESIGN\BEESAFE\allegro'
 Design Directory:            'K:/OrCAD/Design/BeeSafe/allegro'
-Old design name:             'K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V0.brd'
-New design name:             'K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V1.brd'
+Old design name:             'K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V2.brd'
+New design name:             'K:/OrCAD/Design/BeeSafe/allegro/beeSafe_1V3.brd'
 
-CmdLine: netrev.exe -y 1 -i K:\ORCAD\DESIGN\BEESAFE\allegro K:\OrCAD\Design\BeeSafe\allegro\beeSafe_1V0.brd K:\OrCAD\Design\BeeSafe\allegro\beeSafe_1V1.brd
+CmdLine: netrev.exe -y 1 -i K:\ORCAD\DESIGN\BEESAFE\allegro K:\OrCAD\Design\BeeSafe\allegro\beeSafe_1V2.brd K:\OrCAD\Design\BeeSafe\allegro\beeSafe_1V3.brd
 
 ------ Preparing to read pst files ------
 
 Starting to read K:/ORCAD/DESIGN/BEESAFE/allegro/pstchip.dat 
-   Finished reading K:/ORCAD/DESIGN/BEESAFE/allegro/pstchip.dat (00:00:00.10)
+   Finished reading K:/ORCAD/DESIGN/BEESAFE/allegro/pstchip.dat (00:00:00.09)
 Starting to read K:/ORCAD/DESIGN/BEESAFE/allegro/pstxprt.dat 
-   Finished reading K:/ORCAD/DESIGN/BEESAFE/allegro/pstxprt.dat (00:00:00.01)
+   Finished reading K:/ORCAD/DESIGN/BEESAFE/allegro/pstxprt.dat (00:00:00.00)
 Starting to read K:/ORCAD/DESIGN/BEESAFE/allegro/pstxnet.dat 
-   Finished reading K:/ORCAD/DESIGN/BEESAFE/allegro/pstxnet.dat (00:00:00.01)
+   Finished reading K:/ORCAD/DESIGN/BEESAFE/allegro/pstxnet.dat (00:00:00.00)
 
 ------ Oversights/Warnings/Errors ------
 
@@ -62,7 +62,7 @@ PADPATH =  Q:/allegro/PCB_LIB/padstacks/
 ------ Summary Statistics ------
 
 
-netrev run on Feb 25 11:51:04 2020
+netrev run on Mar 18 16:06:59 2020
    DESIGN NAME : 'BEESAFE'
    PACKAGING ON May 11 2019 05:12:43
 
@@ -87,6 +87,6 @@ netrev run on Feb 25 11:51:04 2020
  No oversight detected
  No warning detected
 
-cpu time      0:04:22
+cpu time      0:04:47
 elapsed time  0:00:02
 
