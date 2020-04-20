@@ -1,3 +1,27 @@
+/**
+ * \file Contact.h
+ * \class Contact
+ *
+ * \defgroup Contact Contact
+ * \brief The package handling the declaration and maintenance of emergency contact information
+ * \ingroup Contact
+ *
+ * \brief The Contact class handling the declaration and maintenance of emergency contact information
+ *
+ * The Contact class creates the objects containing the information of emergency contacts that must be notified when the
+ * device leaves a designated fence area/safe zone, and manages this information's conversion to JSON format for the database online.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #ifndef BEESAFEPI_CONTACT_H
 #define BEESAFEPI_CONTACT_H
 
@@ -16,16 +40,15 @@ class Contact
 
 public:
 
-    // Constructors.
+    // Constructors / destructors.
     Contact(const std::string& forename, const std::string& surname,
             const std::string& number, const std::string& key);
-
-    // Destructors.
+    Contact(const Contact &contact);
     ~Contact();
 
 public:
 
-    // Getters and setters for the contact.
+    // Getters and setters for the contact details
     const std::string& getForename();
     const std::string& getSurname();
     const std::string& getNumber();
@@ -36,7 +59,7 @@ public:
 
 private:
 
-    // Attributes.
+    // Contact detail attributes
     std::string forename;
     std::string surname;
     std::string number;

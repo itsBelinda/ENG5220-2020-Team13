@@ -1,56 +1,96 @@
+/**
+ * \file Fence.cpp
+ * \class Fence
+ *
+ * \ingroup Geo
+ *
+ * \brief The Fence parent class providing generic functionality for handling fences.
+ *
+ * The Fence class is the parent class to the Poly- and RoundFence classes. It provides methods to create and manage
+ * the details of fences regardless of type, such as what times on what days is it considered a safezone, checks if the
+ * device is within the time and physical boundaries of the location they are at, and provides a super function to
+ * converting the Fence objects into JSON objects to be handled by the online database.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
 #include "Fence.h"
 
 // System inclusions.
 #include <sstream>
+#include "iostream"
 
 // Define the format according to which the date time will be written.
 #define DAY_TIME_STRING_FORMAT "%d:%d"
 #define DAY_TIME_BUFFER_SIZE 6
 
-// Defines the constructor for the fence.
-Fence::Fence(bool safe)
+// Explicitly define the fence.
+Fence::Fence(std::string &name, bool safe,
+             const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week)
 {
+    this->name = name;
+    this->safe = safe;
+    this->week = week;
+}
+
+// Defines the constructor for the fence.
+Fence::Fence(std::string &name, bool safe)
+{
+    this->name = name;
     this->safe = safe;
 }
 
-// Explicitly define the fence.
-Fence::Fence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week)
-{
-    this->safe = safe;
-    this->week = week;
+// The copy constructor.
+Fence::Fence(const Fence &fence) {
+    this->name = fence.name;
+    this->safe = fence.safe;
+    this->week = fence.week;
 }
 
 // Fence destructor.
 Fence::~Fence() = default;
 
-// Get a map of all the days and their times.
-const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& Fence::getWeek()
+std::string& Fence::getName()
 {
+    return name;
+}
+
+bool isInLocation(std::pair<double, double> &pair);
+
+bool isInTime();
+
+// Get a map of all the days and their times.
+const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &Fence::getWeek() {
     return week;
 }
 
 // Get all the times associated with a given day.
-const std::vector<std::pair<std::tm, std::tm>>& Fence::getTimes(const int day)
-{
+const std::vector<std::pair<std::tm, std::tm>> &Fence::getTimes(const int day) {
     return week[day];
 }
 
 // If the fence is regarded as being safe.
-bool Fence::isSafe()
-{
+bool Fence::isSafe() {
     return safe;
 }
 
 // Check if the device is within the fence at the current time.
-bool Fence::isPresent()
-{
+bool Fence::isInTime() {
     const std::time_t systemTime = std::time(nullptr);
-    return isPresent(systemTime);
+    return isInTime(systemTime);
 }
 
 // Check if the time is present in the virtual fence.
-bool Fence::isPresent(const std::time_t& time)
-{
+//TODO: make sure this returns true if no time is set
+bool Fence::isInTime(const std::time_t &time) {
 
     // Extract information from system time.
     std::tm time_tm = *std::localtime(&time);
@@ -64,8 +104,8 @@ bool Fence::isPresent(const std::time_t& time)
     }
 
     // Iterate through days list of from and to times.
-    auto& dayTimes = iter->second;
-    for (const std::pair<std::tm, std::tm>& dayTime : dayTimes) {
+    auto &dayTimes = iter->second;
+    for (const std::pair<std::tm, std::tm> &dayTime : dayTimes) {
 
         // If time is before from time, we are not present.
         if (time_tm.tm_hour < dayTime.first.tm_hour) {
@@ -90,9 +130,14 @@ bool Fence::isPresent(const std::time_t& time)
     return true;
 }
 
+
+bool Fence::isInside(std::pair<double, double> &latLng) {
+    return( this->isInTime() && this->isInLocation(latLng));
+}
+
 // Serialise the fence instance into a JSON element.
-web::json::value Fence::serialiseFence()
-{
+web::json::value Fence::serialiseFence() {
+
 
     // The list of day names and the fence root element, respectively.
     const std::string days[] = JSON_KEY_FENCE_DAYS;
@@ -101,9 +146,13 @@ web::json::value Fence::serialiseFence()
     // The root fence json element.
     web::json::value jsonFence = web::json::value::object();
 
-    // Serialise generic fence attributes.
+    // Serialise the name and safety of the fence.
+    jsonFence[U(JSON_KEY_FENCE_NAME)] = web::json::value::string(name);
     jsonFence[U(JSON_KEY_FENCE_SAFE)] = web::json::value::boolean(safe);
-    for (auto& day : week) {
+
+    // Serialise the week i.e. days and times.
+    jsonFence[U(JSON_KEY_FENCE_WEEK)] = web::json::value::object();
+    for (auto &day : week) {
         for (int i = 0; i < day.second.size(); ++i) {
 
             // Format the string that's to be written.
@@ -114,7 +163,7 @@ web::json::value Fence::serialiseFence()
                      day.second[i].first.tm_min
             );
 
-            //
+            // serialise the from time.
             jsonFence[U(JSON_KEY_FENCE_WEEK)][days[day.first]][i][U(JSON_KEY_FENCE_TIME_FROM)]
                     = web::json::value::string(U(dayTimeBuffer));
 

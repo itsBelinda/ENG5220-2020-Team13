@@ -1,0 +1,477 @@
+\hypertarget{class_fence}{}\section{Fence Class Reference}
+\label{class_fence}\index{Fence@{Fence}}
+
+
+The \hyperlink{class_fence}{Fence} parent class providing generic functionality for handling fences.  
+
+
+
+
+{\ttfamily \#include $<$Fence.\+h$>$}
+
+
+
+Inheritance diagram for Fence\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{dc/d62/class_fence__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_fence_a5c2be718e885ed9ae2ca048406d126b3}{Fence} (std\+::string \&\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, bool \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe}, const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&\hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week})
+\item 
+\hyperlink{class_fence_ae67f4594ce0f96eda5cb02df41fcf45a}{Fence} (std\+::string \&\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, bool \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe})
+\item 
+\hyperlink{class_fence_a3fdfc7240f1e938dab4c9534c63aa427}{Fence} (const \hyperlink{class_fence}{Fence} \&fence)
+\item 
+virtual \hyperlink{class_fence_a6c5e019535f94462bfab1ad19b865c55}{$\sim$\+Fence} ()=0
+\item 
+std\+::string \& \hyperlink{class_fence_a1d90d0ff61bec6cda8240f6365fc5d28}{get\+Name} ()
+\item 
+const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ $>$ \& \hyperlink{class_fence_a533d7eaba8b2d6774ec2c9dce05145eb}{get\+Week} ()
+\item 
+const std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ \& \hyperlink{class_fence_a818ee0fcbac0c2f9262a48916a79d73c}{get\+Times} (int day)
+\item 
+bool \hyperlink{class_fence_a4f0626e3b3189b6ab1c505c92952bcb2}{is\+Safe} ()
+\item 
+bool \hyperlink{class_fence_a7695b0f94f461369703188a287a38ab4}{is\+In\+Time} ()
+\item 
+bool \hyperlink{class_fence_a9d1d90f134dceb2168247cd8454d91f4}{is\+In\+Time} (const std\+::time\+\_\+t \&time)
+\item 
+virtual bool \hyperlink{class_fence_a80fb7fbb60592d3e8afc0ecb5122b987}{is\+In\+Location} (std\+::pair$<$ double, double $>$ \&lat\+Lng)=0
+\item 
+virtual web\+::json\+::value \hyperlink{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}{serialise\+Fence} ()
+\item 
+bool \hyperlink{class_fence_a224ef2ce3f97de067f996b4722c66797}{is\+Inside} (std\+::pair$<$ double, double $>$ \&lat\+Lng)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}
+\item 
+bool \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe}
+\item 
+std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ $>$ \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_fence}{Fence} parent class providing generic functionality for handling fences. 
+
+The \hyperlink{class_fence}{Fence} class is the parent class to the Poly-\/ and \hyperlink{class_round_fence}{Round\+Fence} classes. It provides methods to create and manage the details of fences regardless of type, such as what times on what days is it considered a safezone, checks if the device is within the time and physical boundaries of the location they are at, and provides a super function to converting the \hyperlink{class_fence}{Fence} objects into J\+S\+ON objects to be handled by the online database.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 50 of file Fence.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_fence_a5c2be718e885ed9ae2ca048406d126b3}\label{class_fence_a5c2be718e885ed9ae2ca048406d126b3}} 
+\index{Fence@{Fence}!Fence@{Fence}}
+\index{Fence@{Fence}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{Fence()}{Fence()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Fence\+::\+Fence (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{bool}]{safe,  }\item[{const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&}]{week }\end{DoxyParamCaption})}
+
+
+
+Definition at line 36 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+38 \{
+39     this->\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name} = \hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name};
+40     this->\hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe} = \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe};
+41     this->\hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week} = \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week};
+42 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_fence_ae67f4594ce0f96eda5cb02df41fcf45a}\label{class_fence_ae67f4594ce0f96eda5cb02df41fcf45a}} 
+\index{Fence@{Fence}!Fence@{Fence}}
+\index{Fence@{Fence}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{Fence()}{Fence()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Fence\+::\+Fence (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{bool}]{safe }\end{DoxyParamCaption})}
+
+
+
+Definition at line 45 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+46 \{
+47     this->\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name} = \hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name};
+48     this->\hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe} = \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe};
+49 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_fence_a3fdfc7240f1e938dab4c9534c63aa427}\label{class_fence_a3fdfc7240f1e938dab4c9534c63aa427}} 
+\index{Fence@{Fence}!Fence@{Fence}}
+\index{Fence@{Fence}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{Fence()}{Fence()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Fence\+::\+Fence (\begin{DoxyParamCaption}\item[{const \hyperlink{class_fence}{Fence} \&}]{fence }\end{DoxyParamCaption})}
+
+
+
+Definition at line 52 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+52                                \{
+53     this->\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name} = fence.\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name};
+54     this->\hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe} = fence.\hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe};
+55     this->\hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week} = fence.\hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week};
+56 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{d0/db8/class_fence_a3fdfc7240f1e938dab4c9534c63aa427_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_fence_a6c5e019535f94462bfab1ad19b865c55}\label{class_fence_a6c5e019535f94462bfab1ad19b865c55}} 
+\index{Fence@{Fence}!````~Fence@{$\sim$\+Fence}}
+\index{````~Fence@{$\sim$\+Fence}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{$\sim$\+Fence()}{~Fence()}}
+{\footnotesize\ttfamily Fence\+::$\sim$\+Fence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [default]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{d0/db8/class_fence_a6c5e019535f94462bfab1ad19b865c55_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fence_a1d90d0ff61bec6cda8240f6365fc5d28}\label{class_fence_a1d90d0ff61bec6cda8240f6365fc5d28}} 
+\index{Fence@{Fence}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily std\+::string \& Fence\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+62 \{
+63     \textcolor{keywordflow}{return} \hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name};
+64 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{d0/db8/class_fence_a1d90d0ff61bec6cda8240f6365fc5d28_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{d0/db8/class_fence_a1d90d0ff61bec6cda8240f6365fc5d28_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_fence_a818ee0fcbac0c2f9262a48916a79d73c}\label{class_fence_a818ee0fcbac0c2f9262a48916a79d73c}} 
+\index{Fence@{Fence}!get\+Times@{get\+Times}}
+\index{get\+Times@{get\+Times}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{get\+Times()}{getTimes()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ \& Fence\+::get\+Times (\begin{DoxyParamCaption}\item[{int}]{day }\end{DoxyParamCaption})}
+
+
+
+Definition at line 76 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+76                                                                      \{
+77     \textcolor{keywordflow}{return} \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week}[day];
+78 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_fence_a533d7eaba8b2d6774ec2c9dce05145eb}\label{class_fence_a533d7eaba8b2d6774ec2c9dce05145eb}} 
+\index{Fence@{Fence}!get\+Week@{get\+Week}}
+\index{get\+Week@{get\+Week}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{get\+Week()}{getWeek()}}
+{\footnotesize\ttfamily const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ $>$ \& Fence\+::get\+Week (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 71 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+71                                                                     \{
+72     \textcolor{keywordflow}{return} \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week};
+73 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_fence_a80fb7fbb60592d3e8afc0ecb5122b987}\label{class_fence_a80fb7fbb60592d3e8afc0ecb5122b987}} 
+\index{Fence@{Fence}!is\+In\+Location@{is\+In\+Location}}
+\index{is\+In\+Location@{is\+In\+Location}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{is\+In\+Location()}{isInLocation()}}
+{\footnotesize\ttfamily virtual bool Fence\+::is\+In\+Location (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{class_poly_fence_af8116af5be86f8426102985c3dbcdf5e}{Poly\+Fence}, and \hyperlink{class_round_fence_a4955bf0dbd168853ba9913465953865d}{Round\+Fence}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/db8/class_fence_a80fb7fbb60592d3e8afc0ecb5122b987_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_fence_a224ef2ce3f97de067f996b4722c66797}\label{class_fence_a224ef2ce3f97de067f996b4722c66797}} 
+\index{Fence@{Fence}!is\+Inside@{is\+Inside}}
+\index{is\+Inside@{is\+Inside}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{is\+Inside()}{isInside()}}
+{\footnotesize\ttfamily bool Fence\+::is\+Inside (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})}
+
+
+
+Definition at line 134 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+134                                                     \{
+135     \textcolor{keywordflow}{return}( this->\hyperlink{class_fence_a7695b0f94f461369703188a287a38ab4}{isInTime}() && this->\hyperlink{class_fence_a80fb7fbb60592d3e8afc0ecb5122b987}{isInLocation}(latLng));
+136 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{d0/db8/class_fence_a224ef2ce3f97de067f996b4722c66797_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_fence_a7695b0f94f461369703188a287a38ab4}\label{class_fence_a7695b0f94f461369703188a287a38ab4}} 
+\index{Fence@{Fence}!is\+In\+Time@{is\+In\+Time}}
+\index{is\+In\+Time@{is\+In\+Time}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{is\+In\+Time()}{isInTime()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Fence\+::is\+In\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+86                      \{
+87     \textcolor{keyword}{const} std::time\_t systemTime = std::time(\textcolor{keyword}{nullptr});
+88     \textcolor{keywordflow}{return} \hyperlink{class_fence_a7695b0f94f461369703188a287a38ab4}{isInTime}(systemTime);
+89 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/db8/class_fence_a7695b0f94f461369703188a287a38ab4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_fence_a9d1d90f134dceb2168247cd8454d91f4}\label{class_fence_a9d1d90f134dceb2168247cd8454d91f4}} 
+\index{Fence@{Fence}!is\+In\+Time@{is\+In\+Time}}
+\index{is\+In\+Time@{is\+In\+Time}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{is\+In\+Time()}{isInTime()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Fence\+::is\+In\+Time (\begin{DoxyParamCaption}\item[{const std\+::time\+\_\+t \&}]{time }\end{DoxyParamCaption})}
+
+
+
+Definition at line 93 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+93                                           \{
+94 
+95     \textcolor{comment}{// Extract information from system time.}
+96     std::tm time\_tm = *std::localtime(&time);
+97     \textcolor{keyword}{auto} iter = \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week}.find(time\_tm.tm\_wday);
+98 
+99     \textcolor{comment}{// Check if time information exists.}
+100     \textcolor{keywordflow}{if} (iter == \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week}.end()) \{
+101         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+102     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iter->second.empty()) \{
+103         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+104     \}
+105 
+106     \textcolor{comment}{// Iterate through days list of from and to times.}
+107     \textcolor{keyword}{auto} &dayTimes = iter->second;
+108     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} std::pair<std::tm, std::tm> &dayTime : dayTimes) \{
+109 
+110         \textcolor{comment}{// If time is before from time, we are not present.}
+111         \textcolor{keywordflow}{if} (time\_tm.tm\_hour < dayTime.first.tm\_hour) \{
+112             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+113         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (time\_tm.tm\_hour == dayTime.first.tm\_hour) \{
+114             \textcolor{keywordflow}{if} (time\_tm.tm\_min < dayTime.first.tm\_min) \{
+115                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+116             \}
+117         \}
+118 
+119         \textcolor{comment}{// If the time is after the to time, we are not present.}
+120         \textcolor{keywordflow}{if} (time\_tm.tm\_hour > dayTime.second.tm\_hour) \{
+121             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+122         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (time\_tm.tm\_hour == dayTime.second.tm\_hour) \{
+123             \textcolor{keywordflow}{if} (time\_tm.tm\_min > dayTime.second.tm\_min) \{
+124                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+125             \}
+126         \}
+127     \}
+128 
+129     \textcolor{comment}{// By default the user is within the fence.}
+130     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+131 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_fence_a4f0626e3b3189b6ab1c505c92952bcb2}\label{class_fence_a4f0626e3b3189b6ab1c505c92952bcb2}} 
+\index{Fence@{Fence}!is\+Safe@{is\+Safe}}
+\index{is\+Safe@{is\+Safe}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{is\+Safe()}{isSafe()}}
+{\footnotesize\ttfamily bool Fence\+::is\+Safe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 81 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+81                    \{
+82     \textcolor{keywordflow}{return} \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe};
+83 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}\label{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}} 
+\index{Fence@{Fence}!serialise\+Fence@{serialise\+Fence}}
+\index{serialise\+Fence@{serialise\+Fence}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{serialise\+Fence()}{serialiseFence()}}
+{\footnotesize\ttfamily web\+::json\+::value Fence\+::serialise\+Fence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{class_poly_fence_ae748da10e4fd15f87b74e0d996f00103}{Poly\+Fence}, and \hyperlink{class_round_fence_ae9dd3e4291f7509ce557a6c28cdd682d}{Round\+Fence}.
+
+
+
+Definition at line 139 of file Fence.\+cpp.
+
+
+\begin{DoxyCode}
+139                                    \{
+140 
+141 
+142     \textcolor{comment}{// The list of day names and the fence root element, respectively.}
+143     \textcolor{keyword}{const} std::string days[] = \hyperlink{_fence_8h_a189c5645c45c0d8943719ee620afa4b2}{JSON\_KEY\_FENCE\_DAYS};
+144     \textcolor{keywordtype}{char} dayTimeBuffer[\hyperlink{_fence_8cpp_a69b35d746bf626a8192e75810e701320}{DAY\_TIME\_BUFFER\_SIZE}];
+145 
+146     \textcolor{comment}{// The root fence json element.}
+147     web::json::value jsonFence = web::json::value::object();
+148 
+149     \textcolor{comment}{// Serialise the name and safety of the fence.}
+150     jsonFence[U(\hyperlink{_fence_8h_a0bf10e901f60610c8a47c143051deea4}{JSON\_KEY\_FENCE\_NAME})] = web::json::value::string(
+      \hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name});
+151     jsonFence[U(\hyperlink{_fence_8h_a4b2bc1fec134d7881cd286c8b6741752}{JSON\_KEY\_FENCE\_SAFE})] = web::json::value::boolean(
+      \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe});
+152 
+153     \textcolor{comment}{// Serialise the week i.e. days and times.}
+154     jsonFence[U(\hyperlink{_fence_8h_a94c5efe13ae824c55eebaa9e8a76dd57}{JSON\_KEY\_FENCE\_WEEK})] = web::json::value::object();
+155     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} &day : \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week}) \{
+156         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < day.second.size(); ++i) \{
+157 
+158             \textcolor{comment}{// Format the string that's to be written.}
+159             snprintf(dayTimeBuffer,
+160                      \hyperlink{_fence_8cpp_a69b35d746bf626a8192e75810e701320}{DAY\_TIME\_BUFFER\_SIZE},
+161                      \hyperlink{_fence_8cpp_aa7662fb39f778fae608e70d079dc11ea}{DAY\_TIME\_STRING\_FORMAT},
+162                      day.second[i].first.tm\_hour,
+163                      day.second[i].first.tm\_min
+164             );
+165 
+166             \textcolor{comment}{// serialise the from time.}
+167             jsonFence[U(\hyperlink{_fence_8h_a94c5efe13ae824c55eebaa9e8a76dd57}{JSON\_KEY\_FENCE\_WEEK})][days[day.first]][i][U(
+      \hyperlink{_fence_8h_a7993b3aacbec44628f2d9ab7df6ff5b9}{JSON\_KEY\_FENCE\_TIME\_FROM})]
+168                     = web::json::value::string(U(dayTimeBuffer));
+169 
+170             \textcolor{comment}{// Format the string that's to be written.}
+171             snprintf(dayTimeBuffer,
+172                      \hyperlink{_fence_8cpp_a69b35d746bf626a8192e75810e701320}{DAY\_TIME\_BUFFER\_SIZE},
+173                      \hyperlink{_fence_8cpp_aa7662fb39f778fae608e70d079dc11ea}{DAY\_TIME\_STRING\_FORMAT},
+174                      day.second[i].second.tm\_hour,
+175                      day.second[i].second.tm\_min
+176             );
+177 
+178             \textcolor{comment}{// Serialise the to time.}
+179             jsonFence[U(\hyperlink{_fence_8h_a94c5efe13ae824c55eebaa9e8a76dd57}{JSON\_KEY\_FENCE\_WEEK})][days[day.first]][i][U(
+      \hyperlink{_fence_8h_a5919ead6ef79432d59a9637a993cec9c}{JSON\_KEY\_FENCE\_TIME\_TO})]
+180                     = web::json::value::string(U(dayTimeBuffer));;
+181         \}
+182     \}
+183 
+184     \textcolor{comment}{// Pass to sub-class for additional serialisation.}
+185     \textcolor{keywordflow}{return} jsonFence;
+186 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/db8/class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_fence_aa405676733f25812b38ea0dd9ccd1863}\label{class_fence_aa405676733f25812b38ea0dd9ccd1863}} 
+\index{Fence@{Fence}!name@{name}}
+\index{name@{name}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Fence\+::name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 84 of file Fence.\+h.
+
+\mbox{\Hypertarget{class_fence_ad570430040eee657c625a67d5589c4b5}\label{class_fence_ad570430040eee657c625a67d5589c4b5}} 
+\index{Fence@{Fence}!safe@{safe}}
+\index{safe@{safe}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{safe}{safe}}
+{\footnotesize\ttfamily bool Fence\+::safe\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 85 of file Fence.\+h.
+
+\mbox{\Hypertarget{class_fence_ae589e973fa03316847aeceedd72e2b64}\label{class_fence_ae589e973fa03316847aeceedd72e2b64}} 
+\index{Fence@{Fence}!week@{week}}
+\index{week@{week}!Fence@{Fence}}
+\subsubsection{\texorpdfstring{week}{week}}
+{\footnotesize\ttfamily std\+::map$<$int, std\+::vector$<$std\+::pair$<$std\+::tm, std\+::tm$>$ $>$ $>$ Fence\+::week\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 86 of file Fence.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/geo/\hyperlink{_fence_8h}{Fence.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/geo/\hyperlink{_fence_8cpp}{Fence.\+cpp}\end{DoxyCompactItemize}

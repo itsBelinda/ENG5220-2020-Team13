@@ -1,0 +1,438 @@
+\hypertarget{class_account}{}\section{Account Class Reference}
+\label{class_account}\index{Account@{Account}}
+
+
+The \hyperlink{class_account}{Account} class creates the overall user \hyperlink{class_account}{Account} object with the relevant Fences and Contacts.  
+
+
+
+
+{\ttfamily \#include $<$Account.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_account_a14f13a7a2e1d69d4b78c804603d69e1b}{Account} (std\+::string \&\hyperlink{class_account_a586e2c3461c5231eacf7c96851024a75}{name}, std\+::vector$<$ \hyperlink{class_contact}{Contact} $\ast$$>$ \&\hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts}, std\+::vector$<$ \hyperlink{class_fence}{Fence} $\ast$$>$ \&\hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences})
+\item 
+\hyperlink{class_account_af70ddede01cb2dc7acaec992769bf290}{Account} (const \hyperlink{class_account}{Account} \&account)
+\item 
+\hyperlink{class_account_a569c9ef0e42b9157690b4ceb646daba8}{$\sim$\+Account} ()
+\item 
+std\+::string \& \hyperlink{class_account_a1ef22885e8c6f145475c3306a4e6d74a}{get\+Name} ()
+\item 
+std\+::vector$<$ \hyperlink{class_contact}{Contact} $\ast$ $>$ \& \hyperlink{class_account_a53a9e366a589538552a368e3bbac2fd3}{get\+Contacts} ()
+\item 
+std\+::vector$<$ \hyperlink{class_fence}{Fence} $\ast$ $>$ \& \hyperlink{class_account_a5117acc0c4ef7be21c5339bd9ae84e40}{get\+Fences} ()
+\item 
+web\+::json\+::value \hyperlink{class_account_a1e9b184e8a6ddf67e8814e6c575f657e}{serialise\+Account} ()
+\item 
+web\+::json\+::value \hyperlink{class_account_a7f2d9836817ee851f723f6d3b1ff74a5}{serialise\+Account\+Contacts} ()
+\item 
+web\+::json\+::value \hyperlink{class_account_a426837a406852a6e6b11eda85828fc58}{serialise\+Account\+Fences} ()
+\item 
+bool \hyperlink{class_account_a9ff3a257536bc933e0a39207bb89243d}{save\+Serialised\+Account} (const std\+::string \&path)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_account_a586e2c3461c5231eacf7c96851024a75}{name}
+\item 
+std\+::vector$<$ \hyperlink{class_contact}{Contact} $\ast$ $>$ \hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts}
+\item 
+std\+::vector$<$ \hyperlink{class_fence}{Fence} $\ast$ $>$ \hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_account}{Account} class creates the overall user \hyperlink{class_account}{Account} object with the relevant Fences and Contacts. 
+
+The \hyperlink{class_account}{Account} class creates the overall user \hyperlink{class_account}{Account} object. This includes the Fences specified by the user with all their relevant details, as well as the Contacts who need to be notified in case the device leaves or heads into a \hyperlink{class_fence}{Fence} when not supposed to. The \hyperlink{class_account}{Account} class is also the overall manager of J\+S\+O\+N-\/\+C++ object conversions, facilitating the creation of the overall J\+S\+ON data file related to a user.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 47 of file Account.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_account_a14f13a7a2e1d69d4b78c804603d69e1b}\label{class_account_a14f13a7a2e1d69d4b78c804603d69e1b}} 
+\index{Account@{Account}!Account@{Account}}
+\index{Account@{Account}!Account@{Account}}
+\subsubsection{\texorpdfstring{Account()}{Account()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Account\+::\+Account (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{std\+::vector$<$ \hyperlink{class_contact}{Contact} $\ast$$>$ \&}]{contacts,  }\item[{std\+::vector$<$ \hyperlink{class_fence}{Fence} $\ast$$>$ \&}]{fences }\end{DoxyParamCaption})}
+
+Constructor used to create an instance of the \hyperlink{class_account}{Account} class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the account \\
+\hline
+{\em contacts} & the contacts added to this account \\
+\hline
+{\em fences} & the fences set up for this account \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 40 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+42 \{
+43     this->\hyperlink{class_account_a586e2c3461c5231eacf7c96851024a75}{name} = \hyperlink{class_account_a586e2c3461c5231eacf7c96851024a75}{name};
+44     this->\hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts} = \hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts};
+45     this->\hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences} = \hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences};
+46 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_account_af70ddede01cb2dc7acaec992769bf290}\label{class_account_af70ddede01cb2dc7acaec992769bf290}} 
+\index{Account@{Account}!Account@{Account}}
+\index{Account@{Account}!Account@{Account}}
+\subsubsection{\texorpdfstring{Account()}{Account()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Account\+::\+Account (\begin{DoxyParamCaption}\item[{const \hyperlink{class_account}{Account} \&}]{account }\end{DoxyParamCaption})}
+
+Copy constructor for the account object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & the account to be copied \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+54 \{
+55     this->\hyperlink{class_account_a586e2c3461c5231eacf7c96851024a75}{name} = \hyperlink{class_account_a586e2c3461c5231eacf7c96851024a75}{name};
+56     this->\hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts} = account.\hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts};
+57     this->\hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences} = account.\hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences};
+58 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_account_a569c9ef0e42b9157690b4ceb646daba8}\label{class_account_a569c9ef0e42b9157690b4ceb646daba8}} 
+\index{Account@{Account}!````~Account@{$\sim$\+Account}}
+\index{````~Account@{$\sim$\+Account}!Account@{Account}}
+\subsubsection{\texorpdfstring{$\sim$\+Account()}{~Account()}}
+{\footnotesize\ttfamily Account\+::$\sim$\+Account (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor used to clear all the memory occupied by the account. 
+
+Definition at line 63 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+64 \{
+65 
+66     \textcolor{comment}{// Free all of the contacts.}
+67     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}& contact : \hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts}) \{
+68         \textcolor{keyword}{delete} contact;
+69     \}
+70 
+71     \textcolor{comment}{// Free all of the fences.}
+72     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}& fence : \hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences}) \{
+73         \textcolor{keyword}{delete} fence;
+74     \}
+75 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_account_a53a9e366a589538552a368e3bbac2fd3}\label{class_account_a53a9e366a589538552a368e3bbac2fd3}} 
+\index{Account@{Account}!get\+Contacts@{get\+Contacts}}
+\index{get\+Contacts@{get\+Contacts}!Account@{Account}}
+\subsubsection{\texorpdfstring{get\+Contacts()}{getContacts()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_contact}{Contact} $\ast$ $>$ \& Account\+::get\+Contacts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the vector containing the contact details for the account. A public accessor to an otherwise private value.
+
+\begin{DoxyReturn}{Returns}
+a vector containing all the contact objects associated with this account 
+\end{DoxyReturn}
+
+
+Definition at line 94 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+95 \{
+96     \textcolor{keywordflow}{return} \hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts};
+97 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{db/d22/class_account_a53a9e366a589538552a368e3bbac2fd3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_a5117acc0c4ef7be21c5339bd9ae84e40}\label{class_account_a5117acc0c4ef7be21c5339bd9ae84e40}} 
+\index{Account@{Account}!get\+Fences@{get\+Fences}}
+\index{get\+Fences@{get\+Fences}!Account@{Account}}
+\subsubsection{\texorpdfstring{get\+Fences()}{getFences()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_fence}{Fence} $\ast$ $>$ \& Account\+::get\+Fences (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the vector of the fences for this account. A public accessor to an otherwise private value.
+
+\begin{DoxyReturn}{Returns}
+a vector containing all the fence objects associated with this account 
+\end{DoxyReturn}
+
+
+Definition at line 105 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+106 \{
+107     \textcolor{keywordflow}{return} \hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences};
+108 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d22/class_account_a5117acc0c4ef7be21c5339bd9ae84e40_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_a1ef22885e8c6f145475c3306a4e6d74a}\label{class_account_a1ef22885e8c6f145475c3306a4e6d74a}} 
+\index{Account@{Account}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Account@{Account}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily std\+::string \& Account\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A getter for the name of the account. A public accessor to an otherwise private value.
+
+\begin{DoxyReturn}{Returns}
+the name of the account. 
+\end{DoxyReturn}
+
+
+Definition at line 83 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+84 \{
+85     \textcolor{keywordflow}{return} \hyperlink{class_account_a586e2c3461c5231eacf7c96851024a75}{name};
+86 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{db/d22/class_account_a1ef22885e8c6f145475c3306a4e6d74a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_a9ff3a257536bc933e0a39207bb89243d}\label{class_account_a9ff3a257536bc933e0a39207bb89243d}} 
+\index{Account@{Account}!save\+Serialised\+Account@{save\+Serialised\+Account}}
+\index{save\+Serialised\+Account@{save\+Serialised\+Account}!Account@{Account}}
+\subsubsection{\texorpdfstring{save\+Serialised\+Account()}{saveSerialisedAccount()}}
+{\footnotesize\ttfamily bool Account\+::save\+Serialised\+Account (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+Serialise the json account instance and output it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & the filepath of the J\+S\+ON file to save the serialised account to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 161 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+162 \{
+163 
+164     \textcolor{comment}{// Serialise the account instance.}
+165     web::json::value jsonAccount = \hyperlink{class_account_a1e9b184e8a6ddf67e8814e6c575f657e}{serialiseAccount}();
+166 
+167     \textcolor{comment}{// Output the serialised json account to a file stream.}
+168     utility::ofstream\_t of(path);
+169     of << jsonAccount.serialize();
+170     of.close();
+171 
+172     \textcolor{comment}{// We have successfully written to the file.}
+173     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+174 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d22/class_account_a9ff3a257536bc933e0a39207bb89243d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d22/class_account_a9ff3a257536bc933e0a39207bb89243d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_a1e9b184e8a6ddf67e8814e6c575f657e}\label{class_account_a1e9b184e8a6ddf67e8814e6c575f657e}} 
+\index{Account@{Account}!serialise\+Account@{serialise\+Account}}
+\index{serialise\+Account@{serialise\+Account}!Account@{Account}}
+\subsubsection{\texorpdfstring{serialise\+Account()}{serialiseAccount()}}
+{\footnotesize\ttfamily web\+::json\+::value Account\+::serialise\+Account (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Serialise the account object.
+
+\begin{DoxyReturn}{Returns}
+a json object containing the account object 
+\end{DoxyReturn}
+
+
+Definition at line 115 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+116 \{
+117     web::json::value jsonAccount = web::json::value::object();
+118     jsonAccount[utility::string\_t(U(\hyperlink{_account_8h_ac2f820be22c4390a71ec34abe54694c5}{JSON\_KEY\_ACCOUNT\_NAME}))]
+119             = web::json::value::string(U(\hyperlink{class_account_a586e2c3461c5231eacf7c96851024a75}{name}));
+120     jsonAccount[utility::string\_t(U(\hyperlink{_account_8h_a9a5dc301a4b04c85ce3b865530cd6ca7}{JSON\_KEY\_ACCOUNT\_CONTACTS}))]
+121             = \hyperlink{class_account_a7f2d9836817ee851f723f6d3b1ff74a5}{serialiseAccountContacts}();
+122     jsonAccount[utility::string\_t(U(\hyperlink{_account_8h_a83ba8a12dba5582a5a125d3ced877c6e}{JSON\_KEY\_ACCOUNT\_FENCES}))]
+123             = \hyperlink{class_account_a426837a406852a6e6b11eda85828fc58}{serialiseAccountFences}();
+124     \textcolor{keywordflow}{return} jsonAccount;
+125 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d22/class_account_a1e9b184e8a6ddf67e8814e6c575f657e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d22/class_account_a1e9b184e8a6ddf67e8814e6c575f657e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_a7f2d9836817ee851f723f6d3b1ff74a5}\label{class_account_a7f2d9836817ee851f723f6d3b1ff74a5}} 
+\index{Account@{Account}!serialise\+Account\+Contacts@{serialise\+Account\+Contacts}}
+\index{serialise\+Account\+Contacts@{serialise\+Account\+Contacts}!Account@{Account}}
+\subsubsection{\texorpdfstring{serialise\+Account\+Contacts()}{serialiseAccountContacts()}}
+{\footnotesize\ttfamily web\+::json\+::value Account\+::serialise\+Account\+Contacts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Serialise the contacts for this account.
+
+\begin{DoxyReturn}{Returns}
+a json object containing the contacts for this account 
+\end{DoxyReturn}
+
+
+Definition at line 132 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+133 \{
+134     web::json::value jsonContacts = web::json::value::array();
+135     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts}.size(); ++i) \{
+136         jsonContacts[i] = \hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts}[i]->serialiseContact();
+137     \}
+138     \textcolor{keywordflow}{return} jsonContacts;
+139 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d22/class_account_a7f2d9836817ee851f723f6d3b1ff74a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_a426837a406852a6e6b11eda85828fc58}\label{class_account_a426837a406852a6e6b11eda85828fc58}} 
+\index{Account@{Account}!serialise\+Account\+Fences@{serialise\+Account\+Fences}}
+\index{serialise\+Account\+Fences@{serialise\+Account\+Fences}!Account@{Account}}
+\subsubsection{\texorpdfstring{serialise\+Account\+Fences()}{serialiseAccountFences()}}
+{\footnotesize\ttfamily web\+::json\+::value Account\+::serialise\+Account\+Fences (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Serialise the fences for this account.
+
+\begin{DoxyReturn}{Returns}
+a J\+S\+ON object containing the fences for this account 
+\end{DoxyReturn}
+
+
+Definition at line 146 of file Account.\+cpp.
+
+
+\begin{DoxyCode}
+147 \{
+148     web::json::value jsonFences = web::json::value::array();
+149     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences}.size(); ++i) \{
+150         jsonFences[i] = \hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences}[i]->serialiseFence();
+151     \}
+152     \textcolor{keywordflow}{return} jsonFences;
+153 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d22/class_account_a426837a406852a6e6b11eda85828fc58_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}\label{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}} 
+\index{Account@{Account}!contacts@{contacts}}
+\index{contacts@{contacts}!Account@{Account}}
+\subsubsection{\texorpdfstring{contacts}{contacts}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_contact}{Contact}$\ast$$>$ Account\+::contacts\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 78 of file Account.\+h.
+
+\mbox{\Hypertarget{class_account_ad92a9e8008371f34da06cd416a716fa1}\label{class_account_ad92a9e8008371f34da06cd416a716fa1}} 
+\index{Account@{Account}!fences@{fences}}
+\index{fences@{fences}!Account@{Account}}
+\subsubsection{\texorpdfstring{fences}{fences}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_fence}{Fence}$\ast$$>$ Account\+::fences\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 79 of file Account.\+h.
+
+\mbox{\Hypertarget{class_account_a586e2c3461c5231eacf7c96851024a75}\label{class_account_a586e2c3461c5231eacf7c96851024a75}} 
+\index{Account@{Account}!name@{name}}
+\index{name@{name}!Account@{Account}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Account\+::name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 75 of file Account.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/device/\hyperlink{_account_8h}{Account.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/device/\hyperlink{_account_8cpp}{Account.\+cpp}\end{DoxyCompactItemize}

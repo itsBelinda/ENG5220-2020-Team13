@@ -1,0 +1,297 @@
+\hypertarget{class_round_fence}{}\section{Round\+Fence Class Reference}
+\label{class_round_fence}\index{Round\+Fence@{Round\+Fence}}
+
+
+The \hyperlink{class_round_fence}{Round\+Fence} class contains the type specific methods and parameters relating to fences that are circular shaped.  
+
+
+
+
+{\ttfamily \#include $<$Round\+Fence.\+h$>$}
+
+
+
+Inheritance diagram for Round\+Fence\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{db/df0/class_round_fence__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Round\+Fence\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{dc/dc1/class_round_fence__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_round_fence_afd452f0c483dbe4b328fc56723ae953c}{Round\+Fence} (std\+::string \&\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, bool \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe}, const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&\hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week}, double \hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude}, double \hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude}, double \hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius})
+\item 
+\hyperlink{class_round_fence_a99f4ab4cedbec39596633826e101f3d7}{Round\+Fence} (std\+::string \&\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, bool \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe}, double \hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude}, double \hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude}, double \hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius})
+\item 
+\hyperlink{class_round_fence_ae2d9b747b35ee2c48587321e953b87df}{Round\+Fence} (const \hyperlink{class_round_fence}{Round\+Fence} \&round\+Fence)
+\item 
+double \hyperlink{class_round_fence_a5981188ace99620634c843cc42da9bfc}{get\+Latitude} ()
+\item 
+double \hyperlink{class_round_fence_a301944908bde9659847bf5048633ae9d}{get\+Longitude} ()
+\item 
+double \hyperlink{class_round_fence_a9a7eba297334bf868fd552654df1ad3c}{get\+Radius} ()
+\item 
+bool \hyperlink{class_round_fence_a4955bf0dbd168853ba9913465953865d}{is\+In\+Location} (std\+::pair$<$ double, double $>$ \&lat\+Lng) override
+\item 
+web\+::json\+::value \hyperlink{class_round_fence_ae9dd3e4291f7509ce557a6c28cdd682d}{serialise\+Fence} () override
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude}
+\item 
+double \hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude}
+\item 
+double \hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_round_fence}{Round\+Fence} class contains the type specific methods and parameters relating to fences that are circular shaped. 
+
+The \hyperlink{class_round_fence}{Round\+Fence} class contains the type specific methods and parameters relating to fences that are circular shaped. The functionality related to round fences describes the calculations of whether a location falls within a fence or not, setting the boundary of the circle, the times and days of a fence counting as a safe zone, and the convesion of \hyperlink{class_round_fence}{Round\+Fence} objects into J\+S\+ON format.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 39 of file Round\+Fence.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_round_fence_afd452f0c483dbe4b328fc56723ae953c}\label{class_round_fence_afd452f0c483dbe4b328fc56723ae953c}} 
+\index{Round\+Fence@{Round\+Fence}!Round\+Fence@{Round\+Fence}}
+\index{Round\+Fence@{Round\+Fence}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{Round\+Fence()}{RoundFence()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Round\+Fence\+::\+Round\+Fence (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{bool}]{safe,  }\item[{const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&}]{week,  }\item[{double}]{latitude,  }\item[{double}]{longitude,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file Round\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+36         : \hyperlink{class_fence_a5c2be718e885ed9ae2ca048406d126b3}{Fence}(\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe}, \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week})
+37 \{
+38     this->\hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude} = \hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude};
+39     this->\hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude} = \hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude};
+40     this->\hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius} = \hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius};
+41 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_round_fence_a99f4ab4cedbec39596633826e101f3d7}\label{class_round_fence_a99f4ab4cedbec39596633826e101f3d7}} 
+\index{Round\+Fence@{Round\+Fence}!Round\+Fence@{Round\+Fence}}
+\index{Round\+Fence@{Round\+Fence}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{Round\+Fence()}{RoundFence()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Round\+Fence\+::\+Round\+Fence (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{bool}]{safe,  }\item[{double}]{latitude,  }\item[{double}]{longitude,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+
+
+
+Definition at line 44 of file Round\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+45         : \hyperlink{class_fence_a5c2be718e885ed9ae2ca048406d126b3}{Fence}(\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe})
+46 \{
+47     this->\hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude} = \hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude};
+48     this->\hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude} = \hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude};
+49     this->\hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius} = \hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius};
+50 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_round_fence_ae2d9b747b35ee2c48587321e953b87df}\label{class_round_fence_ae2d9b747b35ee2c48587321e953b87df}} 
+\index{Round\+Fence@{Round\+Fence}!Round\+Fence@{Round\+Fence}}
+\index{Round\+Fence@{Round\+Fence}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{Round\+Fence()}{RoundFence()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Round\+Fence\+::\+Round\+Fence (\begin{DoxyParamCaption}\item[{const \hyperlink{class_round_fence}{Round\+Fence} \&}]{round\+Fence }\end{DoxyParamCaption})}
+
+
+
+Definition at line 53 of file Round\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+54         : \hyperlink{class_fence_a5c2be718e885ed9ae2ca048406d126b3}{Fence}(roundFence)
+55 \{
+56     this->\hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude} = roundFence.\hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude};
+57     this->\hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude} = roundFence.\hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude};
+58     this->\hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius} = roundFence.\hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius};
+59 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_round_fence_a5981188ace99620634c843cc42da9bfc}\label{class_round_fence_a5981188ace99620634c843cc42da9bfc}} 
+\index{Round\+Fence@{Round\+Fence}!get\+Latitude@{get\+Latitude}}
+\index{get\+Latitude@{get\+Latitude}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{get\+Latitude()}{getLatitude()}}
+{\footnotesize\ttfamily double Round\+Fence\+::get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 62 of file Round\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+63 \{
+64     \textcolor{keywordflow}{return} \hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude};
+65 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_round_fence_a301944908bde9659847bf5048633ae9d}\label{class_round_fence_a301944908bde9659847bf5048633ae9d}} 
+\index{Round\+Fence@{Round\+Fence}!get\+Longitude@{get\+Longitude}}
+\index{get\+Longitude@{get\+Longitude}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{get\+Longitude()}{getLongitude()}}
+{\footnotesize\ttfamily double Round\+Fence\+::get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 68 of file Round\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+69 \{
+70     \textcolor{keywordflow}{return} \hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude};
+71 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_round_fence_a9a7eba297334bf868fd552654df1ad3c}\label{class_round_fence_a9a7eba297334bf868fd552654df1ad3c}} 
+\index{Round\+Fence@{Round\+Fence}!get\+Radius@{get\+Radius}}
+\index{get\+Radius@{get\+Radius}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{get\+Radius()}{getRadius()}}
+{\footnotesize\ttfamily double Round\+Fence\+::get\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file Round\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+75 \{
+76     \textcolor{keywordflow}{return} \hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius};
+77 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_round_fence_a4955bf0dbd168853ba9913465953865d}\label{class_round_fence_a4955bf0dbd168853ba9913465953865d}} 
+\index{Round\+Fence@{Round\+Fence}!is\+In\+Location@{is\+In\+Location}}
+\index{is\+In\+Location@{is\+In\+Location}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{is\+In\+Location()}{isInLocation()}}
+{\footnotesize\ttfamily bool Round\+Fence\+::is\+In\+Location (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{class_fence_a80fb7fbb60592d3e8afc0ecb5122b987}{Fence}.
+
+
+
+Definition at line 80 of file Round\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+81 \{
+82     \textcolor{keywordtype}{double} distance = std::sqrt((latLng.first - this->longitude) * (latLng.first - this->latitude)
+83                                 + (latLng.second - this->longitude) * (latLng.second - this->longitude));
+84     \textcolor{keywordflow}{return} distance <= \hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius};
+85 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_round_fence_ae9dd3e4291f7509ce557a6c28cdd682d}\label{class_round_fence_ae9dd3e4291f7509ce557a6c28cdd682d}} 
+\index{Round\+Fence@{Round\+Fence}!serialise\+Fence@{serialise\+Fence}}
+\index{serialise\+Fence@{serialise\+Fence}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{serialise\+Fence()}{serialiseFence()}}
+{\footnotesize\ttfamily web\+::json\+::value Round\+Fence\+::serialise\+Fence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}{Fence}.
+
+
+
+Definition at line 88 of file Round\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+89 \{
+90 
+91     \textcolor{comment}{// Serialise the super-class fence.}
+92     web::json::value jsonFence = \hyperlink{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}{Fence::serialiseFence}();
+93 
+94     \textcolor{comment}{// Serialise RoundFence specific attributes.}
+95     jsonFence[U(\hyperlink{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}{JSON\_KEY\_FENCE\_DEFINITION})][U(
+      \hyperlink{_round_fence_8h_a129fc0ce4ddf2284b58daf8670b24848}{JSON\_KEY\_ROUND\_FENCE\_LATITUDE})]
+96             = web::json::value::number(\hyperlink{class_round_fence_ad48cb4c95dab320652679bae203b7caf}{latitude});
+97     jsonFence[U(\hyperlink{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}{JSON\_KEY\_FENCE\_DEFINITION})][U(
+      \hyperlink{_round_fence_8h_acfc741eefa291fc8d2db8b0cfb4ddaa4}{JSON\_KEY\_ROUND\_FENCE\_LONGITUDE})]
+98             = web::json::value::number(\hyperlink{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}{longitude});;
+99     jsonFence[U(\hyperlink{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}{JSON\_KEY\_FENCE\_DEFINITION})][U(
+      \hyperlink{_round_fence_8h_a40c147f826ff3297cb7eea73a4d00d43}{JSON\_KEY\_ROUND\_FENCE\_RADIUS})]
+100             = web::json::value::number(\hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius});
+101 
+102     \textcolor{comment}{// Return the serialised fence.}
+103     \textcolor{keywordflow}{return} jsonFence;
+104 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d8b/class_round_fence_ae9dd3e4291f7509ce557a6c28cdd682d_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_round_fence_ad48cb4c95dab320652679bae203b7caf}\label{class_round_fence_ad48cb4c95dab320652679bae203b7caf}} 
+\index{Round\+Fence@{Round\+Fence}!latitude@{latitude}}
+\index{latitude@{latitude}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{latitude}{latitude}}
+{\footnotesize\ttfamily double Round\+Fence\+::latitude\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 65 of file Round\+Fence.\+h.
+
+\mbox{\Hypertarget{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}\label{class_round_fence_a122cccc61f294c1fcdf7ebe944944fca}} 
+\index{Round\+Fence@{Round\+Fence}!longitude@{longitude}}
+\index{longitude@{longitude}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{longitude}{longitude}}
+{\footnotesize\ttfamily double Round\+Fence\+::longitude\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 66 of file Round\+Fence.\+h.
+
+\mbox{\Hypertarget{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}\label{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}} 
+\index{Round\+Fence@{Round\+Fence}!radius@{radius}}
+\index{radius@{radius}!Round\+Fence@{Round\+Fence}}
+\subsubsection{\texorpdfstring{radius}{radius}}
+{\footnotesize\ttfamily double Round\+Fence\+::radius\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 67 of file Round\+Fence.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/geo/\hyperlink{_round_fence_8h}{Round\+Fence.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/geo/\hyperlink{_round_fence_8cpp}{Round\+Fence.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,387 @@
+\hypertarget{class_poly_fence}{}\section{Poly\+Fence Class Reference}
+\label{class_poly_fence}\index{Poly\+Fence@{Poly\+Fence}}
+
+
+The \hyperlink{class_poly_fence}{Poly\+Fence} class contains the type specific methods and parameters relating to fences that are polygon shaped.  
+
+
+
+
+{\ttfamily \#include $<$Poly\+Fence.\+h$>$}
+
+
+
+Inheritance diagram for Poly\+Fence\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=143pt]{d9/ddf/class_poly_fence__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Poly\+Fence\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=143pt]{d2/d10/class_poly_fence__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_poly_fence_a651e57a18ef757b31b5f6b54f7e081b9}{Poly\+Fence} (std\+::string \&\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, bool \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe}, const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&\hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week}, const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates})
+\item 
+\hyperlink{class_poly_fence_a8468093f83237de375992d099727b93d}{Poly\+Fence} (std\+::string \&\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, bool \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe}, const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates})
+\item 
+\hyperlink{class_poly_fence_ad95391c8cf7de0e39cb704cfe771101e}{Poly\+Fence} (const \hyperlink{class_poly_fence}{Poly\+Fence} \&poly\+Fence)
+\item 
+const std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \& \hyperlink{class_poly_fence_ac21701adcb8af5b77872d7659318af72}{get\+Coordinates} ()
+\item 
+const std\+::vector$<$ double $>$ \& \hyperlink{class_poly_fence_a8eb326a3ea522915ee2d343e838730d8}{get\+Constants} ()
+\item 
+const std\+::vector$<$ double $>$ \& \hyperlink{class_poly_fence_a2d67b5087a07fabcec9d3d240df6c417}{get\+Multiples} ()
+\item 
+void \hyperlink{class_poly_fence_a229de6f5987bf7d312310b522db0d5a4}{calculate\+Fence\+Constants} ()
+\item 
+bool \hyperlink{class_poly_fence_af8116af5be86f8426102985c3dbcdf5e}{is\+In\+Location} (std\+::pair$<$ double, double $>$ \&lat\+Lng) override
+\item 
+web\+::json\+::value \hyperlink{class_poly_fence_ae748da10e4fd15f87b74e0d996f00103}{serialise\+Fence} () override
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_poly_fence}{Poly\+Fence} class contains the type specific methods and parameters relating to fences that are polygon shaped. 
+
+The \hyperlink{class_poly_fence}{Poly\+Fence} class contains the type specific methods and parameters relating to fences that are polygon shaped. The functionality related to polygon fences describes the calculations of whether a location falls within a fence or not, setting the boundaries/dimensions of the polygon, the times and days of a fence counting as a safe zone, and the convesion of \hyperlink{class_poly_fence}{Poly\+Fence} objects into J\+S\+ON format.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 40 of file Poly\+Fence.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_poly_fence_a651e57a18ef757b31b5f6b54f7e081b9}\label{class_poly_fence_a651e57a18ef757b31b5f6b54f7e081b9}} 
+\index{Poly\+Fence@{Poly\+Fence}!Poly\+Fence@{Poly\+Fence}}
+\index{Poly\+Fence@{Poly\+Fence}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{Poly\+Fence()}{PolyFence()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Poly\+Fence\+::\+Poly\+Fence (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{bool}]{safe,  }\item[{const std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&}]{week,  }\item[{const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&}]{coordinates }\end{DoxyParamCaption})}
+
+
+
+Definition at line 32 of file Poly\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+34         : \hyperlink{class_fence_a5c2be718e885ed9ae2ca048406d126b3}{Fence}(\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe}, \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week})
+35 \{
+36     this->\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates} = \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates};
+37     \hyperlink{class_poly_fence_a229de6f5987bf7d312310b522db0d5a4}{calculateFenceConstants}();
+38 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d22/class_poly_fence_a651e57a18ef757b31b5f6b54f7e081b9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_poly_fence_a8468093f83237de375992d099727b93d}\label{class_poly_fence_a8468093f83237de375992d099727b93d}} 
+\index{Poly\+Fence@{Poly\+Fence}!Poly\+Fence@{Poly\+Fence}}
+\index{Poly\+Fence@{Poly\+Fence}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{Poly\+Fence()}{PolyFence()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Poly\+Fence\+::\+Poly\+Fence (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{bool}]{safe,  }\item[{const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&}]{coordinates }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file Poly\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+42         : \hyperlink{class_fence_a5c2be718e885ed9ae2ca048406d126b3}{Fence}(\hyperlink{class_fence_aa405676733f25812b38ea0dd9ccd1863}{name}, \hyperlink{class_fence_ad570430040eee657c625a67d5589c4b5}{safe})
+43 \{
+44     this->\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates} = \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates};
+45     \hyperlink{class_poly_fence_a229de6f5987bf7d312310b522db0d5a4}{calculateFenceConstants}();
+46 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d22/class_poly_fence_a8468093f83237de375992d099727b93d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_poly_fence_ad95391c8cf7de0e39cb704cfe771101e}\label{class_poly_fence_ad95391c8cf7de0e39cb704cfe771101e}} 
+\index{Poly\+Fence@{Poly\+Fence}!Poly\+Fence@{Poly\+Fence}}
+\index{Poly\+Fence@{Poly\+Fence}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{Poly\+Fence()}{PolyFence()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Poly\+Fence\+::\+Poly\+Fence (\begin{DoxyParamCaption}\item[{const \hyperlink{class_poly_fence}{Poly\+Fence} \&}]{poly\+Fence }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file Poly\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+50         : \hyperlink{class_fence_a5c2be718e885ed9ae2ca048406d126b3}{Fence}(polyFence)
+51 \{
+52     this->\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates} = polyFence.\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates};
+53     \hyperlink{class_poly_fence_a229de6f5987bf7d312310b522db0d5a4}{calculateFenceConstants}();
+54 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d22/class_poly_fence_ad95391c8cf7de0e39cb704cfe771101e_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_poly_fence_a229de6f5987bf7d312310b522db0d5a4}\label{class_poly_fence_a229de6f5987bf7d312310b522db0d5a4}} 
+\index{Poly\+Fence@{Poly\+Fence}!calculate\+Fence\+Constants@{calculate\+Fence\+Constants}}
+\index{calculate\+Fence\+Constants@{calculate\+Fence\+Constants}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{calculate\+Fence\+Constants()}{calculateFenceConstants()}}
+{\footnotesize\ttfamily void Poly\+Fence\+::calculate\+Fence\+Constants (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 75 of file Poly\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+76 \{
+77 
+78     \textcolor{comment}{// Clear the constants for recalculation.}
+79     \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants}.clear();
+80     \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples}.clear();
+81 
+82     \textcolor{comment}{// If the coordinates are empty, nothing can be done.}
+83     \textcolor{keywordflow}{if} (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.empty()) \{
+84         \textcolor{keywordflow}{return};
+85     \}
+86 
+87     \textcolor{comment}{// Calculate poly fence constants.}
+88     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i, j = \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.size() - 1;
+89     \textcolor{keywordflow}{for} (i = 0; i < \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.size(); ++i) \{
+90         \textcolor{keywordflow}{if} (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second == \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].second) \{
+91             \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants}.push\_back(\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].first);
+92             \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples}.push\_back(0);
+93         \} \textcolor{keywordflow}{else} \{
+94             \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants}.push\_back(\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].first
+95                                 - (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second * 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].first)
+96                                   / (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].second - 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second)
+97                                 + (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second * 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].first)
+98                                   / (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].second - 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second));
+99             \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples}.push\_back((\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].first - 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].first)
+100                                 / (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].second - 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second));
+101         \}
+102         j = i;
+103     \}
+104 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d22/class_poly_fence_a229de6f5987bf7d312310b522db0d5a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_poly_fence_a8eb326a3ea522915ee2d343e838730d8}\label{class_poly_fence_a8eb326a3ea522915ee2d343e838730d8}} 
+\index{Poly\+Fence@{Poly\+Fence}!get\+Constants@{get\+Constants}}
+\index{get\+Constants@{get\+Constants}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{get\+Constants()}{getConstants()}}
+{\footnotesize\ttfamily const std\+::vector$<$ double $>$ \& Poly\+Fence\+::get\+Constants (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 63 of file Poly\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+64 \{
+65     \textcolor{keywordflow}{return} \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants};
+66 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_poly_fence_ac21701adcb8af5b77872d7659318af72}\label{class_poly_fence_ac21701adcb8af5b77872d7659318af72}} 
+\index{Poly\+Fence@{Poly\+Fence}!get\+Coordinates@{get\+Coordinates}}
+\index{get\+Coordinates@{get\+Coordinates}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{get\+Coordinates()}{getCoordinates()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \& Poly\+Fence\+::get\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 57 of file Poly\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+58 \{
+59     \textcolor{keywordflow}{return} \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates};
+60 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_poly_fence_a2d67b5087a07fabcec9d3d240df6c417}\label{class_poly_fence_a2d67b5087a07fabcec9d3d240df6c417}} 
+\index{Poly\+Fence@{Poly\+Fence}!get\+Multiples@{get\+Multiples}}
+\index{get\+Multiples@{get\+Multiples}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{get\+Multiples()}{getMultiples()}}
+{\footnotesize\ttfamily const std\+::vector$<$ double $>$ \& Poly\+Fence\+::get\+Multiples (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 69 of file Poly\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+70 \{
+71     \textcolor{keywordflow}{return} \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples};
+72 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_poly_fence_af8116af5be86f8426102985c3dbcdf5e}\label{class_poly_fence_af8116af5be86f8426102985c3dbcdf5e}} 
+\index{Poly\+Fence@{Poly\+Fence}!is\+In\+Location@{is\+In\+Location}}
+\index{is\+In\+Location@{is\+In\+Location}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{is\+In\+Location()}{isInLocation()}}
+{\footnotesize\ttfamily bool Poly\+Fence\+::is\+In\+Location (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{class_fence_a80fb7fbb60592d3e8afc0ecb5122b987}{Fence}.
+
+
+
+Definition at line 107 of file Poly\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+108 \{
+109 
+110     \textcolor{keywordtype}{bool} oddNodes = \textcolor{keyword}{false};
+111     \textcolor{keywordtype}{bool} current = \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.back().second > latLng.second;
+112     \textcolor{keywordtype}{bool} previous;
+113 
+114     \textcolor{comment}{// Determines whether or not latitude and longitude are within the fence.}
+115     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.size(); ++i) \{
+116         previous = current;
+117         current = \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second > latLng.second;
+118         \textcolor{keywordflow}{if} (current != previous) \{
+119             oddNodes ^= latLng.second * \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples}[i] + \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants}[i] < latLng.first;
+120         \}
+121     \}
+122 
+123     \textcolor{keywordflow}{return} oddNodes;
+124 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_poly_fence_ae748da10e4fd15f87b74e0d996f00103}\label{class_poly_fence_ae748da10e4fd15f87b74e0d996f00103}} 
+\index{Poly\+Fence@{Poly\+Fence}!serialise\+Fence@{serialise\+Fence}}
+\index{serialise\+Fence@{serialise\+Fence}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{serialise\+Fence()}{serialiseFence()}}
+{\footnotesize\ttfamily web\+::json\+::value Poly\+Fence\+::serialise\+Fence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}{Fence}.
+
+
+
+Definition at line 127 of file Poly\+Fence.\+cpp.
+
+
+\begin{DoxyCode}
+128 \{
+129 
+130     \textcolor{comment}{// Serialise the super class attributes.}
+131     web::json::value jsonFence = \hyperlink{class_fence_a5c8529e80a4444cc9ca0fb660cbf07c8}{Fence::serialiseFence}();
+132 
+133     \textcolor{comment}{// Serialise PolyFence specific attributes.}
+134     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.size(); ++i) \{
+135         jsonFence[U(\hyperlink{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}{JSON\_KEY\_FENCE\_DEFINITION})][i][U(
+      \hyperlink{_poly_fence_8h_a9a8bf08118a4bda10ed5efe8cf534024}{JSON\_KEY\_POLY\_FENCE\_LATITUDE})]
+136                 = web::json::value::number(\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].first);
+137         jsonFence[U(\hyperlink{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}{JSON\_KEY\_FENCE\_DEFINITION})][i][U(
+      \hyperlink{_poly_fence_8h_a7411c3395f017461cb1bf07687ee4ef3}{JSON\_KEY\_POLY\_FENCE\_LONGITUDE})]
+138                 = web::json::value::number(\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second);
+139     \}
+140 
+141     \textcolor{comment}{// Finally, return the serialised fence.}
+142     \textcolor{keywordflow}{return} jsonFence;
+143 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d22/class_poly_fence_ae748da10e4fd15f87b74e0d996f00103_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}\label{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}} 
+\index{Poly\+Fence@{Poly\+Fence}!constants@{constants}}
+\index{constants@{constants}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{constants}{constants}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ Poly\+Fence\+::constants\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 68 of file Poly\+Fence.\+h.
+
+\mbox{\Hypertarget{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}\label{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}} 
+\index{Poly\+Fence@{Poly\+Fence}!coordinates@{coordinates}}
+\index{coordinates@{coordinates}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{coordinates}{coordinates}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$double, double$>$ $>$ Poly\+Fence\+::coordinates\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 67 of file Poly\+Fence.\+h.
+
+\mbox{\Hypertarget{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}\label{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}} 
+\index{Poly\+Fence@{Poly\+Fence}!multiples@{multiples}}
+\index{multiples@{multiples}!Poly\+Fence@{Poly\+Fence}}
+\subsubsection{\texorpdfstring{multiples}{multiples}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ Poly\+Fence\+::multiples\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 69 of file Poly\+Fence.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/geo/\hyperlink{_poly_fence_8h}{Poly\+Fence.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/geo/\hyperlink{_poly_fence_8cpp}{Poly\+Fence.\+cpp}\end{DoxyCompactItemize}

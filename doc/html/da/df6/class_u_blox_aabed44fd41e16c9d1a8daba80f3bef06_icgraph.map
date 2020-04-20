@@ -1,0 +1,7 @@
+<map id="UBlox::setLocationScanMode" name="UBlox::setLocationScanMode">
+<area shape="rect" id="node2" href="$d8/dcc/class_comms.html#a73c0cd58db7daf118bd0b1726fc9dded" title="Comms::setLocationScanMode" alt="" coords="248,5,453,32"/>
+<area shape="rect" id="node3" href="$da/df6/class_u_blox.html#a34c2f507ff3bbd21b9aea788a015527a" title="UBlox::init" alt="" coords="309,56,392,83"/>
+<area shape="rect" id="node4" href="$d8/dcc/class_comms.html#aa0519d3ed2d5bd6aad60101080ac2de7" title="Comms::init" alt="" coords="501,56,595,83"/>
+<area shape="rect" id="node5" href="$d5/d75/class_bee_safe_manager.html#a28306d7ccf7136a6086d666f4ebb6566" title="BeeSafeManager::initComms" alt="" coords="643,56,836,83"/>
+<area shape="rect" id="node6" href="$d5/d75/class_bee_safe_manager.html#a2f16b09c454e21c887d14ac5483973cf" title="BeeSafeManager::init" alt="" coords="884,56,1031,83"/>
+</map>

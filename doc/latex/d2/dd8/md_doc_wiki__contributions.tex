@@ -1,0 +1,96 @@
+\subsection*{The Team}
+
+The team split up work into 3 distinct areas\+: hardware, software and general project management. These are, however, partly just titular roles, as each team member contributed in a variety of tasks, as can be seen below\+:
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Name }&\textbf{ Role }&\textbf{ Contributions  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Name }&\textbf{ Role }&\textbf{ Contributions  }\\\cline{1-3}
+\endhead
+\href{https://github.com/itsBelinda/}{\tt Belinda Kneubuhler}~\newline
+ &Hardware Manager &All Hardware design, Hardware construction, Hardware Wiki documentation, Social Media, AT Command research, Initial implementation\+: Monitoring package, Trello and Github (General Software Management), Teaching hardware engineering skills to the rest of the team (practical and theoretical) \\\cline{1-3}
+\href{https://github.com/dans-acc/}{\tt Daniels Vasiljevs}~\newline
+ &Software Manager &System Architecture, Communications Stack (\hyperlink{_comms_8h}{Comms.\+h} / .cpp, \hyperlink{_u_blox_8h}{U\+Blox.\+h} / .cpp, \hyperlink{_u_art_8h}{U\+Art.\+h} / .cpp), Django (devweb) Website Backend (All Python code related to the backend), (devweb) Website Frontend (index.\+hml), \hyperlink{class_account}{Account} Management (Accout.\+h / .cpp, \hyperlink{_account_builder_8h}{Account\+Builder.\+h} / .cpp), Location Management (\hyperlink{_fence_8h}{Fence.\+h} / .cpp, \hyperlink{_round_fence_8h}{Round\+Fence.\+h} / .cpp, \hyperlink{_poly_fence_8h}{Poly\+Fence.\+h} / .cpp, \hyperlink{_contact_8h}{Contact.\+h} / .cpp), Manager Thread (\hyperlink{_bee_safe_8h}{Bee\+Safe.\+h} / .cpp), Device Monitoring (\hyperlink{_monitor_8h}{Monitor.\+h} / .cpp, \hyperlink{_monitor_state_8h}{Monitor\+State.\+h} / .cpp, \hyperlink{_passive_monitor_state_8h}{Passive\+Monitor\+State.\+h} / .cpp, \hyperlink{_active_monitor_state_8h}{Active\+Monitor\+State.\+h} / .cpp), Git\+Hub Wiki (Location Management, Communications, \hyperlink{class_account}{Account} Management), Trello and Github (General Software Management), Social Media (1 or 2 posts), Hardware Device Soldering (Learnt how to solder pins to a P\+CB \mbox{[}taught by Belinda Kneubuhler\mbox{]}) \\\cline{1-3}
+\href{https://github.com/szugyizs/}{\tt Zsuzsanna Szugyi}~\newline
+ &Project Manager &Software Project Management documentation (U\+ML and Use case diagrams), website and mapping implementation, Initial U\+A\+RT and AT command research, Bootloader implementation, Initial U\+A\+RT communication implementation, Initial \hyperlink{class_comms}{Comms} Package implementation, Raspberry Pi setup and management, Project Documentation (all other Wiki pages, Doxygen configuration), Travis\+CI, Codecov and Unit testing, Trello and Github (General Software Management) \\\cline{1-3}
+\end{longtabu}
+\subsection*{Non-\/maintainer contributions}
+
+There are several ways one can contribute to the Bee\+Safe Project, as we wanted to provide every channel for a fully-\/fledged open source project maintenance and development. We provided templates and means to report bugs, request features, submit pull requests and give feedback. We also promote common coding conventions that should be shared across all code submitted, be it the team or outside contributors. All contributions made are under the M\+IT licence the project is covered by.
+
+\subsubsection*{Report a bug}
+
+To report a bug, contributors are highly advised to follow the following guidance we have created. This is to ensure we receive all necessary information to be able to recreate, investigate and solve the bugs that occurred.
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ name }&\textbf{ about }&\textbf{ title }&\textbf{ label }&\textbf{ assignees  }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ name }&\textbf{ about }&\textbf{ title }&\textbf{ label }&\textbf{ assignees  }\\\cline{1-5}
+\endhead
+Bug report &Create a report to help us improve &\mbox{[}B\+UG\mbox{]} $<$helpful description=\char`\"{}\char`\"{} comes=\char`\"{}\char`\"{} here$>$=\char`\"{}\char`\"{}$>$ &&\\\cline{1-5}
+\end{longtabu}
+{\bfseries Describe the bug} A clear and concise description of what the bug is.
+
+{\bfseries To Reproduce} Steps to reproduce the behaviour\+:
+\begin{DoxyEnumerate}
+\item Go to \textquotesingle{}...\textquotesingle{}
+\item Click on \textquotesingle{}....\textquotesingle{}
+\item Scroll down to \textquotesingle{}....\textquotesingle{}
+\item See error
+\end{DoxyEnumerate}
+
+{\bfseries Expected behaviour} A clear and concise description of what you expected to happen.
+
+{\bfseries Screenshots} If applicable, add screenshots to help explain your problem.
+
+{\bfseries Additional context} Add any other context about the problem here.
+
+\subsubsection*{Request a feature}
+
+To submit a feature requests, contributors are highly advised to follow the following guidance we have created. This is to ensure the feature requested contributes to the project meaningfully, is viable to be done, is feasible within a reasonable timeframe, and is a necessary addition due to a lack of alternatives that would be able to serve this specific purpose.
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ name }&\textbf{ about }&\textbf{ title }&\textbf{ label }&\textbf{ assignees  }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ name }&\textbf{ about }&\textbf{ title }&\textbf{ label }&\textbf{ assignees  }\\\cline{1-5}
+\endhead
+Feature request &Suggest an idea for this project &\mbox{[}F\+E\+A\+T\+U\+RE\mbox{]} &&\\\cline{1-5}
+\end{longtabu}
+{\bfseries Is your feature request related to a problem? Please describe.} A clear and concise description of what the problem is. Ex. I\textquotesingle{}m always frustrated when \mbox{[}...\mbox{]}
+
+{\bfseries Describe the solution you\textquotesingle{}d like} A clear and concise description of what you want to happen.
+
+{\bfseries Describe alternatives you\textquotesingle{}ve considered} A clear and concise description of any alternative solutions or features you\textquotesingle{}ve considered.
+
+{\bfseries Additional context} Add any other context or screenshots about the feature request here.
+
+\subsubsection*{Pull requests}
+
+We welcome other contributions, too, so pull requests of patches, improvements, etc. are encouraged! By default we ask you pull the \mbox{[}master\mbox{]} branch. We only ask you to be mindful, and keep pull requests in scope and relevant. If you would be interested in contributing a larger piece of work and/or it may not be in line the above tips, please do get in touch with a \href{https://github.com/itsBelinda/ENG5220-2020-Team13/blob/master/README.md#credits}{\tt maintainer} for a discussion!
+
+\subsubsection*{Coding conventions}
+
+The team agreed on common coding conventions that need to be followed for the tidyness and readability of the code. \mbox{[}T\+O\+DO\mbox{]} now
+
+\subsubsection*{Code review process}
+
+All submitted contributions are reviewed by the core maintainer team of the project. The timescale for reviews is flexible, but be assured the team responds as quickly as possible.
+
+\subsubsection*{Feedback}
+
+For less formal feedback, the team created a \href{https://forms.gle/tGHM2jB7GBWfdgk3A}{\tt Google form}, through which any \char`\"{}shout-\/outs\char`\"{} can be left for the team. This is because Github does not yet provide a native feature to leave comments, the closest available options are issues and pull requests, for none of which leaving feedback is supposed to be used 

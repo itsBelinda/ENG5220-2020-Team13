@@ -1,0 +1,92 @@
+\hypertarget{class_monitor}{}\doxysection{Monitor Class Reference}
+\label{class_monitor}\index{Monitor@{Monitor}}
+
+
+{\ttfamily \#include $<$Monitor.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_monitor_a092bf291d6c9d140c1edf59875ddf143}{Monitor}} (\mbox{\hyperlink{class_comms}{Comms}} $\ast$comms, \mbox{\hyperlink{class_account}{Account}} $\ast$account)
+\item 
+\mbox{\hyperlink{class_monitor_aa7e89b9dc22b89f4d12b82eda450c1a0}{Monitor}} (\mbox{\hyperlink{class_comms}{Comms}} $\ast$comms)
+\item 
+bool \mbox{\hyperlink{class_monitor_a71dfa92dfa25ee137f4e3d5e01a8d673}{start}} ()
+\item 
+bool \mbox{\hyperlink{class_monitor_a5a01b1c1084f0826a01c184519491cf6}{start}} (\mbox{\hyperlink{class_account}{Account}} $\ast$account)
+\item 
+void \mbox{\hyperlink{class_monitor_a13fb20dc3bd5c8739f5a820cf7433cd8}{stop}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_monitor_a092bf291d6c9d140c1edf59875ddf143}\label{class_monitor_a092bf291d6c9d140c1edf59875ddf143}} 
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{Monitor()}{Monitor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Monitor\+::\+Monitor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_comms}{Comms}} $\ast$}]{comms,  }\item[{\mbox{\hyperlink{class_account}{Account}} $\ast$}]{account }\end{DoxyParamCaption})}
+
+Constrictor explicitly initialises the monitor thread with the necessary parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comms} & The communications interface used to obtain the location and send messages. \\
+\hline
+{\em account} & The device account that defines the fences and contacts. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monitor_aa7e89b9dc22b89f4d12b82eda450c1a0}\label{class_monitor_aa7e89b9dc22b89f4d12b82eda450c1a0}} 
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{Monitor()}{Monitor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Monitor\+::\+Monitor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_comms}{Comms}} $\ast$}]{comms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor initialises the monitor thread only with the communications interface. Note, starting will require the account to be passed to the thread.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comms} & The communications interface used to obtain the location of the device and send messages. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_monitor_a71dfa92dfa25ee137f4e3d5e01a8d673}\label{class_monitor_a71dfa92dfa25ee137f4e3d5e01a8d673}} 
+\index{Monitor@{Monitor}!start@{start}}
+\index{start@{start}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Monitor\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Attempts to start the thread with the current account. If the thread is already running, calling this function is the equivalent of restarting the thread.
+
+\begin{DoxyReturn}{Returns}
+True if the thread was successfully started, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monitor_a5a01b1c1084f0826a01c184519491cf6}\label{class_monitor_a5a01b1c1084f0826a01c184519491cf6}} 
+\index{Monitor@{Monitor}!start@{start}}
+\index{start@{start}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Monitor\+::start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_account}{Account}} $\ast$}]{account }\end{DoxyParamCaption})}
+
+Attempts to start the thread with an explicit account. If the thread is already running, calling this function is the equivalent of restarting the thread.
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & The new account instance that should be used. Note, this will overwrite the existing account instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the thread was successfully started, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monitor_a13fb20dc3bd5c8739f5a820cf7433cd8}\label{class_monitor_a13fb20dc3bd5c8739f5a820cf7433cd8}} 
+\index{Monitor@{Monitor}!stop@{stop}}
+\index{stop@{stop}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Monitor\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Blocks the invoking thread until the monitor thread has finished executing. Moreover, this will take care of cleaning up any resources occupied by the thread. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+monitor/\mbox{\hyperlink{_monitor_8h}{Monitor.\+h}}\item 
+monitor/\mbox{\hyperlink{_monitor_8cpp}{Monitor.\+cpp}}\end{DoxyCompactItemize}

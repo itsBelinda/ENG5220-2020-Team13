@@ -1,0 +1,93 @@
+\hypertarget{class_account}{}\doxysection{Account Class Reference}
+\label{class_account}\index{Account@{Account}}
+
+
+{\ttfamily \#include $<$Account.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_account_a8dc36f3e78eef55ad8fd7a78f3a6606d}{Account}} (std\+::vector$<$ \mbox{\hyperlink{class_contact}{Contact}} $\ast$ $>$ \&contacts, std\+::vector$<$ \mbox{\hyperlink{class_fence}{Fence}} $\ast$ $>$ \&fences)
+\item 
+\mbox{\hyperlink{class_account_af70ddede01cb2dc7acaec992769bf290}{Account}} (const \mbox{\hyperlink{class_account}{Account}} \&account)
+\item 
+\mbox{\hyperlink{class_account_a569c9ef0e42b9157690b4ceb646daba8}{$\sim$\+Account}} ()
+\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_contact}{Contact}} $\ast$ $>$ \& \mbox{\hyperlink{class_account_ac06d38b95b7ee14a86eaf705650aaf8d}{get\+Contacts}} ()
+\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_fence}{Fence}} $\ast$ $>$ \& \mbox{\hyperlink{class_account_a1a53340a24588c991df936f183c24520}{get\+Fences}} ()
+\item 
+web\+::json\+::value \mbox{\hyperlink{class_account_a1e9b184e8a6ddf67e8814e6c575f657e}{serialise\+Account}} ()
+\item 
+web\+::json\+::value \mbox{\hyperlink{class_account_a7f2d9836817ee851f723f6d3b1ff74a5}{serialise\+Account\+Contacts}} ()
+\item 
+web\+::json\+::value \mbox{\hyperlink{class_account_a426837a406852a6e6b11eda85828fc58}{serialise\+Account\+Fences}} ()
+\item 
+bool \mbox{\hyperlink{class_account_a9ff3a257536bc933e0a39207bb89243d}{save\+Serialised\+Account}} (const std\+::string \&path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_account_a8dc36f3e78eef55ad8fd7a78f3a6606d}\label{class_account_a8dc36f3e78eef55ad8fd7a78f3a6606d}} 
+\index{Account@{Account}!Account@{Account}}
+\index{Account@{Account}!Account@{Account}}
+\doxysubsubsection{\texorpdfstring{Account()}{Account()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Account\+::\+Account (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_contact}{Contact}} $\ast$ $>$ \&}]{contacts,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_fence}{Fence}} $\ast$ $>$ \&}]{fences }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_account_af70ddede01cb2dc7acaec992769bf290}\label{class_account_af70ddede01cb2dc7acaec992769bf290}} 
+\index{Account@{Account}!Account@{Account}}
+\index{Account@{Account}!Account@{Account}}
+\doxysubsubsection{\texorpdfstring{Account()}{Account()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Account\+::\+Account (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_account}{Account}} \&}]{account }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_account_a569c9ef0e42b9157690b4ceb646daba8}\label{class_account_a569c9ef0e42b9157690b4ceb646daba8}} 
+\index{Account@{Account}!````~Account@{$\sim$Account}}
+\index{````~Account@{$\sim$Account}!Account@{Account}}
+\doxysubsubsection{\texorpdfstring{$\sim$Account()}{~Account()}}
+{\footnotesize\ttfamily Account\+::$\sim$\+Account (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_account_ac06d38b95b7ee14a86eaf705650aaf8d}\label{class_account_ac06d38b95b7ee14a86eaf705650aaf8d}} 
+\index{Account@{Account}!getContacts@{getContacts}}
+\index{getContacts@{getContacts}!Account@{Account}}
+\doxysubsubsection{\texorpdfstring{getContacts()}{getContacts()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{class_contact}{Contact}} $\ast$ $>$ \& Account\+::get\+Contacts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_account_a1a53340a24588c991df936f183c24520}\label{class_account_a1a53340a24588c991df936f183c24520}} 
+\index{Account@{Account}!getFences@{getFences}}
+\index{getFences@{getFences}!Account@{Account}}
+\doxysubsubsection{\texorpdfstring{getFences()}{getFences()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{class_fence}{Fence}} $\ast$ $>$ \& Account\+::get\+Fences (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_account_a9ff3a257536bc933e0a39207bb89243d}\label{class_account_a9ff3a257536bc933e0a39207bb89243d}} 
+\index{Account@{Account}!saveSerialisedAccount@{saveSerialisedAccount}}
+\index{saveSerialisedAccount@{saveSerialisedAccount}!Account@{Account}}
+\doxysubsubsection{\texorpdfstring{saveSerialisedAccount()}{saveSerialisedAccount()}}
+{\footnotesize\ttfamily bool Account\+::save\+Serialised\+Account (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_account_a1e9b184e8a6ddf67e8814e6c575f657e}\label{class_account_a1e9b184e8a6ddf67e8814e6c575f657e}} 
+\index{Account@{Account}!serialiseAccount@{serialiseAccount}}
+\index{serialiseAccount@{serialiseAccount}!Account@{Account}}
+\doxysubsubsection{\texorpdfstring{serialiseAccount()}{serialiseAccount()}}
+{\footnotesize\ttfamily web\+::json\+::value Account\+::serialise\+Account (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_account_a7f2d9836817ee851f723f6d3b1ff74a5}\label{class_account_a7f2d9836817ee851f723f6d3b1ff74a5}} 
+\index{Account@{Account}!serialiseAccountContacts@{serialiseAccountContacts}}
+\index{serialiseAccountContacts@{serialiseAccountContacts}!Account@{Account}}
+\doxysubsubsection{\texorpdfstring{serialiseAccountContacts()}{serialiseAccountContacts()}}
+{\footnotesize\ttfamily web\+::json\+::value Account\+::serialise\+Account\+Contacts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_account_a426837a406852a6e6b11eda85828fc58}\label{class_account_a426837a406852a6e6b11eda85828fc58}} 
+\index{Account@{Account}!serialiseAccountFences@{serialiseAccountFences}}
+\index{serialiseAccountFences@{serialiseAccountFences}!Account@{Account}}
+\doxysubsubsection{\texorpdfstring{serialiseAccountFences()}{serialiseAccountFences()}}
+{\footnotesize\ttfamily web\+::json\+::value Account\+::serialise\+Account\+Fences (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+device/\mbox{\hyperlink{_account_8h}{Account.\+h}}\item 
+device/\mbox{\hyperlink{_account_8cpp}{Account.\+cpp}}\end{DoxyCompactItemize}

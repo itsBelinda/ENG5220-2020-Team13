@@ -1,0 +1,828 @@
+\hypertarget{class_comms}{}\section{Comms Class Reference}
+\label{class_comms}\index{Comms@{Comms}}
+
+
+A high-\/level wrapper for the communication features.  
+
+
+
+
+{\ttfamily \#include $<$Comms.\+h$>$}
+
+
+
+Collaboration diagram for Comms\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=134pt]{d4/d7a/class_comms__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_comms_aa3878221ed907d6d6841ee77741c1f49}{Comms} ()
+\item 
+\hyperlink{class_comms_ad18d3a80a82d18d27b0de3b551e4f5fc}{$\sim$\+Comms} ()
+\item 
+bool \hyperlink{class_comms_aa0519d3ed2d5bd6aad60101080ac2de7}{init} ()
+\item 
+const \hyperlink{class_u_blox}{U\+Blox} \& \hyperlink{class_comms_afdd15b4aeca5d91f2f263910c444c957}{get\+U\+Blox} ()
+\item 
+bool \hyperlink{class_comms_ae1fb7ac11bd07f21134335aec55bd833}{has\+Registered} (bool \&registered)
+\item 
+bool \hyperlink{class_comms_a583e3d933cca0c1eca9ec77e66bd6b84}{has\+G\+P\+RS} (bool \&attached)
+\item 
+bool \hyperlink{class_comms_a2c43ce409b48f4d28eefb7934cdd1523}{has\+P\+SD} (bool \&connected)
+\item 
+bool \hyperlink{class_comms_a9563254514d2f64c0427be2aeaba26d8}{start\+Auto\+Registration} (bool \&registered)
+\item 
+bool \hyperlink{class_comms_a6d720b51b543ec05b140efdde4cca824}{connect\+P\+SD} (bool \&connected, std\+::string \&urc)
+\item 
+bool \hyperlink{class_comms_a02eb048febea2d1a39a7fe9e064cf93c}{get\+Model\+Number} (std\+::string \&model\+Number)
+\item 
+bool \hyperlink{class_comms_ab545396d2360e34fd94e7c3a996e967d}{get\+I\+M\+EI} (std\+::string \&imei\+Number)
+\item 
+bool \hyperlink{class_comms_ade9963ad1f934a79a6b584dd7abfe515}{get\+Send\+Message\+Mode} (char \&send\+Msg\+Mode)
+\item 
+bool \hyperlink{class_comms_a1b6f5cafba74fc0e175f057e15656362}{set\+Send\+Message\+Mode} (char send\+Msg\+Mode)
+\item 
+bool \hyperlink{class_comms_a8f9893e235e62f8fc752f05a06383e68}{get\+Location\+Scan\+Mode} (char \&loc\+Scan\+Mode)
+\item 
+bool \hyperlink{class_comms_a73c0cd58db7daf118bd0b1726fc9dded}{set\+Location\+Scan\+Mode} (char loc\+Scan\+Mode)
+\item 
+bool \hyperlink{class_comms_a26030245503e82aa6278e39cd0886c31}{get\+Location} (std\+::pair$<$ double, double $>$ \&lat\+Lng)
+\item 
+bool \hyperlink{class_comms_a083b399b3115711b1e2d55f800cac58c}{get\+Location} (double \&lat, double \&lng)
+\item 
+bool \hyperlink{class_comms_a30ab10ea604ab2b169ca66f3f1071c0e}{send\+Message} (\hyperlink{class_contact}{Contact} \&contact, const std\+::string \&message)
+\item 
+bool \hyperlink{class_comms_ad28b072a0852ac95aa2475324cbfae60}{send\+Message} (const std\+::string \&phone\+Number, const std\+::string \&message)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_blox}{U\+Blox} \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{u\+Blox}
+\item 
+std\+::mutex \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A high-\/level wrapper for the communication features. 
+
+The \hyperlink{class_comms}{Comms} class acts as a high-\/level wrapper over the \hyperlink{class_u_blox}{U\+Blox} class, ensuring concurrency-\/safe access to the hardware. By calling the \hyperlink{class_u_blox}{U\+Blox} commands describing higher level communications functions such as getting a location and sending a text message, and \char`\"{}wrapping it\char`\"{} in a mutex lock it ensures the safe interactions with and operations of the hardware connected to the Raspberry Pi.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 41 of file Comms.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_comms_aa3878221ed907d6d6841ee77741c1f49}\label{class_comms_aa3878221ed907d6d6841ee77741c1f49}} 
+\index{Comms@{Comms}!Comms@{Comms}}
+\index{Comms@{Comms}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{Comms()}{Comms()}}
+{\footnotesize\ttfamily Comms\+::\+Comms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [default]}}
+
+The \hyperlink{class_comms}{Comms} class constructor. \mbox{\Hypertarget{class_comms_ad18d3a80a82d18d27b0de3b551e4f5fc}\label{class_comms_ad18d3a80a82d18d27b0de3b551e4f5fc}} 
+\index{Comms@{Comms}!````~Comms@{$\sim$\+Comms}}
+\index{````~Comms@{$\sim$\+Comms}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{$\sim$\+Comms()}{~Comms()}}
+{\footnotesize\ttfamily Comms\+::$\sim$\+Comms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+The \hyperlink{class_comms}{Comms} class destructor. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_comms_a6d720b51b543ec05b140efdde4cca824}\label{class_comms_a6d720b51b543ec05b140efdde4cca824}} 
+\index{Comms@{Comms}!connect\+P\+SD@{connect\+P\+SD}}
+\index{connect\+P\+SD@{connect\+P\+SD}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{connect\+P\+S\+D()}{connectPSD()}}
+{\footnotesize\ttfamily bool Comms\+::connect\+P\+SD (\begin{DoxyParamCaption}\item[{bool \&}]{connected,  }\item[{std\+::string \&}]{urc }\end{DoxyParamCaption})}
+
+Attempt to connect to the internet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em connected} & A bool reference into which the result is to be stored i.\+e. whether a connection was successfully established. \\
+\hline
+{\em urc} & A reference into which additional information is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the command was successfully executed, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 154 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+155 \{
+156     \textcolor{comment}{// Lock the comms interface and connect.}
+157     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+158     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_ac250bd4aea14e09b3a2595c2b8eda18a}{connectPSD}(connected, urc);
+159     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+160 
+161     \textcolor{comment}{// Return the state of the command.}
+162     \textcolor{keywordflow}{return} rc;
+163 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a6d720b51b543ec05b140efdde4cca824_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a6d720b51b543ec05b140efdde4cca824_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_ab545396d2360e34fd94e7c3a996e967d}\label{class_comms_ab545396d2360e34fd94e7c3a996e967d}} 
+\index{Comms@{Comms}!get\+I\+M\+EI@{get\+I\+M\+EI}}
+\index{get\+I\+M\+EI@{get\+I\+M\+EI}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{get\+I\+M\+E\+I()}{getIMEI()}}
+{\footnotesize\ttfamily bool Comms\+::get\+I\+M\+EI (\begin{DoxyParamCaption}\item[{std\+::string \&}]{imei\+Number }\end{DoxyParamCaption})}
+
+Get the I\+M\+EI number associated with the device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em imei\+Number} & The string reference into which the result i.\+e. imei will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the function successfully obtained the result, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 192 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+193 \{
+194     \textcolor{comment}{// Locks the comms interface and get the imeiNumber number.}
+195     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+196     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_ade30654ab2eab43d322dc6b516866401}{getIMEI}(imeiNumber);
+197     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+198 
+199     \textcolor{comment}{// Return the result of the function.}
+200     \textcolor{keywordflow}{return} rc;
+201 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_ab545396d2360e34fd94e7c3a996e967d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_a26030245503e82aa6278e39cd0886c31}\label{class_comms_a26030245503e82aa6278e39cd0886c31}} 
+\index{Comms@{Comms}!get\+Location@{get\+Location}}
+\index{get\+Location@{get\+Location}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{get\+Location()}{getLocation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Comms\+::get\+Location (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})}
+
+Get the location of the device on which the code is being run.
+
+Note, the function delegates the locking to the \hyperlink{class_comms_a083b399b3115711b1e2d55f800cac58c}{get\+Location(double \&lat, double \&lng)}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat\+Lng} & The pair structure into which the result is to be placed. \textquotesingle{}first\textquotesingle{} represents the latitude whereas \textquotesingle{}second\textquotesingle{} represents the latitude. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the function returned successfully, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 291 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+292 \{
+293     \textcolor{keywordflow}{return} \hyperlink{class_comms_a26030245503e82aa6278e39cd0886c31}{getLocation}(latLng.first, latLng.second);
+294 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a26030245503e82aa6278e39cd0886c31_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_a083b399b3115711b1e2d55f800cac58c}\label{class_comms_a083b399b3115711b1e2d55f800cac58c}} 
+\index{Comms@{Comms}!get\+Location@{get\+Location}}
+\index{get\+Location@{get\+Location}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{get\+Location()}{getLocation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Comms\+::get\+Location (\begin{DoxyParamCaption}\item[{double \&}]{lat,  }\item[{double \&}]{lng }\end{DoxyParamCaption})}
+
+Get the location of the device on which the code is being run.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat} & The geo-\/location latitude. \\
+\hline
+{\em lng} & The geo-\/location longitude. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the function returned successfully, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 303 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+304 \{
+305     \textcolor{comment}{// Lock the comms interface and get the latitude and longitude.}
+306     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+307     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_a2443d175bbf55a4f4facc5d8a99d2723}{getLocation}(lat, lng);
+308     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+309 
+310     \textcolor{comment}{// Return the result of the operation.}
+311     \textcolor{keywordflow}{return} rc;
+312 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a083b399b3115711b1e2d55f800cac58c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_a8f9893e235e62f8fc752f05a06383e68}\label{class_comms_a8f9893e235e62f8fc752f05a06383e68}} 
+\index{Comms@{Comms}!get\+Location\+Scan\+Mode@{get\+Location\+Scan\+Mode}}
+\index{get\+Location\+Scan\+Mode@{get\+Location\+Scan\+Mode}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{get\+Location\+Scan\+Mode()}{getLocationScanMode()}}
+{\footnotesize\ttfamily bool Comms\+::get\+Location\+Scan\+Mode (\begin{DoxyParamCaption}\item[{char \&}]{loc\+Scan\+Mode }\end{DoxyParamCaption})}
+
+Get the Cell\+Locate location scan mode that\textquotesingle{}s utilised for obtaining the latitude and longitude coordinates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em loc\+Scan\+Mode} & The char reference into which the mode (L\+O\+C\+\_\+\+S\+C\+A\+N\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL or L\+O\+C\+\_\+\+S\+C\+A\+N\+\_\+\+M\+O\+D\+E\+\_\+\+D\+E\+EP) is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the function successfully returned a result, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 249 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+250 \{
+251     \textcolor{comment}{// Lock the comms and get the location scan mode.}
+252     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+253     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_a398db4cdc2d5356fb86b3cd1021bad1b}{getLocationScanMode}(locScanMode);
+254     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+255 
+256     \textcolor{comment}{// Return the state of the function.}
+257     \textcolor{keywordflow}{return} rc;
+258 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a8f9893e235e62f8fc752f05a06383e68_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_a02eb048febea2d1a39a7fe9e064cf93c}\label{class_comms_a02eb048febea2d1a39a7fe9e064cf93c}} 
+\index{Comms@{Comms}!get\+Model\+Number@{get\+Model\+Number}}
+\index{get\+Model\+Number@{get\+Model\+Number}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{get\+Model\+Number()}{getModelNumber()}}
+{\footnotesize\ttfamily bool Comms\+::get\+Model\+Number (\begin{DoxyParamCaption}\item[{std\+::string \&}]{model\+Number }\end{DoxyParamCaption})}
+
+Get the model number of the u-\/\+Blox device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+Number} & The string reference into which the result i.\+e. model number will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the function successfully obtained the result, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 173 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+174 \{
+175     \textcolor{comment}{// Locks the comms interface and get the model number.}
+176     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+177     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_ab9b9a03e10360c931686c1fe04af078d}{getModelNumber}(modelNumber);
+178     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+179 
+180     \textcolor{comment}{// Return the result of the function.}
+181     \textcolor{keywordflow}{return} rc;
+182 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a02eb048febea2d1a39a7fe9e064cf93c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_ade9963ad1f934a79a6b584dd7abfe515}\label{class_comms_ade9963ad1f934a79a6b584dd7abfe515}} 
+\index{Comms@{Comms}!get\+Send\+Message\+Mode@{get\+Send\+Message\+Mode}}
+\index{get\+Send\+Message\+Mode@{get\+Send\+Message\+Mode}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{get\+Send\+Message\+Mode()}{getSendMessageMode()}}
+{\footnotesize\ttfamily bool Comms\+::get\+Send\+Message\+Mode (\begin{DoxyParamCaption}\item[{char \&}]{send\+Msg\+Mode }\end{DoxyParamCaption})}
+
+Get the send message mode utilised by the device to send text messages.
+
+
+\begin{DoxyParams}{Parameters}
+{\em send\+Msg\+Mode} & The char reference into which the mode (S\+E\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+M\+O\+D\+E\+\_\+\+P\+DU or S\+E\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+M\+O\+D\+E\+\_\+\+T\+E\+XT) is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the function successfully obtained the send message mode false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 211 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+212 \{
+213     \textcolor{comment}{// Lock the comms interface and get the message mode.}
+214     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+215     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_aee30d82dcf52335d19f77e766db78ab4}{getSendMessageMode}(sendMsgMode);
+216     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+217 
+218     \textcolor{comment}{// Return the state of the function.}
+219     \textcolor{keywordflow}{return} rc;
+220 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_ade9963ad1f934a79a6b584dd7abfe515_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_afdd15b4aeca5d91f2f263910c444c957}\label{class_comms_afdd15b4aeca5d91f2f263910c444c957}} 
+\index{Comms@{Comms}!get\+U\+Blox@{get\+U\+Blox}}
+\index{get\+U\+Blox@{get\+U\+Blox}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{get\+U\+Blox()}{getUBlox()}}
+{\footnotesize\ttfamily const \hyperlink{class_u_blox}{U\+Blox} \& Comms\+::get\+U\+Blox (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the u-\/blox device that the comms interface utilises for communication.
+
+Invocation of the function does not lock the comms interface. Moreover, there are no locks associated with underlying structures. Thus, this function (and the returned instance of \hyperlink{class_u_blox}{U\+Blox}) should be used with extreme care.
+
+\begin{DoxyReturn}{Returns}
+An instance of the \hyperlink{class_u_blox}{U\+Blox} device utilised to communicate via the U\+A\+RT interface. 
+\end{DoxyReturn}
+
+
+Definition at line 66 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+67 \{
+68     \textcolor{keywordflow}{return} \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox};
+69 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_comms_a583e3d933cca0c1eca9ec77e66bd6b84}\label{class_comms_a583e3d933cca0c1eca9ec77e66bd6b84}} 
+\index{Comms@{Comms}!has\+G\+P\+RS@{has\+G\+P\+RS}}
+\index{has\+G\+P\+RS@{has\+G\+P\+RS}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{has\+G\+P\+R\+S()}{hasGPRS()}}
+{\footnotesize\ttfamily bool Comms\+::has\+G\+P\+RS (\begin{DoxyParamCaption}\item[{bool \&}]{attached }\end{DoxyParamCaption})}
+
+Determines whether or not the G\+P\+RS is attached to the device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em attached} & The bool reference into which the result of whether or not G\+P\+RS is attached will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the function successfully obtained the result, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 97 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+98 \{
+99     \textcolor{comment}{// Lock the comms interface and check if GPRS is attached.}
+100     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+101     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_a4f5a31b4ddda664b255ce3f63e9ffac7}{hasGPRS}(attached);
+102     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+103 
+104     \textcolor{comment}{// Return the result of the function.}
+105     \textcolor{keywordflow}{return} rc;
+106 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a583e3d933cca0c1eca9ec77e66bd6b84_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_a2c43ce409b48f4d28eefb7934cdd1523}\label{class_comms_a2c43ce409b48f4d28eefb7934cdd1523}} 
+\index{Comms@{Comms}!has\+P\+SD@{has\+P\+SD}}
+\index{has\+P\+SD@{has\+P\+SD}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{has\+P\+S\+D()}{hasPSD()}}
+{\footnotesize\ttfamily bool Comms\+::has\+P\+SD (\begin{DoxyParamCaption}\item[{bool \&}]{connected }\end{DoxyParamCaption})}
+
+Determines whether or not the P\+SD (internet) is connected.
+
+
+\begin{DoxyParams}{Parameters}
+{\em connected} & The bool reference into which the result of whether or not the P\+SD (internet) is connected will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the function successfully obtained the result, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 116 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+117 \{
+118     \textcolor{comment}{// Lock the comms interface and check if PSD connected.}
+119     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+120     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_ae49b51a602a327b5eff5b04d2ccaec20}{hasPSD}(connected);
+121     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+122 
+123     \textcolor{comment}{// Return the result of the function.}
+124     \textcolor{keywordflow}{return} rc;
+125 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a2c43ce409b48f4d28eefb7934cdd1523_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a2c43ce409b48f4d28eefb7934cdd1523_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_ae1fb7ac11bd07f21134335aec55bd833}\label{class_comms_ae1fb7ac11bd07f21134335aec55bd833}} 
+\index{Comms@{Comms}!has\+Registered@{has\+Registered}}
+\index{has\+Registered@{has\+Registered}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{has\+Registered()}{hasRegistered()}}
+{\footnotesize\ttfamily bool Comms\+::has\+Registered (\begin{DoxyParamCaption}\item[{bool \&}]{registered }\end{DoxyParamCaption})}
+
+Checks whether or not the device sim is registered with a network.
+
+
+\begin{DoxyParams}{Parameters}
+{\em registered} & The bool reference into which the result is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the device successfully returned the result, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 78 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+79 \{
+80     \textcolor{comment}{// Lock comms and check if the device is registered to the network.}
+81     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+82     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_a1889c2b9bb6087bc939bd2a27b68623b}{hasRegistered}(registered);
+83     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+84 
+85     \textcolor{comment}{// Return the state of the command.}
+86     \textcolor{keywordflow}{return} rc;
+87 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_ae1fb7ac11bd07f21134335aec55bd833_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_aa0519d3ed2d5bd6aad60101080ac2de7}\label{class_comms_aa0519d3ed2d5bd6aad60101080ac2de7}} 
+\index{Comms@{Comms}!init@{init}}
+\index{init@{init}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily bool Comms\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialise or re-\/initialise the comms interface. Any prior non-\/default configurations will be reset.
+
+\begin{DoxyReturn}{Returns}
+True if the comms interface was successfully initialised, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 43 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+44 \{
+45     \textcolor{comment}{// Lock and initialise the comms interface.}
+46     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+47     \textcolor{keywordtype}{bool} initialised = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_a34c2f507ff3bbd21b9aea788a015527a}{init}();
+48     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+49 
+50     \textcolor{comment}{// Whether or not the comms was successfully initialised.}
+51     \textcolor{keywordflow}{return} initialised;
+52 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_aa0519d3ed2d5bd6aad60101080ac2de7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_aa0519d3ed2d5bd6aad60101080ac2de7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_a30ab10ea604ab2b169ca66f3f1071c0e}\label{class_comms_a30ab10ea604ab2b169ca66f3f1071c0e}} 
+\index{Comms@{Comms}!send\+Message@{send\+Message}}
+\index{send\+Message@{send\+Message}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{send\+Message()}{sendMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Comms\+::send\+Message (\begin{DoxyParamCaption}\item[{\hyperlink{class_contact}{Contact} \&}]{contact,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+Send a message to a contacts phone number via the \hyperlink{class_u_blox}{U\+Blox} device.
+
+Note, the function delegates the locking to the send\+Message(string \&phone\+Number, string \&message) function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em contact} & The contact (phone number) to which the message will be sent. \\
+\hline
+{\em message} & The message contents that are to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the message was successfully sent, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 324 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+325 \{
+326    \textcolor{keywordflow}{return} \hyperlink{class_comms_a30ab10ea604ab2b169ca66f3f1071c0e}{sendMessage}(contact.\hyperlink{class_contact_a612095b153e05538c32400c4c44cb1aa}{getNumber}(), message);
+327 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{d8/dcc/class_comms_a30ab10ea604ab2b169ca66f3f1071c0e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a30ab10ea604ab2b169ca66f3f1071c0e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_ad28b072a0852ac95aa2475324cbfae60}\label{class_comms_ad28b072a0852ac95aa2475324cbfae60}} 
+\index{Comms@{Comms}!send\+Message@{send\+Message}}
+\index{send\+Message@{send\+Message}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{send\+Message()}{sendMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Comms\+::send\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{phone\+Number,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+Send a message to a mobile phone via the \hyperlink{class_u_blox}{U\+Blox} device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em phone\+Number} & The phone number to which the message will be sent. \\
+\hline
+{\em message} & The message contents that are to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the message was sent successfully, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 336 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+337 \{
+338     \textcolor{comment}{// Lock the comms interface and set a message.}
+339     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+340     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_a946f2903bb01a62cd5bdef423eaa9750}{sendMessage}(phoneNumber, message);
+341     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+342 
+343     \textcolor{comment}{// Return the result of the operation.}
+344     \textcolor{keywordflow}{return} rc;
+345 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_ad28b072a0852ac95aa2475324cbfae60_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_a73c0cd58db7daf118bd0b1726fc9dded}\label{class_comms_a73c0cd58db7daf118bd0b1726fc9dded}} 
+\index{Comms@{Comms}!set\+Location\+Scan\+Mode@{set\+Location\+Scan\+Mode}}
+\index{set\+Location\+Scan\+Mode@{set\+Location\+Scan\+Mode}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{set\+Location\+Scan\+Mode()}{setLocationScanMode()}}
+{\footnotesize\ttfamily bool Comms\+::set\+Location\+Scan\+Mode (\begin{DoxyParamCaption}\item[{char}]{loc\+Scan\+Mode }\end{DoxyParamCaption})}
+
+Set the Cell\+Locate location scan mode that is to be used for obtaining the latitude and longitude coordinates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em loc\+Scan\+Mode} & The mode (L\+O\+C\+\_\+\+S\+C\+A\+N\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL or L\+O\+C\+\_\+\+S\+C\+A\+N\+\_\+\+M\+O\+D\+E\+\_\+\+D\+E\+EP) that is to be used for obtaining the location. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the function successfully set the location scan mode, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 269 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+270 \{
+271     \textcolor{comment}{// Lock comms and set the location scan mode.}
+272     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+273     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_aabed44fd41e16c9d1a8daba80f3bef06}{setLocationScanMode}(locScanMode);
+274     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+275 
+276     \textcolor{comment}{// Return the state of the function.}
+277     \textcolor{keywordflow}{return} rc;
+278 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a73c0cd58db7daf118bd0b1726fc9dded_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_a1b6f5cafba74fc0e175f057e15656362}\label{class_comms_a1b6f5cafba74fc0e175f057e15656362}} 
+\index{Comms@{Comms}!set\+Send\+Message\+Mode@{set\+Send\+Message\+Mode}}
+\index{set\+Send\+Message\+Mode@{set\+Send\+Message\+Mode}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{set\+Send\+Message\+Mode()}{setSendMessageMode()}}
+{\footnotesize\ttfamily bool Comms\+::set\+Send\+Message\+Mode (\begin{DoxyParamCaption}\item[{char}]{send\+Msg\+Mode }\end{DoxyParamCaption})}
+
+Setting the send message mode that is to be used for sending text messages to a mobile device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em send\+Msg\+Mode} & The mode that\textquotesingle{}s to be utilised (S\+E\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+M\+O\+D\+E\+\_\+\+P\+DU or S\+E\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+M\+O\+D\+E\+\_\+\+T\+E\+XT). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the mode was successfully set, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 230 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+231 \{
+232     \textcolor{comment}{// Lock the comms interface and set the message mode.}
+233     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+234     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_a12c1042d3bcb503b025927fd53d54243}{setSendMessageMode}(sendMsgMode);
+235     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+236 
+237     \textcolor{comment}{// Return the state of the function.}
+238     \textcolor{keywordflow}{return} rc;
+239 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a1b6f5cafba74fc0e175f057e15656362_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_comms_a9563254514d2f64c0427be2aeaba26d8}\label{class_comms_a9563254514d2f64c0427be2aeaba26d8}} 
+\index{Comms@{Comms}!start\+Auto\+Registration@{start\+Auto\+Registration}}
+\index{start\+Auto\+Registration@{start\+Auto\+Registration}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{start\+Auto\+Registration()}{startAutoRegistration()}}
+{\footnotesize\ttfamily bool Comms\+::start\+Auto\+Registration (\begin{DoxyParamCaption}\item[{bool \&}]{registered }\end{DoxyParamCaption})}
+
+Starts the auto registration process if the sim has not already been registered,
+
+
+\begin{DoxyParams}{Parameters}
+{\em registered} & The bool reference into which the auto registration result is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the command was successfully run, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 135 of file Comms.\+cpp.
+
+
+\begin{DoxyCode}
+136 \{
+137     \textcolor{comment}{// Lock comms and start the auto registration.}
+138     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.lock();
+139     \textcolor{keywordtype}{bool} rc = \hyperlink{class_comms_ac64dea134b116147e5441172346dbd6c}{uBlox}.\hyperlink{class_u_blox_a2e816e864ebf43743b3f6187e20c2b1f}{startAutoRegistration}(registered);
+140     \hyperlink{class_comms_a21df861b1202573e4cd0cb5666d638fe}{mtx}.unlock();
+141 
+142     \textcolor{comment}{// Return the state of the command.}
+143     \textcolor{keywordflow}{return} rc;
+144 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dcc/class_comms_a9563254514d2f64c0427be2aeaba26d8_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_comms_a21df861b1202573e4cd0cb5666d638fe}\label{class_comms_a21df861b1202573e4cd0cb5666d638fe}} 
+\index{Comms@{Comms}!mtx@{mtx}}
+\index{mtx@{mtx}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{mtx}{mtx}}
+{\footnotesize\ttfamily std\+::mutex Comms\+::mtx\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 94 of file Comms.\+h.
+
+\mbox{\Hypertarget{class_comms_ac64dea134b116147e5441172346dbd6c}\label{class_comms_ac64dea134b116147e5441172346dbd6c}} 
+\index{Comms@{Comms}!u\+Blox@{u\+Blox}}
+\index{u\+Blox@{u\+Blox}!Comms@{Comms}}
+\subsubsection{\texorpdfstring{u\+Blox}{uBlox}}
+{\footnotesize\ttfamily \hyperlink{class_u_blox}{U\+Blox} Comms\+::u\+Blox\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 91 of file Comms.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/comms/\hyperlink{_comms_8h}{Comms.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/comms/\hyperlink{_comms_8cpp}{Comms.\+cpp}\end{DoxyCompactItemize}

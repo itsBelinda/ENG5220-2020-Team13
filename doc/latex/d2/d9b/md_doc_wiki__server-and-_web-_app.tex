@@ -1,0 +1,43 @@
+\href{https://itsbelinda.github.io/ENG5220-2020-Team13/}{\tt https\+://itsbelinda.\+github.\+io/\+E\+N\+G5220-\/2020-\/\+Team13/} \subsection*{Release v1.\+0}
+
+\subsubsection*{Architecture}
+
+Since this project\textquotesingle{}s goal was producing a Minimally Viable Product, the emphasis during development was on the Pi software and the hardware. Due to this, the team decided to release the web interface through which parents can enter settings as a rudimentary version, hosted on Github Pages and served on the backend by Firebase. 
+
+\subsubsection*{Server}
+
+Firebase is a Google online webserver service, providing easy integration with Google products and many open-\/ and paid features for users. We chose Firebase, as Github Pages only hosts static websites, therefore all our data needed to be served somewhere else online. Firebase is known for its real-\/time database function, which allowed us to update our fences and locations dynamically on the map provided on the website. Firebase also has rigorous security practices one can allow, but since the team is not rolling out user accounts with this release, the authentication and login features were not implemented. The database can import J\+S\+ON data, which we generated with the Pi, and later this data could be served to the map in real-\/time.
+
+\subsubsection*{G\+UI}
+
+Due to no web development requirements set for the module, the team used free Bootstrap templates to provide a catchy and comfortable to use feel to the website. The main page was created using \href{https://startbootstrap.com/themes/agency/}{\tt this template from Start\+Bootstrap }, and modified to fit the project. The map service also used a \href{https://github.com/jumpinjackie/bootstrap-viewer-template/tree/master/2-column}{\tt free Bootstrap template }, but the mapping service underneath was tailored by us. Leaflet\+JS is a dynamic, mobile-\/friendly mapping service, providing high-\/quality, reliable Open\+Street\+Maps map images served in several different formats, and shapes and markers that can be easily added to the map, making it a great choice for our project. As it was key that the mapping service was as resilient as our overall website, Leaflet proved to be a great choice, as it is mobile-\/optimised, makign it stand out from the rest of the open-\/source, free mapping services available.
+
+\subsubsection*{Features}
+
+
+\begin{DoxyItemize}
+\item The fences and location markers can be seen on the dynamically updating map, with a tap on them reveals their name. Their colours distinguish them, making the website more engaging.
+\item An unlimited number of fences and markers can be loaded onto the map
+\item The pages can be viewed both on the web and in mobile browsers
+\end{DoxyItemize}
+
+\subsection*{Release v2.\+0}
+
+\subsubsection*{Architecture}
+
+Fairly early on in the project the team also produced our own webserver using Django, however due to budget limitations it was not possible to release the webserver on another Pi -\/ and adding it to our main device was out of question as it serves a different purpose and we needed to be mindful about space available. However this meant that this can be the base of our next release, as dynamic hosting is easy to find if you have your own web server you do not have to worry about. For the front-\/end the team agreed to keep the previous release\textquotesingle{}s files, leaving it scalable, responsive and attractive. Giants such as A\+WS, Heroku and Digital Ocean all support Django and Python, and with their free options the web interface of release v2.\+0 could be further improved. 
+
+\subsubsection*{Features}
+
+Parents can edit fence, time, and contact details, such as setting, modifying or deleting\+:
+\begin{DoxyItemize}
+\item Safe zone locations and dimensions
+\item Timing constraints for fences
+\item In Case of Emergency (I\+CE) contact details, such as name and mobile phone number And can also\+:
+\item Dynamically interact with the fences and locations stored in the database, with modern mapping features of Leaflet utilised
+\item Mobile and desktop app, with secure data transmission and account management
+\end{DoxyItemize}
+
+\subsection*{Developer Portal}
+
+For both releases we made it our mission to make our code documentation easily accessible to all. Therefore our Doxygen documentation and our integrated Github Wiki are both available on the Developer portal accessible from the project homepage. 

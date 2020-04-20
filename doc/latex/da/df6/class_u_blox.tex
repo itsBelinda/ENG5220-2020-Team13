@@ -1,0 +1,1345 @@
+\hypertarget{class_u_blox}{}\section{U\+Blox Class Reference}
+\label{class_u_blox}\index{U\+Blox@{U\+Blox}}
+
+
+The class containing module specific functionality for the u-\/blox G\+SM module.  
+
+
+
+
+{\ttfamily \#include $<$U\+Blox.\+h$>$}
+
+
+
+Collaboration diagram for U\+Blox\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=124pt]{d9/d30/class_u_blox__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_blox_a543adc561cdd98e96a4cdc69fa42bfb6}{U\+Blox} ()
+\item 
+\hyperlink{class_u_blox_af4fbdf61c67e715858fd12afb43f96ca}{$\sim$\+U\+Blox} ()
+\item 
+bool \hyperlink{class_u_blox_a34c2f507ff3bbd21b9aea788a015527a}{init} ()
+\item 
+const \hyperlink{class_u_art}{U\+Art} \& \hyperlink{class_u_blox_a8c5180db80a49a194bab2baa7fb74bb2}{get\+U\+Art} ()
+\item 
+bool \hyperlink{class_u_blox_a1889c2b9bb6087bc939bd2a27b68623b}{has\+Registered} (bool \&registered)
+\item 
+bool \hyperlink{class_u_blox_a4f5a31b4ddda664b255ce3f63e9ffac7}{has\+G\+P\+RS} (bool \&attached)
+\item 
+bool \hyperlink{class_u_blox_ae49b51a602a327b5eff5b04d2ccaec20}{has\+P\+SD} (bool \&connected)
+\item 
+bool \hyperlink{class_u_blox_a2e816e864ebf43743b3f6187e20c2b1f}{start\+Auto\+Registration} (bool \&registered)
+\item 
+bool \hyperlink{class_u_blox_ac250bd4aea14e09b3a2595c2b8eda18a}{connect\+P\+SD} (bool \&connected, std\+::string \&urc)
+\item 
+bool \hyperlink{class_u_blox_aee30d82dcf52335d19f77e766db78ab4}{get\+Send\+Message\+Mode} (char \&mode)
+\item 
+bool \hyperlink{class_u_blox_a12c1042d3bcb503b025927fd53d54243}{set\+Send\+Message\+Mode} (char send\+Message\+Mode)
+\item 
+bool \hyperlink{class_u_blox_a398db4cdc2d5356fb86b3cd1021bad1b}{get\+Location\+Scan\+Mode} (char \&scan\+Mode)
+\item 
+bool \hyperlink{class_u_blox_aabed44fd41e16c9d1a8daba80f3bef06}{set\+Location\+Scan\+Mode} (char scan\+Mode)
+\item 
+bool \hyperlink{class_u_blox_ab9b9a03e10360c931686c1fe04af078d}{get\+Model\+Number} (std\+::string \&model\+Number)
+\item 
+bool \hyperlink{class_u_blox_ade30654ab2eab43d322dc6b516866401}{get\+I\+M\+EI} (std\+::string \&imei\+Number)
+\item 
+bool \hyperlink{class_u_blox_a2443d175bbf55a4f4facc5d8a99d2723}{get\+Location} (double \&lat, double \&lng)
+\item 
+bool \hyperlink{class_u_blox_a946f2903bb01a62cd5bdef423eaa9750}{send\+Message} (const std\+::string \&phone\+Number, const std\+::string \&message)
+\item 
+bool \hyperlink{class_u_blox_a23c4bd15586b776045beaaa840c637f4}{send\+Location} (const std\+::string \&phone\+Number, double lat, double lng)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+ssize\+\_\+t \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{write\+Command} (const char $\ast$command)
+\item 
+ssize\+\_\+t \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{read\+Raw\+Response} (int timeout\+Ms)
+\item 
+const char $\ast$ \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{read\+Status\+Response} (bool crlf)
+\item 
+const char $\ast$const \hyperlink{class_u_blox_aab6ad68e4c7522278f19ceab1dc2a58d}{check\+Response\+Buff\+Status} ()
+\item 
+void \hyperlink{class_u_blox_afc846fbcb1cbd49057b5ce39cd0e0dd6}{clear\+Response\+Buff} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_art}{U\+Art} \hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{u\+Art}
+\item 
+char \hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer} \mbox{[}\hyperlink{_u_blox_8h_aad458adf8f40cbcc1074061f226a112e}{A\+T\+\_\+\+C\+M\+D\+\_\+\+B\+U\+F\+F\+\_\+\+L\+EN}\mbox{]} = \{\textquotesingle{}\textbackslash{}0\textquotesingle{}\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The class containing module specific functionality for the u-\/blox G\+SM module. 
+
+The \hyperlink{class_u_blox}{U\+Blox} class contains hardware and manufacturer-\/specific method calls, configuration options and some higher level wrappers to facilitate the communication requirements of this project via the u-\/blox S\+A\+R\+A-\/\+G350 G\+SM module. This includes the universal AT commands used for mobile communications on the G\+SM network, as well as their specific implementation and configuration pertaining not only the u-\/blox company, but the specific make and model of the G\+SM module. It is a mid-\/level communications class making the U\+A\+RT I/O human-\/readable, grouping together commands related to the high-\/level communication features of \hyperlink{class_comms}{Comms}.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 44 of file U\+Blox.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_u_blox_a543adc561cdd98e96a4cdc69fa42bfb6}\label{class_u_blox_a543adc561cdd98e96a4cdc69fa42bfb6}} 
+\index{U\+Blox@{U\+Blox}!U\+Blox@{U\+Blox}}
+\index{U\+Blox@{U\+Blox}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{U\+Blox()}{UBlox()}}
+{\footnotesize\ttfamily U\+Blox\+::\+U\+Blox (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [default]}}
+
+The \hyperlink{class_u_blox}{U\+Blox} constructor. \mbox{\Hypertarget{class_u_blox_af4fbdf61c67e715858fd12afb43f96ca}\label{class_u_blox_af4fbdf61c67e715858fd12afb43f96ca}} 
+\index{U\+Blox@{U\+Blox}!````~U\+Blox@{$\sim$\+U\+Blox}}
+\index{````~U\+Blox@{$\sim$\+U\+Blox}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{$\sim$\+U\+Blox()}{~UBlox()}}
+{\footnotesize\ttfamily U\+Blox\+::$\sim$\+U\+Blox (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+The \hyperlink{class_u_blox}{U\+Blox} destructor. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_u_blox_aab6ad68e4c7522278f19ceab1dc2a58d}\label{class_u_blox_aab6ad68e4c7522278f19ceab1dc2a58d}} 
+\index{U\+Blox@{U\+Blox}!check\+Response\+Buff\+Status@{check\+Response\+Buff\+Status}}
+\index{check\+Response\+Buff\+Status@{check\+Response\+Buff\+Status}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{check\+Response\+Buff\+Status()}{checkResponseBuffStatus()}}
+{\footnotesize\ttfamily const char $\ast$const U\+Blox\+::check\+Response\+Buff\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Attempt to determine the response status from the device that\textquotesingle{}s currently within the buffer -\/ it may or may not be a status response.
+
+These functions should the treated as a state machine.
+
+\begin{DoxyReturn}{Returns}
+A pointer to a resolved status code, nullptr otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 723 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+724 \{
+725     \textcolor{comment}{// Match a status by comparing the strings.}
+726     \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK},
+727                 strlen(\hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK})) == 0) \{
+728         \textcolor{keywordflow}{return} \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+729     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_a3dd27f9d4a899cda01354d796683cf9a}{AT\_CMD\_STATUS\_CODE\_ERROR},
+730                        strlen(\hyperlink{_u_blox_8cpp_a3dd27f9d4a899cda01354d796683cf9a}{AT\_CMD\_STATUS\_CODE\_ERROR})) == 0) \{
+731         \textcolor{keywordflow}{return} \hyperlink{_u_blox_8cpp_a3dd27f9d4a899cda01354d796683cf9a}{AT\_CMD\_STATUS\_CODE\_ERROR};
+732     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_abf37f7ed7586cdbd60130b741a4d50c5}{AT\_CMD\_STATUS\_CODE\_ABORTED},
+733                        strlen(\hyperlink{_u_blox_8cpp_abf37f7ed7586cdbd60130b741a4d50c5}{AT\_CMD\_STATUS\_CODE\_ABORTED})) == 0) \{
+734         \textcolor{keywordflow}{return} \hyperlink{_u_blox_8cpp_abf37f7ed7586cdbd60130b741a4d50c5}{AT\_CMD\_STATUS\_CODE\_ABORTED};
+735     \} \textcolor{keywordflow}{else} \{
+736         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+737     \}
+738 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_aab6ad68e4c7522278f19ceab1dc2a58d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_afc846fbcb1cbd49057b5ce39cd0e0dd6}\label{class_u_blox_afc846fbcb1cbd49057b5ce39cd0e0dd6}} 
+\index{U\+Blox@{U\+Blox}!clear\+Response\+Buff@{clear\+Response\+Buff}}
+\index{clear\+Response\+Buff@{clear\+Response\+Buff}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{clear\+Response\+Buff()}{clearResponseBuff()}}
+{\footnotesize\ttfamily void U\+Blox\+::clear\+Response\+Buff (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Clear the response buffer i.\+e. set all elements of the array to null terminators. 
+
+Definition at line 744 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+745 \{
+746     std::memset(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \textcolor{charliteral}{'\(\backslash\)0'}, \hyperlink{_u_blox_8h_aad458adf8f40cbcc1074061f226a112e}{AT\_CMD\_BUFF\_LEN});
+747 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_afc846fbcb1cbd49057b5ce39cd0e0dd6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_ac250bd4aea14e09b3a2595c2b8eda18a}\label{class_u_blox_ac250bd4aea14e09b3a2595c2b8eda18a}} 
+\index{U\+Blox@{U\+Blox}!connect\+P\+SD@{connect\+P\+SD}}
+\index{connect\+P\+SD@{connect\+P\+SD}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{connect\+P\+S\+D()}{connectPSD()}}
+{\footnotesize\ttfamily bool U\+Blox\+::connect\+P\+SD (\begin{DoxyParamCaption}\item[{bool \&}]{connected,  }\item[{std\+::string \&}]{urc }\end{DoxyParamCaption})}
+
+Attempt to connect the device to the internet. This should be performed regularly if the location is to be obtained.
+
+
+\begin{DoxyParams}{Parameters}
+{\em connected} & The bool reference into which the result is to be stored i.\+e. whether or not the internet was successfully connected. \\
+\hline
+{\em urc} & Additional data returned regarding the connection. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the result was successfully obtained, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 340 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+341 \{
+342     \textcolor{comment}{// Write the command to activate PSD.}
+343     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_a4a218a894fbc18e33dcf027485c060cb}{AT\_CMD\_SET\_PSD\_CONNECTION});
+344     \textcolor{keywordflow}{if} (rc == -1) \{
+345         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+346     \}
+347 
+348     \textcolor{comment}{// Read the status of the connection.}
+349     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* status = \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{false});
+350     \textcolor{keywordflow}{if} (status == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK}) \{
+351         connected = \textcolor{keyword}{true};
+352     \} \textcolor{keywordflow}{else} \{
+353         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+354     \}
+355 
+356     \textcolor{comment}{// Read the URC response.}
+357     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a9acf8a3c149e89cfa0d456905a07a50b}{RX\_TIMEOUT\_CMD\_SET\_PSD\_CONNECTION})
+      ;
+358     \textcolor{keywordflow}{if} (rc == -1) \{
+359         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+360     \}
+361     urc.assign(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer});
+362 
+363     \textcolor{comment}{// We have successfully connected the PSD.}
+364     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+365 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_ac250bd4aea14e09b3a2595c2b8eda18a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_ac250bd4aea14e09b3a2595c2b8eda18a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_ade30654ab2eab43d322dc6b516866401}\label{class_u_blox_ade30654ab2eab43d322dc6b516866401}} 
+\index{U\+Blox@{U\+Blox}!get\+I\+M\+EI@{get\+I\+M\+EI}}
+\index{get\+I\+M\+EI@{get\+I\+M\+EI}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{get\+I\+M\+E\+I()}{getIMEI()}}
+{\footnotesize\ttfamily bool U\+Blox\+::get\+I\+M\+EI (\begin{DoxyParamCaption}\item[{std\+::string \&}]{imei\+Number }\end{DoxyParamCaption})}
+
+Get the I\+M\+EI of the u-\/blox device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em imei\+Number} & The string reference into which the I\+M\+EI code is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the I\+M\+EI was successfully returned, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 519 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+520 \{
+521     \textcolor{comment}{// Write a command and check that is has been successfully written.}
+522     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_a8589a2182dac88d0193767c584d3fffb}{AT\_CMD\_GET\_IMEI});
+523     \textcolor{keywordflow}{if} (rc == -1) \{
+524         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+525     \}
+526 
+527     \textcolor{comment}{// Read the IMEI number from the chip.}
+528     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_aad2fc838c573824893c8fc8893d3e14f}{RX\_TIMEOUT\_CMD\_GET\_IMEI});
+529     \textcolor{keywordflow}{if} (rc == -1) \{
+530         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+531     \}
+532     imeiNumber.assign(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, strlen(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}) - 1);
+533 
+534     \textcolor{comment}{// Finally, return the status of the command.}
+535     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{true}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+536 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_ade30654ab2eab43d322dc6b516866401_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{da/df6/class_u_blox_ade30654ab2eab43d322dc6b516866401_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_a2443d175bbf55a4f4facc5d8a99d2723}\label{class_u_blox_a2443d175bbf55a4f4facc5d8a99d2723}} 
+\index{U\+Blox@{U\+Blox}!get\+Location@{get\+Location}}
+\index{get\+Location@{get\+Location}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{get\+Location()}{getLocation()}}
+{\footnotesize\ttfamily bool U\+Blox\+::get\+Location (\begin{DoxyParamCaption}\item[{double \&}]{lat,  }\item[{double \&}]{lng }\end{DoxyParamCaption})}
+
+Get the Cell\+Location location from the u-\/blox device. Note, this function may take up to 3 minutes in order to return a location.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat} & The double reference into which the latitude is to be stored. \\
+\hline
+{\em lng} & The double reference into which the longitude is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the device was able to successfully get the latitude and longitude of the device, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 547 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+548 \{
+549     \textcolor{comment}{// Attempt to get the location from the device.}
+550     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_a16caadc47b536971a5930368743e04ef}{AT\_CMD\_GET\_LOC});
+551     \textcolor{keywordflow}{if} (rc == -1) \{
+552         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+553     \}
+554 
+555     \textcolor{comment}{// Read the status of the command.}
+556     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} status = \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{false});
+557     \textcolor{keywordflow}{if} (status != \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK}) \{
+558         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+559     \}
+560 
+561     \textcolor{comment}{// Read the first two bytes (\(\backslash\)r\(\backslash\)n).}
+562     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a0fa12faf54d3283cbdc01e99f2c9912a}{RX\_TIMEOUT\_CMD\_GET\_LOCATION});
+563     \textcolor{keywordflow}{if} (rc == -1) \{
+564         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+565     \}
+566 
+567     \textcolor{comment}{// Read the actual response.}
+568     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a0fa12faf54d3283cbdc01e99f2c9912a}{RX\_TIMEOUT\_CMD\_GET\_LOCATION});
+569     \textcolor{keywordflow}{if} (rc == -1) \{
+570         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+571     \}
+572 
+573     \textcolor{keywordtype}{char}* nextToken = \hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer};
+574 
+575     \textcolor{comment}{// Discard the date and time fields of the response.}
+576     \textcolor{keywordtype}{char}* token = strtok\_r(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \textcolor{stringliteral}{","}, &nextToken);
+577     strtok\_r(\textcolor{keyword}{nullptr}, \textcolor{stringliteral}{","}, &nextToken);
+578 
+579     \textcolor{comment}{// Get the latitude.}
+580     token = strtok\_r(\textcolor{keyword}{nullptr}, \textcolor{stringliteral}{","}, &nextToken);
+581     lat = std::strtod(token, \textcolor{keyword}{nullptr});
+582 
+583     \textcolor{comment}{// Get the longitude.}
+584     token = strtok\_r(\textcolor{keyword}{nullptr}, \textcolor{stringliteral}{","}, &nextToken);
+585     lng = std::strtod(token, \textcolor{keyword}{nullptr});
+586 
+587     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+588 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a2443d175bbf55a4f4facc5d8a99d2723_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{da/df6/class_u_blox_a2443d175bbf55a4f4facc5d8a99d2723_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_a398db4cdc2d5356fb86b3cd1021bad1b}\label{class_u_blox_a398db4cdc2d5356fb86b3cd1021bad1b}} 
+\index{U\+Blox@{U\+Blox}!get\+Location\+Scan\+Mode@{get\+Location\+Scan\+Mode}}
+\index{get\+Location\+Scan\+Mode@{get\+Location\+Scan\+Mode}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{get\+Location\+Scan\+Mode()}{getLocationScanMode()}}
+{\footnotesize\ttfamily bool U\+Blox\+::get\+Location\+Scan\+Mode (\begin{DoxyParamCaption}\item[{char \&}]{scan\+Mode }\end{DoxyParamCaption})}
+
+Get the scan mode utilised for obtaining the location of the device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scan\+Mode} & The char reference into which the mode that is utilised (L\+O\+C\+\_\+\+S\+C\+A\+N\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL or L\+O\+C\+\_\+\+S\+C\+A\+N\+\_\+\+M\+O\+D\+E\+\_\+\+D\+E\+EP) is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the location scan mode was obtained successfully, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 434 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+435 \{
+436     \textcolor{comment}{// Write the command for obtaining the location scan mode.}
+437     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_aa504e436aeb04e6bfb7c361cf9edbd84}{AT\_CMD\_GET\_LOC\_SCAN\_MODE});
+438     \textcolor{keywordflow}{if} (rc == -1) \{
+439         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+440     \}
+441 
+442     \textcolor{comment}{// Read the response obtained from the device.}
+443     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a0b1a22aab74a699289cd3d58b177fd21}{RX\_TIMEOUT\_CMD\_GET\_LOC\_SCAN\_MODE});
+444     \textcolor{keywordflow}{if} (rc == -1) \{
+445         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+446     \}
+447 
+448     \textcolor{comment}{// Determine the mode utilised.}
+449     \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_a2e9e8dc94d8cbe1833df3d521e4b08e9}{AT\_CMD\_RESPONSE\_LOC\_SCAN\_MODE\_NORMAL},
+450                 strlen(\hyperlink{_u_blox_8cpp_a2e9e8dc94d8cbe1833df3d521e4b08e9}{AT\_CMD\_RESPONSE\_LOC\_SCAN\_MODE\_NORMAL})) == 0) \{
+451         scanMode = \hyperlink{_u_blox_8h_a57e74368f6c6813ceb64f972eba4a5f3}{LOC\_SCAN\_MODE\_NORMAL};
+452     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_a5e536a389492c1923382728d0e6c6931}{AT\_CMD\_RESPONSE\_LOC\_SCAN\_MODE\_DEEP},
+453                        strlen(\hyperlink{_u_blox_8cpp_a5e536a389492c1923382728d0e6c6931}{AT\_CMD\_RESPONSE\_LOC\_SCAN\_MODE\_DEEP})) == 0) 
+      \{
+454         scanMode = \hyperlink{_u_blox_8h_a5c819e4d40995d2854dc0e2cddd7ddef}{LOC\_SCAN\_MODE\_DEEP};
+455     \} \textcolor{keywordflow}{else} \{
+456         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+457     \}
+458 
+459     \textcolor{comment}{// Finally, read the status of the command.}
+460     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{true}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+461 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a398db4cdc2d5356fb86b3cd1021bad1b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a398db4cdc2d5356fb86b3cd1021bad1b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_ab9b9a03e10360c931686c1fe04af078d}\label{class_u_blox_ab9b9a03e10360c931686c1fe04af078d}} 
+\index{U\+Blox@{U\+Blox}!get\+Model\+Number@{get\+Model\+Number}}
+\index{get\+Model\+Number@{get\+Model\+Number}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{get\+Model\+Number()}{getModelNumber()}}
+{\footnotesize\ttfamily bool U\+Blox\+::get\+Model\+Number (\begin{DoxyParamCaption}\item[{std\+::string \&}]{model\+Number }\end{DoxyParamCaption})}
+
+Get the model number of the u-\/blox device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+Number} & The string reference into which the model number is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the model number was successfully returned, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 493 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+494 \{
+495     \textcolor{comment}{// Write the command to the device via uArt.}
+496     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_ae8be964d0669627bf8fbd79040031222}{AT\_CMD\_GET\_MODEL\_NUMBER});
+497     \textcolor{keywordflow}{if} (rc == -1) \{
+498         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+499     \}
+500 
+501     \textcolor{comment}{// Read the response from the chip.}
+502     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a29c79801808a2dc36f093e853326396a}{RX\_TIMEOUT\_CMD\_GET\_MODEL\_NUMBER});
+503     \textcolor{keywordflow}{if} (rc == -1) \{
+504         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+505     \}
+506     modelNumber.assign(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, strlen(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}) - 1);
+507 
+508     \textcolor{comment}{// Read the status of the command.}
+509     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{true}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+510 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_ab9b9a03e10360c931686c1fe04af078d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_ab9b9a03e10360c931686c1fe04af078d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_aee30d82dcf52335d19f77e766db78ab4}\label{class_u_blox_aee30d82dcf52335d19f77e766db78ab4}} 
+\index{U\+Blox@{U\+Blox}!get\+Send\+Message\+Mode@{get\+Send\+Message\+Mode}}
+\index{get\+Send\+Message\+Mode@{get\+Send\+Message\+Mode}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{get\+Send\+Message\+Mode()}{getSendMessageMode()}}
+{\footnotesize\ttfamily bool U\+Blox\+::get\+Send\+Message\+Mode (\begin{DoxyParamCaption}\item[{char \&}]{mode }\end{DoxyParamCaption})}
+
+Get the send message mode that the device is operating on.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The char reference into which the mode utilised for sending of messages (S\+E\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+M\+O\+D\+E\+\_\+\+P\+DU or S\+E\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+M\+O\+D\+E\+\_\+\+T\+E\+XT) is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the message mode was successfully obtained, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 375 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+376 \{
+377     \textcolor{comment}{// Write the command to get the send message mode.}
+378     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_a93c42ef646fa4bf7dcef597278717e1d}{AT\_CMD\_SEND\_MSG\_GET\_MODE});
+379     \textcolor{keywordflow}{if} (rc == -1) \{
+380         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+381     \}
+382 
+383     \textcolor{comment}{// Read the response from the device.}
+384     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a0d3650f2c57519450b5d94f5783dd9e8}{RX\_TIMEOUT\_CMD\_GET\_SEND\_MSG\_MODE});
+385     \textcolor{keywordflow}{if} (rc == -1) \{
+386         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+387     \}
+388 
+389     \textcolor{comment}{// Determine which of the modes has been utilised.}
+390     \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_abcee20eed819eab289d6b0d8b0af185d}{AT\_CMD\_RESPONSE\_SEND\_MSG\_MODE\_TEXT},
+391                 strlen(\hyperlink{_u_blox_8cpp_abcee20eed819eab289d6b0d8b0af185d}{AT\_CMD\_RESPONSE\_SEND\_MSG\_MODE\_TEXT})) == 0) \{
+392         mode = \hyperlink{_u_blox_8h_a4fdc1adf2ea333d6490119160a35401a}{SEND\_TEXT\_MODE\_TEXT};
+393     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_a6af49f58e2fffa15f34ee986afc28ef1}{AT\_CMD\_RESPONSE\_SEND\_MSG\_MODE\_PDU},
+394                        strlen(\hyperlink{_u_blox_8cpp_a6af49f58e2fffa15f34ee986afc28ef1}{AT\_CMD\_RESPONSE\_SEND\_MSG\_MODE\_PDU})) == 0) \{
+395         mode = \hyperlink{_u_blox_8h_a710349e6aa9dc432a71590c80ce184b1}{SEND\_TEXT\_MODE\_PDU};
+396     \} \textcolor{keywordflow}{else} \{
+397         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+398     \}
+399 
+400     \textcolor{comment}{// Finally, determine the status of the command.}
+401     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{true}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+402 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_aee30d82dcf52335d19f77e766db78ab4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_aee30d82dcf52335d19f77e766db78ab4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_a8c5180db80a49a194bab2baa7fb74bb2}\label{class_u_blox_a8c5180db80a49a194bab2baa7fb74bb2}} 
+\index{U\+Blox@{U\+Blox}!get\+U\+Art@{get\+U\+Art}}
+\index{get\+U\+Art@{get\+U\+Art}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{get\+U\+Art()}{getUArt()}}
+{\footnotesize\ttfamily const \hyperlink{class_u_art}{U\+Art} \& U\+Blox\+::get\+U\+Art (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter for the U\+A\+RT interface through which the commands are sent to the device.
+
+\begin{DoxyReturn}{Returns}
+An instance of the \hyperlink{class_u_art}{U\+Art} interface via which the commands are sent to the device. 
+\end{DoxyReturn}
+
+
+Definition at line 194 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+195 \{
+196     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{uArt};
+197 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_u_blox_a4f5a31b4ddda664b255ce3f63e9ffac7}\label{class_u_blox_a4f5a31b4ddda664b255ce3f63e9ffac7}} 
+\index{U\+Blox@{U\+Blox}!has\+G\+P\+RS@{has\+G\+P\+RS}}
+\index{has\+G\+P\+RS@{has\+G\+P\+RS}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{has\+G\+P\+R\+S()}{hasGPRS()}}
+{\footnotesize\ttfamily bool U\+Blox\+::has\+G\+P\+RS (\begin{DoxyParamCaption}\item[{bool \&}]{attached }\end{DoxyParamCaption})}
+
+Getter for determining whether or not G\+P\+RS is attached.
+
+
+\begin{DoxyParams}{Parameters}
+{\em attached} & The bool reference into which the result is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the result was successfully obtained, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 242 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+243 \{
+244     \textcolor{comment}{// Write the command to the device via uArt.}
+245     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_ac20e914a12b5d6dccbc1f39b1d19d57d}{AT\_CMD\_GET\_GPRS\_ATTACHED});
+246     \textcolor{keywordflow}{if} (rc == -1) \{
+247         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+248     \}
+249 
+250     \textcolor{comment}{// Check whether the device has been attached.}
+251     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a9dbe91fbc54af4d1d428ac0baa6dce8c}{RX\_TIMEOUT\_CMD\_GET\_GPRS\_ATTACHED});
+252     \textcolor{keywordflow}{if} (rc == -1) \{
+253         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+254     \}
+255 
+256     \textcolor{comment}{// Determine whether the GPRS has been attached.}
+257     \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_aa122c9762862e45d9186ed3e22b0f593}{AT\_CMD\_RESPONSE\_GPRS\_IS\_ATTACHED},
+258                 strlen(\hyperlink{_u_blox_8cpp_aa122c9762862e45d9186ed3e22b0f593}{AT\_CMD\_RESPONSE\_GPRS\_IS\_ATTACHED})) == 0) \{
+259         attached = \textcolor{keyword}{true};
+260     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_aa030b5e1c7188bb8b077579489537b95}{AT\_CMD\_RESPONSE\_GPRS\_NOT\_ATTACHED},
+261                        strlen(\hyperlink{_u_blox_8cpp_aa030b5e1c7188bb8b077579489537b95}{AT\_CMD\_RESPONSE\_GPRS\_NOT\_ATTACHED})) == 0) \{
+262         attached = \textcolor{keyword}{false};
+263     \} \textcolor{keywordflow}{else} \{
+264         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+265     \}
+266 
+267     \textcolor{comment}{// Finally, determine the status of the command.}
+268     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{true}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+269 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a4f5a31b4ddda664b255ce3f63e9ffac7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a4f5a31b4ddda664b255ce3f63e9ffac7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_ae49b51a602a327b5eff5b04d2ccaec20}\label{class_u_blox_ae49b51a602a327b5eff5b04d2ccaec20}} 
+\index{U\+Blox@{U\+Blox}!has\+P\+SD@{has\+P\+SD}}
+\index{has\+P\+SD@{has\+P\+SD}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{has\+P\+S\+D()}{hasPSD()}}
+{\footnotesize\ttfamily bool U\+Blox\+::has\+P\+SD (\begin{DoxyParamCaption}\item[{bool \&}]{connected }\end{DoxyParamCaption})}
+
+Getter for determining whether or not P\+SD (internet) is connected.
+
+
+\begin{DoxyParams}{Parameters}
+{\em connected} & The bool reference into which the result is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the result was successfully obtained, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 277 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+278 \{
+279     \textcolor{comment}{// Write the command to the device via uArt.}
+280     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_a3ef4cda11e91847283a7ed3c43d0d903}{AT\_CMD\_GET\_PSD\_CONNECTED});
+281     \textcolor{keywordflow}{if} (rc == -1) \{
+282         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+283     \}
+284 
+285     \textcolor{comment}{// Check whether the device has an internet connection.}
+286     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_ab65ecdc7509e7b8f4a71ea24f69979bf}{RX\_TIMEOUT\_CMD\_GET\_PSD\_CONNECTED});
+287     \textcolor{keywordflow}{if} (rc == -1) \{
+288         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+289     \}
+290 
+291     \textcolor{comment}{// Determine if PSD has been connected.}
+292     \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_af95f84a28382d34c8d3369259eb0fe87}{AT\_CMD\_RESPONSE\_PSD\_IS\_CONNECTED},
+293                 strlen(\hyperlink{_u_blox_8cpp_af95f84a28382d34c8d3369259eb0fe87}{AT\_CMD\_RESPONSE\_PSD\_IS\_CONNECTED})) == 0) \{
+294         connected = \textcolor{keyword}{true};
+295     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_af39fc0f137b69f6044ec78734d850c38}{AT\_CMD\_RESPONSE\_PSD\_NOT\_CONNECTED},
+296                        strlen(\hyperlink{_u_blox_8cpp_af39fc0f137b69f6044ec78734d850c38}{AT\_CMD\_RESPONSE\_PSD\_NOT\_CONNECTED})) == 0) \{
+297         connected = \textcolor{keyword}{false};
+298     \} \textcolor{keywordflow}{else} \{
+299         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+300     \}
+301 
+302     \textcolor{comment}{// Finally, determine the status of the command.}
+303     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{true}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+304 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_ae49b51a602a327b5eff5b04d2ccaec20_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_ae49b51a602a327b5eff5b04d2ccaec20_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_a1889c2b9bb6087bc939bd2a27b68623b}\label{class_u_blox_a1889c2b9bb6087bc939bd2a27b68623b}} 
+\index{U\+Blox@{U\+Blox}!has\+Registered@{has\+Registered}}
+\index{has\+Registered@{has\+Registered}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{has\+Registered()}{hasRegistered()}}
+{\footnotesize\ttfamily bool U\+Blox\+::has\+Registered (\begin{DoxyParamCaption}\item[{bool \&}]{registered }\end{DoxyParamCaption})}
+
+Invoked to determine whether or not the device S\+IM has been registered with the G\+SM network.
+
+
+\begin{DoxyParams}{Parameters}
+{\em registered} & The bool reference into which the result is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the S\+IM has been registered with the G\+SM network, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 207 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+208 \{
+209     \textcolor{comment}{// Write the command for checking if the user has registered.}
+210     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_adb3c30885c8e5a7fa3028c3c33ff46a7}{AT\_CMD\_HAS\_REGISTERED});
+211     \textcolor{keywordflow}{if} (rc == -1) \{
+212         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+213     \}
+214 
+215     \textcolor{comment}{// Read the raw response.}
+216     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a4cdcbb86e4e627adbcaf6ce6c5a7a07a}{RX\_TIMEOUT\_CMD\_HAS\_REGISTERED});
+217     \textcolor{keywordflow}{if} (rc == -1) \{
+218         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+219     \}
+220 
+221     \textcolor{comment}{// Check that we have registered for the network.}
+222     \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_a7992f1bd61ccf8e78586835e17c1b8e5}{AT\_CMD\_RESPONSE\_HAS\_REGISTERED},
+223                 strlen(\hyperlink{_u_blox_8cpp_a7992f1bd61ccf8e78586835e17c1b8e5}{AT\_CMD\_RESPONSE\_HAS\_REGISTERED})) == 0) \{
+224         registered = \textcolor{keyword}{true};
+225     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8cpp_a10b9369ebc46aa9cca83e01af5ebd741}{AT\_CMD\_RESPONSE\_HAS\_NOT\_REGISTERED},
+226                        strlen(\hyperlink{_u_blox_8cpp_a10b9369ebc46aa9cca83e01af5ebd741}{AT\_CMD\_RESPONSE\_HAS\_NOT\_REGISTERED})) == 0) 
+      \{
+227         registered = \textcolor{keyword}{false};
+228     \} \textcolor{keywordflow}{else} \{
+229         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+230     \}
+231 
+232     \textcolor{comment}{// Read the status command status response.}
+233     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{true}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+234 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a1889c2b9bb6087bc939bd2a27b68623b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a1889c2b9bb6087bc939bd2a27b68623b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_a34c2f507ff3bbd21b9aea788a015527a}\label{class_u_blox_a34c2f507ff3bbd21b9aea788a015527a}} 
+\index{U\+Blox@{U\+Blox}!init@{init}}
+\index{init@{init}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily bool U\+Blox\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The \hyperlink{class_u_blox}{U\+Blox} initialisation method sets up the complete communications channel from the U\+A\+RT level communication enabling to verifying the settings and network connection of the u-\/blox module.
+
+\begin{DoxyReturn}{Returns}
+True if the communications channel could be successfully initialised and the device is ready to operate as intended with full capacity 
+\end{DoxyReturn}
+
+
+Definition at line 112 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+113 \{
+114 
+115     \textcolor{comment}{// Initialise the UART device and interface.}
+116     std::cout << \textcolor{stringliteral}{"Initialising UART interface..."} << std::endl;
+117     \textcolor{keywordflow}{if} (!\hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{uArt}.\hyperlink{class_u_art_a51adaa81c08d92599768c0303e5abc94}{init}()) \{
+118         std::cerr << \textcolor{stringliteral}{"Failed to initialise UART interface."} << std::endl;
+119         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+120     \}
+121     std::cout << \textcolor{stringliteral}{"... UART interface successfully initialised."} << std::endl;
+122 
+123     \textcolor{comment}{// Check if the SIM has been registered.}
+124     std::cout << \textcolor{stringliteral}{"Starting SIM registration checks..."} << std::endl;
+125     \textcolor{keywordtype}{bool} simRegistered = \textcolor{keyword}{false};
+126     \textcolor{keywordflow}{if} (!\hyperlink{class_u_blox_a1889c2b9bb6087bc939bd2a27b68623b}{hasRegistered}(simRegistered)) \{
+127         std::cerr << \textcolor{stringliteral}{"Failed SIM registration checks."} << std::endl;
+128         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+129     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!simRegistered) \{
+130         std::cout << \textcolor{stringliteral}{"Starting automatic SIM registration..."} << std::endl;
+131         \textcolor{keywordflow}{if} (!\hyperlink{class_u_blox_a2e816e864ebf43743b3f6187e20c2b1f}{startAutoRegistration}(simRegistered)) \{
+132             std::cerr << \textcolor{stringliteral}{"Failed to start automatic SIM registration."} << std::endl;
+133             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+134         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!simRegistered) \{
+135             std::cerr << \textcolor{stringliteral}{"Failed to register SIM."} << std::endl;
+136             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+137         \}
+138         std::cout << \textcolor{stringliteral}{"... SIM successfully registered."} << std::endl;
+139     \}
+140     std::cout << \textcolor{stringliteral}{"... SIM registration checks finished."} << std::endl;
+141 
+142     \textcolor{comment}{// Check if GPRS is attached.}
+143     std::cout << \textcolor{stringliteral}{"Starting GPRS checks..."} << std::endl;
+144     \textcolor{keywordtype}{bool} gprsAttached = \textcolor{keyword}{false};
+145     \textcolor{keywordflow}{if} (!\hyperlink{class_u_blox_a4f5a31b4ddda664b255ce3f63e9ffac7}{hasGPRS}(gprsAttached)) \{
+146         std::cerr << \textcolor{stringliteral}{"Failed GPRS checks."} << std::endl;
+147         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+148     \}
+149     std::cout << \textcolor{stringliteral}{"GPRS attached? "} << gprsAttached << std::endl
+150               << \textcolor{stringliteral}{"... GPRS checks finished."} << std::endl;
+151 
+152     \textcolor{comment}{// Check if there is an internet connection.}
+153     std::cout << \textcolor{stringliteral}{"Starting PSD checks..."} << std::endl;
+154     \textcolor{keywordtype}{bool} psdConnected = \textcolor{keyword}{false};
+155     std::string psdUrc;
+156     \textcolor{keywordflow}{if} (!\hyperlink{class_u_blox_ae49b51a602a327b5eff5b04d2ccaec20}{hasPSD}(psdConnected)) \{
+157         std::cerr << \textcolor{stringliteral}{"Failed PSD checks."} << std::endl;
+158         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+159     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!psdConnected || !gprsAttached) \{
+160         std::cout << \textcolor{stringliteral}{"Initialising PSD connection..."} << std::endl;
+161         \textcolor{keywordflow}{if} (!\hyperlink{class_u_blox_ac250bd4aea14e09b3a2595c2b8eda18a}{connectPSD}(psdConnected, psdUrc) || !psdConnected) \{
+162             std::cerr << \textcolor{stringliteral}{"Failed to establish PSD connection."} << std::endl;
+163             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+164         \}
+165         std::cout << \textcolor{stringliteral}{"... PSD connection successfully initialised."} << std::endl;
+166     \}
+167     std::cout << \textcolor{stringliteral}{"... PSD checks finished."} << std::endl;
+168 
+169     \textcolor{comment}{// Configure the sending of messages.}
+170     std::cout << \textcolor{stringliteral}{"Setting send message mode..."} << std::endl;
+171     \textcolor{keywordflow}{if} (!\hyperlink{class_u_blox_a12c1042d3bcb503b025927fd53d54243}{setSendMessageMode}(\hyperlink{_u_blox_8h_a4fdc1adf2ea333d6490119160a35401a}{SEND\_TEXT\_MODE\_TEXT})) \{
+172         std::cerr << \textcolor{stringliteral}{"Failed to set send message mode."} << std::endl;
+173         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+174     \}
+175     std::cout << \textcolor{stringliteral}{"... send message mode successfully set."} << std::endl;
+176 
+177     \textcolor{comment}{// Configure the scan mode for obtaining the location.}
+178     std::cout << \textcolor{stringliteral}{"Setting location scan mode..."} << std::endl;
+179     \textcolor{keywordflow}{if} (!\hyperlink{class_u_blox_aabed44fd41e16c9d1a8daba80f3bef06}{setLocationScanMode}(\hyperlink{_u_blox_8h_a5c819e4d40995d2854dc0e2cddd7ddef}{LOC\_SCAN\_MODE\_DEEP})) \{
+180         std::cerr << \textcolor{stringliteral}{"Failed to set the location scan mode."} << std::endl;
+181         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+182     \}
+183     std::cout << \textcolor{stringliteral}{"... location scan mode successfully set."} << std::endl;
+184 
+185     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+186 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a34c2f507ff3bbd21b9aea788a015527a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a34c2f507ff3bbd21b9aea788a015527a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}\label{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}} 
+\index{U\+Blox@{U\+Blox}!read\+Raw\+Response@{read\+Raw\+Response}}
+\index{read\+Raw\+Response@{read\+Raw\+Response}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{read\+Raw\+Response()}{readRawResponse()}}
+{\footnotesize\ttfamily ssize\+\_\+t U\+Blox\+::read\+Raw\+Response (\begin{DoxyParamCaption}\item[{int}]{timeout\+Ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Read the next response from the uart interface into the rx buffer. Note, the rx buffer is cleared (set to null terminators) prior to reading the response from the said interface.
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & The timeout in ms prior to discarding the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 if there was an error, n (representing length) otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 681 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+682 \{
+683     \textcolor{comment}{// Clear the buffer and read the response from the device.}
+684     \hyperlink{class_u_blox_afc846fbcb1cbd49057b5ce39cd0e0dd6}{clearResponseBuff}();
+685     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{uArt}.\hyperlink{class_u_art_aa4818ca67447e251680b4b8d28c8bba5}{readNext}(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8h_aad458adf8f40cbcc1074061f226a112e}{AT\_CMD\_BUFF\_LEN}, timeoutMs);
+686 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}\label{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}} 
+\index{U\+Blox@{U\+Blox}!read\+Status\+Response@{read\+Status\+Response}}
+\index{read\+Status\+Response@{read\+Status\+Response}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{read\+Status\+Response()}{readStatusResponse()}}
+{\footnotesize\ttfamily const char $\ast$ U\+Blox\+::read\+Status\+Response (\begin{DoxyParamCaption}\item[{bool}]{crlf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Read the next response from the uart interface into the rx buffer. Additionally, interpret the response as a status and return a pointer to the C string representing the status of the command.
+
+\begin{DoxyReturn}{Returns}
+nullptr if the response could not be interpreted, a pointer otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 696 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+697 \{
+698     \textcolor{comment}{// Occasionally there are preceding \(\backslash\)r\(\backslash\)n; read and discard.}
+699     ssize\_t rc = -1;
+700     \textcolor{keywordflow}{if} (crlf) \{
+701         rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_ab6426fc74901f4fbec94862ebb672b81}{RX\_TIMEOUT});
+702         \textcolor{keywordflow}{if} (rc != 2) \{
+703             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+704         \}
+705     \}
+706 
+707     \textcolor{comment}{// Generically read the device response and attempt to resolve the status.}
+708     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_afed44347eb1fde151258e73004078c98}{RX\_TIMEOUT\_STATUS});
+709     \textcolor{keywordflow}{if} (rc == -1) \{
+710         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+711     \}
+712     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_aab6ad68e4c7522278f19ceab1dc2a58d}{checkResponseBuffStatus}();
+713 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_a23c4bd15586b776045beaaa840c637f4}\label{class_u_blox_a23c4bd15586b776045beaaa840c637f4}} 
+\index{U\+Blox@{U\+Blox}!send\+Location@{send\+Location}}
+\index{send\+Location@{send\+Location}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{send\+Location()}{sendLocation()}}
+{\footnotesize\ttfamily bool U\+Blox\+::send\+Location (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{phone\+Number,  }\item[{double}]{lat,  }\item[{double}]{lng }\end{DoxyParamCaption})}
+
+
+
+Definition at line 641 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+643 \{
+644     \textcolor{comment}{// TODO: Implement the functionality that permits the location to be sent and displayed, live.}
+645     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+646 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_u_blox_a946f2903bb01a62cd5bdef423eaa9750}\label{class_u_blox_a946f2903bb01a62cd5bdef423eaa9750}} 
+\index{U\+Blox@{U\+Blox}!send\+Message@{send\+Message}}
+\index{send\+Message@{send\+Message}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{send\+Message()}{sendMessage()}}
+{\footnotesize\ttfamily bool U\+Blox\+::send\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{phone\+Number,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+Compose an outgoing message -\/ sent via the U\+A\+RT interface to the device which in turn is sent by the said \hyperlink{class_u_blox}{U\+Blox} device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em phone\+Number} & The phone number to which the message is sent. \\
+\hline
+{\em message} & The message that is to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the message was successfully sent, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 598 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+599 \{
+600     \textcolor{comment}{// Format the phone number command.}
+601     \textcolor{keywordtype}{size\_t} phoneNumberCmdLen = strlen(\hyperlink{_u_blox_8cpp_acf7cbfdab41d0b5a67edb28d7c305ae6}{AT\_CMD\_SEND\_MSG\_SET\_NUMBER}) + phoneNumber.
+      size() - 1;
+602     \textcolor{keywordtype}{char} phoneNumberCmd[phoneNumberCmdLen];
+603     memset(phoneNumberCmd, \textcolor{charliteral}{'\(\backslash\)0'}, phoneNumberCmdLen);
+604     sprintf(phoneNumberCmd, \hyperlink{_u_blox_8cpp_acf7cbfdab41d0b5a67edb28d7c305ae6}{AT\_CMD\_SEND\_MSG\_SET\_NUMBER}, phoneNumber.c\_str());
+605 
+606     \textcolor{comment}{// Write the phone number command to the device.}
+607     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(phoneNumberCmd);
+608     \textcolor{keywordflow}{if} (rc == -1) \{
+609         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+610     \}
+611 
+612     \textcolor{comment}{// Write the message to the device.}
+613     rc = \hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{uArt}.\hyperlink{class_u_art_aad1ddb133fe430a92527584eec2e674f}{writeNext}(message);
+614     \textcolor{keywordflow}{if} (rc == -1) \{
+615         \hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{uArt}.\hyperlink{class_u_art_aad1ddb133fe430a92527584eec2e674f}{writeNext}(\hyperlink{_u_blox_8cpp_a55baec9e81b0e7ca98075f5797df7b50}{AT\_CMD\_SEND\_MSG\_SET\_ESC});
+616         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+617     \}
+618 
+619     \textcolor{comment}{// Write the end message cmd to the device.}
+620     rc = \hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{uArt}.\hyperlink{class_u_art_aad1ddb133fe430a92527584eec2e674f}{writeNext}(\hyperlink{_u_blox_8cpp_ae495e4181733f7d2e807dbff58609e69}{AT\_CMD\_SEND\_MSG\_SET\_END});
+621     \textcolor{keywordflow}{if} (rc == -1) \{
+622         \hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{uArt}.\hyperlink{class_u_art_aad1ddb133fe430a92527584eec2e674f}{writeNext}(\hyperlink{_u_blox_8cpp_a55baec9e81b0e7ca98075f5797df7b50}{AT\_CMD\_SEND\_MSG\_SET\_ESC});
+623     \}
+624 
+625     \textcolor{comment}{// Await the echo from the device.}
+626     rc = \hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{uArt}.\hyperlink{class_u_art_aa4818ca67447e251680b4b8d28c8bba5}{readNext}(\hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, \hyperlink{_u_blox_8h_aad458adf8f40cbcc1074061f226a112e}{AT\_CMD\_BUFF\_LEN}, 
+      \hyperlink{_u_blox_8cpp_abebe8ab49e0adc150976b59995d9b2cd}{RX\_TIMEOUT\_NETWORK});
+627     \textcolor{keywordflow}{if} (rc == -1 || strncmp(message.c\_str(), \hyperlink{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}{buffer}, message.size()) != 0) \{
+628         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+629     \}
+630 
+631     \textcolor{comment}{// Read the initial response.}
+632     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a55092c0742d15bb08a5ea7db5a25440e}{RX\_TIMEOUT\_ECHO});
+633     \textcolor{keywordflow}{if} (rc == -1) \{
+634         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+635     \}
+636 
+637     \textcolor{comment}{// Read the final status and check if its okay.}
+638     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{true}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+639 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a946f2903bb01a62cd5bdef423eaa9750_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{da/df6/class_u_blox_a946f2903bb01a62cd5bdef423eaa9750_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_aabed44fd41e16c9d1a8daba80f3bef06}\label{class_u_blox_aabed44fd41e16c9d1a8daba80f3bef06}} 
+\index{U\+Blox@{U\+Blox}!set\+Location\+Scan\+Mode@{set\+Location\+Scan\+Mode}}
+\index{set\+Location\+Scan\+Mode@{set\+Location\+Scan\+Mode}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{set\+Location\+Scan\+Mode()}{setLocationScanMode()}}
+{\footnotesize\ttfamily bool U\+Blox\+::set\+Location\+Scan\+Mode (\begin{DoxyParamCaption}\item[{char}]{scan\+Mode }\end{DoxyParamCaption})}
+
+Set the location scan mode for the device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scan\+Mode} & The type of scan mode (L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+S\+C\+A\+N\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL or L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+S\+C\+A\+N\+\_\+\+M\+O\+D\+E\+\_\+\+D\+E\+EP) that\textquotesingle{}s to be utilised for obtaining the location of the device. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the location scan mode was usccessfully set, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 471 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+472 \{
+473     \textcolor{comment}{// Set the location scan mode.}
+474     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} locScanModeCmd = scanMode == \hyperlink{_u_blox_8h_a57e74368f6c6813ceb64f972eba4a5f3}{LOC\_SCAN\_MODE\_NORMAL}
+475                                        ? \hyperlink{_u_blox_8cpp_a70bd8532253bd43bd141f2414fba190c}{AT\_CMD\_SET\_LOC\_SCAN\_MODE\_NORMAL}
+476                                        : \hyperlink{_u_blox_8cpp_a7862985fe9289d8f07cd461ed60c1986}{AT\_CMD\_SET\_LOC\_SCAN\_MODE\_DEEP};
+477     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(locScanModeCmd);
+478     \textcolor{keywordflow}{if} (rc == -1) \{
+479         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+480     \}
+481 
+482     \textcolor{comment}{// Check that the status is OK.}
+483     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{false}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+484 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_aabed44fd41e16c9d1a8daba80f3bef06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_aabed44fd41e16c9d1a8daba80f3bef06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_a12c1042d3bcb503b025927fd53d54243}\label{class_u_blox_a12c1042d3bcb503b025927fd53d54243}} 
+\index{U\+Blox@{U\+Blox}!set\+Send\+Message\+Mode@{set\+Send\+Message\+Mode}}
+\index{set\+Send\+Message\+Mode@{set\+Send\+Message\+Mode}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{set\+Send\+Message\+Mode()}{setSendMessageMode()}}
+{\footnotesize\ttfamily bool U\+Blox\+::set\+Send\+Message\+Mode (\begin{DoxyParamCaption}\item[{char}]{send\+Message\+Mode }\end{DoxyParamCaption})}
+
+Function permits the sending of messages mode to be reconfigured.
+
+
+\begin{DoxyParams}{Parameters}
+{\em send\+Message\+Mode} & The mode that\textquotesingle{}s to be set; see S\+E\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+M\+O\+D\+E\+\_\+\+T\+E\+XT / S\+E\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+M\+O\+D\+E\+\_\+\+P\+DU. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the mode was successfully set, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 411 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+412 \{
+413     \textcolor{comment}{// Set the mode of the text messages.}
+414     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} sendMsgModeCmd = sendMessageMode == \hyperlink{_u_blox_8h_a4fdc1adf2ea333d6490119160a35401a}{SEND\_TEXT\_MODE\_TEXT}
+415                                    ? \hyperlink{_u_blox_8cpp_aeb1209bd42562b052073f701f1f83487}{AT\_CMD\_SEND\_MSG\_SET\_MODE\_TEXT}
+416                                    : \hyperlink{_u_blox_8cpp_a74e9299c0c9318c9b901d5283a1644f4}{AT\_CMD\_SEND\_MSG\_SET\_MODE\_PDU};
+417     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(sendMsgModeCmd);
+418     \textcolor{keywordflow}{if} (rc == -1) \{
+419         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+420     \}
+421 
+422     \textcolor{comment}{// Check that the status was OK.}
+423     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{false}) == \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK};
+424 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a12c1042d3bcb503b025927fd53d54243_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a12c1042d3bcb503b025927fd53d54243_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_a2e816e864ebf43743b3f6187e20c2b1f}\label{class_u_blox_a2e816e864ebf43743b3f6187e20c2b1f}} 
+\index{U\+Blox@{U\+Blox}!start\+Auto\+Registration@{start\+Auto\+Registration}}
+\index{start\+Auto\+Registration@{start\+Auto\+Registration}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{start\+Auto\+Registration()}{startAutoRegistration()}}
+{\footnotesize\ttfamily bool U\+Blox\+::start\+Auto\+Registration (\begin{DoxyParamCaption}\item[{bool \&}]{registered }\end{DoxyParamCaption})}
+
+Force start automatic registration of the network. Note, the function will implicitly invoke the has\+Registered function to determine whether the S\+IM has been registered.
+
+
+\begin{DoxyParams}{Parameters}
+{\em registered} & A boolean reference for storing the result. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the command was successfully processed, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 314 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+315 \{
+316     \textcolor{comment}{// Force start auto registration.}
+317     ssize\_t rc = \hyperlink{class_u_blox_af604d1897a66192bf1c2a11997f2634d}{writeCommand}(\hyperlink{_u_blox_8cpp_a446932fdbc232c192835bf275c36ac30}{AT\_CMD\_START\_AUTO\_REGISTRATION});
+318     \textcolor{keywordflow}{if} (rc == -1) \{
+319         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+320     \}
+321 
+322     \textcolor{comment}{// Check whether the command executed successfully.}
+323     \textcolor{keywordflow}{if} (\hyperlink{class_u_blox_a4eaca5b1b1c4b5b6f6164b220dd43e0b}{readStatusResponse}(\textcolor{keyword}{false}) != \hyperlink{_u_blox_8cpp_a6ebc1682eb6b9964fccb4a61688ff307}{AT\_CMD\_STATUS\_CODE\_OK}) \{
+324         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+325     \}
+326 
+327     \textcolor{comment}{// Finally check whether the device has registered.}
+328     \textcolor{keywordflow}{return} \hyperlink{class_u_blox_a1889c2b9bb6087bc939bd2a27b68623b}{hasRegistered}(registered);
+329 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a2e816e864ebf43743b3f6187e20c2b1f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_a2e816e864ebf43743b3f6187e20c2b1f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_u_blox_af604d1897a66192bf1c2a11997f2634d}\label{class_u_blox_af604d1897a66192bf1c2a11997f2634d}} 
+\index{U\+Blox@{U\+Blox}!write\+Command@{write\+Command}}
+\index{write\+Command@{write\+Command}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{write\+Command()}{writeCommand()}}
+{\footnotesize\ttfamily ssize\+\_\+t U\+Blox\+::write\+Command (\begin{DoxyParamCaption}\item[{const char $\ast$}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Writes the next command to u-\/blox via the uart interface. However, it should be noted that the rx buffer is cleared prior to reading the echo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & The command that is to be written via uart to the u-\/blox device. Note, must end in . \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 if there was an error, n (representing length of the echo) otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 657 of file U\+Blox.\+cpp.
+
+
+\begin{DoxyCode}
+658 \{
+659     \textcolor{comment}{// Write the command to the device.}
+660     ssize\_t rc = \hyperlink{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}{uArt}.\hyperlink{class_u_art_aad1ddb133fe430a92527584eec2e674f}{writeNext}(command);
+661     \textcolor{keywordflow}{if} (rc == -1) \{
+662         \textcolor{keywordflow}{return} -1;
+663     \}
+664 
+665     \textcolor{comment}{// Read the raw echo response and check lengths to determine if echoed.}
+666     rc = \hyperlink{class_u_blox_ab4a7ab4b8922d91e23f273ae160c1bed}{readRawResponse}(\hyperlink{_u_blox_8cpp_a55092c0742d15bb08a5ea7db5a25440e}{RX\_TIMEOUT\_ECHO});
+667     \textcolor{keywordflow}{if} (rc == -1) \{
+668         \textcolor{keywordflow}{return} -1;
+669     \}
+670     \textcolor{keywordflow}{return} strlen(command) == rc;
+671 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_af604d1897a66192bf1c2a11997f2634d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/df6/class_u_blox_af604d1897a66192bf1c2a11997f2634d_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}\label{class_u_blox_a6ca4b90f3dc4e856181dce1ebda6f82c}} 
+\index{U\+Blox@{U\+Blox}!buffer@{buffer}}
+\index{buffer@{buffer}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily char U\+Blox\+::buffer\mbox{[}\hyperlink{_u_blox_8h_aad458adf8f40cbcc1074061f226a112e}{A\+T\+\_\+\+C\+M\+D\+\_\+\+B\+U\+F\+F\+\_\+\+L\+EN}\mbox{]} = \{\textquotesingle{}\textbackslash{}0\textquotesingle{}\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 106 of file U\+Blox.\+h.
+
+\mbox{\Hypertarget{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}\label{class_u_blox_a034c0463d1c199d094d657c8ebb151e8}} 
+\index{U\+Blox@{U\+Blox}!u\+Art@{u\+Art}}
+\index{u\+Art@{u\+Art}!U\+Blox@{U\+Blox}}
+\subsubsection{\texorpdfstring{u\+Art}{uArt}}
+{\footnotesize\ttfamily \hyperlink{class_u_art}{U\+Art} U\+Blox\+::u\+Art\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 105 of file U\+Blox.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/comms/\hyperlink{_u_blox_8h}{U\+Blox.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/comms/\hyperlink{_u_blox_8cpp}{U\+Blox.\+cpp}\end{DoxyCompactItemize}

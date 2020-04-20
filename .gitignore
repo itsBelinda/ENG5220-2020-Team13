@@ -306,3 +306,15 @@ TSWLatexianTemp*
 *.glstex
 
 # End of https://www.gitignore.io/api/c++,latex
+cmake-build-debug
+CMakeFiles
+CMakeFiles
+BeeSafePI.dir
+/software/BeeSafePI/cmake-build-debug/CMakeFiles/BeeSafePI.dir
+CMakeFiles
+/doc/LateX/refman.tex
+/doc/LateX/Makefile
+/doc/LateX/md_README.tex
+/doc/LateX/doxygen.sty
+/testing/receive
+/testing/send

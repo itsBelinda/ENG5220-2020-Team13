@@ -1,0 +1,26 @@
+The hardware part made up of three parts\+:
+\begin{DoxyEnumerate}
+\item A power bank for portable power supply
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item The Raspberry PI to run the developed software
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item The extension board (Raspberry PI hat) with the custom hardware
+\end{DoxyEnumerate}
+
+The PI and its extension board will be fit into a casing for protection, allowing access only to the U\+SB power input and the antenna.
+
+The subpages provide more information about the \href{../Hardware%3A-Electronics}{\tt electronics}, the \href{./uBlox-and-CellLocate}{\tt u-\/blox module} and the \href{../Hardware%3A-Mechanical}{\tt mechanical casing}.
+
+\section*{Overview}
+
+The diagram below displays the main components of the hardware with the interfaces and voltage levels for each of them.
+
+The power is supplied by a power bank providing 5 V and at least 1.\+5 A maximum output current. This provides power for the Raspberry PI, which operates at 3.\+3 V and the S\+A\+R\+A-\/\+G3 module. For the S\+A\+RA module, a L\+DO transforms the 5 V into the required 3.\+8 V. The module handles all other voltage conversions itself.
+
+Both 1.\+8 V from the S\+A\+RA module and 3.\+3 V from the PI supply the voltage translator so the both of them can communicate with each other.
+
+The S\+A\+RA module supports both 3.\+0 V and 1.\+8 V S\+IM cards. The voltage is automatically switched.
+
+ 

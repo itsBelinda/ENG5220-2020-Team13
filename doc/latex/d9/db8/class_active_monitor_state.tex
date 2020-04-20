@@ -1,0 +1,422 @@
+\hypertarget{class_active_monitor_state}{}\section{Active\+Monitor\+State Class Reference}
+\label{class_active_monitor_state}\index{Active\+Monitor\+State@{Active\+Monitor\+State}}
+
+
+The active monitor state child class.  
+
+
+
+
+{\ttfamily \#include $<$Active\+Monitor\+State.\+h$>$}
+
+
+
+Inheritance diagram for Active\+Monitor\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{dd/d2b/class_active_monitor_state__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Active\+Monitor\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{d5/d71/class_active_monitor_state__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_active_monitor_state_af1a0341307d63c900ccdc0a99fbe59e0}{Active\+Monitor\+State} (\hyperlink{class_comms}{Comms} $\ast$\hyperlink{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}{comms}, \hyperlink{class_account}{Account} $\ast$\hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account})
+\item 
+\hyperlink{class_active_monitor_state_accb86642ec52bae9aacd2aa4e9ff4410}{$\sim$\+Active\+Monitor\+State} () override
+\item 
+bool \hyperlink{class_active_monitor_state_a4566e7e96a777df86ab78ec326b551d0}{is\+Perimeter\+Crossed} ()
+\item 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \hyperlink{class_active_monitor_state_ab94dede8d2e407aaddb0df056f5a329c}{get\+Since\+Perimeter\+Crossed} ()
+\item 
+std\+::vector$<$ std\+::pair$<$ \hyperlink{class_contact}{Contact} $\ast$, bool $>$ $>$ \& \hyperlink{class_active_monitor_state_ac1d5b33105abe5bd68ed5ee0396bc3be}{get\+Sent\+Notifications} ()
+\item 
+\hyperlink{class_monitor_state}{Monitor\+State} $\ast$ \hyperlink{class_active_monitor_state_a0eb7622ad3aa4d372d90589838cb50a9}{handle\+Lat\+Lng} (std\+::pair$<$ double, double $>$ \&lat\+Lng) override
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_active_monitor_state_add557ab0dd0774482c08c982b82395e7}{all\+Notifications\+Sent} ()
+\item 
+void \hyperlink{class_active_monitor_state_adedd023d280922991a5dd980017549ec}{set\+Sent\+Notifications} (bool sent)
+\item 
+void \hyperlink{class_active_monitor_state_aae5b3a425c74e7017446be277d69c06d}{send\+Message\+Notifications} (bool force\+All, std\+::string \&message)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_active_monitor_state_af4c93e1be350ea9cf4ac97f97abaf79e}{perimeter\+Crossed}
+\item 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \hyperlink{class_active_monitor_state_a4313399b0922fccd66ecea2fcf77c08f}{since\+Perimeter\+Crossed}
+\item 
+std\+::vector$<$ std\+::pair$<$ \hyperlink{class_contact}{Contact} $\ast$, bool $>$ $>$ \hyperlink{class_active_monitor_state_a25493a87079926faf7d03b8587ad9f62}{sent\+Notifications}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The active monitor state child class. 
+
+The child class to \hyperlink{class_monitor_state}{Monitor\+State}. It handles the functionality of what to do when the device is outside a fence, by defining how to handle notifications, and constantly monitoring if the device returns to the fence to hand over to the \hyperlink{class_passive_monitor_state}{Passive\+Monitor\+State} class.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+\$\+Date\+: 2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT
+
+The child class to \hyperlink{class_monitor_state}{Monitor\+State}. It handles the functionality of what to do when the device is outside a fence, by defining how to handle notifications, and constantly monitoring if the device returns to the fence to hand over to the \hyperlink{class_passive_monitor_state}{Passive\+Monitor\+State} class.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 46 of file Active\+Monitor\+State.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_active_monitor_state_af1a0341307d63c900ccdc0a99fbe59e0}\label{class_active_monitor_state_af1a0341307d63c900ccdc0a99fbe59e0}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{Active\+Monitor\+State()}{ActiveMonitorState()}}
+{\footnotesize\ttfamily Active\+Monitor\+State\+::\+Active\+Monitor\+State (\begin{DoxyParamCaption}\item[{\hyperlink{class_comms}{Comms} $\ast$}]{comms,  }\item[{\hyperlink{class_account}{Account} $\ast$}]{account }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file Active\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+36         : \hyperlink{class_monitor_state_ace027ab9e5703ac4e4b808eeebc3c961}{MonitorState}(\hyperlink{_active_monitor_state_8h_a9fdfa2faf1d746d8aa632437fd3bd03c}{ACTIVE\_STATE\_NAME}, comms, account)
+37 \{
+38 
+39     \textcolor{comment}{// By definition the device just crossed the perimeter.}
+40     \hyperlink{class_active_monitor_state_af4c93e1be350ea9cf4ac97f97abaf79e}{perimeterCrossed} = \textcolor{keyword}{true};
+41     \hyperlink{class_active_monitor_state_a4313399b0922fccd66ecea2fcf77c08f}{sincePerimeterCrossed} = std::chrono::steady\_clock::now();
+42 
+43     \textcolor{comment}{// Populate the notifications.}
+44     \textcolor{keywordflow}{for} (\hyperlink{class_contact}{Contact} *contact : account->\hyperlink{class_account_a53a9e366a589538552a368e3bbac2fd3}{getContacts}()) \{
+45         \hyperlink{class_active_monitor_state_a25493a87079926faf7d03b8587ad9f62}{sentNotifications}.emplace\_back(std::make\_pair(contact, \textcolor{keyword}{false}));
+46     \}
+47 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{d9/db8/class_active_monitor_state_af1a0341307d63c900ccdc0a99fbe59e0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_active_monitor_state_accb86642ec52bae9aacd2aa4e9ff4410}\label{class_active_monitor_state_accb86642ec52bae9aacd2aa4e9ff4410}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!````~Active\+Monitor\+State@{$\sim$\+Active\+Monitor\+State}}
+\index{````~Active\+Monitor\+State@{$\sim$\+Active\+Monitor\+State}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{$\sim$\+Active\+Monitor\+State()}{~ActiveMonitorState()}}
+{\footnotesize\ttfamily Active\+Monitor\+State\+::$\sim$\+Active\+Monitor\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{d9/db8/class_active_monitor_state_accb86642ec52bae9aacd2aa4e9ff4410_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_active_monitor_state_add557ab0dd0774482c08c982b82395e7}\label{class_active_monitor_state_add557ab0dd0774482c08c982b82395e7}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!all\+Notifications\+Sent@{all\+Notifications\+Sent}}
+\index{all\+Notifications\+Sent@{all\+Notifications\+Sent}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{all\+Notifications\+Sent()}{allNotificationsSent()}}
+{\footnotesize\ttfamily bool Active\+Monitor\+State\+::all\+Notifications\+Sent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 67 of file Active\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+68 \{
+69     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}& notifiableContact : \hyperlink{class_active_monitor_state_a25493a87079926faf7d03b8587ad9f62}{sentNotifications}) \{
+70         \textcolor{keywordflow}{if} (!notifiableContact.second) \{
+71             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+72         \}
+73     \}
+74     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+75 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/db8/class_active_monitor_state_add557ab0dd0774482c08c982b82395e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_active_monitor_state_ac1d5b33105abe5bd68ed5ee0396bc3be}\label{class_active_monitor_state_ac1d5b33105abe5bd68ed5ee0396bc3be}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!get\+Sent\+Notifications@{get\+Sent\+Notifications}}
+\index{get\+Sent\+Notifications@{get\+Sent\+Notifications}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{get\+Sent\+Notifications()}{getSentNotifications()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ \hyperlink{class_contact}{Contact} $\ast$, bool $>$ $>$ \& Active\+Monitor\+State\+::get\+Sent\+Notifications (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 62 of file Active\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+63 \{
+64     \textcolor{keywordflow}{return} \hyperlink{class_active_monitor_state_a25493a87079926faf7d03b8587ad9f62}{sentNotifications};
+65 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_active_monitor_state_ab94dede8d2e407aaddb0df056f5a329c}\label{class_active_monitor_state_ab94dede8d2e407aaddb0df056f5a329c}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!get\+Since\+Perimeter\+Crossed@{get\+Since\+Perimeter\+Crossed}}
+\index{get\+Since\+Perimeter\+Crossed@{get\+Since\+Perimeter\+Crossed}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{get\+Since\+Perimeter\+Crossed()}{getSincePerimeterCrossed()}}
+{\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ Active\+Monitor\+State\+::get\+Since\+Perimeter\+Crossed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 57 of file Active\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+58 \{
+59     \textcolor{keywordflow}{return} \hyperlink{class_active_monitor_state_a4313399b0922fccd66ecea2fcf77c08f}{sincePerimeterCrossed};
+60 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_active_monitor_state_a0eb7622ad3aa4d372d90589838cb50a9}\label{class_active_monitor_state_a0eb7622ad3aa4d372d90589838cb50a9}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!handle\+Lat\+Lng@{handle\+Lat\+Lng}}
+\index{handle\+Lat\+Lng@{handle\+Lat\+Lng}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{handle\+Lat\+Lng()}{handleLatLng()}}
+{\footnotesize\ttfamily \hyperlink{class_monitor_state}{Monitor\+State} $\ast$ Active\+Monitor\+State\+::handle\+Lat\+Lng (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}{Monitor\+State}.
+
+
+
+Definition at line 108 of file Active\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+109 \{
+110     \textcolor{comment}{// Get the fence the device has left.}
+111     std::cout << \textcolor{stringliteral}{"Checking fences..."} << std::endl;
+112     \hyperlink{class_fence}{Fence}* crossedFence = \hyperlink{class_monitor_state_a332c5f42bf46cd217e36f300e5279766}{getCrossedFence}(latLng);
+113     \textcolor{keywordtype}{bool} inside = crossedFence == \textcolor{keyword}{nullptr};
+114 
+115     \textcolor{comment}{// If the fence has been crossed, update the monitor states.}
+116     \textcolor{keywordflow}{if} (inside != \hyperlink{class_active_monitor_state_af4c93e1be350ea9cf4ac97f97abaf79e}{perimeterCrossed}) \{
+117         std::cout << \textcolor{stringliteral}{"Switching from state "} << \hyperlink{class_active_monitor_state_af4c93e1be350ea9cf4ac97f97abaf79e}{perimeterCrossed} << \textcolor{stringliteral}{" to state "} << inside 
+      << std::endl;
+118         \hyperlink{class_active_monitor_state_af4c93e1be350ea9cf4ac97f97abaf79e}{perimeterCrossed} = inside;
+119         \hyperlink{class_active_monitor_state_a4313399b0922fccd66ecea2fcf77c08f}{sincePerimeterCrossed} = std::chrono::steady\_clock::now();
+120         \hyperlink{class_active_monitor_state_adedd023d280922991a5dd980017549ec}{setSentNotifications}(\textcolor{keyword}{false});
+121     \}
+122     std::cout << \textcolor{stringliteral}{"... fence checks complete."} << std::endl;
+123 
+124     \textcolor{comment}{// Elapsed seconds since monitor (perimeterCrossed) state change.}
+125     \textcolor{keyword}{auto} now = std::chrono::steady\_clock::now();
+126     \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} elapsedSec = std::chrono::duration\_cast<std::chrono::seconds>
+127             (now - \hyperlink{class_active_monitor_state_a4313399b0922fccd66ecea2fcf77c08f}{sincePerimeterCrossed}).count();
+128 
+129     \textcolor{comment}{// Handle notifications.}
+130     \textcolor{keywordflow}{if} (inside && elapsedSec > \hyperlink{_active_monitor_state_8cpp_af734ccbfe87f3ed675b4836ae5761dbb}{STEPPED\_INSIDE\_NOTIFICATION\_DELAY\_SEC}) 
+      \{
+131 
+132         \textcolor{comment}{// Send a message informing the contacts that the device has returned.}
+133         std::cout << \textcolor{stringliteral}{"Notifying contacts (back inside) ..."} << std::endl;
+134         std::string message = \textcolor{stringliteral}{"Device "} + \hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account}->\hyperlink{class_account_a1ef22885e8c6f145475c3306a4e6d74a}{getName}() + \textcolor{stringliteral}{" has returned to the fence."};
+135         \hyperlink{class_active_monitor_state_aae5b3a425c74e7017446be277d69c06d}{sendMessageNotifications}(\textcolor{keyword}{true}, message);
+136         std::cout << \textcolor{stringliteral}{"... contacts successfully notified (back inside)."} << std::endl;
+137 
+138     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!inside && elapsedSec > \hyperlink{_active_monitor_state_8cpp_a61900fdfa0a56947870551db86143a1c}{STEPPED\_OUTSIDE\_NOTIFICATION\_DELAY\_SEC}
+      ) \{
+139 
+140         \textcolor{comment}{// Send a message informing the contacts that the device has left the fence.}
+141         std::cout << \textcolor{stringliteral}{"Notifying contacts (outside) ..."} << std::endl;
+142         std::string message = \textcolor{stringliteral}{"Device "} + \hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account}->\hyperlink{class_account_a1ef22885e8c6f145475c3306a4e6d74a}{getName}()
+143                               + \textcolor{stringliteral}{" has left fence "} + crossedFence->\hyperlink{class_fence_a1d90d0ff61bec6cda8240f6365fc5d28}{getName}() + \textcolor{stringliteral}{"."};
+144         \hyperlink{class_active_monitor_state_aae5b3a425c74e7017446be277d69c06d}{sendMessageNotifications}(\textcolor{keyword}{false}, message);
+145         std::cout << \textcolor{stringliteral}{"... contacts successfully notified (outside)."} << std::endl;
+146 
+147     \}
+148 
+149     \textcolor{comment}{// If the device has reentered the fence and parents have been notified, switch.}
+150     \textcolor{keywordflow}{return} inside && elapsedSec > \hyperlink{_active_monitor_state_8cpp_af734ccbfe87f3ed675b4836ae5761dbb}{STEPPED\_INSIDE\_NOTIFICATION\_DELAY\_SEC}
+151            ? \textcolor{keyword}{new} \hyperlink{class_passive_monitor_state}{PassiveMonitorState}(\hyperlink{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}{comms}, \hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account})
+152            : nullptr;
+153 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/db8/class_active_monitor_state_a0eb7622ad3aa4d372d90589838cb50a9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_active_monitor_state_a4566e7e96a777df86ab78ec326b551d0}\label{class_active_monitor_state_a4566e7e96a777df86ab78ec326b551d0}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!is\+Perimeter\+Crossed@{is\+Perimeter\+Crossed}}
+\index{is\+Perimeter\+Crossed@{is\+Perimeter\+Crossed}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{is\+Perimeter\+Crossed()}{isPerimeterCrossed()}}
+{\footnotesize\ttfamily bool Active\+Monitor\+State\+::is\+Perimeter\+Crossed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 52 of file Active\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+53 \{
+54     \textcolor{keywordflow}{return} \hyperlink{class_active_monitor_state_af4c93e1be350ea9cf4ac97f97abaf79e}{perimeterCrossed};
+55 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_active_monitor_state_aae5b3a425c74e7017446be277d69c06d}\label{class_active_monitor_state_aae5b3a425c74e7017446be277d69c06d}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!send\+Message\+Notifications@{send\+Message\+Notifications}}
+\index{send\+Message\+Notifications@{send\+Message\+Notifications}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{send\+Message\+Notifications()}{sendMessageNotifications()}}
+{\footnotesize\ttfamily void Active\+Monitor\+State\+::send\+Message\+Notifications (\begin{DoxyParamCaption}\item[{bool}]{force\+All,  }\item[{std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 84 of file Active\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+85 \{
+86     \textcolor{comment}{// Check that all contacts have been notified.}
+87     \textcolor{keywordflow}{if} (!forceAll && \hyperlink{class_active_monitor_state_add557ab0dd0774482c08c982b82395e7}{allNotificationsSent}()) \{
+88         std::cout << \textcolor{stringliteral}{"All contacts already notified."} << std::endl;
+89         \textcolor{keywordflow}{return};
+90     \}
+91 
+92     \textcolor{comment}{// Notify contacts.}
+93     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} &notifiableContact : \hyperlink{class_active_monitor_state_a25493a87079926faf7d03b8587ad9f62}{sentNotifications}) \{
+94         \textcolor{keywordflow}{if} (!notifiableContact.second || forceAll) \{
+95 
+96             \textcolor{comment}{// Notify the contact.}
+97             std::cout << \textcolor{stringliteral}{"Notifying contact "}
+98                       << notifiableContact.first->getForename()
+99                       << \textcolor{stringliteral}{" "} << notifiableContact.first->getSurname()
+100                       << \textcolor{stringliteral}{"... "};
+101             notifiableContact.second = \hyperlink{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}{comms}->\hyperlink{class_comms_a30ab10ea604ab2b169ca66f3f1071c0e}{sendMessage}(*notifiableContact.first, message
+      );
+102             std::cout << (notifiableContact.second ? \textcolor{stringliteral}{"Success!"} : \textcolor{stringliteral}{"Failed!"}) << std::endl;
+103 
+104         \}
+105     \}
+106 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/db8/class_active_monitor_state_aae5b3a425c74e7017446be277d69c06d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/db8/class_active_monitor_state_aae5b3a425c74e7017446be277d69c06d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_active_monitor_state_adedd023d280922991a5dd980017549ec}\label{class_active_monitor_state_adedd023d280922991a5dd980017549ec}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!set\+Sent\+Notifications@{set\+Sent\+Notifications}}
+\index{set\+Sent\+Notifications@{set\+Sent\+Notifications}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{set\+Sent\+Notifications()}{setSentNotifications()}}
+{\footnotesize\ttfamily void Active\+Monitor\+State\+::set\+Sent\+Notifications (\begin{DoxyParamCaption}\item[{bool}]{sent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 77 of file Active\+Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+78 \{
+79     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}& notifiableContact : \hyperlink{class_active_monitor_state_a25493a87079926faf7d03b8587ad9f62}{sentNotifications}) \{
+80         notifiableContact.second = sent;
+81     \}
+82 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{d9/db8/class_active_monitor_state_adedd023d280922991a5dd980017549ec_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_active_monitor_state_af4c93e1be350ea9cf4ac97f97abaf79e}\label{class_active_monitor_state_af4c93e1be350ea9cf4ac97f97abaf79e}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!perimeter\+Crossed@{perimeter\+Crossed}}
+\index{perimeter\+Crossed@{perimeter\+Crossed}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{perimeter\+Crossed}{perimeterCrossed}}
+{\footnotesize\ttfamily bool Active\+Monitor\+State\+::perimeter\+Crossed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 77 of file Active\+Monitor\+State.\+h.
+
+\mbox{\Hypertarget{class_active_monitor_state_a25493a87079926faf7d03b8587ad9f62}\label{class_active_monitor_state_a25493a87079926faf7d03b8587ad9f62}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!sent\+Notifications@{sent\+Notifications}}
+\index{sent\+Notifications@{sent\+Notifications}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{sent\+Notifications}{sentNotifications}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$\hyperlink{class_contact}{Contact}$\ast$, bool$>$ $>$ Active\+Monitor\+State\+::sent\+Notifications\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 81 of file Active\+Monitor\+State.\+h.
+
+\mbox{\Hypertarget{class_active_monitor_state_a4313399b0922fccd66ecea2fcf77c08f}\label{class_active_monitor_state_a4313399b0922fccd66ecea2fcf77c08f}} 
+\index{Active\+Monitor\+State@{Active\+Monitor\+State}!since\+Perimeter\+Crossed@{since\+Perimeter\+Crossed}}
+\index{since\+Perimeter\+Crossed@{since\+Perimeter\+Crossed}!Active\+Monitor\+State@{Active\+Monitor\+State}}
+\subsubsection{\texorpdfstring{since\+Perimeter\+Crossed}{sincePerimeterCrossed}}
+{\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::steady\+\_\+clock$>$ Active\+Monitor\+State\+::since\+Perimeter\+Crossed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 78 of file Active\+Monitor\+State.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/monitor/states/\hyperlink{_active_monitor_state_8h}{Active\+Monitor\+State.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/monitor/states/\hyperlink{_active_monitor_state_8cpp}{Active\+Monitor\+State.\+cpp}\end{DoxyCompactItemize}

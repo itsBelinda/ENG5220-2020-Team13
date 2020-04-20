@@ -1,0 +1,6 @@
+<map id="UArt::init" name="UArt::init">
+<area shape="rect" id="node2" href="$da/df6/class_u_blox.html#a34c2f507ff3bbd21b9aea788a015527a" title="UBlox::init" alt="" coords="128,5,211,32"/>
+<area shape="rect" id="node3" href="$d8/dcc/class_comms.html#aa0519d3ed2d5bd6aad60101080ac2de7" title="Comms::init" alt="" coords="259,5,352,32"/>
+<area shape="rect" id="node4" href="$d5/d75/class_bee_safe_manager.html#a28306d7ccf7136a6086d666f4ebb6566" title="BeeSafeManager::initComms" alt="" coords="400,5,593,32"/>
+<area shape="rect" id="node5" href="$d5/d75/class_bee_safe_manager.html#a2f16b09c454e21c887d14ac5483973cf" title="BeeSafeManager::init" alt="" coords="641,5,788,32"/>
+</map>

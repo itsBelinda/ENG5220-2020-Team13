@@ -1,0 +1,86 @@
+\hypertarget{class_passive_monitor_state}{}\doxysection{Passive\+Monitor\+State Class Reference}
+\label{class_passive_monitor_state}\index{PassiveMonitorState@{PassiveMonitorState}}
+
+
+{\ttfamily \#include $<$Passive\+Monitor\+State.\+h$>$}
+
+
+
+Inheritance diagram for Passive\+Monitor\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{class_passive_monitor_state__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Passive\+Monitor\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{class_passive_monitor_state__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_passive_monitor_state_a91d992e619e8e1d3d47875a1933542b7}{Passive\+Monitor\+State}} (\mbox{\hyperlink{class_comms}{Comms}} $\ast$comms, \mbox{\hyperlink{class_account}{Account}} $\ast$account)
+\item 
+\mbox{\hyperlink{class_passive_monitor_state_a43a2e90a01187c40513899e4f9b5d804}{$\sim$\+Passive\+Monitor\+State}} () override
+\item 
+\mbox{\hyperlink{class_monitor_state}{Monitor\+State}} $\ast$ \mbox{\hyperlink{class_passive_monitor_state_a173a7c8a4d0b8ecea5928e0c90dec26b}{handle\+Lat\+Lng}} (std\+::pair$<$ double, double $>$ \&lat\+Lng) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_passive_monitor_state_a91d992e619e8e1d3d47875a1933542b7}\label{class_passive_monitor_state_a91d992e619e8e1d3d47875a1933542b7}} 
+\index{PassiveMonitorState@{PassiveMonitorState}!PassiveMonitorState@{PassiveMonitorState}}
+\index{PassiveMonitorState@{PassiveMonitorState}!PassiveMonitorState@{PassiveMonitorState}}
+\doxysubsubsection{\texorpdfstring{PassiveMonitorState()}{PassiveMonitorState()}}
+{\footnotesize\ttfamily Passive\+Monitor\+State\+::\+Passive\+Monitor\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_comms}{Comms}} $\ast$}]{comms,  }\item[{\mbox{\hyperlink{class_account}{Account}} $\ast$}]{account }\end{DoxyParamCaption})}
+
+Constructor explicitly initialises the \mbox{\hyperlink{class_passive_monitor_state}{Passive\+Monitor\+State}} class instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comms} & The communications interface for sending messages etc. \\
+\hline
+{\em account} & The account against which the coordinates are compared. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_passive_monitor_state_a43a2e90a01187c40513899e4f9b5d804}\label{class_passive_monitor_state_a43a2e90a01187c40513899e4f9b5d804}} 
+\index{PassiveMonitorState@{PassiveMonitorState}!````~PassiveMonitorState@{$\sim$PassiveMonitorState}}
+\index{````~PassiveMonitorState@{$\sim$PassiveMonitorState}!PassiveMonitorState@{PassiveMonitorState}}
+\doxysubsubsection{\texorpdfstring{$\sim$PassiveMonitorState()}{~PassiveMonitorState()}}
+{\footnotesize\ttfamily Passive\+Monitor\+State\+::$\sim$\+Passive\+Monitor\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+Destructor is used to clean up any resources occupied by the \mbox{\hyperlink{class_passive_monitor_state}{Passive\+Monitor\+State}} instance. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_passive_monitor_state_a173a7c8a4d0b8ecea5928e0c90dec26b}\label{class_passive_monitor_state_a173a7c8a4d0b8ecea5928e0c90dec26b}} 
+\index{PassiveMonitorState@{PassiveMonitorState}!handleLatLng@{handleLatLng}}
+\index{handleLatLng@{handleLatLng}!PassiveMonitorState@{PassiveMonitorState}}
+\doxysubsubsection{\texorpdfstring{handleLatLng()}{handleLatLng()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_monitor_state}{Monitor\+State}} $\ast$ Passive\+Monitor\+State\+::handle\+Lat\+Lng (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Responsible for invoking the appropriate functions that are responsible for monitoring the location of the device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat\+Lng} & The pair of latitude and longitude coordinates that are to be examined. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new state if this state is incapable of handling the locations, nullptr otherwise. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}{Monitor\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+monitor/states/\mbox{\hyperlink{_passive_monitor_state_8h}{Passive\+Monitor\+State.\+h}}\item 
+monitor/states/\mbox{\hyperlink{_passive_monitor_state_8cpp}{Passive\+Monitor\+State.\+cpp}}\end{DoxyCompactItemize}

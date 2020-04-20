@@ -1,0 +1,40 @@
+\subsection*{Hardware}
+
+Overall, the component of this project the team is the most pleased with is the hardware, specifically the P\+CB. The quality is very good for the technique used, and only one, minor mistake was made, which is a big feature the team considers. We were also very pleased with the fact that our P\+CB was completed before the University and its teaching spaces and labs closed down due to the C\+O\+V\+I\+D19 protection guidelines. This was all thanks to the hard work and responsible time management of our hardware engineer.
+
+\subsection*{Software}
+
+The software part of this project agreeably proved to be the most challenging, yet rewarding part of this project. All three team members learned a great amount from this project, which was especially true for our software engineering skills. We still have a lot of ideas as to what could be included in this project, as the communications module has served us very well and reliably, and the team enjoyed learning more about the low-\/level view of modern telecommunications. The order of features we would be interested in implementing has not been decided yet, neither the release versions they would fall under. However the team leaves their options open, and hopes that not only the hardware design but our created software suite will prove to be a useful source of ideas for similar projects at home or commercially.
+
+\subsection*{Future work}
+
+With the release v1.\+0.\+0 complete, the project is ready to be expanded upon. The following features are considered to be added in the foreseeable future, however there is not yet a plan on how the release timeline would look.
+
+\subsubsection*{Hardware improvements}
+
+With the budget being the most limiting aspect of this project, the team had many ideas what hardware components could be included in the next release of the project to further optimise the performance, provide better features and make it more true to the gamified version we hoped we could accomplish. ~\newline
+ The team would certainly be interested in not only a smaller Pi (see below) and antenna, but a more powerful communications module. Integrated modules with access to 3-\/5G networks are available and can be quite small, making them ideal for this project. However, with the explanded range of features and decreased size, the price increases exponentially. The budget considerations are definitely a key point of talk within the team if we decide to pursue this further, especially commercially.
+
+\subsubsection*{Software improvements}
+
+As software engineers have learned, one of the key tasks at the end of the project, just before handoff, is to tidy up the code. This usually includes writing clear comments, indenting code blocks, and removing any so-\/called \char`\"{}dead-\/code\char`\"{} from the project. While it would be good practice to do so in this case, the team is certain the next release of the code will not be that long. Therefore, after long consideration, the team decided to leave unused methods in the normal project folder, source code and branch, because they each serve specific purposes that would be validated with the further planned features inclusion. Some examples include\+:
+\begin{DoxyItemize}
+\item In the \hyperlink{class_monitor}{Monitor} class, the {\ttfamily start()} / {\ttfamily stop()} methods support the already existing thread, which would be used when the manager thread downloads a new instance of the Account.\+json from the website\+: it needs to stop the monitor thread, set the new instances and parameters, and start it again.
+\item In the Comms/\+U\+Blox classes, the {\ttfamily get\+I\+M\+E\+I()} method, for instance, would be used to generate the security keys required to authenticate the device uniquely, and to secure the location data transmission between the device and server/database.
+\end{DoxyItemize}
+
+\subsubsection*{Website 2.\+0}
+
+With the limited time available the focus shifted on the software and hardware being created well. This meant that our web interface was rolled out on Github Pages, with Firebase serving as its backend, which while was very convenient, limits our possibilities. With the next release the team would be able to buy another Raspberry Pi, and serve their own Django webserver from there, ensuring improved safety, an increased variety of features and a more dynamic service offered. The planned changes to the website are discussed in the \href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Server-and-Web-App#release-v20}{\tt Web Server and G\+UI} chapter.
+
+\subsubsection*{Size}
+
+The main point of concern in this project was the size of the hardware. Since the project is designed to be carried around by children, and be positively received, not only the shape and colour of the hardware is important, but the size. It was decided that for the initial prototype that is released with this submission due to the time and budget constraints, the size will not be focused on, but rather functionality. However, in further releases, the size would be improved upon, by using smaller antennas, smaller, professionally manufactured P\+C\+Bs with a smaller communications module. This would be supported by a smaller microcontroller, too, such as a Raspberry Pi Zero. This would drastically reduce the size of the overall product and make it more viable for commercial release, however this project focused on producing a Minimally Viable Product (M\+VP).
+
+\subsubsection*{Casing}
+
+A major component, the casing of the hardware was not completed, as the university facilities closed early in the semester due to the C\+O\+V\+I\+D19 health and safety measures taken by the university. The very next release would necessarily cover the inclusion of the cover, as the hardware is a sensitive piece of equipment, and the device is created to be carried around by children -\/ who can get things dirty, knock against surfaces, easily damaging the device. While the rendered case in this instance is a basic case suitable to fit the Pi and P\+CB with all components, the final version of the casing would be something that not only fits the hardware securely, but also looks enticing for children -\/ possibly depicting a cartoon character, and/or being printed in bright colours -\/ to ensure they keep it on themselves, but not enticing enough to be stolen off of them.
+
+\subsubsection*{Language support}
+
+As the team comprises students speaking several different languages on a fluent/native level, all documentation could be translated for those languages. However, as Github does not support translations natively yet, it would have to be done by supplying a handful of new files/pages for each text in question, making the repository possibly a bit cumbersome. Nevertheless, it is an issue that is important to all of us, and therefore will be looked into in the future. 

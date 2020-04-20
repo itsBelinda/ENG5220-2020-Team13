@@ -1,0 +1,334 @@
+This guide explains all the necessary steps that need to be taken to be able to recreate, or build and install the Bee\+Safe project.
+
+\subsection*{Hardware}
+
+\subsubsection*{Logging into the Raspberry Pi}
+
+When connected to the pi for the first time, if logging in as normal user the default login credentials are\+: ~\newline
+ 
+\begin{DoxyCode}
+username: pi
+password: raspberry
+\end{DoxyCode}
+ ~\newline
+ {\bfseries Note} \+: The above and all commands further on are as user {\ttfamily pi}, N\+OT {\ttfamily root}. If {\ttfamily root}, leave {\ttfamily sudo}. ~\newline
+ {\bfseries Note} \+: To change the default settings and secure your Raspberry Pi, follow this article\+: \href{https://www.raspberrypi.org/documentation/configuration/security.md}{\tt https\+://www.\+raspberrypi.\+org/documentation/configuration/security.\+md}
+
+\subsubsection*{Enable S\+SH}
+
+To set up S\+SH first, type 
+\begin{DoxyCode}
+sudo raspi-config
+\end{DoxyCode}
+ then select 
+\begin{DoxyCode}
+5 Interfacing options
+\end{DoxyCode}
+ then select 
+\begin{DoxyCode}
+P2 SSH
+\end{DoxyCode}
+ then press {\ttfamily Yes} for {\ttfamily Would you like S\+SH server to be enabled?} ~\newline
+~\newline
+ Then get you Pi\textquotesingle{}s IP address by typing ~\newline
+ 
+\begin{DoxyCode}
+ifconfig
+\end{DoxyCode}
+ and note the address that goes something like {\ttfamily 192.\+168.\+x.\+x} ~\newline
+ \subsubsection*{Remote Connection and Port Forwarding}
+
+{\bfseries Note}\+: you might need to set up port forwarding on your router, for which you need to do the following\+: 
+\begin{DoxyEnumerate}
+\item Navigate to your router’s homepage in your browser, and log in (the address is usually {\ttfamily 192.\+168.\+0.\+1}, but check with your router manufacturer/\+I\+SP) 
+\item Find the page that handles security or port issues 
+\item On that page, you\textquotesingle{}ll see a list similar to the following. Add your Pi\textquotesingle{}s IP address and a port or port range of your choosing, which people need to use when connecting to your Pi from outside your network\+: \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\multicolumn{2}{|p{(\linewidth-\tabcolsep*6-\arrayrulewidth*3)*2/6}|}{\cellcolor{\tableheadbgcolor}\textbf{ Local }}&\multicolumn{2}{p{(\linewidth-\tabcolsep*6-\arrayrulewidth*3)*2/6}|}{\cellcolor{\tableheadbgcolor}\textbf{ External }}&\multicolumn{2}{p{(\linewidth-\tabcolsep*6-\arrayrulewidth*3)*2/6}|}{\cellcolor{\tableheadbgcolor}\textbf{ }}\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\multicolumn{2}{|p{(\linewidth-\tabcolsep*6-\arrayrulewidth*3)*2/6}|}{\cellcolor{\tableheadbgcolor}\textbf{ Local }}&\multicolumn{2}{p{(\linewidth-\tabcolsep*6-\arrayrulewidth*3)*2/6}|}{\cellcolor{\tableheadbgcolor}\textbf{ External }}&\multicolumn{2}{p{(\linewidth-\tabcolsep*6-\arrayrulewidth*3)*2/6}|}{\cellcolor{\tableheadbgcolor}\textbf{ }}\\\cline{1-6}
+\endhead
+IP address~\newline
+ &Port Range &Port Range~\newline
+ &Protocol &Enabled &Delete  \\\cline{1-6}
+\mbox{[}PI IP address\mbox{]} &22-\/22 &\mbox{[}port\mbox{]}-\/\mbox{[}port\mbox{]}~\newline
+ &T\+CP &Yes &\\\cline{1-6}
+\end{longtabu}
+{\bfseries Note} \+: This is only one example. For more information, check out the following article\+: \href{https://pimylifeup.com/raspberry-pi-port-forwarding/}{\tt https\+://pimylifeup.\+com/raspberry-\/pi-\/port-\/forwarding/}  
+\item Then save the settings and log out of your router. 
+\end{DoxyEnumerate}On your laptop, install Putty (\href{https://www.putty.org/}{\tt https\+://www.\+putty.\+org/}), then open Putty and enter the IP address you noted down in the field \char`\"{}\+Host Name or I\+P address\char`\"{} and in the radio button menu below, select \char`\"{}\+S\+S\+H\char`\"{}. The port should automatically set to \char`\"{}22\char`\"{}, but if it does not, set it manually. Afterwards click \char`\"{}\+Open\char`\"{} to connect.
+
+\subsubsection*{Set up Wifi on the Pi}
+
+To set the wifi on your Pi, type 
+\begin{DoxyCode}
+sudo nano /etc/wpa\_supplicant/wpa\_supplicant.conf
+\end{DoxyCode}
+ and when the file opens, add your wifi credentials (network name and password) to the file. If connecting to a hidden network, add the line {\ttfamily scan\+\_\+ssid=1} to the file at the end. It should look something like this\+: 
+\begin{DoxyCode}
+network=\{
+    ssid="name"
+    psk="password"
+    scan\_ssid=1
+\}
+\end{DoxyCode}
+ To add multiple networks, just repeat the above for each, with a separate network item for each.
+
+\subsection*{Software}
+
+To build the software component of this project, take the following steps\+:
+
+\subsubsection*{Create an account on Github}
+
+You can clone the repository without an account, however to push contributions, an account is required. You can do so on the following \href{https://github.com/join}{\tt link}. ~\newline
+
+
+\subsubsection*{Installing dependencies}
+
+The following section explains how to install the dependencies. \begin{quote}
+{\bfseries Note} \+: If you already know your way around installing packages and setting up Git on Linux, just clone the Bee\+Safe repository from Github using {\ttfamily git clone \href{https://github.com/itsBelinda/ENG5220-2020-Team13}{\tt https\+://github.\+com/its\+Belinda/\+E\+N\+G5220-\/2020-\/\+Team13}} , navigate into the repository, and in the root folder run the {\ttfamily install\+Bee\+Safe.\+sh} script. This installs all the required dependencies for the project that is described in the following 2 sections. You can skip ahead to the {\ttfamily Building the project} section now. ~\newline
+ {\bfseries Note\+:} For optional dependencies, you can choose to install them or not, by uncommenting or commenting them in the installation script. \end{quote}
+
+
+$>$$\ast$$\ast$\+Note\+: this project uses a bootloader to install dependencies and run the software. If you wish to use that, please skip to the section {\ttfamily Bootloading} as the following chapters will describe how to build the project without the specified bootloader we included in the project repository.$\ast$$\ast$
+
+\paragraph*{Before start}
+
+To install some of the necessary packages, carry out the following steps\+: ~\newline
+ (to check what packages you already have installed, type\+: {\ttfamily apt list -\/-\/installed} ) ~\newline
+ To ensure you have enough space on your pi, first type {\ttfamily df -\/h}, then you\textquotesingle{}ll see a breakdown of filesystems and spaces used and available. ~\newline
+~\newline
+
+
+\paragraph*{Setting up}
+
+Then, if your pi is older or haven\textquotesingle{}t been used in a while, use the following commands where deemed necessary\+: ~\newline
+ $\ast$$\ast${\ttfamily sudo apt-\/get update}$\ast$$\ast$ \+: downloads the package lists from the repositories and \char`\"{}updates\char`\"{} them to get information on the newest versions of packages and their dependencies. ~\newline
+ $\ast$$\ast${\ttfamily sudo apt-\/get upgrade}$\ast$$\ast$ \+: will fetch new versions of packages existing on the machine if A\+PT knows about these new versions by way of apt-\/get update. ~\newline
+ $\ast$$\ast${\ttfamily sudo apt-\/get dist-\/upgrade}$\ast$$\ast$ \+: will do the same job which is done by apt-\/get upgrade, plus it will also intelligently handle the dependencies, so it might remove obsolete packages or add new ones. ~\newline
+ {\bfseries Note} \+: To find out more which one you need and get a more thorough description, see\+: \href{https://askubuntu.com/questions/222348/what-does-sudo-apt-get-update-do}{\tt https\+://askubuntu.\+com/questions/222348/what-\/does-\/sudo-\/apt-\/get-\/update-\/do}
+
+\paragraph*{Install Git}
+
+To get any packages e.\+g. from github, you\textquotesingle{}ll need Git. To install Git, type 
+\begin{DoxyCode}
+sudo apt-get install git
+\end{DoxyCode}
+
+
+\paragraph*{Install packages necessary for the project}
+
+To get started with C/\+C++ development, you can get the minimal necessary packages (gcc/g++\+: compilers, make\+: compilation utility, libc6-\/dev\+: G\+NU C library with development libraries and header files needed) by typing 
+\begin{DoxyCode}
+sudo apt-get install build-essential
+\end{DoxyCode}
+ To recreate the program, you\textquotesingle{}ll also need to install the following packages\+: 
+\begin{DoxyCode}
+sudo apt-get install cmake openssl libcpprest-dev
+\end{DoxyCode}
+ (core packages to have the program running) 
+\begin{DoxyCode}
+sudo apt-get install flex bison doxygen graphviz libreadline6-dev lcov
+\end{DoxyCode}
+ (necessary packages necessary for Doxygen and Codecov)
+
+\paragraph*{Install optional packages}
+
+A non-\/exaustive list of stuff you might need and/or are handy is the following\+: 
+\begin{DoxyCode}
+sudo apt install screen npm
+\end{DoxyCode}
+ Screen can act as a serial terminal program to test the operations of the U\+A\+RT with, and npm can be used to install packages such as the github-\/wiki-\/sidebar with which you can create custom Github wiki sidebars. \paragraph*{Tidying up}
+
+Once you\textquotesingle{}ve done installing packages, you can tidy up and clean the local repository of retrieved package files that are left in /var/cache by typing 
+\begin{DoxyCode}
+sudo apt-get clean
+\end{DoxyCode}
+
+
+\subsubsection*{Setting up Git on the Pi}
+
+To configure your git to connect to your account, add your credentials by typing 
+\begin{DoxyCode}
+git config --global user.name "yourusername"
+git config --global user.email "youremail@email.com"
+\end{DoxyCode}
+ For more Git configuration options, check out the following link\+: \href{https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config}{\tt https\+://www.\+atlassian.\+com/git/tutorials/setting-\/up-\/a-\/repository/git-\/config}
+
+\subsubsection*{Clone the repository}
+
+To get the Bee\+Safe project, clone the Github repository by typing ``{\ttfamily  git clone \href{https://github.com/itsBelinda/ENG5220-2020-Team13}{\tt https\+://github.\+com/its\+Belinda/\+E\+N\+G5220-\/2020-\/\+Team13}} 
+\begin{DoxyCode}
+### Enabling UART
+The Raspberry Pi 3B used for this project (also RPi 4) has 2 options which can be used for UART
+       communication, and they are currently used by the following services:
+\end{DoxyCode}
+ /dev/tty\+A\+M\+A0 -\/$>$ Bluetooth /dev/tty\+S0 -\/$>$ G\+P\+IO serial 
+\begin{DoxyCode}
+The choice is up for the implementer, but in this project we enabled ttyS0.
+<br><br>
+To get started with UART, you need to configure a few things before starting writing code. First, if you
+       use RPi 3 and above, open the file
+\end{DoxyCode}
+ sudo nano /boot/config.txt 
+\begin{DoxyCode}
+and if not already there, add the option
+\end{DoxyCode}
+ enable\+\_\+uart=1 
+\begin{DoxyCode}
+to the end of the file.
+<br>
+You will also need to disable Linux's console use of UART by typing
+\end{DoxyCode}
+ sudo raspi-\/config 
+\begin{DoxyCode}
+then selecting
+\end{DoxyCode}
+ 5 Interfacing Options 
+\begin{DoxyCode}
+followed by selecting
+\end{DoxyCode}
+ P6 Serial 
+\begin{DoxyCode}
+and then when asked <i>"Would you like a login shell to be accessible over serial?"</i>, select
+\end{DoxyCode}
+ No 
+\begin{DoxyCode}
+but when asked <i>"Would you like the serial port hardware to be enabled?"</i>, select
+\end{DoxyCode}
+ Yes 
+\begin{DoxyCode}
+then
+\end{DoxyCode}
+ OK 
+\begin{DoxyCode}
+<br><br>
+**Note: With this you set up UART communications on `ttyS0`. If you want it on `ttyAMA0`, continue with the
+       following steps.**
+<br> 
+For enabling ttyAMA0, we also need to manually change the settings, so edit the kernel command line with
+\end{DoxyCode}
+ sudo nano /boot/cmdline.txt 
+\begin{DoxyCode}
+, find the console entry that refers to the serial0 device, and remove it, including the baud rate setting.
+       It will look something like
+\end{DoxyCode}
+ console=serial0,115200 
+\begin{DoxyCode}
+**Note: This file must only contain 1 line, do not split the line when editing, and do not try to add
+       comments to the file. Make sure the rest of the line remains the same, as errors in this configuration can stop
+       the Raspberry Pi from booting.**
+<br>
+We also need to disable Bluetooth and restore ttyAMA0 to GPIOs 14 and 15, by typing
+\end{DoxyCode}
+ sudo systemctl disable hciuart 
+\begin{DoxyCode}
+then navigating to
+\end{DoxyCode}
+ sudo nano /boot/config.txt 
+\begin{DoxyCode}
+and adding the following to the end
+\end{DoxyCode}
+ dtoverlay=disable-\/bt 
+\begin{DoxyCode}
+<br><br>
+In some cases it might be necessary to disable the services running on these ports, since we are not using
+       the serial ports for console, by typing:
+\end{DoxyCode}
+ sudo systemctl stop \href{mailto:serial-getty@ttyAMA0.service}{\tt serial-\/getty@tty\+A\+M\+A0.\+service} sudo systemctl disable \href{mailto:serial-getty@ttyAMA0.service}{\tt serial-\/getty@tty\+A\+M\+A0.\+service} 
+\begin{DoxyCode}
+and/or
+\end{DoxyCode}
+ sudo systemctl stop \href{mailto:serial-getty@ttyS0.service}{\tt serial-\/getty@tty\+S0.\+service} sudo systemctl disable \href{mailto:serial-getty@ttyS0.service}{\tt serial-\/getty@tty\+S0.\+service} 
+\begin{DoxyCode}
+<br><br>
+You can make sure it worked by typing
+\end{DoxyCode}
+ dmesg $\vert$ grep tty 
+\begin{DoxyCode}
+and if you don't see 
+\end{DoxyCode}
+ console \mbox{[}tty\+A\+M\+A0\mbox{]} enabled 
+\begin{DoxyCode}
+or
+\end{DoxyCode}
+ console \mbox{[}tty\+S0\mbox{]} enabled 
+\begin{DoxyCode}
+but still see both ttyS0 and ttyAMA0 listed as serials;
+<br>
+OR after typing
+\end{DoxyCode}
+ ls -\/l /dev 
+\begin{DoxyCode}
+, at the entries for ttyAMA0 and ttyS0 you don't see a `serial0 ->` or `serial1 ->`, the operation has been
+       successful.
+<br>
+**Note** : as with any significant change, reboot your Pi for changes to apply by typing
+\end{DoxyCode}
+ sudo reboot 
+\begin{DoxyCode}
+### Building the project
+Once the UART communication has been enabled on the PI, the project needs to be built to be ran. This can
+       be done by navigating into the root folder of the project repository, and running the `buildBeeSafe.sh`
+       script.
+<br>
+**Note** : If you want to test the project, uncomment the line that runs the tests in the build script.
+<br>
+It navigates into the build directory, runs CMake, then creates executables of the program by running make.
+       Running CTest runs the executables of the tests to see if the code implementation is correct and it passes
+       the specified tests.
+<br>
+
+### Bootloading
+As this hardware requires the project to automatically run on the hardware (minimising the technical
+       knowledge required by parents to set up), the build and run process is automated by the bootloader script that is
+       included in the root folder of the project. This following section explains how to set up bootloading on a
+       Raspberry Pi, specifically for this project. If you wish to understand the HOW and WHY behind the script,
+       please refer back to the chapters above.
+
+#### Creating a bootloader
+To create the bootloader, there are a number of short steps to be taken that ensure that the service can
+       run upon the detection of a network. This was designed with the fact that the device would need to be set up
+       at home by the parent, to configure the home location/safe zone.
+<br>
+* First, create your script, and compile it with a compiler of your choice.
+* Then create a service for it by typing
+\end{DoxyCode}
+ sudo systemctl edit --force --full yourservicename.\+service 
+\begin{DoxyCode}
+* 
+Then create a service file for it by writing the following code:
+\end{DoxyCode}
+ \mbox{[}Unit\mbox{]} Description=My Systemd Test Service Wants=network-\/online.\+target After=network-\/online.\+target
+
+\mbox{[}Service\mbox{]} Type=simple User=pi Working\+Directory=/home/pi Exec\+Start=/home/pi/runname
+
+\mbox{[}Install\mbox{]} Wanted\+By=multi-\/user.\+target 
+\begin{DoxyCode}
+* Once that's saved, ensure your service is in place
+\end{DoxyCode}
+ systemctl status yourservicename.\+service 
+\begin{DoxyCode}
+* Then enable and start your service
+\end{DoxyCode}
+ sudo systemctl enable yourservicename.\+service sudo systemctl start yourservicename.\+service 
+\begin{DoxyCode}
+* To ensure all the changes are saved, type
+\end{DoxyCode}
+ sudo systemctl reboot 
+\begin{DoxyCode}
+* If you need to edit your service file, type
+\end{DoxyCode}
+ sudo systemctl edit --full yourservicename.\+service 
+\begin{DoxyCode}
+* and make sure you restart the service for changes to apply
+\end{DoxyCode}
+ sudo systemctl restart yourservicename.\+service ```
+
+\paragraph*{The bootloader script}
+
+To run the project via bootloader, follow the above guide. The script you should create is the run\+Bee\+Safe.\+sh file in the root repository of this project. If you clone the project from github, make sure you copy the script to the root home folder of the Pi user. After having set up the bootloader including the script name upon setup, the program will run every time the Pi is powered up and it detects internet connection. 

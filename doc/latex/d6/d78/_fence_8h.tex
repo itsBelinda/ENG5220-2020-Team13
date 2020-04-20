@@ -1,0 +1,121 @@
+\hypertarget{_fence_8h}{}\section{software/\+Bee\+Safe\+P\+I/src/geo/\+Fence.h File Reference}
+\label{_fence_8h}\index{software/\+Bee\+Safe\+P\+I/src/geo/\+Fence.\+h@{software/\+Bee\+Safe\+P\+I/src/geo/\+Fence.\+h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$cpprest/json.\+h$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+Include dependency graph for Fence.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/dec/_fence_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/da7/_fence_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_fence}{Fence}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{class_fence}{Fence} parent class providing generic functionality for handling fences. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_fence_8h_a0bf10e901f60610c8a47c143051deea4}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+N\+A\+ME}~\char`\"{}Name\char`\"{}
+\item 
+\#define \hyperlink{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+E\+F\+I\+N\+I\+T\+I\+ON}~\char`\"{}Definition\char`\"{}
+\item 
+\#define \hyperlink{_fence_8h_a4b2bc1fec134d7881cd286c8b6741752}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+S\+A\+FE}~\char`\"{}Safe\char`\"{}
+\item 
+\#define \hyperlink{_fence_8h_a94c5efe13ae824c55eebaa9e8a76dd57}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+W\+E\+EK}~\char`\"{}Week\char`\"{}
+\item 
+\#define \hyperlink{_fence_8h_a189c5645c45c0d8943719ee620afa4b2}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+A\+YS}~\{\char`\"{}Sunday\char`\"{}, \char`\"{}Monday\char`\"{}, \char`\"{}Tuesday\char`\"{}, \char`\"{}Wednesday\char`\"{}, \char`\"{}Thursday\char`\"{}, \char`\"{}Friday\char`\"{}, \char`\"{}Saturday\char`\"{}\}
+\item 
+\#define \hyperlink{_fence_8h_a7993b3aacbec44628f2d9ab7df6ff5b9}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+R\+OM}~\char`\"{}From\char`\"{}
+\item 
+\#define \hyperlink{_fence_8h_a5919ead6ef79432d59a9637a993cec9c}{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+TO}~\char`\"{}To\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_fence_8h_a189c5645c45c0d8943719ee620afa4b2}\label{_fence_8h_a189c5645c45c0d8943719ee620afa4b2}} 
+\index{Fence.\+h@{Fence.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+A\+YS@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+A\+YS}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+A\+YS@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+A\+YS}!Fence.\+h@{Fence.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+A\+YS}{JSON\_KEY\_FENCE\_DAYS}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+A\+YS~\{\char`\"{}Sunday\char`\"{}, \char`\"{}Monday\char`\"{}, \char`\"{}Tuesday\char`\"{}, \char`\"{}Wednesday\char`\"{}, \char`\"{}Thursday\char`\"{}, \char`\"{}Friday\char`\"{}, \char`\"{}Saturday\char`\"{}\}}
+
+
+
+Definition at line 45 of file Fence.\+h.
+
+\mbox{\Hypertarget{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}\label{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}} 
+\index{Fence.\+h@{Fence.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+E\+F\+I\+N\+I\+T\+I\+ON@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+E\+F\+I\+N\+I\+T\+I\+ON}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+E\+F\+I\+N\+I\+T\+I\+ON@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+E\+F\+I\+N\+I\+T\+I\+ON}!Fence.\+h@{Fence.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+E\+F\+I\+N\+I\+T\+I\+ON}{JSON\_KEY\_FENCE\_DEFINITION}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+D\+E\+F\+I\+N\+I\+T\+I\+ON~\char`\"{}Definition\char`\"{}}
+
+
+
+Definition at line 42 of file Fence.\+h.
+
+\mbox{\Hypertarget{_fence_8h_a0bf10e901f60610c8a47c143051deea4}\label{_fence_8h_a0bf10e901f60610c8a47c143051deea4}} 
+\index{Fence.\+h@{Fence.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+N\+A\+ME@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+N\+A\+ME}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+N\+A\+ME@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+N\+A\+ME}!Fence.\+h@{Fence.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+N\+A\+ME}{JSON\_KEY\_FENCE\_NAME}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+N\+A\+ME~\char`\"{}Name\char`\"{}}
+
+
+
+Definition at line 41 of file Fence.\+h.
+
+\mbox{\Hypertarget{_fence_8h_a4b2bc1fec134d7881cd286c8b6741752}\label{_fence_8h_a4b2bc1fec134d7881cd286c8b6741752}} 
+\index{Fence.\+h@{Fence.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+S\+A\+FE@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+S\+A\+FE}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+S\+A\+FE@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+S\+A\+FE}!Fence.\+h@{Fence.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+S\+A\+FE}{JSON\_KEY\_FENCE\_SAFE}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+S\+A\+FE~\char`\"{}Safe\char`\"{}}
+
+
+
+Definition at line 43 of file Fence.\+h.
+
+\mbox{\Hypertarget{_fence_8h_a7993b3aacbec44628f2d9ab7df6ff5b9}\label{_fence_8h_a7993b3aacbec44628f2d9ab7df6ff5b9}} 
+\index{Fence.\+h@{Fence.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+R\+OM@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+R\+OM}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+R\+OM@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+R\+OM}!Fence.\+h@{Fence.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+R\+OM}{JSON\_KEY\_FENCE\_TIME\_FROM}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+R\+OM~\char`\"{}From\char`\"{}}
+
+
+
+Definition at line 46 of file Fence.\+h.
+
+\mbox{\Hypertarget{_fence_8h_a5919ead6ef79432d59a9637a993cec9c}\label{_fence_8h_a5919ead6ef79432d59a9637a993cec9c}} 
+\index{Fence.\+h@{Fence.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+TO@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+TO}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+TO@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+TO}!Fence.\+h@{Fence.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+TO}{JSON\_KEY\_FENCE\_TIME\_TO}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+T\+I\+M\+E\+\_\+\+TO~\char`\"{}To\char`\"{}}
+
+
+
+Definition at line 47 of file Fence.\+h.
+
+\mbox{\Hypertarget{_fence_8h_a94c5efe13ae824c55eebaa9e8a76dd57}\label{_fence_8h_a94c5efe13ae824c55eebaa9e8a76dd57}} 
+\index{Fence.\+h@{Fence.\+h}!J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+W\+E\+EK@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+W\+E\+EK}}
+\index{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+W\+E\+EK@{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+W\+E\+EK}!Fence.\+h@{Fence.\+h}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+W\+E\+EK}{JSON\_KEY\_FENCE\_WEEK}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+K\+E\+Y\+\_\+\+F\+E\+N\+C\+E\+\_\+\+W\+E\+EK~\char`\"{}Week\char`\"{}}
+
+
+
+Definition at line 44 of file Fence.\+h.
+

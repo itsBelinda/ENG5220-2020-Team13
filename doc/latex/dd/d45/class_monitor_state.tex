@@ -1,0 +1,260 @@
+\hypertarget{class_monitor_state}{}\section{Monitor\+State Class Reference}
+\label{class_monitor_state}\index{Monitor\+State@{Monitor\+State}}
+
+
+The parent monitor state class.  
+
+
+
+
+{\ttfamily \#include $<$Monitor\+State.\+h$>$}
+
+
+
+Inheritance diagram for Monitor\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{d2/de4/class_monitor_state__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Monitor\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{da/dc4/class_monitor_state__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_monitor_state_ace027ab9e5703ac4e4b808eeebc3c961}{Monitor\+State} (const char $\ast$\hyperlink{class_monitor_state_aaeef0ae307bb9cfcbb4fcb08c115fb0f}{state\+Name}, \hyperlink{class_comms}{Comms} $\ast$\hyperlink{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}{comms}, \hyperlink{class_account}{Account} $\ast$\hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account})
+\item 
+virtual \hyperlink{class_monitor_state_a8dc9d7a46aa3d0190ec65b0d56167d3e}{$\sim$\+Monitor\+State} ()
+\item 
+const char $\ast$const \hyperlink{class_monitor_state_acb6d3a4de174058cb5b167fc04929ddb}{get\+State\+Name} ()
+\item 
+virtual \hyperlink{class_monitor_state}{Monitor\+State} $\ast$ \hyperlink{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}{handle\+Lat\+Lng} (std\+::pair$<$ double, double $>$ \&lat\+Lng)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_fence}{Fence} $\ast$ \hyperlink{class_monitor_state_a332c5f42bf46cd217e36f300e5279766}{get\+Crossed\+Fence} (std\+::pair$<$ double, double $>$ \&lat\+Lng)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{class_monitor_state_aaeef0ae307bb9cfcbb4fcb08c115fb0f}{state\+Name}
+\item 
+\hyperlink{class_comms}{Comms} $\ast$ \hyperlink{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}{comms}
+\item 
+\hyperlink{class_account}{Account} $\ast$ \hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The parent monitor state class. 
+
+The parent class to \hyperlink{class_active_monitor_state}{Active\+Monitor\+State} and \hyperlink{class_passive_monitor_state}{Passive\+Monitor\+State}. It provides generic functionality by defining how to handle when the device crosses a fence boundary.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 32 of file Monitor\+State.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_monitor_state_ace027ab9e5703ac4e4b808eeebc3c961}\label{class_monitor_state_ace027ab9e5703ac4e4b808eeebc3c961}} 
+\index{Monitor\+State@{Monitor\+State}!Monitor\+State@{Monitor\+State}}
+\index{Monitor\+State@{Monitor\+State}!Monitor\+State@{Monitor\+State}}
+\subsubsection{\texorpdfstring{Monitor\+State()}{MonitorState()}}
+{\footnotesize\ttfamily Monitor\+State\+::\+Monitor\+State (\begin{DoxyParamCaption}\item[{const char $\ast$}]{state\+Name,  }\item[{\hyperlink{class_comms}{Comms} $\ast$}]{comms,  }\item[{\hyperlink{class_account}{Account} $\ast$}]{account }\end{DoxyParamCaption})}
+
+Constructor explicitly initialises the \hyperlink{class_monitor_state}{Monitor\+State} base class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comms} & The communications interface used to obtain additional information or send messages. \\
+\hline
+{\em account} & The device account instance that is being monitored. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 32 of file Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+33 \{
+34     this->\hyperlink{class_monitor_state_aaeef0ae307bb9cfcbb4fcb08c115fb0f}{stateName} = \hyperlink{class_monitor_state_aaeef0ae307bb9cfcbb4fcb08c115fb0f}{stateName};
+35     this->comms = \hyperlink{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}{comms};
+36     this->account = \hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account};
+37 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d45/class_monitor_state_ace027ab9e5703ac4e4b808eeebc3c961_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_monitor_state_a8dc9d7a46aa3d0190ec65b0d56167d3e}\label{class_monitor_state_a8dc9d7a46aa3d0190ec65b0d56167d3e}} 
+\index{Monitor\+State@{Monitor\+State}!````~Monitor\+State@{$\sim$\+Monitor\+State}}
+\index{````~Monitor\+State@{$\sim$\+Monitor\+State}!Monitor\+State@{Monitor\+State}}
+\subsubsection{\texorpdfstring{$\sim$\+Monitor\+State()}{~MonitorState()}}
+{\footnotesize\ttfamily Monitor\+State\+::$\sim$\+Monitor\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d45/class_monitor_state_a8dc9d7a46aa3d0190ec65b0d56167d3e_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_monitor_state_a332c5f42bf46cd217e36f300e5279766}\label{class_monitor_state_a332c5f42bf46cd217e36f300e5279766}} 
+\index{Monitor\+State@{Monitor\+State}!get\+Crossed\+Fence@{get\+Crossed\+Fence}}
+\index{get\+Crossed\+Fence@{get\+Crossed\+Fence}!Monitor\+State@{Monitor\+State}}
+\subsubsection{\texorpdfstring{get\+Crossed\+Fence()}{getCrossedFence()}}
+{\footnotesize\ttfamily \hyperlink{class_fence}{Fence} $\ast$ Monitor\+State\+::get\+Crossed\+Fence (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 46 of file Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+47 \{
+48     std::vector<Fence *> vectorFences = \hyperlink{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}{account}->\hyperlink{class_account_a5117acc0c4ef7be21c5339bd9ae84e40}{getFences}();
+49 
+50     \textcolor{comment}{// If there are no fences, then return nullptr i.e. no fence to be outside of.}
+51     \textcolor{keywordflow}{if} (vectorFences.empty()) \{
+52         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+53     \}
+54 
+55     \textcolor{comment}{// Iterate the fences within the account class to determine if the device is inside.}
+56     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} &&fence : vectorFences) \{
+57         \textcolor{keywordflow}{if} (!fence->isInside(latLng)) \{
+58             \textcolor{keywordflow}{return} fence;
+59         \}
+60     \}
+61 
+62     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+63 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{dd/d45/class_monitor_state_a332c5f42bf46cd217e36f300e5279766_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d45/class_monitor_state_a332c5f42bf46cd217e36f300e5279766_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_monitor_state_acb6d3a4de174058cb5b167fc04929ddb}\label{class_monitor_state_acb6d3a4de174058cb5b167fc04929ddb}} 
+\index{Monitor\+State@{Monitor\+State}!get\+State\+Name@{get\+State\+Name}}
+\index{get\+State\+Name@{get\+State\+Name}!Monitor\+State@{Monitor\+State}}
+\subsubsection{\texorpdfstring{get\+State\+Name()}{getStateName()}}
+{\footnotesize\ttfamily const char $\ast$const Monitor\+State\+::get\+State\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file Monitor\+State.\+cpp.
+
+
+\begin{DoxyCode}
+42 \{
+43     \textcolor{keywordflow}{return} \hyperlink{class_monitor_state_aaeef0ae307bb9cfcbb4fcb08c115fb0f}{stateName};
+44 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d45/class_monitor_state_acb6d3a4de174058cb5b167fc04929ddb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}\label{class_monitor_state_a8c8b871e3e8308e11f35905dd8741878}} 
+\index{Monitor\+State@{Monitor\+State}!handle\+Lat\+Lng@{handle\+Lat\+Lng}}
+\index{handle\+Lat\+Lng@{handle\+Lat\+Lng}!Monitor\+State@{Monitor\+State}}
+\subsubsection{\texorpdfstring{handle\+Lat\+Lng()}{handleLatLng()}}
+{\footnotesize\ttfamily virtual \hyperlink{class_monitor_state}{Monitor\+State}$\ast$ Monitor\+State\+::handle\+Lat\+Lng (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{lat\+Lng }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{class_active_monitor_state_a0eb7622ad3aa4d372d90589838cb50a9}{Active\+Monitor\+State}, and \hyperlink{class_passive_monitor_state_a173a7c8a4d0b8ecea5928e0c90dec26b}{Passive\+Monitor\+State}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d45/class_monitor_state_a8c8b871e3e8308e11f35905dd8741878_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}\label{class_monitor_state_a41128d4942ec0d5b107c63d1d95af811}} 
+\index{Monitor\+State@{Monitor\+State}!account@{account}}
+\index{account@{account}!Monitor\+State@{Monitor\+State}}
+\subsubsection{\texorpdfstring{account}{account}}
+{\footnotesize\ttfamily \hyperlink{class_account}{Account}$\ast$ Monitor\+State\+::account\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 55 of file Monitor\+State.\+h.
+
+\mbox{\Hypertarget{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}\label{class_monitor_state_a41914e9963c67ef2d17774f04bad3518}} 
+\index{Monitor\+State@{Monitor\+State}!comms@{comms}}
+\index{comms@{comms}!Monitor\+State@{Monitor\+State}}
+\subsubsection{\texorpdfstring{comms}{comms}}
+{\footnotesize\ttfamily \hyperlink{class_comms}{Comms}$\ast$ Monitor\+State\+::comms\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 54 of file Monitor\+State.\+h.
+
+\mbox{\Hypertarget{class_monitor_state_aaeef0ae307bb9cfcbb4fcb08c115fb0f}\label{class_monitor_state_aaeef0ae307bb9cfcbb4fcb08c115fb0f}} 
+\index{Monitor\+State@{Monitor\+State}!state\+Name@{state\+Name}}
+\index{state\+Name@{state\+Name}!Monitor\+State@{Monitor\+State}}
+\subsubsection{\texorpdfstring{state\+Name}{stateName}}
+{\footnotesize\ttfamily const char$\ast$ Monitor\+State\+::state\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 51 of file Monitor\+State.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/monitor/states/\hyperlink{_monitor_state_8h}{Monitor\+State.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/monitor/states/\hyperlink{_monitor_state_8cpp}{Monitor\+State.\+cpp}\end{DoxyCompactItemize}

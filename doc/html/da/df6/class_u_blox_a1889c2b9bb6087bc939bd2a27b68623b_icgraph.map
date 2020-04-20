@@ -1,0 +1,9 @@
+<map id="UBlox::hasRegistered" name="UBlox::hasRegistered">
+<area shape="rect" id="node2" href="$d8/dcc/class_comms.html#ae1fb7ac11bd07f21134335aec55bd833" title="Comms::hasRegistered" alt="" coords="219,5,379,32"/>
+<area shape="rect" id="node3" href="$da/df6/class_u_blox.html#a34c2f507ff3bbd21b9aea788a015527a" title="UBlox::init" alt="" coords="499,56,582,83"/>
+<area shape="rect" id="node7" href="$da/df6/class_u_blox.html#a2e816e864ebf43743b3f6187e20c2b1f" title="UBlox::startAutoRegistration" alt="" coords="204,107,393,133"/>
+<area shape="rect" id="node4" href="$d8/dcc/class_comms.html#aa0519d3ed2d5bd6aad60101080ac2de7" title="Comms::init" alt="" coords="688,56,781,83"/>
+<area shape="rect" id="node5" href="$d5/d75/class_bee_safe_manager.html#a28306d7ccf7136a6086d666f4ebb6566" title="BeeSafeManager::initComms" alt="" coords="829,56,1023,83"/>
+<area shape="rect" id="node6" href="$d5/d75/class_bee_safe_manager.html#a2f16b09c454e21c887d14ac5483973cf" title="BeeSafeManager::init" alt="" coords="1071,56,1217,83"/>
+<area shape="rect" id="node8" href="$d8/dcc/class_comms.html#a9563254514d2f64c0427be2aeaba26d8" title="Comms::startAutoRegistration" alt="" coords="441,107,640,133"/>
+</map>

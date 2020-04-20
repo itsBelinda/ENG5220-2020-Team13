@@ -1,0 +1,3 @@
+[submodule "doc/wiki"]
+	path = doc/wiki
+	url = http://github.com/itsBelinda/ENG5220-2020-Team13.wiki.git

@@ -1,0 +1,37 @@
+This page highlights the means by which the device accounts are managed i.\+e. the device/\+Account... files.
+
+\subsection*{\hyperlink{class_account}{Account}}
+
+In order for the device to be able to determine whether or not its within a fence, local representations of the defined virtual fences (alongside their attributes) must be present. Moreover, in order for a parent / guardian to be notified in the event the aforementioned fences are breached, contact details too must be stored locally.
+
+The \hyperlink{_account_8h}{Account.\+h} / .cpp files, consequently, encapsulates the said copies of fences and contact details, permitting the \hyperlink{_monitor_8h}{Monitor.\+h} / .cpp class (thread) to invoke / obtain required information, namely\+:
+
+
+\begin{DoxyItemize}
+\item Obtaining the list (vector) of fences in order to invoke the appropriate functions to determine whether or not the latitude and longitude is within that fence.
+\item Obtaining the contact details for a parent / guardian in the event a fence is breached.
+\end{DoxyItemize}
+
+\subsubsection*{Instantiation}
+
+{\itshape Due to recent global events, code pertaining to the definition of the fences / accounts via the web A\+PI was not achieved. Thus, a status account definition is provided -\/ should be redefined / removed from code. However, ideally, the user would utilise \href{https://oauth.net/2/device-flow/}{\tt O\+Auth 2.\+0 device flow} in order to grant the Bee\+Safe device an A\+PI token to access J\+S\+ON web A\+PI and obtain the account definitions in a secure manner; the u-\/\+Blox device is capable of supporting secure connections via http(s) using S\+SL. This would be performed during the initial setup phase, analogous to activating a smart tv or any other input-\/limited device.}
+
+
+\begin{DoxyCode}
+\hyperlink{class_account_a14f13a7a2e1d69d4b78c804603d69e1b}{Account::Account}(std::string &name, std::vector<Contact*>& contacts,
+                 std::vector<Fence*>& fences)
+\{
+    this->name = \hyperlink{class_account_a586e2c3461c5231eacf7c96851024a75}{name};
+    this->contacts = \hyperlink{class_account_aa4f77abd7c44f2a70b0cff8088e3491f}{contacts};
+    this->fences = \hyperlink{class_account_ad92a9e8008371f34da06cd416a716fa1}{fences};
+\}
+\end{DoxyCode}
+
+
+Upon start-\/up, the device instantiates the required components (comms/ and monitor/), however, the \hyperlink{class_account}{Account} need not be present for the device to successfully initialise. Instead, the device does not start the monitor thread, but attempts to download the required J\+S\+ON account definition ({\itshape to be implemented}). Alternatively, if a local copy of the account is present -\/ presuming all prior components initialise successfully -\/ the device can start the monitor thread.
+
+\subsubsection*{Builder}
+
+Due to various uncertainties surrounding the environment in which the code operates, namely the state of the serialised Account.\+json file, the \hyperlink{_account_builder_8h}{Account\+Builder.\+h} / .cpp utilises a \href{https://sourcemaking.com/design_patterns/builder}{\tt builder design pattern} -\/ an all or nothing approach. If, for whatever reason, the file is invalid / corrupt, it will not be serialised into an \hyperlink{class_account}{Account} instance. In which case, the device {\itshape would} follow the most appropriate procedure in attempting to re-\/download the account definition from the web A\+PI.
+
+The \hyperlink{class_account}{Account}, \hyperlink{class_contact}{Contact}, \hyperlink{class_fence}{Fence}, \hyperlink{class_poly_fence}{Poly\+Fence} and \hyperlink{class_round_fence}{Round\+Fence} instances are all serialised according to a hierarchical structure within the Account.\+json file; utilised due to it providing a minimalistic file size while whilst being supported by the H\+T\+T\+P(s) protocols. However, each instance is responsible for serialising a J\+S\+ON element, which in turn is appended to an object / array element, in turn composing the Account.\+json file. Serialisation is achieved by employing \href{https://github.com/microsoft/cpprestsdk}{\tt Microsoft\textquotesingle{}s open-\/source cpprestsdk library.} due to providing capabilities for asynchronous invocation for web A\+PI\textquotesingle{}s, J\+S\+ON serialisation, task management, and more. 

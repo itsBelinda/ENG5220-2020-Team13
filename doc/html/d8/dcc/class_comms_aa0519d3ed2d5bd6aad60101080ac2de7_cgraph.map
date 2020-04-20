@@ -1,0 +1,18 @@
+<map id="Comms::init" name="Comms::init">
+<area shape="rect" id="node2" href="$da/df6/class_u_blox.html#a34c2f507ff3bbd21b9aea788a015527a" title="UBlox::init" alt="" coords="147,183,229,209"/>
+<area shape="rect" id="node3" href="$d9/d88/class_u_art.html#a51adaa81c08d92599768c0303e5abc94" title="UArt::init" alt="" coords="335,5,409,32"/>
+<area shape="rect" id="node4" href="$da/df6/class_u_blox.html#a1889c2b9bb6087bc939bd2a27b68623b" title="UBlox::hasRegistered" alt="" coords="539,360,689,387"/>
+<area shape="rect" id="node12" href="$da/df6/class_u_blox.html#a2e816e864ebf43743b3f6187e20c2b1f" title="UBlox::startAutoRegistration" alt="" coords="277,284,467,311"/>
+<area shape="rect" id="node13" href="$da/df6/class_u_blox.html#a4f5a31b4ddda664b255ce3f63e9ffac7" title="UBlox::hasGPRS" alt="" coords="551,411,677,437"/>
+<area shape="rect" id="node14" href="$da/df6/class_u_blox.html#ae49b51a602a327b5eff5b04d2ccaec20" title="UBlox::hasPSD" alt="" coords="557,107,671,133"/>
+<area shape="rect" id="node15" href="$da/df6/class_u_blox.html#ac250bd4aea14e09b3a2595c2b8eda18a" title="UBlox::connectPSD" alt="" coords="544,56,684,83"/>
+<area shape="rect" id="node16" href="$da/df6/class_u_blox.html#a12c1042d3bcb503b025927fd53d54243" title="UBlox::setSendMessageMode" alt="" coords="515,157,713,184"/>
+<area shape="rect" id="node17" href="$da/df6/class_u_blox.html#aabed44fd41e16c9d1a8daba80f3bef06" title="UBlox::setLocationScanMode" alt="" coords="517,208,711,235"/>
+<area shape="rect" id="node5" href="$da/df6/class_u_blox.html#af604d1897a66192bf1c2a11997f2634d" title="UBlox::writeCommand" alt="" coords="778,201,933,228"/>
+<area shape="rect" id="node7" href="$da/df6/class_u_blox.html#ab4a7ab4b8922d91e23f273ae160c1bed" title="UBlox::readRawResponse" alt="" coords="1001,227,1178,253"/>
+<area shape="rect" id="node10" href="$da/df6/class_u_blox.html#a4eaca5b1b1c4b5b6f6164b220dd43e0b" title="UBlox::readStatusResponse" alt="" coords="761,252,949,279"/>
+<area shape="rect" id="node6" href="$d9/d88/class_u_art.html#aad1ddb133fe430a92527584eec2e674f" title="UArt::writeNext" alt="" coords="1033,176,1146,203"/>
+<area shape="rect" id="node8" href="$da/df6/class_u_blox.html#afc846fbcb1cbd49057b5ce39cd0e0dd6" title="UBlox::clearResponseBuff" alt="" coords="1229,201,1407,228"/>
+<area shape="rect" id="node9" href="$d9/d88/class_u_art.html#aa4818ca67447e251680b4b8d28c8bba5" title="UArt::readNext" alt="" coords="1263,252,1373,279"/>
+<area shape="rect" id="node11" href="$da/df6/class_u_blox.html#aab6ad68e4c7522278f19ceab1dc2a58d" title="UBlox::checkResponseBuff\lStatus" alt="" coords="997,278,1181,319"/>
+</map>

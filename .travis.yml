@@ -1,0 +1,39 @@
+language: cpp
+dist: bionic
+sudo: false
+
+compiler:
+# with CLang everything work fine, but gcov throws and out of memory error and doesn't upload to Codecov - might fix later if there's time
+#  - clang
+  - gcc
+
+os: linux
+
+addons:
+  apt:
+    packages: lcov
+
+install:
+  - sudo apt-get update
+  - sudo apt-get install libcpprest-dev
+
+before_script:
+  - cd software/BeeSafePI/build
+  - cmake ..
+
+script:
+  - make
+  - cd src/
+# if the final project is ran, TravisCI does not compile due to the program
+# relying on hardware being connected
+#  - ./BeeSafePI
+  - cd ..
+  - ctest
+
+after_success:
+# Create lcov report
+- lcov --capture --directory . --output-file coverage.info
+- lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter system-files
+- lcov --list coverage.info # debug info
+# Uploading report to CodeCov
+- bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"

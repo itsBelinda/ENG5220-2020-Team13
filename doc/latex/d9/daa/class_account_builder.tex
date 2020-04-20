@@ -1,0 +1,792 @@
+\hypertarget{class_account_builder}{}\section{Account\+Builder Class Reference}
+\label{class_account_builder}\index{Account\+Builder@{Account\+Builder}}
+
+
+The \hyperlink{class_account_builder}{Account\+Builder} class creates and maintains \hyperlink{class_fence}{Fence}, \hyperlink{class_account}{Account} and \hyperlink{class_contact}{Contact} objects.  
+
+
+
+
+{\ttfamily \#include $<$Account\+Builder.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_account_builder_ae19ca737d825f1ecc99e8406a19a0699}{Account\+Builder} (utility\+::stringstream\+\_\+t \&stream, std\+::error\+\_\+code \&error\+Code)
+\item 
+\hyperlink{class_account}{Account} $\ast$ \hyperlink{class_account_builder_af44cc9897467096f65d3bd768fd01300}{build} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_account_builder_a6161184b277a8055ccab47411b14d195}{has\+Account\+Attributes} (const web\+::json\+::value \&json\+Account\+Element)
+\item 
+bool \hyperlink{class_account_builder_a01b1fa1ec8d5eb397a6e61725d67f5a2}{has\+Contact\+Attributes} (const web\+::json\+::value \&json\+Element)
+\item 
+bool \hyperlink{class_account_builder_a6d19e707adebbf868e26d66f9028a47d}{has\+Fence\+Attributes} (const web\+::json\+::value \&json\+Fence\+Element)
+\item 
+bool \hyperlink{class_account_builder_aea9045a135dac995cbf409b61c5850bf}{has\+Round\+Fence\+Attributes} (const web\+::json\+::value \&json\+Element)
+\item 
+bool \hyperlink{class_account_builder_a426cb519ae4c5f0594f0f1e41e9f5a73}{has\+Poly\+Fence\+Attributes} (const web\+::json\+::value \&json\+Element)
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{class_account_builder_aad3332b566e26b4b92215bf6500b26b6}{clear\+Vector} (std\+::vector$<$ T $>$ \&vector)
+\item 
+bool \hyperlink{class_account_builder_aa3af3cf2501508d76ee3f7140deeba80}{build\+Contacts} (const web\+::json\+::array \&json\+Contacts, std\+::vector$<$ \hyperlink{class_contact}{Contact} $\ast$$>$ \&contacts)
+\item 
+bool \hyperlink{class_account_builder_a1992add0c2ab404664d4cbae326c6ec7}{build\+Fences} (const web\+::json\+::array \&json\+Fences, std\+::vector$<$ \hyperlink{class_fence}{Fence} $\ast$$>$ \&fences)
+\item 
+\hyperlink{class_contact}{Contact} $\ast$ \hyperlink{class_account_builder_a3a3cc8d8beb8af6c0a9feb79e28adb59}{build\+Contact} (const web\+::json\+::value \&json\+Contact)
+\item 
+\hyperlink{class_fence}{Fence} $\ast$ \hyperlink{class_account_builder_ac5801a1130d7a1f84a66c45cfd6e0a8d}{build\+Fence} (const web\+::json\+::value \&json\+Fence)
+\item 
+std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ $>$ \hyperlink{class_account_builder_a19b2e3e2c3bbf986f51c0ec53b7dc2a4}{build\+Week\+Map} (const web\+::json\+::value \&week)
+\item 
+\hyperlink{class_round_fence}{Round\+Fence} $\ast$ \hyperlink{class_account_builder_a0223a0830ba9a0e707c5a2bd5d74ee50}{build\+Round\+Fence} (std\+::string \&name, bool safe, std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&week, const web\+::json\+::value \&json\+Round\+Fence)
+\item 
+\hyperlink{class_poly_fence}{Poly\+Fence} $\ast$ \hyperlink{class_account_builder_a9a93946d8ba8908f6bcfa6b793cc6277}{build\+Poly\+Fence} (std\+::string \&name, bool safe, std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&week, const web\+::json\+::value \&json\+Poly\+Fence)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+web\+::json\+::value \hyperlink{class_account_builder_a7fcd16decc7765ef0a5fbea02fa56877}{root}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_account_builder}{Account\+Builder} class creates and maintains \hyperlink{class_fence}{Fence}, \hyperlink{class_account}{Account} and \hyperlink{class_contact}{Contact} objects. 
+
+The \hyperlink{class_account_builder}{Account\+Builder} class is a utility, builder class creating \hyperlink{class_account}{Account}, different types of \hyperlink{class_fence}{Fence} and \hyperlink{class_contact}{Contact} C++ objects from J\+S\+ON file data from outside the immediate program. It parses the J\+S\+ON objects and populates the appropriate C++ objects in the relevant format. It also verifies the correctness of the information relating to each class.
+
+\begin{DoxyAuthor}{Author}
+Bee\+Safe Team, Team 13
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020/04/20
+\end{DoxyDate}
+\hyperlink{class_contact}{Contact}\+: \href{mailto:beesafe.uofg@gmail.com}{\tt beesafe.\+uofg@gmail.\+com}
+
+Licence\+: M\+IT 
+
+Definition at line 44 of file Account\+Builder.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_account_builder_ae19ca737d825f1ecc99e8406a19a0699}\label{class_account_builder_ae19ca737d825f1ecc99e8406a19a0699}} 
+\index{Account\+Builder@{Account\+Builder}!Account\+Builder@{Account\+Builder}}
+\index{Account\+Builder@{Account\+Builder}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{Account\+Builder()}{AccountBuilder()}}
+{\footnotesize\ttfamily Account\+Builder\+::\+Account\+Builder (\begin{DoxyParamCaption}\item[{utility\+::stringstream\+\_\+t \&}]{stream,  }\item[{std\+::error\+\_\+code \&}]{error\+Code }\end{DoxyParamCaption})}
+
+Initialise the device builder.
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & the stringstream used to parse data from \\
+\hline
+{\em error\+Code} & the error code in which any errors need to be returned \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+36 \{
+37     this->\hyperlink{class_account_builder_a7fcd16decc7765ef0a5fbea02fa56877}{root} = web::json::value::parse(stream, errorCode);
+38 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_account_builder_af44cc9897467096f65d3bd768fd01300}\label{class_account_builder_af44cc9897467096f65d3bd768fd01300}} 
+\index{Account\+Builder@{Account\+Builder}!build@{build}}
+\index{build@{build}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \hyperlink{class_account}{Account} $\ast$ Account\+Builder\+::build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Builds an instance of the \hyperlink{class_account}{Account} class.
+
+\begin{DoxyReturn}{Returns}
+an account object created 
+\end{DoxyReturn}
+
+
+Definition at line 45 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+46 \{
+47     \textcolor{comment}{// Check whether the element matches the device file.}
+48     \textcolor{keywordflow}{if} (!\hyperlink{class_account_builder_a6161184b277a8055ccab47411b14d195}{hasAccountAttributes}(\hyperlink{class_account_builder_a7fcd16decc7765ef0a5fbea02fa56877}{root})) \{
+49         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+50     \}
+51 
+52     \textcolor{comment}{// Get the name for the account.}
+53     std::string name = \hyperlink{class_account_builder_a7fcd16decc7765ef0a5fbea02fa56877}{root}.at(U(\hyperlink{_account_8h_ac2f820be22c4390a71ec34abe54694c5}{JSON\_KEY\_ACCOUNT\_NAME})).as\_string();
+54 
+55     \textcolor{comment}{// Create contacts for the device.}
+56     \textcolor{keyword}{const} web::json::array& jsonContacts = \hyperlink{class_account_builder_a7fcd16decc7765ef0a5fbea02fa56877}{root}.at(U(
+      \hyperlink{_account_8h_a9a5dc301a4b04c85ce3b865530cd6ca7}{JSON\_KEY\_ACCOUNT\_CONTACTS})).as\_array();
+57     std::vector<Contact*> contacts;
+58 
+59     \textcolor{comment}{// Parse the list of contacts, creating them in the process.}
+60     \textcolor{keywordflow}{if} (!\hyperlink{class_account_builder_aa3af3cf2501508d76ee3f7140deeba80}{buildContacts}(jsonContacts, contacts)) \{
+61         \hyperlink{class_account_builder_aad3332b566e26b4b92215bf6500b26b6}{clearVector}(contacts);
+62         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+63     \}
+64 
+65     \textcolor{comment}{// Create the fences for the device.}
+66     \textcolor{keyword}{const} web::json::array& jsonFences = \hyperlink{class_account_builder_a7fcd16decc7765ef0a5fbea02fa56877}{root}.at(U(\hyperlink{_account_8h_a83ba8a12dba5582a5a125d3ced877c6e}{JSON\_KEY\_ACCOUNT\_FENCES})).
+      as\_array();
+67     std::vector<Fence*> fences;
+68 
+69     \textcolor{comment}{// Parse the array of contacts creating them in the process.}
+70     \textcolor{keywordflow}{if} (!\hyperlink{class_account_builder_a1992add0c2ab404664d4cbae326c6ec7}{buildFences}(jsonFences, fences)) \{
+71         \hyperlink{class_account_builder_aad3332b566e26b4b92215bf6500b26b6}{clearVector}(contacts);
+72         \hyperlink{class_account_builder_aad3332b566e26b4b92215bf6500b26b6}{clearVector}(fences);
+73         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+74     \}
+75 
+76     \textcolor{comment}{// We have fuccessfully created an device instance.}
+77     \textcolor{keywordflow}{return} \textcolor{keyword}{new} \hyperlink{class_account}{Account}(name, contacts, fences);
+78 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_af44cc9897467096f65d3bd768fd01300_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_af44cc9897467096f65d3bd768fd01300_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_a3a3cc8d8beb8af6c0a9feb79e28adb59}\label{class_account_builder_a3a3cc8d8beb8af6c0a9feb79e28adb59}} 
+\index{Account\+Builder@{Account\+Builder}!build\+Contact@{build\+Contact}}
+\index{build\+Contact@{build\+Contact}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{build\+Contact()}{buildContact()}}
+{\footnotesize\ttfamily \hyperlink{class_contact}{Contact} $\ast$ Account\+Builder\+::build\+Contact (\begin{DoxyParamCaption}\item[{const web\+::json\+::value \&}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Builder method used to create an instance of a \hyperlink{class_contact}{Contact} based on J\+S\+ON element.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & the input data of the contact in J\+S\+ON format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: a new C++ \hyperlink{class_contact}{Contact} object with all the relevant parameters populated 
+\end{DoxyReturn}
+
+
+Definition at line 217 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+218 \{
+219     \textcolor{keywordflow}{return} \textcolor{keyword}{new} \hyperlink{class_contact}{Contact}(
+220             json.at(U(\hyperlink{_contact_8h_a18b1ad44af79fea17bfed22ff66f94f8}{JSON\_KEY\_CONTACT\_FORENAME})).as\_string(),
+221             json.at(U(\hyperlink{_contact_8h_a579318fe639c3cf3628817c4090be13e}{JSON\_KEY\_CONTACT\_SURNAME})).as\_string(),
+222             json.at(U(\hyperlink{_contact_8h_a97dc3d327e5283642c81bc7d6a572ced}{JSON\_KEY\_CONTACT\_NUMBER})).as\_string(),
+223             json.at(U(\hyperlink{_contact_8h_a90f2095b835454d47c72995503684937}{JSON\_KEY\_CONTACT\_KEY})).as\_string()
+224     );
+225 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a3a3cc8d8beb8af6c0a9feb79e28adb59_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_aa3af3cf2501508d76ee3f7140deeba80}\label{class_account_builder_aa3af3cf2501508d76ee3f7140deeba80}} 
+\index{Account\+Builder@{Account\+Builder}!build\+Contacts@{build\+Contacts}}
+\index{build\+Contacts@{build\+Contacts}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{build\+Contacts()}{buildContacts()}}
+{\footnotesize\ttfamily bool Account\+Builder\+::build\+Contacts (\begin{DoxyParamCaption}\item[{const web\+::json\+::array \&}]{json\+Contacts,  }\item[{std\+::vector$<$ \hyperlink{class_contact}{Contact} $\ast$$>$ \&}]{contacts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Builder method for creating a contact vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Contacts} & the contact input data in J\+S\+ON format \\
+\hline
+{\em contacts} & the contact vector that is to be populated with contact objects from the J\+S\+ON data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: a boolean value whether the operation succeeded and the object created 
+\end{DoxyReturn}
+
+
+Definition at line 171 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+172 \{
+173     \hyperlink{class_contact}{Contact}* contact = \textcolor{keyword}{nullptr};
+174     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}& element : jsonContacts) \{
+175         \textcolor{keywordflow}{if} (!\hyperlink{class_account_builder_a01b1fa1ec8d5eb397a6e61725d67f5a2}{hasContactAttributes}(element)) \{
+176             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+177         \}
+178         contact = \hyperlink{class_account_builder_a3a3cc8d8beb8af6c0a9feb79e28adb59}{buildContact}(element);
+179         \textcolor{keywordflow}{if} (contact == \textcolor{keyword}{nullptr}) \{
+180             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+181         \}
+182         contacts.push\_back(contact);
+183     \}
+184     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+185 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_aa3af3cf2501508d76ee3f7140deeba80_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_aa3af3cf2501508d76ee3f7140deeba80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_ac5801a1130d7a1f84a66c45cfd6e0a8d}\label{class_account_builder_ac5801a1130d7a1f84a66c45cfd6e0a8d}} 
+\index{Account\+Builder@{Account\+Builder}!build\+Fence@{build\+Fence}}
+\index{build\+Fence@{build\+Fence}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{build\+Fence()}{buildFence()}}
+{\footnotesize\ttfamily \hyperlink{class_fence}{Fence} $\ast$ Account\+Builder\+::build\+Fence (\begin{DoxyParamCaption}\item[{const web\+::json\+::value \&}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Builder method used to create an instance of a fence.
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & a json object containing all the data related to this fence object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a fence object that holds all the relevant values 
+\end{DoxyReturn}
+
+
+Definition at line 233 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+234 \{
+235 
+236     \textcolor{comment}{// Get and build general fence attributes.}
+237     std::string name = element.at(U(\hyperlink{_fence_8h_a0bf10e901f60610c8a47c143051deea4}{JSON\_KEY\_FENCE\_NAME})).as\_string();
+238     \textcolor{keywordtype}{bool} safe = element.at(U(\hyperlink{_fence_8h_a4b2bc1fec134d7881cd286c8b6741752}{JSON\_KEY\_FENCE\_SAFE})).as\_bool();
+239     \textcolor{keyword}{auto} map = \hyperlink{class_account_builder_a19b2e3e2c3bbf986f51c0ec53b7dc2a4}{buildWeekMap}(element.at(U(\hyperlink{_fence_8h_a94c5efe13ae824c55eebaa9e8a76dd57}{JSON\_KEY\_FENCE\_WEEK})));
+240     \textcolor{keyword}{const} web::json::value& fence = element.at(U(\hyperlink{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}{JSON\_KEY\_FENCE\_DEFINITION}));
+241 
+242     \textcolor{comment}{// Combine general fence attributes with fence specific attributes.}
+243     \textcolor{keywordflow}{if} (\hyperlink{class_account_builder_aea9045a135dac995cbf409b61c5850bf}{hasRoundFenceAttributes}(fence)) \{
+244         \textcolor{keywordflow}{return} \hyperlink{class_account_builder_a0223a0830ba9a0e707c5a2bd5d74ee50}{buildRoundFence}(name, safe, map, fence);
+245     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_account_builder_a426cb519ae4c5f0594f0f1e41e9f5a73}{hasPolyFenceAttributes}(fence)) \{
+246         \textcolor{keywordflow}{return} \hyperlink{class_account_builder_a9a93946d8ba8908f6bcfa6b793cc6277}{buildPolyFence}(name, safe, map, fence);
+247     \} \textcolor{keywordflow}{else} \{
+248         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+249     \}
+250 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_ac5801a1130d7a1f84a66c45cfd6e0a8d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_ac5801a1130d7a1f84a66c45cfd6e0a8d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_a1992add0c2ab404664d4cbae326c6ec7}\label{class_account_builder_a1992add0c2ab404664d4cbae326c6ec7}} 
+\index{Account\+Builder@{Account\+Builder}!build\+Fences@{build\+Fences}}
+\index{build\+Fences@{build\+Fences}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{build\+Fences()}{buildFences()}}
+{\footnotesize\ttfamily bool Account\+Builder\+::build\+Fences (\begin{DoxyParamCaption}\item[{const web\+::json\+::array \&}]{json\+Fences,  }\item[{std\+::vector$<$ \hyperlink{class_fence}{Fence} $\ast$$>$ \&}]{fences }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Builder method to create a fence vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Fences} & the fence input data in J\+S\+ON format \\
+\hline
+{\em fences} & The fence vector that is to be populated with the J\+S\+ON data fences \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: a boolean value whether the operation succeeded and the object created 
+\end{DoxyReturn}
+
+
+Definition at line 194 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+195 \{
+196     \hyperlink{class_fence}{Fence}* fence = \textcolor{keyword}{nullptr};
+197     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}& element : jsonFences) \{
+198         \textcolor{keywordflow}{if} (!\hyperlink{class_account_builder_a6d19e707adebbf868e26d66f9028a47d}{hasFenceAttributes}(element)) \{
+199             std::cout << element << std::endl;
+200             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+201         \}
+202         fence = \hyperlink{class_account_builder_ac5801a1130d7a1f84a66c45cfd6e0a8d}{buildFence}(element);
+203         \textcolor{keywordflow}{if} (fence == \textcolor{keyword}{nullptr}) \{
+204             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+205         \}
+206         fences.push\_back(fence);
+207     \}
+208     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+209 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a1992add0c2ab404664d4cbae326c6ec7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a1992add0c2ab404664d4cbae326c6ec7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_a9a93946d8ba8908f6bcfa6b793cc6277}\label{class_account_builder_a9a93946d8ba8908f6bcfa6b793cc6277}} 
+\index{Account\+Builder@{Account\+Builder}!build\+Poly\+Fence@{build\+Poly\+Fence}}
+\index{build\+Poly\+Fence@{build\+Poly\+Fence}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{build\+Poly\+Fence()}{buildPolyFence()}}
+{\footnotesize\ttfamily \hyperlink{class_poly_fence}{Poly\+Fence} $\ast$ Account\+Builder\+::build\+Poly\+Fence (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{bool}]{safe,  }\item[{std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&}]{week,  }\item[{const web\+::json\+::value \&}]{json\+Fence }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Creates an instance of a poly fence.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the fence \\
+\hline
+{\em safe} & whether the fence is safe or not \\
+\hline
+{\em week} & the times and dates on which this zone is safe or not \\
+\hline
+{\em json\+Fence} & the fence details in json format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{class_poly_fence}{Poly\+Fence} c++ object populated with the values necessary 
+\end{DoxyReturn}
+
+
+Definition at line 329 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+331 \{
+332 
+333     \textcolor{keyword}{const} web::json::array& jsonCoordinates = jsonFence.as\_array();
+334     std::vector<std::pair<double, double>> coordinates;
+335 
+336     \textcolor{comment}{// Loop through each of the coordinates, creating a vector from them.}
+337     std::pair<double, double> coordinate;
+338     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}& jsonCoordinate : jsonCoordinates) \{
+339         coordinate.first = jsonCoordinate.at(U(\hyperlink{_poly_fence_8h_a9a8bf08118a4bda10ed5efe8cf534024}{JSON\_KEY\_POLY\_FENCE\_LATITUDE})).
+      as\_double();
+340         coordinate.second = jsonCoordinate.at(U(\hyperlink{_poly_fence_8h_a7411c3395f017461cb1bf07687ee4ef3}{JSON\_KEY\_POLY\_FENCE\_LONGITUDE})
+      ).as\_double();
+341         coordinates.push\_back(coordinate);
+342     \}
+343 
+344     \textcolor{comment}{// Create an instance of the poly fence.}
+345     \textcolor{keywordflow}{return} \textcolor{keyword}{new} \hyperlink{class_poly_fence}{PolyFence}(name, safe, week, coordinates);
+346 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a9a93946d8ba8908f6bcfa6b793cc6277_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_a0223a0830ba9a0e707c5a2bd5d74ee50}\label{class_account_builder_a0223a0830ba9a0e707c5a2bd5d74ee50}} 
+\index{Account\+Builder@{Account\+Builder}!build\+Round\+Fence@{build\+Round\+Fence}}
+\index{build\+Round\+Fence@{build\+Round\+Fence}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{build\+Round\+Fence()}{buildRoundFence()}}
+{\footnotesize\ttfamily \hyperlink{class_round_fence}{Round\+Fence} $\ast$ Account\+Builder\+::build\+Round\+Fence (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{bool}]{safe,  }\item[{std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$$>$$>$ \&}]{week,  }\item[{const web\+::json\+::value \&}]{json\+Round\+Fence }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Create a new instance of round fence.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the fence \\
+\hline
+{\em safe} & whether the fence is safe or not \\
+\hline
+{\em week} & the times and dates on which this zone is safe or not \\
+\hline
+{\em json\+Fence} & the fence details in json format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{class_round_fence}{Round\+Fence} c++ object populated with the values necessary 
+\end{DoxyReturn}
+
+
+Definition at line 307 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+309 \{
+310     \textcolor{keywordflow}{return} \textcolor{keyword}{new} \hyperlink{class_round_fence}{RoundFence}(
+311             name,
+312             safe,
+313             week,
+314             jsonRoundFence.at(U(\hyperlink{_round_fence_8h_a129fc0ce4ddf2284b58daf8670b24848}{JSON\_KEY\_ROUND\_FENCE\_LATITUDE})).as\_double(),
+315             jsonRoundFence.at(U(\hyperlink{_round_fence_8h_acfc741eefa291fc8d2db8b0cfb4ddaa4}{JSON\_KEY\_ROUND\_FENCE\_LONGITUDE})).as\_double(),
+316             jsonRoundFence.at(U(\hyperlink{_round_fence_8h_a40c147f826ff3297cb7eea73a4d00d43}{JSON\_KEY\_ROUND\_FENCE\_RADIUS})).as\_double()
+317     );
+318 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a0223a0830ba9a0e707c5a2bd5d74ee50_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_a19b2e3e2c3bbf986f51c0ec53b7dc2a4}\label{class_account_builder_a19b2e3e2c3bbf986f51c0ec53b7dc2a4}} 
+\index{Account\+Builder@{Account\+Builder}!build\+Week\+Map@{build\+Week\+Map}}
+\index{build\+Week\+Map@{build\+Week\+Map}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{build\+Week\+Map()}{buildWeekMap()}}
+{\footnotesize\ttfamily std\+::map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::tm, std\+::tm $>$ $>$ $>$ Account\+Builder\+::build\+Week\+Map (\begin{DoxyParamCaption}\item[{const web\+::json\+::value \&}]{json\+Week }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Creates a new instance of the timing map for a given fence.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Week} & the input week data as J\+S\+ON \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a map structure of the week with the specific times and days added 
+\end{DoxyReturn}
+
+
+Definition at line 258 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+259 \{
+260     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
+261     \textcolor{keyword}{const} std::string days[] = \hyperlink{_fence_8h_a189c5645c45c0d8943719ee620afa4b2}{JSON\_KEY\_FENCE\_DAYS};
+262 
+263     \textcolor{comment}{// Parse the string representation of time for each week, converting them into the tm (time) structure.}
+264     std::vector<std::pair<std::tm, std::tm>> dayTimes;
+265     std::pair<std::tm, std::tm> dayTime;
+266     \textcolor{keyword}{struct }std::tm fromTm = \{0\};
+267     \textcolor{keyword}{struct }std::tm toTm = \{0\};
+268     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < days->length(); ++i) \{
+269 
+270         \textcolor{comment}{// Check that the week object has a specific day [array].}
+271         \textcolor{keywordflow}{if} (!jsonWeek.has\_array\_field(U(days[i]))) \{
+272             \textcolor{keywordflow}{continue};
+273         \}
+274 
+275         \textcolor{comment}{// Get the array of times for that day.}
+276         \textcolor{keyword}{const} web::json::array& times = jsonWeek.at(U(days[i])).as\_array();
+277         \textcolor{keywordflow}{if} (times.size() == 0) \{
+278             \textcolor{keywordflow}{continue};
+279         \}
+280 
+281         \textcolor{comment}{// Parse each of the times, convert the into structures and add.}
+282         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}& time : times) \{
+283             strptime(time.at(U(\hyperlink{_fence_8h_a7993b3aacbec44628f2d9ab7df6ff5b9}{JSON\_KEY\_FENCE\_TIME\_FROM})).as\_string().c\_str(), 
+      \hyperlink{_account_builder_8cpp_ab06a1a6bc626c6ecf4aed46554338d62}{JSON\_VALUE\_TIME\_FORMAT}, &fromTm);
+284             strptime(time.at(U(\hyperlink{_fence_8h_a5919ead6ef79432d59a9637a993cec9c}{JSON\_KEY\_FENCE\_TIME\_TO})).as\_string().c\_str(), 
+      \hyperlink{_account_builder_8cpp_ab06a1a6bc626c6ecf4aed46554338d62}{JSON\_VALUE\_TIME\_FORMAT}, &toTm);
+285             dayTime.first = fromTm;
+286             dayTime.second = toTm;
+287             dayTimes.push\_back(dayTime);
+288         \}
+289 
+290         \textcolor{comment}{// Finally add the vector of times to the map.}
+291         week.insert(std::pair<\textcolor{keywordtype}{int}, std::vector<std::pair<std::tm, std::tm>>>(i, dayTimes));
+292         dayTimes.clear();
+293     \}
+294 
+295     \textcolor{keywordflow}{return} week;
+296 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a19b2e3e2c3bbf986f51c0ec53b7dc2a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_aad3332b566e26b4b92215bf6500b26b6}\label{class_account_builder_aad3332b566e26b4b92215bf6500b26b6}} 
+\index{Account\+Builder@{Account\+Builder}!clear\+Vector@{clear\+Vector}}
+\index{clear\+Vector@{clear\+Vector}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{clear\+Vector()}{clearVector()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Account\+Builder\+::clear\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Generic function for clearing vectors.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & the vector that needs to be cleared \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 156 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+157 \{
+158     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = vector.begin(); iter != vector.end(); ++iter) \{
+159         \textcolor{keyword}{delete} *iter;
+160     \}
+161     vector.clear();
+162 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_aad3332b566e26b4b92215bf6500b26b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_a6161184b277a8055ccab47411b14d195}\label{class_account_builder_a6161184b277a8055ccab47411b14d195}} 
+\index{Account\+Builder@{Account\+Builder}!has\+Account\+Attributes@{has\+Account\+Attributes}}
+\index{has\+Account\+Attributes@{has\+Account\+Attributes}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{has\+Account\+Attributes()}{hasAccountAttributes()}}
+{\footnotesize\ttfamily bool Account\+Builder\+::has\+Account\+Attributes (\begin{DoxyParamCaption}\item[{const web\+::json\+::value \&}]{json\+Account\+Element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Check that json has device attributes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Element} & the J\+S\+ON element investigated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean value based on whether the J\+S\+ON element has device attributes 
+\end{DoxyReturn}
+
+
+Definition at line 86 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+87 \{
+88     \textcolor{keywordflow}{return} !jsonAccountElement.is\_null() && jsonAccountElement.is\_object()
+89            && jsonAccountElement.has\_string\_field(U(\hyperlink{_account_8h_ac2f820be22c4390a71ec34abe54694c5}{JSON\_KEY\_ACCOUNT\_NAME}))
+90            && jsonAccountElement.has\_array\_field(U(\hyperlink{_account_8h_a9a5dc301a4b04c85ce3b865530cd6ca7}{JSON\_KEY\_ACCOUNT\_CONTACTS}))
+91            && jsonAccountElement.has\_array\_field(U(\hyperlink{_account_8h_a83ba8a12dba5582a5a125d3ced877c6e}{JSON\_KEY\_ACCOUNT\_FENCES}));
+92 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a6161184b277a8055ccab47411b14d195_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_a01b1fa1ec8d5eb397a6e61725d67f5a2}\label{class_account_builder_a01b1fa1ec8d5eb397a6e61725d67f5a2}} 
+\index{Account\+Builder@{Account\+Builder}!has\+Contact\+Attributes@{has\+Contact\+Attributes}}
+\index{has\+Contact\+Attributes@{has\+Contact\+Attributes}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{has\+Contact\+Attributes()}{hasContactAttributes()}}
+{\footnotesize\ttfamily bool Account\+Builder\+::has\+Contact\+Attributes (\begin{DoxyParamCaption}\item[{const web\+::json\+::value \&}]{json\+Element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Check that J\+S\+ON element has \hyperlink{class_contact}{Contact} attributes i.\+e. structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Element} & the J\+S\+ON element investigated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean value based on whether the J\+S\+ON element has contact attributes 
+\end{DoxyReturn}
+
+
+Definition at line 100 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+101 \{
+102     \textcolor{keywordflow}{return} !jsonElement.is\_null() && jsonElement.is\_object()
+103            && jsonElement.has\_string\_field(U(\hyperlink{_contact_8h_a18b1ad44af79fea17bfed22ff66f94f8}{JSON\_KEY\_CONTACT\_FORENAME}))
+104            && jsonElement.has\_string\_field(U(\hyperlink{_contact_8h_a579318fe639c3cf3628817c4090be13e}{JSON\_KEY\_CONTACT\_SURNAME}))
+105            && jsonElement.has\_string\_field(U(\hyperlink{_contact_8h_a97dc3d327e5283642c81bc7d6a572ced}{JSON\_KEY\_CONTACT\_NUMBER}))
+106            && jsonElement.has\_string\_field(U(\hyperlink{_contact_8h_a90f2095b835454d47c72995503684937}{JSON\_KEY\_CONTACT\_KEY}));
+107 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a01b1fa1ec8d5eb397a6e61725d67f5a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_a6d19e707adebbf868e26d66f9028a47d}\label{class_account_builder_a6d19e707adebbf868e26d66f9028a47d}} 
+\index{Account\+Builder@{Account\+Builder}!has\+Fence\+Attributes@{has\+Fence\+Attributes}}
+\index{has\+Fence\+Attributes@{has\+Fence\+Attributes}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{has\+Fence\+Attributes()}{hasFenceAttributes()}}
+{\footnotesize\ttfamily bool Account\+Builder\+::has\+Fence\+Attributes (\begin{DoxyParamCaption}\item[{const web\+::json\+::value \&}]{json\+Fence\+Element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Check that the element has general fence attributes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Element} & the J\+S\+ON element investigated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean value based on whether the J\+S\+ON element has general fence attributes 
+\end{DoxyReturn}
+
+
+Definition at line 115 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+116 \{
+117     \textcolor{keywordflow}{return} !jsonFenceElement.is\_null() && jsonFenceElement.is\_object()
+118            && jsonFenceElement.has\_string\_field(U(\hyperlink{_fence_8h_a0bf10e901f60610c8a47c143051deea4}{JSON\_KEY\_FENCE\_NAME}))
+119            && jsonFenceElement.has\_boolean\_field(U(\hyperlink{_fence_8h_a4b2bc1fec134d7881cd286c8b6741752}{JSON\_KEY\_FENCE\_SAFE}))
+120            && jsonFenceElement.has\_object\_field(U(\hyperlink{_fence_8h_a94c5efe13ae824c55eebaa9e8a76dd57}{JSON\_KEY\_FENCE\_WEEK}))
+121            && jsonFenceElement.has\_field(U(\hyperlink{_fence_8h_a698e69a18d481c1033ae9f7d6fb2e5b6}{JSON\_KEY\_FENCE\_DEFINITION}));
+122 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a6d19e707adebbf868e26d66f9028a47d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_a426cb519ae4c5f0594f0f1e41e9f5a73}\label{class_account_builder_a426cb519ae4c5f0594f0f1e41e9f5a73}} 
+\index{Account\+Builder@{Account\+Builder}!has\+Poly\+Fence\+Attributes@{has\+Poly\+Fence\+Attributes}}
+\index{has\+Poly\+Fence\+Attributes@{has\+Poly\+Fence\+Attributes}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{has\+Poly\+Fence\+Attributes()}{hasPolyFenceAttributes()}}
+{\footnotesize\ttfamily bool Account\+Builder\+::has\+Poly\+Fence\+Attributes (\begin{DoxyParamCaption}\item[{const web\+::json\+::value \&}]{json\+Element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Check whether the element has poly fence structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Element} & the json element investigated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean value based on whether the json element has polyfence attributes 
+\end{DoxyReturn}
+
+
+Definition at line 145 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+146 \{
+147     \textcolor{keywordflow}{return} !jsonElement.is\_null() && jsonElement.is\_array();
+148 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_a426cb519ae4c5f0594f0f1e41e9f5a73_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_account_builder_aea9045a135dac995cbf409b61c5850bf}\label{class_account_builder_aea9045a135dac995cbf409b61c5850bf}} 
+\index{Account\+Builder@{Account\+Builder}!has\+Round\+Fence\+Attributes@{has\+Round\+Fence\+Attributes}}
+\index{has\+Round\+Fence\+Attributes@{has\+Round\+Fence\+Attributes}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{has\+Round\+Fence\+Attributes()}{hasRoundFenceAttributes()}}
+{\footnotesize\ttfamily bool Account\+Builder\+::has\+Round\+Fence\+Attributes (\begin{DoxyParamCaption}\item[{const web\+::json\+::value \&}]{json\+Element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Check that json element has round fence attributes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Element} & the J\+S\+ON element investigated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean value based on whether the J\+S\+ON element has round fence attributes 
+\end{DoxyReturn}
+
+
+Definition at line 130 of file Account\+Builder.\+cpp.
+
+
+\begin{DoxyCode}
+131 \{
+132     \textcolor{keywordtype}{bool} rc = !jsonElement.is\_null() && jsonElement.is\_object()
+133            && jsonElement.has\_number\_field(U(\hyperlink{_round_fence_8h_a129fc0ce4ddf2284b58daf8670b24848}{JSON\_KEY\_ROUND\_FENCE\_LATITUDE}))
+134            && jsonElement.has\_number\_field(U(\hyperlink{_round_fence_8h_acfc741eefa291fc8d2db8b0cfb4ddaa4}{JSON\_KEY\_ROUND\_FENCE\_LONGITUDE}))
+135            && jsonElement.has\_number\_field(U(\hyperlink{_round_fence_8h_a40c147f826ff3297cb7eea73a4d00d43}{JSON\_KEY\_ROUND\_FENCE\_RADIUS}));
+136     \textcolor{keywordflow}{return} rc;
+137 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daa/class_account_builder_aea9045a135dac995cbf409b61c5850bf_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_account_builder_a7fcd16decc7765ef0a5fbea02fa56877}\label{class_account_builder_a7fcd16decc7765ef0a5fbea02fa56877}} 
+\index{Account\+Builder@{Account\+Builder}!root@{root}}
+\index{root@{root}!Account\+Builder@{Account\+Builder}}
+\subsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily web\+::json\+::value Account\+Builder\+::root\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 79 of file Account\+Builder.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+software/\+Bee\+Safe\+P\+I/src/device/\hyperlink{_account_builder_8h}{Account\+Builder.\+h}\item 
+software/\+Bee\+Safe\+P\+I/src/device/\hyperlink{_account_builder_8cpp}{Account\+Builder.\+cpp}\end{DoxyCompactItemize}

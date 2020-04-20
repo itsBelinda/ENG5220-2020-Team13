@@ -1,0 +1,241 @@
+\hypertarget{_bee_safe_8cpp}{}\section{software/\+Bee\+Safe\+P\+I/src/\+Bee\+Safe.cpp File Reference}
+\label{_bee_safe_8cpp}\index{software/\+Bee\+Safe\+P\+I/src/\+Bee\+Safe.\+cpp@{software/\+Bee\+Safe\+P\+I/src/\+Bee\+Safe.\+cpp}}
+{\ttfamily \#include \char`\"{}Bee\+Safe.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}device/\+Account\+Builder.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for Bee\+Safe.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/d76/_bee_safe_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_bee_safe_8cpp_aa5860d80bbb4527d5d2275aacfce65f7}{I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+S\+\_\+\+T\+R\+I\+ES}~3
+\item 
+\#define \hyperlink{_bee_safe_8cpp_aeadb35b2afa47797b56f17423460fad8}{A\+C\+C\+O\+U\+N\+T\+\_\+\+P\+A\+TH}~\char`\"{}../../data/Account.\+json\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_bee_safe_8cpp_a6a247bf01f3423d4fab220ae5fdf3959}{create\+Account} ()
+\item 
+int \hyperlink{_bee_safe_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_bee_safe_8cpp_aeadb35b2afa47797b56f17423460fad8}\label{_bee_safe_8cpp_aeadb35b2afa47797b56f17423460fad8}} 
+\index{Bee\+Safe.\+cpp@{Bee\+Safe.\+cpp}!A\+C\+C\+O\+U\+N\+T\+\_\+\+P\+A\+TH@{A\+C\+C\+O\+U\+N\+T\+\_\+\+P\+A\+TH}}
+\index{A\+C\+C\+O\+U\+N\+T\+\_\+\+P\+A\+TH@{A\+C\+C\+O\+U\+N\+T\+\_\+\+P\+A\+TH}!Bee\+Safe.\+cpp@{Bee\+Safe.\+cpp}}
+\subsubsection{\texorpdfstring{A\+C\+C\+O\+U\+N\+T\+\_\+\+P\+A\+TH}{ACCOUNT\_PATH}}
+{\footnotesize\ttfamily \#define A\+C\+C\+O\+U\+N\+T\+\_\+\+P\+A\+TH~\char`\"{}../../data/Account.\+json\char`\"{}}
+
+
+
+Definition at line 36 of file Bee\+Safe.\+cpp.
+
+\mbox{\Hypertarget{_bee_safe_8cpp_aa5860d80bbb4527d5d2275aacfce65f7}\label{_bee_safe_8cpp_aa5860d80bbb4527d5d2275aacfce65f7}} 
+\index{Bee\+Safe.\+cpp@{Bee\+Safe.\+cpp}!I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+S\+\_\+\+T\+R\+I\+ES@{I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+S\+\_\+\+T\+R\+I\+ES}}
+\index{I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+S\+\_\+\+T\+R\+I\+ES@{I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+S\+\_\+\+T\+R\+I\+ES}!Bee\+Safe.\+cpp@{Bee\+Safe.\+cpp}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+S\+\_\+\+T\+R\+I\+ES}{INIT\_COMMS\_TRIES}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+S\+\_\+\+T\+R\+I\+ES~3}
+
+
+
+Definition at line 33 of file Bee\+Safe.\+cpp.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_bee_safe_8cpp_a6a247bf01f3423d4fab220ae5fdf3959}\label{_bee_safe_8cpp_a6a247bf01f3423d4fab220ae5fdf3959}} 
+\index{Bee\+Safe.\+cpp@{Bee\+Safe.\+cpp}!create\+Account@{create\+Account}}
+\index{create\+Account@{create\+Account}!Bee\+Safe.\+cpp@{Bee\+Safe.\+cpp}}
+\subsubsection{\texorpdfstring{create\+Account()}{createAccount()}}
+{\footnotesize\ttfamily void create\+Account (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A method to create a user account with all necessary details filled in for both the Contacts and Fences objects This is then passed to the program based on which the program verifies the movements of the device, and takes appropriate responses if an alert of incorrect action is received. This method creates a weekly safe time rota, and uses sets of coordinates to create fences for the user. Once the emergency contact is added, the details are used to create the \hyperlink{class_account}{Account} object. 
+
+Definition at line 287 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+288 \{
+289     \textcolor{comment}{// Create temp times.}
+290     std::tm fromTime1 = \{0\};
+291     fromTime1.tm\_hour = 9;
+292     fromTime1.tm\_min = 30;
+293 
+294     std::tm toTime1 = \{0\};
+295     toTime1.tm\_hour = 20;
+296     toTime1.tm\_min = 10;
+297 
+298     std::tm fromTime2 = \{0\};
+299     fromTime2.tm\_hour = 9;
+300     fromTime2.tm\_min = 30;
+301 
+302     std::tm toTime2 = \{0\};
+303     toTime2.tm\_hour = 14;
+304     toTime2.tm\_min = 20;
+305 
+306     std::tm fromTime3 = \{0\};
+307     fromTime3.tm\_hour = 9;
+308     fromTime3.tm\_min = 30;
+309 
+310     std::tm toTime3 = \{0\};
+311     toTime3.tm\_hour = 12;
+312     toTime3.tm\_min = 10;
+313 
+314     \textcolor{comment}{// Create a temp day.}
+315     std::vector<std::pair<std::tm, std::tm>> day;
+316     day.emplace\_back(std::make\_pair(fromTime1, toTime1));
+317     day.emplace\_back(std::make\_pair(fromTime2, toTime2));
+318     day.emplace\_back(std::make\_pair(fromTime3, toTime3));
+319 
+320     \textcolor{comment}{// Create temp week.}
+321     std::map<int, std::vector<std::pair<std::tm, std::tm>>> week;
+322     week.insert(std::make\_pair(0, day));
+323     week.insert(std::make\_pair(2, day));
+324     week.insert(std::make\_pair(3, day));
+325 
+326     \textcolor{comment}{// Create school coordinates.}
+327     std::vector<std::pair<double, double>> schoolCoords;
+328     schoolCoords.emplace\_back(std::make\_pair(55.8295041, -4.2118943));
+329     schoolCoords.emplace\_back(std::make\_pair(55.8295026, -4.2118996));
+330     schoolCoords.emplace\_back(std::make\_pair(55.8294408, -4.2119104));
+331     schoolCoords.emplace\_back(std::make\_pair(55.8294423, -4.2119613));
+332     schoolCoords.emplace\_back(std::make\_pair(55.8293232, -4.2119533));
+333     schoolCoords.emplace\_back(std::make\_pair(55.8293172, -4.2120498));
+334     schoolCoords.emplace\_back(std::make\_pair(55.8292328, -4.2120418));
+335     schoolCoords.emplace\_back(std::make\_pair(55.8292252, -4.2121276));
+336     schoolCoords.emplace\_back(std::make\_pair(55.8290655, -4.2121169));
+337     schoolCoords.emplace\_back(std::make\_pair(55.8290504, -4.2121813));
+338     schoolCoords.emplace\_back(std::make\_pair(55.8289449, -4.2121598));
+339     schoolCoords.emplace\_back(std::make\_pair(55.8289479, -4.2120928));
+340     schoolCoords.emplace\_back(std::make\_pair(55.8289615, -4.2117736));
+341     schoolCoords.emplace\_back(std::make\_pair(55.8290112, -4.2111540));
+342     schoolCoords.emplace\_back(std::make\_pair(55.8292358, -4.2111620));
+343     schoolCoords.emplace\_back(std::make\_pair(55.8292448, -4.2112345));
+344     schoolCoords.emplace\_back(std::make\_pair(55.8295086, -4.2112613));
+345     schoolCoords.emplace\_back(std::make\_pair(55.8295041, -4.2118943));
+346 
+347     \textcolor{comment}{// Create path coordinates.}
+348     std::vector<std::pair<double, double>> pathCoords;
+349     pathCoords.emplace\_back(std::make\_pair(55.8289916, -4.2116421));
+350     pathCoords.emplace\_back(std::make\_pair(55.8289901, -4.2116529));
+351     pathCoords.emplace\_back(std::make\_pair(55.8289765, -4.2117923));
+352     pathCoords.emplace\_back(std::make\_pair(55.8289569, -4.2121732));
+353     pathCoords.emplace\_back(std::make\_pair(55.8289057, -4.2128813));
+354     pathCoords.emplace\_back(std::make\_pair(55.8284158, -4.2128465));
+355     pathCoords.emplace\_back(std::make\_pair(55.8284384, -4.2123529));
+356     pathCoords.emplace\_back(std::make\_pair(55.8283389, -4.2122912));
+357     pathCoords.emplace\_back(std::make\_pair(55.828345, -4.2121169));
+358     pathCoords.emplace\_back(std::make\_pair(55.8282877, -4.2121142));
+359     pathCoords.emplace\_back(std::make\_pair(55.8282798, -4.2133507));
+360     pathCoords.emplace\_back(std::make\_pair(55.8282482, -4.2133668));
+361     pathCoords.emplace\_back(std::make\_pair(55.828212, -4.2133829));
+362     pathCoords.emplace\_back(std::make\_pair(55.8282108, -4.2130637));
+363     pathCoords.emplace\_back(std::make\_pair(55.8282289, -4.2119908));
+364     pathCoords.emplace\_back(std::make\_pair(55.8282862, -4.2119855));
+365     pathCoords.emplace\_back(std::make\_pair(55.8283947, -4.2120203));
+366     pathCoords.emplace\_back(std::make\_pair(55.8283902, -4.2121652));
+367     pathCoords.emplace\_back(std::make\_pair(55.8284399, -4.2121625));
+368     pathCoords.emplace\_back(std::make\_pair(55.828548, -4.2121491));
+369     pathCoords.emplace\_back(std::make\_pair(55.8285273, -4.2127177));
+370     pathCoords.emplace\_back(std::make\_pair(55.8287745, -4.2127097));
+371     pathCoords.emplace\_back(std::make\_pair(55.8287836, -4.2122403));
+372     pathCoords.emplace\_back(std::make\_pair(55.8288559, -4.2122591));
+373     pathCoords.emplace\_back(std::make\_pair(55.8288997, -4.2116126));
+374     pathCoords.emplace\_back(std::make\_pair(55.8289916, -4.2116421));
+375 
+376     std::string schoolFenceName = \textcolor{stringliteral}{"School"};
+377     std::string pathFenceName = \textcolor{stringliteral}{"Path"};
+378     std::string homeFenceName = \textcolor{stringliteral}{"Home"};
+379 
+380     \textcolor{comment}{// Create tmp fences.}
+381     \hyperlink{class_fence}{Fence} *schoolFence = \textcolor{keyword}{new} \hyperlink{class_poly_fence}{PolyFence}(schoolFenceName, \textcolor{keyword}{true}, week, schoolCoords);
+382     \hyperlink{class_fence}{Fence} *pathFence = \textcolor{keyword}{new} \hyperlink{class_poly_fence}{PolyFence}(pathFenceName, \textcolor{keyword}{true},week,pathCoords);
+383     \hyperlink{class_fence}{Fence} *homeFence = \textcolor{keyword}{new} \hyperlink{class_round_fence}{RoundFence}(homeFenceName, \textcolor{keyword}{true}, week, 55.828182, -4.213159, 10);
+384 
+385     std::vector<Fence*> fences;
+386     fences.emplace\_back(schoolFence);
+387     fences.emplace\_back(pathFence);
+388     fences.emplace\_back(homeFence);
+389 
+390     \textcolor{comment}{// Create temp contacts.}
+391     \hyperlink{class_contact}{Contact}* contact1 = \textcolor{keyword}{new} \hyperlink{class_contact}{Contact}(\textcolor{stringliteral}{"Daniels"}, \textcolor{stringliteral}{"Vasiljevs"}, \textcolor{stringliteral}{"+447455787051"}, \textcolor{stringliteral}{"Coke"});
+392 
+393     std::vector<Contact*> contacts;
+394     contacts.push\_back(contact1);
+395 
+396     std::string name = \textcolor{stringliteral}{"AccountNameTest"};
+397     \hyperlink{class_account}{Account} account(name, contacts, fences);
+398     account.saveSerialisedAccount(\hyperlink{_bee_safe_8cpp_aeadb35b2afa47797b56f17423460fad8}{ACCOUNT\_PATH});
+399 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d20/_bee_safe_8cpp_a6a247bf01f3423d4fab220ae5fdf3959_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{dd/d20/_bee_safe_8cpp_a6a247bf01f3423d4fab220ae5fdf3959_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_bee_safe_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{_bee_safe_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{Bee\+Safe.\+cpp@{Bee\+Safe.\+cpp}!main@{main}}
+\index{main@{main}!Bee\+Safe.\+cpp@{Bee\+Safe.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The main function initialising and running the program.
+
+\begin{DoxyReturn}{Returns}
+Returns 0 if the run was successful, otherwise returns 1. 
+\end{DoxyReturn}
+
+
+Definition at line 406 of file Bee\+Safe.\+cpp.
+
+
+\begin{DoxyCode}
+407 \{
+408 
+409     \hyperlink{_bee_safe_8cpp_a6a247bf01f3423d4fab220ae5fdf3959}{createAccount}();
+410 
+411     \textcolor{comment}{// Create an instance of the manager.}
+412     \textcolor{keyword}{auto} beeSafeManager = \textcolor{keyword}{new} \hyperlink{class_bee_safe_manager}{BeeSafeManager}();
+413 
+414     \textcolor{comment}{// Initialise the BeeSafePI manager.}
+415     std::cout << \textcolor{stringliteral}{"Initialising manager..."} << std::endl;
+416     \textcolor{keywordflow}{if} (!beeSafeManager->init()) \{
+417         std::cerr << \textcolor{stringliteral}{"Failed to initialise the manager. Stopping."} << std::endl;
+418         \textcolor{keywordflow}{return} EXIT\_FAILURE;
+419     \}
+420     std::cout << \textcolor{stringliteral}{"... manager successfully initialised."} << std::endl;
+421 
+422     \textcolor{comment}{// Start the manager loop.}
+423     \textcolor{keywordflow}{return} beeSafeManager->start()
+424            ? EXIT\_SUCCESS
+425            : EXIT\_FAILURE;
+426 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d20/_bee_safe_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}

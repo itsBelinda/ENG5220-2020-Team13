@@ -1,22 +1,55 @@
+/**
+ * \file PolyFence.cpp
+ * \class PolyFence
+ *
+ * \ingroup Geo
+ *
+ * \brief The PolyFence class contains the type specific methods and parameters relating to fences that are polygon shaped.
+ *
+ * The PolyFence class contains the type specific methods and parameters relating to fences that are polygon shaped.
+ * The functionality related to polygon fences describes the calculations of whether a location falls within a fence or not, setting
+ * the boundaries/dimensions of the polygon, the times and days of a fence counting as a safe zone, and the convesion of PolyFence
+ * objects into JSON format.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
+
 #include "PolyFence.h"
 
 // System inclusions.
 #include <cmath>
 
 // Explicit poly fence constructor
-PolyFence::PolyFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week,
+PolyFence::PolyFence(std::string &name, bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>> &week,
                      const std::vector<std::pair<double, double>> &coordinates)
-        : Fence(safe, week)
+        : Fence(name, safe, week)
 {
     this->coordinates = coordinates;
     calculateFenceConstants();
 }
 
 // Basic poly fence constructor.
-PolyFence::PolyFence(bool safe, const std::vector<std::pair<double, double>>& coordinates)
-        : Fence(safe)
+PolyFence::PolyFence(std::string &name, bool safe, const std::vector<std::pair<double, double>>& coordinates)
+        : Fence(name, safe)
 {
     this->coordinates = coordinates;
+    calculateFenceConstants();
+}
+
+// Copy constructor for the poly fence.
+PolyFence::PolyFence(const PolyFence &polyFence)
+        : Fence(polyFence)
+{
+    this->coordinates = polyFence.coordinates;
     calculateFenceConstants();
 }
 
@@ -38,7 +71,7 @@ const std::vector<double>& PolyFence::getMultiples()
     return multiples;
 }
 
-// Calculate any poly constants.
+// Calculate any poly constants; saves us having to compute these values each time.
 void PolyFence::calculateFenceConstants()
 {
 
@@ -71,19 +104,19 @@ void PolyFence::calculateFenceConstants()
 }
 
 // Calculates whether or not latitude and longitude inside the poly fence.
-bool PolyFence::isInside(const double latitude, const double longitude)
+bool PolyFence::isInLocation(std::pair<double, double> &latLng)
 {
 
     bool oddNodes = false;
-    bool current = coordinates.back().second > longitude;
+    bool current = coordinates.back().second > latLng.second;
     bool previous;
 
     // Determines whether or not latitude and longitude are within the fence.
     for (int i = 0; i < coordinates.size(); ++i) {
         previous = current;
-        current = coordinates[i].second > longitude;
+        current = coordinates[i].second > latLng.second;
         if (current != previous) {
-            oddNodes ^= longitude * multiples[i] + constants[i] < latitude;
+            oddNodes ^= latLng.second * multiples[i] + constants[i] < latLng.first;
         }
     }
 
@@ -99,9 +132,9 @@ web::json::value PolyFence::serialiseFence()
 
     // Serialise PolyFence specific attributes.
     for (int i = 0; i < coordinates.size(); ++i) {
-        jsonFence[U(JSON_KEY_FENCE_FENCE)][i][U(JSON_KEY_POLY_FENCE_LATITUDE)]
+        jsonFence[U(JSON_KEY_FENCE_DEFINITION)][i][U(JSON_KEY_POLY_FENCE_LATITUDE)]
                 = web::json::value::number(coordinates[i].first);
-        jsonFence[U(JSON_KEY_FENCE_FENCE)][i][U(JSON_KEY_POLY_FENCE_LONGITUDE)]
+        jsonFence[U(JSON_KEY_FENCE_DEFINITION)][i][U(JSON_KEY_POLY_FENCE_LONGITUDE)]
                 = web::json::value::number(coordinates[i].second);
     }
 

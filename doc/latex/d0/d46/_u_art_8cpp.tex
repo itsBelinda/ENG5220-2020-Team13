@@ -1,0 +1,61 @@
+\hypertarget{_u_art_8cpp}{}\section{software/\+Bee\+Safe\+P\+I/src/comms/\+U\+Art.cpp File Reference}
+\label{_u_art_8cpp}\index{software/\+Bee\+Safe\+P\+I/src/comms/\+U\+Art.\+cpp@{software/\+Bee\+Safe\+P\+I/src/comms/\+U\+Art.\+cpp}}
+{\ttfamily \#include \char`\"{}U\+Art.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$cerrno$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+Include dependency graph for U\+Art.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d5c/_u_art_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_u_art_8cpp_a3024ccd4a9af5109d24e6c57565d74a1}{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+C\+\_\+\+S\+O\+U\+R\+CE}~199309L
+\item 
+\#define \hyperlink{_u_art_8cpp_a74925a96730e9a56b81fc0715cfc36a3}{D\+E\+V\+I\+C\+E\+\_\+\+P\+A\+TH}~\char`\"{}/dev/tty\+S0\char`\"{}
+\item 
+\#define \hyperlink{_u_art_8cpp_a6855b12895cf5ae6c2d37d2f37cedcd3}{D\+E\+V\+I\+C\+E\+\_\+\+B\+A\+U\+D\+\_\+\+R\+A\+TE}~115200
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_u_art_8cpp_a3024ccd4a9af5109d24e6c57565d74a1}\label{_u_art_8cpp_a3024ccd4a9af5109d24e6c57565d74a1}} 
+\index{U\+Art.\+cpp@{U\+Art.\+cpp}!\+\_\+\+P\+O\+S\+I\+X\+\_\+\+C\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+C\+\_\+\+S\+O\+U\+R\+CE}}
+\index{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+C\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+C\+\_\+\+S\+O\+U\+R\+CE}!U\+Art.\+cpp@{U\+Art.\+cpp}}
+\subsubsection{\texorpdfstring{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+C\+\_\+\+S\+O\+U\+R\+CE}{\_POSIX\_C\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+P\+O\+S\+I\+X\+\_\+\+C\+\_\+\+S\+O\+U\+R\+CE~199309L}
+
+
+
+Definition at line 38 of file U\+Art.\+cpp.
+
+\mbox{\Hypertarget{_u_art_8cpp_a6855b12895cf5ae6c2d37d2f37cedcd3}\label{_u_art_8cpp_a6855b12895cf5ae6c2d37d2f37cedcd3}} 
+\index{U\+Art.\+cpp@{U\+Art.\+cpp}!D\+E\+V\+I\+C\+E\+\_\+\+B\+A\+U\+D\+\_\+\+R\+A\+TE@{D\+E\+V\+I\+C\+E\+\_\+\+B\+A\+U\+D\+\_\+\+R\+A\+TE}}
+\index{D\+E\+V\+I\+C\+E\+\_\+\+B\+A\+U\+D\+\_\+\+R\+A\+TE@{D\+E\+V\+I\+C\+E\+\_\+\+B\+A\+U\+D\+\_\+\+R\+A\+TE}!U\+Art.\+cpp@{U\+Art.\+cpp}}
+\subsubsection{\texorpdfstring{D\+E\+V\+I\+C\+E\+\_\+\+B\+A\+U\+D\+\_\+\+R\+A\+TE}{DEVICE\_BAUD\_RATE}}
+{\footnotesize\ttfamily \#define D\+E\+V\+I\+C\+E\+\_\+\+B\+A\+U\+D\+\_\+\+R\+A\+TE~115200}
+
+
+
+Definition at line 43 of file U\+Art.\+cpp.
+
+\mbox{\Hypertarget{_u_art_8cpp_a74925a96730e9a56b81fc0715cfc36a3}\label{_u_art_8cpp_a74925a96730e9a56b81fc0715cfc36a3}} 
+\index{U\+Art.\+cpp@{U\+Art.\+cpp}!D\+E\+V\+I\+C\+E\+\_\+\+P\+A\+TH@{D\+E\+V\+I\+C\+E\+\_\+\+P\+A\+TH}}
+\index{D\+E\+V\+I\+C\+E\+\_\+\+P\+A\+TH@{D\+E\+V\+I\+C\+E\+\_\+\+P\+A\+TH}!U\+Art.\+cpp@{U\+Art.\+cpp}}
+\subsubsection{\texorpdfstring{D\+E\+V\+I\+C\+E\+\_\+\+P\+A\+TH}{DEVICE\_PATH}}
+{\footnotesize\ttfamily \#define D\+E\+V\+I\+C\+E\+\_\+\+P\+A\+TH~\char`\"{}/dev/tty\+S0\char`\"{}}
+
+
+
+Definition at line 42 of file U\+Art.\+cpp.
+

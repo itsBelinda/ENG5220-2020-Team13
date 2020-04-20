@@ -1,0 +1,65 @@
+\hypertarget{_fence_8cpp}{}\section{software/\+Bee\+Safe\+P\+I/src/geo/\+Fence.cpp File Reference}
+\label{_fence_8cpp}\index{software/\+Bee\+Safe\+P\+I/src/geo/\+Fence.\+cpp@{software/\+Bee\+Safe\+P\+I/src/geo/\+Fence.\+cpp}}
+{\ttfamily \#include \char`\"{}Fence.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include \char`\"{}iostream\char`\"{}}\newline
+Include dependency graph for Fence.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d6/d1b/_fence_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_fence_8cpp_aa7662fb39f778fae608e70d079dc11ea}{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+F\+O\+R\+M\+AT}~\char`\"{}\%d\+:\%d\char`\"{}
+\item 
+\#define \hyperlink{_fence_8cpp_a69b35d746bf626a8192e75810e701320}{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}~6
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{_fence_8cpp_a9a4ef25a7ba13e785ff3ebea12830965}{is\+In\+Location} (std\+::pair$<$ double, double $>$ \&pair)
+\item 
+bool \hyperlink{_fence_8cpp_adf38db4802b6fdb640cc8fb65a31b956}{is\+In\+Time} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_fence_8cpp_a69b35d746bf626a8192e75810e701320}\label{_fence_8cpp_a69b35d746bf626a8192e75810e701320}} 
+\index{Fence.\+cpp@{Fence.\+cpp}!D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!Fence.\+cpp@{Fence.\+cpp}}
+\subsubsection{\texorpdfstring{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{DAY\_TIME\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~6}
+
+
+
+Definition at line 33 of file Fence.\+cpp.
+
+\mbox{\Hypertarget{_fence_8cpp_aa7662fb39f778fae608e70d079dc11ea}\label{_fence_8cpp_aa7662fb39f778fae608e70d079dc11ea}} 
+\index{Fence.\+cpp@{Fence.\+cpp}!D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+F\+O\+R\+M\+AT@{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+F\+O\+R\+M\+AT}}
+\index{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+F\+O\+R\+M\+AT@{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+F\+O\+R\+M\+AT}!Fence.\+cpp@{Fence.\+cpp}}
+\subsubsection{\texorpdfstring{D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+F\+O\+R\+M\+AT}{DAY\_TIME\_STRING\_FORMAT}}
+{\footnotesize\ttfamily \#define D\+A\+Y\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+F\+O\+R\+M\+AT~\char`\"{}\%d\+:\%d\char`\"{}}
+
+
+
+Definition at line 32 of file Fence.\+cpp.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_fence_8cpp_a9a4ef25a7ba13e785ff3ebea12830965}\label{_fence_8cpp_a9a4ef25a7ba13e785ff3ebea12830965}} 
+\index{Fence.\+cpp@{Fence.\+cpp}!is\+In\+Location@{is\+In\+Location}}
+\index{is\+In\+Location@{is\+In\+Location}!Fence.\+cpp@{Fence.\+cpp}}
+\subsubsection{\texorpdfstring{is\+In\+Location()}{isInLocation()}}
+{\footnotesize\ttfamily bool is\+In\+Location (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{pair }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_fence_8cpp_adf38db4802b6fdb640cc8fb65a31b956}\label{_fence_8cpp_adf38db4802b6fdb640cc8fb65a31b956}} 
+\index{Fence.\+cpp@{Fence.\+cpp}!is\+In\+Time@{is\+In\+Time}}
+\index{is\+In\+Time@{is\+In\+Time}!Fence.\+cpp@{Fence.\+cpp}}
+\subsubsection{\texorpdfstring{is\+In\+Time()}{isInTime()}}
+{\footnotesize\ttfamily bool is\+In\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

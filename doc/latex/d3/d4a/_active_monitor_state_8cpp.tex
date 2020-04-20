@@ -1,0 +1,43 @@
+\hypertarget{_active_monitor_state_8cpp}{}\section{software/\+Bee\+Safe\+P\+I/src/monitor/states/\+Active\+Monitor\+State.cpp File Reference}
+\label{_active_monitor_state_8cpp}\index{software/\+Bee\+Safe\+P\+I/src/monitor/states/\+Active\+Monitor\+State.\+cpp@{software/\+Bee\+Safe\+P\+I/src/monitor/states/\+Active\+Monitor\+State.\+cpp}}
+{\ttfamily \#include \char`\"{}Active\+Monitor\+State.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Passive\+Monitor\+State.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for Active\+Monitor\+State.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d8c/_active_monitor_state_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_active_monitor_state_8cpp_a61900fdfa0a56947870551db86143a1c}{S\+T\+E\+P\+P\+E\+D\+\_\+\+O\+U\+T\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC}~5
+\item 
+\#define \hyperlink{_active_monitor_state_8cpp_af734ccbfe87f3ed675b4836ae5761dbb}{S\+T\+E\+P\+P\+E\+D\+\_\+\+I\+N\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC}~20
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_active_monitor_state_8cpp_af734ccbfe87f3ed675b4836ae5761dbb}\label{_active_monitor_state_8cpp_af734ccbfe87f3ed675b4836ae5761dbb}} 
+\index{Active\+Monitor\+State.\+cpp@{Active\+Monitor\+State.\+cpp}!S\+T\+E\+P\+P\+E\+D\+\_\+\+I\+N\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC@{S\+T\+E\+P\+P\+E\+D\+\_\+\+I\+N\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC}}
+\index{S\+T\+E\+P\+P\+E\+D\+\_\+\+I\+N\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC@{S\+T\+E\+P\+P\+E\+D\+\_\+\+I\+N\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC}!Active\+Monitor\+State.\+cpp@{Active\+Monitor\+State.\+cpp}}
+\subsubsection{\texorpdfstring{S\+T\+E\+P\+P\+E\+D\+\_\+\+I\+N\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC}{STEPPED\_INSIDE\_NOTIFICATION\_DELAY\_SEC}}
+{\footnotesize\ttfamily \#define S\+T\+E\+P\+P\+E\+D\+\_\+\+I\+N\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC~20}
+
+
+
+Definition at line 33 of file Active\+Monitor\+State.\+cpp.
+
+\mbox{\Hypertarget{_active_monitor_state_8cpp_a61900fdfa0a56947870551db86143a1c}\label{_active_monitor_state_8cpp_a61900fdfa0a56947870551db86143a1c}} 
+\index{Active\+Monitor\+State.\+cpp@{Active\+Monitor\+State.\+cpp}!S\+T\+E\+P\+P\+E\+D\+\_\+\+O\+U\+T\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC@{S\+T\+E\+P\+P\+E\+D\+\_\+\+O\+U\+T\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC}}
+\index{S\+T\+E\+P\+P\+E\+D\+\_\+\+O\+U\+T\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC@{S\+T\+E\+P\+P\+E\+D\+\_\+\+O\+U\+T\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC}!Active\+Monitor\+State.\+cpp@{Active\+Monitor\+State.\+cpp}}
+\subsubsection{\texorpdfstring{S\+T\+E\+P\+P\+E\+D\+\_\+\+O\+U\+T\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC}{STEPPED\_OUTSIDE\_NOTIFICATION\_DELAY\_SEC}}
+{\footnotesize\ttfamily \#define S\+T\+E\+P\+P\+E\+D\+\_\+\+O\+U\+T\+S\+I\+D\+E\+\_\+\+N\+O\+T\+I\+F\+I\+C\+A\+T\+I\+O\+N\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+S\+EC~5}
+
+
+
+Definition at line 32 of file Active\+Monitor\+State.\+cpp.
+

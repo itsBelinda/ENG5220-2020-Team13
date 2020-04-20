@@ -1,3 +1,28 @@
+/**
+ * \file PolyFence.h
+ * \class PolyFence
+ *
+ * \ingroup Geo
+ *
+ * \brief The PolyFence class contains the type specific methods and parameters relating to fences that are polygon shaped.
+ *
+ * The PolyFence class contains the type specific methods and parameters relating to fences that are polygon shaped.
+ * The functionality related to polygon fences describes the calculations of whether a location falls within a fence or not, setting
+ * the boundaries/dimensions of the polygon, the times and days of a fence counting as a safe zone, and the convesion of PolyFence
+ * objects into JSON format.
+ *
+ * \author BeeSafe Team, Team 13
+ *
+ * \version v1.0
+ *
+ * \date 2020/04/20
+ *
+ * Contact: beesafe.uofg@gmail.com
+ *
+ * Licence: MIT
+ */
+
+
 #ifndef BEESAFEPI_POLYFENCE_H
 #define BEESAFEPI_POLYFENCE_H
 
@@ -18,8 +43,9 @@ class PolyFence : public Fence
 public:
 
     // Constructors.
-    PolyFence(bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const std::vector<std::pair<double, double>>& coordinates);
-    PolyFence(bool safe, const std::vector<std::pair<double, double>>& coordinates);
+    PolyFence(std::string &name, bool safe, const std::map<int, std::vector<std::pair<std::tm, std::tm>>>& week, const std::vector<std::pair<double, double>>& coordinates);
+    PolyFence(std::string &name, bool safe, const std::vector<std::pair<double, double>>& coordinates);
+    PolyFence(const PolyFence &polyFence);
 
 public:
 
@@ -32,7 +58,7 @@ public:
     void calculateFenceConstants();
 
     // Inherited interfaces.
-    bool isInside(double latitude, double longitude) override;
+    bool isInLocation(std::pair<double, double> &latLng) override;
     web::json::value serialiseFence() override;
 
 private:
