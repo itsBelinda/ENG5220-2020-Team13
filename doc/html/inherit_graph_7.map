@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$dd/d45/class_monitor_state.html" title="The parent monitor state class. " alt="" coords="5,31,101,57"/>
+<area shape="rect" id="node2" href="$d9/db8/class_active_monitor_state.html" title="The active monitor state child class. " alt="" coords="154,5,287,32"/>
+<area shape="rect" id="node3" href="$dd/d30/class_passive_monitor_state.html" title="The passive monitor state child class. " alt="" coords="149,56,292,83"/>
+</map>

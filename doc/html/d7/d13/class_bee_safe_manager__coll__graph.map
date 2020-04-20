@@ -1,0 +1,8 @@
+<map id="BeeSafeManager" name="BeeSafeManager">
+<area shape="rect" id="node2" href="$db/d22/class_account.html" title="The Account class creates the overall user Account object with the relevant Fences and Contacts..." alt="" coords="5,184,76,211"/>
+<area shape="rect" id="node6" href="$d9/df7/class_monitor.html" title="The Monitor class, handling the threads of monitor state classes and connects the device and communic..." alt="" coords="128,363,193,389"/>
+<area shape="rect" id="node7" href="$dd/d45/class_monitor_state.html" title="The parent monitor state class. " alt="" coords="115,273,211,300"/>
+<area shape="rect" id="node3" href="$d8/dcc/class_comms.html" title="A high&#45;level wrapper for the communication features. " alt="" coords="225,184,293,211"/>
+<area shape="rect" id="node4" href="$da/df6/class_u_blox.html" title="The class containing module specific functionality for the u&#45;blox GSM module. " alt="" coords="230,95,289,121"/>
+<area shape="rect" id="node5" href="$d9/d88/class_u_art.html" title="The lowest level communication handler between the Pi and the PCB. " alt="" coords="235,5,284,32"/>
+</map>
