@@ -1,0 +1,169 @@
+This page highlights the structure employed for defining virtual fences.
+
+\section*{Fences}
+
+Fences are defined according to the following hierarchical structure\+:
+
+
+
+This was done due to each device account possessing numerous virtual fences. With respect to the implementations\+:
+
+
+\begin{DoxyItemize}
+\item \hyperlink{_fence_8h}{Fence.\+h} / .cpp defines common attributes i.\+e. whether the fence is regarded as being safe (the device can be removed), times, and the name.
+\item \hyperlink{_round_fence_8h}{Round\+Fence.\+h} / .cpp defines a circular virtual fence around a centre point (latitude, longitude and radius). It does not however take into account the curvature of Earth.
+\item \hyperlink{_poly_fence_8h}{Poly\+Fence.\+h} / .cpp defines polygon fences with numerous points. The implementation is based on the work published on \href{http://alienryderflex.com/polygon/?fbclid=IwAR1iLUkzQZnRRCWvPyUjvrYXU6W259FduDmq8NhDPSHMaUAtOmUnE_HEoAA}{\tt Determining Whether A Point Is Inside A Complex Polygon} -\/ which, once again, does not consider the curvature of the Earth.
+\end{DoxyItemize}
+
+Each instance is responsible for serialising J\+S\+ON elements that represent the fence (sub-\/classes), first invoke the super-\/class serialisation then build on this in the extended (overridden) functions. However, they are created using the \href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Account-Management}{\tt Account\+Builder}.
+
+{\bfseries It should be noted that not taking the curvature into consideration only affects extremely large fences (areas larger than Texas).}
+
+\subsection*{\hyperlink{_fence_8h}{Fence.\+h} / .cpp}
+
+Not only does the \hyperlink{class_fence}{Fence} super-\/class define common attributes, but it also handles common operations such as determining whether the device needs to be present in the fence at a given time.
+
+
+\begin{DoxyCode}
+\textcolor{keywordtype}{bool} \hyperlink{class_fence_a7695b0f94f461369703188a287a38ab4}{Fence::isInTime}(\textcolor{keyword}{const} std::time\_t &time) \{
+
+    \textcolor{comment}{// Extract information from system time.}
+    std::tm time\_tm = *std::localtime(&time);
+    \textcolor{keyword}{auto} iter = \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week}.find(time\_tm.tm\_wday);
+
+    \textcolor{comment}{// Check if time information exists.}
+    \textcolor{keywordflow}{if} (iter == \hyperlink{class_fence_ae589e973fa03316847aeceedd72e2b64}{week}.end()) \{
+        \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+    \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (iter->second.empty()) \{
+        \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+    \}
+
+    \textcolor{comment}{// Iterate through days list of from and to times.}
+    \textcolor{keyword}{auto} &dayTimes = iter->second;
+    \textcolor{keywordflow}{for} (\textcolor{keyword}{const} std::pair<std::tm, std::tm> &dayTime : dayTimes) \{
+
+        \textcolor{comment}{// If time is before from time, we are not present.}
+        \textcolor{keywordflow}{if} (time\_tm.tm\_hour < dayTime.first.tm\_hour) \{
+            \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+        \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (time\_tm.tm\_hour == dayTime.first.tm\_hour) \{
+            \textcolor{keywordflow}{if} (time\_tm.tm\_min < dayTime.first.tm\_min) \{
+                \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+            \}
+        \}
+
+        \textcolor{comment}{// If the time is after the to time, we are not present.}
+        \textcolor{keywordflow}{if} (time\_tm.tm\_hour > dayTime.second.tm\_hour) \{
+            \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+        \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (time\_tm.tm\_hour == dayTime.second.tm\_hour) \{
+            \textcolor{keywordflow}{if} (time\_tm.tm\_min > dayTime.second.tm\_min) \{
+                \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+            \}
+        \}
+    \}
+
+    \textcolor{comment}{// By default the user is within the fence.}
+    \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+\}
+\end{DoxyCode}
+ This is achieved by comparing the current time of the device (using {\ttfamily $\ast$std\+::localtime(\&time);}) against the serialised times represented by the {\ttfamily const std\+::map$<$int, std\+::vector$<$std\+::pair$<$std\+::tm, std\+::tm$>$$>$$>$ \&week}, where a day (the map key) maps onto a vector containing the starting and ending times ({\ttfamily std\+::pair$<$std\+::tm, std\+::tm$>$}). Moreover, in the event the said \hyperlink{class_fence}{Fence} map is empty, the function returns true (indicating that the device is indeed present in the fence at that particular time).
+
+\subsection*{\hyperlink{_round_fence_8h}{Round\+Fence.\+h} / .cpp}
+
+As stated, the round fence represents the fence defined around some coordinate (latitude, longitude). Thus, a determining whether the device is geographically located within can be achieved using simple geometry\+:
+
+
+\begin{DoxyCode}
+\textcolor{keywordtype}{bool} \hyperlink{class_round_fence_a4955bf0dbd168853ba9913465953865d}{RoundFence::isInLocation}(std::pair<double, double> &latLng)
+\{
+    \textcolor{keywordtype}{double} distance = std::sqrt((latLng.first - this->longitude) * (latLng.first - this->latitude)
+                                + (latLng.second - this->longitude) * (latLng.second - this->longitude));
+    \textcolor{keywordflow}{return} distance <= \hyperlink{class_round_fence_a8e9d1a2f22df0bb718522f3ab6cd3b83}{radius};
+\}
+\end{DoxyCode}
+ Where the {\ttfamily std\+::pair$<$double, double$>$ \&lat\+Lng} represents the device coordinates ({\ttfamily lat\+Lng.\+first} and {\ttfamily lat\+Lng.\+second} represent the latitude and longitude, respectively); passed by the \hyperlink{_monitor_8h}{Monitor.\+h} / \hyperlink{_monitor_8cpp}{Monitor.\+cpp} (monitor thread).
+
+\subsection*{\hyperlink{_poly_fence_8h}{Poly\+Fence.\+h} / .cpp}
+
+Finally, polygon fences are represented using a vector of pairs i.\+e. {\ttfamily std\+::vector$<$std\+::pair$<$double, double$>$$>$ coordinates}; where each pair represents coordinates as follows\+:
+\begin{DoxyItemize}
+\item {\ttfamily lat\+Lng.\+first} and {\ttfamily lat\+Lng.\+second} represent the latitude and longitude, respectively.
+\end{DoxyItemize}
+
+\subsubsection*{Implementation}
+
+With respect to the implementation of the algorithm as posited on \href{http://alienryderflex.com/polygon/?fbclid=IwAR1iLUkzQZnRRCWvPyUjvrYXU6W259FduDmq8NhDPSHMaUAtOmUnE_HEoAA}{\tt Determining Whether A Point Is Inside A Complex Polygon}, suggested optimisations have been taken into account. Thus, constants associated with the fence are calculated prior to monitoring being carried out i.\+e. during the initialisation phase of the device. The following code snippet posits the manner by which this is achieved\+:
+
+
+\begin{DoxyCode}
+\textcolor{keywordtype}{void} \hyperlink{class_poly_fence_a229de6f5987bf7d312310b522db0d5a4}{PolyFence::calculateFenceConstants}()
+\{
+
+    \textcolor{comment}{// Clear the constants for recalculation.}
+    \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants}.clear();
+    \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples}.clear();
+
+    \textcolor{comment}{// If the coordinates are empty, nothing can be done.}
+    \textcolor{keywordflow}{if} (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.empty()) \{
+        \textcolor{keywordflow}{return};
+    \}
+
+    \textcolor{comment}{// Calculate poly fence constants.}
+    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i, j = \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.size() - 1;
+    \textcolor{keywordflow}{for} (i = 0; i < \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.size(); ++i) \{
+        \textcolor{keywordflow}{if} (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second == \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].second) \{
+            \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants}.push\_back(\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].first);
+            \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples}.push\_back(0);
+        \} \textcolor{keywordflow}{else} \{
+            \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants}.push\_back(\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].first
+                                - (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second * 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].first)
+                                  / (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].second - 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second)
+                                + (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second * 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].first)
+                                  / (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].second - 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second));
+            \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples}.push\_back((\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].first - 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].first)
+                                / (\hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[j].second - 
+      \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second));
+        \}
+        j = i;
+    \}
+\}
+\end{DoxyCode}
+ Where determining whether or not the device is within the polygon fence is achieved by utilising the following function, analogous to the one posited by \hyperlink{_round_fence_8h}{Round\+Fence.\+h} / .cpp\+:
+
+
+\begin{DoxyCode}
+\textcolor{keywordtype}{bool} \hyperlink{class_poly_fence_af8116af5be86f8426102985c3dbcdf5e}{PolyFence::isInLocation}(std::pair<double, double> &latLng)
+\{
+
+    \textcolor{keywordtype}{bool} oddNodes = \textcolor{keyword}{false};
+    \textcolor{keywordtype}{bool} current = \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.back().second > latLng.second;
+    \textcolor{keywordtype}{bool} previous;
+
+    \textcolor{comment}{// Determines whether or not latitude and longitude are within the fence.}
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}.size(); ++i) \{
+        previous = current;
+        current = \hyperlink{class_poly_fence_ae8e0c55e745979cab104ef80aeb4b418}{coordinates}[i].second > latLng.second;
+        \textcolor{keywordflow}{if} (current != previous) \{
+            oddNodes ^= latLng.second * \hyperlink{class_poly_fence_a2204e62b61b0e3c335734fa0b6cf0728}{multiples}[i] + \hyperlink{class_poly_fence_a24c99bb8a45f86bdf51cd3f22ef0f174}{constants}[i] < latLng.first;
+        \}
+    \}
+
+    \textcolor{keywordflow}{return} oddNodes;
+\end{DoxyCode}
+ Functionally, the algorithm compares each side of the polygon against the longitude of the device location. Additionally, a list of nodes are compiled, where each of the nodes represent a point where one side crosses the longitude threshold of the device location. Thus,
+
+
+\begin{DoxyItemize}
+\item If there are an odd number of points (on each side of the location), then device is said to be within the polygon.
+\item If, however, there are an even number of nodes, the device location is outside of the polygon.
+\end{DoxyItemize}
+
+{\bfseries Reference\+:} \href{http://alienryderflex.com/polygon/?fbclid=IwAR1iLUkzQZnRRCWvPyUjvrYXU6W259FduDmq8NhDPSHMaUAtOmUnE_HEoAA}{\tt Determining Whether A Point Is Inside A Complex Polygon}
+
+\subsection*{Displaying Virtual Fences}
+
+{\itshape The following image depicts the defined virtual fences. It should be noted that due to time constraints, the web A\+PI backend was not implemented. Thus, the project falls just short of being completed due to the backend missing link for the website \mbox{[}frontend is present and is depicted by the following image\mbox{]}.}  

@@ -1,0 +1,17 @@
+\subsection*{Description}
+
+Bee\+Safe is a project developed at the University of Glasgow for the module E\+N\+G5220 -\/ Realtime Embedded Programming. It produces a small piece of hardware that constantly transmits location information in a secure manner, and which can be carried around on a child’s person, providing a means for parents to safely monitor the whereabouts of the child. ~\newline
+ The Bee\+Safe project is a low-\/cost, open source tracking device. It is designed to keep children safe by constantly monitoring their location, and alerting parents if the child leaves the designated safe zones. It consists of a Raspberry Pi 3B, and a purpose made P\+CB containing a u-\/blox S\+A\+R\+A-\/\+G350 G\+SM module, through which the Pi continuously gathers location data, and processes whether the child is in a location it is supposed to be at that time, and if the child is at a place they should not be, the device sends a text message to the parent with the child’s location they can track through a web interface.
+
+\subsection*{Overview}
+
+This Github wiki describes the project as a whole -\/ its motivations, uses, components, and how it was carried out -\/, and is split into 5 chapters\+: ~\newline
+
+\begin{DoxyItemize}
+\item The $\ast$$\ast$\href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Build-Guide}{\tt Build guide}$\ast$$\ast$ describes how our project can be recreated, or installed for expanding on/contributing to it.
+\item The $\ast$$\ast$\href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/User-Guide}{\tt User guide}$\ast$$\ast$ explains how to run the project as a developer and how to use it as a parent.
+\item The $\ast$$\ast$\href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Hardware}{\tt Hardware chapter}$\ast$$\ast$ details the design, construction and testing processes of the hardware required for the project\+: the electronic components that make up the P\+CB connected to the Pi, the casing that did not end up being produced due to the C\+O\+V\+I\+D19 lockdown of the university facilities, and describes the communications module and its functionality in depth.
+\item The $\ast$$\ast$\href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Software}{\tt Software chapter}$\ast$$\ast$ discusses the underlying software components of the project. It describes the design and build of the code running on the Pi communicating with the u-\/blox module and the server, the web interface available for parent, as well as the testing and integration settings for the program.
+\item The $\ast$$\ast$\href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Project-Management}{\tt Project Management}$\ast$$\ast$ chapter reflects on how the project was carried out, and any adjacent, administrative tasks are discussed here. This includes how the marketing of the project was carried out, how the team worked, how others can contribute to the project if interested, how the project was documented, and provides an evaluation of the final product, mentioning future plans for the Bee\+Safe project and adding handy tips for those planning to carry out a similar embedded project. ~\newline
+ 
+\end{DoxyItemize}

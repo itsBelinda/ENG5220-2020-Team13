@@ -1,0 +1,22 @@
+This chapter describes the overall project management aspects of the project. It is divided into 4 sections\+:
+\begin{DoxyItemize}
+\item The $\ast$$\ast$\href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Promotions}{\tt Promotions}$\ast$$\ast$ section explains the marketing and promotions history of the project
+\item The $\ast$$\ast$\href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Documentation }{\tt Documentation}$\ast$$\ast$ section describes how the components were documented
+\item The $\ast$$\ast$\href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Contributions}{\tt Contributions}$\ast$$\ast$ section specifies the basis of how the team has and others can contribute to this project
+\item The $\ast$$\ast$\href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Project-Evaluation}{\tt Project Evaluation}$\ast$$\ast$ section provides a discussion about what the project has accomplished, and what future work would be possible
+\end{DoxyItemize}
+
+\subsection*{Development}
+
+Until the hardware was finalised, the team worked on their own computers on their respective tasks, except for the team member in charge of setting up, configuring, and familiarising themselves with the Raspberry Pi used in this project. For version control, Github was used, with the project management aspects were done on Trello. When the C\+O\+V\+I\+D19 quarantine measures were initiated, the team worked on the Raspberry Pi remotely, which was based at one of the team members\textquotesingle{} off-\/campus residence, which allowed easy setup due to commercial networks and routers not having as many restrictions on port forwarding as University networks, such as {\ttfamily eduroam}. ~\newline
+ The development happened both directly on the Pi and on virtual machines holding I\+SO images of the most recent Debian distribution. The Raspberry PI was purposefully not set up for G\+UI development, as the focus was on saving space and memory, and optimising performance. This allowed our command line skills to improve. To not interfere with each others\textquotesingle{} work, separate users were set up on the Pi, and (mostly due to role-\/based task differences) development was carried out on different branches on Github, too.
+
+\subsubsection*{Git/\+Github}
+
+The team used Github to host the project repository. We were all very familiar with Git and Github, therefore this was not an issue during the project management. To host our hardware design and development progress, a separate branch was created, {\ttfamily devhw}. To host the on-\/\+Pi work, which required the P\+CB to be connected, the branch {\ttfamily devpi} was used. To host the unit tests and not to interfere with mainline development, the {\ttfamily unit\+\_\+tests} branch was used, which tracked the {\ttfamily devpi} progress. The original, self-\/hosted version of the web server (due for release v2.\+0), the {\ttfamily devweb} branch was used. To host the final website on Github Pages, its own {\ttfamily gh-\/pages} branch was utilised. Upon completion of each development arch, they were merged up to their relevant parent branches, eventually to {\ttfamily master}. This allowed us to be mindful about progress and how changes can affect other work, providing good practice with {\ttfamily Pull Requests} and merging.
+
+\subsubsection*{Trello}
+
+To conduct the project, we used Trello, instead of Github’s own Projects feature. They are both Kanban-\/style project management tools, however even Trello’s free version comes with a trove of added features compared to Projects. Trello is very intuitive, yet powerful tool with features such as real-\/time syncing, integrated search, comment section discussions, task assignment, streamlined sorting-\/, image insert-\/, labelling-\/ and mobile functionality. Each team member has used Trello before, making it an obvious choice to handle our project management. ~\newline
+ Our Trello board can be found on the following link\+: \href{https://trello.com/b/kybOiZbr}{\tt https\+://trello.\+com/b/kyb\+Oi\+Zbr} ~\newline
+ It greatly helped to use Trello to keep on top of tasks to be done, especially the ones that did not require to be featured as Github Issues. 

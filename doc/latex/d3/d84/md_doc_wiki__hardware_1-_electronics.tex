@@ -1,0 +1,121 @@
+This page discusses the electronic components and considerations made for designing the schematic and layout.
+\begin{DoxyItemize}
+\item The newest schematic as a \+\_\+.\+pdf\+\_\+ can always be found in the root of the \href{https://github.com/itsBelinda/ENG5220-2020-Team13/tree/master/hardware}{\tt {\ttfamily hardware}} folder.
+\item The needed Gerber files of the latest revision are in the \href{https://github.com/itsBelinda/ENG5220-2020-Team13/tree/master/hardware/PCBProduction}{\tt {\ttfamily P\+C\+B\+Production}} folder,
+\item together with the complete \href{https://github.com/itsBelinda/ENG5220-2020-Team13/blob/master/hardware/PCBProduction/BEESAFE.BOM}{\tt {\ttfamily Bill of Material (B\+OM)}}.
+\end{DoxyItemize}
+
+
+
+Note\+: This picture is the untested hardware V1.\+1 and still has an error in the voltage translator configuration. 
+
+\section*{Contents}
+
+
+\begin{DoxyItemize}
+\item \href{#gsmgprs-module-u-Blox-SARA-G350-02X-01}{\tt {\ttfamily G\+S\+M/\+G\+P\+RS Module}}
+\item \href{#power-supply}{\tt {\ttfamily Power Supply}}
+\item \href{#voltage-translator}{\tt {\ttfamily Voltage Translator}}
+\item \href{#antenna}{\tt {\ttfamily Antenna}}
+\item \href{#sim-card}{\tt {\ttfamily S\+IM Card}}
+\item \href{#tall-header}{\tt {\ttfamily Tall Header}}
+\end{DoxyItemize}
+
+\subsection*{G\+S\+M/\+G\+P\+RS Module u-\/\+Blox S\+A\+R\+A-\/\+G350-\/02\+X-\/01}
+
+The mobile connectivity is provided by the S\+A\+R\+A-\/\+G350-\/02\+X-\/01 module (hereafter\+: S\+A\+RA module).
+
+The original idea of the project was to have a G\+SM and a G\+P\+RS module. However, each of these costs about 20£ when bought in low quantities and 40£ is the budget for this project, there would be nothing left for the rest of the necessary components. A module that provides both functionalities in one is often more expensive than those 40£ because it is highly integrated and optimised for space. Additionally, these tiny modules would be impossible to solder without a solder stop mask.
+
+This is where the S\+A\+RA module comes into play. It provides the so-\/called \href{./uBlox-and-CellLocate}{\tt {\ttfamily Cell\+Locate}} feature. A way to determine the location of the module based on mobile network information. In certain cases, it can provide location information when there is no G\+PS signal available (for example indoors), or it can improve the estimated G\+PS location. When used on its own, Cell\+Locate might not be as accurate as G\+PS. The S\+A\+RA module provides the possibility to connect a G\+PS module if this prototype proves to be not accurate enough.
+
+\subsubsection*{Connection to the PI}
+
+The communication to the Raspberry PI is done through a U\+A\+RT interface. The S\+A\+RA module provides two U\+A\+RT interfaces, one 9-\/pin providing full hardware flow control and one auxiliary U\+A\+RT interface using only RX and TX signals. Additionally, two G\+P\+I\+Os are connected to the PI that alow the S\+A\+RA module to send interrupts to the PI (can be configured in software).
+
+The signal names of the S\+A\+RA modules’ U\+A\+RT interface conform to the I\+T\+U-\/T V.\+24 Recommendation\+: e.\+g. the T\+XD line represents the data transmitted by the D\+TE (Raspberry PI) and received by the D\+CE (S\+A\+RA module). Therefore, the R\+X/\+TX line from the PI and the S\+A\+RA module can be connected T\+X-\/\+TX and R\+X-\/\+RX. However, the two devices operate on different voltage levels, so a \href{#voltage-translator}{\tt voltage translator} is needed.
+
+\subsubsection*{S\+IM Card Connection}
+
+The \href{#sim-card}{\tt S\+IM Card} is directly connected to the S\+A\+RA module, the S\+A\+RA module provides the power supply for the S\+IM card.
+
+\subsubsection*{Power On and Reset}
+
+The S\+A\+RA module has both a P\+W\+R\+\_\+\+ON and a R\+E\+S\+E\+T\+\_\+N pin. For normal operation, they both have to be at a high level. The P\+W\+R\+\_\+\+ON pin must be connected to 3\+V8 with a 100 kΩ resistor. The R\+E\+S\+E\+T\+\_\+N pin has an internal pull-\/up, it is not connected. A reset can also be forced through an AT command, the R\+E\+S\+E\+T\+\_\+N pin is only needed if this fails.
+
+The P\+W\+R\+\_\+\+ON pin is connected to G\+ND by a resistor that is not connected (NC). This was done to have the possibility to implement this function during development. Similarly, the R\+E\+S\+E\+T\+\_\+N pin connects to a 0 Ω resistor, to give access to the pad during development, should it be needed.
+
+\subsubsection*{0 Ω Resistors}
+
+Most pins connected to the S\+A\+RA module and some additional ones are separated from the rest of the circuit through 0 Ω resistors. This was done to be flexible during development. The main U\+A\+RT could be swapped with the auxiliary one, R\+X/\+TX could be changed if necessary, or additional features (G\+P\+IO or reset) could be connected to the PI.
+
+During development, we were able to change the direction of the voltage translator, because that was configured incorrectly. The result does not look very pretty, but it works. No new P\+CB had to be manufactured.
+
+ 
+
+\subsubsection*{Important Links}
+
+\paragraph*{General Information about the Module\+:}
+
+
+\begin{DoxyItemize}
+\item \href{https://www.u-blox.com/en/product/sara-g3-series}{\tt u-\/\+Blox S\+A\+R\+A-\/\+G3 website}
+\item \href{https://www.u-blox.com/en/docs/UBX-13000993}{\tt Datasheet}
+\item \href{https://www.u-blox.com/sites/default/files/GNSS-Implementation_AppNote_%28UBX-13001849%29.pdf}{\tt Position Implementation Application Note} \paragraph*{Information about Hardware Development\+:}
+\end{DoxyItemize}
+
+
+\begin{DoxyItemize}
+\item \href{https://www.u-blox.com/en/docs/UBX-13000995}{\tt System Integration Manual} \paragraph*{Software Integration}
+\end{DoxyItemize}
+
+
+\begin{DoxyItemize}
+\item \href{https://www.u-blox.com/sites/default/files/AT-CommandsExamples_AppNote_%28UBX-13001820%29.pdf}{\tt Command Examples}
+\item \href{https://www.u-blox.com/en/docs/UBX-13002752}{\tt Complete Command Guide}
+\item \href{https://github.com/u-blox/cellular}{\tt Example C-\/library} (under development at time of writing)
+\end{DoxyItemize}
+
+\subsection*{Power Supply}
+
+The PI supplies 5 V directly from the U\+SB connection and 3.\+3V for its digital in-\/ and outputs. The S\+A\+RA module, however, needs a supply voltage of 3.\+8 V typically (3.\+35 -\/ 4.\+5 V max). The module peak of current consumption through all the V\+CC pins, during data transmission, burst at maximum power level, with a mismatched antenna is 1.\+9 A (1.\+5 A with a matched antenna).
+
+The S\+IM Card runs on 1.\+8 V. Because the S\+A\+RA module communicates directly with the S\+IM card, its digital interfaces also run on 1.\+8 V and the S\+IM can be supplied by the S\+A\+RA module directly.
+
+\subsubsection*{Generating 3.\+8 V}
+
+The 3.\+8 V is generated from the 5 V supply using a Low Dropout Regulator (L\+DO) from Linear Technology (L\+T1764 series, adjustable device, see \href{https://github.com/itsBelinda/ENG5220-2020-Team13/blob/master/hardware/PCBProduction/BEESAFE.BOM}{\tt {\ttfamily B\+OM}}) with the recommended schematic design (find full schematic in \href{https://github.com/itsBelinda/ENG5220-2020-Team13/tree/master/hardware}{\tt {\ttfamily hardware}}). It can provide a current of up to 3 A.
+
+\subsection*{Voltage Translator}
+
+For the communication between the PI (3.\+3 V) and the S\+A\+RA module (1.\+8 V) to work, a 4-\/bit noninverting bus transceiver with two separate configurable power-\/supply rails from Texas Instruments was used (see \href{https://github.com/itsBelinda/ENG5220-2020-Team13/blob/master/hardware/PCBProduction/BEESAFE.BOM}{\tt {\ttfamily B\+OM}}). It translates U\+A\+RT TX from the PI to the module and U\+A\+RT RX and two G\+P\+I\+Os from the module to the PI.
+
+It is permanently activated by pulling the $\sim$\+OE pin to G\+ND (pulling it to supply voltage would put all ports into high impedance state). The direction is set by pulling the direction pin to G\+ND for transmission from port A (Raspberry PI) to port B (S\+A\+RA module) or to supply voltage for transmission from port B (S\+A\+RA module) to port A (Raspberry PI).
+
+\subsection*{Antenna}
+
+To be on the save side, an external antenna connected to the standard S\+MA connector is used. The used antenna is the {\bfseries W3404\+S\+MA} from Pulse Larsen Antennas and has a frequency range of {\bfseries 698\+M\+Hz $\sim$ 960\+M\+Hz} and {\bfseries 1.\+71\+G\+Hz $\sim$ 2.\+69\+G\+Hz}.
+
+The most important requirements are\+:
+\begin{DoxyItemize}
+\item 50 Ω nominal characteristic impedance
+\item Frequencies include 900 M\+Hz and 1.\+8 G\+Hz
+\item Return Loss S\textsubscript{11} $<$ -\/10 dB ($<$ 6 dB acceptable)
+\item Input Power $>$ 2W
+\end{DoxyItemize}
+
+\subsubsection*{Layout considerations}
+
+Using an external antenna gets rid of most layout problems that would be caused by an onboard antenna. The connection from the antenna pin of the S\+A\+RA module to the S\+MA connector is kept as short as possible. This should not cause any problems as long as the connection is shorter than 1/4 of the wavelength (418 mm for 1.\+8 G\+Hz).
+
+\subsection*{S\+IM Card}
+
+The S\+IM card adapter accepts micro-\/\+S\+IM cards with a push-\/pull mechanic. The footprint seems to be very similar/the same to many micro-\/\+S\+IM adapters. The exact component can be found in the \href{https://github.com/itsBelinda/ENG5220-2020-Team13/blob/master/hardware/PCBProduction/BEESAFE.BOM}{\tt {\ttfamily B\+OM}}.
+
+To protect the circuit from RF coupling (especially from the antenna), several bypass capacitors were placed close to the pads of the S\+IM connector as well as E\+SD protection diodes as recommended by the hardware integration manual of the S\+A\+RA module. The newest version of the schematic can be found in the root of the \href{https://github.com/itsBelinda/ENG5220-2020-Team13/tree/master/hardware}{\tt {\ttfamily hardware}} folder.
+
+Optional S\+IM detection from the S\+A\+RA module is not supported by this hardware version.
+
+\subsection*{Tall Header}
+
+The expansion board has the same size as the Raspberry PI. Because the U\+SB ports on the PI are too high for a standard header, an extra tall one is needed. \href{https://www.adafruit.com/product/1992}{\tt {\ttfamily This is one example, specifically made for this purpose by Adafruit}}. 

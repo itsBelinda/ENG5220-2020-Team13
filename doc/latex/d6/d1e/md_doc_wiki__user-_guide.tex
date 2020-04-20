@@ -1,0 +1,28 @@
+This user guide explains how to use the software. ~\newline
+ {\bfseries Note\+: To exit the project when running, press {\ttfamily Ctrl-\/C}}
+
+\subsection*{Before use}
+
+\begin{quote}
+Before following this user guide, make sure you followed the \href{https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/Build-Guide}{\tt build guide} correctly. \end{quote}
+
+
+\subsection*{Running the project}
+
+\subsubsection*{Live (Bootloader) run}
+
+If building the project with the bootloader for live use, not for development use, please make sure the bootloader build section was followed in the Build Guide. That should result in the project automatically running on the Pi upon booting.
+
+\subsubsection*{Development run}
+
+To run the project as a developer, make sure the complete build guide was followed, not the Bootloader section. After that, the project can be run by navigating into the {\ttfamily software/\+Bee\+Safe\+P\+I/build/src} folder, and running the main code executable by typing 
+\begin{DoxyCode}
+./BeeSafePI
+\end{DoxyCode}
+ Alternatively, if just cloned the Bee\+Safe Github Repository and/or used the installer script, you can run the build script in the root of the repository by typing\+: 
+\begin{DoxyCode}
+(cd ENG5220-2020-Team13/ && ./runBeeSafe.sh)
+\end{DoxyCode}
+ \subsection*{Accessing the account services}
+
+The website can be found on \href{https://itsbelinda.github.io/ENG5220-2020-Team13/}{\tt https\+://itsbelinda.\+github.\+io/\+E\+N\+G5220-\/2020-\/\+Team13/} . While in its current release version does not allow for the account details to be managed through the web interface, the map service visualises the fences and locations on \href{https://itsbelinda.github.io/ENG5220-2020-Team13/map.html}{\tt https\+://itsbelinda.\+github.\+io/\+E\+N\+G5220-\/2020-\/\+Team13/map.\+html} . 

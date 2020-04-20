@@ -1,0 +1,382 @@
+The following information summarises the \href{#celllocate}{\tt {\ttfamily Cell\+Locate}} feature and the \href{#u-blox-command-guide}{\tt {\ttfamily AT command guides from u-\/box}}, allowing to use the u-\/blox S\+A\+R\+A-\/\+G350 module to detect its location and send text messages and data through the mobile network. At the bottom of this page, a few \href{#additional-importanthelpful-commands}{\tt {\ttfamily Additional Important/\+Helpful Commands}} can be found
+
+The information was obtained from the following sources\+:
+\begin{DoxyItemize}
+\item \href{https://www.u-blox.com/sites/default/files/products/documents/CellLocate_ProductSummary_%28UBX-15011829%29.pdf}{\tt {\ttfamily Cell\+Locate Product Summary}}
+\item \href{https://www.u-blox.com/sites/default/files/GNSS-Implementation_AppNote_%28UBX-13001849%29.pdf}{\tt {\ttfamily Positioning Application Note}}
+\item \href{https://www.u-blox.com/sites/default/files/AT-CommandsExamples_AppNote_%28UBX-13001820%29.pdf}{\tt {\ttfamily AT Commands Examples Application Note}}
+\item \href{https://www.u-blox.com/en/docs/UBX-13002752}{\tt {\ttfamily AT Command Guide}}
+\end{DoxyItemize}
+
+\section*{Cell\+Locate}
+
+Some short description about the Cell\+Locate feature\+:
+
+\begin{quote}
+This technology enables stand-\/alone location estimation based on surrounding mobile network information in conjunction with G\+N\+SS positioning data to improve positioning. For any given location with cellular network coverage (2G, 3G or 4G), a specific combination of network cells will be visible. The proprietary Cell\+Locate feature allows u-\/blox cellular modules to report to the Cell\+Locate server those cells which are visible at any specific location. This enables the server to estimate a coarse position based on previous observations from other modules reporting the same cell visibility pattern, and this position is reported back to the module. The estimated position is then output by the module to the host processor via its serial port. \end{quote}
+
+
+\begin{quote}
+Network cells are widely available in urban and rural environments enabling the Cell\+Locate service to provide a position estimate virtually everywhere and under any conditions. The service is offered free of charge on a best effort basis and the performance depends on the density of network cells and database population. A self-\/learning mechanism is implemented allowing continuous database improvement and update to increase performance over time and prevent database ageing. \end{quote}
+
+
+ 
+
+In case of privacy concerns, u-\/blox says they are unable to track S\+IM cards or devices\+: \begin{quote}
+u-\/blox is extremely mindful of user privacy. When a position is sent to the Cell\+Locate® server, u-\/blox is unable to track the S\+IM used or identify the specific device. \end{quote}
+
+
+However, each developer needs to be registered with u-\/blox by requesting an authentication token from their website. This can be done through this form\+: www.\+u-\/blox.\+com/services-\/form.html
+
+\begin{quote}
+... authentication token as a means of authorizing access to the u-\/blox server and for gathering anonymous statistics. \end{quote}
+
+
+\section*{u-\/blox Command Guide}
+
+This quick guide will explain what steps need to be taken to be able to connect the u-\/blox module to the network, connect it to the Cell\+Locate servers to be able to request the location and how to send a simple text message. This is to be used to jump-\/start software development.
+
+u-\/blox suggests best practices for the software handling the communication to their modules on page 11 of the \href{https://www.u-blox.com/sites/default/files/AT-CommandsExamples_AppNote_%28UBX-13001820%29.pdf}{\tt {\ttfamily AT Commands Examples App Note}}.
+
+Since February 2020, there is also a \href{https://github.com/u-blox/cellular}{\tt {\ttfamily Git\+Hub}} page by u-\/blox, where they are currently developing a cellular A\+PI in C for embedded platforms.
+
+Frequently used abbreviations in the u-\/blox documentation\+:
+\begin{DoxyItemize}
+\item D\+CE (Data Communications Equipment) or MT (Mobile Terminal) is the u-\/blox cellular module
+\item D\+TE (Data Terminal Equipment) is the Raspberry PI
+\item N\+VM (Non-\/volatile Memory)
+\item I\+M\+EI (International Mobile Equipment Identity)
+\end{DoxyItemize}
+
+\subsection*{General C\+MD structure}
+
+The image below shows the general command structure.
+
+ 
+
+Specifically, a typical exchange looks like this\+:
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ PI sends }&\textbf{ S\+A\+RA responds  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ PI sends }&\textbf{ S\+A\+RA responds  }\\\cline{1-2}
+\endhead
+A\+T+$<$cmd$>$ &$<$echo$>$ \\\cline{1-2}
+&$<$response$>$ (optional -\/ can be empty) \\\cline{1-2}
+&$<$result code$>$ \\\cline{1-2}
+\end{longtabu}
+Example\+: \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ PI sends }&\textbf{ S\+A\+RA responds  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ PI sends }&\textbf{ S\+A\+RA responds  }\\\cline{1-2}
+\endhead
+A\+T+\+U\+P\+S\+ND=0.\+8&A\+T+\+U\+P\+S\+ND=0.\+8 \\\cline{1-2}
+&+\+U\+P\+S\+ND\+: 0,8,0 \\\cline{1-2}
+&OK \\\cline{1-2}
+\end{longtabu}
+\subsubsection*{Result code can be\+:}
+
+
+\begin{DoxyItemize}
+\item OK
+\item E\+R\+R\+OR
+\item A\+B\+O\+R\+T\+ED Error codes can be more informative if set to verbose with the following command\+: A\+T+\+C\+M\+EE=2
+\end{DoxyItemize}
+
+\subsubsection*{Unsolicited Result Code (U\+RC)}
+
+The commands can trigger an action that will eventually get a result. From the commands application note\+:
+
+\begin{quote}
+An unsolicited result code (U\+RC) is a string message (provided by the D\+CE) that is not a response to a previous AT command. It can be output, when enabled, at any time to inform the D\+TE of a specific event or status change. The U\+RC can have the same name as the command that enables it (e.\+g. +\+C\+R\+EG) or can be enabled by another command (e.\+g. unsolicited result code\+: +\+C\+M\+TI, command that enables it\+: +\+C\+N\+MI). \end{quote}
+
+
+This is used to get the location. The command will trigger a couple of server requests and eventually result in an answer that can be checked.
+
+\subsubsection*{Summary\+: Types of Commands}
+
+Generally speaking, there are three types of commands/interactions\+:
+\begin{DoxyItemize}
+\item A command sent by the PI that is only acknowledged by the S\+A\+RA module\+: only has an echo and the status.
+\item A command sent by the PI that immediately gets a response (before the status). ~\newline
+ If this command is not valid, or not understood, the S\+A\+RA module will respond with an E\+R\+R\+OR immediately, and no response will be sent. ~\newline
+ A response can be more than just one line, depending on the command and the content (e.\+g. reading all text messages on the module will trigger a bunch of {\ttfamily +\+C\+M\+GL\+: ...} responses, each at least two lines long.)
+\item A command sent by the PI that triggers sending of (one or more) U\+R\+Cs (e.\+g. the get location command). This command is echoed and acknowledged by the S\+A\+RA module. After the command has been executed, the result is put out as a U\+RC.
+\end{DoxyItemize}
+
+\subsubsection*{Reading/\+Setting Parameters}
+
+Many commands have parameters (often multiple) that they can set. This is the general structure\+:
+\begin{DoxyItemize}
+\item reading a parameter\+: {\ttfamily A\+T+\textbackslash{}$<$cmd$>$?\textbackslash{}r}
+\item setting a parameter\+: {\ttfamily A\+T+\textbackslash{}$<$cmd$>$=\textbackslash{}$<$x$>$\textbackslash{}r}
+\item requesting possible parameters\+: {\ttfamily A\+T+\textbackslash{}$<$cmd$>$=?\textbackslash{}r}
+\end{DoxyItemize}
+
+\subsection*{Setting up the u-\/blox module}
+
+Before the module can be used, it needs to be set up. Some parts can be configured and stored in N\+VM
+
+Make sure the connected S\+IM card has already been activated and has a data plan. The above mentioned structure is now omitted and the following structure is now used\+: {\ttfamily \textbackslash{}$<$cmd$>$} --$>$ {\ttfamily \textbackslash{}$<$response$>$}
+
+\subsubsection*{Entering the P\+IN\+:}
+
+If the P\+IN is activated (recommended), it has to be entered after startup.
+
+--$>$ Enter the P\+IN\+: {\ttfamily A\+T+\+C\+P\+IN=\char`\"{}1234\char`\"{}\textbackslash{}r}~\newline
+ The command {\ttfamily A\+T+\+C\+P\+IN=?\textbackslash{}r} does not return the P\+IN, but the status. This can be either {\ttfamily S\+IM P\+IN} or {\ttfamily R\+E\+A\+DY}.
+
+\subsubsection*{Automatic network registration\+:}
+
+This should happen automatically, if not it can be forced with\+:
+
+Forces an attempt to select and register with the network operator\+: {\ttfamily A\+T+\+C\+O\+PS=0}
+
+\paragraph*{Check G\+SM}
+
+To check if everything is ok\+: {\ttfamily A\+T+\+C\+O\+PS?} --$>$ {\ttfamily +\+C\+O\+PS\+: 0,0,\char`\"{}\+O2 -\/ U\+K\char`\"{}} If the first parameter is 0, the module is successfully registered with the G\+SM network.
+
+\paragraph*{Check G\+P\+RS}
+
+{\ttfamily A\+T+\+C\+G\+A\+TT?\textbackslash{}r} --$>$ {\ttfamily +\+C\+G\+A\+TT\+: 1\textbackslash{}r} G\+P\+RS attach status (1\+: attached)
+
+\paragraph*{Check Packet-\/\+Switched Data}
+
+For this to work, some additional (one time only) setup is necessary. Afterwards, Packet-\/\+Switched (PS) network registration status can be checked\+: {\ttfamily A\+T+\+U\+C\+G\+O\+PS?\textbackslash{}r} --$>$ {\ttfamily +\+U\+C\+G\+O\+PS\+: 0,0,\char`\"{}\+O2 -\/ U\+K\char`\"{}\textbackslash{}r}~\newline
+ This does mean that an internet connection is available, but the {\bfseries internet connection needs to be activated after every start-\/up}.
+
+\subsubsection*{P\+DP context activation\+:}
+
+Check the status of the P\+DP connection profile (second digit\+: 8) associated to G\+P\+RS connection profile identifier \char`\"{}0\char`\"{} (first digit)\+: ~\newline
+ {\ttfamily A\+T+\+U\+P\+S\+ND=0,8\textbackslash{}r} --$>$ {\ttfamily +\+U\+P\+S\+ND\+: 0,8,0\textbackslash{}r}~\newline
+ The last digit indicates the connection status (0\+: not connected, 1\+: connected).
+
+\paragraph*{Initial setup}
+
+The initial setup needs to be done once for a new device or to register for a new S\+IM card.~\newline
+ It is possible, that some of these commands are automatically set by the network provider, or that there are some commands missing because they were set automatically, by our network provider. This is to be treated as a guide and not as step-\/by-\/step instructions.~\newline
+
+\begin{DoxyEnumerate}
+\item Set up A\+PN for G\+P\+RS connection profile \char`\"{}0\char`\"{} (first digit). All following commands use the default profile \char`\"{}0\char`\"{}. Up to 7 profiles (0-\/6) can be configured at the same time.~\newline
+ {\ttfamily A\+T+\+U\+P\+SD=0,1,\char`\"{}giffgaff.\+com\char`\"{}\textbackslash{}r}~\newline
+
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Dynamic IP address assignment ~\newline
+ {\ttfamily A\+T+\+U\+P\+SD=0,7,\char`\"{}0.\+0.\+0.\+0\char`\"{}\textbackslash{}r}~\newline
+
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Save the configuration in N\+VM\+: ~\newline
+ {\ttfamily A\+T+\+U\+P\+S\+DA=0,1\textbackslash{}r} ~\newline
+
+\end{DoxyEnumerate}
+
+\paragraph*{Activate P\+DP}
+
+Every time after start-\/up, the internet connection has to be separately activated. While all other connections should happen automatically, this needs to be done explicitly.
+\begin{DoxyEnumerate}
+\item Activate G\+P\+RS connection (recommended to do this in +\+C\+G\+A\+TT\+:1)~\newline
+ {\ttfamily A\+T+\+U\+P\+S\+DA=0,3\textbackslash{}r} ~\newline
+ This command could take a while to perform ($>$1s in tests). The status OK is returned afterwards. In case of an error, there is not result returned (E\+R\+R\+OR directly after the echo). ~\newline
+
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Check the connection status ~\newline
+ {\ttfamily A\+T+\+U\+P\+S\+ND=0,8\textbackslash{}r} --$>$ {\ttfamily +\+U\+P\+S\+ND\+: 0,8,1\textbackslash{}r} ~\newline
+ This command should be regularly performed, if internet connection is necessary.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Check if a IP address was assigned ~\newline
+ {\ttfamily A\+T+\+U\+P\+S\+ND=0,0\textbackslash{}r} --$>$ {\ttfamily +\+U\+P\+S\+ND\+: 0,0,\char`\"{}86.\+111.\+173.\+102\char`\"{}\textbackslash{}r}
+\end{DoxyEnumerate}
+
+\subsection*{Sending a text message without storing it\+:}
+
+
+\begin{DoxyEnumerate}
+\item Setting the message format to text mode (P\+DU mode\+: 0) ~\newline
+ {\ttfamily A\+T+\+C\+M\+GF=1\textbackslash{}r}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Specify the number to send the message to. ~\newline
+ {\ttfamily A\+T+\+C\+M\+GS=\char`\"{}nbr\char`\"{}\textbackslash{}r} ~\newline
+ The D\+CE will send the echo followed by \char`\"{}$>$\char`\"{} (on a new line)
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Send the message as a string. ~\newline
+ {\ttfamily There can be line feeds, or whatever one likes \+:). However, with every \textbackslash{}r, the S\+A\+RA module will send the echo}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Send the message immediately~\newline
+ {\ttfamily $<$ctrl-\/z$>$} ~\newline
+ Alternatively {\ttfamily $<$E\+SC$>$} discards the message. ~\newline
+ Only now will the S\+A\+RA module send the status (OK, E\+R\+R\+OR).
+\end{DoxyEnumerate}
+
+\subsection*{Getting the Cell\+Locate Location\+:}
+
+First, the Cell\+Locate server needs to be configured, this should be done separately from the main program. The setup needs a token, this should not be hardcoded into the software. (For more info see \href{#celllocate}{\tt Cell\+Locate}.)
+
+This command checks the possible settings\+:~\newline
+ {\ttfamily A\+T+\+U\+G\+S\+RV=?\textbackslash{}r} ~\newline
+ {\ttfamily +\+U\+G\+S\+RV\+: \char`\"{}srv1\char`\"{},\char`\"{}srv2\char`\"{},\char`\"{}token\char`\"{},(1,2,3,5,7,10,14),(1-\/5),(1-\/3),(1,64,65),(0-\/2),(0-\/15)\textbackslash{}r} ~\newline
+
+\begin{DoxyItemize}
+\item The first two strings (note\+: they sent including the quotation marks!) specify the primary and secondary servers.
+\item The third one is the authentification token.
+\item The next value is the number of days the offline data should be valid for. Allowed values are shown above, the default value is 14.
+\item The next value is the number of weeks the offline data should be valid for. The range is from 1-\/4, the default value is 4.
+\item The next value is the resolution of the offline data in days. 1,2 and 3 are allowed values.
+\item The next value is the G\+N\+SS type\+: ~\newline
+
+\begin{DoxyItemize}
+\item 1\+: G\+PS ~\newline
+
+\item 64\+: G\+L\+O\+N\+A\+SS ~\newline
+Default is 65 (both)
+\end{DoxyItemize}
+\item The next value is the mode of the Assist\+Now Online data management.~\newline
+
+\begin{DoxyItemize}
+\item 0\+: Assist\+Now Online data are downloaded at G\+N\+SS receiver power up~\newline
+
+\item 1\+: Assist\+Now Online data automatically kept alive~\newline
+
+\item 2\+: manual Assist\+Now Online data download~\newline
+
+\end{DoxyItemize}
+\item The next value is the bitmask for the desired data types for the online aiding. ~\newline
+
+\begin{DoxyItemize}
+\item 0\+: time~\newline
+
+\item 1\+: position~\newline
+
+\item 2\+: ephemeris~\newline
+
+\item 4\+: almanac~\newline
+
+\item 8\+: auxiliary~\newline
+
+\item 16\+: ephemeris of satellites which are likely to be visible from the position estimated by the current registered network. This flag has no effect if the ephemeris flag is set to 0.~\newline
+ The default value is 15.~\newline
+ For a detailed description about all the parameters, see the \href{https://www.u-blox.com/en/docs/UBX-13002752}{\tt AT Command Manual}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\subsubsection*{Configuring the Cell\+Locate server\+:}
+
+The initial setup needs to be done once for a new device or to register for a new S\+IM card with the above mentioned command.~\newline
+ Example (replace with valid token)\+:~\newline
+ {\ttfamily A\+T+\+U\+G\+S\+RV=\char`\"{}cell-\/live1.\+services.\+u-\/blox.\+com\char`\"{},\char`\"{}cell-\/live2.\+services.\+u-\/blox.\+com\char`\"{},\char`\"{}xxxxxxxxxxxxxxxxxxxxxx\char`\"{},14,4,1,65,0,15\textbackslash{}r}
+
+\subsubsection*{Get the Location from the Cell\+Locate server\+:}
+
+\paragraph*{Possible configuration}
+
+To configure the Cell\+Locate sensor, it is possible to configure what information the device reports to the server. There are two options\+:~\newline
+ (from the \href{https://www.u-blox.com/sites/default/files/GNSS-Implementation_AppNote_%28UBX-13001849%29.pdf}{\tt Position Application Note})
+\begin{DoxyItemize}
+\item “normal scan”\+: the cellular module only reports the parameters of the neighbouring visible cells designated by the network operator, which are normally collected by the module during its “network” activity. This configuration is suitable for a quick, rough update of location
+\item “deep scan”\+: the cellular module scans and reports all visible cells. This gives not only the parameters of the visible cells of the serving network operator but also the cells of all other available network operators, thus improving location accuracy. Although this takes a bit longer time (approx 30 s to 2 minutes is needed to perform a deep scan), and requires more communication traffic, as more data is sent to the server (9 bytes for each cell), the coverage, reliability and accuracy are all substantially better if hybrid positioning is preconfigured to operate in the “deep scan” mode of operation
+\end{DoxyItemize}
+
+This setting can b made with the following command\+: ~\newline
+ {\ttfamily A\+T+\+U\+L\+O\+C\+C\+E\+LL=$<$scan\+\_\+mode$>$\textbackslash{}r} ~\newline
+
+\begin{DoxyItemize}
+\item 0\+: normal scan~\newline
+
+\item 1\+: deep scan~\newline
+
+\end{DoxyItemize}
+
+\paragraph*{Request Location}
+
+The request location command specifies what type of location is requested, what response should be sent, timeouts and more\+: ~\newline
+
+
+{\ttfamily A\+T+\+U\+L\+OC=$<$mode$>$,$<$sensor$>$,$<$response\+\_\+type$>$,$<$timeout$>$,$<$accuracy$>$\mbox{[},$<$num\+\_\+hypothesis$>$\mbox{]}\textbackslash{}r}~\newline
+
+\begin{DoxyItemize}
+\item $<$mode$>$\+: always needs to be 2, the other values are reserved~\newline
+
+\item $<$sensor$>$\+: What type of sensor to use (bitmask)\+: ~\newline
+
+\begin{DoxyItemize}
+\item 0\+: use last fix in internal database~\newline
+
+\item 1\+: G\+N\+SS receiver (not included in our setup)~\newline
+
+\item 2\+: Cell\+Locate~\newline
+
+\end{DoxyItemize}
+\item $<$response\+\_\+type$>$ ~\newline
+
+\begin{DoxyItemize}
+\item 0\+: use last fix in internal database~\newline
+
+\item 1\+: G\+N\+SS receiver (not included in our setup)~\newline
+
+\item 2\+: Cell\+Locate~\newline
+
+\end{DoxyItemize}
+\item $<$timeout$>$\+: in seconds from 1 to 999
+\item $<$accuracy$>$\+: in meters from 1 to 999999
+\item $<$num\+\_\+hypothesis$>$\+: (optional) maximal desired responses from Cell\+Locate (max. 16).
+\end{DoxyItemize}
+
+Example\+: ~\newline
+ {\ttfamily A\+T+\+U\+L\+OC=2,2,0,60,500}~\newline
+ This command will be echoed and answered quickly by the S\+A\+RA module. The answer is only the status. Requesting the location can take a long time (see timeouts above), so the result is sent as a U\+RC as soon as it is ready.
+
+The response will have the following structure (for the response type \char`\"{}0\char`\"{})\+:~\newline
+ {\ttfamily +\+U\+U\+L\+OC\+: $<$date$>$,$<$time$>$,$<$lat$>$,$<$long$>$,$<$alt$>$,$<$uncertainty$>$\textbackslash{}r}~\newline
+ {\ttfamily $<$uncertainty$>$} is the estimated 50\% confidence level error in meters. ~\newline
+
+
+A possible response for response type \char`\"{}0\char`\"{}\+:~\newline
+ {\ttfamily +\+U\+U\+L\+OC\+:}02/04/2020,21\+:06\+:15.\+000,55.\+8367527,-\/42209088,0,248` ~\newline
+ (The alert reader will be able to check where the PI was located during development.)
+
+The image below shows the serial output of the test program that sets up the internet connection and reads the location from the device once\+: 
+
+ 
+
+\subsection*{Additional Important/\+Helpful Commands}
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Command }&\textbf{ Example response (echo \& status omitted) }&\textbf{ Description  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Command }&\textbf{ Example response (echo \& status omitted) }&\textbf{ Description  }\\\cline{1-3}
+\endhead
+{\ttfamily A\+T+\+C\+M\+EE=2\textbackslash{}r} &none &Set the verbose error result codes. \\\cline{1-3}
+{\ttfamily A\+T\+I0\textbackslash{}r} &{\ttfamily S\+A\+R\+A-\/\+G350-\/02\+X-\/01} &Get product type number. (0 is the default value and can be omitted, {\ttfamily A\+TI} gives the same result as {\ttfamily A\+T\+I0}. \\\cline{1-3}
+{\ttfamily A\+T\+I5\textbackslash{}r} &{\ttfamily 355989070341461} &Get I\+M\+EI number. \\\cline{1-3}
+{\ttfamily A\+T+\+C\+M\+GL\textbackslash{}r} &{\ttfamily +\+C\+M\+GL\+: 1,\char`\"{}\+R\+E\+C R\+E\+A\+D\char`\"{},\char`\"{}11111\char`\"{},,\char`\"{}20/03/13,10\+:20\+:25+00\char`\"{}}~\newline
+This is just an example of a text message, there could be more than one. &Read all stored text messages. \\\cline{1-3}
+{\ttfamily A\+T+\+U\+P\+SV=0\textbackslash{}r} &none &Disable power saving. (When in power saving mode, the device will use the first character as an interrupt to wake up.) \\\cline{1-3}
+{\ttfamily A\+T+\+C\+F\+UN=15\textbackslash{}r} &none &Save the stored configuration and reboot the module without needing to switch the module off and back on. \\\cline{1-3}
+{\ttfamily A\+T+\+C\+P\+W\+R\+O\+FF\textbackslash{}r} &none &Save the stored configuration and switch the off. \\\cline{1-3}
+{\ttfamily A\+T+\+U\+P\+S\+DA=0,4\textbackslash{}r} &none &Deactivate the P\+DP context (internet). \\\cline{1-3}
+{\ttfamily A\+T+\+U\+P\+I\+NG=\char`\"{}google.\+com\char`\"{}\textbackslash{}r} &U\+RC reporting on success or failure\+:~\newline
+ {\ttfamily +\+U\+U\+P\+I\+N\+G\+ER\+: $<$errorcode$>$} in case of failure ~\newline
+ {\ttfamily +\+U\+U\+P\+I\+NG $<$results$>$} (4x) if successful &Ping a remote host. \\\cline{1-3}
+\end{longtabu}
+(to be updated if needed) 
