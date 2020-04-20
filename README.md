@@ -1,7 +1,7 @@
 # ENG5220-2020-Team13: BeeSafe
 ## Status:
-[![build](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13.svg?token=kxeDEXY2kiCv968c3pfm&branch=devpi)](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13)
-[![codecov](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13/branch/devpi/graph/badge.svg?)](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13)
+[![build](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13.svg?token=kxeDEXY2kiCv968c3pfm&branch=master)](https://travis-ci.com/itsBelinda/ENG5220-2020-Team13)
+[![codecov](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13/branch/master/graph/badge.svg?)](https://codecov.io/gh/itsBelinda/ENG5220-2020-Team13)
 <br>Currently in development.
 
 ## Description
@@ -29,7 +29,7 @@ To run the project in development, navigate into the folder `/software/BeeSafePI
 > For more in-depth usage instructions, please see the corresponding <a href="https://github.com/itsBelinda/ENG5220-2020-Team13/wiki/User-Guide"> wiki page </a>.
 
 ## Documentation
-An in-depth guide on the build and usage of the system, as well as detailed component descriptions and project management steps can be found on the <a href="https://github.com/itsBelinda/ENG5220-2020-Team13/wiki"> project wiki</a>. The API documentation created with Doxygen can be found <a href="">here</a>. [TODO]
+An in-depth guide on the build and usage of the system, as well as detailed component descriptions and project management steps can be found on the <a href="https://github.com/itsBelinda/ENG5220-2020-Team13/wiki"> project wiki</a>. The API documentation created with Doxygen can be found <a href="https://itsbelinda.github.io/ENG5220-2020-Team13/doc/html/index.html">here</a>.
 
 ## Contributing to this project
 Do you like this project? We strongly believe in the power of Open Source, so there are many ways you could contribute to our project!
